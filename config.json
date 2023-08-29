@@ -1,0 +1,26 @@
+{
+  "name": "粵語劇",
+  "pages": [
+    {
+      "name": "index",
+      "url": "https://m.colafun.com/0-0-0-0-1-0.html?p=${pageNumber}",
+      "standardMedia": {
+        "id": {
+          "css": "a",
+          "arrt": "href"
+        },
+        "title": {
+          "css": ".card-title"
+        },
+        "cover": {
+          "css": ".card-img-top",
+          "arrt": "data-original"
+        },
+        "detailURL": {
+          "css": "a",
+          "arrt": "href"
+        }
+      }
+    }
+  ]
+}
