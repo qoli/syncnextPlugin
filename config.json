@@ -1,13 +1,53 @@
 {
   "name": "粵語劇",
+  "host": "https://m.colafun.com",
+  "files": ["app.js"],
+  "standardMediaEpisode": {
+    "base": {
+      "css": "#item-url-0 a"
+    },
+    "id": {
+      "arrt": "href"
+    },
+    "title": {},
+    "episodeDetailURL": {
+      "arrt": "href"
+    }
+  },
+  "standardMediaPlayer": {
+    "base": {
+      "css": ".embed-responsive-item",
+      "arrt": "src"
+    },
+    "javascriptStep": [
+      {
+        "step": 1,
+        "type": "callFunction",
+        "name": "playURL"
+      },
+      {
+        "step": 2,
+        "type": "http-get"
+      },
+      {
+        "step": 3,
+        "type": "callFunction",
+        "name": "addressParse"
+      },
+      {
+        "step": 999,
+        "type": "play"
+      }
+    ]
+  },
   "pages": [
     {
-      "name": "index",
+      "key": "index",
+      "title": "最近更新",
       "url": "https://m.colafun.com/0-0-0-0-1-0.html?p=${pageNumber}",
       "standardMedia": {
         "base": {
-          "css": "a",
-          "arrt": "href"
+          "css": ".card"
         },
         "id": {
           "css": "a",
@@ -19,6 +59,37 @@
         "cover": {
           "css": ".card-img-top",
           "arrt": "data-original"
+        },
+        "description": {
+          "css": ".badge-primary"
+        },
+        "detailURL": {
+          "css": "a",
+          "arrt": "href"
+        }
+      }
+    },
+    {
+      "key": "guzhuang",
+      "title": "古裝",
+      "url": "https://m.colafun.com/0-1-0-0-1-0.html?p=${pageNumber}",
+      "standardMedia": {
+        "base": {
+          "css": ".card"
+        },
+        "id": {
+          "css": "a",
+          "arrt": "href"
+        },
+        "title": {
+          "css": ".card-title"
+        },
+        "cover": {
+          "css": ".card-img-top",
+          "arrt": "data-original"
+        },
+        "description": {
+          "css": ".badge-primary"
         },
         "detailURL": {
           "css": "a",
