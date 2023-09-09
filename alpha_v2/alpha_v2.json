@@ -1,0 +1,20 @@
+{
+  "name": "粵語劇",
+  "description": "海量粵語節目",
+  "host": "https://m.colafun.com",
+  "files": ["txml.js", "app.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "最近更新",
+      "url": "https://m.colafun.com/0-0-0-0-1-0.html?p=${pageNumber}",
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "javascript": "Episodes"
+  },
+  "player": {
+    "javascript": "Player"
+  }
+}

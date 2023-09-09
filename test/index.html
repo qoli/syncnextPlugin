@@ -1,0 +1,906 @@
+<html lang="zh-cn">
+
+<head>
+
+
+
+    <script id="noir-helper" class="noir noir-helper"
+        src="safari-extension://BBFD5891-BAAB-42BA-9E32-FEC0333C9AA3/dist/noirhelper.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="//lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.5.3/css/bootstrap.min.css">
+
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans+SC&amp;display=swap" rel="stylesheet">
+    <meta name="keywords" content="粤语,电视剧,连续剧,动画片,卡通片,综艺,香港,日本,韩国,TVB,J2,翡翠台,ViuTV,香港电视HKTV,亚洲电视ATV,奇妙电视">
+    <meta name="description" content="最新的粤语电视剧、综艺节目，搜罗日本、韩国最新连续剧粤语配音版。">
+    <title>粤语剧</title>
+
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
+        <a class="navbar-brand" href="/">粤语剧</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;"></ul>
+            <form id="su" name="form" class="d-flex  mr-2" method="get" action="/search.html"
+                onsubmit="return onSubmitSearch()">
+                <input class="form-control mr-2" name="name" type="search" id="search_keyword" placeholder="搜索">
+                <button class="btn btn-success btn-sm" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                        </path>
+                    </svg>
+                </button>
+            </form>
+            <!--span class="navbar-text">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  登入 / 注册
+</button>
+</span-->
+        </div>
+    </nav>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">会员登录</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="g_id_onload"
+                        data-client_id="876809429605-c657u40nr03smu4714ttrmtej0nclrmv.apps.googleusercontent.com"
+                        data-context="signin" data-ux_mode="popup" data-callback="handleGoogle"
+                        data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+                        data-text="signin_with" data-size="large" data-logo_alignment="center" data-width="400">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2 mb-2">
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+
+                <li data-target="#carousel" data-slide-to="1"></li>
+
+                <li data-target="#carousel" data-slide-to="2"></li>
+
+                <li data-target="#carousel" data-slide-to="3"></li>
+
+                <li data-target="#carousel" data-slide-to="4"></li>
+
+                <li data-target="#carousel" data-slide-to="5"></li>
+            </ol>
+            <div class="carousel-inner" style="border-radius: 3px;">
+
+                <div class="carousel-item active">
+                    <a href="/1039.html" title="破毒强人"
+                        onclick="_hmt.push(['_trackEvent', 'banner', 'click', '破毒强人'])"><img
+                            src="//img.hktv.club/cover/large/67c260c2gy1hgfgryt2zcj21lm0j644m.jpg" class="d-block w-100"
+                            alt="破毒强人"></a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="/988.html" title="隐门" onclick="_hmt.push(['_trackEvent', 'banner', 'click', '隐门'])"><img
+                            src="//img.hktv.club/cover/large/67c260c2gy1heq4vrsynzj21lm0j6gwk.jpg" class="d-block w-100"
+                            alt="隐门"></a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="/913.html" title="隐形战队"
+                        onclick="_hmt.push(['_trackEvent', 'banner', 'click', '隐形战队'])"><img
+                            src="//img.hktv.club/cover/large/67c260c2gy1hbu3an8g50j21lm0j6tpw.jpg" class="d-block w-100"
+                            alt="隐形战队"></a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="/816.html" title="法证先锋V"
+                        onclick="_hmt.push(['_trackEvent', 'banner', 'click', '法证先锋V'])"><img
+                            src="//img.hktv.club/cover/large/67c260c2gy1h7jvo4khytj21hc0hr4qp.jpg" class="d-block w-100"
+                            alt="法证先锋V"></a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="/629.html" title="白色强人2"
+                        onclick="_hmt.push(['_trackEvent', 'banner', 'click', '白色强人2'])"><img
+                            src="//img.hktv.club/cover/large/67c260c2gy1h3x84qcdlvj21lm0j67ol.jpg" class="d-block w-100"
+                            alt="白色强人2"></a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="/531.html" title="上流人生"
+                        onclick="_hmt.push(['_trackEvent', 'banner', 'click', '上流人生'])"><img
+                            src="//img.hktv.club/cover/large/67c260c2gy1h2sjj12m7yj21bg0kuqrd.jpg" class="d-block w-100"
+                            alt="上流人生"></a>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron mt-2  mb-0 p-3">
+            <dl class="list-inline mb-1" style="white-space: nowrap; overflow-y: hidden;">
+                <dt class="list-inline-item">排序</dt>
+                <dd class="list-inline-item">
+                    <span class="badge badge-primary mr-2">最近更新</span>
+                    <a href="/1-0-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">最受欢迎</a>
+                    <a href="/2-0-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">最近上映</a>
+                </dd>
+            </dl>
+            <dl class="list-inline mb-1" style="white-space: nowrap; overflow-y: hidden;">
+                <dt class="list-inline-item">剧情</dt>
+                <dd class="list-inline-item">
+                    <span class="badge badge-primary mr-2">全部</span>
+                    <a href="/0-1-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">古装</a>
+                    <a href="/0-2-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">动作</a>
+                    <a href="/0-3-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">悬疑</a>
+                    <a href="/0-4-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">家庭</a>
+                    <a href="/0-5-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">青春偶像</a>
+                    <a href="/0-6-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">爱情</a>
+                    <a href="/0-7-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">警匪</a>
+                    <a href="/0-8-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">商战</a>
+                    <a href="/0-9-0-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">其他</a>
+                </dd>
+            </dl>
+            <dl class="list-inline mb-1" style="white-space: nowrap; overflow-y: hidden;">
+                <dt class="list-inline-item">地区</dt>
+                <dd class="list-inline-item">
+                    <span class="badge badge-primary mr-2">全部</span>
+                    <a href="/0-0-1-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">中国大陆</a>
+                    <a href="/0-0-2-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">中国香港</a>
+                    <a href="/0-0-3-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">中国台湾</a>
+                    <a href="/0-0-4-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">韩国</a>
+                    <a href="/0-0-5-0-1-0.html" class="text-decoration-none text-reset mr-2 font-12">日本</a>
+                </dd>
+            </dl>
+            <dl class="list-inline mb-1" style="white-space: nowrap; overflow-y: hidden;">
+                <dt class="list-inline-item">年份</dt>
+                <dd class="list-inline-item">
+                    <span class="badge badge-primary mr-2">全部</span>
+                    <a href="/0-0-0-1-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2021</a>
+                    <a href="/0-0-0-2-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2020</a>
+                    <a href="/0-0-0-3-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2019</a>
+                    <a href="/0-0-0-4-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2018</a>
+                    <a href="/0-0-0-5-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2017</a>
+                    <a href="/0-0-0-6-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2016</a>
+                    <a href="/0-0-0-7-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2015</a>
+                    <a href="/0-0-0-8-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2014</a>
+                    <a href="/0-0-0-9-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2013</a>
+                    <a href="/0-0-0-10-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2012</a>
+                    <a href="/0-0-0-11-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2011</a>
+                    <a href="/0-0-0-12-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2010</a>
+                    <a href="/0-0-0-13-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2009</a>
+                    <a href="/0-0-0-14-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2008</a>
+                    <a href="/0-0-0-15-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2007</a>
+                    <a href="/0-0-0-16-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2006</a>
+                    <a href="/0-0-0-17-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2004</a>
+                    <a href="/0-0-0-18-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2003</a>
+                    <a href="/0-0-0-19-1-0.html" class="text-decoration-none text-reset mr-2 font-12">2002</a>
+                    <a href="/0-0-0-20-1-0.html" class="text-decoration-none text-reset mr-2 font-12">1999</a>
+                    <a href="/0-0-0-21-1-0.html" class="text-decoration-none text-reset mr-2 font-12">1996</a>
+                    <a href="/0-0-0-22-1-0.html" class="text-decoration-none text-reset mr-2 font-12">1994</a>
+                    <a href="/0-0-0-23-1-0.html" class="text-decoration-none text-reset mr-2 font-12">1989</a>
+                    <a href="/0-0-0-24-1-0.html" class="text-decoration-none text-reset mr-2 font-12"></a>
+                </dd>
+            </dl>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 mt-2">
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1042.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgrn11mspqj21hc0u00zl.jpg"
+                            class="card-img-top" alt="宠爱Pet Pet" title="宠爱Pet Pet"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1042.html">宠爱Pet Pet</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到14集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-林夏薇.html" class="text-primary">林夏薇</a> <a
+                                    href="/actor-周嘉洛.html" class="text-primary">周嘉洛</a> <a href="/actor-姜大卫.html"
+                                    class="text-primary">姜大卫</a> <a href="/actor-黄子恒.html" class="text-primary">黄子恒</a>
+                                <a href="/actor-古佩玲.html" class="text-primary">古佩玲</a>
+                            </div>
+                            <div class="col">类型：喜剧 宠物 轻松</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1039.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgi6al872dj21hc0u0tf3.jpg"
+                            class="card-img-top" alt="破毒强人" title="破毒强人"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1039.html">破毒强人</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到30集</span>
+                            <span class="badge badge-danger mr-2">1080P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-陈豪.html" class="text-primary">陈豪</a> <a
+                                    href="/actor-胡定欣.html" class="text-primary">胡定欣</a> <a href="/actor-萧正楠.html"
+                                    class="text-primary">萧正楠</a> <a href="/actor-张曦雯.html" class="text-primary">张曦雯</a>
+                                <a href="/actor-何广沛.html" class="text-primary">何广沛</a>
+                            </div>
+                            <div class="col">导演：<a href="/director-罗永贤.html" class="text-primary">罗永贤</a> </div>
+                            <div class="col">类型：剧情 动作 时装 警匪</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/954.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hdc12j3i4hj21hc0u0kbb.jpg"
+                            class="card-img-top" alt="周六聊Teen谷" title="周六聊Teen谷"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/954.html">周六聊Teen谷</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到20集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-陈懿德.html" class="text-primary">陈懿德</a> <a
+                                    href="/actor-陈星妤.html" class="text-primary">陈星妤</a> <a href="/actor-王菲.html"
+                                    class="text-primary">王菲</a> </div>
+                            <div class="col">类型：民生 消闲</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1040.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgk40a5zkoj21hc0u0goj.jpg"
+                            class="card-img-top" alt="至尚生活" title="至尚生活"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1040.html">至尚生活</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到22集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-苏颂辉.html" class="text-primary">苏颂辉</a> <a
+                                    href="/actor-邵佩诗.html" class="text-primary">邵佩诗</a> <a href="/actor-黄耀英.html"
+                                    class="text-primary">黄耀英</a> <a href="/actor-黄碧莲.html" class="text-primary">黄碧莲</a>
+                                <a href="/actor-伍韵婷.html" class="text-primary">伍韵婷</a>
+                            </div>
+                            <div class="col">类型：生活资讯</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/351.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1gzpspx96njj20hs0a0q7v.jpg"
+                            class="card-img-top" alt="游戏王5D's" title="游戏王5D's"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/351.html">游戏王5D's</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到315集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：卡通片 交换卡片</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/698.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h4fpme4i60j21hc0u0e81.jpg"
+                            class="card-img-top" alt="一线搜查" title="一线搜查"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/698.html">一线搜查</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到295集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-宋熙年.html" class="text-primary">宋熙年</a> <a
+                                    href="/actor-简采恩.html" class="text-primary">简采恩</a> <a href="/actor-林希灵.html"
+                                    class="text-primary">林希灵</a> <a href="/actor-黄恺怡.html" class="text-primary">黄恺怡</a>
+                                <a href="/actor-梁皓恩.html" class="text-primary">梁皓恩</a>
+                            </div>
+                            <div class="col">类型：资讯 文教</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/845.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h8u89yx0hvj21hc0u0e81.jpg"
+                            class="card-img-top" alt="樱桃小丸子2(#849-900, 1229-1271)"
+                            title="樱桃小丸子2(#849-900, 1229-1271)"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/845.html">樱桃小丸子2(#849-900, 1229-1271)</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到151集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：卡通片 喜剧</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/858.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h8wfo81ykmj21hc0u0e6d.jpg"
+                            class="card-img-top" alt="甄文达马来西亚味之旅" title="甄文达马来西亚味之旅"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/858.html">甄文达马来西亚味之旅</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到38集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-甄文达.html" class="text-primary">甄文达</a> </div>
+                            <div class="col">类型：美食 真人秀</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/932.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hcmttfu5hbj21hc0u0b29.jpg"
+                            class="card-img-top" alt="真系唔好笑" title="真系唔好笑"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/932.html">真系唔好笑</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到11集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-何广沛.html" class="text-primary">何广沛</a> <a
+                                    href="/actor-麦美恩.html" class="text-primary">麦美恩</a> <a href="/actor-冯盈盈.html"
+                                    class="text-primary">冯盈盈</a> <a href="/actor-郭子豪.html" class="text-primary">郭子豪</a>
+                                <a href="/actor-彭慧中.html" class="text-primary">彭慧中</a>
+                            </div>
+                            <div class="col">类型：游戏 真人秀</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1037.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgc21h09pyj21hc0u0nc7.jpg"
+                            class="card-img-top" alt="银发挑机高智能" title="银发挑机高智能"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1037.html">银发挑机高智能</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到6集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：真人秀 科技</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1043.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgrn9sjy4xj21hc0u0gya.jpg"
+                            class="card-img-top" alt="以和为贵" title="以和为贵"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1043.html">以和为贵</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到9集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-马德钟.html" class="text-primary">马德钟</a> <a
+                                    href="/actor-徐子珊.html" class="text-primary">徐子珊</a> <a href="/actor-李思捷.html"
+                                    class="text-primary">李思捷</a> <a href="/actor-江美仪.html" class="text-primary">江美仪</a>
+                                <a href="/actor-黄光亮.html" class="text-primary">黄光亮</a>
+                            </div>
+                            <div class="col">类型：喜剧</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/518.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h3a9te597kj21hc0u0e81.jpg"
+                            class="card-img-top" alt="细味文明" title="细味文明"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/518.html">细味文明</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到48集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：文化 纪录片</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/648.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h3w55ajj5gj21hc0u0kjl.jpg"
+                            class="card-img-top" alt="新干线战士Z" title="新干线战士Z"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/648.html">新干线战士Z</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到41集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：卡通片 动作 机械人</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1029.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgbywndy70j21hc0u0451.jpg"
+                            class="card-img-top" alt="星梦频道" title="星梦频道"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1029.html">星梦频道</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到32集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：卡通片 音乐 时尚 舞蹈 歌唱</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/245.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h2ttphsv3dj21hc0u0qtp.jpg"
+                            class="card-img-top" alt="思家大战" title="思家大战"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/245.html">思家大战</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到55集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：7.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-李思捷.html" class="text-primary">李思捷</a> </div>
+                            <div class="col">类型：真人秀</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/517.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h2tsql8bbwj21hc0u0hdt.jpg"
+                            class="card-img-top" alt="舞动文化" title="舞动文化"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/517.html">舞动文化</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到5集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：文化 纪录片</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/989.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1heq5fc1hioj21hc0u07wi.jpg"
+                            class="card-img-top" alt="喜羊羊与灰太狼之筐出胜利" title="喜羊羊与灰太狼之筐出胜利"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/989.html">喜羊羊与灰太狼之筐出胜利</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到48集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：卡通片 喜羊羊与灰太狼</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/584.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h2rrhmb5gyj21hc0u0b29.jpg"
+                            class="card-img-top" alt="日出东方有文明" title="日出东方有文明"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/584.html">日出东方有文明</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到10集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：文教 纪录片</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/996.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hes02f9vz8j21hc0u0e81.jpg"
+                            class="card-img-top" alt="日常生活长知识2" title="日常生活长知识2"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/996.html">日常生活长知识2</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到48集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-若林正恭.html" class="text-primary">若林正恭</a> <a
+                                    href="/actor-高桥真麻.html" class="text-primary">高桥真麻</a> </div>
+                            <div class="col">类型：资讯 生活</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1031.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgbznp3rkyj21hc0u0amo.jpg"
+                            class="card-img-top" alt="忍者乱太郎 XXIV" title="忍者乱太郎 XXIV"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1031.html">忍者乱太郎 XXIV</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到10集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：卡通片 喜剧 校园</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/695.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h4dbcg9rqbj21hc0u0b29.jpg"
+                            class="card-img-top" alt="呢铺开乜：开卷" title="呢铺开乜：开卷"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/695.html">呢铺开乜：开卷</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到60集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-林溥来.html" class="text-primary">林溥来</a> <a
+                                    href="/actor-涂毓麟.html" class="text-primary">涂毓麟</a> <a href="/actor-何泳芍.html"
+                                    class="text-primary">何泳芍</a> <a href="/actor-伍韵婷.html" class="text-primary">伍韵婷</a>
+                            </div>
+                            <div class="col">类型：清谈 资讯</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/697.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h4dbpvfmzfj21hc0u0e81.jpg"
+                            class="card-img-top" alt="呢铺开乜：开坛" title="呢铺开乜：开坛"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/697.html">呢铺开乜：开坛</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到57集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-苏民峰.html" class="text-primary">苏民峰</a> <a
+                                    href="/actor-倪嘉雯.html" class="text-primary">倪嘉雯</a> <a href="/actor-陈若思.html"
+                                    class="text-primary">陈若思</a> <a href="/actor-杜颖珊.html" class="text-primary">杜颖珊</a>
+                                <a href="/actor-陈国麟.html" class="text-primary">陈国麟</a>
+                            </div>
+                            <div class="col">类型：玄学</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/719.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h4vvx7kifzj21hc0u0hdt.jpg"
+                            class="card-img-top" alt="两个辘游东瀛 5" title="两个辘游东瀛 5"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/719.html">两个辘游东瀛 5</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到21集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：旅游</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1033.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgc0cusevnj21hc0u0dme.jpg"
+                            class="card-img-top" alt="奇幻潮" title="奇幻潮"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1033.html">奇幻潮</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到7集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-郑伊健.html" class="text-primary">郑伊健</a> <a
+                                    href="/actor-谢天华.html" class="text-primary">谢天华</a> <a href="/actor-钟嘉欣.html"
+                                    class="text-primary">钟嘉欣</a> <a href="/actor-薛家燕.html" class="text-primary">薛家燕</a>
+                                <a href="/actor-黎耀祥.html" class="text-primary">黎耀祥</a>
+                            </div>
+                            <div class="col">类型：诡异 奇幻 时装</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1001.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hfd81t50swj21z40uhkhc.jpg"
+                            class="card-img-top" alt="健康关注组" title="健康关注组"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1001.html">健康关注组</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到93集</span>
+                            <span class="badge badge-danger mr-2">1080P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-敖嘉年.html" class="text-primary">敖嘉年</a> <a
+                                    href="/actor-梁嘉琪.html" class="text-primary">梁嘉琪</a> <a href="/actor-黄芳雯.html"
+                                    class="text-primary">黄芳雯</a> <a href="/actor-郭田葰.html" class="text-primary">郭田葰</a>
+                                <a href="/actor-林晓蕙.html" class="text-primary">林晓蕙</a>
+                            </div>
+                            <div class="col">类型：健康 资讯</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/362.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1gzuitq18w5j20zk0k0qis.jpg"
+                            class="card-img-top" alt="蜡笔小新" title="蜡笔小新"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/362.html">蜡笔小新</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到162集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：卡通片 搞笑</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1032.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgbzu7vrluj21hc0u07e0.jpg"
+                            class="card-img-top" alt="激爆世纪 樽甲弹盖人DX" title="激爆世纪 樽甲弹盖人DX"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1032.html">激爆世纪 樽甲弹盖人DX</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到48集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：卡通片 历险</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/1044.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1hgrncaap4ej21hc0u0dnj.jpg"
+                            class="card-img-top" alt="和味浓情" title="和味浓情"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/1044.html">和味浓情</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到8集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-苏玉华.html" class="text-primary">苏玉华</a> <a
+                                    href="/actor-陶大宇.html" class="text-primary">陶大宇</a> <a href="/actor-秦沛.html"
+                                    class="text-primary">秦沛</a> <a href="/actor-廖碧儿.html" class="text-primary">廖碧儿</a>
+                                <a href="/actor-滕丽名.html" class="text-primary">滕丽名</a>
+                            </div>
+                            <div class="col">类型：时装 爱情</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/666.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h3xadejoevj21hc0u0kjl.jpg"
+                            class="card-img-top" alt="关注关注组" title="关注关注组"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/666.html">关注关注组</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到59集</span>
+                            <span class="badge badge-danger mr-2">720P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">主演：<a href="/actor-邓梓峰.html" class="text-primary">邓梓峰</a> <a
+                                    href="/actor-吕静文.html" class="text-primary">吕静文</a> <a href="/actor-王虹茵.html"
+                                    class="text-primary">王虹茵</a> <a href="/actor-吴洛汶.html" class="text-primary">吴洛汶</a>
+                                <a href="/actor-杜颖珊.html" class="text-primary">杜颖珊</a>
+                            </div>
+                            <div class="col">类型：清谈</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <a href="/810.html"><img
+                            data-original="https://img.hktv.club/cover/mw690/67c260c2gy1h7brdh54wuj21hc0u0e81.jpg"
+                            class="card-img-top" alt="够钟食晏2" title="够钟食晏2"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/810.html">够钟食晏2</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <span class="badge badge-primary mr-2">更新到49集</span>
+                            <span class="badge badge-danger mr-2">1080P</span>
+                            <!-- <span class="badge badge-success">平均分：0.0</span> -->
+                        </h6>
+                        <div class="row row-cols-1">
+                            <div class="col">类型：饮食</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="text-center">
+            <ul class="pagination">
+                <li class="disabled"><span>«</span></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="/0-0-0-0-1-0.html?p=2">2</a></li>
+                <li><a href="/0-0-0-0-1-0.html?p=3">3</a></li>
+                <li><a href="/0-0-0-0-1-0.html?p=4">4</a></li>
+                <li><a href="/0-0-0-0-1-0.html?p=5">5</a></li>
+                <li><a href="/0-0-0-0-1-0.html?p=6">6</a></li>
+                <li><a href="/0-0-0-0-1-0.html?p=7">7</a></li>
+                <li><a href="/0-0-0-0-1-0.html?p=8">8</a></li>
+                <li class="disabled"><span>...</span></li>
+                <li><a href="/0-0-0-0-1-0.html?p=34">34</a></li>
+                <li><a href="/0-0-0-0-1-0.html?p=35">35</a></li>
+                <li><a href="/0-0-0-0-1-0.html?p=2">»</a></li>
+            </ul>
+        </nav>
+    </div>
+    <nav class="navbar bg-dark navbar-dark text-center p-3 text-white d-block">
+        本站所有视频和图片均来自互联网收集而来，版权归原创者所有，本网站只提供web页面服务，并不提供资源存储，也不参与录制、上传。邮件：tudou#colafun.com（#号改为@）<br>
+    </nav>
+
+    <script src="//lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+    <script src="//lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script async="" src="//www.googletagmanager.com/gtag/js?id=UA-132861926-2"></script>
+    <script>
+        //Baidu Tongji
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9b5e56cdb503ab27082e9d1003bb8e61";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+            var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
+            document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        //Global site tag (gtag.js) - Google Analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-132861926-2');
+        //搜索
+        function onSubmitSearch() {
+            let kw = document.getElementById('search_keyword')
+            if (kw.value.length < 3) {
+                return false
+            }
+            _hmt.push(['_trackEvent', 'nav', 'submit', 'search', encodeURI(kw.value)])
+            return true
+        }
+        //img lazyload
+        $(function () {
+            $("img").lazyload({
+                effect: "fadeIn",
+                threshold: 200
+            });
+        });
+        Matomo
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "//tj.hktv.club/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+End Matomo Code 
+    </script>
+
+    <script src="//accounts.google.com/gsi/client" async="" defer="defer"></script>
+    <script src="//unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+    <script>
+        function handleGoogle(response) {
+            const responsePayload = response.credential;
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '/oauth/google');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let response = JSON.parse(xhr.responseText);
+                    console.log(response)
+                    // 处理响应数据  
+                }
+            };
+            xhr.send(JSON.stringify({
+                idtoken: responsePayload
+            }));
+        }
+    </script>
+</body>
+
+</html>
