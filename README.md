@@ -2,6 +2,6 @@
 
 Syncnext 插件化
 
-## 詳細文檔地址
+## 文檔地址
 
-https://www.notion.so/qoli/README-605947f9c556451aaaab71495a48a858
+https://www.notion.so/qoli/Syncnext-dbd9831184f140a8baf56c0d28a7cac2?pvs=4
