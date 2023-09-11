@@ -92,7 +92,7 @@ function Episodes(inputURL) {
   let datas = [];
 
   $http.fetch(req).then(function (res) {
-    var content = tXml.getElementById(res.body, "item-url-1");
+    var content = tXml.getElementById(res.body, "item-url-0");
 
     for (var index = 0; index < content.children.length; index++) {
       var element = content.children[index];
