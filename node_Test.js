@@ -27,8 +27,8 @@ function buildEpisodeData(id, title, episodeDetailURL) {
   };
 }
 
-async function Medias(inputURL) {
-  let res = await fetch("https://m.colafun.com/0-0-0-0-1-0.html");
+async function Search(inputURL) {
+  let res = await fetch("https://m.colafun.com/search.html?name=生活");
   var xml = await res.text();
 
   let content = tXml.getElementsByClassName(xml, "card shadow-sm");
@@ -61,55 +61,6 @@ async function Medias(inputURL) {
   print(datas);
 }
 
-async function Episodes(inputURL) {
-  let datas = [];
-  let res = await fetch("https://m.colafun.com/867.html");
-  var xml = await res.text();
-
-  let content = tXml.getElementById(xml, "item-url-1");
-
-  // print(content);
-
-  for (let index = 0; index < content.children.length; index++) {
-    const element = content.children[index];
-
-    let href = element.attributes.href;
-    let title = element.children[0];
-
-    href = buildURL(href);
-
-    datas.push(buildEpisodeData(href, title, href));
-  }
-
-  print(datas);
-}
-
-async function Player(inputURL) {
-  let datas = [];
-  let res = await fetch("https://m.colafun.com/1042-1-1.html");
-  var xml = await res.text();
-
-  let playBaseURL = tXml.getElementsByClassName(xml, "embed-responsive-item")[0]
-    .attributes.src;
-
-  print(content);
-
-  // print(content);
-
-  // for (let index = 0; index < content.children.length; index++) {
-  //   const element = content.children[index];
-
-  //   let href = element.attributes.href;
-  //   let title = element.children[0];
-
-  //   href = buildURL(href);
-
-  //   datas.push(buildEpisodeData(href, title, href));
-  // }
-
-  // print(datas);
-}
-
 function buildURL(href) {
   if (!href.startsWith("http")) {
     href = "https://m.colafun.com" + href;
@@ -135,4 +86,4 @@ function findAllByKey(obj, keyToFind) {
   );
 }
 
-Player();
+Search();
