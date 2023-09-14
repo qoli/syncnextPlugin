@@ -8,6 +8,7 @@
       "key": "index",
       "title": "最近更新",
       "url": "https://m.colafun.com/0-0-0-0-1-0.html?p=${pageNumber}",
+      "timeout": 20,
       "javascript": "buildMedias"
     },
     {
@@ -27,6 +28,7 @@
     "javascript": "Episodes"
   },
   "player": {
+    "timeout": 20,
     "javascript": "Player"
   },
   "search": {
