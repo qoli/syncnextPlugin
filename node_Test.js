@@ -57,7 +57,7 @@ async function mianApp(inputURL) {
   const response = await fetch(inputURL);
   const data = await response.text();
 
-  let datas = [];
+  let returnDatas = [];
 
   var content = tXml.getElementsByClassName(data, "module-item-cover");
   var contentText = tXml.getElementsByClassName(data, "module-item-text");
@@ -65,25 +65,26 @@ async function mianApp(inputURL) {
   for (var index = 0; index < content.length; index++) {
     var dom = content[index];
 
-    var title = findAllByKey(dom, "title")[0];
+    var title = findAllByKey(dom, "alt")[0];
     var href = findAllByKey(dom, "href")[0];
     var coverURLString = findAllByKey(dom, "data-src")[0];
 
     href = buildURL(href);
 
-    datas.push(
-      buildMediaData(
-        href,
-        coverURLString,
-        title,
-        contentText[index].children[0],
-        href
-      )
+    var descriptionText = "";
+
+    if (contentText.length > 0) {
+      descriptionText = contentText[index].children[0];
+    }
+
+    returnDatas.push(
+      buildMediaData(href, coverURLString, title, descriptionText, href)
     );
   }
 
-  print(datas[0]);
-  print(datas.length);
+  print(content[0]);
+  print(returnDatas[0]);
+  print(returnDatas.length);
 }
 
 async function mianApp2(inputURL) {
@@ -97,4 +98,5 @@ async function mianApp2(inputURL) {
   print(matches);
 }
 
-mianApp("https://wogg.link/index.php/vodshow/1--------1---.html");
+mianApp("https://wogg.link/index.php/vodsearch/-------------.html?wd=1933");
+// mianApp("https://wogg.link/index.php/vodtype/1.html");

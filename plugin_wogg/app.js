@@ -119,20 +119,20 @@ function buildMedias(inputURL) {
     for (var index = 0; index < content.length; index++) {
       var dom = content[index];
 
-      var title = findAllByKey(dom, "title")[0];
+      var title = findAllByKey(dom, "title")[0].replace("立刻播放", "");
       var href = findAllByKey(dom, "href")[0];
       var coverURLString = findAllByKey(dom, "data-src")[0];
 
       href = buildURL(href);
 
+      var descriptionText = "";
+
+      if (contentText.length > 0) {
+        descriptionText = contentText[index].children[0];
+      }
+
       returnDatas.push(
-        buildMediaData(
-          href,
-          coverURLString,
-          title,
-          contentText[index].children[0],
-          href
-        )
+        buildMediaData(href, coverURLString, title, descriptionText, href)
       );
     }
 
