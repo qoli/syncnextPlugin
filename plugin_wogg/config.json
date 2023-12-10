@@ -1,0 +1,69 @@
+{
+  "name": "玩偶哥哥",
+  "description": "阿里雲盤資源庫",
+  "host": "https://wogg.link/",
+  "files": ["app.js", "txml.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "首頁",
+      "url": "https://wogg.link?page=${pageNumber}",
+      "timeout": 5,
+      "javascript": "buildMedias_index"
+    },
+    {
+      "key": "movie",
+      "title": "電影",
+      "url": "https://wogg.link/index.php/vodshow/1--------${pageNumber}---.html",
+      "timeout": 5,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "電視劇",
+      "url": "https://wogg.link/index.php/vodshow/2--------${pageNumber}---.html",
+      "timeout": 5,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "動漫",
+      "url": "https://wogg.link/index.php/vodshow/3--------${pageNumber}---.html",
+      "timeout": 5,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "varietyShow",
+      "title": "综艺",
+      "url": "https://wogg.link/index.php/vodshow/4--------${pageNumber}---.html",
+      "timeout": 5,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "shorts",
+      "title": "短剧片库",
+      "url": "https://wogg.link/index.php/vodshow/6--------${pageNumber}---.html",
+      "timeout": 5,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "music",
+      "title": "音乐片库",
+      "url": "https://wogg.link/index.php/vodshow/5--------${pageNumber}---.html",
+      "timeout": 5,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 30,
+    "javascript": "getEpisodes"
+  },
+  "player": {
+    "timeout": 10,
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "http://wogg.link/index.php/vodsearch/-------------.html?wd=${keyword}",
+    "javascript": "buildMedias"
+  }
+}

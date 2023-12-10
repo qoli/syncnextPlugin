@@ -1,7 +1,7 @@
 // https://github.com/TobiasNickel/tXml
 
 var fetch = require("node-fetch");
-const tXml = require("txml");
+var tXml = require("txml");
 
 function buildMediaData(
   id,
@@ -27,47 +27,6 @@ function buildEpisodeData(id, title, episodeDetailURL) {
   };
 }
 
-async function Search(inputURL) {
-  let res = await fetch("https://m.colafun.com/search.html?name=生活");
-  var xml = await res.text();
-
-  let content = tXml.getElementsByClassName(xml, "card shadow-sm");
-
-  let datas = [];
-
-  for (let index = 0; index < content.length; index++) {
-    // console.log("======================");
-    const dom = content[index];
-    // print(dom);
-
-    let title = findAllByKey(dom, "title")[0];
-    let href = findAllByKey(dom, "href")[0];
-    let coverURLString = findAllByKey(dom, "data-original")[0];
-    let descriptionText = dom.children[1].children[1].children[0].children[0];
-
-    // console.log(title, href, coverURLString, descriptionText);
-
-    var newData = buildMediaData(
-      href,
-      coverURLString,
-      title,
-      descriptionText,
-      href
-    );
-
-    datas.push(newData);
-  }
-
-  print(datas);
-}
-
-function buildURL(href) {
-  if (!href.startsWith("http")) {
-    href = "https://m.colafun.com" + href;
-  }
-  return href;
-}
-
 function print(obj) {
   console.log(JSON.stringify(obj, null, 2));
 }
@@ -86,4 +45,56 @@ function findAllByKey(obj, keyToFind) {
   );
 }
 
-// Search();
+function buildURL(href) {
+  if (!href.startsWith("http")) {
+    href = "http://wogg.xyz" + href;
+  }
+
+  return href;
+}
+
+async function mianApp(inputURL) {
+  const response = await fetch(inputURL);
+  const data = await response.text();
+
+  let datas = [];
+
+  var content = tXml.getElementsByClassName(data, "module-item-cover");
+  var contentText = tXml.getElementsByClassName(data, "module-item-text");
+
+  for (var index = 0; index < content.length; index++) {
+    var dom = content[index];
+
+    var title = findAllByKey(dom, "title")[0];
+    var href = findAllByKey(dom, "href")[0];
+    var coverURLString = findAllByKey(dom, "data-src")[0];
+
+    href = buildURL(href);
+
+    datas.push(
+      buildMediaData(
+        href,
+        coverURLString,
+        title,
+        contentText[index].children[0],
+        href
+      )
+    );
+  }
+
+  print(datas[0]);
+  print(datas.length);
+}
+
+async function mianApp2(inputURL) {
+  const response = await fetch(inputURL);
+  const data = await response.text();
+
+  print(data);
+
+  const regex = new RegExp("(https://www.alipan.com/s/.*?)");
+  let matches = data.match(regex);
+  print(matches);
+}
+
+mianApp("https://wogg.link/index.php/vodshow/1--------1---.html");
