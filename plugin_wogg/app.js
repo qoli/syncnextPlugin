@@ -48,7 +48,7 @@ function findAllByKey(obj, keyToFind) {
 
 function buildURL(href) {
   if (!href.startsWith("http")) {
-    href = "http://wogg.xyz" + href;
+    href = "http://wogg.link" + href;
   }
 
   return href;
