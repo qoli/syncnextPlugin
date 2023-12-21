@@ -64,7 +64,8 @@
     "javascript": "Player"
   },
   "search": {
+    "timeout": 10,
     "url": "https://wogg.link/index.php/vodsearch/-------------.html?wd=${keyword}",
-    "javascript": "buildMedias"
+    "javascript": "Search"
   }
 }

@@ -47,7 +47,11 @@ function findAllByKey(obj, keyToFind) {
 
 function buildURL(href) {
   if (!href.startsWith("http")) {
-    href = "http://wogg.xyz" + href;
+    href = "https://wogg.link" + href;
+  }
+
+  if (href.includes("vodplay")) {
+    return href.replace(/\/vodplay\/(\d+)-1-1\.html/, "/voddetail/$1.html");
   }
 
   return href;
@@ -60,7 +64,7 @@ async function mianApp(inputURL) {
   let returnDatas = [];
 
   var content = tXml.getElementsByClassName(data, "module-item-cover");
-  var contentText = tXml.getElementsByClassName(data, "module-item-text");
+  var contentText = tXml.getElementsByClassName(data, "video-serial");
 
   for (var index = 0; index < content.length; index++) {
     var dom = content[index];
@@ -98,5 +102,5 @@ async function mianApp2(inputURL) {
   print(matches);
 }
 
-mianApp("https://wogg.link/index.php/vodsearch/-------------.html?wd=1933");
+mianApp("https://wogg.link/index.php/vodsearch/-------------.html?wd=4k");
 // mianApp("https://wogg.link/index.php/vodtype/1.html");

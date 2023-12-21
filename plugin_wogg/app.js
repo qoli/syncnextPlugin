@@ -48,7 +48,11 @@ function findAllByKey(obj, keyToFind) {
 
 function buildURL(href) {
   if (!href.startsWith("http")) {
-    href = "http://wogg.link" + href;
+    href = "https://wogg.link" + href;
+  }
+
+  if (href.includes("vodplay")) {
+    return href.replace(/\/vodplay\/(\d+)-1-1\.html/, "/voddetail/$1.html");
   }
 
   return href;
@@ -151,6 +155,46 @@ function getEpisodes(inputURL) {
     let regex = /https:\/\/www\.(alipan|aliyundrive)\.com\/s\/[A-Za-z0-9]+/;
     let matches = res.body.match(regex);
     $next.aliLink(matches[0]);
+  });
+}
+
+function Search(inputURL) {
+  var req = {
+    url: inputURL,
+    method: "GET",
+  };
+
+  let returnDatas = [];
+
+  // 使用 Syncnext 內置 http 以請求內容
+  $http.fetch(req).then(function (res) {
+    let data = res.body;
+
+    var content = tXml.getElementsByClassName(data, "module-item-cover");
+    var contentText = tXml.getElementsByClassName(data, "video-serial");
+
+    for (var index = 0; index < content.length; index++) {
+      var dom = content[index];
+
+      var title = findAllByKey(dom, "alt")[0];
+      var href = findAllByKey(dom, "href")[0];
+      var coverURLString = findAllByKey(dom, "data-src")[0];
+
+      href = buildURL(href);
+
+      var descriptionText = "";
+
+      if (contentText.length > 0) {
+        descriptionText = contentText[index].children[0];
+      }
+
+      returnDatas.push(
+        buildMediaData(href, coverURLString, title, descriptionText, href)
+      );
+    }
+
+    // 向 Syncnext 返回封面牆數據
+    $next.toMedias(JSON.stringify(returnDatas));
   });
 }
 
