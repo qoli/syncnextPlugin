@@ -53,7 +53,7 @@ function findAllByKey(obj, keyToFind) {
 
 // Main
 
-function buildMedias(inputURL) {
+function buildMedias(inputURL, key) {
   var req = {
     url: inputURL,
     method: "GET",
@@ -79,7 +79,7 @@ function buildMedias(inputURL) {
       );
     }
 
-    $next.toMedias(JSON.stringify(datas));
+    $next.toMedias(JSON.stringify(datas), key);
   });
 }
 

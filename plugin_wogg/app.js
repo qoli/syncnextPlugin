@@ -158,7 +158,7 @@ function getEpisodes(inputURL) {
   });
 }
 
-function Search(inputURL) {
+function Search(inputURL, key) {
   var req = {
     url: inputURL,
     method: "GET",
@@ -194,7 +194,7 @@ function Search(inputURL) {
     }
 
     // 向 Syncnext 返回封面牆數據
-    $next.toMedias(JSON.stringify(returnDatas));
+    $next.toMedias(JSON.stringify(returnDatas), key);
   });
 }
 
