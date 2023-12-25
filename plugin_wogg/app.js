@@ -66,43 +66,7 @@ function buildMedias_index(inputURL) {
     return;
   }
 
-  var req = {
-    url: inputURL,
-    method: "GET",
-  };
-
-  let returnDatas = [];
-
-  // 使用 Syncnext 內置 http 以請求內容
-  $http.fetch(req).then(function (res) {
-    let data = res.body;
-
-    var content = tXml.getElementsByClassName(data, "module-item-cover");
-    var contentText = tXml.getElementsByClassName(data, "module-item-text");
-
-    for (var index = 0; index < content.length; index++) {
-      var dom = content[index];
-
-      var title = findAllByKey(dom, "title")[0];
-      var href = findAllByKey(dom, "href")[0];
-      var coverURLString = findAllByKey(dom, "data-src")[0];
-
-      href = buildURL(href);
-
-      returnDatas.push(
-        buildMediaData(
-          href,
-          coverURLString,
-          title,
-          contentText[index].children[0],
-          href
-        )
-      );
-    }
-
-    // 向 Syncnext 返回封面牆數據
-    $next.toMedias(JSON.stringify(returnDatas));
-  });
+  buildMedias(inputURL);
 }
 
 function buildMedias(inputURL) {
