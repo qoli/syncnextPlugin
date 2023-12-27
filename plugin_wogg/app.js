@@ -158,7 +158,7 @@ function Search(inputURL, key) {
     }
 
     // 向 Syncnext 返回封面牆數據
-    $next.toMedias(JSON.stringify(returnDatas), key);
+    $next.toSearchMedias(JSON.stringify(returnDatas), key);
   });
 }
 
