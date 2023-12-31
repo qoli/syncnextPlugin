@@ -118,7 +118,7 @@ function getEpisodes(inputURL) {
   $http.fetch(req).then(function (res) {
     let regex = /https:\/\/www\.(alipan|aliyundrive)\.com\/s\/[A-Za-z0-9]+/;
     let matches = res.body.match(regex);
-    $next.aliLink(matches[matches.length - 1]);
+    $next.aliLink(matches[0]);
   });
 }
 
