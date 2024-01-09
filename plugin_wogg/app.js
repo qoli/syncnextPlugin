@@ -134,7 +134,7 @@ function Search(inputURL, key) {
   $http.fetch(req).then(function (res) {
     let data = res.body;
 
-    var content = tXml.getElementsByClassName(data, "module-item-cover");
+    var content = tXml.getElementsByClassName(data, "module-search-item");
     var contentText = tXml.getElementsByClassName(data, "video-serial");
 
     for (var index = 0; index < content.length; index++) {
