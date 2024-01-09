@@ -63,7 +63,7 @@ async function mianApp(inputURL) {
 
   let returnDatas = [];
 
-  var content = tXml.getElementsByClassName(data, "module-item-cover");
+  var content = tXml.getElementsByClassName(data, "module-search-item");
   var contentText = tXml.getElementsByClassName(data, "video-serial");
 
   for (var index = 0; index < content.length; index++) {
@@ -100,6 +100,46 @@ async function mianApp2(inputURL) {
   const regex = new RegExp("(https://www.alipan.com/s/.*?)");
   let matches = data.match(regex);
   print(matches);
+}
+
+function Search(inputURL, key) {
+  var req = {
+    url: inputURL,
+    method: "GET",
+  };
+
+  let returnDatas = [];
+
+  // 使用 Syncnext 內置 http 以請求內容
+  $http.fetch(req).then(function (res) {
+    let data = res.body;
+
+    var content = tXml.getElementsByClassName(data, "module-item-cover");
+    var contentText = tXml.getElementsByClassName(data, "video-serial");
+
+    for (var index = 0; index < content.length; index++) {
+      var dom = content[index];
+
+      var title = findAllByKey(dom, "alt")[0];
+      var href = findAllByKey(dom, "href")[0];
+      var coverURLString = findAllByKey(dom, "data-src")[0];
+
+      href = buildURL(href);
+
+      var descriptionText = "";
+
+      if (contentText.length > 0) {
+        descriptionText = contentText[index].children[0];
+      }
+
+      returnDatas.push(
+        buildMediaData(href, coverURLString, title, descriptionText, href)
+      );
+    }
+
+    // 向 Syncnext 返回封面牆數據
+    $next.toSearchMedias(JSON.stringify(returnDatas), key);
+  });
 }
 
 mianApp("https://wogg.link/index.php/vodsearch/-------------.html?wd=4k");
