@@ -10,49 +10,49 @@
       "key": "index",
       "title": "首頁",
       "url": "https://tvfan.xxooo.cf?page=${pageNumber}",
-      "timeout": 10,
+      "timeout": 120,
       "javascript": "buildMedias_index"
     },
     {
       "key": "movie",
       "title": "電影",
       "url": "https://tvfan.xxooo.cf/index.php/vodshow/1--------${pageNumber}---.html",
-      "timeout": 10,
+      "timeout": 120,
       "javascript": "buildMedias"
     },
     {
       "key": "tvshow",
       "title": "電視劇",
       "url": "https://tvfan.xxooo.cf/index.php/vodshow/2--------${pageNumber}---.html",
-      "timeout": 10,
+      "timeout": 120,
       "javascript": "buildMedias"
     },
     {
       "key": "anime",
       "title": "動漫",
       "url": "https://tvfan.xxooo.cf/index.php/vodshow/3--------${pageNumber}---.html",
-      "timeout": 10,
+      "timeout": 120,
       "javascript": "buildMedias"
     },
     {
       "key": "varietyShow",
       "title": "综艺",
       "url": "https://tvfan.xxooo.cf/index.php/vodshow/4--------${pageNumber}---.html",
-      "timeout": 10,
+      "timeout": 120,
       "javascript": "buildMedias"
     },
     {
       "key": "shorts",
       "title": "短剧片库",
       "url": "https://tvfan.xxooo.cf/index.php/vodshow/6--------${pageNumber}---.html",
-      "timeout": 10,
+      "timeout": 120,
       "javascript": "buildMedias"
     },
     {
       "key": "music",
       "title": "音乐片库",
       "url": "https://tvfan.xxooo.cf/index.php/vodshow/5--------${pageNumber}---.html",
-      "timeout": 10,
+      "timeout": 120,
       "javascript": "buildMedias"
     }
   ],
@@ -61,11 +61,11 @@
     "javascript": "getEpisodes"
   },
   "player": {
-    "timeout": 10,
+    "timeout": 120,
     "javascript": "Player"
   },
   "search": {
-    "timeout": 10,
+    "timeout": 120,
     "url": "https://tvfan.xxooo.cf/index.php/vodsearch/-------------.html?wd=${keyword}",
     "javascript": "Search"
   }
