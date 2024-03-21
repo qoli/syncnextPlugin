@@ -71,15 +71,25 @@ async function mianApp(inputURL) {
   let returnDatas = [];
 
   let jsonObj = JSON.parse(data);
-  let content = jsonObj.data.urls;
+  let content = jsonObj.data.data[0].list;
 
   for (var index = 0; index < content.length; index++) {
     let item = content[index];
 
-    var href = item.url;
-    var title = item.title;
+    let href = buildDetailsURL(item.id.toString());
+    let coverURLString = buildImageURL(item.pic);
+    let title = item.name;
+    let descriptionText = item.remarks;
 
-    returnDatas.push(buildEpisodeData(href, title, href));
+    returnDatas.push(
+      buildMediaData(
+        item.id.toString(),
+        coverURLString,
+        title,
+        descriptionText,
+        href
+      )
+    );
   }
 
   print(content[0]);
@@ -87,5 +97,5 @@ async function mianApp(inputURL) {
 }
 
 mianApp(
-  "https://api.olelive.com/v1/pub/vod/detail/42723/true?_vv=c5300095501101e477110df169d3c519"
+  "https://api.olelive.com/v1/pub/index/search/%E4%B8%8E%E5%87%A4%E8%A1%8C/vod/0/1/4?_vv=b1100148947108874b610211aaf3cae7"
 );

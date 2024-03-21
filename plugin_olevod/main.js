@@ -167,8 +167,9 @@ function getEpisodes(inputURL) {
 }
 
 function Search(inputURL, key) {
+  let newURL = inputURL + "?_vv=" + signature();
   var req = {
-    url: inputURL,
+    url: newURL,
     method: "GET",
   };
 
@@ -176,28 +177,25 @@ function Search(inputURL, key) {
 
   // 使用 Syncnext 內置 http 以請求內容
   $http.fetch(req).then(function (res) {
-    let data = res.body;
-
-    var content = tXml.getElementsByClassName(data, "module-search-item");
-    var contentText = tXml.getElementsByClassName(data, "video-serial");
+    let jsonObj = JSON.parse(res.body);
+    let content = jsonObj.data.data[0].list;
 
     for (var index = 0; index < content.length; index++) {
-      var dom = content[index];
+      let item = content[index];
 
-      var title = findAllByKey(dom, "alt")[0];
-      var href = findAllByKey(dom, "href")[0];
-      var coverURLString = findAllByKey(dom, "data-src")[0];
-
-      href = buildURL(href);
-
-      var descriptionText = "";
-
-      if (contentText.length > 0) {
-        descriptionText = contentText[index].children[0];
-      }
+      let href = buildDetailsURL(item.id.toString());
+      let coverURLString = buildImageURL(item.pic);
+      let title = item.name;
+      let descriptionText = item.remarks;
 
       returnDatas.push(
-        buildMediaData(href, coverURLString, title, descriptionText, href)
+        buildMediaData(
+          item.id.toString(),
+          coverURLString,
+          title,
+          descriptionText,
+          href
+        )
       );
     }
 
