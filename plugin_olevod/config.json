@@ -1,0 +1,57 @@
+{
+  "name": "歐樂影院",
+  "description": "海外 IP 無廣告",
+  "notification": "需要使用非中國 IP 訪問",
+  "host": "https://www.olevod.tv/",
+  "files": ["crypto-js.min.js", "main.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "首頁",
+      "url": "https://api.olelive.com/v1/pub/vod/newest/${pageNumber}/12",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "電影",
+      "url": "https://api.olelive.com/v1/pub/vod/list/true/3/0/0/1/0/0/update/${pageNumber}/48",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "shows",
+      "title": "连续剧",
+      "url": "https://api.olelive.com/v1/pub/vod/list/true/3/0/0/2/0/0/update/${pageNumber}/48",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "variety",
+      "title": "综艺",
+      "url": "https://api.olelive.com/v1/pub/vod/list/true/3/0/0/3/0/0/update/${pageNumber}/48",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "动漫",
+      "url": "https://api.olelive.com/v1/pub/vod/list/true/3/0/0/4/0/0/update/${pageNumber}/48",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 20,
+    "javascript": "getEpisodes"
+  },
+  "player": {
+    "timeout": 20,
+    "javascript": "Player"
+  },
+  "search": {
+    "timeout": 20,
+    "url": "https://tvfan.xxooo.cf/index.php/vodsearch/-------------.html?wd=${keyword}",
+    "javascript": "Search"
+  }
+}

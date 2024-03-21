@@ -45,16 +45,23 @@ function findAllByKey(obj, keyToFind) {
   );
 }
 
-function buildURL(href) {
+function buildDetailsURL(href) {
+  // https://api.olelive.com/v1/pub/vod/detail/42723/true?_vv=c5300095501101e477110df169d3c519
   if (!href.startsWith("http")) {
-    href = "https://wogg.link" + href;
-  }
-
-  if (href.includes("vodplay")) {
-    return href.replace(/\/vodplay\/(\d+)-1-1\.html/, "/voddetail/$1.html");
+    href = "https://api.olelive.com/v1/pub/vod/detail/" + href + "/true";
   }
 
   return href;
+}
+
+function buildImageURL(params) {
+  // https://static.olelive.com/upload/vod/20240318-1/714994f723a3fa5f3b9ef25ee704e134.jpg
+
+  if (!params.startsWith("http")) {
+    return "https://static.olelive.com/" + params;
+  }
+
+  return params;
 }
 
 async function mianApp(inputURL) {
@@ -63,84 +70,22 @@ async function mianApp(inputURL) {
 
   let returnDatas = [];
 
-  var content = tXml.getElementsByClassName(data, "module-search-item");
-  var contentText = tXml.getElementsByClassName(data, "video-serial");
+  let jsonObj = JSON.parse(data);
+  let content = jsonObj.data.urls;
 
   for (var index = 0; index < content.length; index++) {
-    var dom = content[index];
+    let item = content[index];
 
-    var title = findAllByKey(dom, "alt")[0];
-    var href = findAllByKey(dom, "href")[0];
-    var coverURLString = findAllByKey(dom, "data-src")[0];
+    var href = item.url;
+    var title = item.title;
 
-    href = buildURL(href);
-
-    var descriptionText = "";
-
-    if (contentText.length > 0) {
-      descriptionText = contentText[index].children[0];
-    }
-
-    returnDatas.push(
-      buildMediaData(href, coverURLString, title, descriptionText, href)
-    );
+    returnDatas.push(buildEpisodeData(href, title, href));
   }
 
   print(content[0]);
   print(returnDatas[0]);
-  print(returnDatas.length);
 }
 
-async function mianApp2(inputURL) {
-  const response = await fetch(inputURL);
-  const data = await response.text();
-
-  print(data);
-
-  const regex = new RegExp("(https://www.alipan.com/s/.*?)");
-  let matches = data.match(regex);
-  print(matches);
-}
-
-function Search(inputURL, key) {
-  var req = {
-    url: inputURL,
-    method: "GET",
-  };
-
-  let returnDatas = [];
-
-  // 使用 Syncnext 內置 http 以請求內容
-  $http.fetch(req).then(function (res) {
-    let data = res.body;
-
-    var content = tXml.getElementsByClassName(data, "module-item-cover");
-    var contentText = tXml.getElementsByClassName(data, "video-serial");
-
-    for (var index = 0; index < content.length; index++) {
-      var dom = content[index];
-
-      var title = findAllByKey(dom, "alt")[0];
-      var href = findAllByKey(dom, "href")[0];
-      var coverURLString = findAllByKey(dom, "data-src")[0];
-
-      href = buildURL(href);
-
-      var descriptionText = "";
-
-      if (contentText.length > 0) {
-        descriptionText = contentText[index].children[0];
-      }
-
-      returnDatas.push(
-        buildMediaData(href, coverURLString, title, descriptionText, href)
-      );
-    }
-
-    // 向 Syncnext 返回封面牆數據
-    $next.toSearchMedias(JSON.stringify(returnDatas), key);
-  });
-}
-
-mianApp("https://wogg.link/index.php/vodsearch/-------------.html?wd=4k");
-// mianApp("https://wogg.link/index.php/vodtype/1.html");
+mianApp(
+  "https://api.olelive.com/v1/pub/vod/detail/42723/true?_vv=c5300095501101e477110df169d3c519"
+);
