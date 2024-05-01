@@ -118,7 +118,12 @@ function getEpisodes(inputURL) {
   $http.fetch(req).then(function (res) {
     let regex = /https:\/\/www\.(alipan|aliyundrive)\.com\/s\/[A-Za-z0-9]+/;
     let matches = res.body.match(regex);
-    $next.aliLink(matches[0]);
+
+    if (matches) {
+      $next.aliLink(matches[0]);
+    } else {
+      $next.emptyView("找不到可用的阿里雲盤分享地址，請更換資源查看");
+    }
   });
 }
 
