@@ -1,0 +1,72 @@
+{
+  "name": "玩偶表哥",
+  "description": "阿里雲盤資源庫",
+  "notification": "",
+  "host": "https://wobge.run.goorm.io/",
+  "files": ["txml.js", "app.js"],
+  "permission": "AliDrive",
+  "pages": [
+    {
+      "key": "index",
+      "title": "首頁",
+      "url": "https://wobge.run.goorm.io?page=${pageNumber}",
+      "timeout": 120,
+      "javascript": "buildMedias_index"
+    },
+    {
+      "key": "movie",
+      "title": "自营电影",
+      "url": "https://wobge.run.goorm.io/index.php/vod/show/id/1/page/${pageNumber}.html",
+      "timeout": 120,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "tvshow",
+      "title": "自营剧集",
+      "url": "https://wobge.run.goorm.io/index.php/vod/show/id/2/page/${pageNumber}.html",
+      "timeout": 120,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "动漫",
+      "url": "https://wobge.run.goorm.io/index.php/vod/show/id/3/page/${pageNumber}.html",
+      "timeout": 120,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "varietyShow",
+      "title": "综艺",
+      "url": "https://wobge.run.goorm.io/index.php/vod/show/id/4/page/${pageNumber}.html",
+      "timeout": 120,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "music",
+      "title": "音乐",
+      "url": "https://wobge.run.goorm.io/index.php/vod/show/id/5/page/${pageNumber}.html",
+      "timeout": 120,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "shorts",
+      "title": "自营短剧",
+      "url": "https://wobge.run.goorm.io/index.php/vod/show/id/44/page/${pageNumber}.html",
+      "timeout": 120,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 20,
+    "javascript": "getEpisodes"
+  },
+  "player": {
+    "timeout": 120,
+    "javascript": "Player"
+  },
+  "search": {
+    "timeout": 120,
+    "url": "https://wobge.run.goorm.io/index.php/vodsearch/-------------.html?wd=${keyword}",
+    "javascript": "Search"
+  }
+}
