@@ -83,6 +83,36 @@ function buildMedias(inputURL, key) {
   });
 }
 
+function buildSearchMedias(inputURL, key) {
+  var req = {
+    url: inputURL,
+    method: "GET",
+  };
+
+  let datas = [];
+
+  $http.fetch(req).then(function (res) {
+    var content = tXml.getElementsByClassName(res.body, "card shadow-sm");
+
+    for (var index = 0; index < content.length; index++) {
+      var dom = content[index];
+
+      var title = findAllByKey(dom, "title")[0];
+      var href = findAllByKey(dom, "href")[0];
+      var coverURLString = findAllByKey(dom, "data-original")[0];
+      var descriptionText = dom.children[1].children[1].children[0].children[0];
+
+      href = buildURL(href);
+
+      datas.push(
+        buildMediaData(href, coverURLString, title, descriptionText, href)
+      );
+    }
+
+    $next.toMedias(JSON.stringify(datas), key);
+  });
+}
+
 function Episodes(inputURL) {
   var req = {
     url: inputURL,
