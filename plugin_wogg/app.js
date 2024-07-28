@@ -48,7 +48,7 @@ function findAllByKey(obj, keyToFind) {
 
 function buildURL(href) {
   if (!href.startsWith("http")) {
-    href = "https://wogg.link" + href;
+    href = "https://wogg.xxooo.cf" + href;
   }
 
   if (href.includes("vodplay")) {
@@ -59,7 +59,7 @@ function buildURL(href) {
 }
 
 function buildMedias_index(inputURL) {
-  let page = inputURL.replace("https://wogg.link?page=", "");
+  let page = inputURL.replace("https://wogg.xxooo.cf?page=", "");
 
   if (page >= 2) {
     print("玩偶首頁不支持翻頁，請切換到分類");
