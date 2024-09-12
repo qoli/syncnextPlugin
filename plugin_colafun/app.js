@@ -109,7 +109,7 @@ function buildSearchMedias(inputURL, key) {
       );
     }
 
-    $next.toMedias(JSON.stringify(datas), key);
+    $next.toSearchMedias(JSON.stringify(datas), key);
   });
 }
 
