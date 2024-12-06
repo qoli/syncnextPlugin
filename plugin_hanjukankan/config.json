@@ -1,0 +1,43 @@
+{
+  "name": "韓劇看看",
+  "description": "韓劇看看",
+  "notification": "",
+  "host": "https://www.hanjukankan.com/",
+  "files": ["txml.js", "main.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "首頁",
+      "url": "https://www.hanjukankan.com/xvs1xatxbtxctxdtxetxftxgtxht${pageNumber}atbtct.html",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "韓影",
+      "url": "https://api.olelive.com/v1/pub/vod/list/true/3/0/0/1/0/0/update/${pageNumber}/48",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "variety",
+      "title": "韓綜",
+      "url": "https://api.olelive.com/v1/pub/vod/list/true/3/0/0/3/0/0/update/${pageNumber}/48",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 20,
+    "javascript": "getEpisodes"
+  },
+  "player": {
+    "timeout": 20,
+    "javascript": "Player"
+  },
+  "search": {
+    "timeout": 20,
+    "url": "https://api.olelive.com/v1/pub/index/search/${keyword}/vod/0/1/4",
+    "javascript": "Search"
+  }
+}
