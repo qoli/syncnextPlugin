@@ -156,6 +156,10 @@ function getEpisodes(inputURL) {
     for (var index = 0; index < content.length; index++) {
       let item = content[index];
 
+      if (item.vip === true) {
+        continue;
+      }
+
       var href = item.url;
       var title = item.title;
 
