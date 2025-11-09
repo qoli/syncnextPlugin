@@ -1,0 +1,56 @@
+{
+  "name": "廠長資源",
+  "description": "廠長線上影視來源",
+  "host": "https://www.czzymovie.com",
+  "files": ["txml.js", "crypto-js.min.js", "app.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "首頁",
+      "url": "czzy://home?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "電影",
+      "url": "czzy://movie?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "tv",
+      "title": "連續劇",
+      "url": "czzy://tv?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "動漫",
+      "url": "czzy://anime?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "variety",
+      "title": "綜藝",
+      "url": "czzy://variety?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 20,
+    "javascript": "Episodes"
+  },
+  "player": {
+    "timeout": 60,
+    "javascript": "Player"
+  },
+  "search": {
+    "timeout": 20,
+    "url": "https://www.czzymovie.com/daoyongjiek0shibushiyoubing?q=${keyword}$f=_all&p=1",
+    "javascript": "Search"
+  }
+}
