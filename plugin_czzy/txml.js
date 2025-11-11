@@ -168,7 +168,7 @@ tXml.getElementById = function (a, c, d) {
 tXml.getElementsByClassName = function (a, c, d) {
   a = tXml(a, {
     attrName: "class",
-    attrValue: "[a-zA-Z0-9- ]*" + c + "[a-zA-Z0-9- ]*",
+    attrValue: "[a-zA-Z0-9-_ ]*" + c + "[a-zA-Z0-9-_ ]*",
   });
   return d ? tXml.simplify(a) : a;
 };
