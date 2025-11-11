@@ -2,40 +2,118 @@
   "name": "廠長資源",
   "description": "廠長線上影視來源",
   "host": "https://www.czzymovie.com",
+  
   "files": ["txml.js", "crypto-js.min.js", "app.js"],
   "pages": [
     {
       "key": "index",
       "title": "首頁",
-      "url": "czzy://home?page=${pageNumber}",
+      "url": "https://www.czzymovie.com/movie_bt?page=${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "movie",
       "title": "電影",
-      "url": "czzy://movie?page=${pageNumber}",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/dyy?page=${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "tv",
-      "title": "連續劇",
-      "url": "czzy://tv?page=${pageNumber}",
+      "title": "電視劇",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/dianshiju?page=${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "anime",
-      "title": "動漫",
-      "url": "czzy://anime?page=${pageNumber}",
+      "title": "動畫",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/dohua?page=${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
-      "key": "variety",
-      "title": "綜藝",
-      "url": "czzy://variety?page=${pageNumber}",
+      "key": "cn_movie",
+      "title": "華語電影",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/huayudianying?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "in_movie",
+      "title": "印度電影",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/yindudianying?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "ru_movie",
+      "title": "俄羅斯電影",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/eluosidianying?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "ca_movie",
+      "title": "加拿大電影",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/jianadadianying?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "jp_movie",
+      "title": "日本電影",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/ribendianying?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "kr_movie",
+      "title": "韓國電影",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/hanguodianying?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "western_movie",
+      "title": "歐美電影",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/meiguodianying?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "cn_drama",
+      "title": "國產劇",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/guochanju?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "jp_drama",
+      "title": "日劇",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/rj?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "us_drama",
+      "title": "美劇",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/mj?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "kr_drama",
+      "title": "韓劇",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/hj?page=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "intl_drama",
+      "title": "海外劇",
+      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/hwj?page=${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     }
@@ -50,7 +128,7 @@
   },
   "search": {
     "timeout": 20,
-    "url": "https://www.czzymovie.com/daoyongjiek0shibushiyoubing?q=${keyword}$f=_all&p=1",
+    "url": "https://www.czzymovie.com/daoyongjiek0shibushiyoubing?q=${keyword}&f=_all&p=1",
     "javascript": "Search"
   }
 }
