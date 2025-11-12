@@ -743,6 +743,16 @@ function extractPlayURLFromIframe(html) {
     }
   }
 
+  var mysvgMatch = html.match(/\bmysvg\b\s*=\s*['"]([^'"]+)['"]/i);
+  if (mysvgMatch && mysvgMatch[1]) {
+    return mysvgMatch[1];
+  }
+
+  var artUrlMatch = html.match(/art\.url\s*=\s*['"]([^'"]+)['"]/i);
+  if (artUrlMatch && artUrlMatch[1]) {
+    return artUrlMatch[1];
+  }
+
   return "";
 }
 
@@ -794,11 +804,13 @@ function sendPlayerURL(url, referer) {
     url: url,
     headers: {
       "User-Agent": UA,
-      Referer: referer || HOST,
+      Referer: HOST,
     },
   };
 
-  $next.toPlayerByJSON(JSON.stringify(payload));
+  $next.toPlayer(url) //播放地址不依賴 http 頭信息
+
+  // $next.toPlayerByJSON(JSON.stringify(payload));
 }
 
 function resolveIframePlayer(iframeURL, referer) {
@@ -826,6 +838,7 @@ function resolveIframePlayer(iframeURL, referer) {
     target,
     { referer: refererHeader, headers: extraHeaders },
     function (res) {
+
       var html = res.body || "";
       var playURL = extractPlayURLFromIframe(html);
 
@@ -860,6 +873,7 @@ function Player(inputURL) {
   }
 
   var detailURL = normalizeURL(inputURL);
+
   if (!isHTTPURL(detailURL)) {
     $next.emptyView("暫不支援此播放地址");
     return;
