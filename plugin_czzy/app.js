@@ -4,6 +4,84 @@ const HOST = "https://www.czzymovie.com";
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
+var cookieStore = {};
+
+function getDomainKey(url) {
+  var match = (url || "").match(/^https?:\/\/([^\/]+)/i);
+  if (match && match[1]) {
+    return match[1].toLowerCase();
+  }
+  return "www.czzymovie.com";
+}
+
+function storeCookiesFromHeaders(headers, url) {
+  if (!headers) {
+    return;
+  }
+
+  var setCookieHeader = null;
+  if (headers["Set-Cookie"]) {
+    setCookieHeader = headers["Set-Cookie"];
+  } else if (headers["set-cookie"]) {
+    setCookieHeader = headers["set-cookie"];
+  } else {
+    for (var key in headers) {
+      if (key && key.toLowerCase() === "set-cookie") {
+        setCookieHeader = headers[key];
+        break;
+      }
+    }
+  }
+
+  if (!setCookieHeader) {
+    return;
+  }
+
+  var domainKey = getDomainKey(url);
+  var jar = cookieStore[domainKey] || {};
+  var entries = Array.isArray(setCookieHeader)
+    ? setCookieHeader
+    : [setCookieHeader];
+
+  for (var i = 0; i < entries.length; i++) {
+    var entry = entries[i];
+    if (!entry) {
+      continue;
+    }
+
+    var pair = entry.split(";")[0];
+    var separatorIndex = pair.indexOf("=");
+    if (separatorIndex === -1) {
+      continue;
+    }
+
+    var cookieName = pair.substring(0, separatorIndex).trim();
+    var cookieValue = pair.substring(separatorIndex + 1).trim();
+    if (cookieName) {
+      jar[cookieName] = cookieValue;
+    }
+  }
+
+  cookieStore[domainKey] = jar;
+}
+
+function buildCookieHeader(url) {
+  var domainKey = getDomainKey(url);
+  var jar = cookieStore[domainKey];
+  if (!jar) {
+    return "";
+  }
+
+  var pairs = [];
+  for (var name in jar) {
+    if (jar.hasOwnProperty(name)) {
+      pairs.push(name + "=" + jar[name]);
+    }
+  }
+
+  return pairs.join("; ");
+}
+
 function print(params) {
   try {
     console.log(JSON.stringify(params));
@@ -142,12 +220,26 @@ function fetchHTML(url, options, onSuccess, onError) {
     }
   }
 
+  var cookieHeader = buildCookieHeader(targetURL);
+  if (cookieHeader) {
+    headers.Cookie = cookieHeader;
+  }
+
+  var shouldSaveCookies = true;
+  if (options && options.saveCookies === false) {
+    shouldSaveCookies = false;
+  }
+
   $http.fetch({
     url: targetURL,
     method: "GET",
     headers: headers,
   }).then(
     function (res) {
+      if (shouldSaveCookies) {
+        storeCookiesFromHeaders(res.headers, targetURL);
+      }
+
       if (typeof onSuccess === "function") {
         onSuccess(res);
       }

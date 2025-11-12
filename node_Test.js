@@ -1,101 +1,96 @@
-// https://github.com/TobiasNickel/tXml
+const fetch = require("node-fetch");
 
-var fetch = require("node-fetch");
-var tXml = require("txml");
+const HOST = "https://www.czzymovie.com";
+const DEFAULT_PLAYER_URL =
+  HOST + "/v_play/bXZfMjI2NTctbm1fMQ==.html"; // 可透過參數覆蓋
+const UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
-function buildMediaData(
-  id,
-  coverURLString,
-  title,
-  descriptionText,
-  detailURLString
-) {
-  return {
-    id: id,
-    coverURLString: coverURLString,
-    title: title,
-    descriptionText: descriptionText,
-    detailURLString: detailURLString,
+function parseSetCookies(raw) {
+  const cookies = {};
+  if (!raw) {
+    return cookies;
+  }
+
+  const entries = Array.isArray(raw) ? raw : [raw];
+  entries.forEach((entry) => {
+    if (!entry) {
+      return;
+    }
+    const pair = entry.split(";")[0];
+    const idx = pair.indexOf("=");
+    if (idx === -1) {
+      return;
+    }
+    const name = pair.substring(0, idx).trim();
+    const value = pair.substring(idx + 1).trim();
+    if (name) {
+      cookies[name] = value;
+    }
+  });
+
+  return cookies;
+}
+
+function cookiesToHeader(jar) {
+  const pairs = [];
+  Object.keys(jar || {}).forEach((key) => {
+    pairs.push(key + "=" + jar[key]);
+  });
+  return pairs.join("; ");
+}
+
+async function fetchWithJar(url, jar, refererOverride) {
+  const headers = {
+    "User-Agent": UA,
+    Accept:
+      "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+    "Cache-Control": "no-cache",
+    Pragma: "no-cache",
+    Referer: refererOverride || HOST + "/",
+    "Sec-Fetch-Dest": "iframe",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "same-origin",
   };
-}
 
-function buildEpisodeData(id, title, episodeDetailURL) {
-  return {
-    id: id,
-    title: title,
-    episodeDetailURL: episodeDetailURL,
-  };
-}
-
-function print(obj) {
-  console.log(JSON.stringify(obj, null, 2));
-}
-
-function findAllByKey(obj, keyToFind) {
-  return (
-    Object.entries(obj).reduce(
-      (acc, [key, value]) =>
-        key === keyToFind
-          ? acc.concat(value)
-          : typeof value === "object" && value
-          ? acc.concat(findAllByKey(value, keyToFind))
-          : acc,
-      []
-    ) || []
-  );
-}
-
-function buildDetailsURL(href) {
-  // https://api.olelive.com/v1/pub/vod/detail/42723/true?_vv=c5300095501101e477110df169d3c519
-  if (!href.startsWith("http")) {
-    href = "https://api.olelive.com/v1/pub/vod/detail/" + href + "/true";
+  const cookieHeader = cookiesToHeader(jar);
+  if (cookieHeader) {
+    headers.Cookie = cookieHeader;
   }
 
-  return href;
+  const res = await fetch(url, { method: "GET", headers });
+  const body = await res.text();
+
+  const rawCookies = res.headers.raw()["set-cookie"];
+  const newCookies = parseSetCookies(rawCookies);
+  Object.assign(jar, newCookies);
+
+  return { res, body };
 }
 
-function buildImageURL(params) {
-  // https://static.olelive.com/upload/vod/20240318-1/714994f723a3fa5f3b9ef25ee704e134.jpg
+async function main() {
+  const targetURL = process.argv[2] || DEFAULT_PLAYER_URL;
+  const jar = {};
 
-  if (!params.startsWith("http")) {
-    return "https://static.olelive.com/" + params;
+  console.log("[warmup] requesting root:", HOST + "/");
+  try {
+    await fetchWithJar(HOST + "/", jar, HOST + "/");
+    console.log("[warmup] cookie keys:", Object.keys(jar));
+  } catch (error) {
+    console.error("[warmup] failed:", error.message || error);
   }
 
-  return params;
-}
-
-async function mianApp(inputURL) {
-  const response = await fetch(inputURL);
-  const data = await response.text();
-
-  let returnDatas = [];
-
-  let jsonObj = JSON.parse(data);
-  let content = jsonObj.data.data[0].list;
-
-  for (var index = 0; index < content.length; index++) {
-    let item = content[index];
-
-    let href = buildDetailsURL(item.id.toString());
-    let coverURLString = buildImageURL(item.pic);
-    let title = item.name;
-    let descriptionText = item.remarks;
-
-    returnDatas.push(
-      buildMediaData(
-        item.id.toString(),
-        coverURLString,
-        title,
-        descriptionText,
-        href
-      )
-    );
+  console.log("[test] requesting:", targetURL);
+  try {
+    const { res, body } = await fetchWithJar(targetURL, jar, HOST + "/");
+    console.log("[test] status:", res.status);
+    console.log("[test] headers:", res.headers.get("content-type"));
+    console.log("[test] cookie keys:", Object.keys(jar));
+    console.log("[test] snippet:\n", body);
+  } catch (error) {
+    console.error("[test] request failed:", error.message || error);
   }
-
-  print(content[0]);
-  print(returnDatas[0]);
 }
 
-mianApp(
-  "https://api.olelive.com/v1/pub/index/search/%E4%B8%8E%E5%87%A4%E8%A1%8C/vod/0/1/4?_vv=b1100148947108874b610211aaf3cae7"
-);
+main();
