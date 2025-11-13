@@ -482,6 +482,8 @@ function parseMediaCardsFromHTML(html) {
 }
 
 function buildMedias(inputURL, key) {
+  inputURL = inputURL.replace("/page/1","")
+
   fetchHTML(
     inputURL,
     null,
