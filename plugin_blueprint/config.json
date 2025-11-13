@@ -1,0 +1,27 @@
+{
+  "name": "TODO: Replace with channel display name",
+  "description": "TODO: Replace with a short description users will see in Syncnext",
+  "host": "https://example.com",
+  "files": ["txml.js", "app.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "TODO: First tab title (e.g. 最近更新)",
+      "url": "https://example.com/path?p=${pageNumber}",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "javascript": "Episodes"
+  },
+  "player": {
+    "timeout": 20,
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "https://example.com/search?keyword=${keyword}",
+    "javascript": "buildSearchMedias"
+  }
+}
+
