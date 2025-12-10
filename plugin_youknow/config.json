@@ -1,0 +1,65 @@
+{
+  "name": "YouKnowTV",
+  "description": "YouKnowTV - 领略更广阔的视界，尽享海量高清视频",
+  "host": "https://www.youknow.tv",
+  "files": ["txml.js", "app.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "今日更新",
+      "url": "https://www.youknow.tv/label/new/",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "drama",
+      "title": "剧集",
+      "url": "https://www.youknow.tv/show/1--------${pageNumber}---/",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "电影",
+      "url": "https://www.youknow.tv/show/2--------${pageNumber}---/",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "variety",
+      "title": "综艺",
+      "url": "https://www.youknow.tv/show/3--------${pageNumber}---/",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "动漫",
+      "url": "https://www.youknow.tv/show/4--------${pageNumber}---/",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "short",
+      "title": "短剧",
+      "url": "https://www.youknow.tv/show/55--------${pageNumber}---/",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "doc",
+      "title": "纪录片",
+      "url": "https://www.youknow.tv/show/5--------${pageNumber}---/",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "javascript": "Episodes"
+  },
+  "player": {
+    "timeout": 20,
+    "javascript": "Player"
+  }
+}
+
