@@ -12,6 +12,7 @@ plugin_<provider>/
 ```
 
 建立新插件時：
+
 1. 複製整個 `plugin_blueprint/` 資料夾並重新命名為 `plugin_<provider>/`。
 2. 搜尋 `TODO` 或 `example.com` 並依據目標網站更新設定。
 3. 覆用 `txml.js`（僅當目標網站 DOM 差異極大時才調整）。
@@ -24,14 +25,14 @@ plugin_<provider>/
   "name": "頻道名稱",
   "description": "頻道敘述",
   "host": "https://example.com",
-  "files": ["txml.js", "app.js"],          // 確保 Syncnext 會打包必要檔案
+  "files": ["txml.js", "app.js"], // 確保 Syncnext 會打包必要檔案
   "pages": [
     {
-      "key": "index",                      // Home tab key，需在 app.js 中對應
+      "key": "index", // Home tab key，需在 app.js 中對應
       "title": "最近更新",
       "url": "https://...page=${pageNumber}",
       "timeout": 20,
-      "javascript": "buildMedias"          // app.js 內暴露的函式名稱
+      "javascript": "buildMedias" // app.js 內暴露的函式名稱
     }
     // 可新增其他分頁：熱門 / 最新 / 類別等
   ],
@@ -57,16 +58,19 @@ plugin_<provider>/
 
 `plugin_colafun/app.js` 與本藍本中的偽代碼展示了最小可行實作，可按下列步驟套用到新網站：
 
-1. **通用 builder**  
-   - `buildMediaData`：統一媒體卡片欄位（id、封面、標題、描述、detail URL）。  
-   - `buildEpisodeData`：統一單集結構（id、title、episodeDetailURL）。  
+1. **通用 builder**
+
+   - `buildMediaData`：統一媒體卡片欄位（id、封面、標題、描述、detail URL）。
+   - `buildEpisodeData`：統一單集結構（id、title、episodeDetailURL）。
    - 覆用既有函式可確保 `$next` 接到一致的 JSON。
 
-2. **HTML 解析**  
-   - `txml.js` 允許用 `tXml.getElementsByClassName`、`getElementById` 取得節點。  
+2. **HTML 解析**
+
+   - `txml.js` 允許用 `tXml.getElementsByClassName`、`getElementById` 取得節點。
    - 如目標網站 class/id 變動，只需調整 `buildMedias`/`Episodes` 內的 DOM 取值。
 
-3. **Medias / Search**（列表頁）  
+3. **Medias / Search**（列表頁）
+
    ```js
    function buildMedias(listURL, key) {
      const req = { url: listURL, method: "GET" };
@@ -80,14 +84,16 @@ plugin_<provider>/
          const desc = dom.children[1].children[1].children[0].children[0];
          datas.push(buildMediaData(href, cover, title, desc, href));
        });
-       $next.toMedias(JSON.stringify(datas), key);  // 搜尋頁改用 toSearchMedias
+       $next.toMedias(JSON.stringify(datas), key); // 搜尋頁改用 toSearchMedias
      });
    }
    ```
-   - 重點是：解析→封裝→呼叫 `$next.toMedias` 或 `$next.toSearchMedias`。
+
+   - 重點是：解析 → 封裝 → 呼叫 `$next.toMedias` 或 `$next.toSearchMedias`。
    - 若網站提供 JSON，可直接解析 JSON 而非 HTML。
 
-4. **Episodes**（分集）  
+4. **Episodes**（分集）
+
    ```js
    function Episodes(detailURL) {
      $http.fetch({ url: detailURL }).then(function (res) {
@@ -100,14 +106,19 @@ plugin_<provider>/
      });
    }
    ```
+
    - 如果站內有多個播放源，可在這裡進行篩選或拆分。
 
-5. **Player**（取得可播放 URL）  
+5. **Player**（取得可播放 URL）
    ```js
    function Player(episodeURL) {
      $http.fetch({ url: episodeURL }).then(function (res) {
-       const embedSrc = tXml.getElementsByClassName(res.body, "embed-responsive-item")[0].attributes.src;
-       const apiURL = "https://m.colafun.com/o.html?path=" + embedSrc.match(/url=(.*)/)[1];
+       const embedSrc = tXml.getElementsByClassName(
+         res.body,
+         "embed-responsive-item"
+       )[0].attributes.src;
+       const apiURL =
+         "https://m.colafun.com/o.html?path=" + embedSrc.match(/url=(.*)/)[1];
        $http.fetch({ url: apiURL }).then(function (res) {
          const playURL = JSON.parse(res.body).url;
          $next.toPlayer(playURL);
