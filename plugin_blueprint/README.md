@@ -133,7 +133,7 @@ plugin_<provider>/
 
 - **Helper 拆分**：若格式化邏輯複雜，將其抽到 `helpers.js` 並於 `files` 陣列中註冊。
 - **多分類支援**：在 `config.json.pages` 中新增多組分頁，並共用 `buildMedias` 或定義新的解析函式。
-- **錯誤處理**：可在 `$http.fetch` 後加上 `.catch`，回傳 `$next.toMedias("[]", key)` 以避免 Syncnext 卡住。
+- **錯誤處理**：請在 `$http.fetch().then(success, error)` 的錯誤 callback 回傳 `$next.toMedias("[]", key)`，避免 Syncnext 卡住（tvOS JSCore 不支援 `.catch`）。
 
 ## 5. 測試與驗證清單
 

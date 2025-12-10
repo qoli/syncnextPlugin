@@ -61,15 +61,15 @@ function fetchAndParse(url) {
     method: 'GET',
     // headers: { 'User-Agent': '' }, // TODO: add headers if provider requires them
   };
-  return $http
-    .fetch(req)
-    .then(function (res) {
+  return $http.fetch(req).then(
+    function (res) {
       return res.body;
-    })
-    .catch(function (err) {
+    },
+    function (err) {
       print({ url: url, error: err });
       return '';
-    });
+    }
+  );
 }
 
 /**
@@ -179,4 +179,3 @@ function Player(episodeURL) {
     });
   });
 }
-
