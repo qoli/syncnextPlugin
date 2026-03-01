@@ -1,0 +1,56 @@
+{
+  "name": "libvio",
+  "description": "libvio",
+  "host": "https://libvio.site/",
+  "files": ["txml.js", "app.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "最近更新",
+      "url": "https://libvio.site/",
+      "timeout": 50,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "电影",
+      "url": "https://libvio.site/type/1-${pageNumber}.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "series",
+      "title": "电视剧",
+      "url": "https://libvio.site/type/2-${pageNumber}.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "动漫",
+      "url": "https://libvio.site/type/4-${pageNumber}.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "jpandkr",
+      "title": "日韩剧",
+      "url": "https://libvio.site/type/15-${pageNumber}.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "euandus",
+      "title": "欧美剧",
+      "url": "https://libvio.site/type/16-${pageNumber}.html",
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "javascript": "Episodes"
+  },
+  "player": {
+    "timeout": 20,
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "https://libvio.site/search/-------------.html?wd=${keyword}",
+    "javascript": "Search"
+  }
+}
