@@ -52,6 +52,71 @@ function safeDecodeURIComponent(str) {
   }
 }
 
+function decodePercentLayers(str, maxDepth) {
+  let value = str == null ? '' : String(str);
+  const depth = maxDepth > 0 ? maxDepth : 1;
+
+  for (let i = 0; i < depth; i++) {
+    const decoded = safeDecodeURIComponent(value);
+    if (decoded === value) {
+      break;
+    }
+    value = decoded;
+  }
+
+  return value;
+}
+
+function base64Decode(text) {
+  if (!text) {
+    return '';
+  }
+
+  const normalized = String(text)
+    .replace(/[\r\n\t\s]/g, '')
+    .replace(/-/g, '+')
+    .replace(/_/g, '/');
+
+  if (!normalized || normalized.length % 4 === 1) {
+    return '';
+  }
+
+  if (typeof atob === 'function') {
+    try {
+      return atob(normalized);
+    } catch (e) {}
+  }
+
+  if (typeof Buffer !== 'undefined') {
+    try {
+      return Buffer.from(normalized, 'base64').toString('binary');
+    } catch (e) {}
+  }
+
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+  let output = '';
+  let bits = 0;
+  let value = 0;
+
+  for (let i = 0; i < normalized.length; i++) {
+    const index = alphabet.indexOf(normalized.charAt(i));
+    if (index < 0) {
+      continue;
+    }
+    if (index === 64) {
+      break;
+    }
+    value = (value << 6) | index;
+    bits += 6;
+    if (bits >= 8) {
+      bits -= 8;
+      output += String.fromCharCode((value >> bits) & 0xff);
+    }
+  }
+
+  return output;
+}
+
 function normalizePlayURL(url) {
   if (!url) {
     return '';
@@ -354,27 +419,48 @@ function Episodes(detailURL) {
 }
 
 function decodeEncrypt2(enc) {
-  let s1 = safeDecodeURIComponent(enc);
-  let s2 = safeDecodeURIComponent(s1);
+  const candidates = [];
 
-  function tryBase64(str) {
-    try {
-      return atob(str);
-    } catch (e) {
-      return null;
+  function addCandidate(value) {
+    if (!value) {
+      return;
+    }
+    const v = String(value).trim();
+    if (!v) {
+      return;
+    }
+    if (candidates.indexOf(v) === -1) {
+      candidates.push(v);
     }
   }
 
-  let decoded = tryBase64(s2);
-  if (!decoded) {
-    const s3 = safeDecodeURIComponent(s2);
-    decoded = tryBase64(s3);
+  const seeds = [
+    enc == null ? '' : String(enc),
+    decodePercentLayers(enc, 1),
+    decodePercentLayers(enc, 2),
+  ];
+
+  for (let i = 0; i < seeds.length; i++) {
+    const seed = seeds[i];
+    addCandidate(seed);
+    const decoded = base64Decode(seed);
+    if (!decoded) {
+      continue;
+    }
+    addCandidate(decoded);
+    addCandidate(decodePercentLayers(decoded, 1));
+    addCandidate(decodePercentLayers(decoded, 2));
+    addCandidate(decodePercentLayers(decoded, 3));
   }
 
-  if (!decoded) {
-    return null;
+  for (let i = 0; i < candidates.length; i++) {
+    const normalized = normalizePlayURL(candidates[i]);
+    if (isDirectPlayableURL(normalized)) {
+      return normalized;
+    }
   }
-  return safeDecodeURIComponent(decoded);
+
+  return normalizePlayURL(decodePercentLayers(enc, 2));
 }
 
 function decodePlayerURL(rawURL, encrypt) {
@@ -433,27 +519,88 @@ function getQueryParam(url, name) {
   return match ? safeDecodeURIComponent(match[1]) : '';
 }
 
-function extractPlayerConfig(html) {
-  const patterns = [
-    /player_aaaa\s*=\s*(\{[\s\S]*?\})\s*<\/script>/i,
-    /player_aaaa\s*=\s*(\{[\s\S]*?\});/i,
-  ];
+function extractBalancedObject(text, startIndex) {
+  if (!text || startIndex < 0 || startIndex >= text.length || text.charAt(startIndex) !== '{') {
+    return '';
+  }
 
-  for (let i = 0; i < patterns.length; i++) {
-    const match = html.match(patterns[i]);
-    if (!match || !match[1]) {
+  let depth = 0;
+  let inString = false;
+  let quote = '';
+  let escaped = false;
+
+  for (let i = startIndex; i < text.length; i++) {
+    const char = text.charAt(i);
+
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+      } else if (char === '\\') {
+        escaped = true;
+      } else if (char === quote) {
+        inString = false;
+      }
       continue;
     }
 
-    const raw = match[1].trim().replace(/,\s*}/g, '}');
-    try {
-      return JSON.parse(raw);
-    } catch (e) {
-      try {
-        return Function('return (' + raw + ')')();
-      } catch (err) {
-        continue;
+    if (char === '"' || char === "'") {
+      inString = true;
+      quote = char;
+      continue;
+    }
+
+    if (char === '{') {
+      depth++;
+      continue;
+    }
+
+    if (char === '}') {
+      depth--;
+      if (depth === 0) {
+        return text.slice(startIndex, i + 1);
       }
+    }
+  }
+
+  return '';
+}
+
+function parseObjectLiteral(raw) {
+  if (!raw) {
+    return null;
+  }
+
+  const sanitized = String(raw).trim().replace(/,\s*}/g, '}');
+  try {
+    return JSON.parse(sanitized);
+  } catch (e) {
+    try {
+      return Function('return (' + sanitized + ')')();
+    } catch (err) {
+      return null;
+    }
+  }
+}
+
+function extractPlayerConfig(html) {
+  if (!html) {
+    return null;
+  }
+
+  const regex = /player_aaaa\s*=\s*/gi;
+  let match = null;
+
+  while ((match = regex.exec(html))) {
+    const assignIndex = match.index + match[0].length;
+    const objectStart = html.indexOf('{', assignIndex);
+    if (objectStart < 0) {
+      continue;
+    }
+
+    const rawObject = extractBalancedObject(html, objectStart);
+    const parsed = parseObjectLiteral(rawObject);
+    if (parsed) {
+      return parsed;
     }
   }
 
