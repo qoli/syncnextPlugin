@@ -153,6 +153,197 @@ function extractSetCookies(headers) {
   return [];
 }
 
+function safeParseURL(input) {
+  try {
+    return new URL(String(input || ""));
+  } catch (_) {
+    return null;
+  }
+}
+
+function defaultCookiePath(pathname) {
+  const p = String(pathname || "");
+  if (!p || p[0] !== "/") return "/";
+  if (p === "/") return "/";
+  const idx = p.lastIndexOf("/");
+  if (idx <= 0) return "/";
+  return p.slice(0, idx) || "/";
+}
+
+function getHeaderKeyCaseInsensitive(headers, key) {
+  const lower = String(key || "").toLowerCase();
+  if (!headers || typeof headers !== "object") return "";
+  for (const k of Object.keys(headers)) {
+    if (String(k).toLowerCase() === lower) return k;
+  }
+  return "";
+}
+
+function getHeaderValueCaseInsensitive(headers, key) {
+  const hit = getHeaderKeyCaseInsensitive(headers, key);
+  if (!hit) return "";
+  return String(headers[hit] || "");
+}
+
+function setHeaderValueCaseInsensitive(headers, key, value) {
+  const hit = getHeaderKeyCaseInsensitive(headers, key);
+  if (hit) {
+    headers[hit] = value;
+    return;
+  }
+  headers[key] = value;
+}
+
+function mergeCookieHeaderValues(values) {
+  const seen = new Set();
+  const out = [];
+  for (const value of values || []) {
+    const text = String(value || "").trim();
+    if (!text) continue;
+    const parts = text
+      .split(";")
+      .map((item) => item.trim())
+      .filter(Boolean);
+    for (const token of parts) {
+      const eq = token.indexOf("=");
+      if (eq <= 0) continue;
+      const name = token.slice(0, eq).trim();
+      const key = name.toLowerCase();
+      if (!name || seen.has(key)) continue;
+      seen.add(key);
+      out.push(token);
+    }
+  }
+  return out.join("; ");
+}
+
+function parseSetCookieLine(line, requestURLObj) {
+  const text = String(line || "").trim();
+  if (!text) return null;
+
+  const chunks = text.split(";").map((item) => item.trim()).filter(Boolean);
+  if (chunks.length === 0) return null;
+
+  const first = chunks.shift();
+  const eq = first.indexOf("=");
+  if (eq <= 0) return null;
+
+  const name = first.slice(0, eq).trim();
+  const value = first.slice(eq + 1).trim();
+  if (!name) return null;
+
+  const attrs = {};
+  for (const chunk of chunks) {
+    const idx = chunk.indexOf("=");
+    if (idx < 0) {
+      attrs[chunk.toLowerCase()] = true;
+      continue;
+    }
+    const k = chunk.slice(0, idx).trim().toLowerCase();
+    const v = chunk.slice(idx + 1).trim();
+    attrs[k] = v;
+  }
+
+  const reqHost = String(requestURLObj && requestURLObj.hostname || "").toLowerCase();
+  if (!reqHost) return null;
+
+  let domain = String(attrs.domain || "").trim().toLowerCase().replace(/^\./, "");
+  let hostOnly = true;
+  if (!domain) {
+    domain = reqHost;
+  } else {
+    hostOnly = false;
+    if (!(reqHost === domain || reqHost.endsWith(`.${domain}`))) {
+      return null;
+    }
+  }
+
+  let cookiePath = String(attrs.path || "").trim();
+  if (!cookiePath || cookiePath[0] !== "/") {
+    cookiePath = defaultCookiePath(requestURLObj.pathname || "/");
+  }
+
+  let expiresAt = 0;
+  if (attrs["max-age"] != null) {
+    const sec = Number(attrs["max-age"]);
+    if (Number.isFinite(sec)) {
+      expiresAt = Date.now() + sec * 1000;
+    }
+  } else if (attrs.expires) {
+    const ts = Date.parse(attrs.expires);
+    if (Number.isFinite(ts)) {
+      expiresAt = ts;
+    }
+  }
+
+  return {
+    name,
+    value,
+    domain,
+    hostOnly,
+    path: cookiePath,
+    secure: !!attrs.secure,
+    expiresAt,
+  };
+}
+
+function isCookieExpired(cookie) {
+  const t = Number(cookie && cookie.expiresAt || 0);
+  return Number.isFinite(t) && t > 0 && t <= Date.now();
+}
+
+function upsertCookie(jar, cookie) {
+  const list = Array.isArray(jar) ? jar : [];
+  const idx = list.findIndex(
+    (item) =>
+      item &&
+      item.name === cookie.name &&
+      item.domain === cookie.domain &&
+      item.path === cookie.path
+  );
+
+  if (!cookie.value || isCookieExpired(cookie)) {
+    if (idx >= 0) list.splice(idx, 1);
+    return;
+  }
+
+  if (idx >= 0) {
+    list[idx] = cookie;
+  } else {
+    list.push(cookie);
+  }
+}
+
+function buildCookieHeaderForURL(jar, inputURL) {
+  const urlObj = safeParseURL(inputURL);
+  if (!urlObj) return "";
+
+  const host = String(urlObj.hostname || "").toLowerCase();
+  const pathname = String(urlObj.pathname || "/");
+  const isHTTPS = String(urlObj.protocol || "").toLowerCase() === "https:";
+  const pairs = [];
+
+  for (const cookie of Array.isArray(jar) ? jar : []) {
+    if (!cookie || !cookie.name) continue;
+    if (isCookieExpired(cookie)) continue;
+    if (cookie.secure && !isHTTPS) continue;
+
+    const domain = String(cookie.domain || "").toLowerCase();
+    const hostOnly = !!cookie.hostOnly;
+    const domainOK = hostOnly
+      ? host === domain
+      : host === domain || host.endsWith(`.${domain}`);
+    if (!domainOK) continue;
+
+    const cookiePath = String(cookie.path || "/");
+    if (!pathname.startsWith(cookiePath)) continue;
+
+    pairs.push(`${cookie.name}=${cookie.value}`);
+  }
+
+  return pairs.join("; ");
+}
+
 function safeJSONParse(input, fallback) {
   try {
     return JSON.parse(input);
@@ -608,6 +799,7 @@ function buildInvocationAdapter(options) {
 function createPluginRuntime(pluginSource, options, logger) {
   const adapter = buildInvocationAdapter(options);
   const httpEvents = [];
+  const cookieJar = [];
 
   function pushHTTPEvent(event) {
     httpEvents.push(event);
@@ -627,6 +819,14 @@ function createPluginRuntime(pluginSource, options, logger) {
     const headers = Object.assign({}, request.headers || {});
     if (!headers["User-Agent"] && !headers["user-agent"]) {
       headers["User-Agent"] = DEFAULT_UA;
+    }
+
+    const inlineCookie = getHeaderValueCaseInsensitive(headers, "Cookie");
+    const jarCookie = buildCookieHeaderForURL(cookieJar, url);
+    const bootstrapCookie = String(options.defaultCookieHeader || "").trim();
+    const mergedCookie = mergeCookieHeaderValues([inlineCookie, jarCookie, bootstrapCookie]);
+    if (mergedCookie) {
+      setHeaderValueCaseInsensitive(headers, "Cookie", mergedCookie);
     }
 
     const fetchOptions = {
@@ -654,6 +854,14 @@ function createPluginRuntime(pluginSource, options, logger) {
       let body = method === "HEAD" ? "" : await response.text();
       let status = response.status;
       let finalURL = response.url;
+      const setCookies = extractSetCookies(response.headers);
+      const cookieURL = safeParseURL(finalURL) || safeParseURL(url);
+      if (setCookies.length > 0 && cookieURL) {
+        for (const line of setCookies) {
+          const parsed = parseSetCookieLine(line, cookieURL);
+          if (parsed) upsertCookie(cookieJar, parsed);
+        }
+      }
 
       event.status = status;
       event.safeLine = method === "GET" && isSafeLineChallenge(status, body, responseHeaders);
@@ -1490,6 +1698,7 @@ async function main() {
   const printMediasSampleIndex = toInt(getArg("print-medias-sample-index", "0"), 0);
   const printSearchSampleIndex = toInt(getArg("print-search-sample-index", "0"), 0);
   const searchKeyword = String(getArg("search-keyword", "") || "").trim();
+  const cookieHeader = String(getArg("cookie", "") || "").trim();
   const onlyFilter = String(getArg("only", "") || "")
     .split(",")
     .map((item) => item.trim().toLowerCase())
@@ -1520,6 +1729,7 @@ async function main() {
     printSearchSample: !hasFlag("no-print-search-sample"),
     printSearchSampleIndex,
     searchKeyword,
+    defaultCookieHeader: cookieHeader,
   };
 
   await fsp.mkdir(runOutputDir, { recursive: true });
@@ -1598,6 +1808,7 @@ async function main() {
         printSearchSample: options.printSearchSample,
         printSearchSampleIndex: options.printSearchSampleIndex,
         searchKeyword: options.searchKeyword,
+        hasDefaultCookieHeader: !!options.defaultCookieHeader,
       },
       summary: {
         pluginsTotal: pluginReports.length,
