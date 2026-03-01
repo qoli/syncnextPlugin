@@ -942,6 +942,13 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     logger.log(
       `[plugin ${index + 1}] medias total=${medias.length}, testing=${selectedMedias.length}`
     );
+    if (options.printMediasSample && medias.length > 0) {
+      const sampleIndex = Math.max(0, Math.min(options.printMediasSampleIndex, medias.length - 1));
+      const sample = medias[sampleIndex];
+      logger.log(
+        `[plugin ${index + 1}] buildMedias sample(index=${sampleIndex})\n${JSON.stringify(sample, null, 2)}`
+      );
+    }
 
     if (selectedMedias.length === 0) {
       const mediaFailure = explainFailure("no medias returned", runtime.getHTTPEvents());
@@ -1181,6 +1188,7 @@ async function main() {
   const probeTimeoutMs = toInt(getArg("probe-timeout-ms", "15000"), 15000);
   const vmLoadTimeoutMs = toInt(getArg("vm-load-timeout-ms", "8000"), 8000);
   const maxPlugins = toInt(getArg("max-plugins", "0"), 0);
+  const printMediasSampleIndex = toInt(getArg("print-medias-sample-index", "0"), 0);
   const onlyFilter = String(getArg("only", "") || "")
     .split(",")
     .map((item) => item.trim().toLowerCase())
@@ -1202,6 +1210,8 @@ async function main() {
     probeTimeoutMs,
     vmLoadTimeoutMs,
     verboseConsole: hasFlag("verbose-console"),
+    printMediasSample: !hasFlag("no-print-medias-sample"),
+    printMediasSampleIndex,
   };
 
   await fsp.mkdir(runOutputDir, { recursive: true });
@@ -1264,6 +1274,8 @@ async function main() {
         pluginRoot: options.pluginRoot,
         only: onlyFilter,
         exclude: excludeFilter,
+        printMediasSample: options.printMediasSample,
+        printMediasSampleIndex: options.printMediasSampleIndex,
       },
       summary: {
         pluginsTotal: pluginReports.length,
