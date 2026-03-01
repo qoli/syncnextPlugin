@@ -120,6 +120,15 @@ function sanitizeText(text) {
   return String(text).replace(/\s+/g, " ").trim();
 }
 
+function cleanEpisodeTitle(text) {
+  var title = String(text || "")
+    .replace(/&nbsp;|&#160;/gi, " ")
+    .replace(/<[^>]+>/g, " ");
+
+  title = sanitizeText(title).replace(/^立即播放\s*/i, "").trim();
+  return title || "播放";
+}
+
 function normalizeURL(href) {
   if (!href) {
     return "";
@@ -577,7 +586,7 @@ function buildEpisodeList(html) {
       continue;
     }
 
-    var title = getTextContent(anchor) || "播放";
+    var title = cleanEpisodeTitle(getTextContent(anchor));
     episodes.push(buildEpisodeData(href, title, href));
   }
 
