@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-01T19:49:46.962Z",
+  "pluginRoot": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official",
+  "outputDir": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs/20260302-034945",
+  "options": {
+    "limitMedias": 1,
+    "allEpisodes": false,
+    "strictProbe": false,
+    "enableProbe": false,
+    "invokeTimeoutMs": 45000,
+    "requestTimeoutMs": 25000,
+    "probeTimeoutMs": 15000,
+    "pluginRoot": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official",
+    "only": [],
+    "exclude": []
+  },
+  "summary": {
+    "pluginsTotal": 1,
+    "pluginsWithFatalErrors": 1,
+    "casesTotal": 0,
+    "ok": 0,
+    "fail": 0
+  },
+  "testedPluginFolders": [
+    "plugin_anfuns"
+  ],
+  "plugins": [
+    {
+      "index": 1,
+      "subscriptionName": "plugin_anfuns",
+      "api": "syncnextplugin://local/plugin_anfuns/config.json",
+      "startedAt": "2026-03-01T19:49:45.251Z",
+      "endedAt": "2026-03-01T19:49:46.962Z",
+      "mode": "local",
+      "pluginName": "anfuns",
+      "pluginFolder": "plugin_anfuns",
+      "indexPage": {
+        "key": "index",
+        "title": "最近更新",
+        "url": "https://www.anfuns.cc/map.html",
+        "javascript": "buildMedias"
+      },
+      "summary": {
+        "casesTotal": 0,
+        "ok": 0,
+        "fail": 0
+      },
+      "cases": [],
+      "errors": [
+        "no medias returned; no medias returned"
+      ]
+    }
+  ]
+}
