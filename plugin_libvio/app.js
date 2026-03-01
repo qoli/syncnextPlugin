@@ -47,6 +47,107 @@ function buildAbsoluteURL(url) {
   return url;
 }
 
+function normalizePlayableURL(rawURL) {
+  if (!rawURL) {
+    return "";
+  }
+
+  var url = rawURL
+    .replace(/\\\//g, "/")
+    .replace(/&amp;/g, "&")
+    .trim();
+
+  if (url.startsWith("//")) {
+    url = "https:" + url;
+  }
+
+  return url;
+}
+
+function extractPlayableURL(body) {
+  if (!body) {
+    return "";
+  }
+
+  var patterns = [
+    /(?:var|let|const)\s+urls?\s*=\s*["']([^"']+)["']/,
+    /(?:var|let|const)\s+[a-zA-Z_$][\w$]*\s*=\s*["']([^"']+\.(?:m3u8|mp4)[^"']*)["']/,
+    /["']url["']\s*:\s*["']([^"']+\.(?:m3u8|mp4)[^"']*)["']/,
+    /url\s*=\s*["']([^"']+\.(?:m3u8|mp4)[^"']*)["']/,
+  ];
+
+  for (var i = 0; i < patterns.length; i++) {
+    var matched = body.match(patterns[i]);
+    if (matched && matched[1]) {
+      return normalizePlayableURL(matched[1]);
+    }
+  }
+
+  return "";
+}
+
+function nodeHasClass(node, className) {
+  if (!node || !node.attributes || !node.attributes.class) {
+    return false;
+  }
+  return node.attributes.class.split(/\s+/).indexOf(className) >= 0;
+}
+
+function nodeText(node) {
+  if (!node) {
+    return "";
+  }
+  if (typeof node === "string") {
+    return node.trim();
+  }
+  if (!node.children || !node.children.length) {
+    return "";
+  }
+
+  var text = "";
+  for (var i = 0; i < node.children.length; i++) {
+    var childText = nodeText(node.children[i]);
+    if (childText) {
+      text += (text ? " " : "") + childText;
+    }
+  }
+
+  return text.trim();
+}
+
+function findFirstNodeByClass(node, className) {
+  if (!node || typeof node !== "object") {
+    return null;
+  }
+
+  if (nodeHasClass(node, className)) {
+    return node;
+  }
+
+  if (!node.children || !node.children.length) {
+    return null;
+  }
+
+  for (var i = 0; i < node.children.length; i++) {
+    var child = node.children[i];
+    if (typeof child !== "object") {
+      continue;
+    }
+
+    var found = findFirstNodeByClass(child, className);
+    if (found) {
+      return found;
+    }
+  }
+
+  return null;
+}
+
+function shouldSkipMediaByDescription(descriptionText) {
+  var text = (descriptionText || "").trim();
+  return text.indexOf("网盘") >= 0 || text.indexOf("網盤") >= 0;
+}
+
 function findAllByKey(obj, keyToFind) {
   return (
     Object.entries(obj).reduce(
@@ -80,7 +181,16 @@ function buildMedias(inputURL) {
       var title = findAllByKey(dom, "title")[0];
       var href = findAllByKey(dom, "href")[0];
       var coverURLString = findAllByKey(dom, "data-original")[0];
-      var descriptionText = "";
+      var picTextNode = findFirstNodeByClass(dom, "pic-text");
+      var descriptionText = nodeText(picTextNode);
+
+      if (shouldSkipMediaByDescription(descriptionText)) {
+        continue;
+      }
+
+      if (!title || !href) {
+        continue;
+      }
 
       href = buildURL(href);
 
@@ -169,12 +279,13 @@ function Player(inputURL) {
 
           $http.fetch(req).then(function (res) {
             var body = res.body;
+            var playURL = extractPlayableURL(body);
+            if (!playURL) {
+              print("libvio: 解析播放地址失败(ty_new1)");
+              return;
+            }
 
-            var url = body.match(/var .* = '(.*?)'/)[0];
-            url = url.match(/'([^']*)'/)[0];
-            url = url.substring(1, url.length - 1);
-
-            gotoPlay(url);
+            gotoPlay(playURL);
           });
         });
         break;
@@ -228,11 +339,13 @@ function Player(inputURL) {
 
           $http.fetch(req).then(function (res) {
             var body = res.body;
-            var url = body.match(/var .* = '(.*?)'/)[0];
-            url = url.match(/'([^']*)'/)[0];
-            url = url.substring(1, url.length - 1);
+            var playURL = extractPlayableURL(body);
+            if (!playURL) {
+              print("libvio: 解析播放地址失败(default)");
+              return;
+            }
 
-            gotoPlay(url);
+            gotoPlay(playURL);
           });
         });
         break;
@@ -273,7 +386,16 @@ function Search(inputURL, key) {
       var title = findAllByKey(dom, "title")[0];
       var href = findAllByKey(dom, "href")[0];
       var coverURLString = findAllByKey(dom, "data-original")[0];
-      var descriptionText = "";
+      var picTextNode = findFirstNodeByClass(dom, "pic-text");
+      var descriptionText = nodeText(picTextNode);
+
+      if (shouldSkipMediaByDescription(descriptionText)) {
+        continue;
+      }
+
+      if (!title || !href) {
+        continue;
+      }
 
       href = buildURL(href);
 
