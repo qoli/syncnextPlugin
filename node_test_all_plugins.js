@@ -292,6 +292,28 @@ function normalizePageURL(urlTemplate) {
     .replace(/\$\{keyword\}/g, "test");
 }
 
+function normalizeSearchURL(urlTemplate, keyword) {
+  const safeKeyword = String(keyword || "test").trim() || "test";
+  return String(urlTemplate || "")
+    .replace(/\$\{keyword\}/g, encodeURIComponent(safeKeyword))
+    .replace(/\$\{pageNumber\}/g, "1");
+}
+
+function pickSearchKeyword(options, medias) {
+  const forced = String(options.searchKeyword || "").trim();
+  if (forced) return forced;
+
+  const list = Array.isArray(medias) ? medias : [];
+  for (let i = 0; i < list.length; i++) {
+    const title = String(list[i] && list[i].title || "").trim();
+    if (!title) continue;
+    const compact = title.replace(/\s+/g, " ").trim();
+    const firstToken = compact.split(" ")[0] || compact;
+    return firstToken.slice(0, 12);
+  }
+  return "test";
+}
+
 function pickIndexPage(config) {
   const pages = Array.isArray(config && config.pages) ? config.pages : [];
   if (pages.length === 0) return null;
@@ -784,6 +806,103 @@ function stageTimeoutMs(stageConfig, fallbackMs) {
   return fallbackMs;
 }
 
+function uniqueList(list) {
+  const seen = new Set();
+  const out = [];
+  for (const item of list || []) {
+    const text = String(item || "").trim();
+    if (!text || seen.has(text)) continue;
+    seen.add(text);
+    out.push(text);
+  }
+  return out;
+}
+
+async function checkConnectivityURL(url, options) {
+  const result = {
+    url: String(url || ""),
+    ok: false,
+    method: "HEAD",
+    status: 0,
+    error: "",
+  };
+
+  const target = String(url || "").trim();
+  if (!looksLikeURL(target)) {
+    result.error = "non-http url";
+    return result;
+  }
+
+  const headers = {
+    "User-Agent": DEFAULT_UA,
+    Accept: "*/*",
+  };
+
+  try {
+    const headRes = await fetchWithTimeout(
+      target,
+      { method: "HEAD", headers, redirect: "follow" },
+      options.connectivityTimeoutMs
+    );
+    result.status = headRes.status;
+    if (headRes.status >= 200 && headRes.status < 400) {
+      result.ok = true;
+      return result;
+    }
+  } catch (error) {
+    result.error = error.message || String(error);
+  }
+
+  result.method = "GET";
+  try {
+    const getRes = await fetchWithTimeout(
+      target,
+      {
+        method: "GET",
+        headers: Object.assign({}, headers, { Range: "bytes=0-1023" }),
+        redirect: "follow",
+      },
+      options.connectivityTimeoutMs
+    );
+    result.status = getRes.status;
+    if (getRes.status >= 200 && getRes.status < 400) {
+      result.ok = true;
+      result.error = "";
+      return result;
+    }
+    if (!result.error) {
+      result.error = `status ${getRes.status}`;
+    }
+  } catch (error) {
+    result.error = error.message || String(error);
+  }
+
+  return result;
+}
+
+async function runConnectivityCheck(source, indexURL, options) {
+  const searchTemplate = String(
+    source && source.config && source.config.search && source.config.search.url || ""
+  ).trim();
+  const searchURL = searchTemplate ? normalizeSearchURL(searchTemplate, "test") : "";
+
+  const targets = uniqueList([
+    source && source.config ? source.config.host : "",
+    indexURL,
+    searchURL,
+  ]).filter((item) => looksLikeURL(item));
+
+  const checks = [];
+  for (const target of targets) {
+    checks.push(await checkConnectivityURL(target, options));
+  }
+
+  return {
+    ok: checks.some((item) => item.ok),
+    targets: checks,
+  };
+}
+
 async function probePlayableURL(url, headers, options) {
   const result = {
     ok: false,
@@ -871,6 +990,70 @@ function buildSubscriptionLabel(entry, index) {
   return `plugin-${index + 1}`;
 }
 
+function isReservedPluginFolder(folderName) {
+  return String(folderName || "").trim().toLowerCase() === "plugin_blueprint";
+}
+
+function isIgnoredInvalidFailure(pluginReport, caseItem) {
+  const reasonCode = String(caseItem && caseItem.reasonCode || "");
+  const stage = String(caseItem && caseItem.stage || "");
+  const pluginFolder = String(pluginReport && pluginReport.pluginFolder || "").toLowerCase();
+
+  // "失效播放源"只看播放鏈路，不把搜尋與連通性納入失效來源。
+  if (stage === "search" || stage === "connectivity") {
+    return true;
+  }
+
+  // Safeline 阻擋屬於防火牆挑戰，不視為來源失效。
+  if (pluginFolder === "plugin_czzy" && reasonCode === "safeline_challenge_blocked") {
+    return true;
+  }
+
+  return false;
+}
+
+function buildInvalidSourcesReport(pluginReports) {
+  const invalidPlugins = [];
+
+  for (const plugin of pluginReports || []) {
+    if (isReservedPluginFolder(plugin && plugin.pluginFolder)) {
+      continue;
+    }
+
+    const failedCases = (plugin.cases || []).filter((item) => !item.ok);
+    const effectiveFailedCases = failedCases.filter((item) => !isIgnoredInvalidFailure(plugin, item));
+    const hasFatalErrors = Array.isArray(plugin.errors) && plugin.errors.length > 0;
+
+    if (!hasFatalErrors && effectiveFailedCases.length === 0) {
+      continue;
+    }
+
+    const reasonCounts = {};
+    for (const item of effectiveFailedCases) {
+      const key = String(item.reasonCode || "unknown");
+      reasonCounts[key] = (reasonCounts[key] || 0) + 1;
+    }
+    if (hasFatalErrors && Object.keys(reasonCounts).length === 0) {
+      reasonCounts.fatal_error = (plugin.errors || []).length;
+    }
+
+    invalidPlugins.push({
+      pluginFolder: plugin.pluginFolder || "",
+      pluginName: plugin.pluginName || plugin.subscriptionName || "",
+      api: plugin.api || "",
+      reasonCounts,
+      fatalErrors: plugin.errors || [],
+      failedCases: effectiveFailedCases,
+    });
+  }
+
+  return {
+    generatedAt: isoNow(),
+    invalidPluginsCount: invalidPlugins.length,
+    invalidPlugins,
+  };
+}
+
 async function runSinglePlugin(pluginEntry, index, options, logger) {
   const startedAt = isoNow();
   const pluginReport = {
@@ -883,6 +1066,7 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     pluginName: "",
     pluginFolder: "",
     indexPage: null,
+    connectivity: null,
     summary: {
       casesTotal: 0,
       ok: 0,
@@ -929,6 +1113,38 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
       `[plugin ${index + 1}] ${pluginReport.pluginName} | mode=${source.mode} | index=${indexURL}`
     );
 
+    if (options.enableConnectivityCheck) {
+      const connectivity = await runConnectivityCheck(source, indexURL, options);
+      pluginReport.connectivity = connectivity;
+      const firstOK = (connectivity.targets || []).find((item) => item.ok);
+      logger.log(
+        `[${connectivity.ok ? "OK" : "FAIL"}] ${pluginReport.pluginName} | connectivity -> ${connectivity.targets.length} target(s)` +
+        (firstOK ? `, pass=${firstOK.url}` : "")
+      );
+      pluginReport.cases.push({
+        ok: connectivity.ok,
+        stage: "connectivity",
+        mediaTitle: "",
+        episodeTitle: "",
+        detailURL: firstOK ? firstOK.url : ((connectivity.targets[0] && connectivity.targets[0].url) || ""),
+        episodeURL: "",
+        playURL: "",
+        probe: null,
+        error: connectivity.ok ? "" : "all connectivity targets failed",
+        reasonCode: connectivity.ok ? "" : "connectivity_failed",
+        reasonText: connectivity.ok ? "" : "插件站點連通性檢查失敗",
+        httpDiagnostics: (connectivity.targets || []).map((item) => ({
+          method: item.method,
+          url: item.url,
+          status: item.status,
+          error: item.error || "",
+        })),
+      });
+      if (!connectivity.ok && options.strictConnectivityCheck) {
+        throw new Error("connectivity check failed");
+      }
+    }
+
     const mediasResult = await runtime.invoke(
       indexPage.javascript,
       [indexURL, source.apiURL],
@@ -948,6 +1164,88 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
       logger.log(
         `[plugin ${index + 1}] buildMedias sample(index=${sampleIndex})\n${JSON.stringify(sample, null, 2)}`
       );
+    }
+
+    if (options.enableSearchTest && source.config && source.config.search) {
+      const searchConfig = source.config.search || {};
+      const searchFunc = String(searchConfig.javascript || "").trim();
+      const searchURLTemplate = String(searchConfig.url || "").trim();
+
+      if (searchFunc && searchURLTemplate) {
+        const searchKeyword = pickSearchKeyword(options, medias);
+        const searchURL = normalizeSearchURL(searchURLTemplate, searchKeyword);
+        const searchTimeout = stageTimeoutMs(searchConfig, options.invokeTimeoutMs);
+        logger.log(
+          `[plugin ${index + 1}] search keyword=${searchKeyword} url=${searchURL}`
+        );
+
+        const searchHTTPIndex = runtime.getHTTPEvents().length;
+        try {
+          const searchResult = await runtime.invoke(
+            searchFunc,
+            [searchURL, source.apiURL],
+            "medias",
+            searchTimeout
+          );
+          const searchMedias = parseArrayPayload(searchResult.payload);
+          logger.log(
+            `[plugin ${index + 1}] search results=${searchMedias.length}`
+          );
+          if (options.printSearchSample && searchMedias.length > 0) {
+            const sampleIndex = Math.max(
+              0,
+              Math.min(options.printSearchSampleIndex, searchMedias.length - 1)
+            );
+            const sample = searchMedias[sampleIndex];
+            logger.log(
+              `[plugin ${index + 1}] search sample(index=${sampleIndex})\n${JSON.stringify(sample, null, 2)}`
+            );
+          }
+
+          const ok = searchMedias.length > 0;
+          pluginReport.cases.push({
+            ok,
+            stage: "search",
+            mediaTitle: `keyword:${searchKeyword}`,
+            episodeTitle: "",
+            detailURL: searchURL,
+            episodeURL: "",
+            playURL: "",
+            probe: null,
+            error: ok ? "" : "search returned empty medias",
+            reasonCode: ok ? "" : "search_empty",
+            reasonText: ok ? "" : "搜尋執行成功但結果為空",
+            httpDiagnostics: ok ? [] : compactHTTPEvents(runtime.getHTTPEventsSince(searchHTTPIndex)),
+          });
+          logger.log(
+            `[${ok ? "OK" : "FAIL"}] ${pluginReport.pluginName} | search(${searchKeyword}) -> ${searchMedias.length}`
+          );
+        } catch (error) {
+          const stageEvents = runtime.getHTTPEventsSince(searchHTTPIndex);
+          const failureMeta = buildFailureMeta(error.message || String(error), stageEvents);
+          pluginReport.cases.push({
+            ok: false,
+            stage: "search",
+            mediaTitle: `keyword:${searchKeyword}`,
+            episodeTitle: "",
+            detailURL: searchURL,
+            episodeURL: "",
+            playURL: "",
+            probe: null,
+            error: error.message || String(error),
+            reasonCode: failureMeta.reasonCode,
+            reasonText: failureMeta.reasonText,
+            httpDiagnostics: failureMeta.httpDiagnostics,
+          });
+          logger.log(
+            `[FAIL] ${pluginReport.pluginName} | search(${searchKeyword}) -> ${error.message || error} | reason=${failureMeta.reasonCode}`
+          );
+        }
+      } else {
+        logger.log(
+          `[plugin ${index + 1}] search skipped: missing search.url or search.javascript`
+        );
+      }
     }
 
     if (selectedMedias.length === 0) {
@@ -1187,8 +1485,11 @@ async function main() {
   const requestTimeoutMs = toInt(getArg("request-timeout-ms", "25000"), 25000);
   const probeTimeoutMs = toInt(getArg("probe-timeout-ms", "15000"), 15000);
   const vmLoadTimeoutMs = toInt(getArg("vm-load-timeout-ms", "8000"), 8000);
+  const connectivityTimeoutMs = toInt(getArg("connectivity-timeout-ms", "12000"), 12000);
   const maxPlugins = toInt(getArg("max-plugins", "0"), 0);
   const printMediasSampleIndex = toInt(getArg("print-medias-sample-index", "0"), 0);
+  const printSearchSampleIndex = toInt(getArg("print-search-sample-index", "0"), 0);
+  const searchKeyword = String(getArg("search-keyword", "") || "").trim();
   const onlyFilter = String(getArg("only", "") || "")
     .split(",")
     .map((item) => item.trim().toLowerCase())
@@ -1208,10 +1509,17 @@ async function main() {
     invokeTimeoutMs,
     requestTimeoutMs,
     probeTimeoutMs,
+    connectivityTimeoutMs,
     vmLoadTimeoutMs,
     verboseConsole: hasFlag("verbose-console"),
     printMediasSample: !hasFlag("no-print-medias-sample"),
     printMediasSampleIndex,
+    enableConnectivityCheck: !hasFlag("skip-connectivity-check"),
+    strictConnectivityCheck: hasFlag("strict-connectivity-check"),
+    enableSearchTest: !hasFlag("skip-search-test"),
+    printSearchSample: !hasFlag("no-print-search-sample"),
+    printSearchSampleIndex,
+    searchKeyword,
   };
 
   await fsp.mkdir(runOutputDir, { recursive: true });
@@ -1220,6 +1528,11 @@ async function main() {
   const reportPath = path.join(runOutputDir, "report.json");
   const latestPath = path.join(managedOutputRoot, "latest.json");
   const latestLogPath = path.join(managedOutputRoot, "latest.log");
+  const invalidSourcesDir = path.join(runOutputDir, "invalid_sources");
+  const invalidSourcesPath = path.join(invalidSourcesDir, "invalid_sources.json");
+  const invalidSourcesTxtPath = path.join(invalidSourcesDir, "invalid_sources.txt");
+  const invalidSourcesLatestPath = path.join(managedOutputRoot, "invalid_sources_latest.json");
+  const invalidSourcesLatestTxtPath = path.join(managedOutputRoot, "invalid_sources_latest.txt");
 
   const logger = createLogger(logPath);
   logger.log(`[log] ${logPath}`);
@@ -1227,7 +1540,8 @@ async function main() {
   logger.log(`[output] ${reportPath}`);
 
   try {
-    const discovered = await listLocalPlugins(pluginRoot);
+    const discoveredAll = await listLocalPlugins(pluginRoot);
+    const discovered = discoveredAll.filter((entry) => !isReservedPluginFolder(entry.folder));
     let filtered = discovered.slice();
     if (onlyFilter.length > 0) {
       filtered = filtered.filter((entry) => {
@@ -1248,7 +1562,7 @@ async function main() {
     }
 
     logger.log(
-      `[plugins] discovered=${discovered.length}, testing=${filtered.length}`
+      `[plugins] discovered=${discovered.length}, testing=${filtered.length}, reservedSkipped=${discoveredAll.length - discovered.length}`
     );
 
     const pluginReports = [];
@@ -1259,6 +1573,7 @@ async function main() {
     }
 
     const allCases = pluginReports.flatMap((item) => item.cases);
+    const invalidSources = buildInvalidSourcesReport(pluginReports);
     const report = {
       generatedAt: isoNow(),
       pluginRoot,
@@ -1271,11 +1586,18 @@ async function main() {
         invokeTimeoutMs: options.invokeTimeoutMs,
         requestTimeoutMs: options.requestTimeoutMs,
         probeTimeoutMs: options.probeTimeoutMs,
+        connectivityTimeoutMs: options.connectivityTimeoutMs,
         pluginRoot: options.pluginRoot,
         only: onlyFilter,
         exclude: excludeFilter,
+        enableConnectivityCheck: options.enableConnectivityCheck,
+        strictConnectivityCheck: options.strictConnectivityCheck,
         printMediasSample: options.printMediasSample,
         printMediasSampleIndex: options.printMediasSampleIndex,
+        enableSearchTest: options.enableSearchTest,
+        printSearchSample: options.printSearchSample,
+        printSearchSampleIndex: options.printSearchSampleIndex,
+        searchKeyword: options.searchKeyword,
       },
       summary: {
         pluginsTotal: pluginReports.length,
@@ -1283,21 +1605,52 @@ async function main() {
         casesTotal: allCases.length,
         ok: allCases.filter((item) => item.ok).length,
         fail: allCases.filter((item) => !item.ok).length,
+        invalidSourcesPlugins: invalidSources.invalidPluginsCount,
       },
       testedPluginFolders: filtered.map((item) => item.folder),
+      reservedSkippedPluginFolders: discoveredAll
+        .map((item) => item.folder)
+        .filter((folder) => isReservedPluginFolder(folder)),
+      invalidSourcesSummary: {
+        invalidPluginsCount: invalidSources.invalidPluginsCount,
+      },
       plugins: pluginReports,
     };
 
     await fsp.writeFile(reportPath, JSON.stringify(report, null, 2) + "\n", "utf8");
     await fsp.writeFile(latestPath, JSON.stringify(report, null, 2) + "\n", "utf8");
     await fsp.copyFile(logPath, latestLogPath);
+    await fsp.mkdir(invalidSourcesDir, { recursive: true });
+    await fsp.writeFile(invalidSourcesPath, JSON.stringify(invalidSources, null, 2) + "\n", "utf8");
+    await fsp.writeFile(
+      invalidSourcesTxtPath,
+      (invalidSources.invalidPlugins || [])
+        .map((item) => {
+          const reasonText = Object.entries(item.reasonCounts || {})
+            .map((entry) => `${entry[0]}:${entry[1]}`)
+            .join(",");
+          return [
+            item.pluginFolder || "",
+            item.pluginName || "",
+            item.api || "",
+            reasonText || "-",
+            `fatal=${Array.isArray(item.fatalErrors) ? item.fatalErrors.length : 0}`,
+          ].join("\t");
+        })
+        .join("\n") + "\n",
+      "utf8"
+    );
+    await fsp.writeFile(invalidSourcesLatestPath, JSON.stringify(invalidSources, null, 2) + "\n", "utf8");
+    await fsp.copyFile(invalidSourcesTxtPath, invalidSourcesLatestTxtPath);
 
     logger.log(
-      `[summary] plugins=${report.summary.pluginsTotal}, fatal=${report.summary.pluginsWithFatalErrors}, cases=${report.summary.casesTotal}, ok=${report.summary.ok}, fail=${report.summary.fail}`
+      `[summary] plugins=${report.summary.pluginsTotal}, fatal=${report.summary.pluginsWithFatalErrors}, cases=${report.summary.casesTotal}, ok=${report.summary.ok}, fail=${report.summary.fail}, invalidSources=${report.summary.invalidSourcesPlugins}`
     );
     logger.log(`[report] ${reportPath}`);
     logger.log(`[latest] ${latestPath}`);
     logger.log(`[latest-log] ${latestLogPath}`);
+    logger.log(`[invalid-sources] ${invalidSourcesPath}`);
+    logger.log(`[invalid-sources-latest] ${invalidSourcesLatestPath}`);
 
     if (report.summary.fail > 0 || report.summary.pluginsWithFatalErrors > 0) {
       process.exitCode = 1;

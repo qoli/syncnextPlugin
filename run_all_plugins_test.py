@@ -59,9 +59,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--invoke-timeout-ms", type=int, default=45000)
     parser.add_argument("--request-timeout-ms", type=int, default=25000)
     parser.add_argument("--probe-timeout-ms", type=int, default=15000)
+    parser.add_argument("--connectivity-timeout-ms", type=int, default=12000)
     parser.add_argument("--vm-load-timeout-ms", type=int, default=8000)
     parser.add_argument("--all-episodes", action="store_true")
     parser.add_argument("--strict-probe", action="store_true")
+    parser.add_argument("--skip-connectivity-check", action="store_true")
+    parser.add_argument("--strict-connectivity-check", action="store_true")
     parser.add_argument("--no-probe", action="store_true")
     parser.add_argument("--allow-emptyview", action="store_true")
     parser.add_argument("--verbose-console", action="store_true")
@@ -93,6 +96,7 @@ def main() -> int:
         f"--invoke-timeout-ms={args.invoke_timeout_ms}",
         f"--request-timeout-ms={args.request_timeout_ms}",
         f"--probe-timeout-ms={args.probe_timeout_ms}",
+        f"--connectivity-timeout-ms={args.connectivity_timeout_ms}",
         f"--vm-load-timeout-ms={args.vm_load_timeout_ms}",
     ]
 
@@ -104,6 +108,10 @@ def main() -> int:
         cmd.append("--all-episodes")
     if args.strict_probe:
         cmd.append("--strict-probe")
+    if args.skip_connectivity_check:
+        cmd.append("--skip-connectivity-check")
+    if args.strict_connectivity_check:
+        cmd.append("--strict-connectivity-check")
     if args.no_probe:
         cmd.append("--no-probe")
     if args.allow_emptyview:
