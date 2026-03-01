@@ -1013,7 +1013,9 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
             : (episodesResult.payload && typeof episodesResult.payload === "object"
                 ? episodesResult.payload
                 : {});
-        const candidates = Array.isArray(parsed.candidates) ? parsed.candidates : [];
+        const candidates = Array.isArray(parsed)
+          ? parsed
+          : (Array.isArray(parsed.candidates) ? parsed.candidates : []);
         const firstCandidate = candidates[0] || {};
         episodes = parseArrayPayload(firstCandidate.list || firstCandidate.episodes || []);
       } else {
