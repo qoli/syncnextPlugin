@@ -60,6 +60,10 @@
   "player": {
     "timeout": 20,
     "javascript": "Player"
+  },
+  "search": {
+    "url": "https://www.youknow.tv/search/-------------.html?wd=${keyword}",
+    "timeout": 20,
+    "javascript": "buildSearchMedias"
   }
 }
-
