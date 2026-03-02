@@ -1,0 +1,54 @@
+{
+  "name": "独播库",
+  "description": "dbku.tv 线上看",
+  "host": "https://www.dbku.tv",
+  "files": ["txml.js", "app.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "连续剧",
+      "url": "https://www.dbku.tv/vodtype/2--------${pageNumber}---.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "电影",
+      "url": "https://www.dbku.tv/vodtype/1--------${pageNumber}---.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "variety",
+      "title": "综艺",
+      "url": "https://www.dbku.tv/vodtype/3--------${pageNumber}---.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "动漫",
+      "url": "https://www.dbku.tv/vodtype/4--------${pageNumber}---.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "hk",
+      "title": "港剧",
+      "url": "https://www.dbku.tv/vodtype/20--------${pageNumber}---.html",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "luju",
+      "title": "陆剧",
+      "url": "https://www.dbku.tv/vodtype/13--------${pageNumber}---.html",
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "javascript": "Episodes"
+  },
+  "player": {
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "https://www.dbku.tv/vodsearch/-------------.html?wd=${keyword}&submit=",
+    "javascript": "Search"
+  }
+}
