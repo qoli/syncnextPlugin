@@ -197,6 +197,45 @@ function parseSearchCards(html) {
   return parseListCards(html);
 }
 
+function base64Decode(input) {
+  const text = String(input || "");
+  if (!text) {
+    return "";
+  }
+
+  // Prefer runtime-provided atob when available.
+  if (typeof atob === "function") {
+    try {
+      return atob(text);
+    } catch (_) {}
+  }
+
+  // Fallback decoder for JS runtimes without atob (e.g. some app JS engines).
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  let output = "";
+  let buffer = 0;
+  let bits = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === "=") {
+      break;
+    }
+    const val = chars.indexOf(ch);
+    if (val < 0) {
+      continue;
+    }
+    buffer = (buffer << 6) | val;
+    bits += 6;
+    if (bits >= 8) {
+      bits -= 8;
+      output += String.fromCharCode((buffer >> bits) & 0xff);
+    }
+  }
+
+  return output;
+}
+
 function decodePlayURLByEncrypt(value, encrypt) {
   const raw = String(value || "");
   const mode = Number(encrypt || 0);
@@ -211,7 +250,7 @@ function decodePlayURLByEncrypt(value, encrypt) {
     }
 
     if (mode === 2) {
-      const decoded = atob(raw);
+      const decoded = base64Decode(raw);
       try {
         return decodeURIComponent(decoded);
       } catch (_) {
@@ -224,7 +263,7 @@ function decodePlayURLByEncrypt(value, encrypt) {
       if (text.length > 16) {
         text = text.substring(8);
       }
-      text = atob(text);
+      text = base64Decode(text);
       if (text.length > 16) {
         text = text.substring(8, text.length - 8);
       }
