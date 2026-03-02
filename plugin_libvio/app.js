@@ -577,6 +577,14 @@ function Episodes(inputURL) {
   let datas = [];
 
   $http.fetch(req).then(function (res) {
+    if (!detailHasBD5PlayableTag(res.body)) {
+      if ($next.emptyView) {
+        $next.emptyView("該資源暫無可播放來源（未找到 BD/HD 播放源）");
+      }
+      $next.toEpisodes(JSON.stringify(datas));
+      return;
+    }
+
     var playlists = tXml.getElementsByClassName(res.body, "stui-content__playlist");
     var content = playlists[0];
     if (!content || !content.children || !content.children.length) {
