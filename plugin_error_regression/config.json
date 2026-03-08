@@ -1,0 +1,30 @@
+{
+  "name": "錯誤回歸測試",
+  "description": "專用於測試 coverList 空錯誤是否會串到原生或 VOD 頁面。",
+  "host": "https://example.invalid",
+  "files": [
+    "app.js"
+  ],
+  "pages": [
+    {
+      "key": "index",
+      "title": "封面列表錯誤",
+      "url": "https://example.invalid/cover-list-error?page=${pageNumber}",
+      "timeout": 5,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 5,
+    "javascript": "Episodes"
+  },
+  "player": {
+    "timeout": 5,
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "https://example.invalid/search?keyword=${keyword}",
+    "timeout": 5,
+    "javascript": "buildSearchMedias"
+  }
+}
