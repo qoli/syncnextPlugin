@@ -270,7 +270,7 @@ function buildMedias(listURL, key) {
     }
 
     if (datas.length === 0) {
-      $next.emptyView('封面列表為空：站點頁面結構可能變更，或目前返回了非預期內容。');
+      $next.emptyView('無法解析封面列表。');
     }
 
     $next.toMedias(JSON.stringify(datas), key);
