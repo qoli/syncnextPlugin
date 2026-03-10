@@ -240,7 +240,6 @@ function extractMediasFromHTML(html) {
 function buildMedias(listURL, key) {
   fetchAndParse(listURL).then(function (html) {
     if (isChallengePage(html)) {
-      $next.emptyView('封面列表載入失敗：目標站點觸發 Cloudflare 防護頁，請稍後重試或更換網絡。');
       $next.toMedias(JSON.stringify([]), key);
       return;
     }
@@ -268,11 +267,6 @@ function buildMedias(listURL, key) {
         );
       }
     }
-
-    if (datas.length === 0) {
-      $next.emptyView('無法解析封面列表。');
-    }
-
     $next.toMedias(JSON.stringify(datas), key);
   });
 }
