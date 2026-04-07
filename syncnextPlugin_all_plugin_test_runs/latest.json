@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-04-07T22:55:06.856Z",
+  "generatedAt": "2026-04-07T23:00:32.058Z",
   "pluginRoot": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official",
-  "outputDir": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs",
+  "outputDir": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs/20260408-065801",
   "options": {
     "limitMedias": 3,
     "allEpisodes": false,
@@ -13,8 +13,8 @@
     "connectivityTimeoutMs": 12000,
     "pluginRoot": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official",
     "discovery": "subscriptions",
-    "historyMode": "latest-only",
-    "smokeFailExit": "soft",
+    "historyMode": "keep",
+    "smokeFailExit": "hard",
     "subscriptionsSource": "https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json",
     "only": [],
     "exclude": [],
@@ -30,11 +30,11 @@
   },
   "summary": {
     "pluginsTotal": 7,
-    "pluginsWithFatalErrors": 1,
-    "casesTotal": 32,
-    "ok": 28,
+    "pluginsWithFatalErrors": 2,
+    "casesTotal": 29,
+    "ok": 25,
     "fail": 4,
-    "invalidSourcesPlugins": 1
+    "invalidSourcesPlugins": 2
   },
   "testedPluginFolders": [
     "plugin_olevod",
@@ -48,15 +48,15 @@
   "reservedSkippedPluginFolders": [],
   "subscriptionsSource": "https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json",
   "invalidSourcesSummary": {
-    "invalidPluginsCount": 1
+    "invalidPluginsCount": 2
   },
   "plugins": [
     {
       "index": 1,
       "subscriptionName": "新歐樂影院",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
-      "startedAt": "2026-04-07T22:53:21.151Z",
-      "endedAt": "2026-04-07T22:53:29.112Z",
+      "startedAt": "2026-04-07T22:58:01.774Z",
+      "endedAt": "2026-04-07T22:58:08.570Z",
       "mode": "subscriptions",
       "pluginName": "新歐樂影院",
       "pluginFolder": "plugin_olevod",
@@ -215,8 +215,8 @@
       "index": 2,
       "subscriptionName": "新 AGE",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
-      "startedAt": "2026-04-07T22:53:29.112Z",
-      "endedAt": "2026-04-07T22:53:33.472Z",
+      "startedAt": "2026-04-07T22:58:08.570Z",
+      "endedAt": "2026-04-07T22:58:59.528Z",
       "mode": "subscriptions",
       "pluginName": "新 AGE 動漫",
       "pluginFolder": "plugin_age",
@@ -256,8 +256,8 @@
         ]
       },
       "summary": {
-        "casesTotal": 5,
-        "ok": 4,
+        "casesTotal": 2,
+        "ok": 1,
         "fail": 1
       },
       "cases": [
@@ -297,9 +297,9 @@
         {
           "ok": false,
           "stage": "search",
-          "mediaTitle": "keyword:和班上第二可爱的女孩成为",
+          "mediaTitle": "keyword:test",
           "episodeTitle": "",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%92%8C%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%BA%8C%E5%8F%AF%E7%88%B1%E7%9A%84%E5%A5%B3%E5%AD%A9%E6%88%90%E4%B8%BA",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -309,82 +309,24 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%92%8C%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%BA%8C%E5%8F%AF%E7%88%B1%E7%9A%84%E5%A5%B3%E5%AD%A9%E6%88%90%E4%B8%BA",
-              "status": 200,
+              "url": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test",
+              "status": 0,
               "safeLine": false,
-              "error": ""
+              "error": "The operation was aborted."
             }
           ]
-        },
-        {
-          "ok": true,
-          "stage": "player",
-          "mediaTitle": "和班上第二可爱的女孩成为朋友",
-          "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260069",
-          "episodeURL": "https://vip.ffzy-plays.com/20260407/52156_c10f93a3/index.m3u8",
-          "playURL": "https://vip.ffzy-plays.com/20260407/52156_c10f93a3/index.m3u8",
-          "probe": {
-            "ok": true,
-            "method": "GET",
-            "status": 206,
-            "contentType": "application/vnd.apple.mpegurl",
-            "error": ""
-          },
-          "error": "",
-          "reasonCode": "",
-          "reasonText": "",
-          "httpDiagnostics": []
-        },
-        {
-          "ok": true,
-          "stage": "player",
-          "mediaTitle": "婚姻剧毒",
-          "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260111",
-          "episodeURL": "https://vip.ffzy-plays.com/20260407/52155_b99c30c0/index.m3u8",
-          "playURL": "https://vip.ffzy-plays.com/20260407/52155_b99c30c0/index.m3u8",
-          "probe": {
-            "ok": true,
-            "method": "GET",
-            "status": 206,
-            "contentType": "application/vnd.apple.mpegurl",
-            "error": ""
-          },
-          "error": "",
-          "reasonCode": "",
-          "reasonText": "",
-          "httpDiagnostics": []
-        },
-        {
-          "ok": true,
-          "stage": "player",
-          "mediaTitle": "复制品的我也会谈恋爱。",
-          "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260117",
-          "episodeURL": "https://vip.ffzy-plays.com/20260407/52154_182970cd/index.m3u8",
-          "playURL": "https://vip.ffzy-plays.com/20260407/52154_182970cd/index.m3u8",
-          "probe": {
-            "ok": true,
-            "method": "GET",
-            "status": 206,
-            "contentType": "application/vnd.apple.mpegurl",
-            "error": ""
-          },
-          "error": "",
-          "reasonCode": "",
-          "reasonText": "",
-          "httpDiagnostics": []
         }
       ],
-      "errors": []
+      "errors": [
+        "no medias returned; no medias returned"
+      ]
     },
     {
       "index": 3,
       "subscriptionName": "新廠長",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_czzy/config.json",
-      "startedAt": "2026-04-07T22:53:33.472Z",
-      "endedAt": "2026-04-07T22:53:48.352Z",
+      "startedAt": "2026-04-07T22:58:59.528Z",
+      "endedAt": "2026-04-07T22:59:14.809Z",
       "mode": "subscriptions",
       "pluginName": "廠長資源",
       "pluginFolder": "plugin_czzy",
@@ -543,8 +485,8 @@
       "index": 4,
       "subscriptionName": "YouKnowTV",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_youknow/config.json",
-      "startedAt": "2026-04-07T22:53:48.352Z",
-      "endedAt": "2026-04-07T22:53:59.242Z",
+      "startedAt": "2026-04-07T22:59:14.809Z",
+      "endedAt": "2026-04-07T22:59:27.324Z",
       "mode": "subscriptions",
       "pluginName": "YouKnowTV",
       "pluginFolder": "plugin_youknow",
@@ -655,8 +597,8 @@
           "probe": {
             "ok": false,
             "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
+            "status": 0,
+            "contentType": "",
             "error": "The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
           },
           "error": "",
@@ -673,11 +615,11 @@
           "episodeURL": "https://www.youknow.tv/p/198954-1-1/",
           "playURL": "https://vip.dytt-cinema.com/20260102/44604_eb6fcbbe/index.m3u8",
           "probe": {
-            "ok": true,
+            "ok": false,
             "method": "GET",
-            "status": 206,
-            "contentType": "application/vnd.apple.mpegurl",
-            "error": ""
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
           },
           "error": "",
           "reasonCode": "",
@@ -693,11 +635,11 @@
           "episodeURL": "https://www.youknow.tv/p/136094-1-1/",
           "playURL": "https://vip.dytt-cine.com/20250502/16260_314ae9d8/index.m3u8",
           "probe": {
-            "ok": true,
+            "ok": false,
             "method": "GET",
-            "status": 206,
-            "contentType": "application/vnd.apple.mpegurl",
-            "error": ""
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
           },
           "error": "",
           "reasonCode": "",
@@ -711,8 +653,8 @@
       "index": 5,
       "subscriptionName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
-      "startedAt": "2026-04-07T22:53:59.242Z",
-      "endedAt": "2026-04-07T22:54:21.319Z",
+      "startedAt": "2026-04-07T22:59:27.325Z",
+      "endedAt": "2026-04-07T22:59:46.312Z",
       "mode": "subscriptions",
       "pluginName": "libvio",
       "pluginFolder": "plugin_libvio",
@@ -858,8 +800,8 @@
       "index": 6,
       "subscriptionName": "韩剧网",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_thanju/config.json",
-      "startedAt": "2026-04-07T22:54:21.319Z",
-      "endedAt": "2026-04-07T22:55:02.641Z",
+      "startedAt": "2026-04-07T22:59:46.312Z",
+      "endedAt": "2026-04-07T23:00:27.555Z",
       "mode": "subscriptions",
       "pluginName": "韩剧网",
       "pluginFolder": "plugin_thanju",
@@ -968,8 +910,8 @@
       "index": 7,
       "subscriptionName": "独播库",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_dbku/config.json",
-      "startedAt": "2026-04-07T22:55:02.641Z",
-      "endedAt": "2026-04-07T22:55:06.855Z",
+      "startedAt": "2026-04-07T23:00:27.555Z",
+      "endedAt": "2026-04-07T23:00:32.057Z",
       "mode": "subscriptions",
       "pluginName": "独播库",
       "pluginFolder": "plugin_dbku",

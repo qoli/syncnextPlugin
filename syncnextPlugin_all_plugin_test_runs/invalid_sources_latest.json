@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-04-07T22:55:06.856Z",
-  "invalidPluginsCount": 1,
+  "generatedAt": "2026-04-07T23:00:32.058Z",
+  "invalidPluginsCount": 2,
   "invalidPlugins": [
+    {
+      "pluginFolder": "plugin_age",
+      "pluginName": "新 AGE 動漫",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
+      "reasonCounts": {
+        "fatal_error": 1
+      },
+      "fatalErrors": [
+        "no medias returned; no medias returned"
+      ],
+      "failedCases": []
+    },
     {
       "pluginFolder": "plugin_thanju",
       "pluginName": "韩剧网",
