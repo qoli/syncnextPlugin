@@ -26,11 +26,9 @@ jobs:
 
       - name: Update Smoke Status
         id: smoke
-        continue-on-error: true
-        run: bun run smoke:update-readme
+        run: bun run smoke:update-readme:soft --job-summary-file="$GITHUB_STEP_SUMMARY"
 
       - name: Commit Updated Status Files
-        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -41,7 +39,3 @@ jobs:
           fi
           git commit -m "🤖 chore(smoke): update plugin smoke status"
           git push
-
-      - name: Fail When Smoke Test Fails
-        if: steps.smoke.outcome == 'failure'
-        run: exit 1

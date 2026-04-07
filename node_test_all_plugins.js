@@ -1857,6 +1857,86 @@ function determinePluginSmokeStatus(pluginReport) {
   return "Bun Smoke Fail";
 }
 
+function compactSmokeStatus(pluginReport) {
+  return determinePluginSmokeStatus(pluginReport).replace(/^Bun Smoke\s+/, "");
+}
+
+function getStageCases(pluginReport, stage) {
+  return (pluginReport && pluginReport.cases || []).filter((item) => item && item.stage === stage);
+}
+
+function getSearchCase(pluginReport) {
+  return getStageCases(pluginReport, "search")[0] || null;
+}
+
+function getPlayerCases(pluginReport) {
+  return getStageCases(pluginReport, "player");
+}
+
+function countConnectivityTargets(pluginReport) {
+  const targets = Array.isArray(pluginReport && pluginReport.connectivity && pluginReport.connectivity.targets)
+    ? pluginReport.connectivity.targets
+    : [];
+  const pass = targets.filter((item) => item && item.ok).length;
+  return {
+    pass,
+    total: targets.length,
+  };
+}
+
+function formatConnectivityStatus(pluginReport) {
+  const counts = countConnectivityTargets(pluginReport);
+  if (counts.total <= 0) return "N/A";
+  return `${pluginReport && pluginReport.connectivity && pluginReport.connectivity.ok ? "OK" : "Fail"} ${counts.pass}/${counts.total}`;
+}
+
+function formatSearchStatus(pluginReport) {
+  if (!(pluginReport && pluginReport.searchEnabled)) {
+    return "Skipped";
+  }
+
+  const searchCase = getSearchCase(pluginReport);
+  if (!searchCase) return "Not Run";
+  if (searchCase.ok) return "OK";
+  if (String(searchCase.reasonCode || "") === "search_empty") return "Empty";
+  return "Fail";
+}
+
+function formatPlaybackStatus(pluginReport) {
+  const cases = getPlayerCases(pluginReport);
+  if (cases.length === 0) return "Not Reached";
+
+  const ok = cases.filter((item) => item.ok).length;
+  if (ok === cases.length) return `OK ${ok}/${cases.length}`;
+  if (ok === 0) return `Fail 0/${cases.length}`;
+  return `Partial ${ok}/${cases.length}`;
+}
+
+function formatCaseCounts(pluginReport) {
+  const summary = pluginReport && pluginReport.summary || {};
+  return `${Number(summary.ok || 0)}/${Number(summary.casesTotal || 0)}`;
+}
+
+function formatCaseLabel(caseItem) {
+  const titleParts = [];
+  if (caseItem && caseItem.mediaTitle) titleParts.push(caseItem.mediaTitle);
+  if (caseItem && caseItem.episodeTitle) titleParts.push(caseItem.episodeTitle);
+  if (titleParts.length === 0 && caseItem && caseItem.stage === "search") {
+    titleParts.push(caseItem.mediaTitle || "search");
+  }
+  return titleParts.join(" | ") || String(caseItem && caseItem.stage || "case");
+}
+
+function formatHTTPDiagnosticsLines(httpDiagnostics) {
+  const lines = [];
+  for (const item of httpDiagnostics || []) {
+    lines.push(
+      `  - \`${item.method || "GET"} ${item.status || 0}\` ${item.url || "-"}${item.safeLine ? " | safeline" : ""}${item.error ? ` | ${item.error}` : ""}`
+    );
+  }
+  return lines;
+}
+
 function escapeMarkdownTableCell(input) {
   return String(input == null ? "" : input)
     .replace(/\|/g, "\\|")
@@ -1880,11 +1960,9 @@ function buildSummaryLog(report, invalidSources, meta) {
   lines.push("");
   lines.push("[plugins]");
   for (const plugin of report.plugins || []) {
-    const total = Number(plugin && plugin.summary && plugin.summary.casesTotal || 0);
-    const ok = Number(plugin && plugin.summary && plugin.summary.ok || 0);
     const reasonText = formatReasonCounts(buildReasonCountsForPlugin(plugin));
     lines.push(
-      `- ${plugin.pluginFolder || "-"} | ${plugin.pluginName || plugin.subscriptionName || "-"} | ${determinePluginSmokeStatus(plugin)} | ${ok}/${total} ok | ${reasonText}`
+      `- ${plugin.pluginFolder || "-"} | ${plugin.pluginName || plugin.subscriptionName || "-"} | overall=${compactSmokeStatus(plugin)} | conn=${formatConnectivityStatus(plugin)} | search=${formatSearchStatus(plugin)} | playback=${formatPlaybackStatus(plugin)} | cases=${formatCaseCounts(plugin)} | reasons=${reasonText}`
     );
   }
 
@@ -1903,6 +1981,111 @@ function buildSummaryLog(report, invalidSources, meta) {
   return lines.join("\n") + "\n";
 }
 
+function buildPluginDetailsMarkdown(plugin) {
+  const lines = [];
+  const reasonText = formatReasonCounts(buildReasonCountsForPlugin(plugin));
+  const searchCase = getSearchCase(plugin);
+  const playerCases = getPlayerCases(plugin);
+  const failedCases = (plugin.cases || []).filter((item) => item && !item.ok);
+  const summaryLine =
+    `${plugin.pluginName || plugin.subscriptionName || "-"} · ${compactSmokeStatus(plugin)} · ` +
+    `conn=${formatConnectivityStatus(plugin)} · search=${formatSearchStatus(plugin)} · ` +
+    `playback=${formatPlaybackStatus(plugin)} · reasons=${reasonText}`;
+
+  lines.push(`<details>`);
+  lines.push(`<summary>${escapeMarkdownTableCell(summaryLine)}</summary>`);
+  lines.push("");
+  lines.push(`- Folder: \`${plugin.pluginFolder || "-"}\``);
+  lines.push(`- Entry: \`${plugin.subscriptionName || "-"}\``);
+  lines.push(`- Overall: \`${compactSmokeStatus(plugin)}\``);
+  lines.push(`- Cases: \`${formatCaseCounts(plugin)}\``);
+  lines.push(`- Reasons: \`${reasonText}\``);
+  if (plugin.sourceNote) {
+    lines.push(`- Note: ${plugin.sourceNote}`);
+  }
+
+  if (Array.isArray(plugin.errors) && plugin.errors.length > 0) {
+    lines.push(`- Fatal Errors:`);
+    for (const error of plugin.errors) {
+      lines.push(`  - \`${error}\``);
+    }
+  }
+
+  lines.push("");
+  lines.push(`Connectivity`);
+  for (const target of (plugin.connectivity && plugin.connectivity.targets) || []) {
+    lines.push(
+      `- [${target.ok ? "OK" : "FAIL"}] \`${target.method || "GET"} ${target.status || 0}\` ${target.url || "-"}${target.error ? ` | ${target.error}` : ""}`
+    );
+  }
+  if (!plugin.connectivity || !Array.isArray(plugin.connectivity.targets) || plugin.connectivity.targets.length === 0) {
+    lines.push(`- No connectivity checks recorded`);
+  }
+
+  lines.push("");
+  lines.push(`Search`);
+  if (!plugin.searchEnabled) {
+    lines.push(`- Skipped`);
+  } else if (!searchCase) {
+    lines.push(`- Not run`);
+  } else {
+    const keyword = String(searchCase.mediaTitle || "").replace(/^keyword:/, "");
+    lines.push(`- Status: \`${formatSearchStatus(plugin)}\``);
+    lines.push(`- Keyword: \`${keyword || "-"}\``);
+    lines.push(`- URL: ${searchCase.detailURL || "-"}`);
+    if (!searchCase.ok) {
+      lines.push(`- Reason: \`${searchCase.reasonCode || "unknown"}\``);
+      lines.push(`- Detail: ${searchCase.reasonText || searchCase.error || "-"}`);
+    }
+  }
+
+  lines.push("");
+  lines.push(`Playback Cases`);
+  if (playerCases.length === 0) {
+    lines.push(`- Not reached`);
+  } else {
+    lines.push(`| Result | Media | Episode | Output |`);
+    lines.push(`| --- | --- | --- | --- |`);
+    for (const item of playerCases) {
+      lines.push(
+        `| ${item.ok ? "OK" : "FAIL"} | ${escapeMarkdownTableCell(item.mediaTitle || "-")} | ${escapeMarkdownTableCell(item.episodeTitle || "-")} | ${escapeMarkdownTableCell(item.playURL || item.reasonCode || item.error || "-")} |`
+      );
+    }
+  }
+
+  if (failedCases.length > 0) {
+    lines.push("");
+    lines.push(`Failed Case Diagnostics`);
+    for (const item of failedCases) {
+      lines.push(
+        `- ${formatCaseLabel(item)} | stage=\`${item.stage || "-"}\` | reason=\`${item.reasonCode || "unknown"}\``
+      );
+      if (item.detailURL) {
+        lines.push(`  - detailURL: ${item.detailURL}`);
+      }
+      if (item.episodeURL) {
+        lines.push(`  - episodeURL: ${item.episodeURL}`);
+      }
+      if (item.playURL) {
+        lines.push(`  - playURL: ${item.playURL}`);
+      }
+      if (item.reasonText) {
+        lines.push(`  - detail: ${item.reasonText}`);
+      } else if (item.error) {
+        lines.push(`  - error: ${item.error}`);
+      }
+      if (Array.isArray(item.httpDiagnostics) && item.httpDiagnostics.length > 0) {
+        lines.push(`  - http diagnostics:`);
+        lines.push(...formatHTTPDiagnosticsLines(item.httpDiagnostics));
+      }
+    }
+  }
+
+  lines.push("");
+  lines.push(`</details>`);
+  return lines.join("\n");
+}
+
 function buildReadmeStatusSection(report, invalidSources, meta) {
   const lines = [];
   lines.push(`Generated: \`${report.generatedAt}\``);
@@ -1917,14 +2100,12 @@ function buildReadmeStatusSection(report, invalidSources, meta) {
   lines.push("> Bun/Node smoke status only.");
   lines.push("> It does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.");
   lines.push("");
-  lines.push("| Plugin | Source Entry | Search | Bun Smoke | Cases | Main Reasons |");
-  lines.push("| --- | --- | --- | --- | --- | --- |");
+  lines.push("| Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |");
+  lines.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
 
   for (const plugin of report.plugins || []) {
-    const total = Number(plugin && plugin.summary && plugin.summary.casesTotal || 0);
-    const ok = Number(plugin && plugin.summary && plugin.summary.ok || 0);
     lines.push(
-      `| ${escapeMarkdownTableCell(plugin.pluginName || "-")} | ${escapeMarkdownTableCell(plugin.subscriptionName || "-")} | ${plugin.searchEnabled ? "Yes" : "No"} | ${determinePluginSmokeStatus(plugin)} | ${ok}/${total} | ${escapeMarkdownTableCell(formatReasonCounts(buildReasonCountsForPlugin(plugin)))} |`
+      `| ${escapeMarkdownTableCell(plugin.pluginName || "-")} | ${escapeMarkdownTableCell(plugin.pluginFolder || "-")} | ${compactSmokeStatus(plugin)} | ${escapeMarkdownTableCell(formatConnectivityStatus(plugin))} | ${escapeMarkdownTableCell(formatSearchStatus(plugin))} | ${escapeMarkdownTableCell(formatPlaybackStatus(plugin))} | ${formatCaseCounts(plugin)} | ${escapeMarkdownTableCell(formatReasonCounts(buildReasonCountsForPlugin(plugin)))} |`
     );
   }
 
@@ -1939,8 +2120,47 @@ function buildReadmeStatusSection(report, invalidSources, meta) {
       );
     }
   }
+  lines.push("");
+  lines.push(`### Plugin Details`);
+  lines.push("");
+  for (const plugin of report.plugins || []) {
+    lines.push(buildPluginDetailsMarkdown(plugin));
+    lines.push("");
+  }
 
   return lines.join("\n");
+}
+
+function buildJobSummary(report) {
+  const degraded = (report.plugins || []).filter((plugin) => compactSmokeStatus(plugin) !== "OK");
+  const lines = [];
+  lines.push(`## Bun Smoke Status`);
+  lines.push("");
+  lines.push(`Generated: \`${report.generatedAt}\``);
+  lines.push("");
+  lines.push(`- Plugins: \`${report.summary.pluginsTotal}\``);
+  lines.push(`- Cases: \`${report.summary.ok}/${report.summary.casesTotal}\` ok`);
+  lines.push(`- Fatal Plugins: \`${report.summary.pluginsWithFatalErrors}\``);
+  lines.push(`- Invalid Sources: \`${report.summary.invalidSourcesPlugins}\``);
+  lines.push("");
+
+  if (degraded.length === 0) {
+    lines.push(`All plugins are currently \`OK\` in Bun smoke status.`);
+    return lines.join("\n") + "\n";
+  }
+
+  lines.push(`### Degraded Plugins`);
+  lines.push("");
+  lines.push(`| Plugin | Overall | Connectivity | Search | Playback | Reasons |`);
+  lines.push(`| --- | --- | --- | --- | --- | --- |`);
+  for (const plugin of degraded) {
+    lines.push(
+      `| ${escapeMarkdownTableCell(plugin.pluginName || "-")} | ${compactSmokeStatus(plugin)} | ${escapeMarkdownTableCell(formatConnectivityStatus(plugin))} | ${escapeMarkdownTableCell(formatSearchStatus(plugin))} | ${escapeMarkdownTableCell(formatPlaybackStatus(plugin))} | ${escapeMarkdownTableCell(formatReasonCounts(buildReasonCountsForPlugin(plugin)))} |`
+    );
+  }
+  lines.push("");
+  lines.push(`See README for full plugin-by-plugin details.`);
+  return lines.join("\n") + "\n";
 }
 
 async function updateReadmeStatus(readmePath, sectionMarkdown) {
@@ -1970,6 +2190,11 @@ async function updateReadmeStatus(readmePath, sectionMarkdown) {
   }
 }
 
+async function writeJobSummary(summaryPath, content) {
+  if (!summaryPath) return;
+  await fsp.writeFile(path.resolve(summaryPath), content, "utf8");
+}
+
 async function main() {
   const timestamp = tsCompact();
   const pluginRoot = path.resolve(getArg("plugin-root", __dirname));
@@ -1977,7 +2202,9 @@ async function main() {
   const outputFolderName = getArg("output-folder", "syncnextPlugin_all_plugin_test_runs");
   const discovery = String(getArg("discovery", "local") || "local").trim().toLowerCase();
   const historyMode = String(getArg("history-mode", "keep") || "keep").trim().toLowerCase();
+  const smokeFailExit = String(getArg("smoke-fail-exit", "hard") || "hard").trim().toLowerCase();
   const updateReadmePath = String(getArg("update-readme", "") || "").trim();
+  const jobSummaryFile = String(getArg("job-summary-file", "") || "").trim();
   const subscriptionsURL = String(
     getArg("subscriptions-url", DEFAULT_SUBSCRIPTIONS_URL) || DEFAULT_SUBSCRIPTIONS_URL
   ).trim();
@@ -2117,6 +2344,7 @@ async function main() {
         pluginRoot: options.pluginRoot,
         discovery: options.discovery,
         historyMode,
+        smokeFailExit,
         subscriptionsSource,
         only: onlyFilter,
         exclude: excludeFilter,
@@ -2205,6 +2433,11 @@ async function main() {
       logger.log(`[readme] ${path.resolve(updateReadmePath)}`);
     }
 
+    if (jobSummaryFile) {
+      await writeJobSummary(jobSummaryFile, buildJobSummary(report));
+      logger.log(`[job-summary] ${path.resolve(jobSummaryFile)}`);
+    }
+
     logger.log(
       `[summary] plugins=${report.summary.pluginsTotal}, fatal=${report.summary.pluginsWithFatalErrors}, cases=${report.summary.casesTotal}, ok=${report.summary.ok}, fail=${report.summary.fail}, invalidSources=${report.summary.invalidSourcesPlugins}`
     );
@@ -2215,7 +2448,10 @@ async function main() {
     logger.log(`[invalid-sources] ${invalidSourcesPath}`);
     logger.log(`[invalid-sources-latest] ${invalidSourcesLatestPath}`);
 
-    if (report.summary.fail > 0 || report.summary.pluginsWithFatalErrors > 0) {
+    if (
+      smokeFailExit !== "soft" &&
+      (report.summary.fail > 0 || report.summary.pluginsWithFatalErrors > 0)
+    ) {
       process.exitCode = 1;
     }
   } finally {

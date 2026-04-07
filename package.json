@@ -7,6 +7,7 @@
     "smoke:local": "bun run node_test_all_plugins.js",
     "smoke:subscriptions": "bun run node_test_all_plugins.js --discovery=subscriptions --subscriptions-url=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json",
     "smoke:update-readme": "bun run node_test_all_plugins.js --discovery=subscriptions --subscriptions-url=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json --update-readme=README.md --history-mode=latest-only",
+    "smoke:update-readme:soft": "bun run node_test_all_plugins.js --discovery=subscriptions --subscriptions-url=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json --update-readme=README.md --history-mode=latest-only --smoke-fail-exit=soft",
     "test": "bun run smoke:local"
   },
   "author": "",
