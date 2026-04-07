@@ -5,6 +5,12 @@ const DEFAULT_ZJ_RESOLVER = 'https://jx.ejtsyc.com:8443/m3u8/?url=';
 const DEFAULT_VIP_RESOLVER = 'https://jx.ejtsyc.com:8443/vip/?url=';
 const RESOLVER_REGEX = /var\s+Vurl\s*=\s*['"]([^'"]*)['"]\s*;/;
 const PLAYER_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15';
+const EPISODE_PAYLOAD_PREFIX = 'age-payload:';
+const RESOLVER_REQUEST_HEADERS = {
+  Origin: '',
+  Referer: '',
+  'User-Agent': PLAYER_USER_AGENT,
+};
 
 function print(params) {
   console.log(JSON.stringify(params));
@@ -29,22 +35,25 @@ function buildEpisodeData(id, title, episodeDetailURL, tagText) {
   };
 }
 
-function buildEpisodePayload(resolverURL) {
-  return 'age-payload:' + encodeURIComponent(JSON.stringify({
+function buildEpisodePayload(baseDetailURL, resolverURL) {
+  var payloadText = encodeURIComponent(JSON.stringify({
     resolverURL: resolverURL,
   }));
+  return EPISODE_PAYLOAD_PREFIX + payloadText;
 }
 
 function parseEpisodePayload(inputURL) {
   var text = String(inputURL || '');
-  var prefix = 'age-payload:';
+  var payloadText = '';
 
-  if (text.indexOf(prefix) !== 0) {
+  if (text.indexOf(EPISODE_PAYLOAD_PREFIX) === 0) {
+    payloadText = text.substring(EPISODE_PAYLOAD_PREFIX.length);
+  } else {
     return null;
   }
 
   try {
-    return JSON.parse(decodeURIComponent(text.substring(prefix.length)));
+    return JSON.parse(decodeURIComponent(payloadText));
   } catch (error) {
     print({ stage: 'parseEpisodePayload', inputURL: text, error: String(error) });
     return null;
@@ -133,7 +142,8 @@ function resolveResolverURL(inputURL, onSuccess, onFailure) {
       if (onFailure) {
         onFailure(error);
       }
-    }
+    },
+    RESOLVER_REQUEST_HEADERS
   );
 }
 
@@ -386,7 +396,7 @@ function buildEpisodeCandidates(detailData) {
         buildEpisodeData(
           videoID + '-' + lineKey + '-' + title,
           title,
-          buildEpisodePayload(buildResolverURL(lineKey, cryptograph, detailData)),
+          buildEpisodePayload('', buildResolverURL(lineKey, cryptograph, detailData)),
           sourceName
         )
       );
@@ -490,11 +500,11 @@ function Episodes(detailURL) {
         firstCandidate: candidates.length ? buildCandidateLogSample(candidates[0]) : null,
         supportsToEpisodesCandidates: typeof $next.toEpisodesCandidates === 'function',
       });
-      var finishEpisodes = function (finalCandidates) {
+      var finishEpisodes = function (finalCandidates, useCandidates) {
         print({
           stage: 'Episodes.finishEpisodes',
           finalCandidatesCount: finalCandidates.length,
-          mode: finalCandidates.length && typeof $next.toEpisodesCandidates === 'function' ? 'toEpisodesCandidates' : 'toEpisodes',
+          mode: useCandidates && finalCandidates.length && typeof $next.toEpisodesCandidates === 'function' ? 'toEpisodesCandidates' : 'toEpisodes',
           firstCandidate: finalCandidates.length ? buildCandidateLogSample(finalCandidates[0]) : null,
         });
 
@@ -506,7 +516,7 @@ function Episodes(detailURL) {
           return;
         }
 
-        if (typeof $next.toEpisodesCandidates === 'function') {
+        if (useCandidates && typeof $next.toEpisodesCandidates === 'function') {
           $next.toEpisodesCandidates(JSON.stringify(finalCandidates));
           return;
         }
@@ -515,13 +525,13 @@ function Episodes(detailURL) {
       };
 
       if (!candidates.length) {
-        finishEpisodes([]);
+        finishEpisodes([], false);
         return;
       }
 
       resolveCandidateProbeURLs(candidates, function (resolvedCandidates) {
         if (resolvedCandidates.length) {
-          finishEpisodes(resolvedCandidates);
+          finishEpisodes(resolvedCandidates, true);
           return;
         }
 
@@ -533,7 +543,7 @@ function Episodes(detailURL) {
             ? buildEpisodeLogSample(candidates[0].episodes[0])
             : null,
         });
-        finishEpisodes([candidates[0]]);
+        finishEpisodes([candidates[0]], false);
       });
     },
     function (error) {
