@@ -1,0 +1,30 @@
+{
+  "name": "頻道訪問錯誤回歸",
+  "description": "專用於測試插件頻道首頁無法打開時的全屏錯誤頁。",
+  "host": "https://www.youknow.tv",
+  "files": [
+    "app.js"
+  ],
+  "pages": [
+    {
+      "key": "index",
+      "title": "首頁訪問錯誤",
+      "url": "https://www.youknow.tv/label/new/",
+      "timeout": 15,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 5,
+    "javascript": "Episodes"
+  },
+  "player": {
+    "timeout": 5,
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "https://www.youknow.tv/search/${keyword}",
+    "timeout": 5,
+    "javascript": "buildSearchMedias"
+  }
+}
