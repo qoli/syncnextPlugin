@@ -12,10 +12,6 @@ const RESOLVER_REQUEST_HEADERS = {
   'User-Agent': PLAYER_USER_AGENT,
 };
 
-function print(params) {
-  console.log(JSON.stringify(params));
-}
-
 function buildMediaData(id, coverURLString, title, descriptionText, detailURLString) {
   return {
     id: id,
@@ -35,7 +31,7 @@ function buildEpisodeData(id, title, episodeDetailURL, tagText) {
   };
 }
 
-function buildEpisodePayload(baseDetailURL, resolverURL) {
+function buildEpisodePayload(resolverURL) {
   var payloadText = encodeURIComponent(JSON.stringify({
     resolverURL: resolverURL,
   }));
@@ -55,7 +51,6 @@ function parseEpisodePayload(inputURL) {
   try {
     return JSON.parse(decodeURIComponent(payloadText));
   } catch (error) {
-    print({ stage: 'parseEpisodePayload', inputURL: text, error: String(error) });
     return null;
   }
 }
@@ -109,9 +104,7 @@ function normalizePlayURL(playURL, baseURL) {
   if (!isHTTPURL(finalURL)) {
     try {
       finalURL = new URL(finalURL, baseURL).toString();
-    } catch (error) {
-      print({ stage: 'normalizePlayURL', baseURL: baseURL, playURL: playURL, error: String(error) });
-    }
+    } catch (error) {}
   }
 
   return finalURL;
@@ -163,62 +156,6 @@ function cloneEpisodeWithURL(episode, newURL) {
   };
 }
 
-function truncateForLog(text) {
-  var value = String(text || '');
-  if (value.length <= 180) {
-    return value;
-  }
-  return value.substring(0, 180) + '...';
-}
-
-function getEpisodeURLKind(inputURL) {
-  var text = String(inputURL || '');
-
-  if (!text) {
-    return 'empty';
-  }
-
-  if (parseEpisodePayload(text)) {
-    return 'age-payload';
-  }
-
-  if (isResolverURL(text)) {
-    return 'resolver';
-  }
-
-  if (isHTTPURL(text)) {
-    return 'http';
-  }
-
-  return 'other';
-}
-
-function buildEpisodeLogSample(episode) {
-  if (!episode) {
-    return null;
-  }
-
-  return {
-    id: episode.id || '',
-    title: episode.title || '',
-    tagText: episode.tagText || '',
-    episodeDetailURLKind: getEpisodeURLKind(episode.episodeDetailURL),
-    episodeDetailURL: truncateForLog(episode.episodeDetailURL),
-  };
-}
-
-function buildCandidateLogSample(group) {
-  if (!group) {
-    return null;
-  }
-
-  return {
-    source: group.source || '',
-    episodesCount: group.episodes && group.episodes.length ? group.episodes.length : 0,
-    firstEpisode: group.episodes && group.episodes.length ? buildEpisodeLogSample(group.episodes[0]) : null,
-  };
-}
-
 function resolveCandidateProbeURLs(candidateGroups, onDone) {
   var groups = candidateGroups || [];
   var resolvedGroups = [];
@@ -238,23 +175,11 @@ function resolveCandidateProbeURLs(candidateGroups, onDone) {
 
     var firstEpisode = group.episodes[0];
     var firstEpisodeResolverURL = getResolverURL(firstEpisode.episodeDetailURL);
-    print({
-      stage: 'resolveCandidateProbeURLs.start',
-      source: group.source,
-      firstEpisode: buildEpisodeLogSample(firstEpisode),
-      resolverURLKind: getEpisodeURLKind(firstEpisodeResolverURL),
-      resolverURL: truncateForLog(firstEpisodeResolverURL),
-    });
     resolveResolverURL(
       firstEpisodeResolverURL,
       function (playURL) {
         var episodes = group.episodes.slice(0);
         episodes[0] = cloneEpisodeWithURL(firstEpisode, playURL);
-        print({
-          stage: 'resolveCandidateProbeURLs.success',
-          source: group.source,
-          resolvedFirstEpisode: buildEpisodeLogSample(episodes[0]),
-        });
         resolvedGroups.push({
           source: group.source,
           episodes: episodes,
@@ -262,7 +187,6 @@ function resolveCandidateProbeURLs(candidateGroups, onDone) {
         next();
       },
       function (error) {
-        print({ stage: 'resolveCandidateProbeURLs', source: group.source, url: firstEpisodeResolverURL, error: String(error) });
         next();
       }
     );
@@ -396,7 +320,7 @@ function buildEpisodeCandidates(detailData) {
         buildEpisodeData(
           videoID + '-' + lineKey + '-' + title,
           title,
-          buildEpisodePayload('', buildResolverURL(lineKey, cryptograph, detailData)),
+          buildEpisodePayload(buildResolverURL(lineKey, cryptograph, detailData)),
           sourceName
         )
       );
@@ -462,7 +386,6 @@ function buildMedias(inputURL, key) {
       $next.toMedias(JSON.stringify(datas), key);
     },
     function (error) {
-      print({ stage: 'buildMedias', url: inputURL, error: String(error) });
       if (typeof $next.emptyView === 'function') {
         $next.emptyView('讀取 AGE 列表失敗');
       }
@@ -481,7 +404,6 @@ function buildSearchMedias(inputURL, key) {
       $next.toSearchMedias(JSON.stringify(datas), key);
     },
     function (error) {
-      print({ stage: 'buildSearchMedias', url: inputURL, error: String(error) });
       $next.toSearchMedias('[]', key);
     }
   );
@@ -493,21 +415,7 @@ function Episodes(detailURL) {
     function (body) {
       var payload = safeJSONParse(body);
       var candidates = buildEpisodeCandidates(payload);
-      print({
-        stage: 'Episodes.candidatesBuilt',
-        detailURL: detailURL,
-        candidatesCount: candidates.length,
-        firstCandidate: candidates.length ? buildCandidateLogSample(candidates[0]) : null,
-        supportsToEpisodesCandidates: typeof $next.toEpisodesCandidates === 'function',
-      });
       var finishEpisodes = function (finalCandidates, useCandidates) {
-        print({
-          stage: 'Episodes.finishEpisodes',
-          finalCandidatesCount: finalCandidates.length,
-          mode: useCandidates && finalCandidates.length && typeof $next.toEpisodesCandidates === 'function' ? 'toEpisodesCandidates' : 'toEpisodes',
-          firstCandidate: finalCandidates.length ? buildCandidateLogSample(finalCandidates[0]) : null,
-        });
-
         if (!finalCandidates.length) {
           if (typeof $next.emptyView === 'function') {
             $next.emptyView('未找到可播放劇集');
@@ -535,19 +443,10 @@ function Episodes(detailURL) {
           return;
         }
 
-        print({
-          stage: 'Episodes.resolveCandidateProbeURLs',
-          message: 'all candidate probes failed, fallback to first source episodes only',
-          fallbackSource: candidates[0] && candidates[0].source ? candidates[0].source : '',
-          fallbackFirstEpisode: candidates[0] && candidates[0].episodes && candidates[0].episodes.length
-            ? buildEpisodeLogSample(candidates[0].episodes[0])
-            : null,
-        });
         finishEpisodes([candidates[0]], false);
       });
     },
     function (error) {
-      print({ stage: 'Episodes', url: detailURL, error: String(error) });
       if (typeof $next.emptyView === 'function') {
         $next.emptyView('讀取 AGE 詳情失敗');
       }
@@ -565,7 +464,6 @@ function Player(episodeURL) {
       emitPlayerURL(playURL, isResolverURL(resolverURL) ? resolverURL : '');
     },
     function (error) {
-      print({ stage: 'Player', url: resolverURL, rawEpisodeURL: episodeURL, error: String(error) });
       if (typeof $next.emptyView === 'function') {
         $next.emptyView('AGE 播放地址解析失敗');
       }
