@@ -1,0 +1,56 @@
+{
+  "name": "AGE 動漫 Plugin",
+  "description": "基於 AGE JSON API 的動漫頻道插件",
+  "host": "https://ageapi.omwjhz.com:18888",
+  "files": ["app.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "最近更新",
+      "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=${pageNumber}&size=32",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "popular",
+      "title": "熱門",
+      "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=click&region=all&resource=all&season=all&status=all&year=all&page=${pageNumber}&size=32",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "ongoing",
+      "title": "連載",
+      "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=%E8%BF%9E%E8%BD%BD&year=all&page=${pageNumber}&size=32",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "劇場版",
+      "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=%E5%89%A7%E5%9C%BA%E7%89%88&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=${pageNumber}&size=32",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "web",
+      "title": "WEB",
+      "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=WEB&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=${pageNumber}&size=32",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 20,
+    "javascript": "Episodes"
+  },
+  "player": {
+    "timeout": 20,
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=${keyword}",
+    "timeout": 20,
+    "javascript": "buildSearchMedias"
+  }
+}
