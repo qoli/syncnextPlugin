@@ -6,6 +6,10 @@ Syncnext 插件化頻道協議
 
 https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 
+補充案例：
+
+- [YouKnowTV 多來源對齊與後置選線案例](./youknow_multisource_case.md)
+
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
