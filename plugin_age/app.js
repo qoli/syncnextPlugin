@@ -445,7 +445,6 @@ function Episodes(detailURL) {
       if (typeof $next.emptyView === 'function') {
         $next.emptyView('讀取 AGE 詳情失敗');
       }
-      $next.toEpisodes('[]');
     }
   );
 }
