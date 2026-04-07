@@ -415,35 +415,30 @@ function Episodes(detailURL) {
     function (body) {
       var payload = safeJSONParse(body);
       var candidates = buildEpisodeCandidates(payload);
-      var finishEpisodes = function (finalCandidates, useCandidates) {
-        if (!finalCandidates.length) {
-          if (typeof $next.emptyView === 'function') {
-            $next.emptyView('未找到可播放劇集');
-          }
-          $next.toEpisodes('[]');
-          return;
-        }
-
-        if (useCandidates && typeof $next.toEpisodesCandidates === 'function') {
-          $next.toEpisodesCandidates(JSON.stringify(finalCandidates));
-          return;
-        }
-
-        $next.toEpisodes(JSON.stringify(finalCandidates[0].episodes));
-      };
 
       if (!candidates.length) {
-        finishEpisodes([], false);
+        if (typeof $next.emptyView === 'function') {
+          $next.emptyView('未找到可播放劇集');
+        }
         return;
       }
 
       resolveCandidateProbeURLs(candidates, function (resolvedCandidates) {
         if (resolvedCandidates.length) {
-          finishEpisodes(resolvedCandidates, true);
+          if (typeof $next.toEpisodesCandidates === 'function') {
+            $next.toEpisodesCandidates(JSON.stringify(resolvedCandidates));
+            return;
+          }
+
+          if (typeof $next.emptyView === 'function') {
+            $next.emptyView('當前 App 版本不支持候選劇集');
+          }
           return;
         }
 
-        finishEpisodes([candidates[0]], false);
+        if (typeof $next.emptyView === 'function') {
+          $next.emptyView('AGE 線路解析失敗');
+        }
       });
     },
     function (error) {
