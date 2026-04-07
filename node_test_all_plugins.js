@@ -733,10 +733,36 @@ async function resolvePluginSource(pluginEntry, options) {
 }
 
 function buildPlayerResult(callbackType, payload) {
+  function normalizeCandidateList(input) {
+    const list = [];
+    for (const item of input || []) {
+      if (typeof item === "string") {
+        const url = String(item || "").trim();
+        if (!url) continue;
+        list.push({ url, headers: {} });
+        continue;
+      }
+
+      if (!item || typeof item !== "object") {
+        continue;
+      }
+
+      const url = String(item.url || "").trim();
+      if (!url) continue;
+      list.push({
+        url,
+        headers: item.headers && typeof item.headers === "object" ? item.headers : {},
+      });
+    }
+    return list;
+  }
+
   if (callbackType === "toPlayer") {
+    const url = String(payload == null ? "" : payload).trim();
     return {
-      url: String(payload == null ? "" : payload).trim(),
+      url,
       headers: {},
+      candidates: url ? [{ url, headers: {} }] : [],
       raw: payload,
     };
   }
@@ -747,9 +773,12 @@ function buildPlayerResult(callbackType, payload) {
         ? safeJSONParse(payload, {})
         : (payload && typeof payload === "object" ? payload : {});
 
+    const url = String(parsed.url || "").trim();
+    const headers = parsed.headers && typeof parsed.headers === "object" ? parsed.headers : {};
     return {
-      url: String(parsed.url || "").trim(),
-      headers: parsed.headers && typeof parsed.headers === "object" ? parsed.headers : {},
+      url,
+      headers,
+      candidates: url ? [{ url, headers }] : [],
       raw: payload,
     };
   }
@@ -759,21 +788,55 @@ function buildPlayerResult(callbackType, payload) {
       typeof payload === "string"
         ? safeJSONParse(payload, {})
         : (payload && typeof payload === "object" ? payload : {});
-    const list = Array.isArray(parsed.candidates) ? parsed.candidates : [];
-    const first = list[0] || {};
-    const url = typeof first === "string" ? first : String(first.url || "");
-    const headers =
-      first && typeof first === "object" && first.headers && typeof first.headers === "object"
-        ? first.headers
-        : {};
+    const candidates = normalizeCandidateList(
+      Array.isArray(parsed) ? parsed : (Array.isArray(parsed.candidates) ? parsed.candidates : [])
+    );
+    const first = candidates[0] || {};
     return {
-      url: url.trim(),
-      headers,
+      url: String(first.url || "").trim(),
+      headers: first.headers && typeof first.headers === "object" ? first.headers : {},
+      candidates,
       raw: payload,
     };
   }
 
-  return { url: "", headers: {}, raw: payload };
+  return { url: "", headers: {}, candidates: [], raw: payload };
+}
+
+async function probePlayerCandidates(candidates, options) {
+  const normalized = Array.isArray(candidates) ? candidates.filter((item) => item && item.url) : [];
+  const probes = [];
+
+  for (let index = 0; index < normalized.length; index++) {
+    const candidate = normalized[index];
+    const probe = await probePlayableURL(candidate.url, candidate.headers || {}, options);
+    probes.push({
+      index,
+      url: candidate.url,
+      headers: candidate.headers || {},
+      probe,
+    });
+
+    if (probe && probe.ok) {
+      return {
+        winnerIndex: index,
+        winner: candidate,
+        probe,
+        probes,
+        ok: true,
+      };
+    }
+  }
+
+  const fallbackCandidate = normalized[0] || null;
+  const fallbackProbe = probes.length > 0 ? probes[0].probe : null;
+  return {
+    winnerIndex: fallbackCandidate ? 0 : -1,
+    winner: fallbackCandidate,
+    probe: fallbackProbe,
+    probes,
+    ok: false,
+  };
 }
 
 function buildInvocationAdapter(options) {
@@ -1734,8 +1797,13 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
           );
 
           const player = buildPlayerResult(playerCallback.callbackType, playerCallback.payload);
-          const playURL = String(player.url || "").trim();
-          if (!playURL) {
+          const playerCandidates =
+            Array.isArray(player.candidates) && player.candidates.length > 0
+              ? player.candidates
+              : (player.url
+                  ? [{ url: String(player.url || "").trim(), headers: player.headers || {} }]
+                  : []);
+          if (playerCandidates.length === 0) {
             const failureMeta = buildFailureMeta("empty play url", runtime.getHTTPEventsSince(playerHTTPIndex));
             pluginReport.cases.push({
               ok: false,
@@ -1757,11 +1825,21 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
             continue;
           }
 
+          let winningCandidate = playerCandidates[0];
           let probe = null;
+          let candidateProbes = [];
+          let winnerIndex = 0;
           if (options.enableProbe) {
-            probe = await probePlayableURL(playURL, player.headers, options);
+            const probeResult = await probePlayerCandidates(playerCandidates, options);
+            probe = probeResult.probe;
+            candidateProbes = probeResult.probes;
+            if (probeResult.winner) {
+              winningCandidate = probeResult.winner;
+              winnerIndex = probeResult.winnerIndex >= 0 ? probeResult.winnerIndex : 0;
+            }
           }
 
+          const playURL = String(winningCandidate && winningCandidate.url || "").trim();
           const ok = options.strictProbe ? !!(probe && probe.ok) : true;
           pluginReport.cases.push({
             ok,
@@ -1772,6 +1850,9 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
             episodeURL,
             playURL,
             probe,
+            candidateCount: playerCandidates.length,
+            candidateWinnerIndex: winnerIndex,
+            candidateProbes,
             error: ok ? "" : (probe && probe.error ? probe.error : "probe failed"),
             reasonCode: ok ? "" : "probe_failed",
             reasonText: ok ? "" : "播放鏈可取得，但 probe 檢測未通過",
@@ -1779,7 +1860,7 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
           });
 
           logger.log(
-            `[${ok ? "OK" : "FAIL"}] ${pluginReport.pluginName} | ${mediaTitle} | ${episodeTitle} -> ${playURL}`
+            `[${ok ? "OK" : "FAIL"}] ${pluginReport.pluginName} | ${mediaTitle} | ${episodeTitle} -> ${playURL} | candidates=${playerCandidates.length}`
           );
         } catch (error) {
           const stageEvents = runtime.getHTTPEventsSince(playerHTTPIndex);

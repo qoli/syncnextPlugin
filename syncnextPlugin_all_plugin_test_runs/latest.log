@@ -1,70 +1,13 @@
-[log] /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs/20260408-065801/run.log
+[log] /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs/20260408-073048/run.log
 [plugin-root] /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official
-[output] /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs/20260408-065801/report.json
+[output] /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs/20260408-073048/report.json
 [runner] bun
-[discovery] subscriptions
-[subscriptions] https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json
-[plugins] discovered=7, testing=7, reservedSkipped=0
-[plugin 1] 新歐樂影院 | mode=subscriptions | index=https://api.olelive.com/v1/pub/vod/newest/1/12
-[OK] 新歐樂影院 | connectivity -> 3 target(s), pass=https://www.olevod.tv/
-[plugin 1] medias total=12, testing=3
-[plugin 1] buildMedias sample(index=0)
-{
-  "id": "81065",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260408-1/4df1e1d33a8705a4564ecb0db132e455.jpg",
-  "title": "女魃传奇",
-  "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81065/true"
-}
-[plugin 1] search keyword=女魃传奇 url=https://api.olelive.com/v1/pub/index/search/%E5%A5%B3%E9%AD%83%E4%BC%A0%E5%A5%87/vod/0/1/4
-[plugin 1] search results=1
-[plugin 1] search sample(index=0)
-{
-  "id": "81065",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260408-1/4df1e1d33a8705a4564ecb0db132e455.jpg",
-  "title": "女魃传奇",
-  "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81065/true"
-}
-[OK] 新歐樂影院 | search(女魃传奇) -> 1
-[OK] 新歐樂影院 | 女魃传奇 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260407/wojefzBh/mp4/wojefzBh.mp4/clipTo/350033/master.m3u8
-[OK] 新歐樂影院 | 真千金的豪门求生指南 | 第01集 -> https://europe.olemovienews.com/ts4/20260407/kooxBGfa/mp4/kooxBGfa.mp4/clipTo/149766/master.m3u8
-[OK] 新歐樂影院 | 再见裴医生你的替身游戏已结束 | 第01集 -> https://europe.olemovienews.com/ts4/20260407/aijslhys/mp4/aijslhys.mp4/clipTo/223700/master.m3u8
-[plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
-[OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
-[plugin 2] medias total=0, testing=0
-[plugin 2] search keyword=test url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
-[plugin 2] search results=0
-[FAIL] 新 AGE 動漫 | search(test) -> 0
-[plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
-[OK] 廠長資源 | connectivity -> 3 target(s), pass=https://www.czzymovie.com
-[plugin 3] medias total=20, testing=3
-[plugin 3] buildMedias sample(index=0)
-{
-  "id": "https://www.cz01.org/movie/23276.html",
-  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=img.czzy66.com/2026/04/88812c28926936-270x380.jpg",
-  "title": "八千里路云和月",
-  "descriptionText": "更新至4集",
-  "detailURLString": "https://www.cz01.org/movie/23276.html"
-}
-[plugin 3] search keyword=八千里路云和月 url=https://www.czzymovie.com/boss1O1?q=%E5%85%AB%E5%8D%83%E9%87%8C%E8%B7%AF%E4%BA%91%E5%92%8C%E6%9C%88
-[plugin 3] search results=17
-[plugin 3] search sample(index=0)
-{
-  "id": "https://www.czzymovie.com/movie/23276.html",
-  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=img.czzy66.com/2026/04/88812c28926936-270x380.jpg",
-  "title": "八千里路云和月",
-  "descriptionText": "",
-  "detailURLString": "https://www.czzymovie.com/movie/23276.html"
-}
-[OK] 廠長資源 | search(八千里路云和月) -> 17
-[OK] 廠長資源 | 八千里路云和月 | 第1集 -> https://fanfan.hbcn.fun:906/hls3/hls02/八千里路云和月/八千里路云和月01.m3u8
-[OK] 廠長資源 | 遮天剧场版背棺战王腾 | 1080P-1 -> https://fanfan.hbcn.fun:906/yun/zhetian.m3u8
-[OK] 廠長資源 | 钢铁森林 | 第1集 -> https://fanfan.hbcn.fun:906/hls3/hls02/钢铁森林/1.m3u8
-[plugin 4] YouKnowTV | mode=subscriptions | index=https://www.youknow.tv/label/new/
+[discovery] local
+[plugins] discovered=12, testing=1, reservedSkipped=1
+[plugin 1] YouKnowTV | mode=local | index=https://www.youknow.tv/label/new/
 [OK] YouKnowTV | connectivity -> 3 target(s), pass=https://www.youknow.tv
-[plugin 4] medias total=205, testing=3
-[plugin 4] buildMedias sample(index=0)
+[plugin 1] medias total=205, testing=3
+[plugin 1] buildMedias sample(index=0)
 {
   "id": "https://www.youknow.tv/d/199071/",
   "coverURLString": "https://www.youknow.tv/upload/vod/20260103-1/f007a5a1c8852171901e9eddcf8a4ab5.jpg",
@@ -72,65 +15,9 @@
   "descriptionText": "已完结",
   "detailURLString": "https://www.youknow.tv/d/199071/"
 }
-[plugin 4] search keyword=山海经密码 url=https://www.youknow.tv/search/-------------.html?wd=%E5%B1%B1%E6%B5%B7%E7%BB%8F%E5%AF%86%E7%A0%81
-[plugin 4] search results=0
+[plugin 1] search keyword=山海经密码 url=https://www.youknow.tv/search/-------------.html?wd=%E5%B1%B1%E6%B5%B7%E7%BB%8F%E5%AF%86%E7%A0%81
+[plugin 1] search results=0
 [FAIL] YouKnowTV | search(山海经密码) -> 0
-[OK] YouKnowTV | 山海经密码 | 播放山海经密码第01集 -> https://vip.dytt-cine.com/20251227/65728_8259184b/index.m3u8
-[OK] YouKnowTV | 一人之下第六季 | 播放一人之下第六季第01集 -> https://vip.dytt-cinema.com/20260102/44604_eb6fcbbe/index.m3u8
-[OK] YouKnowTV | 大主宰年番 | 播放大主宰年番第01集 -> https://vip.dytt-cine.com/20250502/16260_314ae9d8/index.m3u8
-[plugin 5] libvio | mode=subscriptions | index=https://libvio.site/
-[OK] libvio | connectivity -> 2 target(s), pass=https://libvio.site/
-[plugin 5] medias total=48, testing=3
-[plugin 5] buildMedias sample(index=0)
-{
-  "id": "https://libvio.site/detail/714893348.html",
-  "coverURLString": "https://img.meituan.net/content/ed9fc4f23d8a6d9ac051f4d67a557132246474.png",
-  "title": "婚姻剧毒",
-  "descriptionText": "第01集/周三更新",
-  "detailURLString": "https://libvio.site/detail/714893348.html"
-}
-[plugin 5] search keyword=婚姻剧毒 url=https://libvio.site/search/-------------.html?wd=%E5%A9%9A%E5%A7%BB%E5%89%A7%E6%AF%92
-[plugin 5] search results=1
-[plugin 5] search sample(index=0)
-{
-  "id": "https://libvio.site/detail/714893348.html",
-  "coverURLString": "https://img.meituan.net/content/ed9fc4f23d8a6d9ac051f4d67a557132246474.png",
-  "title": "婚姻剧毒",
-  "descriptionText": "第01集/周三更新",
-  "detailURLString": "https://libvio.site/detail/714893348.html"
-}
-[OK] libvio | search(婚姻剧毒) -> 1
-[OK] libvio | 婚姻剧毒 | 第01集 -> https://v.vbing.me/2026/rh/4/Marriagetoxin.S01/Marriagetoxin.S01E01.mp4
-[OK] libvio | 权欲之巅 | 第01集 -> https://v.vbing.me/2026/rh/3/Climax.S01/Climax.S01E01.mp4
-[OK] libvio | 盐沼之下 | 第01集 -> https://v.vbing.me/2026/mj/4/Under.Salt.MarshS01/Under.Salt.MarshS01E01.mp4
-[plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
-[FAIL] 韩剧网 | connectivity -> 3 target(s)
-[plugin 6] medias total=0, testing=0
-[plugin 6] search keyword=test url=https://www.thanju.com/search/test.html
-[plugin 6] search results=0
-[FAIL] 韩剧网 | search(test) -> 0
-[plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
-[OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
-[plugin 7] medias total=48, testing=3
-[plugin 7] buildMedias sample(index=0)
-{
-  "id": "https://www.dbku.tv/voddetail/143163.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/s1DMVzwAnSDy6YOAvfJ5iBG827J.jpg",
-  "title": "魔女之吻",
-  "descriptionText": "全12集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143163.html"
-}
-[plugin 7] search keyword=魔女之吻 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%AD%94%E5%A5%B3%E4%B9%8B%E5%90%BB&submit=
-[plugin 7] search results=1
-[plugin 7] search sample(index=0)
-{
-  "id": "https://www.dbku.tv/voddetail/143163.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/s1DMVzwAnSDy6YOAvfJ5iBG827J.jpg",
-  "title": "魔女之吻",
-  "descriptionText": "全12集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143163.html"
-}
-[OK] 独播库 | search(魔女之吻) -> 1
-[OK] 独播库 | 魔女之吻 | 第1集 -> https://vid.dbokutv.com/20260303/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHgTcyo5xOy6ejRMvwToqmCIqmCpSuDZasE48kRN0q/chunklist.m3u8
-[OK] 独播库 | 八千里路云和月 | 第1集 -> https://vid.dbokutv.com/20260407/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBM9nR6nvQ7ajC34jC34qGpP6C34sBcrmD0/chunklist.m3u8
-[OK] 独播库 | 白日提灯 | 第1集 -> https://vid.dbokutv.com/20260328/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM9oT6GjC34jC34mHZP4DpX6BcrmD0/chunklist.m3u8
+[OK] YouKnowTV | 山海经密码 | 第01集 -> https://tyyszywvod.com/videos/202601/16/6969eada32df5a2510048b49/686eca/index.m3u8 | candidates=3
+[OK] YouKnowTV | 一人之下第六季 | 第01集 -> https://tyyszywvod.com/videos/202601/16/6969eb5c32df5a2510053284/c58f53/index.m3u8 | candidates=3
+[OK] YouKnowTV | 大主宰年番 | 第01集 -> https://tyyszywvod.com/videos/202601/21/697079b251e70a99a26842bb/576110/index.m3u8 | candidates=3

@@ -1,19 +1,11 @@
-generated_at=2026-04-07T23:00:32.058Z
+generated_at=2026-04-07T23:31:07.274Z
 runner=bun
-discovery=subscriptions
-subscriptions_source=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json
-summary plugins=7 fatal=2 cases=29 ok=25 fail=4 invalidSources=2
+discovery=local
+summary plugins=1 fatal=0 cases=5 ok=4 fail=1 invalidSources=0
 disclaimer=Bun/Node smoke test only; it does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.
 
 [plugins]
-- plugin_olevod | 新歐樂影院 | overall=OK | conn=OK 1/3 | search=OK | playback=OK 3/3 | cases=5/5 | reasons=-
-- plugin_age | 新 AGE 動漫 | overall=Fatal | conn=OK 2/3 | search=Empty | playback=Not Reached | cases=1/2 | reasons=search_empty:1
-- plugin_czzy | 廠長資源 | overall=OK | conn=OK 3/3 | search=OK | playback=OK 3/3 | cases=5/5 | reasons=-
 - plugin_youknow | YouKnowTV | overall=Partial | conn=OK 3/3 | search=Empty | playback=OK 3/3 | cases=4/5 | reasons=search_empty:1
-- plugin_libvio | libvio | overall=OK | conn=OK 2/2 | search=OK | playback=OK 3/3 | cases=5/5 | reasons=-
-- plugin_thanju | 韩剧网 | overall=Fatal | conn=Fail 0/3 | search=Empty | playback=Not Reached | cases=0/2 | reasons=connectivity_failed:1, search_empty:1
-- plugin_dbku | 独播库 | overall=OK | conn=OK 3/3 | search=OK | playback=OK 3/3 | cases=5/5 | reasons=-
 
 [invalid_sources]
-- plugin_age | 新 AGE 動漫 | fatal_error:1 | fatal=1
-- plugin_thanju | 韩剧网 | fatal_error:1 | fatal=1
+- none
