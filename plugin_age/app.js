@@ -224,10 +224,13 @@ function trimText(input) {
 
 function buildDescription(item) {
   var parts = [];
+  var uptodate = trimText(item && item.uptodate);
   var status = trimText(item && item.status);
   var type = trimText(item && item.type);
 
-  if (status) {
+  if (uptodate) {
+    parts.push(uptodate);
+  } else if (status) {
     parts.push(status);
   }
 
@@ -235,7 +238,7 @@ function buildDescription(item) {
     parts.push(type);
   }
 
-  return parts.join(' ');
+  return parts.join(' · ');
 }
 
 function buildDetailURL(id) {
