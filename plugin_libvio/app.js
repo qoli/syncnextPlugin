@@ -76,6 +76,7 @@ function extractPlayableURL(body) {
   }
 
   var patterns = [
+    /["']?urls?["']?\s*:\s*["']([^"']+)["']/,
     /(?:var|let|const)\s+urls?\s*=\s*["']([^"']+)["']/,
     /(?:var|let|const)\s+[a-zA-Z_$][\w$]*\s*=\s*["']([^"']+\.(?:m3u8|mp4)[^"']*)["']/,
     /["']url["']\s*:\s*["']([^"']+\.(?:m3u8|mp4)[^"']*)["']/,
