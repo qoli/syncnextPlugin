@@ -4,7 +4,10 @@
   "description": "Syncnext 插件化",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "smoke:local": "bun run node_test_all_plugins.js",
+    "smoke:subscriptions": "bun run node_test_all_plugins.js --discovery=subscriptions --subscriptions-url=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json",
+    "smoke:update-readme": "bun run node_test_all_plugins.js --discovery=subscriptions --subscriptions-url=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json --update-readme=README.md --history-mode=latest-only",
+    "test": "bun run smoke:local"
   },
   "author": "",
   "license": "ISC",

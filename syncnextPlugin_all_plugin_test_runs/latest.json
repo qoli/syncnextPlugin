@@ -1,0 +1,1127 @@
+{
+  "generatedAt": "2026-04-07T22:41:35.495Z",
+  "pluginRoot": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official",
+  "outputDir": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs",
+  "options": {
+    "limitMedias": 3,
+    "allEpisodes": false,
+    "strictProbe": false,
+    "enableProbe": true,
+    "invokeTimeoutMs": 45000,
+    "requestTimeoutMs": 25000,
+    "probeTimeoutMs": 15000,
+    "connectivityTimeoutMs": 12000,
+    "pluginRoot": "/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official",
+    "discovery": "subscriptions",
+    "historyMode": "latest-only",
+    "subscriptionsSource": "https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json",
+    "only": [],
+    "exclude": [],
+    "enableConnectivityCheck": true,
+    "strictConnectivityCheck": false,
+    "printMediasSample": true,
+    "printMediasSampleIndex": 0,
+    "enableSearchTest": true,
+    "printSearchSample": true,
+    "printSearchSampleIndex": 0,
+    "searchKeyword": "",
+    "hasDefaultCookieHeader": false
+  },
+  "summary": {
+    "pluginsTotal": 7,
+    "pluginsWithFatalErrors": 1,
+    "casesTotal": 32,
+    "ok": 28,
+    "fail": 4,
+    "invalidSourcesPlugins": 1
+  },
+  "testedPluginFolders": [
+    "plugin_olevod",
+    "plugin_age",
+    "plugin_czzy",
+    "plugin_youknow",
+    "plugin_libvio",
+    "plugin_thanju",
+    "plugin_dbku"
+  ],
+  "reservedSkippedPluginFolders": [],
+  "subscriptionsSource": "https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json",
+  "invalidSourcesSummary": {
+    "invalidPluginsCount": 1
+  },
+  "plugins": [
+    {
+      "index": 1,
+      "subscriptionName": "新歐樂影院",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
+      "startedAt": "2026-04-07T22:39:56.773Z",
+      "endedAt": "2026-04-07T22:40:03.502Z",
+      "mode": "subscriptions",
+      "pluginName": "新歐樂影院",
+      "pluginFolder": "plugin_olevod",
+      "sourceTitle": "",
+      "sourceNote": "海外 IP 無廣告",
+      "searchEnabled": true,
+      "indexPage": {
+        "key": "index",
+        "title": "首頁",
+        "url": "https://api.olelive.com/v1/pub/vod/newest/1/12",
+        "javascript": "buildMedias"
+      },
+      "connectivity": {
+        "ok": true,
+        "targets": [
+          {
+            "url": "https://www.olevod.tv/",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://api.olelive.com/v1/pub/vod/newest/1/12",
+            "ok": false,
+            "method": "GET",
+            "status": 401,
+            "error": "status 401"
+          },
+          {
+            "url": "https://api.olelive.com/v1/pub/index/search/test/vod/0/1/4",
+            "ok": false,
+            "method": "GET",
+            "status": 401,
+            "error": "status 401"
+          }
+        ]
+      },
+      "summary": {
+        "casesTotal": 5,
+        "ok": 5,
+        "fail": 0
+      },
+      "cases": [
+        {
+          "ok": true,
+          "stage": "connectivity",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://www.olevod.tv/",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": [
+            {
+              "method": "HEAD",
+              "url": "https://www.olevod.tv/",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "GET",
+              "url": "https://api.olelive.com/v1/pub/vod/newest/1/12",
+              "status": 401,
+              "error": "status 401"
+            },
+            {
+              "method": "GET",
+              "url": "https://api.olelive.com/v1/pub/index/search/test/vod/0/1/4",
+              "status": 401,
+              "error": "status 401"
+            }
+          ]
+        },
+        {
+          "ok": true,
+          "stage": "search",
+          "mediaTitle": "keyword:女魃传奇",
+          "episodeTitle": "",
+          "detailURL": "https://api.olelive.com/v1/pub/index/search/%E5%A5%B3%E9%AD%83%E4%BC%A0%E5%A5%87/vod/0/1/4",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "女魃传奇",
+          "episodeTitle": "第第1集集",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/81065/true",
+          "episodeURL": "https://europe.olemovienews.com/ts4/20260407/wojefzBh/mp4/wojefzBh.mp4/clipTo/350033/master.m3u8",
+          "playURL": "https://europe.olemovienews.com/ts4/20260407/wojefzBh/mp4/wojefzBh.mp4/clipTo/350033/master.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "contentType": "",
+            "error": "unable to verify the first certificate"
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "真千金的豪门求生指南",
+          "episodeTitle": "第01集",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/81064/true",
+          "episodeURL": "https://europe.olemovienews.com/ts4/20260407/kooxBGfa/mp4/kooxBGfa.mp4/clipTo/149766/master.m3u8",
+          "playURL": "https://europe.olemovienews.com/ts4/20260407/kooxBGfa/mp4/kooxBGfa.mp4/clipTo/149766/master.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "contentType": "",
+            "error": "unable to verify the first certificate"
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "再见裴医生你的替身游戏已结束",
+          "episodeTitle": "第01集",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/81063/true",
+          "episodeURL": "https://europe.olemovienews.com/ts4/20260407/aijslhys/mp4/aijslhys.mp4/clipTo/223700/master.m3u8",
+          "playURL": "https://europe.olemovienews.com/ts4/20260407/aijslhys/mp4/aijslhys.mp4/clipTo/223700/master.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "contentType": "",
+            "error": "unable to verify the first certificate"
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "index": 2,
+      "subscriptionName": "新 AGE",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
+      "startedAt": "2026-04-07T22:40:03.502Z",
+      "endedAt": "2026-04-07T22:40:07.159Z",
+      "mode": "subscriptions",
+      "pluginName": "新 AGE 動漫",
+      "pluginFolder": "plugin_age",
+      "sourceTitle": "",
+      "sourceNote": "AGE 動漫",
+      "searchEnabled": true,
+      "indexPage": {
+        "key": "index",
+        "title": "最近更新",
+        "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32",
+        "javascript": "buildMedias"
+      },
+      "connectivity": {
+        "ok": true,
+        "targets": [
+          {
+            "url": "https://ageapi.omwjhz.com:18888",
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "error": "status 403"
+          },
+          {
+            "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          }
+        ]
+      },
+      "summary": {
+        "casesTotal": 5,
+        "ok": 4,
+        "fail": 1
+      },
+      "cases": [
+        {
+          "ok": true,
+          "stage": "connectivity",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://ageapi.omwjhz.com:18888",
+              "status": 403,
+              "error": "status 403"
+            },
+            {
+              "method": "HEAD",
+              "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "HEAD",
+              "url": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test",
+              "status": 200,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "search",
+          "mediaTitle": "keyword:和班上第二可爱的女孩成为",
+          "episodeTitle": "",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%92%8C%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%BA%8C%E5%8F%AF%E7%88%B1%E7%9A%84%E5%A5%B3%E5%AD%A9%E6%88%90%E4%B8%BA",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "search returned empty medias",
+          "reasonCode": "search_empty",
+          "reasonText": "搜尋執行成功但結果為空",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%92%8C%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%BA%8C%E5%8F%AF%E7%88%B1%E7%9A%84%E5%A5%B3%E5%AD%A9%E6%88%90%E4%B8%BA",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "和班上第二可爱的女孩成为朋友",
+          "episodeTitle": "第01集",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260069",
+          "episodeURL": "https://vip.ffzy-plays.com/20260407/52156_c10f93a3/index.m3u8",
+          "playURL": "https://vip.ffzy-plays.com/20260407/52156_c10f93a3/index.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "GET",
+            "status": 206,
+            "contentType": "application/vnd.apple.mpegurl",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "婚姻剧毒",
+          "episodeTitle": "第01集",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260111",
+          "episodeURL": "https://vip.ffzy-plays.com/20260407/52155_b99c30c0/index.m3u8",
+          "playURL": "https://vip.ffzy-plays.com/20260407/52155_b99c30c0/index.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "GET",
+            "status": 206,
+            "contentType": "application/vnd.apple.mpegurl",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "复制品的我也会谈恋爱。",
+          "episodeTitle": "第01集",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260117",
+          "episodeURL": "https://vip.ffzy-plays.com/20260407/52154_182970cd/index.m3u8",
+          "playURL": "https://vip.ffzy-plays.com/20260407/52154_182970cd/index.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "GET",
+            "status": 206,
+            "contentType": "application/vnd.apple.mpegurl",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "index": 3,
+      "subscriptionName": "新廠長",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_czzy/config.json",
+      "startedAt": "2026-04-07T22:40:07.159Z",
+      "endedAt": "2026-04-07T22:40:22.115Z",
+      "mode": "subscriptions",
+      "pluginName": "廠長資源",
+      "pluginFolder": "plugin_czzy",
+      "sourceTitle": "",
+      "sourceNote": "要求大陸 IP",
+      "searchEnabled": true,
+      "indexPage": {
+        "key": "index",
+        "title": "首頁",
+        "url": "https://www.czzymovie.com/movie_bt/page/1",
+        "javascript": "buildMedias"
+      },
+      "connectivity": {
+        "ok": true,
+        "targets": [
+          {
+            "url": "https://www.czzymovie.com",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://www.czzymovie.com/movie_bt/page/1",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://www.czzymovie.com/boss1O1?q=test",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          }
+        ]
+      },
+      "summary": {
+        "casesTotal": 5,
+        "ok": 5,
+        "fail": 0
+      },
+      "cases": [
+        {
+          "ok": true,
+          "stage": "connectivity",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://www.czzymovie.com",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": [
+            {
+              "method": "HEAD",
+              "url": "https://www.czzymovie.com",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "HEAD",
+              "url": "https://www.czzymovie.com/movie_bt/page/1",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "HEAD",
+              "url": "https://www.czzymovie.com/boss1O1?q=test",
+              "status": 200,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": true,
+          "stage": "search",
+          "mediaTitle": "keyword:八千里路云和月",
+          "episodeTitle": "",
+          "detailURL": "https://www.czzymovie.com/boss1O1?q=%E5%85%AB%E5%8D%83%E9%87%8C%E8%B7%AF%E4%BA%91%E5%92%8C%E6%9C%88",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "八千里路云和月",
+          "episodeTitle": "第1集",
+          "detailURL": "https://www.cz01.org/movie/23276.html",
+          "episodeURL": "https://www.cz01.org/v_play/bXZfMjMyNzYtbm1fMQ==.html",
+          "playURL": "https://fanfan.hbcn.fun:906/hls3/hls02/八千里路云和月/八千里路云和月01.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "application/vnd.apple.mpegurl",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "遮天剧场版背棺战王腾",
+          "episodeTitle": "1080P-1",
+          "detailURL": "https://www.cz01.org/movie/23266.html",
+          "episodeURL": "https://www.cz01.org/v_play/bXZfMjMyNjYtbm1fMQ==.html",
+          "playURL": "https://fanfan.hbcn.fun:906/yun/zhetian.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "application/vnd.apple.mpegurl",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "钢铁森林",
+          "episodeTitle": "第1集",
+          "detailURL": "https://www.cz01.org/movie/23260.html",
+          "episodeURL": "https://www.cz01.org/v_play/bXZfMjMyNjAtbm1fMQ==.html",
+          "playURL": "https://fanfan.hbcn.fun:906/hls3/hls02/钢铁森林/1.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "application/vnd.apple.mpegurl",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "index": 4,
+      "subscriptionName": "YouKnowTV",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_youknow/config.json",
+      "startedAt": "2026-04-07T22:40:22.115Z",
+      "endedAt": "2026-04-07T22:40:38.404Z",
+      "mode": "subscriptions",
+      "pluginName": "YouKnowTV",
+      "pluginFolder": "plugin_youknow",
+      "sourceTitle": "",
+      "sourceNote": "领略更广阔的视界，尽享海量高清视频",
+      "searchEnabled": true,
+      "indexPage": {
+        "key": "index",
+        "title": "今日更新",
+        "url": "https://www.youknow.tv/label/new/",
+        "javascript": "buildMedias"
+      },
+      "connectivity": {
+        "ok": true,
+        "targets": [
+          {
+            "url": "https://www.youknow.tv",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://www.youknow.tv/label/new/",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://www.youknow.tv/search/-------------.html?wd=test",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          }
+        ]
+      },
+      "summary": {
+        "casesTotal": 5,
+        "ok": 4,
+        "fail": 1
+      },
+      "cases": [
+        {
+          "ok": true,
+          "stage": "connectivity",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://www.youknow.tv",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": [
+            {
+              "method": "HEAD",
+              "url": "https://www.youknow.tv",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "HEAD",
+              "url": "https://www.youknow.tv/label/new/",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "HEAD",
+              "url": "https://www.youknow.tv/search/-------------.html?wd=test",
+              "status": 200,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "search",
+          "mediaTitle": "keyword:山海经密码",
+          "episodeTitle": "",
+          "detailURL": "https://www.youknow.tv/search/-------------.html?wd=%E5%B1%B1%E6%B5%B7%E7%BB%8F%E5%AF%86%E7%A0%81",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "search returned empty medias",
+          "reasonCode": "search_empty",
+          "reasonText": "搜尋執行成功但結果為空",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.youknow.tv/search/-------------.html?wd=%E5%B1%B1%E6%B5%B7%E7%BB%8F%E5%AF%86%E7%A0%81",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "山海经密码",
+          "episodeTitle": "播放山海经密码第01集",
+          "detailURL": "https://www.youknow.tv/d/199071/",
+          "episodeURL": "https://www.youknow.tv/p/199071-1-1/",
+          "playURL": "https://vip.dytt-cine.com/20251227/65728_8259184b/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "一人之下第六季",
+          "episodeTitle": "播放一人之下第六季第01集",
+          "detailURL": "https://www.youknow.tv/d/198954/",
+          "episodeURL": "https://www.youknow.tv/p/198954-1-1/",
+          "playURL": "https://vip.dytt-cinema.com/20260102/44604_eb6fcbbe/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "大主宰年番",
+          "episodeTitle": "播放大主宰年番第01集",
+          "detailURL": "https://www.youknow.tv/d/136094/",
+          "episodeURL": "https://www.youknow.tv/p/136094-1-1/",
+          "playURL": "https://vip.dytt-cine.com/20250502/16260_314ae9d8/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "index": 5,
+      "subscriptionName": "libvio",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
+      "startedAt": "2026-04-07T22:40:38.404Z",
+      "endedAt": "2026-04-07T22:40:54.525Z",
+      "mode": "subscriptions",
+      "pluginName": "libvio",
+      "pluginFolder": "plugin_libvio",
+      "sourceTitle": "",
+      "sourceNote": "libvio",
+      "searchEnabled": true,
+      "indexPage": {
+        "key": "index",
+        "title": "最近更新",
+        "url": "https://libvio.site/",
+        "javascript": "buildMedias"
+      },
+      "connectivity": {
+        "ok": true,
+        "targets": [
+          {
+            "url": "https://libvio.site/",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://libvio.site/search/-------------.html?wd=test",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          }
+        ]
+      },
+      "summary": {
+        "casesTotal": 5,
+        "ok": 5,
+        "fail": 0
+      },
+      "cases": [
+        {
+          "ok": true,
+          "stage": "connectivity",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://libvio.site/",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": [
+            {
+              "method": "HEAD",
+              "url": "https://libvio.site/",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "HEAD",
+              "url": "https://libvio.site/search/-------------.html?wd=test",
+              "status": 200,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": true,
+          "stage": "search",
+          "mediaTitle": "keyword:婚姻剧毒",
+          "episodeTitle": "",
+          "detailURL": "https://libvio.site/search/-------------.html?wd=%E5%A9%9A%E5%A7%BB%E5%89%A7%E6%AF%92",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "婚姻剧毒",
+          "episodeTitle": "第01集",
+          "detailURL": "https://libvio.site/detail/714893348.html",
+          "episodeURL": "https://libvio.site/play/714893348-1-1.html",
+          "playURL": "https://v.vbing.me/2026/rh/4/Marriagetoxin.S01/Marriagetoxin.S01E01.mp4",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "video/mp4",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "权欲之巅",
+          "episodeTitle": "第01集",
+          "detailURL": "https://libvio.site/detail/714893279.html",
+          "episodeURL": "https://libvio.site/play/714893279-1-1.html",
+          "playURL": "https://v.vbing.me/2026/rh/3/Climax.S01/Climax.S01E01.mp4",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "video/mp4",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "盐沼之下",
+          "episodeTitle": "第01集",
+          "detailURL": "https://libvio.site/detail/714893347.html",
+          "episodeURL": "https://libvio.site/play/714893347-1-1.html",
+          "playURL": "https://v.vbing.me/2026/mj/4/Under.Salt.MarshS01/Under.Salt.MarshS01E01.mp4",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "video/mp4",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "index": 6,
+      "subscriptionName": "韩剧网",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_thanju/config.json",
+      "startedAt": "2026-04-07T22:40:54.525Z",
+      "endedAt": "2026-04-07T22:41:30.964Z",
+      "mode": "subscriptions",
+      "pluginName": "韩剧网",
+      "pluginFolder": "plugin_thanju",
+      "sourceTitle": "",
+      "sourceNote": "韓劇/電影/綜藝",
+      "searchEnabled": true,
+      "indexPage": {
+        "key": "index",
+        "title": "韩剧",
+        "url": "https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html",
+        "javascript": "buildMedias"
+      },
+      "connectivity": {
+        "ok": false,
+        "targets": [
+          {
+            "url": "https://www.thanju.com",
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "error": "unknown certificate verification error"
+          },
+          {
+            "url": "https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html",
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "error": "unknown certificate verification error"
+          },
+          {
+            "url": "https://www.thanju.com/search/test.html",
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "error": "unknown certificate verification error"
+          }
+        ]
+      },
+      "summary": {
+        "casesTotal": 2,
+        "ok": 0,
+        "fail": 2
+      },
+      "cases": [
+        {
+          "ok": false,
+          "stage": "connectivity",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://www.thanju.com",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "all connectivity targets failed",
+          "reasonCode": "connectivity_failed",
+          "reasonText": "插件站點連通性檢查失敗",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com",
+              "status": 0,
+              "error": "unknown certificate verification error"
+            },
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html",
+              "status": 0,
+              "error": "unknown certificate verification error"
+            },
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/search/test.html",
+              "status": 0,
+              "error": "unknown certificate verification error"
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "search",
+          "mediaTitle": "keyword:test",
+          "episodeTitle": "",
+          "detailURL": "https://www.thanju.com/search/test.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "search returned empty medias",
+          "reasonCode": "search_empty",
+          "reasonText": "搜尋執行成功但結果為空",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/search/test.html",
+              "status": 0,
+              "safeLine": false,
+              "error": "unknown certificate verification error"
+            }
+          ]
+        }
+      ],
+      "errors": [
+        "no medias returned; no medias returned"
+      ]
+    },
+    {
+      "index": 7,
+      "subscriptionName": "独播库",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_dbku/config.json",
+      "startedAt": "2026-04-07T22:41:30.964Z",
+      "endedAt": "2026-04-07T22:41:35.494Z",
+      "mode": "subscriptions",
+      "pluginName": "独播库",
+      "pluginFolder": "plugin_dbku",
+      "sourceTitle": "",
+      "sourceNote": "dbku.tv 线上看",
+      "searchEnabled": true,
+      "indexPage": {
+        "key": "index",
+        "title": "连续剧",
+        "url": "https://www.dbku.tv/vodtype/2--------1---.html",
+        "javascript": "buildMedias"
+      },
+      "connectivity": {
+        "ok": true,
+        "targets": [
+          {
+            "url": "https://www.dbku.tv",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://www.dbku.tv/vodtype/2--------1---.html",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          },
+          {
+            "url": "https://www.dbku.tv/vodsearch/-------------.html?wd=test&submit=",
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "error": ""
+          }
+        ]
+      },
+      "summary": {
+        "casesTotal": 5,
+        "ok": 5,
+        "fail": 0
+      },
+      "cases": [
+        {
+          "ok": true,
+          "stage": "connectivity",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://www.dbku.tv",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": [
+            {
+              "method": "HEAD",
+              "url": "https://www.dbku.tv",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "HEAD",
+              "url": "https://www.dbku.tv/vodtype/2--------1---.html",
+              "status": 200,
+              "error": ""
+            },
+            {
+              "method": "HEAD",
+              "url": "https://www.dbku.tv/vodsearch/-------------.html?wd=test&submit=",
+              "status": 200,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": true,
+          "stage": "search",
+          "mediaTitle": "keyword:魔女之吻",
+          "episodeTitle": "",
+          "detailURL": "https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%AD%94%E5%A5%B3%E4%B9%8B%E5%90%BB&submit=",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "魔女之吻",
+          "episodeTitle": "第1集",
+          "detailURL": "https://www.dbku.tv/voddetail/143163.html",
+          "episodeURL": "https://www.dbku.tv/vodplay/143163-1-1.html",
+          "playURL": "https://vid.dbokutv.com/20260303/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHgTcyo5xOy6ejRMvwToqmCIqmCpSuDZasE48kRN0q/chunklist.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "application/octet-stream",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "八千里路云和月",
+          "episodeTitle": "第1集",
+          "detailURL": "https://www.dbku.tv/voddetail/143438.html",
+          "episodeURL": "https://www.dbku.tv/vodplay/143438-1-1.html",
+          "playURL": "https://vid.dbokutv.com/20260407/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBM9nR6nvQ7ajC34jC34qGpP6C34sBcrmD0/chunklist.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "application/octet-stream",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "白日提灯",
+          "episodeTitle": "第1集",
+          "detailURL": "https://www.dbku.tv/voddetail/143322.html",
+          "episodeURL": "https://www.dbku.tv/vodplay/143322-1-1.html",
+          "playURL": "https://vid.dbokutv.com/20260328/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM9oT6GjC34jC34mHZP4DpX6BcrmD0/chunklist.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "application/octet-stream",
+            "error": ""
+          },
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

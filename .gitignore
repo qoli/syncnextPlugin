@@ -69,4 +69,9 @@ Desktop.ini
 
 #
 _ref/
-syncnextPlugin_all_plugin_test_runs/
+syncnextPlugin_all_plugin_test_runs/*
+!syncnextPlugin_all_plugin_test_runs/latest.log
+!syncnextPlugin_all_plugin_test_runs/latest.summary.log
+!syncnextPlugin_all_plugin_test_runs/latest.json
+!syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.json
+!syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.txt

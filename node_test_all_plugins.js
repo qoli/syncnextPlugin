@@ -7,6 +7,10 @@ const vm = require("vm");
 
 const DEFAULT_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15";
+const DEFAULT_SUBSCRIPTIONS_URL =
+  "https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json";
+const README_STATUS_START = "<!-- AUTO-SMOKE-STATUS:START -->";
+const README_STATUS_END = "<!-- AUTO-SMOKE-STATUS:END -->";
 
 function getArg(name, fallback) {
   const prefix = `--${name}=`;
@@ -113,6 +117,10 @@ function looksLikeURL(input) {
 
 function removeSyncnextPluginScheme(apiValue) {
   return String(apiValue || "").replace(/^syncnextplugin:\/\//i, "");
+}
+
+function isSyncnextPluginURL(input) {
+  return /^syncnextplugin:\/\//i.test(String(input || "").trim());
 }
 
 function headersToObject(headers) {
@@ -570,14 +578,99 @@ async function listLocalPlugins(pluginRoot) {
   return dirs;
 }
 
+function derivePluginFolderFromConfigURL(configURL) {
+  const urlObj = safeParseURL(configURL);
+  if (!urlObj) return "";
+  const parts = String(urlObj.pathname || "")
+    .split("/")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  for (let i = parts.length - 1; i >= 0; i--) {
+    if (/^plugin_/i.test(parts[i])) {
+      return parts[i];
+    }
+  }
+  return "";
+}
+
+async function listSubscriptionPlugins(options) {
+  const subscriptionsFile = String(options.subscriptionsFile || "").trim();
+  const subscriptionsURL = String(options.subscriptionsURL || "").trim();
+
+  if (!subscriptionsFile && !subscriptionsURL) {
+    throw new Error("subscriptions discovery requires --subscriptions-url or --subscriptions-file");
+  }
+
+  let text = "";
+  let source = "";
+  if (subscriptionsFile) {
+    const abs = path.resolve(subscriptionsFile);
+    text = await readLocalText(abs);
+    source = abs;
+  } else {
+    text = await readRemoteText(subscriptionsURL, options.requestTimeoutMs);
+    source = subscriptionsURL;
+  }
+
+  const parsed = safeJSONParse(text, null);
+  if (!Array.isArray(parsed)) {
+    throw new Error(`subscriptions parse failed: ${source}`);
+  }
+
+  const items = [];
+  for (let index = 0; index < parsed.length; index++) {
+    const item = parsed[index];
+    const api = String(item && item.api || "").trim();
+    if (!isSyncnextPluginURL(api)) continue;
+
+    const configURL = removeSyncnextPluginScheme(api);
+    const pluginFolder = derivePluginFolderFromConfigURL(configURL);
+    const sourceName = String(
+      (item && (item.name || item.title)) || pluginFolder || `subscription-${index + 1}`
+    ).trim();
+
+    items.push({
+      mode: "subscriptions",
+      folder: pluginFolder || `subscription_${index + 1}`,
+      pluginFolder,
+      name: sourceName,
+      title: String(item && item.title || "").trim(),
+      sourceName,
+      sourceSearch: !!(item && item.Search),
+      sourceTop: !!(item && item.Top),
+      sourceNote: String(item && item.note || "").trim(),
+      sourceIndex: index,
+      api,
+      configURL,
+    });
+  }
+
+  return {
+    source,
+    items,
+  };
+}
+
+function resolveRelativeURL(input, baseURL) {
+  try {
+    return new URL(String(input || ""), baseURL).toString();
+  } catch (_) {
+    return "";
+  }
+}
+
 async function resolvePluginSource(pluginEntry, options) {
+  const isRemote = pluginEntry.mode === "subscriptions";
   const localDir = pluginEntry.dir;
   const configPath = pluginEntry.configPath;
-  const configText = await readLocalText(configPath);
+  const configURL = pluginEntry.configURL;
+  const configText = isRemote
+    ? await readRemoteText(configURL, options.requestTimeoutMs)
+    : await readLocalText(configPath);
 
   const config = safeJSONParse(configText, null);
   if (!config || typeof config !== "object") {
-    throw new Error(`config.json parse failed: ${configPath}`);
+    throw new Error(`config.json parse failed: ${isRemote ? configURL : configPath}`);
   }
 
   const files = Array.isArray(config.files) ? config.files.slice() : [];
@@ -597,8 +690,18 @@ async function resolvePluginSource(pluginEntry, options) {
       continue;
     }
 
-    if (/^syncnextplugin:\/\//i.test(name)) {
+    if (isSyncnextPluginURL(name)) {
       const remoteURL = removeSyncnextPluginScheme(name);
+      const content = await readRemoteText(remoteURL, options.requestTimeoutMs);
+      loadedFiles.push({ name, source: remoteURL, content });
+      continue;
+    }
+
+    if (isRemote) {
+      const remoteURL = resolveRelativeURL(name, configURL);
+      if (!remoteURL) {
+        throw new Error(`invalid relative remote file in config.files: ${name}`);
+      }
       const content = await readRemoteText(remoteURL, options.requestTimeoutMs);
       loadedFiles.push({ name, source: remoteURL, content });
       continue;
@@ -615,12 +718,17 @@ async function resolvePluginSource(pluginEntry, options) {
 
   return {
     pluginEntry,
-    apiURL: `syncnextplugin://local/${pluginEntry.folder}/config.json`,
-    configPath,
-    pluginFolder: pluginEntry.folder,
-    mode: "local",
+    apiURL: isRemote ? pluginEntry.api : `syncnextplugin://local/${pluginEntry.folder}/config.json`,
+    configPath: isRemote ? configURL : configPath,
+    pluginFolder: pluginEntry.pluginFolder || pluginEntry.folder,
+    mode: isRemote ? "subscriptions" : "local",
     config,
     files: loadedFiles,
+    sourceName: pluginEntry.sourceName || pluginEntry.name || pluginEntry.folder || "",
+    sourceTitle: pluginEntry.title || "",
+    sourceNote: pluginEntry.sourceNote || "",
+    sourceSearch: !!pluginEntry.sourceSearch,
+    sourceTop: !!pluginEntry.sourceTop,
   };
 }
 
@@ -1193,9 +1301,33 @@ async function probePlayableURL(url, headers, options) {
 }
 
 function buildSubscriptionLabel(entry, index) {
-  const name = String(entry && (entry.folder || entry.name || entry.title) || "").trim();
+  const name = String(
+    entry && (entry.sourceName || entry.name || entry.title || entry.folder) || ""
+  ).trim();
   if (name) return name;
   return `plugin-${index + 1}`;
+}
+
+function buildEntryFilterTokens(entry) {
+  const tokens = new Set();
+  const candidates = [
+    entry && entry.folder,
+    entry && entry.pluginFolder,
+    entry && entry.name,
+    entry && entry.title,
+    entry && entry.sourceName,
+  ];
+
+  for (const value of candidates) {
+    const text = String(value || "").trim().toLowerCase();
+    if (!text) continue;
+    tokens.add(text);
+    if (/^plugin_/i.test(text)) {
+      tokens.add(text.replace(/^plugin_/, ""));
+    }
+  }
+
+  return Array.from(tokens);
 }
 
 function isReservedPluginFolder(folderName) {
@@ -1267,12 +1399,15 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
   const pluginReport = {
     index: index + 1,
     subscriptionName: buildSubscriptionLabel(pluginEntry, index),
-    api: `syncnextplugin://local/${pluginEntry.folder}/config.json`,
+    api: pluginEntry.api || `syncnextplugin://local/${pluginEntry.folder}/config.json`,
     startedAt,
     endedAt: "",
     mode: "",
     pluginName: "",
     pluginFolder: "",
+    sourceTitle: "",
+    sourceNote: "",
+    searchEnabled: false,
     indexPage: null,
     connectivity: null,
     summary: {
@@ -1287,9 +1422,13 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
   let runtime = null;
   try {
     const source = await resolvePluginSource(pluginEntry, options);
+    pluginReport.api = source.apiURL;
     pluginReport.mode = source.mode;
     pluginReport.pluginFolder = source.pluginFolder;
     pluginReport.pluginName = String(source.config.name || pluginReport.subscriptionName);
+    pluginReport.sourceTitle = source.sourceTitle || "";
+    pluginReport.sourceNote = source.sourceNote || "";
+    pluginReport.searchEnabled = !!(source.sourceSearch || source.config.search);
     runtime = createPluginRuntime(source, options, logger);
 
     function buildFailureMeta(errorText, stageEvents) {
@@ -1681,13 +1820,171 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
   return pluginReport;
 }
 
+function buildReasonCountsForPlugin(pluginReport) {
+  const counts = {};
+  for (const item of pluginReport && pluginReport.cases || []) {
+    if (!item || item.ok) continue;
+    const key = String(item.reasonCode || "unknown");
+    counts[key] = (counts[key] || 0) + 1;
+  }
+  if (
+    Array.isArray(pluginReport && pluginReport.errors) &&
+    pluginReport.errors.length > 0 &&
+    Object.keys(counts).length === 0
+  ) {
+    counts.fatal_error = pluginReport.errors.length;
+  }
+  return counts;
+}
+
+function formatReasonCounts(reasonCounts) {
+  const entries = Object.entries(reasonCounts || {});
+  if (entries.length === 0) return "-";
+  return entries.map((entry) => `${entry[0]}:${entry[1]}`).join(", ");
+}
+
+function determinePluginSmokeStatus(pluginReport) {
+  if (Array.isArray(pluginReport && pluginReport.errors) && pluginReport.errors.length > 0) {
+    return "Bun Smoke Fatal";
+  }
+
+  const summary = pluginReport && pluginReport.summary || {};
+  const ok = Number(summary.ok || 0);
+  const fail = Number(summary.fail || 0);
+
+  if (fail <= 0) return "Bun Smoke OK";
+  if (ok > 0) return "Bun Smoke Partial";
+  return "Bun Smoke Fail";
+}
+
+function escapeMarkdownTableCell(input) {
+  return String(input == null ? "" : input)
+    .replace(/\|/g, "\\|")
+    .replace(/\r?\n/g, "<br>");
+}
+
+function buildSummaryLog(report, invalidSources, meta) {
+  const lines = [];
+  lines.push(`generated_at=${report.generatedAt}`);
+  lines.push(`runner=bun`);
+  lines.push(`discovery=${meta.discovery}`);
+  if (meta.subscriptionsSource) {
+    lines.push(`subscriptions_source=${meta.subscriptionsSource}`);
+  }
+  lines.push(
+    `summary plugins=${report.summary.pluginsTotal} fatal=${report.summary.pluginsWithFatalErrors} cases=${report.summary.casesTotal} ok=${report.summary.ok} fail=${report.summary.fail} invalidSources=${report.summary.invalidSourcesPlugins}`
+  );
+  lines.push(
+    "disclaimer=Bun/Node smoke test only; it does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability."
+  );
+  lines.push("");
+  lines.push("[plugins]");
+  for (const plugin of report.plugins || []) {
+    const total = Number(plugin && plugin.summary && plugin.summary.casesTotal || 0);
+    const ok = Number(plugin && plugin.summary && plugin.summary.ok || 0);
+    const reasonText = formatReasonCounts(buildReasonCountsForPlugin(plugin));
+    lines.push(
+      `- ${plugin.pluginFolder || "-"} | ${plugin.pluginName || plugin.subscriptionName || "-"} | ${determinePluginSmokeStatus(plugin)} | ${ok}/${total} ok | ${reasonText}`
+    );
+  }
+
+  lines.push("");
+  lines.push("[invalid_sources]");
+  if (!invalidSources || !Array.isArray(invalidSources.invalidPlugins) || invalidSources.invalidPlugins.length === 0) {
+    lines.push("- none");
+  } else {
+    for (const item of invalidSources.invalidPlugins) {
+      lines.push(
+        `- ${item.pluginFolder || "-"} | ${item.pluginName || "-"} | ${formatReasonCounts(item.reasonCounts)} | fatal=${Array.isArray(item.fatalErrors) ? item.fatalErrors.length : 0}`
+      );
+    }
+  }
+
+  return lines.join("\n") + "\n";
+}
+
+function buildReadmeStatusSection(report, invalidSources, meta) {
+  const lines = [];
+  lines.push(`Generated: \`${report.generatedAt}\``);
+  if (meta.subscriptionsSource) {
+    lines.push(
+      `Enabled plugin source: [sourcesv3.json](${meta.subscriptionsSource})`
+    );
+  } else {
+    lines.push(`Discovery mode: \`${meta.discovery}\``);
+  }
+  lines.push("");
+  lines.push("> Bun/Node smoke status only.");
+  lines.push("> It does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.");
+  lines.push("");
+  lines.push("| Plugin | Source Entry | Search | Bun Smoke | Cases | Main Reasons |");
+  lines.push("| --- | --- | --- | --- | --- | --- |");
+
+  for (const plugin of report.plugins || []) {
+    const total = Number(plugin && plugin.summary && plugin.summary.casesTotal || 0);
+    const ok = Number(plugin && plugin.summary && plugin.summary.ok || 0);
+    lines.push(
+      `| ${escapeMarkdownTableCell(plugin.pluginName || "-")} | ${escapeMarkdownTableCell(plugin.subscriptionName || "-")} | ${plugin.searchEnabled ? "Yes" : "No"} | ${determinePluginSmokeStatus(plugin)} | ${ok}/${total} | ${escapeMarkdownTableCell(formatReasonCounts(buildReasonCountsForPlugin(plugin)))} |`
+    );
+  }
+
+  lines.push("");
+  lines.push(`Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json)`);
+  if (invalidSources && invalidSources.invalidPluginsCount > 0) {
+    lines.push("");
+    lines.push(`Invalid sources: \`${invalidSources.invalidPluginsCount}\``);
+    for (const item of invalidSources.invalidPlugins || []) {
+      lines.push(
+        `- \`${item.pluginFolder || "-"}\` ${item.pluginName || "-"}: ${formatReasonCounts(item.reasonCounts)}`
+      );
+    }
+  }
+
+  return lines.join("\n");
+}
+
+async function updateReadmeStatus(readmePath, sectionMarkdown) {
+  const abs = path.resolve(readmePath);
+  const current = await readLocalText(abs);
+  const block = `${README_STATUS_START}\n${sectionMarkdown}\n${README_STATUS_END}`;
+
+  let next = current;
+  if (current.includes(README_STATUS_START) && current.includes(README_STATUS_END)) {
+    const pattern = new RegExp(
+      `${README_STATUS_START}[\\s\\S]*?${README_STATUS_END}`,
+      "m"
+    );
+    next = current.replace(pattern, block);
+  } else {
+    const suffix = current.endsWith("\n") ? "" : "\n";
+    next =
+      current +
+      suffix +
+      "\n## Automated Bun Smoke Status\n\n" +
+      block +
+      "\n";
+  }
+
+  if (next !== current) {
+    await fsp.writeFile(abs, next, "utf8");
+  }
+}
+
 async function main() {
   const timestamp = tsCompact();
   const pluginRoot = path.resolve(getArg("plugin-root", __dirname));
   const outputDir = path.resolve(getArg("output-dir", __dirname));
   const outputFolderName = getArg("output-folder", "syncnextPlugin_all_plugin_test_runs");
+  const discovery = String(getArg("discovery", "local") || "local").trim().toLowerCase();
+  const historyMode = String(getArg("history-mode", "keep") || "keep").trim().toLowerCase();
+  const updateReadmePath = String(getArg("update-readme", "") || "").trim();
+  const subscriptionsURL = String(
+    getArg("subscriptions-url", DEFAULT_SUBSCRIPTIONS_URL) || DEFAULT_SUBSCRIPTIONS_URL
+  ).trim();
+  const subscriptionsFile = String(getArg("subscriptions-file", "") || "").trim();
   const managedOutputRoot = path.join(outputDir, outputFolderName);
-  const runOutputDir = path.join(managedOutputRoot, timestamp);
+  const keepHistory = historyMode !== "latest-only";
+  const runOutputDir = keepHistory ? path.join(managedOutputRoot, timestamp) : managedOutputRoot;
   const limitMedias = toInt(getArg("limit-medias", "3"), 3);
   const invokeTimeoutMs = toInt(getArg("invoke-timeout-ms", "45000"), 45000);
   const requestTimeoutMs = toInt(getArg("request-timeout-ms", "25000"), 25000);
@@ -1709,7 +2006,10 @@ async function main() {
     .filter(Boolean);
 
   const options = {
+    discovery,
     pluginRoot,
+    subscriptionsURL,
+    subscriptionsFile,
     limitMedias,
     allEpisodes: hasFlag("all-episodes"),
     strictProbe: hasFlag("strict-probe"),
@@ -1734,37 +2034,54 @@ async function main() {
 
   await fsp.mkdir(runOutputDir, { recursive: true });
 
-  const logPath = path.join(runOutputDir, "run.log");
-  const reportPath = path.join(runOutputDir, "report.json");
   const latestPath = path.join(managedOutputRoot, "latest.json");
   const latestLogPath = path.join(managedOutputRoot, "latest.log");
-  const invalidSourcesDir = path.join(runOutputDir, "invalid_sources");
-  const invalidSourcesPath = path.join(invalidSourcesDir, "invalid_sources.json");
-  const invalidSourcesTxtPath = path.join(invalidSourcesDir, "invalid_sources.txt");
+  const latestSummaryLogPath = path.join(managedOutputRoot, "latest.summary.log");
   const invalidSourcesLatestPath = path.join(managedOutputRoot, "invalid_sources_latest.json");
   const invalidSourcesLatestTxtPath = path.join(managedOutputRoot, "invalid_sources_latest.txt");
+  const logPath = keepHistory ? path.join(runOutputDir, "run.log") : latestLogPath;
+  const reportPath = keepHistory ? path.join(runOutputDir, "report.json") : latestPath;
+  const summaryLogPath = keepHistory ? path.join(runOutputDir, "summary.log") : latestSummaryLogPath;
+  const invalidSourcesDir = keepHistory ? path.join(runOutputDir, "invalid_sources") : path.join(managedOutputRoot, "invalid_sources");
+  const invalidSourcesPath = keepHistory ? path.join(invalidSourcesDir, "invalid_sources.json") : invalidSourcesLatestPath;
+  const invalidSourcesTxtPath = keepHistory ? path.join(invalidSourcesDir, "invalid_sources.txt") : invalidSourcesLatestTxtPath;
+
+  if (!keepHistory && fs.existsSync(logPath)) {
+    await fsp.unlink(logPath);
+  }
 
   const logger = createLogger(logPath);
   logger.log(`[log] ${logPath}`);
   logger.log(`[plugin-root] ${pluginRoot}`);
   logger.log(`[output] ${reportPath}`);
+  logger.log(`[runner] bun`);
+  logger.log(`[discovery] ${discovery}`);
+  if (discovery === "subscriptions") {
+    logger.log(`[subscriptions] ${subscriptionsFile || subscriptionsURL}`);
+  }
 
   try {
-    const discoveredAll = await listLocalPlugins(pluginRoot);
+    let discoveredAll = [];
+    let subscriptionsSource = "";
+    if (discovery === "subscriptions") {
+      const subscriptions = await listSubscriptionPlugins(options);
+      discoveredAll = subscriptions.items;
+      subscriptionsSource = subscriptions.source;
+    } else {
+      discoveredAll = await listLocalPlugins(pluginRoot);
+    }
     const discovered = discoveredAll.filter((entry) => !isReservedPluginFolder(entry.folder));
     let filtered = discovered.slice();
     if (onlyFilter.length > 0) {
       filtered = filtered.filter((entry) => {
-        const folder = entry.folder.toLowerCase();
-        const short = folder.replace(/^plugin_/, "");
-        return onlyFilter.includes(folder) || onlyFilter.includes(short);
+        const tokens = buildEntryFilterTokens(entry);
+        return onlyFilter.some((item) => tokens.includes(item));
       });
     }
     if (excludeFilter.length > 0) {
       filtered = filtered.filter((entry) => {
-        const folder = entry.folder.toLowerCase();
-        const short = folder.replace(/^plugin_/, "");
-        return !excludeFilter.includes(folder) && !excludeFilter.includes(short);
+        const tokens = buildEntryFilterTokens(entry);
+        return !excludeFilter.some((item) => tokens.includes(item));
       });
     }
     if (maxPlugins > 0) {
@@ -1798,6 +2115,9 @@ async function main() {
         probeTimeoutMs: options.probeTimeoutMs,
         connectivityTimeoutMs: options.connectivityTimeoutMs,
         pluginRoot: options.pluginRoot,
+        discovery: options.discovery,
+        historyMode,
+        subscriptionsSource,
         only: onlyFilter,
         exclude: excludeFilter,
         enableConnectivityCheck: options.enableConnectivityCheck,
@@ -1822,15 +2142,29 @@ async function main() {
       reservedSkippedPluginFolders: discoveredAll
         .map((item) => item.folder)
         .filter((folder) => isReservedPluginFolder(folder)),
+      subscriptionsSource,
       invalidSourcesSummary: {
         invalidPluginsCount: invalidSources.invalidPluginsCount,
       },
       plugins: pluginReports,
     };
 
+    const summaryLog = buildSummaryLog(report, invalidSources, {
+      discovery,
+      subscriptionsSource,
+    });
+
     await fsp.writeFile(reportPath, JSON.stringify(report, null, 2) + "\n", "utf8");
-    await fsp.writeFile(latestPath, JSON.stringify(report, null, 2) + "\n", "utf8");
-    await fsp.copyFile(logPath, latestLogPath);
+    await fsp.writeFile(summaryLogPath, summaryLog, "utf8");
+    if (reportPath !== latestPath) {
+      await fsp.writeFile(latestPath, JSON.stringify(report, null, 2) + "\n", "utf8");
+    }
+    if (logPath !== latestLogPath) {
+      await fsp.copyFile(logPath, latestLogPath);
+    }
+    if (summaryLogPath !== latestSummaryLogPath) {
+      await fsp.copyFile(summaryLogPath, latestSummaryLogPath);
+    }
     await fsp.mkdir(invalidSourcesDir, { recursive: true });
     await fsp.writeFile(invalidSourcesPath, JSON.stringify(invalidSources, null, 2) + "\n", "utf8");
     await fsp.writeFile(
@@ -1851,8 +2185,25 @@ async function main() {
         .join("\n") + "\n",
       "utf8"
     );
-    await fsp.writeFile(invalidSourcesLatestPath, JSON.stringify(invalidSources, null, 2) + "\n", "utf8");
-    await fsp.copyFile(invalidSourcesTxtPath, invalidSourcesLatestTxtPath);
+    if (invalidSourcesPath !== invalidSourcesLatestPath) {
+      await fsp.writeFile(
+        invalidSourcesLatestPath,
+        JSON.stringify(invalidSources, null, 2) + "\n",
+        "utf8"
+      );
+    }
+    if (invalidSourcesTxtPath !== invalidSourcesLatestTxtPath) {
+      await fsp.copyFile(invalidSourcesTxtPath, invalidSourcesLatestTxtPath);
+    }
+
+    if (updateReadmePath) {
+      const readmeSection = buildReadmeStatusSection(report, invalidSources, {
+        discovery,
+        subscriptionsSource,
+      });
+      await updateReadmeStatus(updateReadmePath, readmeSection);
+      logger.log(`[readme] ${path.resolve(updateReadmePath)}`);
+    }
 
     logger.log(
       `[summary] plugins=${report.summary.pluginsTotal}, fatal=${report.summary.pluginsWithFatalErrors}, cases=${report.summary.casesTotal}, ok=${report.summary.ok}, fail=${report.summary.fail}, invalidSources=${report.summary.invalidSourcesPlugins}`
@@ -1860,6 +2211,7 @@ async function main() {
     logger.log(`[report] ${reportPath}`);
     logger.log(`[latest] ${latestPath}`);
     logger.log(`[latest-log] ${latestLogPath}`);
+    logger.log(`[latest-summary-log] ${latestSummaryLogPath}`);
     logger.log(`[invalid-sources] ${invalidSourcesPath}`);
     logger.log(`[invalid-sources-latest] ${invalidSourcesLatestPath}`);
 

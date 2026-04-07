@@ -1,0 +1,47 @@
+name: Plugin Smoke Status
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  smoke-status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.10"
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Update Smoke Status
+        id: smoke
+        continue-on-error: true
+        run: bun run smoke:update-readme
+
+      - name: Commit Updated Status Files
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A README.md syncnextPlugin_all_plugin_test_runs
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "🤖 chore(smoke): update plugin smoke status"
+          git push
+
+      - name: Fail When Smoke Test Fails
+        if: steps.smoke.outcome == 'failure'
+        run: exit 1
