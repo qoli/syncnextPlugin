@@ -29,6 +29,28 @@ function buildEpisodeData(id, title, episodeDetailURL, tagText) {
   };
 }
 
+function buildEpisodePayload(resolverURL) {
+  return 'age-payload:' + encodeURIComponent(JSON.stringify({
+    resolverURL: resolverURL,
+  }));
+}
+
+function parseEpisodePayload(inputURL) {
+  var text = String(inputURL || '');
+  var prefix = 'age-payload:';
+
+  if (text.indexOf(prefix) !== 0) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(decodeURIComponent(text.substring(prefix.length)));
+  } catch (error) {
+    print({ stage: 'parseEpisodePayload', inputURL: text, error: String(error) });
+    return null;
+  }
+}
+
 function fetchText(url, onSuccess, onFailure, headers) {
   var req = {
     url: url,
@@ -56,6 +78,16 @@ function isHTTPURL(inputURL) {
 
 function isResolverURL(inputURL) {
   return /^https?:\/\/jx\.ejtsyc\.com:8443\/(m3u8|vip)\/\?url=/i.test(String(inputURL || ''));
+}
+
+function getResolverURL(inputURL) {
+  var payload = parseEpisodePayload(inputURL);
+
+  if (payload && payload.resolverURL) {
+    return String(payload.resolverURL);
+  }
+
+  return String(inputURL || '');
 }
 
 function normalizePlayURL(playURL, baseURL) {
@@ -121,6 +153,62 @@ function cloneEpisodeWithURL(episode, newURL) {
   };
 }
 
+function truncateForLog(text) {
+  var value = String(text || '');
+  if (value.length <= 180) {
+    return value;
+  }
+  return value.substring(0, 180) + '...';
+}
+
+function getEpisodeURLKind(inputURL) {
+  var text = String(inputURL || '');
+
+  if (!text) {
+    return 'empty';
+  }
+
+  if (parseEpisodePayload(text)) {
+    return 'age-payload';
+  }
+
+  if (isResolverURL(text)) {
+    return 'resolver';
+  }
+
+  if (isHTTPURL(text)) {
+    return 'http';
+  }
+
+  return 'other';
+}
+
+function buildEpisodeLogSample(episode) {
+  if (!episode) {
+    return null;
+  }
+
+  return {
+    id: episode.id || '',
+    title: episode.title || '',
+    tagText: episode.tagText || '',
+    episodeDetailURLKind: getEpisodeURLKind(episode.episodeDetailURL),
+    episodeDetailURL: truncateForLog(episode.episodeDetailURL),
+  };
+}
+
+function buildCandidateLogSample(group) {
+  if (!group) {
+    return null;
+  }
+
+  return {
+    source: group.source || '',
+    episodesCount: group.episodes && group.episodes.length ? group.episodes.length : 0,
+    firstEpisode: group.episodes && group.episodes.length ? buildEpisodeLogSample(group.episodes[0]) : null,
+  };
+}
+
 function resolveCandidateProbeURLs(candidateGroups, onDone) {
   var groups = candidateGroups || [];
   var resolvedGroups = [];
@@ -139,11 +227,24 @@ function resolveCandidateProbeURLs(candidateGroups, onDone) {
     }
 
     var firstEpisode = group.episodes[0];
+    var firstEpisodeResolverURL = getResolverURL(firstEpisode.episodeDetailURL);
+    print({
+      stage: 'resolveCandidateProbeURLs.start',
+      source: group.source,
+      firstEpisode: buildEpisodeLogSample(firstEpisode),
+      resolverURLKind: getEpisodeURLKind(firstEpisodeResolverURL),
+      resolverURL: truncateForLog(firstEpisodeResolverURL),
+    });
     resolveResolverURL(
-      firstEpisode.episodeDetailURL,
+      firstEpisodeResolverURL,
       function (playURL) {
         var episodes = group.episodes.slice(0);
         episodes[0] = cloneEpisodeWithURL(firstEpisode, playURL);
+        print({
+          stage: 'resolveCandidateProbeURLs.success',
+          source: group.source,
+          resolvedFirstEpisode: buildEpisodeLogSample(episodes[0]),
+        });
         resolvedGroups.push({
           source: group.source,
           episodes: episodes,
@@ -151,7 +252,7 @@ function resolveCandidateProbeURLs(candidateGroups, onDone) {
         next();
       },
       function (error) {
-        print({ stage: 'resolveCandidateProbeURLs', source: group.source, url: firstEpisode.episodeDetailURL, error: String(error) });
+        print({ stage: 'resolveCandidateProbeURLs', source: group.source, url: firstEpisodeResolverURL, error: String(error) });
         next();
       }
     );
@@ -285,7 +386,7 @@ function buildEpisodeCandidates(detailData) {
         buildEpisodeData(
           videoID + '-' + lineKey + '-' + title,
           title,
-          buildResolverURL(lineKey, cryptograph, detailData),
+          buildEpisodePayload(buildResolverURL(lineKey, cryptograph, detailData)),
           sourceName
         )
       );
@@ -382,7 +483,21 @@ function Episodes(detailURL) {
     function (body) {
       var payload = safeJSONParse(body);
       var candidates = buildEpisodeCandidates(payload);
+      print({
+        stage: 'Episodes.candidatesBuilt',
+        detailURL: detailURL,
+        candidatesCount: candidates.length,
+        firstCandidate: candidates.length ? buildCandidateLogSample(candidates[0]) : null,
+        supportsToEpisodesCandidates: typeof $next.toEpisodesCandidates === 'function',
+      });
       var finishEpisodes = function (finalCandidates) {
+        print({
+          stage: 'Episodes.finishEpisodes',
+          finalCandidatesCount: finalCandidates.length,
+          mode: finalCandidates.length && typeof $next.toEpisodesCandidates === 'function' ? 'toEpisodesCandidates' : 'toEpisodes',
+          firstCandidate: finalCandidates.length ? buildCandidateLogSample(finalCandidates[0]) : null,
+        });
+
         if (!finalCandidates.length) {
           if (typeof $next.emptyView === 'function') {
             $next.emptyView('未找到可播放劇集');
@@ -391,7 +506,7 @@ function Episodes(detailURL) {
           return;
         }
 
-        if (finalCandidates.length > 1 && typeof $next.toEpisodesCandidates === 'function') {
+        if (typeof $next.toEpisodesCandidates === 'function') {
           $next.toEpisodesCandidates(JSON.stringify(finalCandidates));
           return;
         }
@@ -405,7 +520,20 @@ function Episodes(detailURL) {
       }
 
       resolveCandidateProbeURLs(candidates, function (resolvedCandidates) {
-        finishEpisodes(resolvedCandidates.length ? resolvedCandidates : candidates);
+        if (resolvedCandidates.length) {
+          finishEpisodes(resolvedCandidates);
+          return;
+        }
+
+        print({
+          stage: 'Episodes.resolveCandidateProbeURLs',
+          message: 'all candidate probes failed, fallback to first source episodes only',
+          fallbackSource: candidates[0] && candidates[0].source ? candidates[0].source : '',
+          fallbackFirstEpisode: candidates[0] && candidates[0].episodes && candidates[0].episodes.length
+            ? buildEpisodeLogSample(candidates[0].episodes[0])
+            : null,
+        });
+        finishEpisodes([candidates[0]]);
       });
     },
     function (error) {
@@ -419,13 +547,15 @@ function Episodes(detailURL) {
 }
 
 function Player(episodeURL) {
+  var resolverURL = getResolverURL(episodeURL);
+
   resolveResolverURL(
-    episodeURL,
+    resolverURL,
     function (playURL) {
-      emitPlayerURL(playURL, isResolverURL(episodeURL) ? episodeURL : '');
+      emitPlayerURL(playURL, isResolverURL(resolverURL) ? resolverURL : '');
     },
     function (error) {
-      print({ stage: 'Player', url: episodeURL, error: String(error) });
+      print({ stage: 'Player', url: resolverURL, rawEpisodeURL: episodeURL, error: String(error) });
       if (typeof $next.emptyView === 'function') {
         $next.emptyView('AGE 播放地址解析失敗');
       }
