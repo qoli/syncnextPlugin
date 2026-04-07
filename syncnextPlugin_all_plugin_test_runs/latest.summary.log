@@ -1,18 +1,20 @@
-generated_at=2026-04-07T22:41:35.495Z
+generated_at=2026-04-07T22:43:38.931Z
 runner=bun
 discovery=subscriptions
 subscriptions_source=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json
-summary plugins=7 fatal=1 cases=32 ok=28 fail=4 invalidSources=1
+summary plugins=7 fatal=3 cases=26 ok=19 fail=7 invalidSources=3
 disclaimer=Bun/Node smoke test only; it does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.
 
 [plugins]
 - plugin_olevod | 新歐樂影院 | Bun Smoke OK | 5/5 ok | -
 - plugin_age | 新 AGE 動漫 | Bun Smoke Partial | 4/5 ok | search_empty:1
-- plugin_czzy | 廠長資源 | Bun Smoke OK | 5/5 ok | -
-- plugin_youknow | YouKnowTV | Bun Smoke Partial | 4/5 ok | search_empty:1
-- plugin_libvio | libvio | Bun Smoke OK | 5/5 ok | -
-- plugin_thanju | 韩剧网 | Bun Smoke Fatal | 0/2 ok | connectivity_failed:1, search_empty:1
+- plugin_czzy | 廠長資源 | Bun Smoke Fatal | 0/2 ok | connectivity_failed:1, search_empty:1
+- plugin_youknow | YouKnowTV | Bun Smoke Fatal | 0/2 ok | connectivity_failed:1, search_empty:1
+- plugin_libvio | libvio | Bun Smoke Fatal | 0/2 ok | connectivity_failed:1, search_empty:1
+- plugin_thanju | 韩剧网 | Bun Smoke OK | 5/5 ok | -
 - plugin_dbku | 独播库 | Bun Smoke OK | 5/5 ok | -
 
 [invalid_sources]
-- plugin_thanju | 韩剧网 | fatal_error:1 | fatal=1
+- plugin_czzy | 廠長資源 | fatal_error:1 | fatal=1
+- plugin_youknow | YouKnowTV | fatal_error:1 | fatal=1
+- plugin_libvio | libvio | fatal_error:1 | fatal=1
