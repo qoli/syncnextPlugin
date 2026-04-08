@@ -25,6 +25,10 @@ plugin_<provider>/
   "name": "頻道名稱",
   "description": "頻道敘述",
   "host": "https://example.com",
+  "hosts": [
+    "https://example.com",
+    "https://mirror.example.com"
+  ],
   "files": ["txml.js", "app.js"], // 確保 Syncnext 會打包必要檔案
   "pages": [
     {
@@ -50,6 +54,8 @@ plugin_<provider>/
 }
 ```
 
+- `host` 必填，`hosts` 可選；舊版 Syncnext 只讀 `host`，新版才會利用 `hosts` 做站內 mirror failover。
+- 為兼容舊版 runtime，`pages[*].url` 與 `search.url` 請維持完整絕對 URL。
 - `key` 與 `javascript` 名稱需和 `app.js` 中的函式完全一致；`plugin_blueprint/app.js` 已預先提供 `buildMedias`、`buildSearchMedias`、`Episodes`、`Player`。
 - page URL 建議保留 `pageNumber` 變數，讓 Syncnext 自動處理翻頁。
 - 搜尋端點同樣透過佔位符 `${keyword}`。

@@ -2,6 +2,10 @@
   "name": "TODO: Replace with channel display name",
   "description": "TODO: Replace with a short description users will see in Syncnext",
   "host": "https://example.com",
+  "hosts": [
+    "https://example.com",
+    "https://mirror.example.com"
+  ],
   "files": ["txml.js", "app.js"],
   "pages": [
     {
@@ -24,4 +28,3 @@
     "javascript": "buildSearchMedias"
   }
 }
-

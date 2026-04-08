@@ -1,6 +1,10 @@
 `user script`;
 
-const HOST = "https://www.czzy89.com";
+const FALLBACK_HOST = "https://www.czzy89.com";
+const HOST =
+  typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost
+    ? __syncnextPrimaryHost
+    : FALLBACK_HOST;
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
@@ -11,7 +15,7 @@ function getDomainKey(url) {
   if (match && match[1]) {
     return match[1].toLowerCase();
   }
-  return "www.czzymovie.com";
+  return HOST.replace(/^https?:\/\//i, "").toLowerCase();
 }
 
 function storeCookiesFromHeaders(headers, url) {
