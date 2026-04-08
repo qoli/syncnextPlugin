@@ -1,7 +1,7 @@
 {
   "name": "廠長資源",
   "description": "廠長線上影視來源",
-  "host": "https://www.czzymovie.com",
+  "host": "https://www.czzy89.com",
   "files": [
     "txml.js",
     "crypto-js.min.js",
@@ -11,112 +11,112 @@
     {
       "key": "index",
       "title": "首頁",
-      "url": "https://www.czzymovie.com/movie_bt/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "movie",
       "title": "電影",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/dyy/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/dyy/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "tv",
       "title": "電視劇",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/dianshiju/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/dianshiju/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "anime",
       "title": "動畫",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/dohua/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/dohua/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "cn_movie",
       "title": "華語電影",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/huayudianying/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/huayudianying/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "in_movie",
       "title": "印度電影",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/yindudianying/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/yindudianying/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "ru_movie",
       "title": "俄羅斯電影",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/eluosidianying/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/eluosidianying/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "ca_movie",
       "title": "加拿大電影",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/jianadadianying/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/jianadadianying/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "jp_movie",
       "title": "日本電影",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/ribendianying/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/ribendianying/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "kr_movie",
       "title": "韓國電影",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/hanguodianying/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/hanguodianying/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "western_movie",
       "title": "歐美電影",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/meiguodianying/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/meiguodianying/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "cn_drama",
       "title": "國產劇",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/guochanju/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/guochanju/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "jp_drama",
       "title": "日劇",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/rj/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/rj/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "us_drama",
       "title": "美劇",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/mj/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/mj/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "kr_drama",
       "title": "韓劇",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/hj/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/hj/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "intl_drama",
       "title": "海外劇",
-      "url": "https://www.czzymovie.com/movie_bt/movie_bt_series/hwj/page/${pageNumber}",
+      "url": "https://www.czzy89.com/movie_bt/movie_bt_series/hwj/page/${pageNumber}",
       "timeout": 20,
       "javascript": "buildMedias"
     }
@@ -131,7 +131,7 @@
   },
   "search": {
     "timeout": 20,
-    "url": "https://www.czzymovie.com/boss1O1?q=${keyword}",
+    "url": "https://www.czzy89.com/boss1O1?q=${keyword}",
     "javascript": "Search"
   }
 }
