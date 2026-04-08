@@ -31,11 +31,23 @@ function buildEpisodeData(id, title, episodeDetailURL, tagText) {
   };
 }
 
-function buildEpisodePayload(resolverURL) {
-  var payloadText = encodeURIComponent(JSON.stringify({
-    resolverURL: resolverURL,
-  }));
-  return EPISODE_PAYLOAD_PREFIX + payloadText;
+function buildPlayerCandidate(url, headers) {
+  return {
+    url: url,
+    headers: headers && typeof headers === 'object' ? headers : {},
+  };
+}
+
+function buildEpisodePayload(payload) {
+  var safePayload = payload;
+
+  if (typeof safePayload === 'string') {
+    safePayload = {
+      resolverURL: safePayload,
+    };
+  }
+
+  return EPISODE_PAYLOAD_PREFIX + encodeURIComponent(JSON.stringify(safePayload || {}));
 }
 
 function parseEpisodePayload(inputURL) {
@@ -84,16 +96,6 @@ function isResolverURL(inputURL) {
   return /^https?:\/\/jx\.ejtsyc\.com:8443\/(m3u8|vip)\/\?url=/i.test(String(inputURL || ''));
 }
 
-function getResolverURL(inputURL) {
-  var payload = parseEpisodePayload(inputURL);
-
-  if (payload && payload.resolverURL) {
-    return String(payload.resolverURL);
-  }
-
-  return String(inputURL || '');
-}
-
 function normalizePlayURL(playURL, baseURL) {
   var finalURL = trimText(playURL);
 
@@ -140,74 +142,42 @@ function resolveResolverURL(inputURL, onSuccess, onFailure) {
   );
 }
 
-function cloneEpisodeWithURL(episode, newURL) {
-  return {
-    id: episode.id,
-    title: episode.title,
-    titleNumber: episode.titleNumber,
-    descriptionText: episode.descriptionText,
-    imageURL: episode.imageURL,
-    tagText: episode.tagText,
-    episodeDetailURL: newURL,
-    resumeKey: episode.resumeKey,
-    fileCodec: episode.fileCodec,
-    fileID: episode.fileID,
-    fileSize: episode.fileSize,
+function buildResolverHeaders(resolverURL) {
+  var headers = {
+    'User-Agent': PLAYER_USER_AGENT,
   };
-}
 
-function resolveCandidateProbeURLs(candidateGroups, onDone) {
-  var groups = candidateGroups || [];
-  var resolvedGroups = [];
-  var index = 0;
-
-  function next() {
-    if (index >= groups.length) {
-      onDone(resolvedGroups);
-      return;
-    }
-
-    var group = groups[index++];
-    if (!group || !group.episodes || !group.episodes.length) {
-      next();
-      return;
-    }
-
-    var firstEpisode = group.episodes[0];
-    var firstEpisodeResolverURL = getResolverURL(firstEpisode.episodeDetailURL);
-    resolveResolverURL(
-      firstEpisodeResolverURL,
-      function (playURL) {
-        var episodes = group.episodes.slice(0);
-        episodes[0] = cloneEpisodeWithURL(firstEpisode, playURL);
-        resolvedGroups.push({
-          source: group.source,
-          episodes: episodes,
-        });
-        next();
-      },
-      function (error) {
-        next();
-      }
-    );
+  if (isResolverURL(resolverURL)) {
+    headers.Referer = resolverURL;
   }
 
-  next();
+  return headers;
 }
 
-function emitPlayerURL(playURL, refererURL) {
-  if (typeof $next.toPlayerByJSON === 'function') {
-    $next.toPlayerByJSON(JSON.stringify({
-      url: playURL,
-      headers: refererURL ? {
-        Referer: refererURL,
-        'User-Agent': PLAYER_USER_AGENT,
-      } : {},
-    }));
+function emitPlayerCandidates(candidates) {
+  var list = candidates || [];
+
+  if (!list.length) {
+    if (typeof $next.emptyView === 'function') {
+      $next.emptyView('AGE 播放地址解析失敗');
+      return;
+    }
+
+    $next.toPlayer('');
     return;
   }
 
-  $next.toPlayer(playURL);
+  if (typeof $next.toPlayerCandidates === 'function') {
+    $next.toPlayerCandidates(JSON.stringify(list));
+    return;
+  }
+
+  if (typeof $next.toPlayerByJSON === 'function') {
+    $next.toPlayerByJSON(JSON.stringify(list[0]));
+    return;
+  }
+
+  $next.toPlayer(list[0].url);
 }
 
 function safeJSONParse(text) {
@@ -220,6 +190,10 @@ function safeJSONParse(text) {
 
 function trimText(input) {
   return String(input || '').replace(/^\s+|\s+$/g, '');
+}
+
+function sanitizeText(input) {
+  return trimText(String(input || '').replace(/\s+/g, ' '));
 }
 
 function buildDescription(item) {
@@ -288,20 +262,85 @@ function buildSourceName(lineKey, labelsMap) {
   return trimText(lineKey) || '未知線路';
 }
 
-function buildEpisodeCandidates(detailData) {
-  var candidates = [];
-  var fallbackCandidates = [];
+function extractEpisodeNumber(title) {
+  var text = sanitizeText(title).replace(/\s+/g, '');
+  var match = null;
+
+  if (!text) {
+    return 0;
+  }
+
+  match = text.match(/第0*(\d+)(?:[集话話期卷篇]|$)/i);
+  if (match && match[1]) {
+    return parseInt(match[1], 10) || 0;
+  }
+
+  match = text.match(/^0*(\d+)(?:[集话話期卷篇]|$)/i);
+  if (match && match[1]) {
+    return parseInt(match[1], 10) || 0;
+  }
+
+  return 0;
+}
+
+function buildEpisodeAlignMeta(title, episodeOrder) {
+  var episodeNumber = extractEpisodeNumber(title);
+
+  if (episodeNumber > 0) {
+    return {
+      key: 'num:' + episodeNumber,
+      episodeNumber: episodeNumber,
+    };
+  }
+
+  return {
+    key: 'slot:' + episodeOrder,
+    episodeNumber: 0,
+  };
+}
+
+function selectPreferredTitle(currentTitle, nextTitle) {
+  var current = sanitizeText(currentTitle);
+  var next = sanitizeText(nextTitle);
+  var currentHasEnding = false;
+  var nextHasEnding = false;
+
+  if (!current) {
+    return next;
+  }
+
+  if (!next) {
+    return current;
+  }
+
+  currentHasEnding = /完结|完結/i.test(current);
+  nextHasEnding = /完结|完結/i.test(next);
+
+  if (!currentHasEnding && nextHasEnding) {
+    return next;
+  }
+
+  if (next.length > current.length) {
+    return next;
+  }
+
+  return current;
+}
+
+function buildEpisodeSourceGroups(detailData) {
+  var allGroups = [];
+  var preferredGroups = [];
   var video = detailData && detailData.video ? detailData.video : {};
   var playlists = video.playlists || {};
   var labelsMap = detailData && detailData.player_label_arr ? detailData.player_label_arr : {};
-  var videoID = String(video.id || '');
   var lineKeys = Object.keys(playlists);
 
   for (var i = 0; i < lineKeys.length; i++) {
     var lineKey = lineKeys[i];
-    var sourceName = buildSourceName(lineKey, labelsMap);
     var lineEpisodes = playlists[lineKey];
+    var sourceName = buildSourceName(lineKey, labelsMap);
     var episodes = [];
+    var isVIP = lineUsesVIPResolver(lineKey, detailData);
 
     if (!lineEpisodes || !lineEpisodes.length) {
       continue;
@@ -309,45 +348,154 @@ function buildEpisodeCandidates(detailData) {
 
     for (var j = 0; j < lineEpisodes.length; j++) {
       var pair = lineEpisodes[j];
+      var title = '';
+      var cryptograph = '';
+      var alignMeta = null;
+
       if (!pair || pair.length < 2) {
         continue;
       }
 
-      var title = trimText(pair[0]) || '第' + (j + 1) + '集';
-      var cryptograph = trimText(pair[1]);
+      title = sanitizeText(pair[0]) || '第' + (j + 1) + '集';
+      cryptograph = trimText(pair[1]);
       if (!cryptograph) {
         continue;
       }
 
-      episodes.push(
-        buildEpisodeData(
-          videoID + '-' + lineKey + '-' + title,
-          title,
-          buildEpisodePayload(buildResolverURL(lineKey, cryptograph, detailData)),
-          sourceName
-        )
-      );
+      alignMeta = buildEpisodeAlignMeta(title, j + 1);
+      episodes.push({
+        title: title,
+        source: sourceName,
+        lineKey: lineKey,
+        resolverURL: buildResolverURL(lineKey, cryptograph, detailData),
+        episodeOrder: j + 1,
+        alignKey: alignMeta.key,
+        episodeNumber: alignMeta.episodeNumber,
+      });
     }
 
     if (!episodes.length) {
       continue;
     }
 
-    var candidateGroup = {
+    allGroups.push({
       source: sourceName,
+      lineKey: lineKey,
+      isVIP: isVIP,
       episodes: episodes,
-    };
+    });
 
-    fallbackCandidates.push(candidateGroup);
-
-    // AGE 的 vip 线路还需要额外的浏览器态加密请求，插件运行时无法稳定复现。
-    // 这里优先只交给 Syncnext 能直接回放的非 vip 源，避免自动选线落到不可播页面。
-    if (!lineUsesVIPResolver(lineKey, detailData)) {
-      candidates.push(candidateGroup);
+    if (!isVIP) {
+      preferredGroups.push({
+        source: sourceName,
+        lineKey: lineKey,
+        isVIP: false,
+        episodes: episodes,
+      });
     }
   }
 
-  return candidates.length ? candidates : fallbackCandidates;
+  return preferredGroups.length ? preferredGroups : allGroups;
+}
+
+function alignEpisodeSourceGroups(detailData, groups) {
+  var datas = [];
+  var alignedMap = {};
+  var orderedKeys = [];
+  var video = detailData && detailData.video ? detailData.video : {};
+  var videoID = String(video.id || '');
+
+  for (var groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+    var group = groups[groupIndex];
+    var sourceEpisodes = group && group.episodes ? group.episodes : [];
+
+    for (var i = 0; i < sourceEpisodes.length; i++) {
+      var episode = sourceEpisodes[i];
+      var key = episode && episode.alignKey ? String(episode.alignKey) : '';
+      var record = null;
+
+      if (!key) {
+        continue;
+      }
+
+      if (!alignedMap[key]) {
+        alignedMap[key] = {
+          videoId: videoID,
+          title: sanitizeText(episode.title || ''),
+          episodeOrder: episode.episodeOrder || (i + 1),
+          alignKey: key,
+          episodeNumber: episode.episodeNumber || 0,
+          sortOrder: episode.episodeNumber > 0 ? episode.episodeNumber : (100000 + (episode.episodeOrder || (i + 1))),
+          candidates: [],
+        };
+        orderedKeys.push(key);
+      }
+
+      record = alignedMap[key];
+      record.title = selectPreferredTitle(record.title, episode.title);
+
+      if (episode.episodeNumber > 0) {
+        record.episodeNumber = episode.episodeNumber;
+        record.sortOrder = episode.episodeNumber;
+      } else if ((episode.episodeOrder || 0) < record.episodeOrder) {
+        record.episodeOrder = episode.episodeOrder || record.episodeOrder;
+      }
+
+      record.candidates.push({
+        source: episode.source || group.source || '',
+        lineKey: episode.lineKey || group.lineKey || '',
+        resolverURL: episode.resolverURL || '',
+        title: episode.title || '',
+      });
+    }
+  }
+
+  orderedKeys.sort(function (left, right) {
+    var a = alignedMap[left];
+    var b = alignedMap[right];
+    var aOrder = a ? a.sortOrder : 0;
+    var bOrder = b ? b.sortOrder : 0;
+
+    if (aOrder !== bOrder) {
+      return aOrder - bOrder;
+    }
+
+    return (a && a.episodeOrder ? a.episodeOrder : 0) - (b && b.episodeOrder ? b.episodeOrder : 0);
+  });
+
+  for (var index = 0; index < orderedKeys.length; index++) {
+    var record = alignedMap[orderedKeys[index]];
+    var title = '';
+
+    if (!record || !record.candidates || !record.candidates.length) {
+      continue;
+    }
+
+    title = sanitizeText(record.title);
+    if (!title) {
+      if (record.episodeNumber > 0) {
+        title = '第' + record.episodeNumber + '集';
+      } else {
+        title = '第' + record.episodeOrder + '集';
+      }
+    }
+
+    datas.push(
+      buildEpisodeData(
+        record.videoId + ':' + record.alignKey,
+        title,
+        buildEpisodePayload({
+          videoId: record.videoId,
+          title: title,
+          episodeOrder: record.episodeOrder,
+          alignKey: record.alignKey,
+          candidates: record.candidates,
+        })
+      )
+    );
+  }
+
+  return datas;
 }
 
 function mapVideos(videos) {
@@ -388,7 +536,7 @@ function buildMedias(inputURL, key) {
 
       $next.toMedias(JSON.stringify(datas), key);
     },
-    function (error) {
+    function () {
       if (typeof $next.emptyView === 'function') {
         $next.emptyView('讀取 AGE 列表失敗');
       }
@@ -406,7 +554,7 @@ function buildSearchMedias(inputURL, key) {
       var datas = mapVideos(videos);
       $next.toSearchMedias(JSON.stringify(datas), key);
     },
-    function (error) {
+    function () {
       $next.toSearchMedias('[]', key);
     }
   );
@@ -417,34 +565,19 @@ function Episodes(detailURL) {
     detailURL,
     function (body) {
       var payload = safeJSONParse(body);
-      var candidates = buildEpisodeCandidates(payload);
+      var groups = buildEpisodeSourceGroups(payload);
+      var datas = alignEpisodeSourceGroups(payload, groups);
 
-      if (!candidates.length) {
+      if (!datas.length) {
         if (typeof $next.emptyView === 'function') {
           $next.emptyView('未找到可播放劇集');
         }
         return;
       }
 
-      resolveCandidateProbeURLs(candidates, function (resolvedCandidates) {
-        if (resolvedCandidates.length) {
-          if (typeof $next.toEpisodesCandidates === 'function') {
-            $next.toEpisodesCandidates(JSON.stringify(resolvedCandidates));
-            return;
-          }
-
-          if (typeof $next.emptyView === 'function') {
-            $next.emptyView('當前 App 版本不支持候選劇集');
-          }
-          return;
-        }
-
-        if (typeof $next.emptyView === 'function') {
-          $next.emptyView('AGE 線路解析失敗');
-        }
-      });
+      $next.toEpisodes(JSON.stringify(datas));
     },
-    function (error) {
+    function () {
       if (typeof $next.emptyView === 'function') {
         $next.emptyView('讀取 AGE 詳情失敗');
       }
@@ -452,18 +585,88 @@ function Episodes(detailURL) {
   );
 }
 
-function Player(episodeURL) {
-  var resolverURL = getResolverURL(episodeURL);
+function buildPlayerSourceEntries(inputURL) {
+  var payload = parseEpisodePayload(inputURL);
+  var entries = [];
+  var seen = {};
 
-  resolveResolverURL(
-    resolverURL,
-    function (playURL) {
-      emitPlayerURL(playURL, isResolverURL(resolverURL) ? resolverURL : '');
-    },
-    function (error) {
-      if (typeof $next.emptyView === 'function') {
-        $next.emptyView('AGE 播放地址解析失敗');
+  if (payload && payload.candidates && payload.candidates.length) {
+    for (var i = 0; i < payload.candidates.length; i++) {
+      var candidate = payload.candidates[i] || {};
+      var resolverURL = String(candidate.resolverURL || '').trim();
+      var key = resolverURL;
+
+      if (!resolverURL || seen[key]) {
+        continue;
       }
+
+      seen[key] = true;
+      entries.push({
+        source: sanitizeText(candidate.source || '') || '线路' + (i + 1),
+        resolverURL: resolverURL,
+      });
     }
-  );
+
+    if (entries.length) {
+      return entries;
+    }
+  }
+
+  if (payload && payload.resolverURL) {
+    return [{
+      source: '默认',
+      resolverURL: String(payload.resolverURL),
+    }];
+  }
+
+  if (!inputURL) {
+    return [];
+  }
+
+  return [{
+    source: '默认',
+    resolverURL: String(inputURL),
+  }];
+}
+
+function Player(episodeURL) {
+  var sourceEntries = buildPlayerSourceEntries(episodeURL);
+  var candidates = [];
+  var seen = {};
+
+  function finish() {
+    emitPlayerCandidates(candidates);
+  }
+
+  function next(index) {
+    if (index >= sourceEntries.length) {
+      finish();
+      return;
+    }
+
+    var entry = sourceEntries[index];
+    resolveResolverURL(
+      entry.resolverURL,
+      function (playURL) {
+        var finalURL = normalizePlayURL(playURL, entry.resolverURL);
+
+        if (finalURL && !seen[finalURL]) {
+          seen[finalURL] = true;
+          candidates.push(buildPlayerCandidate(finalURL, buildResolverHeaders(entry.resolverURL)));
+        }
+
+        next(index + 1);
+      },
+      function () {
+        next(index + 1);
+      }
+    );
+  }
+
+  if (!sourceEntries.length) {
+    finish();
+    return;
+  }
+
+  next(0);
 }
