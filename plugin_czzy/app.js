@@ -815,17 +815,16 @@ function sendPlayerURL(url, referer) {
     return;
   }
 
+  var playerReferer = referer || HOST;
   var payload = {
     url: url,
     headers: {
       "User-Agent": UA,
-      Referer: HOST,
+      Referer: playerReferer,
     },
   };
 
-  $next.toPlayer(url) //播放地址不依賴 http 頭信息
-
-  // $next.toPlayerByJSON(JSON.stringify(payload));
+  $next.toPlayerByJSON(JSON.stringify(payload));
 }
 
 function resolveIframePlayer(iframeURL, referer) {
