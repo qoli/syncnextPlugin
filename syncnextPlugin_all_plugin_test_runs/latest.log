@@ -1,23 +1,126 @@
-[log] /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs/20260408-073048/run.log
-[plugin-root] /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official
-[output] /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/syncnextPlugin_all_plugin_test_runs/20260408-073048/report.json
+[log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
+[plugin-root] /home/runner/work/syncnextPlugin/syncnextPlugin
+[output] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [runner] bun
-[discovery] local
-[plugins] discovered=12, testing=1, reservedSkipped=1
-[plugin 1] YouKnowTV | mode=local | index=https://www.youknow.tv/label/new/
-[OK] YouKnowTV | connectivity -> 3 target(s), pass=https://www.youknow.tv
-[plugin 1] medias total=205, testing=3
+[discovery] subscriptions
+[subscriptions] https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json
+[plugins] discovered=7, testing=7, reservedSkipped=0
+[plugin 1] 新歐樂影院 | mode=subscriptions | index=https://api.olelive.com/v1/pub/vod/newest/1/12
+[OK] 新歐樂影院 | connectivity -> 3 target(s), pass=https://www.olevod.tv/
+[plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "https://www.youknow.tv/d/199071/",
-  "coverURLString": "https://www.youknow.tv/upload/vod/20260103-1/f007a5a1c8852171901e9eddcf8a4ab5.jpg",
-  "title": "山海经密码",
-  "descriptionText": "已完结",
-  "detailURLString": "https://www.youknow.tv/d/199071/"
+  "id": "81072",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260408-1/ca53b98b6eb80003eb06bf2d49b2cf08.jpg",
+  "title": "荒岛：我能强化万物",
+  "descriptionText": "高清",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81072/true"
 }
-[plugin 1] search keyword=山海经密码 url=https://www.youknow.tv/search/-------------.html?wd=%E5%B1%B1%E6%B5%B7%E7%BB%8F%E5%AF%86%E7%A0%81
-[plugin 1] search results=0
-[FAIL] YouKnowTV | search(山海经密码) -> 0
-[OK] YouKnowTV | 山海经密码 | 第01集 -> https://tyyszywvod.com/videos/202601/16/6969eada32df5a2510048b49/686eca/index.m3u8 | candidates=3
-[OK] YouKnowTV | 一人之下第六季 | 第01集 -> https://tyyszywvod.com/videos/202601/16/6969eb5c32df5a2510053284/c58f53/index.m3u8 | candidates=3
-[OK] YouKnowTV | 大主宰年番 | 第01集 -> https://tyyszywvod.com/videos/202601/21/697079b251e70a99a26842bb/576110/index.m3u8 | candidates=3
+[plugin 1] search keyword=荒岛：我能强化万物 url=https://api.olelive.com/v1/pub/index/search/%E8%8D%92%E5%B2%9B%EF%BC%9A%E6%88%91%E8%83%BD%E5%BC%BA%E5%8C%96%E4%B8%87%E7%89%A9/vod/0/1/4
+[plugin 1] search results=1
+[plugin 1] search sample(index=0)
+{
+  "id": "81072",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260408-1/ca53b98b6eb80003eb06bf2d49b2cf08.jpg",
+  "title": "荒岛：我能强化万物",
+  "descriptionText": "高清",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81072/true"
+}
+[OK] 新歐樂影院 | search(荒岛：我能强化万物) -> 1
+[OK] 新歐樂影院 | 荒岛：我能强化万物 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260408/hGsdEvwz/mp4/hGsdEvwz.mp4/clipTo/136400/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 地下三年 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260408/HybrzBqc/mp4/HybrzBqc.mp4/clipTo/489200/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 灵气复苏：我以猪身守国门 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260408/EvttpJhy/mp4/EvttpJhy.mp4/clipTo/469366/master.m3u8 | candidates=1
+[plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
+[OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
+[plugin 2] medias total=32, testing=3
+[plugin 2] buildMedias sample(index=0)
+{
+  "id": "20260069",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260069.jpg",
+  "title": "和班上第二可爱的女孩成为朋友",
+  "descriptionText": "第01集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260069"
+}
+[plugin 2] search keyword=和班上第二可爱的女孩成为 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%92%8C%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%BA%8C%E5%8F%AF%E7%88%B1%E7%9A%84%E5%A5%B3%E5%AD%A9%E6%88%90%E4%B8%BA
+[plugin 2] search results=0
+[FAIL] 新 AGE 動漫 | search(和班上第二可爱的女孩成为) -> 0
+[OK] 新 AGE 動漫 | 和班上第二可爱的女孩成为朋友 | 第01集 -> https://hn.bfvvs.com/play/ejRqlAWe/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | 婚姻剧毒 | 第01集 -> https://hn.bfvvs.com/play/ejRqlA5e/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | 复制品的我也会谈恋爱。 | 第01集 -> https://hn.bfvvs.com/play/epYQ096a/index.m3u8 | candidates=6
+[plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
+[FAIL] 廠長資源 | connectivity -> 3 target(s)
+[plugin 3] medias total=0, testing=0
+[plugin 3] search keyword=test url=https://www.czzymovie.com/boss1O1?q=test
+[plugin 3] search results=0
+[FAIL] 廠長資源 | search(test) -> 0
+[plugin 4] YouKnowTV | mode=subscriptions | index=https://www.youknow.tv/label/new/
+[FAIL] YouKnowTV | connectivity -> 3 target(s)
+[plugin 4] medias total=0, testing=0
+[plugin 4] search keyword=test url=https://www.youknow.tv/search/-------------.html?wd=test
+[plugin 4] search results=0
+[FAIL] YouKnowTV | search(test) -> 0
+[plugin 5] libvio | mode=subscriptions | index=https://libvio.site/
+[FAIL] libvio | connectivity -> 2 target(s)
+[plugin 5] medias total=0, testing=0
+[plugin 5] search keyword=test url=https://libvio.site/search/-------------.html?wd=test
+[plugin 5] search results=0
+[FAIL] libvio | search(test) -> 0
+[plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
+[OK] 韩剧网 | connectivity -> 3 target(s), pass=https://www.thanju.com
+[plugin 6] medias total=30, testing=3
+[plugin 6] buildMedias sample(index=0)
+{
+  "id": "https://www.thanju.com/detail/2503.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/69b81d7276ed7.jpg",
+  "title": "权欲之巅",
+  "descriptionText": "第8集 · 朱智勋 河智苑 林珍娜 吴正世",
+  "detailURLString": "https://www.thanju.com/detail/2503.html"
+}
+[plugin 6] search keyword=权欲之巅 url=https://www.thanju.com/search/%E6%9D%83%E6%AC%B2%E4%B9%8B%E5%B7%85.html
+[plugin 6] search results=2
+[plugin 6] search sample(index=0)
+{
+  "id": "https://www.thanju.com/detail/2506.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/69cb95e2bfb88.jpg",
+  "title": "我们愉快的好日子",
+  "descriptionText": "我们愉快的好日子",
+  "detailURLString": "https://www.thanju.com/detail/2506.html"
+}
+[OK] 韩剧网 | search(权欲之巅) -> 2
+[OK] 韩剧网 | 权欲之巅 | 01 -> https://player.yzzyvip-35.com/20260316/1764_94e4451a/index.m3u8 | candidates=1
+[OK] 韩剧网 | 魔女之吻 | 01 -> https://cdn.yzzy31-play.com/20260302/15487_9efa87e1/index.m3u8 | candidates=1
+[OK] 韩剧网 | 第一个男人 | 01 -> https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 | candidates=1
+[plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
+[OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
+[plugin 7] medias total=48, testing=3
+[plugin 7] buildMedias sample(index=0)
+{
+  "id": "https://www.dbku.tv/voddetail/143362.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/atEEKjmvJdBIjZmBzyiReulQ2zp.jpg",
+  "title": "我们愉快的好日子",
+  "descriptionText": "更新至7集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143362.html"
+}
+[plugin 7] search keyword=我们愉快的好日子 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
+[plugin 7] search results=1
+[plugin 7] search sample(index=0)
+{
+  "id": "https://www.dbku.tv/voddetail/143362.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/atEEKjmvJdBIjZmBzyiReulQ2zp.jpg",
+  "title": "我们愉快的好日子",
+  "descriptionText": "更新至7集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143362.html"
+}
+[OK] 独播库 | search(我们愉快的好日子) -> 1
+[OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 红色珍珠 | 第1集 -> https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 权欲之巅 | 第1集 -> https://vid.dbokutv.com/20260317/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHgTcyo5xOy6ejSNbwP2qmCIqmCZSvH44oEJKkRN0q/chunklist.m3u8 | candidates=1
+[readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_9f623505-bf6e-4069-b030-20ab2a453148
+[summary] plugins=7, fatal=3, cases=26, ok=19, fail=7, invalidSources=3
+[report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
+[latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
+[latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
+[latest-summary-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.summary.log
+[invalid-sources] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.json
+[invalid-sources-latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.json
