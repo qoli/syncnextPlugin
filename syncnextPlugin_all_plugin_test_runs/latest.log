@@ -10,43 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "81106",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260409-1/7c8754f7eebf77d69261539daa86ec6d.jpg",
-  "title": "无效爱人",
+  "id": "81145",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260410-1/20cbe583226d2d5eaf79aba39d095b34.jpg",
+  "title": "她与夜同谋",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81106/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81145/true"
 }
-[plugin 1] search keyword=无效爱人 url=https://api.olelive.com/v1/pub/index/search/%E6%97%A0%E6%95%88%E7%88%B1%E4%BA%BA/vod/0/1/4
+[plugin 1] search keyword=她与夜同谋 url=https://api.olelive.com/v1/pub/index/search/%E5%A5%B9%E4%B8%8E%E5%A4%9C%E5%90%8C%E8%B0%8B/vod/0/1/4
 [plugin 1] search results=1
 [plugin 1] search sample(index=0)
 {
-  "id": "81106",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260409-1/7c8754f7eebf77d69261539daa86ec6d.jpg",
-  "title": "无效爱人",
+  "id": "81145",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260410-1/20cbe583226d2d5eaf79aba39d095b34.jpg",
+  "title": "她与夜同谋",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81106/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81145/true"
 }
-[OK] 新歐樂影院 | search(无效爱人) -> 1
-[OK] 新歐樂影院 | 无效爱人 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260409/wcAlvwra/mp4/wcAlvwra.mp4/clipTo/301120/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 逆袭人生，我觉醒了情报系统 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260409/CnCvtvEG/mp4/CnCvtvEG.mp4/clipTo/68360/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 重生后，我只做亲妈孝女 | 第01集 -> https://europe.olemovienews.com/ts4/20260409/EBftrHHz/mp4/EBftrHHz.mp4/clipTo/225700/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(她与夜同谋) -> 1
+[OK] 新歐樂影院 | 她与夜同谋 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260410/GtAyrDCd/mp4/GtAyrDCd.mp4/clipTo/122133/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 婆婆生日当天，我掀桌不玩了 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260410/cxzGEykb/mp4/cxzGEykb.mp4/clipTo/101280/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 女子监狱出真龙 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260410/IsGeywlb/mp4/IsGeywlb.mp4/clipTo/238080/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260118",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260118.jpg",
-  "title": "加油吧！中村君!!",
-  "descriptionText": "第03集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260118"
+  "id": "20260084",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260084.jpg",
+  "title": "淡岛百景",
+  "descriptionText": "第1集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260084"
 }
-[plugin 2] search keyword=加油吧！中村君!! url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-[plugin 2] search results=0
-[FAIL] 新 AGE 動漫 | search(加油吧！中村君!!) -> 0
-[OK] 新 AGE 動漫 | 加油吧！中村君!! | 第01集 -> https://hn.bfvvs.com/play/epYQpvra/index.m3u8 | candidates=6
-[OK] 新 AGE 動漫 | 最强王者的第二人生 第二季 | 第01集 -> https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 | candidates=6
-[OK] 新 AGE 動漫 | 关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事 | 第01集 -> https://hn.bfvvs.com/play/eZ6VxBEe/index.m3u8 | candidates=6
+[plugin 2] search keyword=淡岛百景 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
+[plugin 2] search results=1
+[plugin 2] search sample(index=0)
+{
+  "id": "20260084",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260084.jpg",
+  "title": "淡岛百景",
+  "descriptionText": "第1集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260084"
+}
+[OK] 新 AGE 動漫 | search(淡岛百景) -> 1
+[OK] 新 AGE 動漫 | 淡岛百景 | 第01集 -> https://hn.bfvvs.com/play/dwpmE7Re/index.m3u8 | candidates=3
+[OK] 新 AGE 動漫 | 轮回的花瓣 | 第01集 -> https://hn.bfvvs.com/play/aKrZjRMe/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | 雾尾粉丝后援会 | 第01集 -> https://hn.bfvvs.com/play/b68Rq4Ve/index.m3u8 | candidates=6
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzy89.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -73,7 +81,7 @@
   "id": "https://www.thanju.com/detail/2441.html",
   "coverURLString": "https://pp.thanju.com/U/vod/694129f8a069f.jpg",
   "title": "第一个男人",
-  "descriptionText": "第79集 · 咸恩静 尹善宇 朴健一 吴贤庆",
+  "descriptionText": "第80集 · 咸恩静 尹善宇 朴健一 吴贤庆",
   "detailURLString": "https://www.thanju.com/detail/2441.html"
 }
 [plugin 6] search keyword=第一个男人 url=https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
@@ -95,29 +103,29 @@
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/143362.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/atEEKjmvJdBIjZmBzyiReulQ2zp.jpg",
-  "title": "我们愉快的好日子",
-  "descriptionText": "更新至8集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143362.html"
+  "id": "https://www.dbku.tv/voddetail/143381.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/ruLS7pNDLonnKKRLy8tK192bfBG.jpg",
+  "title": "爱在连理里",
+  "descriptionText": "更新至3集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143381.html"
 }
-[plugin 7] search keyword=我们愉快的好日子 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
+[plugin 7] search keyword=爱在连理里 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%88%B1%E5%9C%A8%E8%BF%9E%E7%90%86%E9%87%8C&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/143362.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/atEEKjmvJdBIjZmBzyiReulQ2zp.jpg",
-  "title": "我们愉快的好日子",
-  "descriptionText": "更新至8集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143362.html"
+  "id": "https://www.dbku.tv/voddetail/143381.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/ruLS7pNDLonnKKRLy8tK192bfBG.jpg",
+  "title": "爱在连理里",
+  "descriptionText": "更新至3集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143381.html"
 }
-[OK] 独播库 | search(我们愉快的好日子) -> 1
+[OK] 独播库 | search(爱在连理里) -> 1
+[OK] 独播库 | 爱在连理里 | 第1集 -> https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM5wR6niBJ0nBJ0mGZb1EKOsCYvjS34/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 红色珍珠 | 第1集 -> https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 白日提灯 | 第1集 -> https://vid.dbokutv.com/20260328/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM9oT6GjC34jC34mHZP4DpX6BcrmD0/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_373b8a2c-6f3b-45ba-a7c7-f130fd778da0
-[summary] plugins=7, fatal=3, cases=26, ok=19, fail=7, invalidSources=3
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_8f6c1171-2b03-4a45-a5fa-0c52b5144fee
+[summary] plugins=7, fatal=3, cases=26, ok=20, fail=6, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log

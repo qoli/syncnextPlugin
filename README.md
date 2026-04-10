@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-09T04:11:21.075Z`
+Generated: `2026-04-10T04:18:29.810Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -22,7 +22,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | OK | OK 1/3 | OK | OK 3/3 | 5/5 | - |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -55,26 +55,26 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `无效爱人`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%97%A0%E6%95%88%E7%88%B1%E4%BA%BA/vod/0/1/4
+- Keyword: `她与夜同谋`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%A5%B9%E4%B8%8E%E5%A4%9C%E5%90%8C%E8%B0%8B/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 无效爱人 | 第第1集集 | https://europe.olemovienews.com/ts4/20260409/wcAlvwra/mp4/wcAlvwra.mp4/clipTo/301120/master.m3u8 |
-| OK | 逆袭人生，我觉醒了情报系统 | 第第1集集 | https://europe.olemovienews.com/ts4/20260409/CnCvtvEG/mp4/CnCvtvEG.mp4/clipTo/68360/master.m3u8 |
-| OK | 重生后，我只做亲妈孝女 | 第01集 | https://europe.olemovienews.com/ts4/20260409/EBftrHHz/mp4/EBftrHHz.mp4/clipTo/225700/master.m3u8 |
+| OK | 她与夜同谋 | 第第1集集 | https://europe.olemovienews.com/ts4/20260410/GtAyrDCd/mp4/GtAyrDCd.mp4/clipTo/122133/master.m3u8 |
+| OK | 婆婆生日当天，我掀桌不玩了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260410/cxzGEykb/mp4/cxzGEykb.mp4/clipTo/101280/master.m3u8 |
+| OK | 女子监狱出真龙 | 第第1集集 | https://europe.olemovienews.com/ts4/20260410/IsGeywlb/mp4/IsGeywlb.mp4/clipTo/238080/master.m3u8 |
 
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -83,25 +83,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `加油吧！中村君!!`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `淡岛百景`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 加油吧！中村君!! | 第01集 | https://hn.bfvvs.com/play/epYQpvra/index.m3u8 |
-| OK | 最强王者的第二人生 第二季 | 第01集 | https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 |
-| OK | 关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事 | 第01集 | https://hn.bfvvs.com/play/eZ6VxBEe/index.m3u8 |
-
-Failed Case Diagnostics
-- keyword:加油吧！中村君!! | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+| OK | 淡岛百景 | 第01集 | https://hn.bfvvs.com/play/dwpmE7Re/index.m3u8 |
+| OK | 轮回的花瓣 | 第01集 | https://hn.bfvvs.com/play/aKrZjRMe/index.m3u8 |
+| OK | 雾尾粉丝后援会 | 第01集 | https://hn.bfvvs.com/play/b68Rq4Ve/index.m3u8 |
 
 </details>
 
@@ -278,15 +269,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
+- Keyword: `爱在连理里`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%88%B1%E5%9C%A8%E8%BF%9E%E7%90%86%E9%87%8C&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 爱在连理里 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM5wR6niBJ0nBJ0mGZb1EKOsCYvjS34/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 | OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
-| OK | 白日提灯 | 第1集 | https://vid.dbokutv.com/20260328/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM9oT6GjC34jC34mHZP4DpX6BcrmD0/chunklist.m3u8 |
 
 </details>
 
