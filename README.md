@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-10T04:18:29.810Z`
+Generated: `2026-04-11T04:06:59.116Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `她与夜同谋`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%A5%B9%E4%B8%8E%E5%A4%9C%E5%90%8C%E8%B0%8B/vod/0/1/4
+- Keyword: `末日包租婆系统，我的S级`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%9C%AB%E6%97%A5%E5%8C%85%E7%A7%9F%E5%A9%86%E7%B3%BB%E7%BB%9F%EF%BC%8C%E6%88%91%E7%9A%84S%E7%BA%A7/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 她与夜同谋 | 第第1集集 | https://europe.olemovienews.com/ts4/20260410/GtAyrDCd/mp4/GtAyrDCd.mp4/clipTo/122133/master.m3u8 |
-| OK | 婆婆生日当天，我掀桌不玩了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260410/cxzGEykb/mp4/cxzGEykb.mp4/clipTo/101280/master.m3u8 |
-| OK | 女子监狱出真龙 | 第第1集集 | https://europe.olemovienews.com/ts4/20260410/IsGeywlb/mp4/IsGeywlb.mp4/clipTo/238080/master.m3u8 |
+| OK | 末日包租婆系统，我的S级房客们 | 第第1集集 | https://europe.olemovienews.com/ts4/20260411/egvgHmdl/mp4/egvgHmdl.mp4/clipTo/94066/master.m3u8 |
+| OK | 狠人大帝重生，我无敌了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260411/bFDEqDwA/mp4/bFDEqDwA.mp4/clipTo/91520/master.m3u8 |
+| OK | 茶骨医心：世子的救赎 | 第第1集集 | https://europe.olemovienews.com/ts4/20260411/ABFkFGwu/mp4/ABFkFGwu.mp4/clipTo/171300/master.m3u8 |
 
 </details>
 
@@ -84,15 +84,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `淡岛百景`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
+- Keyword: `轻松熊`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%BB%E6%9D%BE%E7%86%8A
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 淡岛百景 | 第01集 | https://hn.bfvvs.com/play/dwpmE7Re/index.m3u8 |
-| OK | 轮回的花瓣 | 第01集 | https://hn.bfvvs.com/play/aKrZjRMe/index.m3u8 |
-| OK | 雾尾粉丝后援会 | 第01集 | https://hn.bfvvs.com/play/b68Rq4Ve/index.m3u8 |
+| OK | 轻松熊 | 第01集 | https://hn.bfvvs.com/play/epYQ5DVa/index.m3u8 |
+| OK | 冻结地球 | 第01集 | https://hn.bfvvs.com/play/eZ6VQE5e/index.m3u8 |
+| OK | 神之水滴 | 第01集 | https://hn.bfvvs.com/play/bDk9moqa/index.m3u8 |
 
 </details>
 
@@ -240,15 +240,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `第一个男人`
-- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
+- Keyword: `我们愉快的好日子`
+- URL: https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 | OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
-| OK | 红色珍珠 | 01 | https://cdn.yzzy33-play.com/20260224/8726_d6f84c02/index.m3u8 |
+| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
+| OK | 神与律师事务所 | 01 | https://player.yzzyvip-35.com/20260313/1560_3a20f62a/index.m3u8 |
 
 </details>
 
@@ -269,15 +269,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `爱在连理里`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%88%B1%E5%9C%A8%E8%BF%9E%E7%90%86%E9%87%8C&submit=
+- Keyword: `孤独的美食家第11季`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%AD%A4%E7%8B%AC%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6%E7%AC%AC11%E5%AD%A3&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 爱在连理里 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM5wR6niBJ0nBJ0mGZb1EKOsCYvjS34/chunklist.m3u8 |
+| OK | 孤独的美食家第11季 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMTaP6rpQcGnCMejC34jC314H3GsC38rBcrmD0/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
+| OK | 初三的六一儿童节 | 第1集 | https://vid.dbokutv.com/20260313/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMDpP6nvPNHgBJ0nBJ0mEJSrGJSnDIvjS34/chunklist.m3u8 |
 
 </details>
 
