@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-11T04:06:59.116Z`
+Generated: `2026-04-12T04:19:48.560Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `末日包租婆系统，我的S级`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%9C%AB%E6%97%A5%E5%8C%85%E7%A7%9F%E5%A9%86%E7%B3%BB%E7%BB%9F%EF%BC%8C%E6%88%91%E7%9A%84S%E7%BA%A7/vod/0/1/4
+- Keyword: `破脂羊`
+- URL: https://api.olelive.com/v1/pub/index/search/%E7%A0%B4%E8%84%82%E7%BE%8A/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 末日包租婆系统，我的S级房客们 | 第第1集集 | https://europe.olemovienews.com/ts4/20260411/egvgHmdl/mp4/egvgHmdl.mp4/clipTo/94066/master.m3u8 |
-| OK | 狠人大帝重生，我无敌了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260411/bFDEqDwA/mp4/bFDEqDwA.mp4/clipTo/91520/master.m3u8 |
-| OK | 茶骨医心：世子的救赎 | 第第1集集 | https://europe.olemovienews.com/ts4/20260411/ABFkFGwu/mp4/ABFkFGwu.mp4/clipTo/171300/master.m3u8 |
+| OK | 破脂羊 | 第第1集集 | https://europe.olemovienews.com/ts4/20260412/wesscyeH/mp4/wesscyeH.mp4/clipTo/114533/master.m3u8 |
+| OK | 七年假面，爱深却已迟 | 第第1集集 | https://europe.olemovienews.com/ts4/20260412/dFqtGvkp/mp4/dFqtGvkp.mp4/clipTo/188633/master.m3u8 |
+| OK | 咫尺家天涯 | 第第1集集 | https://europe.olemovienews.com/ts4/20260412/qdpdpsme/mp4/qdpdpsme.mp4/clipTo/150033/master.m3u8 |
 
 </details>
 
@@ -84,15 +84,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `轻松熊`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%BB%E6%9D%BE%E7%86%8A
+- Keyword: `楠木邸的神明庭院`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%A5%A0%E6%9C%A8%E9%82%B8%E7%9A%84%E7%A5%9E%E6%98%8E%E5%BA%AD%E9%99%A2
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 轻松熊 | 第01集 | https://hn.bfvvs.com/play/epYQ5DVa/index.m3u8 |
-| OK | 冻结地球 | 第01集 | https://hn.bfvvs.com/play/eZ6VQE5e/index.m3u8 |
-| OK | 神之水滴 | 第01集 | https://hn.bfvvs.com/play/bDk9moqa/index.m3u8 |
+| OK | 楠木邸的神明庭院 | 第01集 | https://hn.bfvvs.com/play/aADPZAPe/index.m3u8 |
+| OK | 春夏秋冬代行者 春之舞 | 第01集 | https://hn.bfvvs.com/play/bDk9okBa/index.m3u8 |
+| OK | 勇者之屑 | 第01集 | https://hn.bfvvs.com/play/dyPPWlEb/index.m3u8 |
 
 </details>
 
@@ -240,14 +240,14 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
+- Keyword: `给你爱情处方`
+- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
-| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
 | OK | 神与律师事务所 | 01 | https://player.yzzyvip-35.com/20260313/1560_3a20f62a/index.m3u8 |
 
 </details>
@@ -269,15 +269,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `孤独的美食家第11季`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%AD%A4%E7%8B%AC%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6%E7%AC%AC11%E5%AD%A3&submit=
+- Keyword: `给你爱情处方`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 孤独的美食家第11季 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMTaP6rpQcGnCMejC34jC314H3GsC38rBcrmD0/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 初三的六一儿童节 | 第1集 | https://vid.dbokutv.com/20260313/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMDpP6nvPNHgBJ0nBJ0mEJSrGJSnDIvjS34/chunklist.m3u8 |
+| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
+| OK | 神与律师事务所 | 第1集 | https://vid.dbokutv.com/20260313/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejStbiStDtSoqmCIqmC3P1GJP6E34kRN0q/chunklist.m3u8 |
+| OK | 申医生 | 第1集 | https://vid.dbokutv.com/20260315/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBNDvSoqmCIqmCpD6H4L1CKKkRN0q/chunklist.m3u8 |
 
 </details>
 
