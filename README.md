@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-13T04:24:15.235Z`
+Generated: `2026-04-14T04:19:20.019Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -22,7 +22,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | OK | OK 1/3 | OK | OK 3/3 | 5/5 | - |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -55,26 +55,26 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `大院甜婚：糙汉老公超会宠`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%A4%A7%E9%99%A2%E7%94%9C%E5%A9%9A%EF%BC%9A%E7%B3%99%E6%B1%89%E8%80%81%E5%85%AC%E8%B6%85%E4%BC%9A%E5%AE%A0/vod/0/1/4
+- Keyword: `雪落不知卿`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%9B%AA%E8%90%BD%E4%B8%8D%E7%9F%A5%E5%8D%BF/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 大院甜婚：糙汉老公超会宠 | 第第1集集 | https://europe.olemovienews.com/ts4/20260413/tjHrBoAp/mp4/tjHrBoAp.mp4/clipTo/541100/master.m3u8 |
-| OK | 野玫瑰她是谁 | 第01集 | https://europe.olemovienews.com/ts4/20260413/dBbAGamc/mp4/dBbAGamc.mp4/clipTo/200366/master.m3u8 |
-| OK | 前任索要分手费，可我被讹就变强 | 第01集 | https://europe.olemovienews.com/ts4/20260413/CkHibCft/mp4/CkHibCft.mp4/clipTo/84800/master.m3u8 |
+| OK | 雪落不知卿 | 第第1集集 | https://europe.olemovienews.com/ts4/20260414/AEwzIsst/mp4/AEwzIsst.mp4/clipTo/176266/master.m3u8 |
+| OK | 反派：舔女主干嘛？女反派不香吗 | 第1集 | https://europe.olemovienews.com/ts4/20260414/Cqptlwck/mp4/Cqptlwck.mp4/clipTo/93800/master.m3u8 |
+| OK | 天狐娇妻惹不起 | 第第1集集 | https://europe.olemovienews.com/ts4/20260414/puusmpGs/mp4/puusmpGs.mp4/clipTo/500833/master.m3u8 |
 
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -83,25 +83,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `茉莉花酱的好感度正在崩坏`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `尖帽子的魔法工坊`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 茉莉花酱的好感度正在崩坏 | 第01集 | https://hn.bfvvs.com/play/b2kvMJ1d/index.m3u8 |
-| OK | 淫狱团地 | 第01集 | https://hn.bfvvs.com/play/eVOPRZva/index.m3u8 |
-| OK | 幽灵音乐会 | 第01集 | https://hn.bfvvs.com/play/dwpm171e/index.m3u8 |
-
-Failed Case Diagnostics
-- keyword:茉莉花酱的好感度正在崩坏 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
+| OK | 尖帽子的魔法工坊 | 第01集 | https://v.baofeng10.com/video/jianmaozidemofagongfang/f719c4b4c4b5/index.m3u8 |
+| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://hn.bfvvs.com/play/erkR3Eka/index.m3u8 |
+| OK | 异世界悠闲农家 第二季 | 第01集 | https://hn.bfvvs.com/play/elY53v7a/index.m3u8 |
 
 </details>
 
@@ -249,15 +240,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `申医生`
-- URL: https://www.thanju.com/search/%E7%94%B3%E5%8C%BB%E7%94%9F.html
+- Keyword: `权欲之巅`
+- URL: https://www.thanju.com/search/%E6%9D%83%E6%AC%B2%E4%B9%8B%E5%B7%85.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
-| OK | 在韩国成为房主的方法 | 01 | https://cdn.yzzy34-play.com/20260314/5816_ff1ced30/index.m3u8 |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 权欲之巅 | 01 | https://player.yzzyvip-35.com/20260316/1764_94e4451a/index.m3u8 |
+| OK | 柔美的细胞小将第三季 | 01 | https://player.yzzyvip-35.com/20260413/4584_6ba1085b/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 
 </details>
 
@@ -278,15 +269,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `乞救之噬覆食殆尽`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B9%9E%E6%95%91%E4%B9%8B%E5%99%AC%E8%A6%86%E9%A3%9F%E6%AE%86%E5%B0%BD&submit=
+- Keyword: `我们愉快的好日子`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 乞救之噬覆食殆尽 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBN5gUdDcSsHgBJ0nBJ0nCZGqEJ0qC2vjS34/chunklist.m3u8 |
-| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
-| OK | 申医生 | 第1集 | https://vid.dbokutv.com/20260315/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBNDvSoqmCIqmCpD6H4L1CKKkRN0q/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
+| OK | 电台明星 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlR7XgBMHqRNWjC34jC355GZSuDZGuBcrmD0/chunklist.m3u8 |
 
 </details>
 
