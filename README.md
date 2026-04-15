@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-14T04:19:20.019Z`
+Generated: `2026-04-15T04:18:18.877Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `雪落不知卿`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%9B%AA%E8%90%BD%E4%B8%8D%E7%9F%A5%E5%8D%BF/vod/0/1/4
+- Keyword: `萌萌兔子`
+- URL: https://api.olelive.com/v1/pub/index/search/%E8%90%8C%E8%90%8C%E5%85%94%E5%AD%90/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 雪落不知卿 | 第第1集集 | https://europe.olemovienews.com/ts4/20260414/AEwzIsst/mp4/AEwzIsst.mp4/clipTo/176266/master.m3u8 |
-| OK | 反派：舔女主干嘛？女反派不香吗 | 第1集 | https://europe.olemovienews.com/ts4/20260414/Cqptlwck/mp4/Cqptlwck.mp4/clipTo/93800/master.m3u8 |
-| OK | 天狐娇妻惹不起 | 第第1集集 | https://europe.olemovienews.com/ts4/20260414/puusmpGs/mp4/puusmpGs.mp4/clipTo/500833/master.m3u8 |
+| OK | 萌萌兔子 | 第第1集集 | https://europe.olemovienews.com/ts4/20260415/DalEeGwC/mp4/DalEeGwC.mp4/clipTo/519466/master.m3u8 |
+| OK | 娘娘一心想逍遥 | 第第1集集 | https://europe.olemovienews.com/ts4/20260415/JEGdfdxk/mp4/JEGdfdxk.mp4/clipTo/181966/master.m3u8 |
+| OK | 让你荒野求生，你跑这享受来了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260415/FhwgIhlH/mp4/FhwgIhlH.mp4/clipTo/144666/master.m3u8 |
 
 </details>
 
@@ -84,15 +84,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `尖帽子的魔法工坊`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A
+- Keyword: `左撇子艾伦`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B7%A6%E6%92%87%E5%AD%90%E8%89%BE%E4%BC%A6
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 尖帽子的魔法工坊 | 第01集 | https://v.baofeng10.com/video/jianmaozidemofagongfang/f719c4b4c4b5/index.m3u8 |
-| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://hn.bfvvs.com/play/erkR3Eka/index.m3u8 |
-| OK | 异世界悠闲农家 第二季 | 第01集 | https://hn.bfvvs.com/play/elY53v7a/index.m3u8 |
+| OK | 左撇子艾伦 | 第01集 | https://hn.bfvvs.com/play/dG65jwyb/index.m3u8 |
+| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://hn.bfvvs.com/play/ejRqlAWe/index.m3u8 |
+| OK | 婚姻剧毒 | 第01集 | https://hn.bfvvs.com/play/ejRqlA5e/index.m3u8 |
 
 </details>
 
@@ -247,8 +247,8 @@ Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
 | OK | 权欲之巅 | 01 | https://player.yzzyvip-35.com/20260316/1764_94e4451a/index.m3u8 |
-| OK | 柔美的细胞小将第三季 | 01 | https://player.yzzyvip-35.com/20260413/4584_6ba1085b/index.m3u8 |
 | OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 
 </details>
 
@@ -269,15 +269,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
+- Keyword: `为时已是寿司`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E6%97%B6%E5%B7%B2%E6%98%AF%E5%AF%BF%E5%8F%B8&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
-| OK | 电台明星 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlR7XgBMHqRNWjC34jC355GZSuDZGuBcrmD0/chunklist.m3u8 |
+| OK | 为时已是寿司 | 第1集 | https://vid.dbokutv.com/20260409/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNTpUNDpSoqmCIqmC44nGq56EKOkRN0q/chunklist.m3u8 |
+| OK | AI教我谈恋爱 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOMbgTtHiOIqmCIqmCJH4DaD3E30kRN0q/chunklist.m3u8 |
+| OK | 金关 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMfdBJ0nBJ0mHJCqHJOrGovjS34/chunklist.m3u8 |
 
 </details>
 
