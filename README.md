@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-15T04:18:18.877Z`
+Generated: `2026-04-16T04:23:36.837Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -22,7 +22,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | OK | OK 1/3 | OK | OK 3/3 | 5/5 | - |
-| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
+| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -55,26 +55,26 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `萌萌兔子`
-- URL: https://api.olelive.com/v1/pub/index/search/%E8%90%8C%E8%90%8C%E5%85%94%E5%AD%90/vod/0/1/4
+- Keyword: `迟响`
+- URL: https://api.olelive.com/v1/pub/index/search/%E8%BF%9F%E5%93%8D/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 萌萌兔子 | 第第1集集 | https://europe.olemovienews.com/ts4/20260415/DalEeGwC/mp4/DalEeGwC.mp4/clipTo/519466/master.m3u8 |
-| OK | 娘娘一心想逍遥 | 第第1集集 | https://europe.olemovienews.com/ts4/20260415/JEGdfdxk/mp4/JEGdfdxk.mp4/clipTo/181966/master.m3u8 |
-| OK | 让你荒野求生，你跑这享受来了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260415/FhwgIhlH/mp4/FhwgIhlH.mp4/clipTo/144666/master.m3u8 |
+| OK | 迟响 | 第01集 | https://europe.olemovienews.com/ts4/20260416/veeeFDew/mp4/veeeFDew.mp4/clipTo/147266/master.m3u8 |
+| OK | 午夜送财人 | 第01集 | https://europe.olemovienews.com/ts4/20260416/tCcjGBjs/mp4/tCcjGBjs.mp4/clipTo/119133/master.m3u8 |
+| OK | 薇在旦夕 | 第01集 | https://europe.olemovienews.com/ts4/20260416/lHfhhgog/mp4/lHfhhgog.mp4/clipTo/208280/master.m3u8 |
 
 </details>
 
 <details>
-<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `4/5`
+- Reasons: `search_empty:1`
 - Note: AGE 動漫
 
 Connectivity
@@ -83,16 +83,25 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `OK`
-- Keyword: `左撇子艾伦`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B7%A6%E6%92%87%E5%AD%90%E8%89%BE%E4%BC%A6
+- Status: `Empty`
+- Keyword: `加油吧！中村君!!`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 左撇子艾伦 | 第01集 | https://hn.bfvvs.com/play/dG65jwyb/index.m3u8 |
-| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://hn.bfvvs.com/play/ejRqlAWe/index.m3u8 |
-| OK | 婚姻剧毒 | 第01集 | https://hn.bfvvs.com/play/ejRqlA5e/index.m3u8 |
+| OK | 加油吧！中村君!! | 第01集 | https://hn.bfvvs.com/play/epYQpvra/index.m3u8 |
+| OK | 最强王者的第二人生 第二季 | 第01集 | https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 |
+| OK | Candy Caries 蛀在糖糖里 | 第1集 | https://jx.ejtsyc.com:8443/vip/1A3D06E105375B51A45824BA0E828739B4C55F9B50E1E78F5FC90317A81F9012127B6E102EF65C5EFD29ED899CD15EF1 |
+
+Failed Case Diagnostics
+- keyword:加油吧！中村君!! | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
 
 </details>
 
@@ -195,8 +204,8 @@ Failed Case Diagnostics
   - `no medias returned; no medias returned`
 
 Connectivity
-- [FAIL] `GET 403` https://libvio.site/ | status 403
-- [FAIL] `GET 403` https://libvio.site/search/-------------.html?wd=test | status 403
+- [FAIL] `GET 0` https://libvio.site/ | The operation was aborted.
+- [FAIL] `GET 0` https://libvio.site/search/-------------.html?wd=test | The operation was aborted.
 
 Search
 - Status: `Empty`
@@ -213,13 +222,13 @@ Failed Case Diagnostics
   - detailURL: https://libvio.site/
   - detail: 插件站點連通性檢查失敗
   - http diagnostics:
-  - `GET 403` https://libvio.site/ | status 403
-  - `GET 403` https://libvio.site/search/-------------.html?wd=test | status 403
+  - `GET 0` https://libvio.site/ | The operation was aborted.
+  - `GET 0` https://libvio.site/search/-------------.html?wd=test | The operation was aborted.
 - keyword:test | stage=`search` | reason=`search_empty`
   - detailURL: https://libvio.site/search/-------------.html?wd=test
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 403` https://libvio.site/search/-------------.html?wd=test
+  - `GET 0` https://libvio.site/search/-------------.html?wd=test | The operation was aborted.
 
 </details>
 
@@ -240,15 +249,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `权欲之巅`
-- URL: https://www.thanju.com/search/%E6%9D%83%E6%AC%B2%E4%B9%8B%E5%B7%85.html
+- Keyword: `第一个男人`
+- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 权欲之巅 | 01 | https://player.yzzyvip-35.com/20260316/1764_94e4451a/index.m3u8 |
 | OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 | OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
+| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 
 </details>
 
@@ -269,15 +278,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `为时已是寿司`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E6%97%B6%E5%B7%B2%E6%98%AF%E5%AF%BF%E5%8F%B8&submit=
+- Keyword: `月夜行路答案在名作中`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9C%88%E5%A4%9C%E8%A1%8C%E8%B7%AF%E7%AD%94%E6%A1%88%E5%9C%A8%E5%90%8D%E4%BD%9C%E4%B8%AD&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 为时已是寿司 | 第1集 | https://vid.dbokutv.com/20260409/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNTpUNDpSoqmCIqmC44nGq56EKOkRN0q/chunklist.m3u8 |
+| OK | 月夜行路答案在名作中 | 第1集 | https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNbvU6naONfjUdejC34jC3CnDJWqCJWrBcrmD0/chunklist.m3u8 |
 | OK | AI教我谈恋爱 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOMbgTtHiOIqmCIqmCJH4DaD3E30kRN0q/chunklist.m3u8 |
-| OK | 金关 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMfdBJ0nBJ0mHJCqHJOrGovjS34/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 
 </details>
 

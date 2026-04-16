@@ -10,51 +10,43 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "81299",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260415-1/19468ae094fb71762534d0681f8debae.jpg",
-  "title": "萌萌兔子",
+  "id": "81324",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260416-1/7691f7630c9645476ebaec3bdc9448d3.jpg",
+  "title": "迟响",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81299/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81324/true"
 }
-[plugin 1] search keyword=萌萌兔子 url=https://api.olelive.com/v1/pub/index/search/%E8%90%8C%E8%90%8C%E5%85%94%E5%AD%90/vod/0/1/4
+[plugin 1] search keyword=迟响 url=https://api.olelive.com/v1/pub/index/search/%E8%BF%9F%E5%93%8D/vod/0/1/4
 [plugin 1] search results=1
 [plugin 1] search sample(index=0)
 {
-  "id": "81299",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260415-1/19468ae094fb71762534d0681f8debae.jpg",
-  "title": "萌萌兔子",
+  "id": "81324",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260416-1/7691f7630c9645476ebaec3bdc9448d3.jpg",
+  "title": "迟响",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81299/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81324/true"
 }
-[OK] 新歐樂影院 | search(萌萌兔子) -> 1
-[OK] 新歐樂影院 | 萌萌兔子 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260415/DalEeGwC/mp4/DalEeGwC.mp4/clipTo/519466/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 娘娘一心想逍遥 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260415/JEGdfdxk/mp4/JEGdfdxk.mp4/clipTo/181966/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 让你荒野求生，你跑这享受来了 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260415/FhwgIhlH/mp4/FhwgIhlH.mp4/clipTo/144666/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(迟响) -> 1
+[OK] 新歐樂影院 | 迟响 | 第01集 -> https://europe.olemovienews.com/ts4/20260416/veeeFDew/mp4/veeeFDew.mp4/clipTo/147266/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 午夜送财人 | 第01集 -> https://europe.olemovienews.com/ts4/20260416/tCcjGBjs/mp4/tCcjGBjs.mp4/clipTo/119133/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 薇在旦夕 | 第01集 -> https://europe.olemovienews.com/ts4/20260416/lHfhhgog/mp4/lHfhhgog.mp4/clipTo/208280/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260072",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260072.jpg",
-  "title": "左撇子艾伦",
-  "descriptionText": "第2集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260072"
+  "id": "20260118",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260118.jpg",
+  "title": "加油吧！中村君!!",
+  "descriptionText": "第4集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260118"
 }
-[plugin 2] search keyword=左撇子艾伦 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B7%A6%E6%92%87%E5%AD%90%E8%89%BE%E4%BC%A6
-[plugin 2] search results=1
-[plugin 2] search sample(index=0)
-{
-  "id": "20260072",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260072.jpg",
-  "title": "左撇子艾伦",
-  "descriptionText": "第2集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260072"
-}
-[OK] 新 AGE 動漫 | search(左撇子艾伦) -> 1
-[OK] 新 AGE 動漫 | 左撇子艾伦 | 第01集 -> https://hn.bfvvs.com/play/dG65jwyb/index.m3u8 | candidates=6
-[OK] 新 AGE 動漫 | 和班上第二可爱的女孩成为朋友 | 第01集 -> https://hn.bfvvs.com/play/ejRqlAWe/index.m3u8 | candidates=6
-[OK] 新 AGE 動漫 | 婚姻剧毒 | 第01集 -> https://hn.bfvvs.com/play/ejRqlA5e/index.m3u8 | candidates=6
+[plugin 2] search keyword=加油吧！中村君!! url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+[plugin 2] search results=0
+[FAIL] 新 AGE 動漫 | search(加油吧！中村君!!) -> 0
+[OK] 新 AGE 動漫 | 加油吧！中村君!! | 第01集 -> https://hn.bfvvs.com/play/epYQpvra/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | 最强王者的第二人生 第二季 | 第01集 -> https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | Candy Caries 蛀在糖糖里 | 第1集 -> https://jx.ejtsyc.com:8443/vip/1A3D06E105375B51A45824BA0E828739B4C55F9B50E1E78F5FC90317A81F9012127B6E102EF65C5EFD29ED899CD15EF1 | candidates=1
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzy89.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -78,13 +70,13 @@
 [plugin 6] medias total=30, testing=3
 [plugin 6] buildMedias sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2503.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/69b81d7276ed7.jpg",
-  "title": "权欲之巅",
-  "descriptionText": "10集全 · 朱智勋 河智苑 林珍娜 吴正世",
-  "detailURLString": "https://www.thanju.com/detail/2503.html"
+  "id": "https://www.thanju.com/detail/2441.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/694129f8a069f.jpg",
+  "title": "第一个男人",
+  "descriptionText": "第84集 · 咸恩静 尹善宇 朴健一 吴贤庆",
+  "detailURLString": "https://www.thanju.com/detail/2441.html"
 }
-[plugin 6] search keyword=权欲之巅 url=https://www.thanju.com/search/%E6%9D%83%E6%AC%B2%E4%B9%8B%E5%B7%85.html
+[plugin 6] search keyword=第一个男人 url=https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
 [plugin 6] search results=2
 [plugin 6] search sample(index=0)
 {
@@ -94,38 +86,38 @@
   "descriptionText": "我们愉快的好日子",
   "detailURLString": "https://www.thanju.com/detail/2506.html"
 }
-[OK] 韩剧网 | search(权欲之巅) -> 2
-[OK] 韩剧网 | 权欲之巅 | 01 -> https://player.yzzyvip-35.com/20260316/1764_94e4451a/index.m3u8 | candidates=1
+[OK] 韩剧网 | search(第一个男人) -> 2
 [OK] 韩剧网 | 第一个男人 | 01 -> https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 | candidates=1
 [OK] 韩剧网 | 红色珍珠 | 01 -> https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 | candidates=1
+[OK] 韩剧网 | 我们愉快的好日子 | 01 -> https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/143449.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/oKZYZoJqeemSntNmCVoQm1Ersav.jpg",
-  "title": "为时已是寿司",
+  "id": "https://www.dbku.tv/voddetail/143458.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/4H2Ydm7kyCXpBNaYKmzkWNooQzI.jpg",
+  "title": "月夜行路答案在名作中",
   "descriptionText": "更新至2集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143449.html"
+  "detailURLString": "https://www.dbku.tv/voddetail/143458.html"
 }
-[plugin 7] search keyword=为时已是寿司 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E6%97%B6%E5%B7%B2%E6%98%AF%E5%AF%BF%E5%8F%B8&submit=
+[plugin 7] search keyword=月夜行路答案在名作中 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9C%88%E5%A4%9C%E8%A1%8C%E8%B7%AF%E7%AD%94%E6%A1%88%E5%9C%A8%E5%90%8D%E4%BD%9C%E4%B8%AD&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/143449.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/oKZYZoJqeemSntNmCVoQm1Ersav.jpg",
-  "title": "为时已是寿司",
+  "id": "https://www.dbku.tv/voddetail/143458.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/4H2Ydm7kyCXpBNaYKmzkWNooQzI.jpg",
+  "title": "月夜行路答案在名作中",
   "descriptionText": "更新至2集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143449.html"
+  "detailURLString": "https://www.dbku.tv/voddetail/143458.html"
 }
-[OK] 独播库 | search(为时已是寿司) -> 1
-[OK] 独播库 | 为时已是寿司 | 第1集 -> https://vid.dbokutv.com/20260409/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNTpUNDpSoqmCIqmC44nGq56EKOkRN0q/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(月夜行路答案在名作中) -> 1
+[OK] 独播库 | 月夜行路答案在名作中 | 第1集 -> https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNbvU6naONfjUdejC34jC3CnDJWqCJWrBcrmD0/chunklist.m3u8 | candidates=1
 [OK] 独播库 | AI教我谈恋爱 | 第1集 -> https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOMbgTtHiOIqmCIqmCJH4DaD3E30kRN0q/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 金关 | 第1集 -> https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMfdBJ0nBJ0mHJCqHJOrGovjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_8b35ca02-fc97-4fda-af9b-6287fecca122
-[summary] plugins=7, fatal=3, cases=26, ok=20, fail=6, invalidSources=3
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_f552af5f-1576-464c-9d9f-fa56e7243ff1
+[summary] plugins=7, fatal=3, cases=26, ok=19, fail=7, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
