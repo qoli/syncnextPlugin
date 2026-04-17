@@ -25,6 +25,10 @@ plugin_<provider>/
   "name": "頻道名稱",
   "description": "頻道敘述",
   "host": "https://example.com",
+  "hosts": [
+    "https://example.com",
+    "https://mirror.example.com"
+  ],
   "files": ["txml.js", "app.js"], // 確保 Syncnext 會打包必要檔案
   "pages": [
     {
@@ -51,13 +55,48 @@ plugin_<provider>/
 ```
 
 - `host` 必填，也是插件 JavaScript 應依賴的唯一域名欄位。
-- `hosts` 如需保留，僅作為未來 runtime 擴展資料；目前不要依賴它做 mirror failover。
+- `hosts` 選填。它代表候選域名集合，供 runtime 在正式載入插件前做一次性 bootstrap 測試；插件 JavaScript 仍然只應依賴單一 `host`。
 - 為兼容舊版 runtime，`pages[*].url` 與 `search.url` 請維持完整絕對 URL。
 - `key` 與 `javascript` 名稱需和 `app.js` 中的函式完全一致；`plugin_blueprint/app.js` 已預先提供 `buildMedias`、`buildSearchMedias`、`Episodes`、`Player`。
 - page URL 建議保留 `pageNumber` 變數，讓 Syncnext 自動處理翻頁。
 - 搜尋端點同樣透過佔位符 `${keyword}`。
 
-## 3. `app.js` 核心流程
+## 3. `host`、`hosts` 與 `HostsProbeRequest`
+
+- 插件正式運行時只會看到 `__syncnextPrimaryHost`。藍本中的 `HOST` 常量已優先讀取這個注入值，因此不要再在 JS 層自己輪詢 `hosts`。
+- 如果你的站點存在多個候選域名，請把它們寫在 `config.json.hosts`，並在 `app.js` 實作固定函數 `HostsProbeRequest()`。
+- `HostsProbeRequest()` 的用途是告訴 runtime：
+  - 要用哪一個 bootstrap URL 測試候選 host
+  - 要帶哪些 headers
+  - 什麼樣的最終 response 才算這個 host 可用
+- 這個函數必須回傳單一 object，典型結構如下：
+
+```js
+function HostsProbeRequest() {
+  return {
+    url: HOST + "/movie_bt",
+    method: "GET",
+    headers: {
+      "User-Agent": "...",
+      Referer: HOST,
+    },
+    accept: {
+      statusCodes: [200],
+      bodyIncludesAny: ['class="bt_img"', "bt_img"],
+      bodyExcludesAny: ["访问验证", "Just a moment", "captcha"],
+      titleExcludesAny: ["访问验证", "403 Forbidden"],
+    },
+  };
+}
+```
+
+- `accept` 的判斷看的是最終 response，因此中途 `301/302/307/308` redirect 不會直接算失敗。
+- `statusCodes` 是最終狀態白名單。
+- `bodyIncludesAny` 用於定義首頁成功特徵，例如卡片 class、列表容器、關鍵 DOM 片段。
+- `bodyExcludesAny` / `titleExcludesAny` 用於排除驗證頁、封鎖頁或常見錯誤頁。
+- 如果插件沒有實作 `HostsProbeRequest()`，runtime 會回退到原始 `host` 啟動，不會做 request-time host failover。
+
+## 4. `app.js` 核心流程
 
 `plugin_colafun/app.js` 與本藍本中的偽代碼展示了最小可行實作，可按下列步驟套用到新網站：
 
@@ -132,18 +171,19 @@ plugin_<provider>/
    - 典型流程：先解析播放頁 → 如需要再呼叫二次 API → 回傳最終串流 URL。
    - 在提交前使用 `$http.head` 檢查 URL 是否可達。
 
-## 4. 擴充建議
+## 5. 擴充建議
 
 - **Helper 拆分**：若格式化邏輯複雜，將其抽到 `helpers.js` 並於 `files` 陣列中註冊。
 - **多分類支援**：在 `config.json.pages` 中新增多組分頁，並共用 `buildMedias` 或定義新的解析函式。
 - **錯誤處理**：請在 `$http.fetch().then(success, error)` 的錯誤 callback 回傳 `$next.toMedias("[]", key)`，避免 Syncnext 卡住（tvOS JSCore 不支援 `.catch`）。
 
-## 5. 測試與驗證清單
+## 6. 測試與驗證清單
 
 1. `npm install`（首次）→ `node node_Test.js plugin_<provider>/app.js` 驗證函式載入是否無誤。
 2. `npx browserify plugin_<provider>/app.js -o plugin_<provider>/dist.js`（若需要單檔輸出）。
 3. `bash localServer.sh`，使用 `test/` 內的 fixture 進行手動測試；可為新插件加上對應的 HTML/JSON 範例。
 4. 在 Syncnext App 中驗證：
+   - 若有 `hosts`，檢查啟動 log 中的 `HostsBootstrap` 是否選中了正確域名。
    - Home/Category 分頁可翻頁。
    - 搜尋輸入文字能得到結果。
    - `Episodes` 列出完整分集。

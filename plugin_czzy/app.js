@@ -267,6 +267,39 @@ function fetchHTML(url, options, onSuccess, onError) {
   );
 }
 
+function HostsProbeRequest() {
+  return {
+    url: HOST + "/movie_bt",
+    method: "GET",
+    headers: {
+      "User-Agent": UA,
+      Referer: HOST,
+    },
+    accept: {
+      statusCodes: [200],
+      bodyIncludesAny: ['class="bt_img"', "bt_img"],
+      bodyExcludesAny: [
+        "访问验证",
+        "訪問驗證",
+        "安全验证",
+        "安全驗證",
+        "Just a moment",
+        "403 Forbidden",
+        "cf-browser-verification",
+        "captcha",
+      ],
+      titleExcludesAny: [
+        "Just a moment",
+        "403 Forbidden",
+        "访问验证",
+        "訪問驗證",
+        "安全验证",
+        "安全驗證",
+      ],
+    },
+  };
+}
+
 function getAttribute(node, name) {
   if (!node || typeof node === "string" || !node.attributes) {
     return "";
