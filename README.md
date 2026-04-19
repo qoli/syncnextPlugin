@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-18T04:11:16.463Z`
+Generated: `2026-04-19T04:21:56.058Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `侯府养妻记`
-- URL: https://api.olelive.com/v1/pub/index/search/%E4%BE%AF%E5%BA%9C%E5%85%BB%E5%A6%BB%E8%AE%B0/vod/0/1/4
+- Keyword: `心声操控，我靠直球打脸绿`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%BF%83%E5%A3%B0%E6%93%8D%E6%8E%A7%EF%BC%8C%E6%88%91%E9%9D%A0%E7%9B%B4%E7%90%83%E6%89%93%E8%84%B8%E7%BB%BF/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 侯府养妻记 | 第第1集集 | https://europe.olemovienews.com/ts4/20260418/JDpznbCu/mp4/JDpznbCu.mp4/clipTo/99233/master.m3u8 |
-| OK | 倒霉蛋哥哥你别怕，福宝妹妹来啦 | 第第1集集 | https://europe.olemovienews.com/ts4/20260418/whlplefG/mp4/whlplefG.mp4/clipTo/135133/master.m3u8 |
-| OK | 全球冰封我觉醒末日生存系统 | 第第1集集 | https://europe.olemovienews.com/ts4/20260418/dkFbpzar/mp4/dkFbpzar.mp4/clipTo/196166/master.m3u8 |
+| OK | 心声操控，我靠直球打脸绿茶假千金 | 第01集 | https://europe.olemovienews.com/ts4/20260419/nkynphnd/mp4/nkynphnd.mp4/clipTo/141133/master.m3u8 |
+| OK | 红楼一梦缚华年 | 第01集 | https://europe.olemovienews.com/ts4/20260419/wxmresgG/mp4/wxmresgG.mp4/clipTo/175000/master.m3u8 |
+| OK | 剑道第一仙 | 第第01集集 | https://europe.olemovienews.com/ts4/20260419/CgGizszl/mp4/CgGizszl.mp4/clipTo/237680/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -93,15 +93,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `冻结地球`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%86%BB%E7%BB%93%E5%9C%B0%E7%90%83
+- Keyword: `主播女孩重度依赖`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 冻结地球 | 第01集 | https://hn.bfvvs.com/play/eZ6VQE5e/index.m3u8 |
-| OK | 冰之城墙 | 第01集 | https://hn.bfvvs.com/play/b68RJVQe/index.m3u8 |
-| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://hn.bfvvs.com/play/en5rvjEd/index.m3u8 |
+| OK | 主播女孩重度依赖 | 第01集 | https://hn.bfvvs.com/play/erkRDMKa/index.m3u8 |
+| OK | 楠木邸的神明庭院 | 第01集 | https://hn.bfvvs.com/play/aADPZAPe/index.m3u8 |
+| OK | 朱音落语 | 第01集 | https://hn.bfvvs.com/play/e0RVKq7b/index.m3u8 |
 
 </details>
 
@@ -249,15 +249,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `浪漫的绝对值`
-- URL: https://www.thanju.com/search/%E6%B5%AA%E6%BC%AB%E7%9A%84%E7%BB%9D%E5%AF%B9%E5%80%BC.html
+- Keyword: `给你爱情处方`
+- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 浪漫的绝对值 | 01 | https://player.yzzyvip-35.com/20260417/4876_77bdfcff/index.m3u8 |
-| OK | 神与律师事务所 | 01 | https://player.yzzyvip-35.com/20260313/1560_3a20f62a/index.m3u8 |
-| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
+| OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
 
 </details>
 
@@ -278,15 +278,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `孤独的美食家第11季`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%AD%A4%E7%8B%AC%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6%E7%AC%AC11%E5%AD%A3&submit=
+- Keyword: `偏偏遇见你`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%81%8F%E5%81%8F%E9%81%87%E8%A7%81%E4%BD%A0&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 孤独的美食家第11季 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMTaP6rpQcGnCMejC34jC314H3GsC38rBcrmD0/chunklist.m3u8 |
+| OK | 偏偏遇见你 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8NjZmr5hWuFBKt5fWObfWP8fgWdA6S8fSsk1K/chunklist.m3u8 |
+| OK | 翻转人生 | 第1集 | https://vid.dbokutv.com/20260418/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMPwSdCjC34jC391HJaoGpH3BcrmD0/chunklist.m3u8 |
 | OK | AI教我谈恋爱 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOMbgTtHiOIqmCIqmCJH4DaD3E30kRN0q/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 
 </details>
 
