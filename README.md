@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-19T04:21:56.058Z`
+Generated: `2026-04-20T04:24:27.261Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -22,7 +22,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
+| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `心声操控，我靠直球打脸绿`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%BF%83%E5%A3%B0%E6%93%8D%E6%8E%A7%EF%BC%8C%E6%88%91%E9%9D%A0%E7%9B%B4%E7%90%83%E6%89%93%E8%84%B8%E7%BB%BF/vod/0/1/4
+- Keyword: `后妈她靠撒娇拿捏豪门大佬`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%90%8E%E5%A6%88%E5%A5%B9%E9%9D%A0%E6%92%92%E5%A8%87%E6%8B%BF%E6%8D%8F%E8%B1%AA%E9%97%A8%E5%A4%A7%E4%BD%AC/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 心声操控，我靠直球打脸绿茶假千金 | 第01集 | https://europe.olemovienews.com/ts4/20260419/nkynphnd/mp4/nkynphnd.mp4/clipTo/141133/master.m3u8 |
-| OK | 红楼一梦缚华年 | 第01集 | https://europe.olemovienews.com/ts4/20260419/wxmresgG/mp4/wxmresgG.mp4/clipTo/175000/master.m3u8 |
-| OK | 剑道第一仙 | 第第01集集 | https://europe.olemovienews.com/ts4/20260419/CgGizszl/mp4/CgGizszl.mp4/clipTo/237680/master.m3u8 |
+| OK | 后妈她靠撒娇拿捏豪门大佬 | 第01集 | https://europe.olemovienews.com/ts4/20260420/IyqsvkJs/mp4/IyqsvkJs.mp4/clipTo/238520/master.m3u8 |
+| OK | 无声惊雷罪父 | 第01集 | https://europe.olemovienews.com/ts4/20260420/hupAjxiI/mp4/hupAjxiI.mp4/clipTo/143266/master.m3u8 |
+| OK | 凶案现场，我只能装瞎 | 第01集 | https://europe.olemovienews.com/ts4/20260420/bypawDwJ/mp4/bypawDwJ.mp4/clipTo/243100/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -77,13 +77,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `4/5`
+- Reasons: `search_empty:1`
 - Note: AGE 動漫
 
 Connectivity
@@ -92,16 +92,25 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `OK`
-- Keyword: `主播女孩重度依赖`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
+- Status: `Empty`
+- Keyword: `茉莉花酱的好感度正在崩坏`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 主播女孩重度依赖 | 第01集 | https://hn.bfvvs.com/play/erkRDMKa/index.m3u8 |
-| OK | 楠木邸的神明庭院 | 第01集 | https://hn.bfvvs.com/play/aADPZAPe/index.m3u8 |
-| OK | 朱音落语 | 第01集 | https://hn.bfvvs.com/play/e0RVKq7b/index.m3u8 |
+| OK | 茉莉花酱的好感度正在崩坏 | 第01集 | https://hn.bfvvs.com/play/b2kvMJ1d/index.m3u8 |
+| OK | 淫狱团地 | 第01集 | https://hn.bfvvs.com/play/eVOPRZva/index.m3u8 |
+| OK | 幽灵音乐会 | 第01集 | https://hn.bfvvs.com/play/dwpm171e/index.m3u8 |
+
+Failed Case Diagnostics
+- keyword:茉莉花酱的好感度正在崩坏 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
 
 </details>
 
@@ -249,15 +258,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
+- Keyword: `努力克服自卑的我们`
+- URL: https://www.thanju.com/search/%E5%8A%AA%E5%8A%9B%E5%85%8B%E6%9C%8D%E8%87%AA%E5%8D%91%E7%9A%84%E6%88%91%E4%BB%AC.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
 | OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
 | OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
+| OK | 在韩国成为房主的方法 | 01 | https://cdn.yzzy34-play.com/20260314/5816_ff1ced30/index.m3u8 |
 
 </details>
 
@@ -278,15 +287,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `偏偏遇见你`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%81%8F%E5%81%8F%E9%81%87%E8%A7%81%E4%BD%A0&submit=
+- Keyword: `AI教我谈恋爱`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=AI%E6%95%99%E6%88%91%E8%B0%88%E6%81%8B%E7%88%B1&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 偏偏遇见你 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8NjZmr5hWuFBKt5fWObfWP8fgWdA6S8fSsk1K/chunklist.m3u8 |
-| OK | 翻转人生 | 第1集 | https://vid.dbokutv.com/20260418/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMPwSdCjC34jC391HJaoGpH3BcrmD0/chunklist.m3u8 |
 | OK | AI教我谈恋爱 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOMbgTtHiOIqmCIqmCJH4DaD3E30kRN0q/chunklist.m3u8 |
+| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
+| OK | 努力克服自卑的我们 | 第1集 | https://vid.dbokutv.com/20260419/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMviQsPwOcHtRIqmCIqmCpSpCqGsGZOkRN0q/chunklist.m3u8 |
 
 </details>
 
