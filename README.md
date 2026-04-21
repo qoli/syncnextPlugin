@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-20T04:24:27.261Z`
+Generated: `2026-04-21T04:20:04.673Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -22,7 +22,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `后妈她靠撒娇拿捏豪门大佬`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%90%8E%E5%A6%88%E5%A5%B9%E9%9D%A0%E6%92%92%E5%A8%87%E6%8B%BF%E6%8D%8F%E8%B1%AA%E9%97%A8%E5%A4%A7%E4%BD%AC/vod/0/1/4
+- Keyword: `换嫁换出个疯批儿子乖乖夫`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%8D%A2%E5%AB%81%E6%8D%A2%E5%87%BA%E4%B8%AA%E7%96%AF%E6%89%B9%E5%84%BF%E5%AD%90%E4%B9%96%E4%B9%96%E5%A4%AB/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 后妈她靠撒娇拿捏豪门大佬 | 第01集 | https://europe.olemovienews.com/ts4/20260420/IyqsvkJs/mp4/IyqsvkJs.mp4/clipTo/238520/master.m3u8 |
-| OK | 无声惊雷罪父 | 第01集 | https://europe.olemovienews.com/ts4/20260420/hupAjxiI/mp4/hupAjxiI.mp4/clipTo/143266/master.m3u8 |
-| OK | 凶案现场，我只能装瞎 | 第01集 | https://europe.olemovienews.com/ts4/20260420/bypawDwJ/mp4/bypawDwJ.mp4/clipTo/243100/master.m3u8 |
+| OK | 换嫁换出个疯批儿子乖乖夫君 | 第第1集集 | https://europe.olemovienews.com/ts4/20260421/EvGfAzaB/mp4/EvGfAzaB.mp4/clipTo/118600/master.m3u8 |
+| OK | 盖世渔船 | 第第1集集 | https://europe.olemovienews.com/ts4/20260421/myxvFElu/mp4/myxvFElu.mp4/clipTo/348700/master.m3u8 |
+| OK | 江风晚渡不知馨 | 第01集 | https://europe.olemovienews.com/ts4/20260421/vAxvBHii/mp4/vAxvBHii.mp4/clipTo/79920/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -77,13 +77,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -92,25 +92,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `茉莉花酱的好感度正在崩坏`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `尖帽子的魔法工坊`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 茉莉花酱的好感度正在崩坏 | 第01集 | https://hn.bfvvs.com/play/b2kvMJ1d/index.m3u8 |
-| OK | 淫狱团地 | 第01集 | https://hn.bfvvs.com/play/eVOPRZva/index.m3u8 |
-| OK | 幽灵音乐会 | 第01集 | https://hn.bfvvs.com/play/dwpm171e/index.m3u8 |
-
-Failed Case Diagnostics
-- keyword:茉莉花酱的好感度正在崩坏 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
+| OK | 尖帽子的魔法工坊 | 第01集 | https://v.baofeng10.com/video/jianmaozidemofagongfang/f719c4b4c4b5/index.m3u8 |
+| OK | 异世界悠闲农家 第二季 | 第01集 | https://hn.bfvvs.com/play/elY53v7a/index.m3u8 |
+| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://hn.bfvvs.com/play/erkR3Eka/index.m3u8 |
 
 </details>
 
@@ -258,15 +249,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `努力克服自卑的我们`
-- URL: https://www.thanju.com/search/%E5%8A%AA%E5%8A%9B%E5%85%8B%E6%9C%8D%E8%87%AA%E5%8D%91%E7%9A%84%E6%88%91%E4%BB%AC.html
+- Keyword: `稻草人`
+- URL: https://www.thanju.com/search/%E7%A8%BB%E8%8D%89%E4%BA%BA.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
-| OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
-| OK | 在韩国成为房主的方法 | 01 | https://cdn.yzzy34-play.com/20260314/5816_ff1ced30/index.m3u8 |
+| OK | 稻草人 | 01 | https://cdn.vvvip-plays33.cc/20260420/12456_6a9edcb7/index.m3u8 |
+| OK | 柔美的细胞小将第三季 | 01 | https://player.yzzyvip-35.com/20260413/4584_6ba1085b/index.m3u8 |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
 
 </details>
 
@@ -294,8 +285,8 @@ Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
 | OK | AI教我谈恋爱 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOMbgTtHiOIqmCIqmCJH4DaD3E30kRN0q/chunklist.m3u8 |
-| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
-| OK | 努力克服自卑的我们 | 第1集 | https://vid.dbokutv.com/20260419/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMviQsPwOcHtRIqmCIqmCpSpCqGsGZOkRN0q/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
 
 </details>
 
