@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-21T04:20:04.673Z`
+Generated: `2026-04-22T04:18:29.873Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -22,7 +22,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
+| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `换嫁换出个疯批儿子乖乖夫`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%8D%A2%E5%AB%81%E6%8D%A2%E5%87%BA%E4%B8%AA%E7%96%AF%E6%89%B9%E5%84%BF%E5%AD%90%E4%B9%96%E4%B9%96%E5%A4%AB/vod/0/1/4
+- Keyword: `透视神医混花都`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%80%8F%E8%A7%86%E7%A5%9E%E5%8C%BB%E6%B7%B7%E8%8A%B1%E9%83%BD/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 换嫁换出个疯批儿子乖乖夫君 | 第第1集集 | https://europe.olemovienews.com/ts4/20260421/EvGfAzaB/mp4/EvGfAzaB.mp4/clipTo/118600/master.m3u8 |
-| OK | 盖世渔船 | 第第1集集 | https://europe.olemovienews.com/ts4/20260421/myxvFElu/mp4/myxvFElu.mp4/clipTo/348700/master.m3u8 |
-| OK | 江风晚渡不知馨 | 第01集 | https://europe.olemovienews.com/ts4/20260421/vAxvBHii/mp4/vAxvBHii.mp4/clipTo/79920/master.m3u8 |
+| OK | 透视神医混花都 | 第01集 | https://europe.olemovienews.com/ts4/20260422/diCxlbJI/mp4/diCxlbJI.mp4/clipTo/95920/master.m3u8 |
+| OK | 苟在西游收徒，我收的猴子是齐天大圣 | 第第1集集 | https://europe.olemovienews.com/ts4/20260422/wGvpgdvb/mp4/wGvpgdvb.mp4/clipTo/152033/master.m3u8 |
+| OK | 长白山兽医，驻站五年我竟成了妖族共主 | 第第1集集 | https://europe.olemovienews.com/ts4/20260421/uakgtoip/mp4/uakgtoip.mp4/clipTo/112583/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -77,13 +77,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `4/5`
+- Reasons: `search_empty:1`
 - Note: AGE 動漫
 
 Connectivity
@@ -92,16 +92,25 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `OK`
-- Keyword: `尖帽子的魔法工坊`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A
+- Status: `Empty`
+- Keyword: `这样高大的女孩子你喜欢吗`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BF%99%E6%A0%B7%E9%AB%98%E5%A4%A7%E7%9A%84%E5%A5%B3%E5%AD%A9%E5%AD%90%E4%BD%A0%E5%96%9C%E6%AC%A2%E5%90%97
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 尖帽子的魔法工坊 | 第01集 | https://v.baofeng10.com/video/jianmaozidemofagongfang/f719c4b4c4b5/index.m3u8 |
-| OK | 异世界悠闲农家 第二季 | 第01集 | https://hn.bfvvs.com/play/elY53v7a/index.m3u8 |
-| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://hn.bfvvs.com/play/erkR3Eka/index.m3u8 |
+| OK | 这样高大的女孩子你喜欢吗？ | 第01集 | https://hn.bfvvs.com/play/erkROmpa/index.m3u8 |
+| OK | 欺诈游戏 | 第01集 | https://hn.bfvvs.com/play/ejRq354e/index.m3u8 |
+| OK | 左撇子艾伦 | 第01集 | https://hn.bfvvs.com/play/dG65jwyb/index.m3u8 |
+
+Failed Case Diagnostics
+- keyword:这样高大的女孩子你喜欢吗 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BF%99%E6%A0%B7%E9%AB%98%E5%A4%A7%E7%9A%84%E5%A5%B3%E5%AD%A9%E5%AD%90%E4%BD%A0%E5%96%9C%E6%AC%A2%E5%90%97
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BF%99%E6%A0%B7%E9%AB%98%E5%A4%A7%E7%9A%84%E5%A5%B3%E5%AD%A9%E5%AD%90%E4%BD%A0%E5%96%9C%E6%AC%A2%E5%90%97
 
 </details>
 
@@ -256,8 +265,8 @@ Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
 | OK | 稻草人 | 01 | https://cdn.vvvip-plays33.cc/20260420/12456_6a9edcb7/index.m3u8 |
-| OK | 柔美的细胞小将第三季 | 01 | https://player.yzzyvip-35.com/20260413/4584_6ba1085b/index.m3u8 |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 
 </details>
 
@@ -278,13 +287,13 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `AI教我谈恋爱`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=AI%E6%95%99%E6%88%91%E8%B0%88%E6%81%8B%E7%88%B1&submit=
+- Keyword: `为时已是寿司`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E6%97%B6%E5%B7%B2%E6%98%AF%E5%AF%BF%E5%8F%B8&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | AI教我谈恋爱 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOMbgTtHiOIqmCIqmCJH4DaD3E30kRN0q/chunklist.m3u8 |
+| OK | 为时已是寿司 | 第1集 | https://vid.dbokutv.com/20260409/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNTpUNDpSoqmCIqmC44nGq56EKOkRN0q/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 | OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
 
