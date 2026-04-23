@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-22T04:18:29.873Z`
+Generated: `2026-04-23T04:20:55.971Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `透视神医混花都`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%80%8F%E8%A7%86%E7%A5%9E%E5%8C%BB%E6%B7%B7%E8%8A%B1%E9%83%BD/vod/0/1/4
+- Keyword: `满级AI的末世绿茶生存法`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%BB%A1%E7%BA%A7AI%E7%9A%84%E6%9C%AB%E4%B8%96%E7%BB%BF%E8%8C%B6%E7%94%9F%E5%AD%98%E6%B3%95/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 透视神医混花都 | 第01集 | https://europe.olemovienews.com/ts4/20260422/diCxlbJI/mp4/diCxlbJI.mp4/clipTo/95920/master.m3u8 |
-| OK | 苟在西游收徒，我收的猴子是齐天大圣 | 第第1集集 | https://europe.olemovienews.com/ts4/20260422/wGvpgdvb/mp4/wGvpgdvb.mp4/clipTo/152033/master.m3u8 |
-| OK | 长白山兽医，驻站五年我竟成了妖族共主 | 第第1集集 | https://europe.olemovienews.com/ts4/20260421/uakgtoip/mp4/uakgtoip.mp4/clipTo/112583/master.m3u8 |
+| OK | 满级AI的末世绿茶生存法则 | 第第1集集 | https://europe.olemovienews.com/ts4/20260423/Hfehabdv/mp4/Hfehabdv.mp4/clipTo/126933/master.m3u8 |
+| OK | 我死后第五年，疯皇帝还在招魂 | 第第1集集 | https://europe.olemovienews.com/ts4/20260423/AdxnibAE/mp4/AdxnibAE.mp4/clipTo/130960/master.m3u8 |
+| OK | 西游：五指山上贴瓷砖AI真人第一季 | 第第1集集 | https://europe.olemovienews.com/ts4/20260423/IcCDlgky/mp4/IcCDlgky.mp4/clipTo/103966/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -93,24 +93,24 @@ Connectivity
 
 Search
 - Status: `Empty`
-- Keyword: `这样高大的女孩子你喜欢吗`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BF%99%E6%A0%B7%E9%AB%98%E5%A4%A7%E7%9A%84%E5%A5%B3%E5%AD%A9%E5%AD%90%E4%BD%A0%E5%96%9C%E6%AC%A2%E5%90%97
+- Keyword: `加油吧！中村君!!`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
 - Reason: `search_empty`
 - Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 这样高大的女孩子你喜欢吗？ | 第01集 | https://hn.bfvvs.com/play/erkROmpa/index.m3u8 |
-| OK | 欺诈游戏 | 第01集 | https://hn.bfvvs.com/play/ejRq354e/index.m3u8 |
-| OK | 左撇子艾伦 | 第01集 | https://hn.bfvvs.com/play/dG65jwyb/index.m3u8 |
+| OK | 加油吧！中村君!! | 第01集 | https://hn.bfvvs.com/play/epYQpvra/index.m3u8 |
+| OK | 最强王者的第二人生 第二季 | 第01集 | https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 |
+| OK | 转生成自动贩卖机的我今天也在迷宫徘徊 第三季 | 第01集 | https://hn.bfvvs.com/play/ejRqjGle/index.m3u8 |
 
 Failed Case Diagnostics
-- keyword:这样高大的女孩子你喜欢吗 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BF%99%E6%A0%B7%E9%AB%98%E5%A4%A7%E7%9A%84%E5%A5%B3%E5%AD%A9%E5%AD%90%E4%BD%A0%E5%96%9C%E6%AC%A2%E5%90%97
+- keyword:加油吧！中村君!! | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BF%99%E6%A0%B7%E9%AB%98%E5%A4%A7%E7%9A%84%E5%A5%B3%E5%AD%A9%E5%AD%90%E4%BD%A0%E5%96%9C%E6%AC%A2%E5%90%97
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
 
 </details>
 
@@ -258,13 +258,13 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `稻草人`
-- URL: https://www.thanju.com/search/%E7%A8%BB%E8%8D%89%E4%BA%BA.html
+- Keyword: `秒杀爱情`
+- URL: https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 稻草人 | 01 | https://cdn.vvvip-plays33.cc/20260420/12456_6a9edcb7/index.m3u8 |
+| OK | 秒杀爱情 | 01 | https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 |
 | OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 | OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 
@@ -287,15 +287,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `为时已是寿司`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E6%97%B6%E5%B7%B2%E6%98%AF%E5%AF%BF%E5%8F%B8&submit=
+- Keyword: `BORDERLESS广域`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=BORDERLESS%E5%B9%BF%E5%9F%9F&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 为时已是寿司 | 第1集 | https://vid.dbokutv.com/20260409/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNTpUNDpSoqmCIqmC44nGq56EKOkRN0q/chunklist.m3u8 |
+| OK | BORDERLESS广域移动搜查队 | 第1集 | https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOcyvCZAvDZAvkREyNbaSsDaBJ0nBJ0oGZCvGJCsDYvjS34/chunklist.m3u8 |
+| OK | 月夜行路答案在名作中 | 第1集 | https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNbvU6naONfjUdejC34jC3CnDJWqCJWrBcrmD0/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
 
 </details>
 
