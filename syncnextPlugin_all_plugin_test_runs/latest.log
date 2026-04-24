@@ -10,43 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "81505",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260423-1/f83e95f7e4938a1619b1f996e3043556.jpg",
-  "title": "满级AI的末世绿茶生存法则",
+  "id": "81521",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260424-1/27f34429d14c3f757a7487e1e3526dc5.jpg",
+  "title": "长安小闲王",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81505/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81521/true"
 }
-[plugin 1] search keyword=满级AI的末世绿茶生存法 url=https://api.olelive.com/v1/pub/index/search/%E6%BB%A1%E7%BA%A7AI%E7%9A%84%E6%9C%AB%E4%B8%96%E7%BB%BF%E8%8C%B6%E7%94%9F%E5%AD%98%E6%B3%95/vod/0/1/4
+[plugin 1] search keyword=长安小闲王 url=https://api.olelive.com/v1/pub/index/search/%E9%95%BF%E5%AE%89%E5%B0%8F%E9%97%B2%E7%8E%8B/vod/0/1/4
 [plugin 1] search results=1
 [plugin 1] search sample(index=0)
 {
-  "id": "81505",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260423-1/f83e95f7e4938a1619b1f996e3043556.jpg",
-  "title": "满级AI的末世绿茶生存法则",
+  "id": "81521",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260424-1/27f34429d14c3f757a7487e1e3526dc5.jpg",
+  "title": "长安小闲王",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81505/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81521/true"
 }
-[OK] 新歐樂影院 | search(满级AI的末世绿茶生存法) -> 1
-[OK] 新歐樂影院 | 满级AI的末世绿茶生存法则 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260423/Hfehabdv/mp4/Hfehabdv.mp4/clipTo/126933/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 我死后第五年，疯皇帝还在招魂 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260423/AdxnibAE/mp4/AdxnibAE.mp4/clipTo/130960/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 西游：五指山上贴瓷砖AI真人第一季 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260423/IcCDlgky/mp4/IcCDlgky.mp4/clipTo/103966/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(长安小闲王) -> 1
+[OK] 新歐樂影院 | 长安小闲王 | 第01集 -> https://europe.olemovienews.com/ts4/20260424/ximaBHve/mp4/ximaBHve.mp4/clipTo/129199/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 再世定乾坤 | 第第1集集 -> https://europe.olemovienews.com/ts4/20260424/iqHGuqkn/mp4/iqHGuqkn.mp4/clipTo/462666/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 师姐，请助我修行 | 第01集 -> https://europe.olemovienews.com/ts4/20260424/Jtqbrxzh/mp4/Jtqbrxzh.mp4/clipTo/70520/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260118",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260118.jpg",
-  "title": "加油吧！中村君!!",
-  "descriptionText": "第05集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260118"
+  "id": "20260073",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260073.jpg",
+  "title": "冰之城墙",
+  "descriptionText": "第04集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260073"
 }
-[plugin 2] search keyword=加油吧！中村君!! url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-[plugin 2] search results=0
-[FAIL] 新 AGE 動漫 | search(加油吧！中村君!!) -> 0
-[OK] 新 AGE 動漫 | 加油吧！中村君!! | 第01集 -> https://hn.bfvvs.com/play/epYQpvra/index.m3u8 | candidates=6
-[OK] 新 AGE 動漫 | 最强王者的第二人生 第二季 | 第01集 -> https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 | candidates=6
-[OK] 新 AGE 動漫 | 转生成自动贩卖机的我今天也在迷宫徘徊 第三季 | 第01集 -> https://hn.bfvvs.com/play/ejRqjGle/index.m3u8 | candidates=6
+[plugin 2] search keyword=冰之城墙 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%86%B0%E4%B9%8B%E5%9F%8E%E5%A2%99
+[plugin 2] search results=1
+[plugin 2] search sample(index=0)
+{
+  "id": "20260073",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260073.jpg",
+  "title": "冰之城墙",
+  "descriptionText": "第04集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260073"
+}
+[OK] 新 AGE 動漫 | search(冰之城墙) -> 1
+[OK] 新 AGE 動漫 | 冰之城墙 | 第01集 -> https://hn.bfvvs.com/play/b68RJVQe/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | 轮回的花瓣 | 第01集 -> https://hn.bfvvs.com/play/aKrZjRMe/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | 淡岛百景 | 第01集 -> https://cdn.wlcdn88.com:777/7e9f6e7b/index.m3u8 | candidates=3
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzy89.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -73,7 +81,7 @@
   "id": "https://www.thanju.com/detail/2519.html",
   "coverURLString": "https://pp.thanju.com/U/vod/69e95278bea16.jpg",
   "title": "秒杀爱情",
-  "descriptionText": "第1集 · 安孝燮 蔡元彬 金汎 高斗心",
+  "descriptionText": "第2集 · 安孝燮 蔡元彬 金汎 高斗心",
   "detailURLString": "https://www.thanju.com/detail/2519.html"
 }
 [plugin 6] search keyword=秒杀爱情 url=https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
@@ -95,29 +103,29 @@
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/143459.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/6YRlr1z8bcXalWKuj1PZY459pW8.jpg",
-  "title": "BORDERLESS广域移动搜查队",
-  "descriptionText": "更新至3集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143459.html"
+  "id": "https://www.dbku.tv/voddetail/143362.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/atEEKjmvJdBIjZmBzyiReulQ2zp.jpg",
+  "title": "我们愉快的好日子",
+  "descriptionText": "更新至19集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143362.html"
 }
-[plugin 7] search keyword=BORDERLESS广域 url=https://www.dbku.tv/vodsearch/-------------.html?wd=BORDERLESS%E5%B9%BF%E5%9F%9F&submit=
+[plugin 7] search keyword=我们愉快的好日子 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/143459.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/6YRlr1z8bcXalWKuj1PZY459pW8.jpg",
-  "title": "BORDERLESS广域移动搜查队",
-  "descriptionText": "更新至3集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143459.html"
+  "id": "https://www.dbku.tv/voddetail/143362.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/atEEKjmvJdBIjZmBzyiReulQ2zp.jpg",
+  "title": "我们愉快的好日子",
+  "descriptionText": "更新至19集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143362.html"
 }
-[OK] 独播库 | search(BORDERLESS广域) -> 1
-[OK] 独播库 | BORDERLESS广域移动搜查队 | 第1集 -> https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOcyvCZAvDZAvkREyNbaSsDaBJ0nBJ0oGZCvGJCsDYvjS34/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 月夜行路答案在名作中 | 第1集 -> https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNbvU6naONfjUdejC34jC3CnDJWqCJWrBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(我们愉快的好日子) -> 1
 [OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 红色珍珠 | 第1集 -> https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 那一夜我怀了社长的孩子 | 第1集 -> https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBMvvUNTeR7DZP6XwBJ0nBJ0oCJKvCJX2EIvjS34/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_d8627039-4b8b-446f-99e1-575a4361e40b
-[summary] plugins=7, fatal=3, cases=26, ok=18, fail=8, invalidSources=3
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_4aa8039d-df09-4669-be7e-f3f1f07bf273
+[summary] plugins=7, fatal=3, cases=26, ok=19, fail=7, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log

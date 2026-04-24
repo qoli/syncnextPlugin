@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-23T04:20:55.971Z`
+Generated: `2026-04-24T04:23:07.720Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -22,7 +22,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `满级AI的末世绿茶生存法`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%BB%A1%E7%BA%A7AI%E7%9A%84%E6%9C%AB%E4%B8%96%E7%BB%BF%E8%8C%B6%E7%94%9F%E5%AD%98%E6%B3%95/vod/0/1/4
+- Keyword: `长安小闲王`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%95%BF%E5%AE%89%E5%B0%8F%E9%97%B2%E7%8E%8B/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 满级AI的末世绿茶生存法则 | 第第1集集 | https://europe.olemovienews.com/ts4/20260423/Hfehabdv/mp4/Hfehabdv.mp4/clipTo/126933/master.m3u8 |
-| OK | 我死后第五年，疯皇帝还在招魂 | 第第1集集 | https://europe.olemovienews.com/ts4/20260423/AdxnibAE/mp4/AdxnibAE.mp4/clipTo/130960/master.m3u8 |
-| OK | 西游：五指山上贴瓷砖AI真人第一季 | 第第1集集 | https://europe.olemovienews.com/ts4/20260423/IcCDlgky/mp4/IcCDlgky.mp4/clipTo/103966/master.m3u8 |
+| OK | 长安小闲王 | 第01集 | https://europe.olemovienews.com/ts4/20260424/ximaBHve/mp4/ximaBHve.mp4/clipTo/129199/master.m3u8 |
+| OK | 再世定乾坤 | 第第1集集 | https://europe.olemovienews.com/ts4/20260424/iqHGuqkn/mp4/iqHGuqkn.mp4/clipTo/462666/master.m3u8 |
+| OK | 师姐，请助我修行 | 第01集 | https://europe.olemovienews.com/ts4/20260424/Jtqbrxzh/mp4/Jtqbrxzh.mp4/clipTo/70520/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -77,13 +77,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -92,25 +92,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `加油吧！中村君!!`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `冰之城墙`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%86%B0%E4%B9%8B%E5%9F%8E%E5%A2%99
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 加油吧！中村君!! | 第01集 | https://hn.bfvvs.com/play/epYQpvra/index.m3u8 |
-| OK | 最强王者的第二人生 第二季 | 第01集 | https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 |
-| OK | 转生成自动贩卖机的我今天也在迷宫徘徊 第三季 | 第01集 | https://hn.bfvvs.com/play/ejRqjGle/index.m3u8 |
-
-Failed Case Diagnostics
-- keyword:加油吧！中村君!! | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+| OK | 冰之城墙 | 第01集 | https://hn.bfvvs.com/play/b68RJVQe/index.m3u8 |
+| OK | 轮回的花瓣 | 第01集 | https://hn.bfvvs.com/play/aKrZjRMe/index.m3u8 |
+| OK | 淡岛百景 | 第01集 | https://cdn.wlcdn88.com:777/7e9f6e7b/index.m3u8 |
 
 </details>
 
@@ -287,15 +278,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `BORDERLESS广域`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=BORDERLESS%E5%B9%BF%E5%9F%9F&submit=
+- Keyword: `我们愉快的好日子`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | BORDERLESS广域移动搜查队 | 第1集 | https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOcyvCZAvDZAvkREyNbaSsDaBJ0nBJ0oGZCvGJCsDYvjS34/chunklist.m3u8 |
-| OK | 月夜行路答案在名作中 | 第1集 | https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNbvU6naONfjUdejC34jC3CnDJWqCJWrBcrmD0/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
+| OK | 那一夜我怀了社长的孩子 | 第1集 | https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBMvvUNTeR7DZP6XwBJ0nBJ0oCJKvCJX2EIvjS34/chunklist.m3u8 |
 
 </details>
 
