@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-24T04:23:07.720Z`
+Generated: `2026-04-25T04:12:06.598Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -25,7 +25,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
+| libvio | plugin_libvio | Fatal | OK 2/2 | Empty | Not Reached | 1/2 | search_empty:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `长安小闲王`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%95%BF%E5%AE%89%E5%B0%8F%E9%97%B2%E7%8E%8B/vod/0/1/4
+- Keyword: `王大锤来也`
+- URL: https://api.olelive.com/v1/pub/index/search/%E7%8E%8B%E5%A4%A7%E9%94%A4%E6%9D%A5%E4%B9%9F/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 长安小闲王 | 第01集 | https://europe.olemovienews.com/ts4/20260424/ximaBHve/mp4/ximaBHve.mp4/clipTo/129199/master.m3u8 |
-| OK | 再世定乾坤 | 第第1集集 | https://europe.olemovienews.com/ts4/20260424/iqHGuqkn/mp4/iqHGuqkn.mp4/clipTo/462666/master.m3u8 |
-| OK | 师姐，请助我修行 | 第01集 | https://europe.olemovienews.com/ts4/20260424/Jtqbrxzh/mp4/Jtqbrxzh.mp4/clipTo/70520/master.m3u8 |
+| OK | 王大锤来也 | 第第1集集 | https://europe.olemovienews.com/ts4/20260425/pdmaeFHj/mp4/pdmaeFHj.mp4/clipTo/174700/master.m3u8 |
+| OK | 女将军和她的夫君 | 第第1集集 | https://europe.olemovienews.com/ts4/20260425/pmzwtBom/mp4/pmzwtBom.mp4/clipTo/125800/master.m3u8 |
+| OK | 活了千年被贵妃当外室打了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260425/JuxuCHgz/mp4/JuxuCHgz.mp4/clipTo/178833/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -93,15 +93,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `冰之城墙`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%86%B0%E4%B9%8B%E5%9F%8E%E5%A2%99
+- Keyword: `冻结地球`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%86%BB%E7%BB%93%E5%9C%B0%E7%90%83
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 冰之城墙 | 第01集 | https://hn.bfvvs.com/play/b68RJVQe/index.m3u8 |
-| OK | 轮回的花瓣 | 第01集 | https://hn.bfvvs.com/play/aKrZjRMe/index.m3u8 |
-| OK | 淡岛百景 | 第01集 | https://cdn.wlcdn88.com:777/7e9f6e7b/index.m3u8 |
+| OK | 冻结地球 | 第01集 | https://hn.bfvvs.com/play/eZ6VQE5e/index.m3u8 |
+| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://hn.bfvvs.com/play/en5rvjEd/index.m3u8 |
+| OK | 神之水滴 | 第01集 | https://hn.bfvvs.com/play/bDk9moqa/index.m3u8 |
 
 </details>
 
@@ -192,20 +192,20 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Fatal · conn=Fail 0/2 · search=Empty · playback=Not Reached · reasons=connectivity_failed:1, search_empty:1</summary>
+<summary>libvio · Fatal · conn=OK 2/2 · search=Empty · playback=Not Reached · reasons=search_empty:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Fatal`
-- Cases: `0/2`
-- Reasons: `connectivity_failed:1, search_empty:1`
+- Cases: `1/2`
+- Reasons: `search_empty:1`
 - Note: libvio
 - Fatal Errors:
   - `no medias returned; no medias returned`
 
 Connectivity
-- [FAIL] `GET 403` https://libvio.site/ | status 403
-- [FAIL] `GET 403` https://libvio.site/search/-------------.html?wd=test | status 403
+- [OK] `HEAD 200` https://libvio.site/
+- [OK] `HEAD 200` https://libvio.site/search/-------------.html?wd=test
 
 Search
 - Status: `Empty`
@@ -218,17 +218,11 @@ Playback Cases
 - Not reached
 
 Failed Case Diagnostics
-- connectivity | stage=`connectivity` | reason=`connectivity_failed`
-  - detailURL: https://libvio.site/
-  - detail: 插件站點連通性檢查失敗
-  - http diagnostics:
-  - `GET 403` https://libvio.site/ | status 403
-  - `GET 403` https://libvio.site/search/-------------.html?wd=test | status 403
 - keyword:test | stage=`search` | reason=`search_empty`
   - detailURL: https://libvio.site/search/-------------.html?wd=test
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 403` https://libvio.site/search/-------------.html?wd=test
+  - `GET 200` https://libvio.site/search/-------------.html?wd=test
 
 </details>
 
@@ -249,15 +243,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `秒杀爱情`
-- URL: https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
+- Keyword: `神与律师事务所`
+- URL: https://www.thanju.com/search/%E7%A5%9E%E4%B8%8E%E5%BE%8B%E5%B8%88%E4%BA%8B%E5%8A%A1%E6%89%80.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 秒杀爱情 | 01 | https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
-| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
+| OK | 神与律师事务所 | 01 | https://player.yzzyvip-35.com/20260313/1560_3a20f62a/index.m3u8 |
+| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
+| OK | 浪漫的绝对值 | 01 | https://player.yzzyvip-35.com/20260417/4876_77bdfcff/index.m3u8 |
 
 </details>
 
@@ -278,15 +272,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
+- Keyword: `田锁兄弟`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%94%B0%E9%94%81%E5%85%84%E5%BC%9F&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 田锁兄弟 | 第1集 | https://vid.dbokutv.com/20260418/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNHpU6GjC34jC38mCp0rGK95BcrmD0/chunklist.m3u8 |
+| OK | 孤独的美食家第11季 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMTaP6rpQcGnCMejC34jC314H3GsC38rBcrmD0/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
-| OK | 那一夜我怀了社长的孩子 | 第1集 | https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBMvvUNTeR7DZP6XwBJ0nBJ0oCJKvCJX2EIvjS34/chunklist.m3u8 |
 
 </details>
 
