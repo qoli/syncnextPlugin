@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-25T04:12:06.598Z`
+Generated: `2026-04-26T04:25:55.759Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `王大锤来也`
-- URL: https://api.olelive.com/v1/pub/index/search/%E7%8E%8B%E5%A4%A7%E9%94%A4%E6%9D%A5%E4%B9%9F/vod/0/1/4
+- Keyword: `非亲负我十年情，我携盛名`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%9D%9E%E4%BA%B2%E8%B4%9F%E6%88%91%E5%8D%81%E5%B9%B4%E6%83%85%EF%BC%8C%E6%88%91%E6%90%BA%E7%9B%9B%E5%90%8D/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 王大锤来也 | 第第1集集 | https://europe.olemovienews.com/ts4/20260425/pdmaeFHj/mp4/pdmaeFHj.mp4/clipTo/174700/master.m3u8 |
-| OK | 女将军和她的夫君 | 第第1集集 | https://europe.olemovienews.com/ts4/20260425/pmzwtBom/mp4/pmzwtBom.mp4/clipTo/125800/master.m3u8 |
-| OK | 活了千年被贵妃当外室打了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260425/JuxuCHgz/mp4/JuxuCHgz.mp4/clipTo/178833/master.m3u8 |
+| OK | 非亲负我十年情，我携盛名换新生 | 第01集 | https://europe.olemovienews.com/ts4/20260426/xJeEBAAm/mp4/xJeEBAAm.mp4/clipTo/151866/master.m3u8 |
+| OK | 下山即无敌：姐姐们倾国倾城 | 第01集 | https://europe.olemovienews.com/ts4/20260426/ECsdszCA/mp4/ECsdszCA.mp4/clipTo/43800/master.m3u8 |
+| OK | 婚内局外人 | 第01集 | https://europe.olemovienews.com/ts4/20260426/hfCIuyAw/mp4/hfCIuyAw.mp4/clipTo/203360/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -93,15 +93,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `冻结地球`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%86%BB%E7%BB%93%E5%9C%B0%E7%90%83
+- Keyword: `主播女孩重度依赖`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 冻结地球 | 第01集 | https://hn.bfvvs.com/play/eZ6VQE5e/index.m3u8 |
-| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://hn.bfvvs.com/play/en5rvjEd/index.m3u8 |
-| OK | 神之水滴 | 第01集 | https://hn.bfvvs.com/play/bDk9moqa/index.m3u8 |
+| OK | 主播女孩重度依赖 | 第01集 | https://hn.bfvvs.com/play/erkRDMKa/index.m3u8 |
+| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://hn.bfvvs.com/play/erkRLlpa/index.m3u8 |
+| OK | 楠木邸的神明庭院 | 第01集 | https://hn.bfvvs.com/play/aADPZAPe/index.m3u8 |
 
 </details>
 
@@ -243,15 +243,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `神与律师事务所`
-- URL: https://www.thanju.com/search/%E7%A5%9E%E4%B8%8E%E5%BE%8B%E5%B8%88%E4%BA%8B%E5%8A%A1%E6%89%80.html
+- Keyword: `给你爱情处方`
+- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 神与律师事务所 | 01 | https://player.yzzyvip-35.com/20260313/1560_3a20f62a/index.m3u8 |
-| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
-| OK | 浪漫的绝对值 | 01 | https://player.yzzyvip-35.com/20260417/4876_77bdfcff/index.m3u8 |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
+| OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
 
 </details>
 
@@ -272,15 +272,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `田锁兄弟`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%94%B0%E9%94%81%E5%85%84%E5%BC%9F&submit=
+- Keyword: `给你爱情处方`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 田锁兄弟 | 第1集 | https://vid.dbokutv.com/20260418/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNHpU6GjC34jC38mCp0rGK95BcrmD0/chunklist.m3u8 |
-| OK | 孤独的美食家第11季 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMTaP6rpQcGnCMejC34jC314H3GsC38rBcrmD0/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
+| OK | 努力克服自卑的我们 | 第1集 | https://vid.dbokutv.com/20260419/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMviQsPwOcHtRIqmCIqmCpSpCqGsGZOkRN0q/chunklist.m3u8 |
+| OK | 申医生 | 第1集 | https://vid.dbokutv.com/20260315/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBNDvSoqmCIqmCpD6H4L1CKKkRN0q/chunklist.m3u8 |
 
 </details>
 
