@@ -13,7 +13,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-26T04:25:55.759Z`
+Generated: `2026-04-27T04:26:58.861Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -25,7 +25,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Fatal | OK 2/2 | Empty | Not Reached | 1/2 | search_empty:1 |
+| libvio | plugin_libvio | Fatal | OK 1/2 | Empty | Not Reached | 1/2 | search_empty:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `非亲负我十年情，我携盛名`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%9D%9E%E4%BA%B2%E8%B4%9F%E6%88%91%E5%8D%81%E5%B9%B4%E6%83%85%EF%BC%8C%E6%88%91%E6%90%BA%E7%9B%9B%E5%90%8D/vod/0/1/4
+- Keyword: `春酒庆团圆`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%98%A5%E9%85%92%E5%BA%86%E5%9B%A2%E5%9C%86/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 非亲负我十年情，我携盛名换新生 | 第01集 | https://europe.olemovienews.com/ts4/20260426/xJeEBAAm/mp4/xJeEBAAm.mp4/clipTo/151866/master.m3u8 |
-| OK | 下山即无敌：姐姐们倾国倾城 | 第01集 | https://europe.olemovienews.com/ts4/20260426/ECsdszCA/mp4/ECsdszCA.mp4/clipTo/43800/master.m3u8 |
-| OK | 婚内局外人 | 第01集 | https://europe.olemovienews.com/ts4/20260426/hfCIuyAw/mp4/hfCIuyAw.mp4/clipTo/203360/master.m3u8 |
+| OK | 春酒庆团圆 | 第01集 | https://europe.olemovienews.com/ts4/20260427/rwczfrAl/mp4/rwczfrAl.mp4/clipTo/358366/master.m3u8 |
+| OK | 我在地球竟成了穿越者之祖 | 第01集 | https://europe.olemovienews.com/ts4/20260427/wEJICvEv/mp4/wEJICvEv.mp4/clipTo/88666/master.m3u8 |
+| OK | 傅总的天降太子妃 | 第01集 | https://europe.olemovienews.com/ts4/20260427/yIccwfam/mp4/yIccwfam.mp4/clipTo/61400/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -93,15 +93,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `主播女孩重度依赖`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
+- Keyword: `淫狱团地`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%AB%E7%8B%B1%E5%9B%A2%E5%9C%B0
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 主播女孩重度依赖 | 第01集 | https://hn.bfvvs.com/play/erkRDMKa/index.m3u8 |
-| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://hn.bfvvs.com/play/erkRLlpa/index.m3u8 |
-| OK | 楠木邸的神明庭院 | 第01集 | https://hn.bfvvs.com/play/aADPZAPe/index.m3u8 |
+| OK | 淫狱团地 | 第01集 | https://hn.bfvvs.com/play/eVOPRZva/index.m3u8 |
+| OK | 幽灵音乐会 | 第01集 | https://hn.bfvvs.com/play/dwpm171e/index.m3u8 |
+| OK | 公鸡斗士 | 第01集 | https://hn.bfvvs.com/play/b68R94Ve/index.m3u8 |
 
 </details>
 
@@ -192,7 +192,7 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Fatal · conn=OK 2/2 · search=Empty · playback=Not Reached · reasons=search_empty:1</summary>
+<summary>libvio · Fatal · conn=OK 1/2 · search=Empty · playback=Not Reached · reasons=search_empty:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
@@ -205,7 +205,7 @@ Failed Case Diagnostics
 
 Connectivity
 - [OK] `HEAD 200` https://libvio.site/
-- [OK] `HEAD 200` https://libvio.site/search/-------------.html?wd=test
+- [FAIL] `GET 404` https://libvio.site/search/-------------.html?wd=test | status 404
 
 Search
 - Status: `Empty`
@@ -222,7 +222,7 @@ Failed Case Diagnostics
   - detailURL: https://libvio.site/search/-------------.html?wd=test
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 200` https://libvio.site/search/-------------.html?wd=test
+  - `GET 404` https://libvio.site/search/-------------.html?wd=test
 
 </details>
 
@@ -243,15 +243,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
+- Keyword: `努力克服自卑的我们`
+- URL: https://www.thanju.com/search/%E5%8A%AA%E5%8A%9B%E5%85%8B%E6%9C%8D%E8%87%AA%E5%8D%91%E7%9A%84%E6%88%91%E4%BB%AC.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
 | OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
 | OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
+| OK | 隐秘的监察 | 01 | https://cdn.vvvip-plays33.cc/20260425/12786_5dacab03/index.m3u8 |
 
 </details>
 
@@ -272,15 +272,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9&submit=
+- Keyword: `电台明星`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%94%B5%E5%8F%B0%E6%98%8E%E6%98%9F&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 电台明星 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlR7XgBMHqRNWjC34jC355GZSuDZGuBcrmD0/chunklist.m3u8 |
 | OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
 | OK | 努力克服自卑的我们 | 第1集 | https://vid.dbokutv.com/20260419/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMviQsPwOcHtRIqmCIqmCpSpCqGsGZOkRN0q/chunklist.m3u8 |
-| OK | 申医生 | 第1集 | https://vid.dbokutv.com/20260315/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBNDvSoqmCIqmCpD6H4L1CKKkRN0q/chunklist.m3u8 |
 
 </details>
 
