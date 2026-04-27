@@ -90,9 +90,11 @@ node node_test_all_plugins.js --only=plugin_xxx
 - 403、Cloudflare、SafeLine、地區限制：標記為遠端限制，不要當成語法驗證失敗。
 - 播放地址失效：確認是單集資源問題還是解析流程問題。
 
-## 4. Clash / Passwall 規則同步
+## 4. Clash / Passwall 規則人工確認
 
-當插件域名更新時，要同步檢查 `SyncnextClash`：
+當插件域名更新時，不要自行推導是否需要調整 `SyncnextClash`。
+
+正確流程是：先詢問人類是否需要查詢 Clash / Passwall 中是否存在相似域名規則；查詢確認只代表可以列出匹配結果，不代表可以修改。任何規則修改都需要人類再次明確指示具體改法。
 
 ```bash
 cd /Volumes/Data/Github/SyncnextProjects/SyncnextClash
@@ -102,25 +104,66 @@ cd /Volumes/Data/Github/SyncnextProjects/SyncnextClash
 
 ```text
 Unbreak-classical.yaml
+proxy-classical.yaml
 passwall/direct_host
+passwall/proxy_host
 ```
 
-維護要求：
+`SyncnextClash` 對域名只有三種維護狀態：
 
-- 新增目前有效域名。
-- 移除明確失效或拼寫錯誤的舊域名。
-- 清理重複項。
-- Clash 與 Passwall 都要同步檢查。
+1. 中國直連：Clash 使用 `Unbreak-classical.yaml`，Passwall 使用 `passwall/direct_host`。
+2. 中國需要代理：Clash 使用 `proxy-classical.yaml`，Passwall 使用 `passwall/proxy_host`。
+3. 沒有規則：不加入 `SyncnextClash`，交給 Clash 預設規則處理。
+
+人工確認原則：
+
+- 規則維護只能根據人類確認的域名範圍執行。
+- 不要因為插件域名更新，就自動新增、刪除或改寫 Clash / Passwall 規則。
+- 不要按「主站、API、CDN、播放器」等功能分類自行決定規則。
+- 不要自行把候選域名歸類到「中國直連」、「中國需要代理」或「沒有規則」。
+- 可以在獲得同意後查詢相似域名規則，並把查詢結果列出來交給人類決定。
+- 只有在人類明確指示後，才能修改 `Unbreak-classical.yaml`、`proxy-classical.yaml`、`passwall/direct_host`、`passwall/proxy_host` 或其他規則文件。
+- 人類沒有確認時，插件維護流程不應修改 `SyncnextClash`。
 - Clash repo 單獨 commit，不和插件 repo 混在一起。
 
-基本檢查：
+詢問範例：
+
+```text
+插件域名已更新。是否需要我去 SyncnextClash 查詢是否存在相似域名規則？
+我只會先列出匹配結果，不會自行修改規則。
+```
+
+獲得同意後，可以只做查詢：
+
+```bash
+rg -n "example|example-old|example-new" \
+  Unbreak-classical.yaml \
+  proxy-classical.yaml \
+  passwall/direct_host \
+  passwall/proxy_host
+```
+
+查詢後回報：
+
+- 找到哪些相似域名。
+- 分別在哪些文件。
+- 目前文件中已有的規則形態。
+- 建議不要直接修改，等待人類確認具體改法。
+
+如果人類已確認需要修改規則，修改後再做基本檢查：
 
 ```bash
 python - <<'PY'
 from pathlib import Path
-items = [x.strip() for x in Path("passwall/direct_host").read_text().splitlines() if x.strip()]
-dupes = sorted({x for x in items if items.count(x) > 1})
-print("duplicates:", dupes)
+
+for path in ("passwall/direct_host", "passwall/proxy_host"):
+    items = [
+        x.strip()
+        for x in Path(path).read_text().splitlines()
+        if x.strip() and not x.strip().startswith("#")
+    ]
+    dupes = sorted({x for x in items if items.count(x) > 1})
+    print(f"{path} duplicates:", dupes)
 PY
 ```
 
@@ -132,6 +175,7 @@ PY
 
 - 面向用戶，不面向維護者。
 - 說明用戶能感知到的變化與影響。
+- 只有在人類確認並實際調整網路規則後，才提及 Clash / Passwall 或網路規則。
 - 不寫 commit hash。
 - 不寫測試命令。
 - 不寫 repo 路徑。
@@ -144,7 +188,6 @@ PY
 # 2026-04-27
 ### 更新：
 - 「插件名稱」更新域名適配，改善部分網路環境下無法開啟的問題。
-- 已同步更新相關直連規則，減少跳轉到失效域名的情況。
 ```
 
 ## 6. Telegram 發布
@@ -221,8 +264,8 @@ git push
 
 ```bash
 cd /Volumes/Data/Github/SyncnextProjects/SyncnextClash
-git add Unbreak-classical.yaml passwall/direct_host
-git commit -m "🔧 chore(direct): update provider domains"
+git add <人類確認需要修改的規則文件>
+git commit -m "🔧 chore(rules): update provider domains"
 git push
 ```
 
@@ -246,7 +289,7 @@ rebase 後要重新確認本地變更仍然符合預期。
 - 更新 `app.js` 的請求 host、headers、URL rebasing。
 - 執行 JSON 與 JS 語法檢查。
 - 執行插件專用測試或 smoke test。
-- 若域名變更，同步更新 `SyncnextClash`。
+- 若域名變更，詢問人類是否需要查詢 `SyncnextClash` 相似域名規則；未確認前不要修改規則。
 - 更新 Notion 用戶更新日誌。
 - 用 `telegram/post_channel_changelog.sh --dry-run` 預覽 Telegram 文案。
 - 確認文案後執行 Telegram 發布。
