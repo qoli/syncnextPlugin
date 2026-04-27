@@ -2,44 +2,50 @@
   "name": "libvio",
   "description": "libvio",
   "notification": "本頻道有很多網盤資源，從而播放列表會報告錯誤",
-  "host": "https://libvio.site/",
+  "host": "https://libvio.run/",
+  "hosts": [
+    "https://libvio.run",
+    "https://www.libvio.mov",
+    "https://libvio.la",
+    "https://www.libhd.com"
+  ],
   "files": ["txml.js", "app.js"],
   "pages": [
     {
       "key": "index",
       "title": "最近更新",
-      "url": "https://libvio.site/",
+      "url": "https://libvio.run/",
       "timeout": 50,
       "javascript": "buildMedias"
     },
     {
       "key": "movie",
       "title": "电影",
-      "url": "https://libvio.site/type/1-${pageNumber}.html",
+      "url": "https://libvio.run/type/1-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "series",
       "title": "电视剧",
-      "url": "https://libvio.site/type/2-${pageNumber}.html",
+      "url": "https://libvio.run/type/2-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "anime",
       "title": "动漫",
-      "url": "https://libvio.site/type/4-${pageNumber}.html",
+      "url": "https://libvio.run/type/4-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "jpandkr",
       "title": "日韩剧",
-      "url": "https://libvio.site/type/15-${pageNumber}.html",
+      "url": "https://libvio.run/type/15-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "euandus",
       "title": "欧美剧",
-      "url": "https://libvio.site/type/16-${pageNumber}.html",
+      "url": "https://libvio.run/type/16-${pageNumber}.html",
       "javascript": "buildMedias"
     }
   ],
@@ -51,7 +57,7 @@
     "javascript": "Player"
   },
   "search": {
-    "url": "https://libvio.site/search/-------------.html?wd=${keyword}",
+    "url": "https://libvio.run/search/-------------.html?wd=${keyword}",
     "javascript": "Search"
   }
 }

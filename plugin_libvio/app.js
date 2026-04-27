@@ -1,7 +1,14 @@
 `user script`;
 
-var BASE_URL = "https://libvio.site";
+var FALLBACK_HOST = "https://libvio.run";
+var BASE_URL = normalizeHost(
+  typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost
+    ? __syncnextPrimaryHost
+    : FALLBACK_HOST
+);
 var REFERER_URL = BASE_URL + "/";
+var UA =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15";
 var ENABLE_LIST_PLAYABLE_PROBE = false;
 var SOURCE_PROBE_CONCURRENCY = 3;
 var SOURCE_PROBE_EPISODE_LIMIT = 3;
@@ -39,18 +46,69 @@ function buildEpisodeData(id, title, episodeDetailURL) {
   };
 }
 
-function buildURL(href) {
-  if (!href.startsWith("http")) {
-    href = BASE_URL + href;
+function normalizeHost(host) {
+  return String(host || "").trim().replace(/\/+$/, "");
+}
+
+function rebaseLibvioURL(url) {
+  var value = String(url || "").trim();
+  if (!value) {
+    return "";
   }
-  return href;
+
+  if (value.indexOf("//") === 0) {
+    value = "https:" + value;
+  }
+
+  if (!startsWithHttp(value)) {
+    return BASE_URL + "/" + value.replace(/^\/+/, "");
+  }
+
+  return value.replace(
+    /^https?:\/\/(?:www\.)?(?:libvio\.site|libvio\.run|libvio\.mov|libvio\.la|libhd\.com)(?=\/|$)/i,
+    BASE_URL
+  );
+}
+
+function buildURL(href) {
+  return rebaseLibvioURL(href);
 }
 
 function buildAbsoluteURL(url) {
-  if (!startsWithHttp(url)) {
-    return BASE_URL + "/" + url.replace(/^\/+/, "");
-  }
-  return url;
+  return rebaseLibvioURL(url);
+}
+
+function HostsProbeRequest() {
+  return {
+    url: BASE_URL + "/",
+    method: "GET",
+    headers: {
+      "User-Agent": UA,
+      Referer: REFERER_URL,
+    },
+    accept: {
+      statusCodes: [200],
+      bodyIncludesAny: ["stui-vodlist__box", "stui-content", "LIBVIO"],
+      bodyExcludesAny: [
+        "访问验证",
+        "訪問驗證",
+        "安全验证",
+        "安全驗證",
+        "Just a moment",
+        "403 Forbidden",
+        "cf-browser-verification",
+        "captcha",
+      ],
+      titleExcludesAny: [
+        "访问验证",
+        "訪問驗證",
+        "安全验证",
+        "安全驗證",
+        "Just a moment",
+        "403 Forbidden",
+      ],
+    },
+  };
 }
 
 function normalizePlayableURL(rawURL) {
@@ -227,6 +285,7 @@ function fetchPlayableURLByAPI(playAPIURL, callback) {
     .fetch({
       url: playAPIURL,
       headers: {
+        "User-Agent": UA,
         Referer: REFERER_URL,
       },
     })
@@ -272,6 +331,10 @@ function getPlayAPIBaseForSource(from, callback) {
     .fetch({
       url: BASE_URL + "/static/player/" + from + ".js",
       method: "GET",
+      headers: {
+        "User-Agent": UA,
+        Referer: REFERER_URL,
+      },
     })
     .then(function (res) {
       finish(extractPlayAPIBase(res.body));
@@ -299,7 +362,7 @@ function resolvePlayableURLByConfig(config, callback) {
   }
 
   if (from === "ty_new1") {
-    fetchPlayableURLByAPI(BASE_URL + "/vid/ty4.php?url=" + url, callback);
+    fetchPlayableURLByAPI(buildAbsoluteURL("/vid/ty4.php?url=" + url), callback);
     return;
   }
 
@@ -315,6 +378,7 @@ function resolvePlayableURLByConfig(config, callback) {
         .fetch({
           url: twebPlayAPIURL,
           headers: {
+            "User-Agent": UA,
             Referer: REFERER_URL,
           },
         })
@@ -394,9 +458,10 @@ function extractEpisodeURLsFromDetailBody(body) {
 function probePlayableURLFromPlayPage(playPageURL, callback) {
   $http
     .fetch({
-      url: playPageURL,
+      url: buildAbsoluteURL(playPageURL),
       method: "GET",
       headers: {
+        "User-Agent": UA,
         Referer: REFERER_URL,
       },
     })
@@ -431,9 +496,10 @@ function probeEpisodeListForPlayable(episodeURLs, index, callback) {
 function mediaHasPlayableSource(detailURL, callback) {
   $http
     .fetch({
-      url: detailURL,
+      url: buildAbsoluteURL(detailURL),
       method: "GET",
       headers: {
+        "User-Agent": UA,
         Referer: REFERER_URL,
       },
     })
@@ -521,8 +587,12 @@ function parseMediaCandidates(body) {
 function buildMediasWithPlayableProbe(inputURL, callback) {
   $http
     .fetch({
-      url: inputURL,
+      url: buildAbsoluteURL(inputURL),
       method: "GET",
+      headers: {
+        "User-Agent": UA,
+        Referer: REFERER_URL,
+      },
     })
     .then(function (res) {
       var candidates = parseMediaCandidates(res.body);
@@ -571,8 +641,12 @@ function buildMedias(inputURL) {
 
 function Episodes(inputURL) {
   var req = {
-    url: inputURL,
+    url: buildAbsoluteURL(inputURL),
     method: "GET",
+    headers: {
+      "User-Agent": UA,
+      Referer: REFERER_URL,
+    },
   };
 
   let datas = [];
@@ -629,8 +703,12 @@ function Episodes(inputURL) {
 function Player(inputURL) {
   $http
     .fetch({
-      url: inputURL,
+      url: buildAbsoluteURL(inputURL),
       method: "GET",
+      headers: {
+        "User-Agent": UA,
+        Referer: REFERER_URL,
+      },
     })
     .then(function (res) {
       var config = extractPlayerConfig(res.body);
@@ -664,7 +742,7 @@ function gotoPlay(url) {
       url: url,
       headers: {
         "User-Agent":
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15",
+          UA,
         Referer: REFERER_URL,
       },
     };

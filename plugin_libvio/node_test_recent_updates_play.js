@@ -5,10 +5,10 @@ const fs = require("fs");
 const path = require("path");
 
 const DEFAULT_HOSTS = [
-  "https://libvio.site",
-  "https://www.libvio.site",
-  "https://libvio.in",
-  "https://libvio.mov",
+  "https://libvio.run",
+  "https://www.libvio.mov",
+  "https://libvio.la",
+  "https://www.libhd.com",
 ];
 
 const UA =
