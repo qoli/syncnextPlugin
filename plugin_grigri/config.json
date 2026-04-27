@@ -1,7 +1,7 @@
 {
   "name": "grigrilove",
   "description": "grigri爱动漫",
-  "host": "https://anime.girigirilove.com",
+  "host": "https://bgm.girigirilove.com",
   "files": [
     "app.js",
     "txml.js",
@@ -11,13 +11,13 @@
     {
       "key": "index",
       "title": "最近更新",
-      "url": "https://anime.girigirilove.com/show/2--------${pageNumber}---/",
+      "url": "https://bgm.girigirilove.com/show/2--------${pageNumber}---/",
       "javascript": "buildMedias"
     },
     {
       "key": "bd",
       "title": "剧场版",
-      "url": "https://anime.girigirilove.com/show/21--------${pageNumber}---/",
+      "url": "https://bgm.girigirilove.com/show/21--------${pageNumber}---/",
       "javascript": "buildMedias"
     }
   ],
@@ -28,7 +28,7 @@
     "javascript": "Player"
   },
   "search": {
-    "url": "https://anime.girigirilove.com/search/-------------/?wd=${keyword}",
+    "url": "https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=${keyword}",
     "javascript": "Search"
   }
 }
