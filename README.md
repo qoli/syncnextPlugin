@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-28T04:28:22.621Z`
+Generated: `2026-04-29T04:26:43.738Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `满门流放：我靠百宝袋娇养`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%BB%A1%E9%97%A8%E6%B5%81%E6%94%BE%EF%BC%9A%E6%88%91%E9%9D%A0%E7%99%BE%E5%AE%9D%E8%A2%8B%E5%A8%87%E5%85%BB/vod/0/1/4
+- Keyword: `穿书后，我带五个小叔子致`
+- URL: https://api.olelive.com/v1/pub/index/search/%E7%A9%BF%E4%B9%A6%E5%90%8E%EF%BC%8C%E6%88%91%E5%B8%A6%E4%BA%94%E4%B8%AA%E5%B0%8F%E5%8F%94%E5%AD%90%E8%87%B4/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 满门流放：我靠百宝袋娇养落魄太子 | 第第1集集 | https://europe.olemovienews.com/ts4/20260428/grqqbDpo/mp4/grqqbDpo.mp4/clipTo/115541/master.m3u8 |
-| OK | 离婚后，我停了他的救命稻草 | 第01集 | https://europe.olemovienews.com/ts4/20260428/trnwzdGE/mp4/trnwzdGE.mp4/clipTo/252733/master.m3u8 |
-| OK | 荒神令 | 第01集 | https://europe.olemovienews.com/ts4/20260428/GqfkdJgI/mp4/GqfkdJgI.mp4/clipTo/317440/master.m3u8 |
+| OK | 穿书后，我带五个小叔子致富啦 | 第第1集集 | https://europe.olemovienews.com/ts4/20260429/qpqDFFbb/mp4/qpqDFFbb.mp4/clipTo/89000/master.m3u8 |
+| OK | 749局：龙脉档案 | 第第1集集 | https://europe.olemovienews.com/ts4/20260429/sJkoJjBk/mp4/sJkoJjBk.mp4/clipTo/83166/master.m3u8 |
+| OK | 龙王聘镇百诡 | 第第1集集 | https://europe.olemovienews.com/ts4/20260429/BGgBjoGG/mp4/BGgBjoGG.mp4/clipTo/150800/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `尖帽子的魔法工坊`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A
+- Keyword: `左撇子艾伦`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B7%A6%E6%92%87%E5%AD%90%E8%89%BE%E4%BC%A6
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 尖帽子的魔法工坊 | 第01集 | https://hn.bfvvs.com/play/bDk9gJ5a/index.m3u8 |
-| OK | 灵笼 第二季 | 第01集 | https://hn.bfvvs.com/play/rb23kZAd/index.m3u8 |
-| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://hn.bfvvs.com/play/erkR3Eka/index.m3u8 |
+| OK | 左撇子艾伦 | 第01集 | https://hn.bfvvs.com/play/dG65jwyb/index.m3u8 |
+| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://hn.bfvvs.com/play/ejRqlAWe/index.m3u8 |
+| OK | 婚姻剧毒 | 第01集 | https://hn.bfvvs.com/play/ejRqlA5e/index.m3u8 |
 
 </details>
 
@@ -257,8 +257,8 @@ Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
 | OK | 稻草人 | 01 | https://cdn.vvvip-plays33.cc/20260420/12456_6a9edcb7/index.m3u8 |
-| OK | 柔美的细胞小将第三季 | 01 | https://player.yzzyvip-35.com/20260413/4584_6ba1085b/index.m3u8 |
 | OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 
 </details>
 
@@ -279,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `银河的一票`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%93%B6%E6%B2%B3%E7%9A%84%E4%B8%80%E7%A5%A8&submit=
+- Keyword: `女帝`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%A5%B3%E5%B8%9D&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 银河的一票 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNbeP7bmBJ0nBJ0pC38rCZOrCYvjS34/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
+| OK | 女帝 | 第1集 | https://vid.dbokutv.com/20260427/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBMvaBJ0nBJ0mH3OqGp94HYvjS34/chunklist.m3u8 |
+| OK | 夏末初见 | 第1集 | https://vid.dbokutv.com/20260419/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBNXjOsejC34jC30sH394D34mBcrmD0/chunklist.m3u8 |
+| OK | 偏偏遇见你 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8NjZmr5hWuFBKt5fWObfWP8fgWdA6S8fSsk1K/chunklist.m3u8 |
 
 </details>
 
