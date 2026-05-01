@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-04-30T04:27:27.037Z`
+Generated: `2026-05-01T04:38:25.530Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `逆光里的星与辰`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%80%86%E5%85%89%E9%87%8C%E7%9A%84%E6%98%9F%E4%B8%8E%E8%BE%B0/vod/0/1/4
+- Keyword: `白月光是黑月光`
+- URL: https://api.olelive.com/v1/pub/index/search/%E7%99%BD%E6%9C%88%E5%85%89%E6%98%AF%E9%BB%91%E6%9C%88%E5%85%89/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 逆光里的星与辰 | 第01集 | https://europe.olemovienews.com/ts4/20260430/AIvozclm/mp4/AIvozclm.mp4/clipTo/336566/master.m3u8 |
-| OK | 雾锁京晟 | 第01集 | https://europe.olemovienews.com/ts4/20260430/cufgamCo/mp4/cufgamCo.mp4/clipTo/159633/master.m3u8 |
-| OK | 我成了反派县令，还要强娶敌国女帝 | 第01集 | https://europe.olemovienews.com/ts4/20260430/ucbFlCFq/mp4/ucbFlCFq.mp4/clipTo/238300/master.m3u8 |
+| OK | 白月光是黑月光 | 第第1集集 | https://europe.olemovienews.com/ts4/20260501/IArzwjhC/mp4/IArzwjhC.mp4/clipTo/268533/master.m3u8 |
+| OK | 契约婚姻：原来我才是孩子爹 | 第01集 | https://europe.olemovienews.com/ts4/20260501/dxcrmHAJ/mp4/dxcrmHAJ.mp4/clipTo/76200/master.m3u8 |
+| OK | 双嫁：一心捞钱的我们被拿下了 | 第01集 | https://europe.olemovienews.com/ts4/20260501/pGyaCqys/mp4/pGyaCqys.mp4/clipTo/120440/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,24 +94,24 @@ Connectivity
 
 Search
 - Status: `Empty`
-- Keyword: `转生成自动贩卖机的我今天`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AC%E7%94%9F%E6%88%90%E8%87%AA%E5%8A%A8%E8%B4%A9%E5%8D%96%E6%9C%BA%E7%9A%84%E6%88%91%E4%BB%8A%E5%A4%A9
+- Keyword: `又被杀掉了呢，侦探大人`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8F%88%E8%A2%AB%E6%9D%80%E6%8E%89%E4%BA%86%E5%91%A2%EF%BC%8C%E4%BE%A6%E6%8E%A2%E5%A4%A7%E4%BA%BA
 - Reason: `search_empty`
 - Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 转生成自动贩卖机的我今天也在迷宫徘徊 第三季 | 第01集 | https://hn.bfvvs.com/play/ejRqjGle/index.m3u8 |
-| OK | 加油吧！中村君!! | 第01集 | https://hn.bfvvs.com/play/epYQpvra/index.m3u8 |
-| OK | 最强王者的第二人生 第二季 | 第01集 | https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 |
+| OK | 又被杀掉了呢，侦探大人 | 第01集 | https://hn.bfvvs.com/play/eZ6VBNwe/index.m3u8 |
+| OK | 吞噬魔物的冒险者～只有我能通过吞噬魔物变强～ | 第01集 | https://hn.bfvvs.com/play/aQW0pB0d/index.m3u8 |
+| OK | 淡岛百景 | 第01集 | https://cdn.wlcdn88.com:777/7e9f6e7b/index.m3u8 |
 
 Failed Case Diagnostics
-- keyword:转生成自动贩卖机的我今天 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AC%E7%94%9F%E6%88%90%E8%87%AA%E5%8A%A8%E8%B4%A9%E5%8D%96%E6%9C%BA%E7%9A%84%E6%88%91%E4%BB%8A%E5%A4%A9
+- keyword:又被杀掉了呢，侦探大人 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8F%88%E8%A2%AB%E6%9D%80%E6%8E%89%E4%BA%86%E5%91%A2%EF%BC%8C%E4%BE%A6%E6%8E%A2%E5%A4%A7%E4%BA%BA
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AC%E7%94%9F%E6%88%90%E8%87%AA%E5%8A%A8%E8%B4%A9%E5%8D%96%E6%9C%BA%E7%9A%84%E6%88%91%E4%BB%8A%E5%A4%A9
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8F%88%E8%A2%AB%E6%9D%80%E6%8E%89%E4%BA%86%E5%91%A2%EF%BC%8C%E4%BE%A6%E6%8E%A2%E5%A4%A7%E4%BA%BA
 
 </details>
 
@@ -259,15 +259,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `秒杀爱情`
-- URL: https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
+- Keyword: `红色珍珠`
+- URL: https://www.thanju.com/search/%E7%BA%A2%E8%89%B2%E7%8F%8D%E7%8F%A0.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
+| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 | OK | 秒杀爱情 | 01 | https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
-| OK | 赌金 | 01 | https://player.yzzyvip-35.com/20260429/5623_44bf89b6/index.m3u8 |
 
 </details>
 
@@ -288,15 +288,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `憨婿`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%86%A8%E5%A9%BF&submit=
+- Keyword: `我们愉快的好日子`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 憨婿 | 第1集 | https://vid.dbokutv.com/20260428/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMXuBJ0nBJ0oCZSsCpH3CIvjS34/chunklist.m3u8 |
-| OK | 我在民间破诡事 | 第1集 | https://vid.dbokutv.com/20260428/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBNTwRMfmPtCjC34jC354GJ8pGpT4BcrmD0/chunklist.m3u8 |
-| OK | 女帝 | 第1集 | https://vid.dbokutv.com/20260427/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBMvaBJ0nBJ0mH3OqGp94HYvjS34/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
+| OK | 那一夜我怀了社长的孩子 | 第1集 | https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBMvvUNTeR7DZP6XwBJ0nBJ0oCJKvCJX2EIvjS34/chunklist.m3u8 |
 
 </details>
 
