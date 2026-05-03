@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-02T04:23:12.243Z`
+Generated: `2026-05-03T04:33:04.030Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `末世降临：小尸尸我呀囤囤`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%9C%AB%E4%B8%96%E9%99%8D%E4%B8%B4%EF%BC%9A%E5%B0%8F%E5%B0%B8%E5%B0%B8%E6%88%91%E5%91%80%E5%9B%A4%E5%9B%A4/vod/0/1/4
+- Keyword: `霍去病1`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%9C%8D%E5%8E%BB%E7%97%851/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 末世降临：小尸尸我呀囤囤囤囤！被宠上天 | 第第1集集 | https://europe.olemovienews.com/ts4/20260502/xGqnkFlj/mp4/xGqnkFlj.mp4/clipTo/122733/master.m3u8 |
-| OK | 闪婚老婆！竟是国画女王 | 第第1集集 | https://europe.olemovienews.com/ts4/20260502/rvsAIbJE/mp4/rvsAIbJE.mp4/clipTo/87400/master.m3u8 |
-| OK | 顶流隐婚：只宠我一人 | 第第1集集 | https://europe.olemovienews.com/ts4/20260501/tmBmCspr/mp4/tmBmCspr.mp4/clipTo/144666/master.m3u8 |
+| OK | 霍去病1 | 第第1集集 | https://europe.olemovienews.com/ts4/20260503/wmkpkwsm/mp4/wmkpkwsm.mp4/clipTo/60400/master.m3u8 |
+| OK | 小师妹哭哭唧唧，但一剑毁天灭地 | 第第1集集 | https://europe.olemovienews.com/ts4/20260503/qlHsiifA/mp4/qlHsiifA.mp4/clipTo/230566/master.m3u8 |
+| OK | 末世，我靠抽卡统治废土 | 第第1集集 | https://europe.olemovienews.com/ts4/20260502/pspljkhm/mp4/pspljkhm.mp4/clipTo/174633/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,24 +94,24 @@ Connectivity
 
 Search
 - Status: `Empty`
-- Keyword: `上伊那牡丹，酒醉身姿似百`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+- Keyword: `最强的职业不是勇者也不是`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%9A%84%E8%81%8C%E4%B8%9A%E4%B8%8D%E6%98%AF%E5%8B%87%E8%80%85%E4%B9%9F%E4%B8%8D%E6%98%AF
 - Reason: `search_empty`
 - Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://hn.bfvvs.com/play/en5rvjEd/index.m3u8 |
-| OK | 冻结地球 | 第01集 | https://hn.bfvvs.com/play/eZ6VQE5e/index.m3u8 |
-| OK | 神之水滴 | 第01集 | https://hn.bfvvs.com/play/bDk9moqa/index.m3u8 |
+| OK | 最强的职业不是勇者也不是贤者好像是鉴定士(伪)的样子? | 第01集 | https://hn.bfvvs.com/play/elY5ywja/index.m3u8 |
+| OK | 楠木邸的神明庭院 | 第01集 | https://hn.bfvvs.com/play/aADPZAPe/index.m3u8 |
+| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://hn.bfvvs.com/play/erkRLlpa/index.m3u8 |
 
 Failed Case Diagnostics
-- keyword:上伊那牡丹，酒醉身姿似百 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+- keyword:最强的职业不是勇者也不是 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%9A%84%E8%81%8C%E4%B8%9A%E4%B8%8D%E6%98%AF%E5%8B%87%E8%80%85%E4%B9%9F%E4%B8%8D%E6%98%AF
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%9A%84%E8%81%8C%E4%B8%9A%E4%B8%8D%E6%98%AF%E5%8B%87%E8%80%85%E4%B9%9F%E4%B8%8D%E6%98%AF
 
 </details>
 
@@ -259,15 +259,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
+- Keyword: `给你爱情处方`
+- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
-| OK | 神与律师事务所 | 01 | https://player.yzzyvip-35.com/20260313/1560_3a20f62a/index.m3u8 |
-| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
+| OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
 
 </details>
 
@@ -288,15 +288,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `极致复仇：舍弃面容的家政`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9E%81%E8%87%B4%E5%A4%8D%E4%BB%87%EF%BC%9A%E8%88%8D%E5%BC%83%E9%9D%A2%E5%AE%B9%E7%9A%84%E5%AE%B6%E6%94%BF&submit=
+- Keyword: `少年演绎法`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%B0%91%E5%B9%B4%E6%BC%94%E7%BB%8E%E6%B3%95&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 极致复仇：舍弃面容的家政妇 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejQdfcOtDnRN9aQdfcBJ0nBJ0nHJP2GKP1CovjS34/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 刑警重回原点 | 第1集 | https://vid.dbokutv.com/20260425/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejU6fwQ7baBJ0nBJ0nC4D6DZH1HIvjS34/chunklist.m3u8 |
+| OK | 少年演绎法 | 第1集 | https://vid.dbokutv.com/20260430/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejSsvvUMOjC34jC38sE352D3OnBcrmD0/chunklist.m3u8 |
+| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
+| OK | 努力克服自卑的我们 | 第1集 | https://vid.dbokutv.com/20260419/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMviQsPwOcHtRIqmCIqmCpSpCqGsGZOkRN0q/chunklist.m3u8 |
 
 </details>
 
