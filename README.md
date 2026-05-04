@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-03T04:33:04.030Z`
+Generated: `2026-05-04T04:32:46.061Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,7 +23,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `霍去病1`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%9C%8D%E5%8E%BB%E7%97%851/vod/0/1/4
+- Keyword: `归田伴兽趣，满载金满途2`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%BD%92%E7%94%B0%E4%BC%B4%E5%85%BD%E8%B6%A3%EF%BC%8C%E6%BB%A1%E8%BD%BD%E9%87%91%E6%BB%A1%E9%80%942/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 霍去病1 | 第第1集集 | https://europe.olemovienews.com/ts4/20260503/wmkpkwsm/mp4/wmkpkwsm.mp4/clipTo/60400/master.m3u8 |
-| OK | 小师妹哭哭唧唧，但一剑毁天灭地 | 第第1集集 | https://europe.olemovienews.com/ts4/20260503/qlHsiifA/mp4/qlHsiifA.mp4/clipTo/230566/master.m3u8 |
-| OK | 末世，我靠抽卡统治废土 | 第第1集集 | https://europe.olemovienews.com/ts4/20260502/pspljkhm/mp4/pspljkhm.mp4/clipTo/174633/master.m3u8 |
+| OK | 归田伴兽趣，满载金满途2 | 第第1集集 | https://europe.olemovienews.com/ts4/20260504/vhiiedFy/mp4/vhiiedFy.mp4/clipTo/133433/master.m3u8 |
+| OK | 归田伴兽趣,满载金满途 | 第第1集集 | https://europe.olemovienews.com/ts4/20260504/ghxBwxlm/mp4/ghxBwxlm.mp4/clipTo/132033/master.m3u8 |
+| OK | 无敌皇子,开局迎娶女杀神 | 第第1集集 | https://europe.olemovienews.com/ts4/20260503/dCkJBJdm/mp4/dCkJBJdm.mp4/clipTo/146500/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,25 +93,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `最强的职业不是勇者也不是`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%9A%84%E8%81%8C%E4%B8%9A%E4%B8%8D%E6%98%AF%E5%8B%87%E8%80%85%E4%B9%9F%E4%B8%8D%E6%98%AF
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `公鸡斗士`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%85%AC%E9%B8%A1%E6%96%97%E5%A3%AB
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 最强的职业不是勇者也不是贤者好像是鉴定士(伪)的样子? | 第01集 | https://hn.bfvvs.com/play/elY5ywja/index.m3u8 |
-| OK | 楠木邸的神明庭院 | 第01集 | https://hn.bfvvs.com/play/aADPZAPe/index.m3u8 |
-| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://hn.bfvvs.com/play/erkRLlpa/index.m3u8 |
-
-Failed Case Diagnostics
-- keyword:最强的职业不是勇者也不是 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%9A%84%E8%81%8C%E4%B8%9A%E4%B8%8D%E6%98%AF%E5%8B%87%E8%80%85%E4%B9%9F%E4%B8%8D%E6%98%AF
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%9A%84%E8%81%8C%E4%B8%9A%E4%B8%8D%E6%98%AF%E5%8B%87%E8%80%85%E4%B9%9F%E4%B8%8D%E6%98%AF
+| OK | 公鸡斗士 | 第01集 | https://hn.bfvvs.com/play/b68R94Ve/index.m3u8 |
+| OK | 茉莉花酱的好感度正在崩坏 | 第01集 | https://hn.bfvvs.com/play/b2kvMJ1d/index.m3u8 |
+| OK | 淫狱团地 | 第01集 | https://hn.bfvvs.com/play/eVOPRZva/index.m3u8 |
 
 </details>
 
@@ -266,8 +257,8 @@ Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
 | OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
-| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
 | OK | 申医生 | 01 | https://cdn.yzzy34-play.com/20260314/5821_926c11cc/index.m3u8 |
+| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
 
 </details>
 
