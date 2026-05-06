@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-05T04:23:20.188Z`
+Generated: `2026-05-06T04:27:55.149Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `闺中仙状元郎`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%97%BA%E4%B8%AD%E4%BB%99%E7%8A%B6%E5%85%83%E9%83%8E/vod/0/1/4
+- Keyword: `让你退婚，你把女帝师尊给`
+- URL: https://api.olelive.com/v1/pub/index/search/%E8%AE%A9%E4%BD%A0%E9%80%80%E5%A9%9A%EF%BC%8C%E4%BD%A0%E6%8A%8A%E5%A5%B3%E5%B8%9D%E5%B8%88%E5%B0%8A%E7%BB%99/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 闺中仙状元郎 | 第1集 | https://europe.olemovienews.com/ts4/20260505/vyfFzyFy/mp4/vyfFzyFy.mp4/clipTo/124100/master.m3u8 |
-| OK | 拒绝亲戚！我的房子我做主&我的家园我守护 | 第1集 | https://europe.olemovienews.com/ts4/20260505/HGclokoF/mp4/HGclokoF.mp4/clipTo/96033/master.m3u8 |
-| OK | 懈开转职 | 第1集 | https://europe.olemovienews.com/ts4/20260505/CAgirofJ/mp4/CAgirofJ.mp4/clipTo/830800/master.m3u8 |
+| OK | 让你退婚，你把女帝师尊给娶了？ | 第第1集集 | https://europe.olemovienews.com/ts4/20260506/omzttsgy/mp4/omzttsgy.mp4/clipTo/143733/master.m3u8 |
+| OK | 极品仙丹？这只是我的蛋炒饭啊 | 第第1集集 | https://europe.olemovienews.com/ts4/20260506/oDytBfHs/mp4/oDytBfHs.mp4/clipTo/166400/master.m3u8 |
+| OK | 洪荒：错把玉帝当儿子 | 第第1集集 | https://europe.olemovienews.com/ts4/20260505/zewddAox/mp4/zewddAox.mp4/clipTo/204866/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `日本三国`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%97%A5%E6%9C%AC%E4%B8%89%E5%9B%BD
+- Keyword: `左撇子艾伦`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B7%A6%E6%92%87%E5%AD%90%E8%89%BE%E4%BC%A6
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 日本三国 | 第01集 | https://hn.bfvvs.com/play/en5r3NPd/index.m3u8 |
-| OK | 尖帽子的魔法工坊 | 第01集 | https://hn.bfvvs.com/play/bDk9gJ5a/index.m3u8 |
-| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://hn.bfvvs.com/play/erkR3Eka/index.m3u8 |
+| OK | 左撇子艾伦 | 第01集 | https://c1.rrcdnbf4.com/video/zuopieziailun/第01集/index.m3u8 |
+| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://s1.fengbao9.com/video/hebanshangdierkeaidenvhaizichengweilepengyou/f5cc27c157f7/index.m3u8 |
+| OK | 想结束这场“我爱你”的游戏 | 第01集 | https://v.baofeng10.com/video/xiangjieshuzhechangwoainideyouxi/3c6ee69ce364/index.m3u8 |
 
 </details>
 
@@ -250,15 +250,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `第一个男人`
-- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
+- Keyword: `稻草人`
+- URL: https://www.thanju.com/search/%E7%A8%BB%E8%8D%89%E4%BA%BA.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 | OK | 稻草人 | 01 | https://cdn.vvvip-plays33.cc/20260420/12456_6a9edcb7/index.m3u8 |
-| OK | 柔美的细胞小将第三季 | 01 | https://player.yzzyvip-35.com/20260413/4584_6ba1085b/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
+| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 
 </details>
 
@@ -286,8 +286,8 @@ Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
 | OK | 少年演绎法 | 第1集 | https://vid.dbokutv.com/20260430/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejSsvvUMOjC34jC38sE352D3OnBcrmD0/chunklist.m3u8 |
-| OK | 银河的一票 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNbeP7bmBJ0nBJ0pC38rCZOrCYvjS34/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
 
 </details>
 
