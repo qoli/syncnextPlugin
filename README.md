@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-06T04:27:55.149Z`
+Generated: `2026-05-07T04:28:05.943Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,7 +23,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
+| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `让你退婚，你把女帝师尊给`
-- URL: https://api.olelive.com/v1/pub/index/search/%E8%AE%A9%E4%BD%A0%E9%80%80%E5%A9%9A%EF%BC%8C%E4%BD%A0%E6%8A%8A%E5%A5%B3%E5%B8%9D%E5%B8%88%E5%B0%8A%E7%BB%99/vod/0/1/4
+- Keyword: `玄幻：我的孽徒又悟了`
+- URL: https://api.olelive.com/v1/pub/index/search/%E7%8E%84%E5%B9%BB%EF%BC%9A%E6%88%91%E7%9A%84%E5%AD%BD%E5%BE%92%E5%8F%88%E6%82%9F%E4%BA%86/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 让你退婚，你把女帝师尊给娶了？ | 第第1集集 | https://europe.olemovienews.com/ts4/20260506/omzttsgy/mp4/omzttsgy.mp4/clipTo/143733/master.m3u8 |
-| OK | 极品仙丹？这只是我的蛋炒饭啊 | 第第1集集 | https://europe.olemovienews.com/ts4/20260506/oDytBfHs/mp4/oDytBfHs.mp4/clipTo/166400/master.m3u8 |
-| OK | 洪荒：错把玉帝当儿子 | 第第1集集 | https://europe.olemovienews.com/ts4/20260505/zewddAox/mp4/zewddAox.mp4/clipTo/204866/master.m3u8 |
+| OK | 玄幻：我的孽徒又悟了 | 第01集 | https://europe.olemovienews.com/ts4/20260507/sDDAAeez/mp4/sDDAAeez.mp4/clipTo/81320/master.m3u8 |
+| OK | 离婚后，我继承了上亿遗产 | 第01集 | https://europe.olemovienews.com/ts4/20260507/txzobdDd/mp4/txzobdDd.mp4/clipTo/78266/master.m3u8 |
+| OK | 公主错嫁：良缘终得 | 第第1集集 | https://europe.olemovienews.com/ts4/20260507/ovGDoiao/mp4/ovGDoiao.mp4/clipTo/62360/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `4/5`
+- Reasons: `search_empty:1`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,16 +93,25 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `OK`
-- Keyword: `左撇子艾伦`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B7%A6%E6%92%87%E5%AD%90%E8%89%BE%E4%BC%A6
+- Status: `Empty`
+- Keyword: `最强王者的第二人生`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 左撇子艾伦 | 第01集 | https://c1.rrcdnbf4.com/video/zuopieziailun/第01集/index.m3u8 |
-| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://s1.fengbao9.com/video/hebanshangdierkeaidenvhaizichengweilepengyou/f5cc27c157f7/index.m3u8 |
-| OK | 想结束这场“我爱你”的游戏 | 第01集 | https://v.baofeng10.com/video/xiangjieshuzhechangwoainideyouxi/3c6ee69ce364/index.m3u8 |
+| OK | 最强王者的第二人生 第二季 | 第01集 | https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 |
+| OK | 加油吧！中村君!! | 第01集 | https://hn.bfvvs.com/play/epYQpvra/index.m3u8 |
+| OK | 转生成自动贩卖机的我今天也在迷宫徘徊 第三季 | 第01集 | https://hn.bfvvs.com/play/ejRqjGle/index.m3u8 |
+
+Failed Case Diagnostics
+- keyword:最强王者的第二人生 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
 
 </details>
 
@@ -250,15 +259,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `稻草人`
-- URL: https://www.thanju.com/search/%E7%A8%BB%E8%8D%89%E4%BA%BA.html
+- Keyword: `秒杀爱情`
+- URL: https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 稻草人 | 01 | https://cdn.vvvip-plays33.cc/20260420/12456_6a9edcb7/index.m3u8 |
+| OK | 秒杀爱情 | 01 | https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 |
 | OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
-| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
+| OK | 赌金 | 01 | https://player.yzzyvip-35.com/20260429/5623_44bf89b6/index.m3u8 |
 
 </details>
 
@@ -279,15 +288,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `少年演绎法`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%B0%91%E5%B9%B4%E6%BC%94%E7%BB%8E%E6%B3%95&submit=
+- Keyword: `爱情没有神话`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%88%B1%E6%83%85%E6%B2%A1%E6%9C%89%E7%A5%9E%E8%AF%9D&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 少年演绎法 | 第1集 | https://vid.dbokutv.com/20260430/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejSsvvUMOjC34jC38sE352D3OnBcrmD0/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
+| OK | 爱情没有神话 | 第1集 | https://vid.dbokutv.com/20260428/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBM5nRNbpQ2qmCIqmCK8uEJWoHJCkRN0q/chunklist.m3u8 |
+| OK | 秒杀爱情 | 第1集 | https://vid.dbokutv.com/20260423/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xOy6ejRNDXSIqmCIqmCJT5GJKvC3OkRN0q/chunklist.m3u8 |
+| OK | 喀什恋歌 | 第1集 | https://vid.dbokutv.com/20260505/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBMjpR6SjC34jC38oGZavC3CuBcrmD0/chunklist.m3u8 |
 
 </details>
 
