@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-07T04:28:05.943Z`
+Generated: `2026-05-08T04:22:15.160Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,7 +23,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `玄幻：我的孽徒又悟了`
-- URL: https://api.olelive.com/v1/pub/index/search/%E7%8E%84%E5%B9%BB%EF%BC%9A%E6%88%91%E7%9A%84%E5%AD%BD%E5%BE%92%E5%8F%88%E6%82%9F%E4%BA%86/vod/0/1/4
+- Keyword: `驼驼被NPC当成哭包团宠`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%A9%BC%E9%A9%BC%E8%A2%ABNPC%E5%BD%93%E6%88%90%E5%93%AD%E5%8C%85%E5%9B%A2%E5%AE%A0/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 玄幻：我的孽徒又悟了 | 第01集 | https://europe.olemovienews.com/ts4/20260507/sDDAAeez/mp4/sDDAAeez.mp4/clipTo/81320/master.m3u8 |
-| OK | 离婚后，我继承了上亿遗产 | 第01集 | https://europe.olemovienews.com/ts4/20260507/txzobdDd/mp4/txzobdDd.mp4/clipTo/78266/master.m3u8 |
-| OK | 公主错嫁：良缘终得 | 第第1集集 | https://europe.olemovienews.com/ts4/20260507/ovGDoiao/mp4/ovGDoiao.mp4/clipTo/62360/master.m3u8 |
+| OK | 驼驼被NPC当成哭包团宠了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260508/jowuuBcz/mp4/jowuuBcz.mp4/clipTo/165066/master.m3u8 |
+| OK | 错把撒旦当男友 | 第第1集集 | https://europe.olemovienews.com/ts4/20260508/roHaiFbE/mp4/roHaiFbE.mp4/clipTo/173066/master.m3u8 |
+| OK | 雾里情深 | 第第1集集 | https://europe.olemovienews.com/ts4/20260508/dCalbwsw/mp4/dCalbwsw.mp4/clipTo/208966/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,25 +93,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `最强王者的第二人生`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `淡岛百景`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 最强王者的第二人生 第二季 | 第01集 | https://hn.bfvvs.com/play/dyPrj7nb/index.m3u8 |
-| OK | 加油吧！中村君!! | 第01集 | https://hn.bfvvs.com/play/epYQpvra/index.m3u8 |
-| OK | 转生成自动贩卖机的我今天也在迷宫徘徊 第三季 | 第01集 | https://hn.bfvvs.com/play/ejRqjGle/index.m3u8 |
-
-Failed Case Diagnostics
-- keyword:最强王者的第二人生 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
+| OK | 淡岛百景 | 第01集 | https://cdn.wlcdn88.com:777/7e9f6e7b/index.m3u8 |
+| OK | 雾尾粉丝后援会 | 第01集 | https://hn.bfvvs.com/play/b68Rq4Ve/index.m3u8 |
+| OK | 元祖！BanG Dream Chan | 第01集 | https://hn.bfvvs.com/play/vbmlGQpa/index.m3u8 |
 
 </details>
 
@@ -267,7 +258,7 @@ Playback Cases
 | --- | --- | --- | --- |
 | OK | 秒杀爱情 | 01 | https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 |
 | OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
-| OK | 赌金 | 01 | https://player.yzzyvip-35.com/20260429/5623_44bf89b6/index.m3u8 |
+| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 
 </details>
 
@@ -288,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `爱情没有神话`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%88%B1%E6%83%85%E6%B2%A1%E6%9C%89%E7%A5%9E%E8%AF%9D&submit=
+- Keyword: `两心不疑`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%A4%E5%BF%83%E4%B8%8D%E7%96%91&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 爱情没有神话 | 第1集 | https://vid.dbokutv.com/20260428/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBM5nRNbpQ2qmCIqmCK8uEJWoHJCkRN0q/chunklist.m3u8 |
-| OK | 秒杀爱情 | 第1集 | https://vid.dbokutv.com/20260423/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xOy6ejRNDXSIqmCIqmCJT5GJKvC3OkRN0q/chunklist.m3u8 |
-| OK | 喀什恋歌 | 第1集 | https://vid.dbokutv.com/20260505/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBMjpR6SjC34jC38oGZavC3CuBcrmD0/chunklist.m3u8 |
+| OK | 两心不疑 | 第1集 | https://vid.dbokutv.com/20260502/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBMnuOdajC34jC34rD4L5CaCvBcrmD0/chunklist.m3u8 |
+| OK | 良陈美锦 | 第1集 | https://vid.dbokutv.com/20260503/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMnZRMejC34jC311HaCqCZX2BcrmD0/chunklist.m3u8 |
+| OK | 颜不由心 | 第1集 | https://vid.dbokutv.com/20260505/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNbYUNWjC34jC3CqDJ94D3avBcrmD0/chunklist.m3u8 |
 
 </details>
 
