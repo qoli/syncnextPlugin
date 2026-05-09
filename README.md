@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-08T04:22:15.160Z`
+Generated: `2026-05-09T04:25:06.580Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,7 +23,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
+| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `驼驼被NPC当成哭包团宠`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%A9%BC%E9%A9%BC%E8%A2%ABNPC%E5%BD%93%E6%88%90%E5%93%AD%E5%8C%85%E5%9B%A2%E5%AE%A0/vod/0/1/4
+- Keyword: `我在古代开豆腐工厂`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%88%91%E5%9C%A8%E5%8F%A4%E4%BB%A3%E5%BC%80%E8%B1%86%E8%85%90%E5%B7%A5%E5%8E%82/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 驼驼被NPC当成哭包团宠了 | 第第1集集 | https://europe.olemovienews.com/ts4/20260508/jowuuBcz/mp4/jowuuBcz.mp4/clipTo/165066/master.m3u8 |
-| OK | 错把撒旦当男友 | 第第1集集 | https://europe.olemovienews.com/ts4/20260508/roHaiFbE/mp4/roHaiFbE.mp4/clipTo/173066/master.m3u8 |
-| OK | 雾里情深 | 第第1集集 | https://europe.olemovienews.com/ts4/20260508/dCalbwsw/mp4/dCalbwsw.mp4/clipTo/208966/master.m3u8 |
+| OK | 我在古代开豆腐工厂 | 第1集 | https://europe.olemovienews.com/ts4/20260509/tJigwxmB/mp4/tJigwxmB.mp4/clipTo/166533/master.m3u8 |
+| OK | 我在古代搞KPI！ | 第1集 | https://europe.olemovienews.com/ts4/20260509/greqqwHl/mp4/greqqwHl.mp4/clipTo/98066/master.m3u8 |
+| OK | 绝境_被遗忘的名字 | 第1集 | https://europe.olemovienews.com/ts4/20260509/mnjjhdrh/mp4/mnjjhdrh.mp4/clipTo/156600/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `4/5`
+- Reasons: `search_empty:1`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,16 +93,25 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `OK`
-- Keyword: `淡岛百景`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
+- Status: `Empty`
+- Keyword: `上伊那牡丹，酒醉身姿似百`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 淡岛百景 | 第01集 | https://cdn.wlcdn88.com:777/7e9f6e7b/index.m3u8 |
-| OK | 雾尾粉丝后援会 | 第01集 | https://hn.bfvvs.com/play/b68Rq4Ve/index.m3u8 |
-| OK | 元祖！BanG Dream Chan | 第01集 | https://hn.bfvvs.com/play/vbmlGQpa/index.m3u8 |
+| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://hn.bfvvs.com/play/en5rvjEd/index.m3u8 |
+| OK | 冻结地球 | 第01集 | https://hn.bfvvs.com/play/eZ6VQE5e/index.m3u8 |
+| OK | 神之水滴 | 第01集 | https://hn.bfvvs.com/play/bDk9moqa/index.m3u8 |
+
+Failed Case Diagnostics
+- keyword:上伊那牡丹，酒醉身姿似百 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
 
 </details>
 
@@ -250,15 +259,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `秒杀爱情`
-- URL: https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
+- Keyword: `我的王室死对头`
+- URL: https://www.thanju.com/search/%E6%88%91%E7%9A%84%E7%8E%8B%E5%AE%A4%E6%AD%BB%E5%AF%B9%E5%A4%B4.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 秒杀爱情 | 01 | https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
-| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
+| OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
+| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
+| OK | 浪漫的绝对值 | 01 | https://player.yzzyvip-35.com/20260417/4876_77bdfcff/index.m3u8 |
 
 </details>
 
@@ -279,15 +288,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `两心不疑`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%A4%E5%BF%83%E4%B8%8D%E7%96%91&submit=
+- Keyword: `田锁兄弟`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%94%B0%E9%94%81%E5%85%84%E5%BC%9F&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 两心不疑 | 第1集 | https://vid.dbokutv.com/20260502/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBMnuOdajC34jC34rD4L5CaCvBcrmD0/chunklist.m3u8 |
-| OK | 良陈美锦 | 第1集 | https://vid.dbokutv.com/20260503/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMnZRMejC34jC311HaCqCZX2BcrmD0/chunklist.m3u8 |
-| OK | 颜不由心 | 第1集 | https://vid.dbokutv.com/20260505/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNbYUNWjC34jC3CqDJ94D3avBcrmD0/chunklist.m3u8 |
+| OK | 田锁兄弟 | 第1集 | https://vid.dbokutv.com/20260418/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNHpU6GjC34jC38mCp0rGK95BcrmD0/chunklist.m3u8 |
+| OK | 孤独的美食家第11季 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMTaP6rpQcGnCMejC34jC314H3GsC38rBcrmD0/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 
 </details>
 
