@@ -201,7 +201,27 @@ cd /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/telegram
 
 腳本會：
 
-- 使用 Copilot 從 Notion「Syncnext 頻道更新日誌」抽取最新日期區塊。
+- 預設使用已存在的 Telegram Markdown，不重新抽 Notion。
+- 使用固定配圖 `SyncnextChannelChangelog.png` 發布到 Telegram 頻道。
+- 預設發布到 `@RonnieAppsChannel`。
+
+默認維護流程：
+
+1. 先手動更新 Notion「Syncnext 頻道更新日誌」。
+2. 讀回 Notion 最新日期區塊，確認內容正確。
+3. 將最新日期區塊整理成 Telegram Markdown，寫入：
+
+```text
+syncnextPlugin_all_plugin_test_runs/channel_changelog.md
+```
+
+4. 使用 `--skip-copilot` 模式預覽與發布。
+
+只有在人類明確要求重新抽 Notion / Copilot 改寫時，才使用 `--use-copilot`。
+
+腳本也保留 Copilot 模式：
+
+- 使用 `--use-copilot` 從 Notion「Syncnext 頻道更新日誌」抽取最新日期區塊。
 - 改寫成 Telegram Markdown。
 - 使用固定配圖 `SyncnextChannelChangelog.png` 發布到 Telegram 頻道。
 - 預設發布到 `@RonnieAppsChannel`。
@@ -209,7 +229,7 @@ cd /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/telegram
 常用命令：
 
 ```bash
-# 只預覽，不發送
+# 預覽已存在的 markdown，不發送（默認 skip-copilot）
 ./post_channel_changelog.sh --dry-run
 
 # 使用已存在的 markdown，不重新抽 Notion
@@ -217,6 +237,9 @@ cd /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/telegram
 
 # 預覽已存在的 markdown
 ./post_channel_changelog.sh --skip-copilot --dry-run
+
+# 明確要求 Copilot 從 Notion 重新抽取並生成 markdown
+./post_channel_changelog.sh --use-copilot --dry-run
 
 # 指定頻道
 ./post_channel_changelog.sh --chat-id @YourChannel
@@ -291,8 +314,9 @@ rebase 後要重新確認本地變更仍然符合預期。
 - 執行插件專用測試或 smoke test。
 - 若域名變更，詢問人類是否需要查詢 `SyncnextClash` 相似域名規則；未確認前不要修改規則。
 - 更新 Notion 用戶更新日誌。
-- 用 `telegram/post_channel_changelog.sh --dry-run` 預覽 Telegram 文案。
-- 確認文案後執行 Telegram 發布。
+- 讀回 Notion 最新日期區塊，手動整理 `syncnextPlugin_all_plugin_test_runs/channel_changelog.md`。
+- 用 `telegram/post_channel_changelog.sh --skip-copilot --dry-run` 預覽 Telegram 文案。
+- 確認文案後執行 `telegram/post_channel_changelog.sh --skip-copilot` 發布。
 - 分 repo commit。
 - 分 repo push。
 

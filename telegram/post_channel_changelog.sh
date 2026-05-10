@@ -16,7 +16,7 @@ token_file="$main_telegram_dir/.token"
 chat_id="@RonnieAppsChannel"
 parse_mode="Markdown"
 model_name=""
-skip_copilot=0
+skip_copilot=1
 dry_run=0
 
 usage() {
@@ -35,7 +35,9 @@ Options:
                          Default: $token_file
   --token TOKEN          Telegram bot token. Prefer TELEGRAM_BOT_TOKEN or --token-file.
   --model MODEL          Optional Copilot model name passed to callCopilot.sh.
+  --use-copilot          Regenerate --output from Notion through Copilot.
   --skip-copilot         Publish the existing --output file without regenerating it.
+                         This is the default mode.
   --dry-run              Generate/print message, but do not send Telegram messages.
   --no-parse-mode        Send plain text without Telegram Markdown parsing.
   -h, --help             Show this help.
@@ -216,6 +218,10 @@ while [ "$#" -gt 0 ]; do
       model_name="${2:-}"
       [ -n "$model_name" ] || fail "--model 缺少參數"
       shift 2
+      ;;
+    --use-copilot)
+      skip_copilot=0
+      shift
       ;;
     --skip-copilot)
       skip_copilot=1
