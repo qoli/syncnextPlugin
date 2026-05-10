@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-09T04:25:06.580Z`
+Generated: `2026-05-10T04:35:23.769Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -26,16 +26,15 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
+| libvio | plugin_libvio | OK | OK 2/2 | OK | OK 3/3 | 5/5 | - |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
 Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json)
 
-Invalid sources: `3`
+Invalid sources: `2`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: fatal_error:1
 
 ### Plugin Details
 
@@ -56,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我在古代开豆腐工厂`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%88%91%E5%9C%A8%E5%8F%A4%E4%BB%A3%E5%BC%80%E8%B1%86%E8%85%90%E5%B7%A5%E5%8E%82/vod/0/1/4
+- Keyword: `下山即无敌，从保镖开始封`
+- URL: https://api.olelive.com/v1/pub/index/search/%E4%B8%8B%E5%B1%B1%E5%8D%B3%E6%97%A0%E6%95%8C%EF%BC%8C%E4%BB%8E%E4%BF%9D%E9%95%96%E5%BC%80%E5%A7%8B%E5%B0%81/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我在古代开豆腐工厂 | 第1集 | https://europe.olemovienews.com/ts4/20260509/tJigwxmB/mp4/tJigwxmB.mp4/clipTo/166533/master.m3u8 |
-| OK | 我在古代搞KPI！ | 第1集 | https://europe.olemovienews.com/ts4/20260509/greqqwHl/mp4/greqqwHl.mp4/clipTo/98066/master.m3u8 |
-| OK | 绝境_被遗忘的名字 | 第1集 | https://europe.olemovienews.com/ts4/20260509/mnjjhdrh/mp4/mnjjhdrh.mp4/clipTo/156600/master.m3u8 |
+| OK | 下山即无敌，从保镖开始封神 | 第01集 | https://europe.olemovienews.com/ts4/20260510/eEDDecxt/mp4/eEDDecxt.mp4/clipTo/296300/master.m3u8 |
+| OK | 下山即无敌，我是世间第一仙 | 第01集 | https://europe.olemovienews.com/ts4/20260510/vcJgIsjm/mp4/vcJgIsjm.mp4/clipTo/110240/master.m3u8 |
+| OK | 苟在女配身边当老大 | 第01集 | https://europe.olemovienews.com/ts4/20260510/johphzsc/mp4/johphzsc.mp4/clipTo/266200/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,24 +93,24 @@ Connectivity
 
 Search
 - Status: `Empty`
-- Keyword: `上伊那牡丹，酒醉身姿似百`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+- Keyword: `一叠间漫画咖啡屋生活！`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
 - Reason: `search_empty`
 - Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://hn.bfvvs.com/play/en5rvjEd/index.m3u8 |
-| OK | 冻结地球 | 第01集 | https://hn.bfvvs.com/play/eZ6VQE5e/index.m3u8 |
-| OK | 神之水滴 | 第01集 | https://hn.bfvvs.com/play/bDk9moqa/index.m3u8 |
+| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://hn.bfvvs.com/play/erkRLlpa/index.m3u8 |
+| OK | 主播女孩重度依赖 | 第01集 | https://hn.bfvvs.com/play/erkRDMKa/index.m3u8 |
+| OK | 勇者之屑 | 第01集 | https://hn.bfvvs.com/play/dyPPWlEb/index.m3u8 |
 
 Failed Case Diagnostics
-- keyword:上伊那牡丹，酒醉身姿似百 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+- keyword:一叠间漫画咖啡屋生活！ | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
 
 </details>
 
@@ -202,43 +201,30 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Fatal · conn=Fail 0/2 · search=Empty · playback=Not Reached · reasons=connectivity_failed:1, search_empty:1</summary>
+<summary>libvio · OK · conn=OK 2/2 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
-- Overall: `Fatal`
-- Cases: `0/2`
-- Reasons: `connectivity_failed:1, search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: libvio
-- Fatal Errors:
-  - `no medias returned; no medias returned`
 
 Connectivity
-- [FAIL] `GET 403` https://libvio.run/ | status 403
-- [FAIL] `GET 403` https://libvio.run/search/-------------.html?wd=test | status 403
+- [OK] `HEAD 200` https://libvio.run/
+- [OK] `HEAD 200` https://libvio.run/search/-------------.html?wd=test
 
 Search
-- Status: `Empty`
-- Keyword: `test`
-- URL: https://libvio.run/search/-------------.html?wd=test
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `主播女孩重度依赖`
+- URL: https://libvio.run/search/-------------.html?wd=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
 
 Playback Cases
-- Not reached
-
-Failed Case Diagnostics
-- connectivity | stage=`connectivity` | reason=`connectivity_failed`
-  - detailURL: https://libvio.run/
-  - detail: 插件站點連通性檢查失敗
-  - http diagnostics:
-  - `GET 403` https://libvio.run/ | status 403
-  - `GET 403` https://libvio.run/search/-------------.html?wd=test | status 403
-- keyword:test | stage=`search` | reason=`search_empty`
-  - detailURL: https://libvio.run/search/-------------.html?wd=test
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 403` https://libvio.run/search/-------------.html?wd=test
+| Result | Media | Episode | Output |
+| --- | --- | --- | --- |
+| OK | 主播女孩重度依赖 | 第01集 | https://v3.vbing.me/2026/fun/4/Needy.Girl.Overdose.S01/Needy.Girl.Overdose.S01E01.mp4 |
+| OK | 隐秘的监察 | 第01集 | https://v.vbing.me/2026/rh/4/Filing.for.Love.S01/Filing.for.Love.S01E01.mp4 |
+| OK | 努力克服自卑的我们 | 第01集 | https://v3.vbing.me/2026/rh/4/We.Are.All.Trying.Here.S01/We.Are.All.Trying.Here.S01E01.mp4 |
 
 </details>
 
@@ -259,15 +245,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我的王室死对头`
-- URL: https://www.thanju.com/search/%E6%88%91%E7%9A%84%E7%8E%8B%E5%AE%A4%E6%AD%BB%E5%AF%B9%E5%A4%B4.html
+- Keyword: `给你爱情处方`
+- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
 | OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
-| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
-| OK | 浪漫的绝对值 | 01 | https://player.yzzyvip-35.com/20260417/4876_77bdfcff/index.m3u8 |
 
 </details>
 
@@ -288,15 +274,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `田锁兄弟`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%94%B0%E9%94%81%E5%85%84%E5%BC%9F&submit=
+- Keyword: `极致复仇：舍弃面容的家政`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9E%81%E8%87%B4%E5%A4%8D%E4%BB%87%EF%BC%9A%E8%88%8D%E5%BC%83%E9%9D%A2%E5%AE%B9%E7%9A%84%E5%AE%B6%E6%94%BF&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 田锁兄弟 | 第1集 | https://vid.dbokutv.com/20260418/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNHpU6GjC34jC38mCp0rGK95BcrmD0/chunklist.m3u8 |
-| OK | 孤独的美食家第11季 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMTaP6rpQcGnCMejC34jC314H3GsC38rBcrmD0/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 极致复仇：舍弃面容的家政妇 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejQdfcOtDnRN9aQdfcBJ0nBJ0nHJP2GKP1CovjS34/chunklist.m3u8 |
+| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
+| OK | 深渊 | 第1集 | https://vid.dbokutv.com/20260510/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qvl9QO69QO69YQ8Y8S6HoNDhWQ0/chunklist.m3u8 |
 
 </details>
 
