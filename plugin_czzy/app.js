@@ -18,6 +18,11 @@ function getDomainKey(url) {
   return HOST.replace(/^https?:\/\//i, "").toLowerCase();
 }
 
+function getOrigin(url) {
+  var match = (url || "").match(/^(https?:\/\/[^\/]+)/i);
+  return match && match[1] ? match[1] : "";
+}
+
 function storeCookiesFromHeaders(headers, url) {
   if (!headers) {
     return;
@@ -849,12 +854,22 @@ function sendPlayerURL(url, referer) {
   }
 
   var playerReferer = referer || HOST;
+  var playerHeaders = {
+    "User-Agent": UA,
+    Referer: playerReferer,
+  };
+  var playerOrigin = getOrigin(playerReferer);
+
+  if (playerOrigin && playerOrigin.indexOf("py1080p.com") !== -1) {
+    playerHeaders = {
+      "User-Agent": UA,
+      Origin: playerOrigin,
+    };
+  }
+
   var payload = {
     url: url,
-    headers: {
-      "User-Agent": UA,
-      Referer: playerReferer,
-    },
+    headers: playerHeaders,
   };
 
   $next.toPlayerByJSON(JSON.stringify(payload));
