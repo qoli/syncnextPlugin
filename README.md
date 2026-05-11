@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-10T04:35:23.769Z`
+Generated: `2026-05-11T04:42:50.837Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -26,15 +26,16 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | OK | OK 2/2 | OK | OK 3/3 | 5/5 | - |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | Partial 1/2 | 3/5 | callback_timeout:1, plugin_empty_view:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
 Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json)
 
-Invalid sources: `2`
+Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
+- `plugin_libvio` libvio: callback_timeout:1, plugin_empty_view:1
 
 ### Plugin Details
 
@@ -55,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `下山即无敌，从保镖开始封`
-- URL: https://api.olelive.com/v1/pub/index/search/%E4%B8%8B%E5%B1%B1%E5%8D%B3%E6%97%A0%E6%95%8C%EF%BC%8C%E4%BB%8E%E4%BF%9D%E9%95%96%E5%BC%80%E5%A7%8B%E5%B0%81/vod/0/1/4
+- Keyword: `爱是最高机密`
+- URL: https://api.olelive.com/v1/pub/index/search/%E7%88%B1%E6%98%AF%E6%9C%80%E9%AB%98%E6%9C%BA%E5%AF%86/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 下山即无敌，从保镖开始封神 | 第01集 | https://europe.olemovienews.com/ts4/20260510/eEDDecxt/mp4/eEDDecxt.mp4/clipTo/296300/master.m3u8 |
-| OK | 下山即无敌，我是世间第一仙 | 第01集 | https://europe.olemovienews.com/ts4/20260510/vcJgIsjm/mp4/vcJgIsjm.mp4/clipTo/110240/master.m3u8 |
-| OK | 苟在女配身边当老大 | 第01集 | https://europe.olemovienews.com/ts4/20260510/johphzsc/mp4/johphzsc.mp4/clipTo/266200/master.m3u8 |
+| OK | 爱是最高机密 | 第02集 | https://europe.olemovienews.com/ts4/20260511/vfxkglqz/mp4/vfxkglqz.mp4/clipTo/167180/master.m3u8 |
+| OK | 重生九世：全家靠我心声逆天改命 | 第01集 | https://europe.olemovienews.com/ts4/20260511/oDuIExJk/mp4/oDuIExJk.mp4/clipTo/235666/master.m3u8 |
+| OK | 被开除当天，我入职千亿集团 | 第1集 | https://europe.olemovienews.com/ts4/20260511/ihatembE/mp4/ihatembE.mp4/clipTo/77933/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -93,24 +94,24 @@ Connectivity
 
 Search
 - Status: `Empty`
-- Keyword: `一叠间漫画咖啡屋生活！`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
+- Keyword: `茉莉花酱的好感度正在崩坏`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
 - Reason: `search_empty`
 - Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://hn.bfvvs.com/play/erkRLlpa/index.m3u8 |
-| OK | 主播女孩重度依赖 | 第01集 | https://hn.bfvvs.com/play/erkRDMKa/index.m3u8 |
-| OK | 勇者之屑 | 第01集 | https://hn.bfvvs.com/play/dyPPWlEb/index.m3u8 |
+| OK | 茉莉花酱的好感度正在崩坏 | 第01集 | https://hn.bfvvs.com/play/b2kvMJ1d/index.m3u8 |
+| OK | 淫狱团地 | 第01集 | https://hn.bfvvs.com/play/eVOPRZva/index.m3u8 |
+| OK | 幽灵音乐会 | 第01集 | https://hn.bfvvs.com/play/dwpm171e/index.m3u8 |
 
 Failed Case Diagnostics
-- keyword:一叠间漫画咖啡屋生活！ | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
+- keyword:茉莉花酱的好感度正在崩坏 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
 
 </details>
 
@@ -201,13 +202,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · OK · conn=OK 2/2 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Partial 1/2 · reasons=callback_timeout:1, plugin_empty_view:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `3/5`
+- Reasons: `callback_timeout:1, plugin_empty_view:1`
 - Note: libvio
 
 Connectivity
@@ -216,15 +217,29 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `主播女孩重度依赖`
-- URL: https://libvio.run/search/-------------.html?wd=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
+- Keyword: `法警小队`
+- URL: https://libvio.run/search/-------------.html?wd=%E6%B3%95%E8%AD%A6%E5%B0%8F%E9%98%9F
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 主播女孩重度依赖 | 第01集 | https://v3.vbing.me/2026/fun/4/Needy.Girl.Overdose.S01/Needy.Girl.Overdose.S01E01.mp4 |
-| OK | 隐秘的监察 | 第01集 | https://v.vbing.me/2026/rh/4/Filing.for.Love.S01/Filing.for.Love.S01E01.mp4 |
-| OK | 努力克服自卑的我们 | 第01集 | https://v3.vbing.me/2026/rh/4/We.Are.All.Trying.Here.S01/We.Are.All.Trying.Here.S01E01.mp4 |
+| OK | 法警小队 第一季 | 第01集 | https://v3.vbing.me/2026/mj/3/Marshals.S01/Marshals.S01E01.mp4 |
+| FAIL | 爱情抓马 | 1080P | callback_timeout |
+
+Failed Case Diagnostics
+- 爱情抓马 | 1080P | stage=`player` | reason=`callback_timeout`
+  - detailURL: https://libvio.run/detail/714893446.html
+  - episodeURL: https://libvio.run/w/714893446-1-1.html
+  - detail: 等待插件回調超時，可能是站點回應慢或頁面結構改版
+  - http diagnostics:
+  - `GET 200` https://libvio.run/w/714893446-1-1.html
+  - `GET 200` https://libvio.run/static/player/yd189.js
+  - `GET 200` https://libvio.run/vid/yd.php?url=Ln2hF2wsazSx1Q2GMtiz90jrb82P11tYb92J4WvXMBTVga3HNODUgLxkOZTicv5iNTTcMj5aNujGkP4vOrDCkcyvORCO8D1WN0DXYs4fNLj8U2yeRBTPQD08NxzjIt2dMTZENjEyRTMyMzAzMjM2MkU2RDcwMzQO0O0O&next=&id=714893446&nid=1
+- 亢奋 第三季 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://libvio.run/detail/714893362.html
+  - detail: 插件回傳 emptyView，未取得可播放地址
+  - http diagnostics:
+  - `GET 200` https://libvio.run/detail/714893362.html
 
 </details>
 
@@ -245,15 +260,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
+- Keyword: `努力克服自卑的我们`
+- URL: https://www.thanju.com/search/%E5%8A%AA%E5%8A%9B%E5%85%8B%E6%9C%8D%E8%87%AA%E5%8D%91%E7%9A%84%E6%88%91%E4%BB%AC.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
 | OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
-| OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
+| OK | 隐秘的监察 | 01 | https://cdn.vvvip-plays33.cc/20260425/12786_5dacab03/index.m3u8 |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
 
 </details>
 
@@ -274,15 +289,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `极致复仇：舍弃面容的家政`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9E%81%E8%87%B4%E5%A4%8D%E4%BB%87%EF%BC%9A%E8%88%8D%E5%BC%83%E9%9D%A2%E5%AE%B9%E7%9A%84%E5%AE%B6%E6%94%BF&submit=
+- Keyword: `隐秘的监察`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%9A%90%E7%A7%98%E7%9A%84%E7%9B%91%E5%AF%9F&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 极致复仇：舍弃面容的家政妇 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejQdfcOtDnRN9aQdfcBJ0nBJ0nHJP2GKP1CovjS34/chunklist.m3u8 |
-| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
-| OK | 深渊 | 第1集 | https://vid.dbokutv.com/20260510/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qvl9QO69QO69YQ8Y8S6HoNDhWQ0/chunklist.m3u8 |
+| OK | 隐秘的监察 | 第1集 | https://vid.dbokutv.com/20260425/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHiTcyo5xOy6ejUMraQcCjC34jC311EJOtE495BMXaBcrmD0/chunklist.m3u8 |
+| OK | 爱情没有神话 | 第1集 | https://vid.dbokutv.com/20260428/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBM5nRNbpQ2qmCIqmCK8uEJWoHJCkRN0q/chunklist.m3u8 |
+| OK | 主角 | 第1集 | https://vid.dbokutv.com/20260510/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNfgBJ0nBJ0nGZ8vDpaqCovjS34/chunklist.m3u8 |
 
 </details>
 
