@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T04:42:50.837Z",
+  "generatedAt": "2026-05-12T04:29:30.660Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,53 +31,16 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "callback_timeout": 1,
         "plugin_empty_view": 1
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
-          "stage": "player",
-          "mediaTitle": "爱情抓马",
-          "episodeTitle": "1080P",
-          "detailURL": "https://libvio.run/detail/714893446.html",
-          "episodeURL": "https://libvio.run/w/714893446-1-1.html",
-          "playURL": "",
-          "probe": null,
-          "error": "callback timeout (player)",
-          "reasonCode": "callback_timeout",
-          "reasonText": "等待插件回調超時，可能是站點回應慢或頁面結構改版",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://libvio.run/w/714893446-1-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://libvio.run/static/player/yd189.js",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://libvio.run/vid/yd.php?url=Ln2hF2wsazSx1Q2GMtiz90jrb82P11tYb92J4WvXMBTVga3HNODUgLxkOZTicv5iNTTcMj5aNujGkP4vOrDCkcyvORCO8D1WN0DXYs4fNLj8U2yeRBTPQD08NxzjIt2dMTZENjEyRTMyMzAzMjM2MkU2RDcwMzQO0O0O&next=&id=714893446&nid=1",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
           "stage": "episodes",
-          "mediaTitle": "亢奋 第三季",
+          "mediaTitle": "海贼王",
           "episodeTitle": "",
-          "detailURL": "https://libvio.run/detail/714893362.html",
+          "detailURL": "https://libvio.run/detail/6024.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -87,7 +50,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://libvio.run/detail/714893362.html",
+              "url": "https://libvio.run/detail/6024.html",
               "status": 200,
               "safeLine": false,
               "error": ""
