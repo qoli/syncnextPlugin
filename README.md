@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-10T04:35:23.769Z`
+Generated: `2026-05-15T04:37:26.904Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,7 +23,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | OK | OK 2/2 | OK | OK 3/3 | 5/5 | - |
@@ -55,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `下山即无敌，从保镖开始封`
-- URL: https://api.olelive.com/v1/pub/index/search/%E4%B8%8B%E5%B1%B1%E5%8D%B3%E6%97%A0%E6%95%8C%EF%BC%8C%E4%BB%8E%E4%BF%9D%E9%95%96%E5%BC%80%E5%A7%8B%E5%B0%81/vod/0/1/4
+- Keyword: `和男闺蜜旅行，祝好不送`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%92%8C%E7%94%B7%E9%97%BA%E8%9C%9C%E6%97%85%E8%A1%8C%EF%BC%8C%E7%A5%9D%E5%A5%BD%E4%B8%8D%E9%80%81/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 下山即无敌，从保镖开始封神 | 第01集 | https://europe.olemovienews.com/ts4/20260510/eEDDecxt/mp4/eEDDecxt.mp4/clipTo/296300/master.m3u8 |
-| OK | 下山即无敌，我是世间第一仙 | 第01集 | https://europe.olemovienews.com/ts4/20260510/vcJgIsjm/mp4/vcJgIsjm.mp4/clipTo/110240/master.m3u8 |
-| OK | 苟在女配身边当老大 | 第01集 | https://europe.olemovienews.com/ts4/20260510/johphzsc/mp4/johphzsc.mp4/clipTo/266200/master.m3u8 |
+| OK | 和男闺蜜旅行，祝好不送 | 第1集 | https://europe.olemovienews.com/ts4/20260515/EyGsaHnD/mp4/EyGsaHnD.mp4/clipTo/200360/master.m3u8 |
+| OK | 余生不见旧时人 | 第1集 | https://europe.olemovienews.com/ts4/20260515/aizoqjiC/mp4/aizoqjiC.mp4/clipTo/182800/master.m3u8 |
+| OK | 夫人以身入局，踏平一切 | 第1集 | https://europe.olemovienews.com/ts4/20260514/ffHfthko/mp4/ffHfthko.mp4/clipTo/254840/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -77,13 +77,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -92,25 +92,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `一叠间漫画咖啡屋生活！`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `轮回的花瓣`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AE%E5%9B%9E%E7%9A%84%E8%8A%B1%E7%93%A3
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://hn.bfvvs.com/play/erkRLlpa/index.m3u8 |
-| OK | 主播女孩重度依赖 | 第01集 | https://hn.bfvvs.com/play/erkRDMKa/index.m3u8 |
-| OK | 勇者之屑 | 第01集 | https://hn.bfvvs.com/play/dyPPWlEb/index.m3u8 |
-
-Failed Case Diagnostics
-- keyword:一叠间漫画咖啡屋生活！ | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
+| OK | 轮回的花瓣 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_0059zqYeXpnltFgpI%2B37RmmujxbU1jda1TAAQIcKhXZNqk%2F4jdLjRHapcCMgQKJa%2Fh0N9g2hbF8hcTICzA%2BE6eKhdk3NvKtPT0d9iWeoF5JNZ9HpIFjN9tiK |
+| OK | 剧场版 歌之王子殿下 TABOO NIGHT XXXX | 全集 | https://jx.wuzhoupai.com:8443/vip/?url=age_bb0cRg0%2FpLB9l8sJ9QlFqX7dQbLddVYTyMaHMWt4hUM8TwKl1ve%2FqpiHNoCwNyWH8Xvh5eNzjawbuKV97rnZyeNk |
+| OK | 冰之城墙 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_5e46OhlxCA5lTAcLeUHGJ3mxphy5cfP90GzUXarC9ITQEsJGmUL8Y8WnJT45dZBOgik0Dyvx%2BcQpGdb%2F%2FJD%2BHx6N28agC9rqBUOTFXBeKTPr3euTb9nAqqL0 |
 
 </details>
 
@@ -216,15 +207,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `主播女孩重度依赖`
-- URL: https://libvio.run/search/-------------.html?wd=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
+- Keyword: `卡罗尔`
+- URL: https://libvio.run/search/-------------.html?wd=%E5%8D%A1%E7%BD%97%E5%B0%94
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 主播女孩重度依赖 | 第01集 | https://v3.vbing.me/2026/fun/4/Needy.Girl.Overdose.S01/Needy.Girl.Overdose.S01E01.mp4 |
-| OK | 隐秘的监察 | 第01集 | https://v.vbing.me/2026/rh/4/Filing.for.Love.S01/Filing.for.Love.S01E01.mp4 |
-| OK | 努力克服自卑的我们 | 第01集 | https://v3.vbing.me/2026/rh/4/We.Are.All.Trying.Here.S01/We.Are.All.Trying.Here.S01E01.mp4 |
+| OK | 卡罗尔 | 1080P | https://v.vbing.me/2026/dy/5/Carol2015.mp4 |
+| OK | 冰之城墙 | 第01集 | https://v3.vbing.me/2026/fun/4/The.Ramparts.of.Ice.S01/The.Ramparts.of.Ice.S01E01.mp4 |
+| OK | 淡岛百景 | 第01集 | https://v3.vbing.me/2026/fun/4/Awajima.Hyakkei.S01/Awajima.Hyakkei.S01E01.mp4 |
 
 </details>
 
@@ -245,15 +236,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
+- Keyword: `秒杀爱情`
+- URL: https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
-| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
-| OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
+| OK | 秒杀爱情 | 01 | https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 
 </details>
 
@@ -274,15 +265,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `极致复仇：舍弃面容的家政`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9E%81%E8%87%B4%E5%A4%8D%E4%BB%87%EF%BC%9A%E8%88%8D%E5%BC%83%E9%9D%A2%E5%AE%B9%E7%9A%84%E5%AE%B6%E6%94%BF&submit=
+- Keyword: `未解决之女警视厅文件搜查`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9C%AA%E8%A7%A3%E5%86%B3%E4%B9%8B%E5%A5%B3%E8%AD%A6%E8%A7%86%E5%8E%85%E6%96%87%E4%BB%B6%E6%90%9C%E6%9F%A5&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 极致复仇：舍弃面容的家政妇 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejQdfcOtDnRN9aQdfcBJ0nBJ0nHJP2GKP1CovjS34/chunklist.m3u8 |
-| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
-| OK | 深渊 | 第1集 | https://vid.dbokutv.com/20260510/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qvl9QO69QO69YQ8Y8S6HoNDhWQ0/chunklist.m3u8 |
+| OK | 未解决之女警视厅文件搜查官第3季 | 第1集 | https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNTgQdfkQdDqTsfpOsTaCsejC34jC38uGJ4nDZasBcrmD0/chunklist.m3u8 |
+| OK | 爱在连理里 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM5wR6niBJ0nBJ0mGZb1EKOsCYvjS34/chunklist.m3u8 |
+| OK | 那一夜我怀了社长的孩子 | 第1集 | https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBMvvUNTeR7DZP6XwBJ0nBJ0oCJKvCJX2EIvjS34/chunklist.m3u8 |
 
 </details>
 
