@@ -7,8 +7,9 @@ const path = require("path");
 const DEFAULT_HOSTS = [
   "https://libvio.run",
   "https://www.libvio.mov",
-  "https://libvio.la",
+  "https://www.libvios.com",
   "https://www.libhd.com",
+  "https://www.libvio.life",
 ];
 
 const UA =

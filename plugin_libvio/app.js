@@ -65,7 +65,7 @@ function rebaseLibvioURL(url) {
   }
 
   return value.replace(
-    /^https?:\/\/(?:www\.)?(?:libvio\.site|libvio\.run|libvio\.mov|libvio\.la|libhd\.com)(?=\/|$)/i,
+    /^https?:\/\/(?:www\.)?(?:libviohd\.com|libvios\.com|libvio\.(?:app|art|cc|cloud|com|fun|in|la|life|link|me|mov|pro|pw|run|site|vip)|libhd\.com)(?=\/|$)/i,
     BASE_URL
   );
 }
@@ -94,8 +94,16 @@ function HostsProbeRequest() {
         "訪問驗證",
         "安全验证",
         "安全驗證",
+        "安全检测",
+        "安全檢測",
         "Just a moment",
         "403 Forbidden",
+        "503 · SERVICE UNAVAILABLE",
+        "ERR_SERVICE_UNAVAILABLE",
+        "域名停用",
+        "停用通知",
+        "Region Restricted",
+        "Not Available",
         "cf-browser-verification",
         "captcha",
       ],
@@ -104,8 +112,15 @@ function HostsProbeRequest() {
         "訪問驗證",
         "安全验证",
         "安全驗證",
+        "安全检测",
+        "安全檢測",
         "Just a moment",
         "403 Forbidden",
+        "503",
+        "域名停用",
+        "停用通知",
+        "Region Restricted",
+        "Not Available",
       ],
     },
   };
