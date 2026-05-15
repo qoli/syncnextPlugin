@@ -10,43 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "81900",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260514-1/2a69fc1e235562d4de1d88efb94c7d04.jpg",
-  "title": "山村乡野神医",
+  "id": "81915",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260515-1/a5f6d0ca8400d1f0ab378acc37ca86be.jpg",
+  "title": "和男闺蜜旅行，祝好不送",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81900/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81915/true"
 }
-[plugin 1] search keyword=山村乡野神医 url=https://api.olelive.com/v1/pub/index/search/%E5%B1%B1%E6%9D%91%E4%B9%A1%E9%87%8E%E7%A5%9E%E5%8C%BB/vod/0/1/4
+[plugin 1] search keyword=和男闺蜜旅行，祝好不送 url=https://api.olelive.com/v1/pub/index/search/%E5%92%8C%E7%94%B7%E9%97%BA%E8%9C%9C%E6%97%85%E8%A1%8C%EF%BC%8C%E7%A5%9D%E5%A5%BD%E4%B8%8D%E9%80%81/vod/0/1/4
 [plugin 1] search results=1
 [plugin 1] search sample(index=0)
 {
-  "id": "81900",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260514-1/2a69fc1e235562d4de1d88efb94c7d04.jpg",
-  "title": "山村乡野神医",
+  "id": "81915",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260515-1/a5f6d0ca8400d1f0ab378acc37ca86be.jpg",
+  "title": "和男闺蜜旅行，祝好不送",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81900/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81915/true"
 }
-[OK] 新歐樂影院 | search(山村乡野神医) -> 1
-[OK] 新歐樂影院 | 山村乡野神医 | 第1集 -> https://europe.olemovienews.com/ts4/20260514/iDBCcmcj/mp4/iDBCcmcj.mp4/clipTo/141360/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 缅北求生，从上飞机开始 | 第1集 -> https://europe.olemovienews.com/ts4/20260514/stiGzDgj/mp4/stiGzDgj.mp4/clipTo/170366/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 读心太准，被特殊部门收编了 | 第1集 -> https://europe.olemovienews.com/ts4/20260514/IAujEaHv/mp4/IAujEaHv.mp4/clipTo/145733/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(和男闺蜜旅行，祝好不送) -> 1
+[OK] 新歐樂影院 | 和男闺蜜旅行，祝好不送 | 第1集 -> https://europe.olemovienews.com/ts4/20260515/EyGsaHnD/mp4/EyGsaHnD.mp4/clipTo/200360/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 余生不见旧时人 | 第1集 -> https://europe.olemovienews.com/ts4/20260515/aizoqjiC/mp4/aizoqjiC.mp4/clipTo/182800/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 夫人以身入局，踏平一切 | 第1集 -> https://europe.olemovienews.com/ts4/20260514/ffHfthko/mp4/ffHfthko.mp4/clipTo/254840/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260118",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260118.jpg",
-  "title": "加油吧！中村君!!",
-  "descriptionText": "第08集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260118"
+  "id": "20260081",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260081.jpg",
+  "title": "轮回的花瓣",
+  "descriptionText": "第07集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260081"
 }
-[plugin 2] search keyword=加油吧！中村君!! url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-[plugin 2] search results=0
-[FAIL] 新 AGE 動漫 | search(加油吧！中村君!!) -> 0
-[OK] 新 AGE 動漫 | 加油吧！中村君!! | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_4e81vRFI1v1rrbcSLupl7%2BjvzZ%2B1eGQ3FbgGeJv6VuarvVsbc8ugOuML93nsiW4BVkSX%2FFS%2B7%2BqBFmtqSQlbGKT9tsN4E9QKJV%2FlKJV1shW2cYudSlGEDXMg | candidates=6
-[OK] 新 AGE 動漫 | 最强王者的第二人生 第二季 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_3634XPapgbw%2Bw96%2B9hAa%2BhNM9XR%2Fz%2Fm0cfbljfZEOwN3vfmOpobQd1UuS5XQeIB1nDuCV%2BElPIRae%2BKT6mN1xROY0sTOlOfUXdPYKvZY8CpwXVuzluCV3IUY | candidates=6
-[OK] 新 AGE 動漫 | Candy Caries 蛀在糖糖里 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_7025J4Z0aJDlsHDqdjUj9veEbxAghh%2Fc0T2EZKKLjtIk3agrwNnO3xb%2FtNi%2Fiti6fL1If0s1iKcWXJOZdLumJy2toRZihbYcby8V49H%2BhKxvQht3zUukQP3K | candidates=6
+[plugin 2] search keyword=轮回的花瓣 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AE%E5%9B%9E%E7%9A%84%E8%8A%B1%E7%93%A3
+[plugin 2] search results=1
+[plugin 2] search sample(index=0)
+{
+  "id": "20260081",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260081.jpg",
+  "title": "轮回的花瓣",
+  "descriptionText": "第07集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260081"
+}
+[OK] 新 AGE 動漫 | search(轮回的花瓣) -> 1
+[OK] 新 AGE 動漫 | 轮回的花瓣 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_0059zqYeXpnltFgpI%2B37RmmujxbU1jda1TAAQIcKhXZNqk%2F4jdLjRHapcCMgQKJa%2Fh0N9g2hbF8hcTICzA%2BE6eKhdk3NvKtPT0d9iWeoF5JNZ9HpIFjN9tiK | candidates=6
+[OK] 新 AGE 動漫 | 剧场版 歌之王子殿下 TABOO NIGHT XXXX | 全集 -> https://jx.wuzhoupai.com:8443/vip/?url=age_bb0cRg0%2FpLB9l8sJ9QlFqX7dQbLddVYTyMaHMWt4hUM8TwKl1ve%2FqpiHNoCwNyWH8Xvh5eNzjawbuKV97rnZyeNk | candidates=1
+[OK] 新 AGE 動漫 | 冰之城墙 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_5e46OhlxCA5lTAcLeUHGJ3mxphy5cfP90GzUXarC9ITQEsJGmUL8Y8WnJT45dZBOgik0Dyvx%2BcQpGdb%2F%2FJD%2BHx6N28agC9rqBUOTFXBeKTPr3euTb9nAqqL0 | candidates=6
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzy89.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -64,26 +72,26 @@
 [plugin 5] medias total=48, testing=3
 [plugin 5] buildMedias sample(index=0)
 {
-  "id": "https://libvio.run/detail/714893322.html",
-  "coverURLString": "https://img.meituan.net/content/d4458c37d3d0713b395ee644fe261b7b205723.png",
-  "title": "加油吧！中村君！",
-  "descriptionText": "第08集/周四更",
-  "detailURLString": "https://libvio.run/detail/714893322.html"
+  "id": "https://libvio.run/detail/714889148.html",
+  "coverURLString": "https://mdn.alipay.com/wsdk/img?fileid=A*O_EnQI_Q8a0AAAAAAAAAAAAAAfYuAQ",
+  "title": "卡罗尔",
+  "descriptionText": "已完结",
+  "detailURLString": "https://libvio.run/detail/714889148.html"
 }
-[plugin 5] search keyword=加油吧！中村君！ url=https://libvio.run/search/-------------.html?wd=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B%EF%BC%81
+[plugin 5] search keyword=卡罗尔 url=https://libvio.run/search/-------------.html?wd=%E5%8D%A1%E7%BD%97%E5%B0%94
 [plugin 5] search results=1
 [plugin 5] search sample(index=0)
 {
-  "id": "https://libvio.run/detail/714893322.html",
-  "coverURLString": "https://img.meituan.net/content/d4458c37d3d0713b395ee644fe261b7b205723.png",
-  "title": "加油吧！中村君！",
-  "descriptionText": "第08集/周四更",
-  "detailURLString": "https://libvio.run/detail/714893322.html"
+  "id": "https://libvio.run/detail/714889148.html",
+  "coverURLString": "https://mdn.alipay.com/wsdk/img?fileid=A*O_EnQI_Q8a0AAAAAAAAAAAAAAfYuAQ",
+  "title": "卡罗尔",
+  "descriptionText": "已完结",
+  "detailURLString": "https://libvio.run/detail/714889148.html"
 }
-[OK] libvio | search(加油吧！中村君！) -> 1
-[OK] libvio | 加油吧！中村君！ | 第01集 -> https://v3.vbing.me/2026/fun/4/Ganbare.Nakamura-kun.S01/Ganbare.Nakamura-kun.S01E01.mp4 | candidates=1
-[OK] libvio | 秒杀爱情 | 第01集 -> https://v3.vbing.me/2026/rh/4/Sold.Out.on.You.S01/Sold.Out.on.You.S01E01.mp4 | candidates=1
-[OK] libvio | 好兆头 第三季 | 第01集 -> https://v.vbing.me/2026/mj/5/Good.Omens.S03/Good.Omens.S03E01.mp4 | candidates=1
+[OK] libvio | search(卡罗尔) -> 1
+[OK] libvio | 卡罗尔 | 1080P -> https://v.vbing.me/2026/dy/5/Carol2015.mp4 | candidates=1
+[OK] libvio | 冰之城墙 | 第01集 -> https://v3.vbing.me/2026/fun/4/The.Ramparts.of.Ice.S01/The.Ramparts.of.Ice.S01E01.mp4 | candidates=1
+[OK] libvio | 淡岛百景 | 第01集 -> https://v3.vbing.me/2026/fun/4/Awajima.Hyakkei.S01/Awajima.Hyakkei.S01E01.mp4 | candidates=1
 [plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
 [OK] 韩剧网 | connectivity -> 3 target(s), pass=https://www.thanju.com
 [plugin 6] medias total=30, testing=3
@@ -92,7 +100,7 @@
   "id": "https://www.thanju.com/detail/2519.html",
   "coverURLString": "https://pp.thanju.com/U/vod/69e95278bea16.jpg",
   "title": "秒杀爱情",
-  "descriptionText": "第7集 · 安孝燮 蔡元彬 金汎 高斗心",
+  "descriptionText": "第8集 · 安孝燮 蔡元彬 金汎 高斗心",
   "detailURLString": "https://www.thanju.com/detail/2519.html"
 }
 [plugin 6] search keyword=秒杀爱情 url=https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
@@ -107,36 +115,36 @@
 }
 [OK] 韩剧网 | search(秒杀爱情) -> 2
 [OK] 韩剧网 | 秒杀爱情 | 01 -> https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 | candidates=1
-[OK] 韩剧网 | 赌金 | 01 -> https://player.yzzyvip-35.com/20260429/5623_44bf89b6/index.m3u8 | candidates=1
 [OK] 韩剧网 | 第一个男人 | 01 -> https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 | candidates=1
+[OK] 韩剧网 | 红色珍珠 | 01 -> https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/144902.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/jhRNZTSwvgSTfwZCDsGFz7GTQXZ.jpg",
-  "title": "烬红妆",
-  "descriptionText": "更新至16集",
-  "detailURLString": "https://www.dbku.tv/voddetail/144902.html"
+  "id": "https://www.dbku.tv/voddetail/143540.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/lfoDBzwNrGyezu777u7mSTqKEEw.jpg",
+  "title": "未解决之女警视厅文件搜查官第3季",
+  "descriptionText": "更新至5集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143540.html"
 }
-[plugin 7] search keyword=烬红妆 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%83%AC%E7%BA%A2%E5%A6%86&submit=
+[plugin 7] search keyword=未解决之女警视厅文件搜查 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9C%AA%E8%A7%A3%E5%86%B3%E4%B9%8B%E5%A5%B3%E8%AD%A6%E8%A7%86%E5%8E%85%E6%96%87%E4%BB%B6%E6%90%9C%E6%9F%A5&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/144902.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/jhRNZTSwvgSTfwZCDsGFz7GTQXZ.jpg",
-  "title": "烬红妆",
-  "descriptionText": "更新至16集",
-  "detailURLString": "https://www.dbku.tv/voddetail/144902.html"
+  "id": "https://www.dbku.tv/voddetail/143540.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/lfoDBzwNrGyezu777u7mSTqKEEw.jpg",
+  "title": "未解决之女警视厅文件搜查官第3季",
+  "descriptionText": "更新至5集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143540.html"
 }
-[OK] 独播库 | search(烬红妆) -> 1
-[OK] 独播库 | 烬红妆 | 第1集 -> https://vid.dbokutv.com/20260513/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlR7XgBMfeUYqmCIqmCq8vCaGnC3OkRN0q/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 良陈美锦 | 第1集 -> https://vid.dbokutv.com/20260503/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMnZRMejC34jC311HaCqCZX2BcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 云上天蓝 | 第1集 -> https://vid.dbokutv.com/20260512/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBNbpT6mjC34jC38nHJ8sCZ4oBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(未解决之女警视厅文件搜查) -> 1
+[OK] 独播库 | 未解决之女警视厅文件搜查官第3季 | 第1集 -> https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNTgQdfkQdDqTsfpOsTaCsejC34jC38uGJ4nDZasBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 爱在连理里 | 第1集 -> https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM5wR6niBJ0nBJ0mGZb1EKOsCYvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 那一夜我怀了社长的孩子 | 第1集 -> https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBMvvUNTeR7DZP6XwBJ0nBJ0oCJKvCJX2EIvjS34/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_643d0e9f-f2eb-44ce-8a10-8e8c7158ca94
-[summary] plugins=7, fatal=2, cases=29, ok=23, fail=6, invalidSources=2
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_1baefc53-6f13-488f-9a21-db61b587bc9c
+[summary] plugins=7, fatal=2, cases=29, ok=24, fail=5, invalidSources=2
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
