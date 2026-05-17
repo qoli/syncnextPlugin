@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-16T04:26:04.358Z`
+Generated: `2026-05-17T04:39:37.501Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,19 +23,18 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 2/2 | 4/5 | plugin_empty_view:1 |
+| libvio | plugin_libvio | OK | OK 2/2 | OK | OK 3/3 | 5/5 | - |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
 Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json)
 
-Invalid sources: `3`
+Invalid sources: `2`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:1
 
 ### Plugin Details
 
@@ -56,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `穿书后，我让原主无路可走`
-- URL: https://api.olelive.com/v1/pub/index/search/%E7%A9%BF%E4%B9%A6%E5%90%8E%EF%BC%8C%E6%88%91%E8%AE%A9%E5%8E%9F%E4%B8%BB%E6%97%A0%E8%B7%AF%E5%8F%AF%E8%B5%B0/vod/0/1/4
+- Keyword: `老公突然有了读心术`
+- URL: https://api.olelive.com/v1/pub/index/search/%E8%80%81%E5%85%AC%E7%AA%81%E7%84%B6%E6%9C%89%E4%BA%86%E8%AF%BB%E5%BF%83%E6%9C%AF/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 穿书后，我让原主无路可走了 | 第1集 | https://europe.olemovienews.com/ts4/20260516/qewGJjio/mp4/qewGJjio.mp4/clipTo/86520/master.m3u8 |
-| OK | 回到古代，农女从捞鱼开始发家致富 | 第1集 | https://europe.olemovienews.com/ts4/20260516/jqBGogEy/mp4/jqBGogEy.mp4/clipTo/81800/master.m3u8 |
-| OK | 发红包就能万倍返现，过年我炸翻全村 | 第1集 | https://europe.olemovienews.com/ts4/20260516/pzukmjAj/mp4/pzukmjAj.mp4/clipTo/244500/master.m3u8 |
+| OK | 老公突然有了读心术 | 第1集 | https://europe.olemovienews.com/ts4/20260517/peICrBwt/mp4/peICrBwt.mp4/clipTo/200733/master.m3u8 |
+| OK | 匠心暖人间 | 第1集 | https://europe.olemovienews.com/ts4/20260517/zIvbuogA/mp4/zIvbuogA.mp4/clipTo/180300/master.m3u8 |
+| OK | 我在荒年顿顿肉 | 第01集 | https://europe.olemovienews.com/ts4/20260517/ebgsdFrg/mp4/ebgsdFrg.mp4/clipTo/275100/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +77,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,25 +92,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `上伊那牡丹，酒醉身姿似百`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `主播女孩重度依赖`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_16b2DdZbDphnkvvF2W47gmV3vdMvausV6ex%2BJpU5S0ugZlhtsdgLf0tW%2B%2BJ2zG%2FyusMEhIHlESAKj7pTJB6BVDOqdqMKQMlQuPzlGWBtnntEAC%2F3fiy83waM |
-| OK | 冻结地球 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_f04fDcK%2B2OhZBr1zUIAA7UNXJFK9Udj6f3T%2F6YYuKnYdVw0gDPnqEgOVuBBLl03vGE7M%2BzwV6YOyzWxXBdobEwcfbTTjUmbXkhEuQgKteCkabARVKRgKHkah |
-| OK | 神之水滴 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_38eaHmMKiQ0rVLDWXeyZUucTZrXVRafZqGcUpGSDHTX1xrGESNv3UxVN5AVTGR4mgsWzNK3lqCIUFDqWJ%2BdFkbMMUUwvp1gO%2Bn3AqDNCqzyr5k%2BJ7e6LeciN |
-
-Failed Case Diagnostics
-- keyword:上伊那牡丹，酒醉身姿似百 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+| OK | 主播女孩重度依赖 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_97f5mAokibQkRs4TQ7Rg1JXtD4ezWMhDO13af07Bgu5MdZMBb8CjGQ4k6aMa%2F7%2FG88UA8rPDEdJ%2Byk1gysJBqVIGH5euPMT8sK4o437V2N3metLebs%2BL2tU5 |
+| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_723fD9TakHpvPfR6vNlJoyEewAyst7pkKwDegXGbWbUTiB03N57eYle%2BSqLV%2BvK8AD7sqKH2EgP76AwGsC69OEAMsjSGfNts0M7MWTucfvs9ffyF%2FaeAvCus |
+| OK | 勇者之屑 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_c992kOkqy1tqXIeFlEZ7Yhtv0YHGTRjO2%2BrPjvLr0zBgzsvxXFN2wAdCOrq7qZhEgW%2FOcxu6jzH2G2XG1oL5rpw07LV%2FKDZHtpoRz%2Bsmm5mqKE%2F%2FRE3Hmk93 |
 
 </details>
 
@@ -202,13 +192,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 2/2 · reasons=plugin_empty_view:1</summary>
+<summary>libvio · OK · conn=OK 2/2 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `plugin_empty_view:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: libvio
 
 Connectivity
@@ -217,21 +207,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `黑袍纠察队`
-- URL: https://libvio.run/search/-------------.html?wd=%E9%BB%91%E8%A2%8D%E7%BA%A0%E5%AF%9F%E9%98%9F
+- Keyword: `春夏秋冬代行者`
+- URL: https://libvio.run/search/-------------.html?wd=%E6%98%A5%E5%A4%8F%E7%A7%8B%E5%86%AC%E4%BB%A3%E8%A1%8C%E8%80%85
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 超能路人甲 | 第01集 | https://v.vbing.me/2026/rh/5/The.WONDERfools.S01/The.WONDERfools.S01E01.mp4 |
-| OK | 自称恶役大小姐的婚约者观察记录。 | 第01集 | https://v3.vbing.me/2026/fun/4/Jishou.Akuyaku.Reijou.na.Konyakusha.no.Kansatsu.Kiroku.S01/Jishou.Akuyaku.Reijou.na.Konyakusha.no.Kansatsu.Kiroku.S01E01.mp4 |
-
-Failed Case Diagnostics
-- 黑袍纠察队 第五季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://libvio.run/detail/714893349.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://libvio.run/detail/714893349.html
+| OK | 春夏秋冬代行者 春之舞 | 第01集 | https://v3.vbing.me/2026/fun/4/Shunkashuutou.Daikousha.Haru.no.Mai.S01/Shunkashuutou.Daikousha.Haru.no.Mai.S01E01.mp4 |
+| OK | 隐秘的监察 | 第01集 | https://v.vbing.me/2026/rh/4/Filing.for.Love.S01/Filing.for.Love.S01E01.mp4 |
+| OK | 努力克服自卑的我们 | 第01集 | https://v3.vbing.me/2026/rh/4/We.Are.All.Trying.Here.S01/We.Are.All.Trying.Here.S01E01.mp4 |
 
 </details>
 
@@ -252,15 +236,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我的王室死对头`
-- URL: https://www.thanju.com/search/%E6%88%91%E7%9A%84%E7%8E%8B%E5%AE%A4%E6%AD%BB%E5%AF%B9%E5%A4%B4.html
+- Keyword: `给你爱情处方`
+- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
 | OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
-| OK | 21世纪大君夫人 | 01 | https://player.yzzyvip-35.com/20260410/4208_4a71e49f/index.m3u8 |
-| OK | 浪漫的绝对值 | 01 | https://player.yzzyvip-35.com/20260417/4876_77bdfcff/index.m3u8 |
 
 </details>
 
@@ -281,15 +265,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
+- Keyword: `21世纪大君夫人`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=21%E4%B8%96%E7%BA%AA%E5%A4%A7%E5%90%9B%E5%A4%AB%E4%BA%BA&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
-| OK | 电台明星 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlR7XgBMHqRNWjC34jC355GZSuDZGuBcrmD0/chunklist.m3u8 |
-| OK | 我的王室死对头 | 第1集 | https://vid.dbokutv.com/20260509/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTaTtDpP7GjC34jC34oGJH3C3L2BcrmD0/chunklist.m3u8 |
+| OK | 21世纪大君夫人 | 第1集 | https://vid.dbokutv.com/20260411/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBJ8nSsfaQcPoBJ0nBJ0oCJaqD4CrCIvjS34/chunklist.m3u8 |
+| OK | 主角 | 第1集 | https://vid.dbokutv.com/20260510/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNfgBJ0nBJ0nGZ8vDpaqCovjS34/chunklist.m3u8 |
+| OK | 隐秘的监察 | 第1集 | https://vid.dbokutv.com/20260425/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHiTcyo5xOy6ejUMraQcCjC34jC311EJOtE495BMXaBcrmD0/chunklist.m3u8 |
 
 </details>
 
