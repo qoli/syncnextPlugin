@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-18T04:45:18.931Z`
+Generated: `2026-05-19T04:40:43.095Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,19 +23,18 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 2/2 | 4/5 | plugin_empty_view:1 |
+| libvio | plugin_libvio | OK | OK 2/2 | OK | OK 3/3 | 5/5 | - |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
 Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json)
 
-Invalid sources: `3`
+Invalid sources: `2`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:1
 
 ### Plugin Details
 
@@ -56,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `陆有沉舟心向晚`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%99%86%E6%9C%89%E6%B2%89%E8%88%9F%E5%BF%83%E5%90%91%E6%99%9A/vod/0/1/4
+- Keyword: `娘亲桂芳`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%A8%98%E4%BA%B2%E6%A1%82%E8%8A%B3/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 陆有沉舟心向晚 | 第1集 | https://europe.olemovienews.com/ts4/20260518/mpDEAzky/mp4/mpDEAzky.mp4/clipTo/122166/master.m3u8 |
-| OK | 错嫁将军后，我藏不住了 | 第1集 | https://europe.olemovienews.com/ts4/20260518/jsoygtdm/mp4/jsoygtdm.mp4/clipTo/96666/master.m3u8 |
-| OK | 收徒无线返还，徒弟们矜持一点 | 第1集 | https://europe.olemovienews.com/ts4/20260518/ohEtdIeF/mp4/ohEtdIeF.mp4/clipTo/105966/master.m3u8 |
+| OK | 娘亲桂芳 | 第1集 | https://europe.olemovienews.com/ts4/20260519/raBqvhmE/mp4/raBqvhmE.mp4/clipTo/134566/master.m3u8 |
+| OK | 你陪竹马复读，我继承千亿家产 | 第1集 | https://europe.olemovienews.com/ts4/20260519/rwyGdkAf/mp4/rwyGdkAf.mp4/clipTo/122833/master.m3u8 |
+| OK | 灶火生香 | 第1集 | https://europe.olemovienews.com/ts4/20260519/IpckcaiB/mp4/IpckcaiB.mp4/clipTo/70400/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +77,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,25 +92,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `茉莉花酱的好感度正在崩坏`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `尖帽子的魔法工坊`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 茉莉花酱的好感度正在崩坏 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_20fd7ZOwPF%2FspJ4PpV9YoYbNQMHf96R0I7ZISoVE0sbg4QT7iqcrF3vZ2xEdM3QB9YtV5tfQFmrdFALQEDyNVNCguISYGVSwX8%2F40rCmrKQVumOMevgmbDRT |
-| OK | 淫狱团地 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_0bf115q4BX6EOt0g%2Fdp4IBgfxc7MumxBSzi3f%2BLYgbU02Sd6RJFbtiR%2BATFZyafGB8D%2BmdCkhlQF3mIhEbtbFIbCZYnIKm1ONMHbo%2BZrteI2kZDH8KpiNrfn |
-| OK | 黑猫与魔女的教室 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_1f2elOvZGFspPka9B4OSUewXeGWV1zk8DpoLC1%2BqXx2tCem%2B0t57flh4sZ6wjv67APHcIyOY285hnT8n7HEwTJhNka4SJJir6984RZhfEnndFEvU%2BvosWM%2BN |
-
-Failed Case Diagnostics
-- keyword:茉莉花酱的好感度正在崩坏 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8C%89%E8%8E%89%E8%8A%B1%E9%85%B1%E7%9A%84%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%AD%A3%E5%9C%A8%E5%B4%A9%E5%9D%8F
+| OK | 尖帽子的魔法工坊 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_cacdlM8g6CAYDjYMe3WP%2BU%2FhUbN9ZQqshVe4reIQQLH6zmagtdcxK1AEVVME2LW3XvuMQeKh9DimdBjv0DflbQw3X29%2BLNJ3aE89kWDGX8XpeT32hYas5SBK |
+| OK | 日本三国 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_46881Y9FuCzlnhby0u0WlzzlOinDjfEstvxkGhehjC15CSw1i03G4wztXHU3LfARYfB73QMXRA%2FGhQ3NrjjnOs%2F5mWEL6Nx8TkPKyjwQ3FdcPMpzr0v1yxfi |
+| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_8fcdJxnWTUBKZ9g6S4lmIT4Loz3sEqYI%2BGwZFsJoeWIAeMGsa5VSwffy0CaoDEAHN8FheOsm3AG0zyBZha%2BXDSBGS7uFWbneK4TF7X3pTxzLoWDyps2F%2BEZO |
 
 </details>
 
@@ -202,13 +192,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 2/2 · reasons=plugin_empty_view:1</summary>
+<summary>libvio · OK · conn=OK 2/2 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `plugin_empty_view:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: libvio
 
 Connectivity
@@ -217,21 +207,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `亢奋`
-- URL: https://libvio.run/search/-------------.html?wd=%E4%BA%A2%E5%A5%8B
+- Keyword: `尖帽子的魔法工坊`
+- URL: https://libvio.run/search/-------------.html?wd=%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 努力克服自卑的我们 | 第01集 | https://v3.vbing.me/2026/rh/4/We.Are.All.Trying.Here.S01/We.Are.All.Trying.Here.S01E01.mp4 |
-| OK | 隐秘的监察 | 第01集 | https://v.vbing.me/2026/rh/4/Filing.for.Love.S01/Filing.for.Love.S01E01.mp4 |
-
-Failed Case Diagnostics
-- 亢奋 第三季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://libvio.run/detail/714893362.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://libvio.run/detail/714893362.html
+| OK | 尖帽子的魔法工坊 | 第01集 | https://v3.vbing.me/2026/fun/4/Tongari.Boushi.no.Atelier.S01/Tongari.Boushi.no.Atelier.S01E01.mp4 |
+| OK | 蔚蓝之春 | 第01集 | https://v.vbing.me/2026/rh/5/Azure.Spring.2026.S01/Azure.Spring.2026.S01E01.mp4 |
+| OK | 达顿牧场 | 第01集 | https://v.vbing.me/2026/mj/5/Dutton.Ranch.S01/Dutton.Ranch.S01E01v2.mp4 |
 
 </details>
 
@@ -252,15 +236,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `努力克服自卑的我们`
-- URL: https://www.thanju.com/search/%E5%8A%AA%E5%8A%9B%E5%85%8B%E6%9C%8D%E8%87%AA%E5%8D%91%E7%9A%84%E6%88%91%E4%BB%AC.html
+- Keyword: `蔚蓝之春`
+- URL: https://www.thanju.com/search/%E8%94%9A%E8%93%9D%E4%B9%8B%E6%98%A5.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
-| OK | 隐秘的监察 | 01 | https://cdn.vvvip-plays33.cc/20260425/12786_5dacab03/index.m3u8 |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 蔚蓝之春 | 01 | https://cdn.vvvip-plays33.cc/20260511/13520_2410f01c/index.m3u8 |
+| OK | 稻草人 | 01 | https://cdn.vvvip-plays33.cc/20260420/12456_6a9edcb7/index.m3u8 |
+| OK | 菜鸟炊事兵 | 01 | https://player.yzzyvip-35.com/20260511/6413_a543c921/index.m3u8 |
 
 </details>
 
@@ -281,15 +265,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9&submit=
+- Keyword: `我们愉快的好日子`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
-| OK | 努力克服自卑的我们 | 第1集 | https://vid.dbokutv.com/20260419/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMviQsPwOcHtRIqmCIqmCpSpCqGsGZOkRN0q/chunklist.m3u8 |
-| OK | 主角 | 第1集 | https://vid.dbokutv.com/20260510/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNfgBJ0nBJ0nGZ8vDpaqCovjS34/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
+| OK | 没有砍十次还不倒的树 | 第1集 | https://vid.dbokutv.com/20260509/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMrvQtDZQ69aP7CjC34jC3CrCZCtHKCpBcrmD0/chunklist.m3u8 |
 
 </details>
 
