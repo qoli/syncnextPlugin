@@ -34,6 +34,13 @@ function buildPlayerCandidate(url, headers) {
   };
 }
 
+function buildPlaybackHeaders(referer) {
+  return {
+    'User-Agent': PLAYER_USER_AGENT,
+    Referer: referer || BASE_URL + '/',
+  };
+}
+
 function buildURL(href) {
   if (!href) {
     return '';
@@ -970,7 +977,7 @@ function Player(inputURL) {
           continue;
         }
         seen[url] = true;
-        candidates.push(buildPlayerCandidate(url, {}));
+        candidates.push(buildPlayerCandidate(url, buildPlaybackHeaders(result.episodeURL)));
       }
     }
 
@@ -992,6 +999,7 @@ function Player(inputURL) {
       function (urls) {
         results.push({
           source: entry.source,
+          episodeURL: entry.episodeURL,
           urls: urls || [],
         });
         next(index + 1);
@@ -999,6 +1007,7 @@ function Player(inputURL) {
       function () {
         results.push({
           source: entry.source,
+          episodeURL: entry.episodeURL,
           urls: [],
         });
         next(index + 1);
