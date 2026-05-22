@@ -1,141 +1,188 @@
 `user script`;
 
+var BDYS_HOST = "https://www.xlys02.com";
+var BDYS_HEADERS = {
+  "User-Agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+  Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+  "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+};
+
 function buildURL(href) {
-  if (!href.startsWith("http")) {
-    href = "https://xl01.com.de" + href;
+  href = String(href || "").trim();
+  if (!href) {
+    return "";
   }
-  return href;
+  if (href.indexOf("//") === 0) {
+    href = "https:" + href;
+  } else if (href.indexOf("http") !== 0) {
+    href = BDYS_HOST + (href.charAt(0) === "/" ? href : "/" + href);
+  }
+  return href.replace(/^https?:\/\/(www\.)?(xl01\.com\.de|xlys02\.com)/, BDYS_HOST);
 }
 
-// Main
-function buildMedias(inputURL) {
-  const req = {
-    url: inputURL,
+function buildRequest(url, referer) {
+  return {
+    url: buildURL(url),
     method: "GET",
+    headers: Object.assign({}, BDYS_HEADERS, {
+      Referer: referer || BDYS_HOST + "/",
+    }),
   };
-
-  let datas = [];
-
-  $http.fetch(req).then((res) => {
-    const content = tXml.getElementsByClassName(
-      res.body,
-      "card card-sm card-link"
-    );
-    content.forEach((dom) => {
-      _len = dom.children.length;
-
-      let href = findAllByKey(dom, "href")[0];
-
-      const title = dom.children[_len - 1].children[0].children[0];
-
-      const coverURLString = findAllByKey(dom, "src")[0];
-
-      let descriptionText = dom.children[_len - 1].children[1].children[0];
-      /* 不知道為什麽本地 node 環境可以正常輸出，但是在插件里會報錯，後續找到原因再調試。
-            const _array = dom.children[_len-2].children[1] || dom.children[_len-1].children[1];
-            const descriptionText = _array.children[0];
-            */
-      // print(descriptionText);
-      href = buildURL(href);
-
-      datas.push(
-        buildMediaData(href, coverURLString, title, descriptionText, href)
-      );
-    });
-
-    $next.toMedias(JSON.stringify(datas));
-  });
 }
 
-function Episodes(inputURL) {
-  // consoleLog(inputURL);
+function textOf(node) {
+  return String(tXml.toContentString(node || "") || "").trim();
+}
 
-  const req = {
-    url: inputURL,
-    method: "GET",
-  };
+function firstByClass(node, className) {
+  if (!node || typeof node !== "object") {
+    return null;
+  }
+  const classAttr = (node.attributes && node.attributes.class) || "";
+  if ((" " + classAttr + " ").indexOf(" " + className + " ") >= 0) {
+    return node;
+  }
+  const children = node.children || [];
+  for (let i = 0; i < children.length; i++) {
+    const found = firstByClass(children[i], className);
+    if (found) {
+      return found;
+    }
+  }
+  return null;
+}
 
-  let datas = [];
+function firstByTag(node, tagName) {
+  if (!node || typeof node !== "object") {
+    return null;
+  }
+  if (node.tagName === tagName) {
+    return node;
+  }
+  const children = node.children || [];
+  for (let i = 0; i < children.length; i++) {
+    const found = firstByTag(children[i], tagName);
+    if (found) {
+      return found;
+    }
+  }
+  return null;
+}
 
-  $http.fetch(req).then((res) => {
-    const content = tXml.getElementsByClassName(
-      res.body,
-      "btn btn-square me-2"
-    );
+function firstCoverURL(dom) {
+  const dataSrcList = findAllByKey(dom, "data-src") || [];
+  if (dataSrcList.length > 0) {
+    return buildURL(dataSrcList[0]);
+  }
+  const srcList = findAllByKey(dom, "src") || [];
+  for (let i = 0; i < srcList.length; i++) {
+    if (String(srcList[i] || "").indexOf("data:image") !== 0) {
+      return buildURL(srcList[i]);
+    }
+  }
+  return "";
+}
 
-    content.forEach((element) => {
-      let href = element.attributes.href;
-      const title = element.children[0];
+function mediaFromNewCard(dom) {
+  const cardImg = firstByClass(dom, "card-img");
+  const href = buildURL(
+    (cardImg && cardImg.attributes && cardImg.attributes.href) ||
+      (findAllByKey(dom, "href") || []).filter((item) => /\.htm/i.test(item))[0]
+  );
+  if (!href || href.indexOf("/play/") >= 0) {
+    return null;
+  }
 
-      href = buildURL(href);
+  const h4 = firstByTag(dom, "h4");
+  const title = String(
+    (h4 && textOf(h4)) ||
+      (cardImg && cardImg.attributes && cardImg.attributes.title) ||
+      ""
+  ).trim();
+  if (!title) {
+    return null;
+  }
 
-      datas.push(buildEpisodeData(href, title, href));
-    });
+  const descriptionText =
+    textOf(firstByClass(dom, "card-meta")) || textOf(firstByClass(dom, "episode-badge"));
+  return buildMediaData(href, firstCoverURL(dom), title, descriptionText, href);
+}
 
-    $next.toEpisodes(JSON.stringify(datas));
-  });
+function mediaFromOldCard(dom) {
+  const href = buildURL((findAllByKey(dom, "href") || [])[0]);
+  if (!href) {
+    return null;
+  }
+  const len = dom.children ? dom.children.length : 0;
+  const body = len > 0 ? dom.children[len - 1] : null;
+  const title = String(
+    (body && body.children && body.children[0] && textOf(body.children[0])) || ""
+  ).trim();
+  const descriptionText = String(
+    (body && body.children && body.children[1] && textOf(body.children[1])) || ""
+  ).trim();
+  if (!title) {
+    return null;
+  }
+  return buildMediaData(href, firstCoverURL(dom), title, descriptionText, href);
 }
 
 function parseBDYSMediasFromHTML(html, keyword) {
   const keywordLower = String(keyword || "").trim().toLowerCase();
-  const content = tXml.getElementsByClassName(html, "card card-sm card-link");
   const datas = [];
   const seen = {};
 
-  content.forEach((dom) => {
-    const hrefRaw = findAllByKey(dom, "href")[0] || "";
-    const coverURLRaw = findAllByKey(dom, "src")[0] || "";
-    const textNodes = findAllByKey(dom, "children") || [];
-
-    let title = "";
-    let descriptionText = "";
-
-    if (dom && dom.children && dom.children.length > 0) {
-      const len = dom.children.length;
-      const cardBody = dom.children[len - 1];
-      if (cardBody && cardBody.children && cardBody.children[0]) {
-        const h3 = cardBody.children[0];
-        title = String(
-          (h3.children && h3.children[0]) || h3.text || h3 || ""
-        ).trim();
-      }
-      if (cardBody && cardBody.children && cardBody.children[1]) {
-        const p = cardBody.children[1];
-        descriptionText = String(
-          (p.children && p.children[0]) || p.text || p || ""
-        ).trim();
-      }
-    }
-
-    if (!title && textNodes.length > 0) {
-      for (let i = 0; i < textNodes.length; i++) {
-        const value = String(textNodes[i] || "").trim();
-        if (value && value.length > 1) {
-          title = value;
-          break;
-        }
-      }
-    }
-
-    if (!hrefRaw || !title) {
+  const addItem = function (item) {
+    if (!item || !item.id || seen[item.id]) {
       return;
     }
-
-    if (keywordLower && title.toLowerCase().indexOf(keywordLower) === -1) {
+    if (keywordLower && item.title.toLowerCase().indexOf(keywordLower) === -1) {
       return;
     }
+    seen[item.id] = true;
+    datas.push(item);
+  };
 
-    const href = buildURL(hrefRaw);
-    if (seen[href]) {
-      return;
-    }
-    seen[href] = true;
-
-    const coverURLString = coverURLRaw ? buildURL(coverURLRaw) : "";
-    datas.push(buildMediaData(href, coverURLString, title, descriptionText, href));
+  tXml.getElementsByClassName(html, "movie-card").forEach((dom) => {
+    addItem(mediaFromNewCard(dom));
+  });
+  tXml.getElementsByClassName(html, "card card-sm card-link").forEach((dom) => {
+    addItem(mediaFromOldCard(dom));
   });
 
   return datas;
+}
+
+function buildMedias(inputURL) {
+  $http.fetch(buildRequest(inputURL)).then((res) => {
+    $next.toMedias(JSON.stringify(parseBDYSMediasFromHTML(res.body, "")));
+  });
+}
+
+function Episodes(inputURL) {
+  const datas = [];
+  const seen = {};
+
+  const addEpisode = function (href, title) {
+    href = buildURL(href);
+    title = String(title || "").trim();
+    if (!href || seen[href] || href.indexOf("/play/") < 0) {
+      return;
+    }
+    seen[href] = true;
+    datas.push(buildEpisodeData(href, title, href));
+  };
+
+  $http.fetch(buildRequest(inputURL)).then((res) => {
+    tXml.getElementsByClassName(res.body, "play-item").forEach((element) => {
+      addEpisode(element.attributes && element.attributes.href, textOf(element));
+    });
+    tXml.getElementsByClassName(res.body, "btn btn-square me-2").forEach((element) => {
+      addEpisode(element.attributes && element.attributes.href, textOf(element));
+    });
+    $next.toEpisodes(JSON.stringify(datas));
+  });
 }
 
 function extractKeywordFromSearchInput(inputURL) {
@@ -143,7 +190,6 @@ function extractKeywordFromSearchInput(inputURL) {
   if (!raw) {
     return "";
   }
-
   if (raw.indexOf("http") === 0) {
     const matched = raw.match(/\/search\/([^/?#]+)/i);
     if (matched && matched[1]) {
@@ -154,7 +200,6 @@ function extractKeywordFromSearchInput(inputURL) {
       }
     }
   }
-
   try {
     return decodeURIComponent(raw).trim();
   } catch (error) {
@@ -176,21 +221,7 @@ function Search(inputURL, key) {
   const searchURL =
     inputURL && String(inputURL).indexOf("http") === 0
       ? inputURL
-      : "https://xl01.com.de/search/" + encodeURIComponent(keyword);
-
-  const searchReq = {
-    url: searchURL,
-    method: "GET",
-  };
-
-  const isChallengePage = function (html) {
-    const text = String(html || "");
-    return (
-      text.indexOf("verifyCode") >= 0 ||
-      text.indexOf("验证码") >= 0 ||
-      text.indexOf("首次搜索需要输入验证码") >= 0
-    );
-  };
+      : BDYS_HOST + "/search/" + encodeURIComponent(keyword);
 
   const fallbackPages = [1, 2, 3, 4];
   const fallbackDatas = [];
@@ -201,16 +232,9 @@ function Search(inputURL, key) {
       toSearchResult(fallbackDatas, key);
       return;
     }
-
-    const page = fallbackPages[index];
-    const req = {
-      url: "https://xl01.com.de/s/all/" + page,
-      method: "GET",
-    };
-
-    $http.fetch(req).then((res) => {
-      const parsed = parseBDYSMediasFromHTML(res.body, keyword);
-      parsed.forEach((item) => {
+    const pageURL = BDYS_HOST + "/s/all/" + fallbackPages[index];
+    $http.fetch(buildRequest(pageURL)).then((res) => {
+      parseBDYSMediasFromHTML(res.body, keyword).forEach((item) => {
         if (!fallbackSeen[item.id]) {
           fallbackSeen[item.id] = true;
           fallbackDatas.push(item);
@@ -222,9 +246,9 @@ function Search(inputURL, key) {
     });
   };
 
-  $http.fetch(searchReq).then((res) => {
+  $http.fetch(buildRequest(searchURL)).then((res) => {
     const directResults = parseBDYSMediasFromHTML(res.body, "");
-    if (directResults.length > 0 && !isChallengePage(res.body)) {
+    if (directResults.length > 0) {
       toSearchResult(directResults, key);
       return;
     }

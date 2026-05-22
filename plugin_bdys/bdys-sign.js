@@ -1,3 +1,12 @@
+var BDYS_HOST = "https://www.xlys02.com";
+var BDYS_HEADERS = {
+  "User-Agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+  Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+  "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+  Referer: BDYS_HOST + "/",
+};
+
 function get_url(pid) {
   const time = Date.now();
   const ciphertext = pid + "-" + time;
@@ -10,7 +19,7 @@ function get_url(pid) {
   });
   const sign = encryptedData.ciphertext.toString().toUpperCase();
   return (
-    "https://xl01.com.de/lines" + "?t=" + time + "&sg=" + sign + "&pid=" + pid
+    BDYS_HOST + "/lines" + "?t=" + time + "&sg=" + sign + "&pid=" + pid
   );
 }
 
@@ -31,15 +40,15 @@ function get_body(pid) {
 
 function getHost() {
   // 返回主機地址，替換掉 m3u8 URL 中的部分
-  return "https://xl01.com.de";
+  return BDYS_HOST;
 }
 
 function Player(inputURL) {
-  let req = { url: inputURL, method: "GET" };
+  let req = { url: inputURL, method: "GET", headers: BDYS_HEADERS };
 
   $http.fetch(req).then((res) => {
     const pid = res.body.match(/pid = (\d+);/)[1];
-    req = { url: get_url(pid), method: "GET" };
+    req = { url: get_url(pid), method: "GET", headers: BDYS_HEADERS };
 
     $http.fetch(req).then((res) => {
       const data = JSON.parse(res.body).data;
@@ -102,6 +111,8 @@ function tos_decode(pid, callback) {
     body: postBody,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "User-Agent": BDYS_HEADERS["User-Agent"],
+      Referer: BDYS_HOST + "/",
     },
   };
 
@@ -125,6 +136,7 @@ function m3u8_decode(m3u8_url, callback) {
   const imageReq = {
     url: imageURL,
     method: "GET",
+    headers: BDYS_HEADERS,
   };
 
   $http.fetch(imageReq).then((res) => {
