@@ -10,43 +10,43 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "82040",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260522-1/abde6ad4f18037c84b32589cb0378b1b.jpg",
-  "title": "铁面无私",
-  "descriptionText": "超清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82040/true"
+  "id": "82055",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260523-1/231b6309f3ac6c89f8f1b3ecf1567ba5.jpg",
+  "title": "千禧歌后",
+  "descriptionText": "高清",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82055/true"
 }
-[plugin 1] search keyword=铁面无私 url=https://api.olelive.com/v1/pub/index/search/%E9%93%81%E9%9D%A2%E6%97%A0%E7%A7%81/vod/0/1/4
-[plugin 1] search results=0
-[FAIL] 新歐樂影院 | search(铁面无私) -> 0
-[FAIL] 新歐樂影院 | 铁面无私 | no episodes | reason=unknown
-[OK] 新歐樂影院 | 恶人当道 | 国语播放 -> https://europe.olemovienews.com/ts4/20260521/brgkdrkb/mp4/brgkdrkb.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 淡岛百景 | 第01集 -> https://europe.olemovienews.com/ts4/20260410/eefa6870/mp4/eefa6870.mp4/master.m3u8 | candidates=1
+[plugin 1] search keyword=千禧歌后 url=https://api.olelive.com/v1/pub/index/search/%E5%8D%83%E7%A6%A7%E6%AD%8C%E5%90%8E/vod/0/1/4
+[plugin 1] search results=1
+[plugin 1] search sample(index=0)
+{
+  "id": "82055",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260523-1/231b6309f3ac6c89f8f1b3ecf1567ba5.jpg",
+  "title": "千禧歌后",
+  "descriptionText": "高清",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82055/true"
+}
+[OK] 新歐樂影院 | search(千禧歌后) -> 1
+[OK] 新歐樂影院 | 千禧歌后 | 第1集 -> https://europe.olemovienews.com/ts4/20260523/sDEscGib/mp4/sDEscGib.mp4/clipTo/184366/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 丧尸之王2 | 第1集 -> https://europe.olemovienews.com/ts4/20260523/icveEpkC/mp4/icveEpkC.mp4/clipTo/97800/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 丞相府今日开饭 | 第1集 -> https://europe.olemovienews.com/ts4/20260523/huqiggez/mp4/huqiggez.mp4/clipTo/82666/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260073",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260073.jpg",
-  "title": "冰之城墙",
-  "descriptionText": "第08集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260073"
+  "id": "20260080",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260080.jpg",
+  "title": "上伊那牡丹，酒醉身姿似百合花般",
+  "descriptionText": "第07集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260080"
 }
-[plugin 2] search keyword=冰之城墙 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%86%B0%E4%B9%8B%E5%9F%8E%E5%A2%99
-[plugin 2] search results=1
-[plugin 2] search sample(index=0)
-{
-  "id": "20260073",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260073.jpg",
-  "title": "冰之城墙",
-  "descriptionText": "第08集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260073"
-}
-[OK] 新 AGE 動漫 | search(冰之城墙) -> 1
-[OK] 新 AGE 動漫 | 冰之城墙 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_074aCEnQcZBRuQLmz1bMT%2Bi6swVfkXI%2BdZrdJUxfX2qe9IOzE7QAVdkG6sVji0%2FE2xsApbpV6iyCkrWlejUZCq0pbvu1NE7hJcux%2Fe4Iwjii2FTs6WFqh9hm | candidates=6
-[OK] 新 AGE 動漫 | 雾尾粉丝后援会 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_32192lVgUGZnEAQsrDu8nuh%2BZ2T4haBVpWFkBB9cDIq1%2F9FkeGudrAvkRsf%2FlhcoK00xXCX8vTulOr7MUJ7FwRGmBoiE7pBMJ2DUfsUi6RuCaiUemDogRo7a | candidates=6
-[OK] 新 AGE 動漫 | 最强的职业不是勇者也不是贤者好像是鉴定士(伪)的样子? | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_79a1lZHr6MeW0V%2BtGcWZ0FRU1Dfsiiyhu82BeSmiLwQyWcMyl8gn5q%2FuMGnXr%2BA95%2BN8oWo%2B9KwVzBT4MhWaT1jpTDwP246gAzdAc%2BFegwM1LoJ%2FGvalR9dmpA | candidates=6
+[plugin 2] search keyword=上伊那牡丹，酒醉身姿似百 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+[plugin 2] search results=0
+[FAIL] 新 AGE 動漫 | search(上伊那牡丹，酒醉身姿似百) -> 0
+[OK] 新 AGE 動漫 | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_054faje74L2MwlZ1%2B9e5I7iczUZx8uU2DFJ%2B3IyFVr4F%2B%2Bv5eXWWWwRQQSTkPtsH7jt9VBt513kjkwU6vL9nBcrxmy09xfeCBgCXmaQt6Uvb%2FZJtCYBDNkPB | candidates=6
+[OK] 新 AGE 動漫 | 冻结地球 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_6f18UTINgb3%2Bkkufrjsy74QqcVnAFEr7aZQKOV82S8Z6JOAmuze%2FUfHaOK1wfJe2HU%2BQmrMi4qWQuwOpqXBHKaqONgjovWNWHS9u026g%2BzbvZa%2F5WoL6s8DA | candidates=6
+[OK] 新 AGE 動漫 | 神之水滴 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_37a6OfODcgrQIpuI7INFaVprmd1CuVIEIgqMS4C%2Ffuuqh8TgI%2FIkacpw%2BxcmALWHcrW4CszOPyHGM0N8bxr3FAsXcori%2BIuv%2Bno6fF6dTUGMwnwO0F06OD4y | candidates=6
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -64,78 +64,78 @@
 [plugin 5] medias total=48, testing=3
 [plugin 5] buildMedias sample(index=0)
 {
-  "id": "https://libvio.run/detail/714893388.html",
-  "coverURLString": "https://img.meituan.net/content/643db24b0f92f3be82b9bffef6e5a3af237120.png",
-  "title": "秒杀爱情",
-  "descriptionText": "第10集/周三四更",
-  "detailURLString": "https://libvio.run/detail/714893388.html"
+  "id": "https://libvio.run/detail/714893349.html",
+  "coverURLString": "https://img.meituan.net/content/e5fc01514e59d9e570af67a213f0db10203254.png",
+  "title": "黑袍纠察队 第五季",
+  "descriptionText": "第08集/已完结",
+  "detailURLString": "https://libvio.run/detail/714893349.html"
 }
-[plugin 5] search keyword=秒杀爱情 url=https://libvio.run/search/-------------.html?wd=%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85
-[plugin 5] search results=1
+[plugin 5] search keyword=黑袍纠察队 url=https://libvio.run/search/-------------.html?wd=%E9%BB%91%E8%A2%8D%E7%BA%A0%E5%AF%9F%E9%98%9F
+[plugin 5] search results=8
 [plugin 5] search sample(index=0)
 {
-  "id": "https://libvio.run/detail/714893388.html",
-  "coverURLString": "https://img.meituan.net/content/643db24b0f92f3be82b9bffef6e5a3af237120.png",
-  "title": "秒杀爱情",
-  "descriptionText": "第10集/周三四更",
-  "detailURLString": "https://libvio.run/detail/714893388.html"
+  "id": "https://libvio.run/detail/714893349.html",
+  "coverURLString": "https://img.meituan.net/content/e5fc01514e59d9e570af67a213f0db10203254.png",
+  "title": "黑袍纠察队 第五季",
+  "descriptionText": "第08集/已完结",
+  "detailURLString": "https://libvio.run/detail/714893349.html"
 }
-[OK] libvio | search(秒杀爱情) -> 1
-[OK] libvio | 秒杀爱情 | 第01集 -> https://v3.vbing.me/2026/rh/4/Sold.Out.on.You.S01/Sold.Out.on.You.S01E01.mp4 | candidates=1
-[OK] libvio | 石纪元 第四季 Part 3 | 第01集 -> https://v3.vbing.me/2026/fun/4/Dr.STONE.S04Part/Dr.STONE.S04E25.mp4 | candidates=1
-[OK] libvio | 月夜行路：答案在名作中 | 第01集 -> https://v3.vbing.me/2026/rh/4/A.Moonlight.Nights.Passing.S01/A.Moonlight.Nights.Passing.S01E01.mp4 | candidates=1
+[OK] libvio | search(黑袍纠察队) -> 8
+[FAIL] libvio | 黑袍纠察队 第五季 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[OK] libvio | 大叔再出招 | 第01集 -> https://v.vbing.me/2026/rh/5/Fifties.Professionals.S01/Fifties.Professionals.S01E01.mp4 | candidates=1
+[OK] libvio | 我的王室死对头 | 第01集 -> https://v.vbing.me/2026/rh/5/My.Royal.Nemesis.S01/My.Royal.Nemesis.S01E01.mp4 | candidates=1
 [plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
 [OK] 韩剧网 | connectivity -> 3 target(s), pass=https://www.thanju.com
 [plugin 6] medias total=30, testing=3
 [plugin 6] buildMedias sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2519.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/69e95278bea16.jpg",
-  "title": "秒杀爱情",
-  "descriptionText": "第10集 · 安孝燮 蔡元彬 金汎 高斗心",
-  "detailURLString": "https://www.thanju.com/detail/2519.html"
+  "id": "https://www.thanju.com/detail/2531.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/6a1079430e9a2.jpg",
+  "title": "大叔再出招",
+  "descriptionText": "第1集 · 申河均 吴正世 许成泰",
+  "detailURLString": "https://www.thanju.com/detail/2531.html"
 }
-[plugin 6] search keyword=秒杀爱情 url=https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
+[plugin 6] search keyword=大叔再出招 url=https://www.thanju.com/search/%E5%A4%A7%E5%8F%94%E5%86%8D%E5%87%BA%E6%8B%9B.html
 [plugin 6] search results=2
 [plugin 6] search sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2529.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/6a06e93d5a3f6.jpg",
-  "title": "超能路人甲",
-  "descriptionText": "超能路人甲",
-  "detailURLString": "https://www.thanju.com/detail/2529.html"
+  "id": "https://www.thanju.com/detail/2531.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/6a1079430e9a2.jpg",
+  "title": "大叔再出招",
+  "descriptionText": "大叔再出招",
+  "detailURLString": "https://www.thanju.com/detail/2531.html"
 }
-[OK] 韩剧网 | search(秒杀爱情) -> 2
-[OK] 韩剧网 | 秒杀爱情 | 01 -> https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 | candidates=1
-[OK] 韩剧网 | 红色珍珠 | 01 -> https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 | candidates=1
+[OK] 韩剧网 | search(大叔再出招) -> 2
+[OK] 韩剧网 | 大叔再出招 | 01 -> https://cdn.vvvip-plays33.cc/20260522/13861_320274ee/index.m3u8 | candidates=1
 [OK] 韩剧网 | 第一个男人 | 01 -> https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 | candidates=1
+[OK] 韩剧网 | 我的王室死对头 | 01 -> https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/143579.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/cLe0DqQYaEXPGOwgZEYjj56aBG5.jpg",
-  "title": "秒杀爱情",
-  "descriptionText": "更新至10集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143579.html"
+  "id": "https://www.dbku.tv/voddetail/143401.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/yAB4DroIlxzrxwTbpQ4Euebzdam.jpg",
+  "title": "电台明星",
+  "descriptionText": "全32集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143401.html"
 }
-[plugin 7] search keyword=秒杀爱情 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85&submit=
+[plugin 7] search keyword=电台明星 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%94%B5%E5%8F%B0%E6%98%8E%E6%98%9F&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/143579.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/cLe0DqQYaEXPGOwgZEYjj56aBG5.jpg",
-  "title": "秒杀爱情",
-  "descriptionText": "更新至10集",
-  "detailURLString": "https://www.dbku.tv/voddetail/143579.html"
+  "id": "https://www.dbku.tv/voddetail/143401.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/yAB4DroIlxzrxwTbpQ4Euebzdam.jpg",
+  "title": "电台明星",
+  "descriptionText": "全32集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143401.html"
 }
-[OK] 独播库 | search(秒杀爱情) -> 1
-[OK] 独播库 | 秒杀爱情 | 第1集 -> https://vid.dbokutv.com/20260423/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xOy6ejRNDXSIqmCIqmCJT5GJKvC3OkRN0q/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 向流星许愿的我们 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtTsRsGlR7XgBNXiU7XvP7TjBJ0nBJ0oE4GoDZX1CovjS34/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 主角 | 第1集 -> https://vid.dbokutv.com/20260510/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNfgBJ0nBJ0nGZ8vDpaqCovjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(电台明星) -> 1
+[OK] 独播库 | 电台明星 | 第1集 -> https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlR7XgBMHqRNWjC34jC355GZSuDZGuBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 极致复仇：舍弃面容的家政妇 | 第1集 -> https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejQdfcOtDnRN9aQdfcBJ0nBJ0nHJP2GKP1CovjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 刑警重回原点 | 第1集 -> https://vid.dbokutv.com/20260425/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejU6fwQ7baBJ0nBJ0nC4D6DZH1HIvjS34/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_925fa737-e30e-4c83-84fd-4315c86270b9
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_fe3177c8-b1ed-44ce-8941-4100da08a6b4
 [summary] plugins=7, fatal=2, cases=29, ok=22, fail=7, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json

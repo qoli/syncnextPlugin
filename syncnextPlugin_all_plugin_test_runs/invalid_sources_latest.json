@@ -1,40 +1,7 @@
 {
-  "generatedAt": "2026-05-22T04:42:10.725Z",
+  "generatedAt": "2026-05-23T04:30:16.399Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_olevod",
-      "pluginName": "新歐樂影院",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
-      "reasonCounts": {
-        "unknown": 1
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "铁面无私",
-          "episodeTitle": "",
-          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/82040/true",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "no episodes",
-          "reasonCode": "unknown",
-          "reasonText": "no episodes",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://api.olelive.com/v1/pub/vod/detail/82040/true?_vv=b79046162601a9bb534190c35933c3ab",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
     {
       "pluginFolder": "plugin_czzy",
       "pluginName": "廠長資源",
@@ -58,6 +25,39 @@
         "no medias returned; no medias returned"
       ],
       "failedCases": []
+    },
+    {
+      "pluginFolder": "plugin_libvio",
+      "pluginName": "libvio",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
+      "reasonCounts": {
+        "plugin_empty_view": 1
+      },
+      "fatalErrors": [],
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "黑袍纠察队 第五季",
+          "episodeTitle": "",
+          "detailURL": "https://libvio.run/detail/714893349.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://libvio.run/detail/714893349.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
