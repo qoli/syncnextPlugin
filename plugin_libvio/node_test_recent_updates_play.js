@@ -3,14 +3,14 @@
 const fetch = require("node-fetch");
 const fs = require("fs");
 const path = require("path");
+const vm = require("vm");
+const CryptoJS = require("crypto-js");
 
 const DEFAULT_HOSTS = [
-  "https://libvio.run",
-  "https://www.libvio.mov",
-  "https://www.libvios.com",
-  "https://www.libhd.com",
-  "https://www.libvio.life",
+  "https://www.libvio.cam",
 ];
+const SMARTPLAY_API_URL =
+  "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php";
 
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15";
@@ -87,6 +87,26 @@ async function fetchText(url, referer) {
   const body = await res.text();
 
   return { status: res.status, body, finalURL: res.url };
+}
+
+async function postJSON(url, body, referer, origin) {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "User-Agent": UA,
+      Origin: origin,
+      Referer: referer || origin || "",
+    },
+    body: JSON.stringify(body),
+    redirect: "follow",
+    timeout: 20000,
+  });
+  const text = await res.text();
+  if (res.status < 200 || res.status >= 300) {
+    throw new Error(`POST ${url} failed: HTTP ${res.status} ${text.slice(0, 120)}`);
+  }
+  return JSON.parse(text);
 }
 
 function looksLikeCloudflareChallenge(body) {
@@ -207,6 +227,178 @@ function normalizePlayableURL(rawURL) {
   return url;
 }
 
+function extractQuotedConst(body, name) {
+  const hit = String(body || "").match(
+    new RegExp(`const\\s+${name}\\s*=\\s*([\"'])([\\s\\S]*?)\\1`)
+  );
+  return hit && hit[2] ? hit[2] : "";
+}
+
+function extractArtplayerScript(body) {
+  const scripts =
+    String(body || "").match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || [];
+  for (let i = scripts.length - 1; i >= 0; i--) {
+    if (scripts[i].includes("function execB")) {
+      return scripts[i]
+        .replace(/^<script\b[^>]*>/i, "")
+        .replace(/<\/script>\s*$/i, "");
+    }
+  }
+  return "";
+}
+
+function looksLikeResolvedMediaURL(url) {
+  return /^https?:\/\/.+(?:\.m3u8|\.mp4|\/tos-|bytetos\.com|byteimg\.com|bytecdntp\.com)/i.test(
+    String(url || "")
+  );
+}
+
+function createFakeElement() {
+  return {
+    style: {},
+    dataset: {},
+    classList: {
+      add() {},
+      remove() {},
+      contains() {
+        return false;
+      },
+    },
+    addEventListener() {},
+    removeEventListener() {},
+    appendChild() {},
+    remove() {},
+    setAttribute() {},
+    getAttribute() {
+      return "";
+    },
+    querySelector: createFakeElement,
+    querySelectorAll: () => [],
+    innerHTML: "",
+    textContent: "",
+    value: "",
+  };
+}
+
+function decryptArtplayerURL(scriptBody, encryptedURL, mediaId, host) {
+  const fakePromise = {
+    then() {
+      return fakePromise;
+    },
+    catch() {
+      return fakePromise;
+    },
+  };
+  const origin = normalizeHost(host);
+  const context = {
+    console: {
+      log() {},
+      warn() {},
+      error() {},
+    },
+    CryptoJS,
+    parent: { MacPlayer: { Id: String(mediaId || "") } },
+    document: {
+      body: createFakeElement(),
+      cookie: "",
+      addEventListener() {},
+      createElement: createFakeElement,
+      getElementById: createFakeElement,
+      querySelector: createFakeElement,
+      querySelectorAll: () => [],
+    },
+    localStorage: {
+      getItem() {
+        return null;
+      },
+      setItem() {},
+      removeItem() {},
+    },
+    location: {
+      protocol: "https:",
+      host: origin.replace(/^https?:\/\//i, ""),
+      origin,
+      href: "",
+      search: "",
+    },
+    navigator: { userAgent: UA },
+    setTimeout() {
+      return 0;
+    },
+    clearTimeout() {},
+    setInterval() {
+      return 0;
+    },
+    clearInterval() {},
+    fetch() {
+      return fakePromise;
+    },
+    URLSearchParams: class {
+      get() {
+        return "";
+      }
+    },
+    URL: class {
+      constructor(url) {
+        this.href = String(url || "");
+        this.origin = origin;
+      }
+    },
+    Artplayer: function () {
+      return {
+        controls: { add() {} },
+        notice: {},
+        template: {},
+        on() {},
+        play() {},
+        pause() {},
+        switchUrl() {},
+      };
+    },
+    Hls: function () {},
+    mpegts: {},
+    performance: { now: () => 0 },
+  };
+  context.window = context;
+  context.globalThis = context;
+  vm.createContext(context);
+  vm.runInContext(scriptBody, context, { timeout: 5000 });
+  if (typeof context.execB !== "function") return "";
+  const decoded = vm.runInContext(`execB(${JSON.stringify(encryptedURL)})`, context, {
+    timeout: 2000,
+  });
+  return looksLikeResolvedMediaURL(decoded) ? decoded : "";
+}
+
+async function resolveArtplayerURL(playAPIBase, config, host, playPageURL) {
+  const next = config.link_next ? toAbsoluteURL(host, config.link_next) : "";
+  const artplayerURL = `${playAPIBase}${config.url}${
+    next ? `&next=${encodeURIComponent(next)}` : ""
+  }`;
+  const artRes = await fetchText(artplayerURL, playPageURL);
+  const playPageUrl = extractQuotedConst(artRes.body, "playPageUrl");
+  const secretKeySeed = extractQuotedConst(artRes.body, "secretKeySeed");
+  const scriptBody = extractArtplayerScript(artRes.body);
+  if (!playPageUrl || !secretKeySeed || !scriptBody) {
+    throw new Error("artplayer smartplay constants not found");
+  }
+
+  const t = Math.floor(Date.now() / 1000);
+  const payload = {
+    vkey: playPageUrl,
+    code: secretKeySeed,
+    t,
+    signature: CryptoJS.MD5(String(t)).toString(),
+  };
+  const apiData = await postJSON(SMARTPLAY_API_URL, payload, artplayerURL, host);
+  const encryptedURL = apiData && apiData.url ? normalizePlayableURL(apiData.url) : "";
+  const decoded = decryptArtplayerURL(scriptBody, encryptedURL, config.id, host);
+  if (!decoded) {
+    throw new Error("artplayer smartplay decrypt failed");
+  }
+  return decoded;
+}
+
 function extractPlayableURL(body) {
   if (!body) return "";
   const patterns = [
@@ -252,6 +444,10 @@ async function extractRealPlayURL(playPageURL, host) {
   let playAPIBase = extractPlayAPIBase(playerJSRes.body, host);
   if (from === "ty_new1") {
     playAPIBase = `${normalizeHost(host)}/vid/ty4.php?url=`;
+  }
+
+  if (playAPIBase.includes("/static/player/artplayer/")) {
+    return resolveArtplayerURL(playAPIBase, config, host, playPageURL);
   }
 
   let playAPIURL = "";
@@ -360,7 +556,7 @@ async function main() {
             );
           } catch (error) {
             const errorText = error.message || String(error);
-            const unsupported = /not supported by plugin/i.test(errorText);
+            const unsupported = /not supported by plugin|artplayer encrypted browser player/i.test(errorText);
             results.push({
               ok: false,
               unsupported,

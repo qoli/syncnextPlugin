@@ -2,51 +2,47 @@
   "name": "libvio",
   "description": "libvio",
   "notification": "本頻道有很多網盤資源，從而播放列表會報告錯誤",
-  "host": "https://libvio.run/",
+  "host": "https://www.libvio.cam/",
   "hosts": [
-    "https://libvio.run",
-    "https://www.libvio.mov",
-    "https://www.libvios.com",
-    "https://www.libhd.com",
-    "https://www.libvio.life"
+    "https://www.libvio.cam"
   ],
-  "files": ["txml.js", "app.js"],
+  "files": ["txml.js", "crypto-js.min.js", "app.js"],
   "pages": [
     {
       "key": "index",
       "title": "最近更新",
-      "url": "https://libvio.run/",
+      "url": "https://www.libvio.cam/",
       "timeout": 50,
       "javascript": "buildMedias"
     },
     {
       "key": "movie",
       "title": "电影",
-      "url": "https://libvio.run/type/1-${pageNumber}.html",
+      "url": "https://www.libvio.cam/type/1-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "series",
       "title": "电视剧",
-      "url": "https://libvio.run/type/2-${pageNumber}.html",
+      "url": "https://www.libvio.cam/type/2-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "anime",
       "title": "动漫",
-      "url": "https://libvio.run/type/4-${pageNumber}.html",
+      "url": "https://www.libvio.cam/type/4-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "jpandkr",
       "title": "日韩剧",
-      "url": "https://libvio.run/type/15-${pageNumber}.html",
+      "url": "https://www.libvio.cam/type/15-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "euandus",
       "title": "欧美剧",
-      "url": "https://libvio.run/type/16-${pageNumber}.html",
+      "url": "https://www.libvio.cam/type/16-${pageNumber}.html",
       "javascript": "buildMedias"
     }
   ],
@@ -58,7 +54,7 @@
     "javascript": "Player"
   },
   "search": {
-    "url": "https://libvio.run/search/-------------.html?wd=${keyword}",
+    "url": "https://www.libvio.cam/search/-------------.html?wd=${keyword}",
     "javascript": "Search"
   }
 }

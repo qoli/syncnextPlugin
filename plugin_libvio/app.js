@@ -1,6 +1,6 @@
 `user script`;
 
-var FALLBACK_HOST = "https://libvio.run";
+var FALLBACK_HOST = "https://www.libvio.cam";
 var BASE_URL = normalizeHost(
   typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost
     ? __syncnextPrimaryHost
@@ -15,6 +15,8 @@ var SOURCE_PROBE_EPISODE_LIMIT = 3;
 var SOURCE_PROBE_MAX_CANDIDATES = 16;
 var PLAYER_API_BASE_CACHE = {};
 var PLAYER_API_BASE_PENDING = {};
+var SMARTPLAY_API_URL =
+  "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php";
 
 function print(params) {
   console.log(JSON.stringify(params));
@@ -65,7 +67,7 @@ function rebaseLibvioURL(url) {
   }
 
   return value.replace(
-    /^https?:\/\/(?:www\.)?(?:libviohd\.com|libvios\.com|libvio\.(?:app|art|cc|cloud|com|fun|in|la|life|link|me|mov|pro|pw|run|site|vip)|libhd\.com)(?=\/|$)/i,
+    /^https?:\/\/(?:www\.)?(?:libviohd\.com|libvios\.com|libvio\.(?:app|art|cam|cc|cloud|com|fun|in|la|life|link|me|mov|pro|pw|run|site|vip)|libhd\.com)(?=\/|$)/i,
     BASE_URL
   );
 }
@@ -228,11 +230,30 @@ function shouldSkipMediaByDescription(descriptionText) {
   return text.indexOf("网盘") >= 0 || text.indexOf("網盤") >= 0;
 }
 
-function detailHasBD5PlayableTag(body) {
+function isUnsupportedSourceTitle(title) {
+  var text = String(title || "");
+  return (
+    text.indexOf("网盘") >= 0 ||
+    text.indexOf("網盤") >= 0 ||
+    text.indexOf("百度") >= 0 ||
+    text.indexOf("夸克") >= 0 ||
+    text.indexOf("UC") >= 0
+  );
+}
+
+function detailHasPlayableSourceTag(body) {
   var text = body || "";
-  var keywords = ["BD播放", "BD5播放", "HD5播放"];
+  var keywords = [
+    "BD播放",
+    "BD5播放",
+    "HD5播放",
+    "蓝光",
+    "藍光",
+    "高清线路",
+    "高清線路",
+  ];
   for (var i = 0; i < keywords.length; i++) {
-    if (text.indexOf(keywords[i]) >= 0) {
+    if (text.indexOf(keywords[i]) >= 0 && !isUnsupportedSourceTitle(keywords[i])) {
       return true;
     }
   }
@@ -288,6 +309,306 @@ function extractPlayAPIBase(playerJSBody) {
   }
 
   return buildAbsoluteURL(matched[1]);
+}
+
+function extractQuotedConst(body, name) {
+  if (!body || !name) {
+    return "";
+  }
+
+  var pattern = new RegExp(
+    "const\\s+" + name + "\\s*=\\s*([\"'])([\\s\\S]*?)\\1"
+  );
+  var matched = body.match(pattern);
+  return matched && matched[2] ? matched[2] : "";
+}
+
+function extractArtplayerScript(body) {
+  if (!body) {
+    return "";
+  }
+
+  var scripts = body.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || [];
+  for (var i = scripts.length - 1; i >= 0; i--) {
+    if (scripts[i].indexOf("function execB") >= 0) {
+      return scripts[i]
+        .replace(/^<script\b[^>]*>/i, "")
+        .replace(/<\/script>\s*$/i, "");
+    }
+  }
+
+  return "";
+}
+
+function looksLikeResolvedMediaURL(url) {
+  return /^https?:\/\/.+(?:\.m3u8|\.mp4|\/tos-|bytetos\.com|byteimg\.com|bytecdntp\.com)/i.test(
+    String(url || "")
+  );
+}
+
+function buildFakeArtplayerElement() {
+  return {
+    style: {},
+    dataset: {},
+    classList: {
+      add: function () {},
+      remove: function () {},
+      contains: function () {
+        return false;
+      },
+    },
+    addEventListener: function () {},
+    removeEventListener: function () {},
+    appendChild: function () {},
+    remove: function () {},
+    setAttribute: function () {},
+    getAttribute: function () {
+      return "";
+    },
+    querySelector: function () {
+      return buildFakeArtplayerElement();
+    },
+    querySelectorAll: function () {
+      return [];
+    },
+    innerHTML: "",
+    textContent: "",
+    value: "",
+  };
+}
+
+function decryptArtplayerURL(scriptBody, encryptedURL, mediaId) {
+  if (
+    !scriptBody ||
+    !encryptedURL ||
+    typeof CryptoJS === "undefined" ||
+    !CryptoJS.AES
+  ) {
+    return "";
+  }
+
+  try {
+    var fakeElement = buildFakeArtplayerElement;
+    var fakeDocument = {
+      body: fakeElement(),
+      cookie: "",
+      addEventListener: function () {},
+      createElement: function () {
+        return fakeElement();
+      },
+      getElementById: function () {
+        return fakeElement();
+      },
+      querySelector: function () {
+        return fakeElement();
+      },
+      querySelectorAll: function () {
+        return [];
+      },
+    };
+    var fakeStorage = {
+      getItem: function () {
+        return null;
+      },
+      setItem: function () {},
+      removeItem: function () {},
+    };
+    var fakePromise = {
+      then: function () {
+        return fakePromise;
+      },
+      catch: function () {
+        return fakePromise;
+      },
+    };
+    var fetch = function () {
+      return fakePromise;
+    };
+    var setTimeout = function () {
+      return 0;
+    };
+    var clearTimeout = function () {};
+    var setInterval = function () {
+      return 0;
+    };
+    var clearInterval = function () {};
+    var window = {
+      location: {
+        protocol: "https:",
+        host: BASE_URL.replace(/^https?:\/\//i, ""),
+        origin: BASE_URL,
+        href: "",
+        search: "",
+      },
+      addEventListener: function () {},
+      removeEventListener: function () {},
+    };
+    var parent = {
+      MacPlayer: {
+        Id: String(mediaId || ""),
+      },
+    };
+    var document = fakeDocument;
+    var localStorage = fakeStorage;
+    var location = window.location;
+    var navigator = { userAgent: UA };
+    var performance = { now: function () { return 0; } };
+    var URLSearchParams = function () {
+      this.get = function () {
+        return "";
+      };
+    };
+    var URL = function (url) {
+      this.href = String(url || "");
+      this.origin = BASE_URL;
+    };
+    var Artplayer = function () {
+      return {
+        controls: { add: function () {} },
+        notice: {},
+        template: {},
+        on: function () {},
+        play: function () {},
+        pause: function () {},
+        switchUrl: function () {},
+      };
+    };
+    var Hls = function () {};
+    var mpegts = {};
+    var root = null;
+    var oldGlobals = {};
+    var names = [
+      "window",
+      "parent",
+      "document",
+      "localStorage",
+      "location",
+      "navigator",
+      "performance",
+      "URLSearchParams",
+      "URL",
+      "Artplayer",
+      "Hls",
+      "mpegts",
+      "fetch",
+      "setTimeout",
+      "clearTimeout",
+      "setInterval",
+      "clearInterval",
+    ];
+
+    try {
+      root = Function("return this")();
+      for (var nameIndex = 0; nameIndex < names.length; nameIndex++) {
+        oldGlobals[names[nameIndex]] = root[names[nameIndex]];
+      }
+      root.window = window;
+      root.parent = parent;
+      root.document = document;
+      root.localStorage = localStorage;
+      root.location = location;
+      root.navigator = navigator;
+      root.performance = performance;
+      root.URLSearchParams = URLSearchParams;
+      root.URL = URL;
+      root.Artplayer = Artplayer;
+      root.Hls = Hls;
+      root.mpegts = mpegts;
+      root.fetch = fetch;
+      root.setTimeout = setTimeout;
+      root.clearTimeout = clearTimeout;
+      root.setInterval = setInterval;
+      root.clearInterval = clearInterval;
+    } catch (error) {}
+
+    eval(scriptBody);
+
+    if (typeof execB !== "function") {
+      return "";
+    }
+
+    var decrypted = execB(encryptedURL);
+    return looksLikeResolvedMediaURL(decrypted) ? decrypted : "";
+  } catch (error) {
+    return "";
+  } finally {
+    if (root) {
+      for (var restoreIndex = 0; restoreIndex < names.length; restoreIndex++) {
+        var restoreName = names[restoreIndex];
+        if (typeof oldGlobals[restoreName] === "undefined") {
+          try {
+            delete root[restoreName];
+          } catch (error) {}
+        } else {
+          root[restoreName] = oldGlobals[restoreName];
+        }
+      }
+    }
+  }
+}
+
+function resolveArtplayerURL(playAPIBase, config, callback) {
+  var next = config.link_next ? buildAbsoluteURL(config.link_next) : "";
+  var artplayerURL =
+    playAPIBase +
+    config.url +
+    (next ? "&next=" + encodeURIComponent(next) : "");
+
+  $http
+    .fetch({
+      url: buildAbsoluteURL(artplayerURL),
+      method: "GET",
+      headers: {
+        "User-Agent": UA,
+        Referer: REFERER_URL,
+      },
+    })
+    .then(function (res) {
+      var playPageUrl = extractQuotedConst(res.body, "playPageUrl");
+      var secretKeySeed = extractQuotedConst(res.body, "secretKeySeed");
+      var scriptBody = extractArtplayerScript(res.body);
+
+      if (!playPageUrl || !secretKeySeed || !scriptBody) {
+        callback("");
+        return;
+      }
+
+      var t = Math.floor(Date.now() / 1000);
+      var postBody = JSON.stringify({
+        vkey: playPageUrl,
+        code: secretKeySeed,
+        t: t,
+        signature: CryptoJS.MD5(String(t)).toString(),
+      });
+
+      $http
+        .fetch({
+          url: SMARTPLAY_API_URL,
+          method: "POST",
+          body: postBody,
+          headers: {
+            "Content-Type": "application/json",
+            Origin: BASE_URL,
+            Referer: buildAbsoluteURL(artplayerURL),
+            "User-Agent": UA,
+          },
+        })
+        .then(function (apiRes) {
+          try {
+            var data = JSON.parse(apiRes.body);
+            var encryptedURL = data && data.url ? normalizePlayableURL(data.url) : "";
+            callback(decryptArtplayerURL(scriptBody, encryptedURL, config.id));
+          } catch (error) {
+            callback("");
+          }
+        })
+        .catch(function () {
+          callback("");
+        });
+    })
+    .catch(function () {
+      callback("");
+    });
 }
 
 function fetchPlayableURLByAPI(playAPIURL, callback) {
@@ -387,6 +708,11 @@ function resolvePlayableURLByConfig(config, callback) {
       return;
     }
 
+    if (playAPIBase.indexOf("/static/player/artplayer/") >= 0) {
+      resolveArtplayerURL(playAPIBase, config, callback);
+      return;
+    }
+
     if (from === "tweb") {
       var twebPlayAPIURL = buildAbsoluteURL(playAPIBase + url);
       $http
@@ -428,6 +754,17 @@ function resolvePlayableURLByConfig(config, callback) {
 }
 
 function extractEpisodeURLsFromDetailBody(body) {
+  var playlistGroups = extractPlayablePlaylistGroups(body);
+  if (playlistGroups.length) {
+    var urls = [];
+    for (var groupIndex = 0; groupIndex < playlistGroups.length; groupIndex++) {
+      for (var urlIndex = 0; urlIndex < playlistGroups[groupIndex].episodes.length; urlIndex++) {
+        urls.push(playlistGroups[groupIndex].episodes[urlIndex].href);
+      }
+    }
+    return urls;
+  }
+
   var urls = [];
   var seen = {};
   var playlists = tXml.getElementsByClassName(body, "stui-content__playlist");
@@ -519,11 +856,58 @@ function mediaHasPlayableSource(detailURL, callback) {
       },
     })
     .then(function (res) {
-      callback(detailHasBD5PlayableTag(res.body));
+      callback(detailHasPlayableSourceTag(res.body));
     })
     .catch(function () {
       callback(false);
     });
+}
+
+function stripTags(text) {
+  return String(text || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractPlayablePlaylistGroups(body) {
+  var groups = [];
+  var html = String(body || "");
+  var blockPattern =
+    /<div\b[^>]*class=["'][^"']*\bstui-vodlist__head\b[^"']*["'][^>]*>[\s\S]*?<h3[^>]*>([\s\S]*?)<\/h3>[\s\S]*?<\/div>\s*<ul\b[^>]*class=["'][^"']*\bstui-content__playlist\b[^"']*["'][^>]*>([\s\S]*?)<\/ul>/gi;
+  var blockMatch;
+
+  while ((blockMatch = blockPattern.exec(html)) !== null) {
+    var sourceTitle = stripTags(blockMatch[1]);
+    if (!sourceTitle || isUnsupportedSourceTitle(sourceTitle)) {
+      continue;
+    }
+
+    var episodes = [];
+    var linkPattern = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+    var linkMatch;
+    while ((linkMatch = linkPattern.exec(blockMatch[2])) !== null) {
+      var href = buildURL(linkMatch[1]);
+      if (!href) {
+        continue;
+      }
+
+      episodes.push({
+        href: href,
+        title: stripTags(linkMatch[2]) || href,
+      });
+    }
+
+    if (episodes.length) {
+      groups.push({
+        title: sourceTitle,
+        episodes: episodes,
+      });
+    }
+  }
+
+  return groups;
 }
 
 function mapWithConcurrency(items, limit, worker, callback) {
@@ -667,7 +1051,7 @@ function Episodes(inputURL) {
   let datas = [];
 
   $http.fetch(req).then(function (res) {
-    if (!detailHasBD5PlayableTag(res.body)) {
+    if (!detailHasPlayableSourceTag(res.body)) {
       if ($next.emptyView) {
         $next.emptyView("此資源目前僅網盤或無站內可播源，請返回選擇其他資源。");
       }
@@ -675,40 +1059,19 @@ function Episodes(inputURL) {
       return;
     }
 
-    var playlists = tXml.getElementsByClassName(res.body, "stui-content__playlist");
-    var content = playlists[0];
-    if (!content || !content.children || !content.children.length) {
-      $next.toEpisodes(JSON.stringify(datas));
-      return;
-    }
-
-    for (var index = 0; index < content.children.length; index++) {
-      var listItem = content.children[index];
-      if (!listItem || !listItem.children || !listItem.children.length) {
-        continue;
+    var playlistGroups = extractPlayablePlaylistGroups(res.body);
+    for (var groupIndex = 0; groupIndex < playlistGroups.length; groupIndex++) {
+      var group = playlistGroups[groupIndex];
+      for (var episodeIndex = 0; episodeIndex < group.episodes.length; episodeIndex++) {
+        var episode = group.episodes[episodeIndex];
+        datas.push(
+          buildEpisodeData(
+            episode.href,
+            group.title + " " + episode.title,
+            episode.href
+          )
+        );
       }
-
-      var element = null;
-      for (var childIndex = 0; childIndex < listItem.children.length; childIndex++) {
-        var child = listItem.children[childIndex];
-        if (child && child.attributes && child.attributes.href) {
-          element = child;
-          break;
-        }
-      }
-      if (!element) {
-        continue;
-      }
-
-      var href = element.attributes ? element.attributes.href : "";
-      var title = element.children.toString();
-      if (!href) {
-        continue;
-      }
-
-      href = buildURL(href);
-
-      datas.push(buildEpisodeData(href, title, href));
     }
 
     $next.toEpisodes(JSON.stringify(datas));
