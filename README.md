@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-24T04:45:11.341Z`
+Generated: `2026-05-25T04:50:08.337Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `嫡姐抢嫁穷书生，我嫁战神`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%AB%A1%E5%A7%90%E6%8A%A2%E5%AB%81%E7%A9%B7%E4%B9%A6%E7%94%9F%EF%BC%8C%E6%88%91%E5%AB%81%E6%88%98%E7%A5%9E/vod/0/1/4
+- Keyword: `护女狂龙：龙头老爹出山了`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%8A%A4%E5%A5%B3%E7%8B%82%E9%BE%99%EF%BC%9A%E9%BE%99%E5%A4%B4%E8%80%81%E7%88%B9%E5%87%BA%E5%B1%B1%E4%BA%86/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 嫡姐抢嫁穷书生，我嫁战神耀京华 | 第1集 | https://europe.olemovienews.com/ts4/20260524/IwuBdbBf/mp4/IwuBdbBf.mp4/clipTo/87166/master.m3u8 |
-| OK | 爹，别卷了！我只想败坏宗门名声 | 第1集 | https://europe.olemovienews.com/ts4/20260524/kFHtdAwx/mp4/kFHtdAwx.mp4/clipTo/81958/master.m3u8 |
-| OK | 反派世家偷听我心声，我成团宠了 | 第1集 | https://europe.olemovienews.com/ts4/20260524/scExalnG/mp4/scExalnG.mp4/clipTo/205800/master.m3u8 |
+| OK | 护女狂龙：龙头老爹出山了 | 第01集 | https://europe.olemovienews.com/ts4/20260525/qljBbnao/mp4/qljBbnao.mp4/clipTo/340900/master.m3u8 |
+| OK | 旺夫嫡女，太子独宠我一人 | 第1集 | https://europe.olemovienews.com/ts4/20260525/ikatBjzG/mp4/ikatBjzG.mp4/clipTo/161033/master.m3u8 |
+| OK | 殿下负责到底 | 第1集 | https://europe.olemovienews.com/ts4/20260525/fCjsCntk/mp4/fCjsCntk.mp4/clipTo/136100/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `主播女孩重度依赖`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%BB%E6%92%AD%E5%A5%B3%E5%AD%A9%E9%87%8D%E5%BA%A6%E4%BE%9D%E8%B5%96
+- Keyword: `淫狱团地`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%AB%E7%8B%B1%E5%9B%A2%E5%9C%B0
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 主播女孩重度依赖 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_50c1GAtQpAaBf%2BudC7YowkaY5NKsfK0AAwRlFfBos9xazT9%2FSpZ87aQqNlbdskFNifAM3Fu1ZZOK%2FhdZAaQ8Qikk7wgXNY1hB1p4xJKBdt6wUvoLxOCFLDcw |
-| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_58b2OwydkvnHnbC98wSXity6%2Fcn9TIyZKTtY2u1S44PnAOFLesbDKMi1riJbq1eAKndHzaRu05l1aBrAO905%2FYHQRlr1vG73z8eownEjweF2TuPmNMGdr8wr |
-| OK | 楠木邸的神明庭院 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_06899i%2B0XMVYo5eTr86apG9D2yC5MdM4c2ed3irsP5QVsIXspFLQV6zJSOd2UDoL%2BFzwBvvC6oK7UoB90CLpG4oLbolIDRZjiMCmaUv%2BUyJhga1gGBFyySC0 |
+| OK | 淫狱团地 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_05beDvaPBsPgEa5cbXRaQN%2Bkq1j2lg0pHd%2Fs%2B%2FMY34Bx1HW%2BMD7soBUVOiZW4V6wxnu9maLgzcOkbyDQCMWRm0%2F3FKlmKHGurS5r3icCyU3GQfuPL9HS3dnd |
+| OK | 幽灵音乐会 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_aedeBBZ3WWvntkbOfXhn7tjPepKLPRY2otW6zzu7jtQP4ulyW4HT%2BsuiUZFE3cot6DcWBo4rylxq7bl4eJsvfn1Ro3wrqDw2YRe7gz1j%2Bnmp6xeGVayYKafH |
+| OK | 黑猫与魔女的教室 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_c131C8Gq5aRDz27xEblUWH2oBiqr66USbcKiPZWKtlrhHdQZ%2FKNGHuDwXstrRImoBNtzWE6aOEm8a2xDImlkpgrLgq6I9rF8%2B2oeNZOG4M%2FYmJm9aQCr%2FsZM |
 
 </details>
 
@@ -208,25 +208,25 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `努力克服自卑的我们`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E5%8A%AA%E5%8A%9B%E5%85%8B%E6%9C%8D%E8%87%AA%E5%8D%91%E7%9A%84%E6%88%91%E4%BB%AC
+- Keyword: `摩绪`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E6%91%A9%E7%BB%AA
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| FAIL | 努力克服自卑的我们 | 蓝光C 第01集 | callback_timeout |
-| OK | 我的王室死对头 | 蓝光G 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/ogrereAf8dQWWwnteMWnQhEYlQCMXr65BSPRF4?a=1559&x-tos-authkey=df275fb0a832551f108cddca4a07b3a3&ch=2&cr=2&x-tos-signature=wFUA7sOB7zOR5DXHrJg5nXulYC00Qqk3O9OI6fUZ&dr=4&er=0&lr=test&cd=5%7C2%7C0%7C3&x-signature=Jc2EhmJbBaiuzqFp8ZMZqCDzvO8%3D&br=1789&bt=1504&cs=7&ds=6&ft=jUaX348fHmzy5CXb5gSc&mime_type=video_mp4&x-tos-expires=1780718321&qs=13&x-expires=1787373820&rc=YpNJwD2txTpECaaTVwU99iigmsNOwwcu1p5jlEaOwd3KTQx754%3D%3D&btag=a0000e900430000&dy_q=1778081787&l=202605215e629f88a99aa30f1937608e8&filename=bba.mp4 |
-| OK | 大叔再出招 | 蓝光G 第01集 | https://video-cn.jinritemai.com/storage/v1/tos-cn-v-0051/975ef320fc604c4891d64181719c9876?x-tos-authkey=5bf25627da095a5cba28ace592de46cc&x-tos-expires=1780811617&x-tos-signature=OWhWBqSZUZegxF8qpUBvCBz2ZYg&filename=bba.mp4 |
+| OK | 摩绪 | 蓝光G 第01话 | https://v16s.hypstarcdn.com/4afe653f799c84d46fdcf3b49375c9e2/6a17c6b2/video/tos/alisg/tos-alisg-ve-0051c001-sg/ocQiIpB7NhG0AfDp5FG6fsWD688DwEMgQrTPB9/?name=BBA |
+| FAIL | 亢奋第三季 | 蓝光C 第01集 | callback_timeout |
+| OK | 努力克服自卑的我们 | 蓝光G 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/o46p5eDYIABEK3j5faHgIz4FlDkcayFWZBR1NN?a=1531&ch=0&cr=4&dr=6&er=0&x-tos-expires=1781004153&lr=test&x-tos-authkey=56618d9b45f8507d945abd31fe4b4f5a&cd=4%7C4%7C0%7C4&br=1869&bt=1478&x-expires=1787455564&cs=6&x-signature=D3HPmNxrkb%2F1pPlJCoDLi4vuKL0%3D&ds=8&x-tos-signature=4hyOMcgEkS7qWlLmWYhJGCFgSLpjl1HSYN9bBSRG&ft=mpP6eZkFLfDoImGAXpz5&mime_type=video_mp4&qs=13&rc=q4EZiIldvXI3vYVIr2fuDsyOQJeXDfxQHm7SopQbPOHNapKCbc%3D%3D&btag=a0000e978900000&dy_q=1778076380&l=2026052109563e351d0496ad01161fe63&filename=bba.mp4 |
 
 Failed Case Diagnostics
-- 努力克服自卑的我们 | 蓝光C 第01集 | stage=`player` | reason=`callback_timeout`
-  - detailURL: https://www.libvio.cam/detail/5812923.html
-  - episodeURL: https://www.libvio.cam/play/5812923-5-1.html
+- 亢奋第三季 | 蓝光C 第01集 | stage=`player` | reason=`callback_timeout`
+  - detailURL: https://www.libvio.cam/detail/5812917.html
+  - episodeURL: https://www.libvio.cam/play/5812917-4-1.html
   - detail: 等待插件回調超時，可能是站點回應慢或頁面結構改版
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/play/5812923-5-1.html
+  - `GET 200` https://www.libvio.cam/play/5812917-4-1.html
   - `GET 200` https://www.libvio.cam/static/player/lbyy.js
-  - `GET 200` https://www.libvio.cam/static/player/artplayer/?url=2f6a4a32747a7274493444644c65475a77314975513938474e654e6f326347335373574b3762552f4376453d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2923-5-2.html
+  - `GET 200` https://www.libvio.cam/static/player/artplayer/?url=2f6a4a32747a7274493444644c65475a7731497551354c5153656d496e3246397a6f617a55727275776b343d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2917-4-2.html
   - `POST 200` https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php
 
 </details>
@@ -248,15 +248,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
+- Keyword: `努力克服自卑的我们`
+- URL: https://www.thanju.com/search/%E5%8A%AA%E5%8A%9B%E5%85%8B%E6%9C%8D%E8%87%AA%E5%8D%91%E7%9A%84%E6%88%91%E4%BB%AC.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
 | OK | 努力克服自卑的我们 | 01 | https://cdn.yzzy31-play.com/20260418/19681_becb8597/index.m3u8 |
-| OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
+| OK | 隐秘的监察 | 01 | https://cdn.vvvip-plays33.cc/20260425/12786_5dacab03/index.m3u8 |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
 
 </details>
 
@@ -277,15 +277,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9&submit=
+- Keyword: `绯色潮汐`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BB%AF%E8%89%B2%E6%BD%AE%E6%B1%90&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 绯色潮汐 | 第1集 | https://vid.dbokutv.com/20260524/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMPpOtWjC34jC34tDJ93CpanBcrmD0/chunklist.m3u8 |
 | OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
-| OK | 努力克服自卑的我们 | 第1集 | https://vid.dbokutv.com/20260419/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMviQsPwOcHtRIqmCIqmCpSpCqGsGZOkRN0q/chunklist.m3u8 |
-| OK | 隐秘的监察 | 第1集 | https://vid.dbokutv.com/20260425/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHiTcyo5xOy6ejUMraQcCjC34jC311EJOtE495BMXaBcrmD0/chunklist.m3u8 |
+| OK | 大唐迷雾第1季 | 第1集 | https://vid.dbokutv.com/20260524/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xOy6ejP7HjTsGnQYqmCIqmCZD6E3D6E3GkRN0q/chunklist.m3u8 |
 
 </details>
 
