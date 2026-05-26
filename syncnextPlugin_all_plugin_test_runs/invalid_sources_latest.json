@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-05-25T04:50:08.337Z",
+  "generatedAt": "2026-05-26T04:41:20.505Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
+    {
+      "pluginFolder": "plugin_olevod",
+      "pluginName": "新歐樂影院",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
+      "reasonCounts": {
+        "fatal_error": 1
+      },
+      "fatalErrors": [
+        "plugin unhandledRejection: JSON Parse error: Unrecognized token '<'"
+      ],
+      "failedCases": []
+    },
     {
       "pluginFolder": "plugin_czzy",
       "pluginName": "廠長資源",
@@ -25,60 +37,6 @@
         "no medias returned; no medias returned"
       ],
       "failedCases": []
-    },
-    {
-      "pluginFolder": "plugin_libvio",
-      "pluginName": "libvio",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
-      "reasonCounts": {
-        "callback_timeout": 1
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "亢奋第三季",
-          "episodeTitle": "蓝光C 第01集",
-          "detailURL": "https://www.libvio.cam/detail/5812917.html",
-          "episodeURL": "https://www.libvio.cam/play/5812917-4-1.html",
-          "playURL": "",
-          "probe": null,
-          "error": "callback timeout (player)",
-          "reasonCode": "callback_timeout",
-          "reasonText": "等待插件回調超時，可能是站點回應慢或頁面結構改版",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/play/5812917-4-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/lbyy.js",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/artplayer/?url=2f6a4a32747a7274493444644c65475a7731497551354c5153656d496e3246397a6f617a55727275776b343d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2917-4-2.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "POST",
-              "url": "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
     }
   ]
 }
