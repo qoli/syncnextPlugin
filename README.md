@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-05-27T04:48:24.785Z`
+Generated: `2026-05-28T04:45:10.684Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,19 +23,18 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
+| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | Partial 1/2 | 3/5 | plugin_empty_view:1, callback_timeout:1 |
+| libvio | plugin_libvio | OK | OK 2/2 | OK | OK 3/3 | 5/5 | - |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
 Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json)
 
-Invalid sources: `3`
+Invalid sources: `2`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:1, callback_timeout:1
 
 ### Plugin Details
 
@@ -56,15 +55,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `她靠马甲称霸贵族学院`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%A5%B9%E9%9D%A0%E9%A9%AC%E7%94%B2%E7%A7%B0%E9%9C%B8%E8%B4%B5%E6%97%8F%E5%AD%A6%E9%99%A2/vod/0/1/4
+- Keyword: `重回八零，拆穿假死前夫`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%87%8D%E5%9B%9E%E5%85%AB%E9%9B%B6%EF%BC%8C%E6%8B%86%E7%A9%BF%E5%81%87%E6%AD%BB%E5%89%8D%E5%A4%AB/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 她靠马甲称霸贵族学院 | 第1集 | https://europe.olemovienews.com/ts4/20260527/whFJtwps/mp4/whFJtwps.mp4/clipTo/115600/master.m3u8 |
-| OK | 小师妹踏红尘，引来全城偏爱 | 第1集 | https://europe.olemovienews.com/ts4/20260527/ylfsdAhf/mp4/ylfsdAhf.mp4/clipTo/126291/master.m3u8 |
-| OK | 大哥的新娘 | 第1集 | https://europe.olemovienews.com/ts4/20260527/iftesdpk/mp4/iftesdpk.mp4/clipTo/65733/master.m3u8 |
+| OK | 重回八零，拆穿假死前夫 | 第1集 | https://europe.olemovienews.com/ts4/20260528/dhEfkafw/mp4/dhEfkafw.mp4/clipTo/159600/master.m3u8 |
+| OK | 我的猫不好惹 | 第1集 | https://europe.olemovienews.com/ts4/20260528/gsquewdb/mp4/gsquewdb.mp4/clipTo/143033/master.m3u8 |
+| OK | 开局半瓶水，结局御苍龙 | 第1集 | https://europe.olemovienews.com/ts4/20260528/FzdcrgiF/mp4/FzdcrgiF.mp4/clipTo/138200/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +77,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `4/5`
+- Reasons: `search_empty:1`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,16 +92,25 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `OK`
-- Keyword: `欺诈游戏`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
+- Status: `Empty`
+- Keyword: `加油吧！中村君!!`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 欺诈游戏 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_188eQUWgTCuheZkoYXxGyZeE9kYJfQ8u1CxEsPd24RPPndHEVjS76K%2BRRfyVvDWRUIkRq9UZuZGWpm2acdYxSurezDtTG30iNal5ZEL%2B053hudVinCPokMGu |
-| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_01ed333zXCOHQzrAjdNQu42IImYdlyTjvfY6I1NuXHLH27zHKrVztpyKxwNaDmcOBKfTLLxW%2FTp99BQ%2FU4PQUEh%2F82hI%2FqKtZrIt879%2FWb8Mc%2BakqurHLvW%2F |
-| OK | 婚姻剧毒 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_802fvNeFjl%2Bf79VK4gWSABtNEtjC6hlPQrhg6xcRrYIqSwu3VhjRq3upBj1sQQtSB9VU79eP6%2BzuJXHxvXt9eqEiqXepnqToA9AdXqX6GmTOSeuPvS7PxGVn |
+| OK | 加油吧！中村君!! | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_700bX2PeY1NJ4LKqqB%2BAAkmF5%2FhoiJOE0dr0MlVWx4EbTzBHle3WE7ipAyM445wJjXrqnlBFrOBHCbIvigskXcrk%2FMDOfk5q9LuXcvhsWhumJ8YtqhFYhhIY |
+| OK | 最强王者的第二人生 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_f61fWlHWMsglTqkjtYE7yfarR1bHd8XqxSl5T6JwGo50iews7tnS%2Bf7tFJr42MTvRDAwToZ2FieUv4cNFXN%2F9aLsHdZgTwW9RdYoa6UUhobdn8o7dEQFUkmo |
+| OK | Candy Caries 蛀在糖糖里 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_6169uMdjdrPj%2BbWDKS2eDk%2BX2DoRlkfcoI2dXu%2FBm%2BxOeZBx7tOOqPkSCgbLE1IIFEnAnltPwRshPvnMGz13N16mehdJLM8S0URH9n8ndLD65T04mr%2FUMTL1 |
+
+Failed Case Diagnostics
+- keyword:加油吧！中村君!! | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
 
 </details>
 
@@ -193,13 +201,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Partial 1/2 · reasons=plugin_empty_view:1, callback_timeout:1</summary>
+<summary>libvio · OK · conn=OK 2/2 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
-- Overall: `Partial`
-- Cases: `3/5`
-- Reasons: `plugin_empty_view:1, callback_timeout:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: libvio
 
 Connectivity
@@ -208,30 +216,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `大濛`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E5%A4%A7%E6%BF%9B
+- Keyword: `租借女友第五季`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E7%A7%9F%E5%80%9F%E5%A5%B3%E5%8F%8B%E7%AC%AC%E4%BA%94%E5%AD%A3
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| FAIL | 稻草人 | HD3播放 第01集 | callback_timeout |
-| OK | 蔚蓝之春 | 4K蓝光 第1集 | https://media-bjcy-fy-person01.bjoss.ctyunxs.cn/PERSONCLOUD/bd1def88-cc10-4381-a743-188e9a180c87.m3u8?x-amz-CLIENTTYPEIN=UNKNOWN&AWSAccessKeyId=0Lg7dAq3ZfHvePP8DKEU&x-amz-userLevel=0&x-amz-limitrate=51200&x-amz-UID=269636103&x-amz-APPID=828221&response-content-disposition=attachment%3Bfilename%3D%2201.m3u8%22%3Bfilename*%3DUTF-8%27%2701.m3u8&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&Signature=CzVsPmzT3olmcyq2hFRum0LTR40%3D&Expires=1779857589&x-amz-FSIZE=21431&x-amz-UFID=924291253717509876 |
-
-Failed Case Diagnostics
-- 大濛 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813059.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813059.html
-- 稻草人 | HD3播放 第01集 | stage=`player` | reason=`callback_timeout`
-  - detailURL: https://www.libvio.cam/detail/5812927.html
-  - episodeURL: https://www.libvio.cam/play/5812927-3-1.html
-  - detail: 等待插件回調超時，可能是站點回應慢或頁面結構改版
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/play/5812927-3-1.html
-  - `GET 200` https://www.libvio.cam/static/player/lbyy.js
-  - `GET 200` https://www.libvio.cam/static/player/artplayer/?url=2f6a4a32747a7274493444644c65475a7731497551363730354747484e61486d2b674d42716743486e70733d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2927-3-2.html
-  - `POST 200` https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php
+| OK | 租借女友第五季 | HD7播放 第01话 | https://v16-aiop.bytepluscdn.com/ecfaa9f415b4847447f44cf21108c1b1/6a1bb523/video/tos/alisg/tos-alisg-ve-0051c001-sg/o0VB9NpIWPrD5BaVg1QVlfEmFDANXn1q888MeQ/?name=BBA |
+| OK | 异兽魔都第二季 | HD7播放 第01话 | https://v16-aiop.bytepluscdn.com/02ef3fec0a4744b31f4c16a86b37c5ed/6a1baebf/video/tos/alisg/tos-alisg-ve-0051c001-sg/o8e6QQyTqDAiYU0gsSFsBNpqWDYgkBizInfxaE/?name=BBA |
+| OK | 秒杀爱情 | HD7播放 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/ogfaEtt2V6unTxIpcVA0E3ndQcitg0DL9CBm4i?a=1990&ch=1&cr=3&dr=9&x-tos-expires=1780132384&er=0&x-tos-signature=aYE4YC6L0pGwqqIcme8pJ63W28hvTzxL0ARUijlg&lr=test&cd=3%7C4%7C0%7C9&x-tos-authkey=7b4dd90329801ac5083a40ad0c9cf127&br=1515&bt=1482&cs=6&ds=4&x-expires=1787713785&ft=NNJiG1dPzPZ3N9HYPUpW&x-signature=gfHIrkzmRJcRfEV%2Fooyya0AwlcI%3D&mime_type=video_mp4&qs=13&rc=pAuKF7nORuRWJGW0ZCFIVp39dhRvbLbRlyUbl5yfdySv7JEAYy%3D%3D&btag=a0000e357930000&dy_q=1778099213&l=2026052164071709aadc831d0fb539c98&filename=bba.mp4 |
 
 </details>
 
@@ -252,15 +245,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `稻草人`
-- URL: https://www.thanju.com/search/%E7%A8%BB%E8%8D%89%E4%BA%BA.html
+- Keyword: `秒杀爱情`
+- URL: https://www.thanju.com/search/%E7%A7%92%E6%9D%80%E7%88%B1%E6%83%85.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 稻草人 | 01 | https://cdn.vvvip-plays33.cc/20260420/12456_6a9edcb7/index.m3u8 |
-| OK | 蔚蓝之春 | 01 | https://cdn.vvvip-plays33.cc/20260511/13520_2410f01c/index.m3u8 |
-| OK | 菜鸟炊事兵 | 01 | https://player.yzzyvip-35.com/20260511/6413_a543c921/index.m3u8 |
+| OK | 秒杀爱情 | 01 | https://cdn.yzzy31-play.com/20260422/19875_bcc04bea/index.m3u8 |
+| OK | 赌金 | 01 | https://player.yzzyvip-35.com/20260429/5623_44bf89b6/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 
 </details>
 
@@ -281,15 +274,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `稻草人`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%A8%BB%E8%8D%89%E4%BA%BA&submit=
+- Keyword: `月夜行路答案在名作中`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9C%88%E5%A4%9C%E8%A1%8C%E8%B7%AF%E7%AD%94%E6%A1%88%E5%9C%A8%E5%90%8D%E4%BD%9C%E4%B8%AD&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 稻草人 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHbTcyo5xOy6ejP6DoBJ0nBJ0oCJT1D491HIvjS34/chunklist.m3u8 |
-| OK | 蔚蓝之春 | 第1集 | https://vid.dbokutv.com/20260512/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNTiUcCjC34jC3CmGZCtDZT1BcrmD0/chunklist.m3u8 |
-| OK | 菜鸟炊事兵 | 第1集 | https://vid.dbokutv.com/20260512/lxj-cncsb-01-014513E65.mp4/chunklist.m3u8 |
+| OK | 月夜行路答案在名作中 | 第1集 | https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNbvU6naONfjUdejC34jC3CnDJWqCJWrBcrmD0/chunklist.m3u8 |
+| OK | 绯色潮汐 | 第1集 | https://vid.dbokutv.com/20260524/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMPpOtWjC34jC34tDJ93CpanBcrmD0/chunklist.m3u8 |
+| OK | BORDERLESS广域移动搜查队 | 第1集 | https://vid.dbokutv.com/20260410/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejOcyvCZAvDZAvkREyNbaSsDaBJ0nBJ0oGZCvGJCsDYvjS34/chunklist.m3u8 |
 
 </details>
 
