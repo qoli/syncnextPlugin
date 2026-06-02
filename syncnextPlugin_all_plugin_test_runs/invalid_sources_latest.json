@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-01T04:53:50.839Z",
+  "generatedAt": "2026-06-02T04:55:21.936Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -10,7 +10,7 @@
         "fatal_error": 1
       },
       "fatalErrors": [
-        "no medias returned; 偵測到 SafeLine 挑戰頁，導致播放器頁未返回原始 HTML"
+        "no medias returned; no medias returned"
       ],
       "failedCases": []
     },
@@ -31,16 +31,16 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 2
+        "plugin_empty_view": 3
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "瑞克和莫蒂第九季",
+          "mediaTitle": "银河的一票",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813057.html",
+          "detailURL": "https://www.libvio.cam/detail/5812939.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -50,7 +50,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813057.html",
+              "url": "https://www.libvio.cam/detail/5812939.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -60,9 +60,9 @@
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "丰臣兄弟！",
+          "mediaTitle": "黄泉的使者",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5812578.html",
+          "detailURL": "https://www.libvio.cam/detail/5812956.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -72,7 +72,29 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5812578.html",
+              "url": "https://www.libvio.cam/detail/5812956.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "致命之旅",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813070.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813070.html",
               "status": 200,
               "safeLine": false,
               "error": ""

@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-01T04:53:50.839Z`
+Generated: `2026-06-02T04:55:21.936Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -26,7 +26,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 1/1 | 3/5 | plugin_empty_view:2 |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | Not Reached | 2/5 | plugin_empty_view:3 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:2
+- `plugin_libvio` libvio: plugin_empty_view:3
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `韵晚腹黑`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%9F%B5%E6%99%9A%E8%85%B9%E9%BB%91/vod/0/1/4
+- Keyword: `激荡年代1980`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%BF%80%E8%8D%A1%E5%B9%B4%E4%BB%A31980/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 韵晚腹黑 | 第1集 | https://europe.olemovienews.com/ts4/20260601/rxwBJkHE/mp4/rxwBJkHE.mp4/clipTo/174133/master.m3u8 |
-| OK | 锦墨风华：重生后我踹了太子第三季 | 第1集 | https://europe.olemovienews.com/ts4/20260601/qAwdEBsk/mp4/qAwdEBsk.mp4/clipTo/152666/master.m3u8 |
-| OK | 百年一念 | 第1集 | https://europe.olemovienews.com/ts4/20260601/tDchqjCt/mp4/tDchqjCt.mp4/clipTo/102800/master.m3u8 |
+| OK | 激荡年代1980 | 第1集 | https://europe.olemovienews.com/ts4/20260602/dnJzjeAk/mp4/dnJzjeAk.mp4/clipTo/154720/master.m3u8 |
+| OK | 花钱只是工作，咋都被钓成翘嘴 | 第1集 | https://europe.olemovienews.com/ts4/20260602/hjuBjcvk/mp4/hjuBjcvk.mp4/clipTo/197280/master.m3u8 |
+| OK | 麦熟见人心 | 第1集 | https://europe.olemovienews.com/ts4/20260602/bcGIyDoq/mp4/bcGIyDoq.mp4/clipTo/147666/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `淫狱团地`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%AB%E7%8B%B1%E5%9B%A2%E5%9C%B0
+- Keyword: `日本三国`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%97%A5%E6%9C%AC%E4%B8%89%E5%9B%BD
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 淫狱团地 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_5afeRWX41KjATv4i59YNXuHHQ6J4d8sTbBLah3LDb%2FlYFhk4Ah0MvtfHiTxN8y0p%2FL0b3l5hmxLw7Ikzn6bBthCwzwSYB2QCGJ3PbdcYHH4XYPo%2Fp9JnmYYS |
-| OK | 鲁邦三世：不死身的血族 | HD中字 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_3a15gXd9BTYI8XmZcd0TOePunAqHi4B9JhW4%2BIeuMe4SkqkjF4K8sxj2wYQF4eVJnAQQBM2JKKnCdiU3r0Tn0VWd5Q76ASbbexJqjidrfBp8sqFNfDq1HHhz |
-| OK | 幽灵音乐会 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_2a0ckOEVZDX%2BD%2FcS9bSuj4qA4QE13xLreXT30XlQfVTbB5Rjcqyrn3LmLrsPpnirI9kBHUFjkUem2WlidwR7QVWNZ0pkqpsWhsw46KLthuKeD8oZBALhgq4V |
+| OK | 日本三国 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_6c2fXF0eUvRfmO6wow8O7uIyhPlQW0IX7EewpVu9BBU00kiRGHtAi4MZAYWjNc%2Bv0se7J%2BDphG%2FBX%2B6%2FODaN8UIY70HfuxNsXEHu%2FuSDiRH71CusbpfpWvL0 |
+| OK | 尖帽子的魔法工坊 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_d20bkB0lWkz9O1EqVnbWNzJoZZPWY1VPvRPjcOmw6TMSxz3xq6W9nxViunTktLsl3i1rfV9rHrHkfNTT5YHfAIoRYzs0Nc1dtaQQvv681%2FFslgez0EpS4oCQ |
+| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_866dYFeRJGBgovfebap4LFbIh0XfcZerm3bi3kNJy9x%2BLc4zVZ%2FeaDCcW9ZID0DFamxuRUWU%2B6ET3ybNt8UlJU7NnF1ynfqw8cfdYHHf5P%2Be1o65hQORjE8s |
 
 </details>
 
@@ -116,12 +116,12 @@ Playback Cases
 - Reasons: `connectivity_failed:1, search_empty:1`
 - Note: 要求大陸 IP
 - Fatal Errors:
-  - `no medias returned; 偵測到 SafeLine 挑戰頁，導致播放器頁未返回原始 HTML`
+  - `no medias returned; no medias returned`
 
 Connectivity
-- [FAIL] `GET 403` https://www.czzymovie.com | status 403
-- [FAIL] `GET 403` https://www.czzymovie.com/movie_bt/page/1 | status 403
-- [FAIL] `GET 403` https://www.czzymovie.com/boss1O1?q=test | status 403
+- [FAIL] `GET 0` https://www.czzymovie.com | The operation was aborted.
+- [FAIL] `GET 0` https://www.czzymovie.com/movie_bt/page/1 | The operation was aborted.
+- [FAIL] `GET 0` https://www.czzymovie.com/boss1O1?q=test | The operation was aborted.
 
 Search
 - Status: `Empty`
@@ -138,14 +138,14 @@ Failed Case Diagnostics
   - detailURL: https://www.czzymovie.com
   - detail: 插件站點連通性檢查失敗
   - http diagnostics:
-  - `GET 403` https://www.czzymovie.com | status 403
-  - `GET 403` https://www.czzymovie.com/movie_bt/page/1 | status 403
-  - `GET 403` https://www.czzymovie.com/boss1O1?q=test | status 403
+  - `GET 0` https://www.czzymovie.com | The operation was aborted.
+  - `GET 0` https://www.czzymovie.com/movie_bt/page/1 | The operation was aborted.
+  - `GET 0` https://www.czzymovie.com/boss1O1?q=test | The operation was aborted.
 - keyword:test | stage=`search` | reason=`search_empty`
   - detailURL: https://www.czzymovie.com/boss1O1?q=test
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 403` https://www.czzymovie.com/boss1O1?q=test | safeline
+  - `GET 0` https://www.czzymovie.com/boss1O1?q=test | The operation was aborted.
 
 </details>
 
@@ -193,13 +193,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 1/1 · reasons=plugin_empty_view:2</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Not Reached · reasons=plugin_empty_view:3</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
-- Cases: `3/5`
-- Reasons: `plugin_empty_view:2`
+- Cases: `2/5`
+- Reasons: `plugin_empty_view:3`
 - Note: libvio
 
 Connectivity
@@ -208,25 +208,28 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `瑞克和莫蒂第九季`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E7%91%9E%E5%85%8B%E5%92%8C%E8%8E%AB%E8%92%82%E7%AC%AC%E4%B9%9D%E5%AD%A3
+- Keyword: `银河的一票`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E9%93%B6%E6%B2%B3%E7%9A%84%E4%B8%80%E7%A5%A8
 
 Playback Cases
-| Result | Media | Episode | Output |
-| --- | --- | --- | --- |
-| OK | 隐秘的监察 | HD3播放 第01集 | https://cloudcube.wuxi.cn/cloudcube-jswx-person/PERSONCLOUD/ef4c4157-54a2-4c37-b246-7c3e6736606c.mp4?x-obs-traffic-limit=819200&X-Amz-Date=20260601T034943Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&x-amz-CLIENTTYPEIN=UNKNOWN&X-Amz-Credential=SZshenghuo/20260601/us-east-1/s3/aws4_request&x-amz-UID=10000004749791&response-content-disposition=attachment%3Bfilename%3DFiling.for.Love.S01E01.mp4&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=CORP&X-Amz-SignedHeaders=host&X-Amz-Expires=10800&x-amz-FSIZE=1069913536&x-amz-UFID=21466317118946879&X-Amz-Signature=5408b68eb62209f10664e3fdc0b1b13f0ad4a63602bebda1dc5586052fa4cfeb |
+- Not reached
 
 Failed Case Diagnostics
-- 瑞克和莫蒂第九季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813057.html
+- 银河的一票 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5812939.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813057.html
-- 丰臣兄弟！ | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5812578.html
+  - `GET 200` https://www.libvio.cam/detail/5812939.html
+- 黄泉的使者 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5812956.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5812578.html
+  - `GET 200` https://www.libvio.cam/detail/5812956.html
+- 致命之旅 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813070.html
+  - detail: 插件回傳 emptyView，未取得可播放地址
+  - http diagnostics:
+  - `GET 200` https://www.libvio.cam/detail/5813070.html
 
 </details>
 
@@ -247,15 +250,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `新进职员姜会长`
-- URL: https://www.thanju.com/search/%E6%96%B0%E8%BF%9B%E8%81%8C%E5%91%98%E5%A7%9C%E4%BC%9A%E9%95%BF.html
+- Keyword: `医到孤岛爱上你`
+- URL: https://www.thanju.com/search/%E5%8C%BB%E5%88%B0%E5%AD%A4%E5%B2%9B%E7%88%B1%E4%B8%8A%E4%BD%A0.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 新进职员姜会长 | 01 | https://cdn.vvvip-plays33.cc/20260531/14095_1f3f1ae7/index.m3u8 |
-| OK | 隐秘的监察 | 01 | https://cdn.vvvip-plays33.cc/20260425/12786_5dacab03/index.m3u8 |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 医到孤岛爱上你 | 01 | https://cdn.yzzy31-play.com/20260601/21399_07e6663e/index.m3u8 |
+| OK | 菜鸟炊事兵 | 01 | https://player.yzzyvip-35.com/20260511/6413_a543c921/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 
 </details>
 
@@ -283,8 +286,8 @@ Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
 | OK | 错付 | 第1集 | https://vid.dbokutv.com/20260529/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBMDcBJ0nBJ0nGpb2E30pE2vjS34/chunklist.m3u8 |
-| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
-| OK | 监狱星级餐厅 | 第1集 | https://vid.dbokutv.com/20260525/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJWlQ7PlP2ysF3KMjJoy6fZT2qmCYqmCaKmEK8sD4GkRN0q/chunklist.m3u8 |
+| OK | 银河的一票 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNbeP7bmBJ0nBJ0pC38rCZOrCYvjS34/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 
 </details>
 
