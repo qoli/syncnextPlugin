@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-02T04:55:21.936Z`
+Generated: `2026-06-03T04:53:42.998Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `激荡年代1980`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%BF%80%E8%8D%A1%E5%B9%B4%E4%BB%A31980/vod/0/1/4
+- Keyword: `流放路上，作精王妃被全家`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%B5%81%E6%94%BE%E8%B7%AF%E4%B8%8A%EF%BC%8C%E4%BD%9C%E7%B2%BE%E7%8E%8B%E5%A6%83%E8%A2%AB%E5%85%A8%E5%AE%B6/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 激荡年代1980 | 第1集 | https://europe.olemovienews.com/ts4/20260602/dnJzjeAk/mp4/dnJzjeAk.mp4/clipTo/154720/master.m3u8 |
-| OK | 花钱只是工作，咋都被钓成翘嘴 | 第1集 | https://europe.olemovienews.com/ts4/20260602/hjuBjcvk/mp4/hjuBjcvk.mp4/clipTo/197280/master.m3u8 |
-| OK | 麦熟见人心 | 第1集 | https://europe.olemovienews.com/ts4/20260602/bcGIyDoq/mp4/bcGIyDoq.mp4/clipTo/147666/master.m3u8 |
+| OK | 流放路上，作精王妃被全家团宠 | 第1集 | https://europe.olemovienews.com/ts4/20260603/Iogopttd/mp4/Iogopttd.mp4/clipTo/135880/master.m3u8 |
+| OK | 女娲劫：双生错 | 第1集 | https://europe.olemovienews.com/ts4/20260603/yBfcnGBC/mp4/yBfcnGBC.mp4/clipTo/65200/master.m3u8 |
+| OK | 魔骨生花，神心成烬 | 第1集 | https://europe.olemovienews.com/ts4/20260603/CphCJykb/mp4/CphCJykb.mp4/clipTo/173966/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `日本三国`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%97%A5%E6%9C%AC%E4%B8%89%E5%9B%BD
+- Keyword: `欺诈游戏`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 日本三国 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_6c2fXF0eUvRfmO6wow8O7uIyhPlQW0IX7EewpVu9BBU00kiRGHtAi4MZAYWjNc%2Bv0se7J%2BDphG%2FBX%2B6%2FODaN8UIY70HfuxNsXEHu%2FuSDiRH71CusbpfpWvL0 |
-| OK | 尖帽子的魔法工坊 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_d20bkB0lWkz9O1EqVnbWNzJoZZPWY1VPvRPjcOmw6TMSxz3xq6W9nxViunTktLsl3i1rfV9rHrHkfNTT5YHfAIoRYzs0Nc1dtaQQvv681%2FFslgez0EpS4oCQ |
-| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_866dYFeRJGBgovfebap4LFbIh0XfcZerm3bi3kNJy9x%2BLc4zVZ%2FeaDCcW9ZID0DFamxuRUWU%2B6ET3ybNt8UlJU7NnF1ynfqw8cfdYHHf5P%2Be1o65hQORjE8s |
+| OK | 欺诈游戏 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_68d6UQ0fuEFNTGqqL%2BXZ5Fc23pvbGjZcQOksFf2dB8pohw7psjgL868Ng5iA%2BucXllMKw%2FbHsU3xbrv2ZfUKVSAXo%2BoyWj7%2BfaFXNzPKekwy1NO8dT1wGEKG |
+| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_bc71GmQ1rMJruz5ah7mBzl2TJHjsBitLNprrwQKJ6CW7bED%2FG6RjMEqR6iatgoyd37dm6ynTEWYVvj7ZuX2dHPo2O93MFGh1PWTaCligyJcecwqC0ZEFJh3Q |
+| OK | 左撇子艾伦 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_7fe6jNqJ%2BP6%2FNGCFL6%2FTVeJTfaszs4MP9Nt8ardyY8esAdzr1v1afFzxJQJAxZPywW1YjaBCnhl7H0YXFUKaCEZO8SrTFrmT8PZ39XZrbWGRgfWUcb%2FBUaaVJQ |
 
 </details>
 
@@ -116,12 +116,12 @@ Playback Cases
 - Reasons: `connectivity_failed:1, search_empty:1`
 - Note: 要求大陸 IP
 - Fatal Errors:
-  - `no medias returned; no medias returned`
+  - `no medias returned; 偵測到 SafeLine 挑戰頁，導致播放器頁未返回原始 HTML`
 
 Connectivity
-- [FAIL] `GET 0` https://www.czzymovie.com | The operation was aborted.
-- [FAIL] `GET 0` https://www.czzymovie.com/movie_bt/page/1 | The operation was aborted.
-- [FAIL] `GET 0` https://www.czzymovie.com/boss1O1?q=test | The operation was aborted.
+- [FAIL] `GET 403` https://www.czzymovie.com | status 403
+- [FAIL] `GET 403` https://www.czzymovie.com/movie_bt/page/1 | status 403
+- [FAIL] `GET 403` https://www.czzymovie.com/boss1O1?q=test | status 403
 
 Search
 - Status: `Empty`
@@ -138,14 +138,14 @@ Failed Case Diagnostics
   - detailURL: https://www.czzymovie.com
   - detail: 插件站點連通性檢查失敗
   - http diagnostics:
-  - `GET 0` https://www.czzymovie.com | The operation was aborted.
-  - `GET 0` https://www.czzymovie.com/movie_bt/page/1 | The operation was aborted.
-  - `GET 0` https://www.czzymovie.com/boss1O1?q=test | The operation was aborted.
+  - `GET 403` https://www.czzymovie.com | status 403
+  - `GET 403` https://www.czzymovie.com/movie_bt/page/1 | status 403
+  - `GET 403` https://www.czzymovie.com/boss1O1?q=test | status 403
 - keyword:test | stage=`search` | reason=`search_empty`
   - detailURL: https://www.czzymovie.com/boss1O1?q=test
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 0` https://www.czzymovie.com/boss1O1?q=test | The operation was aborted.
+  - `GET 403` https://www.czzymovie.com/boss1O1?q=test | safeline
 
 </details>
 
@@ -208,28 +208,28 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `银河的一票`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E9%93%B6%E6%B2%B3%E7%9A%84%E4%B8%80%E7%A5%A8
+- Keyword: `克拉克森的农场第五季`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E5%85%8B%E6%8B%89%E5%85%8B%E6%A3%AE%E7%9A%84%E5%86%9C%E5%9C%BA%E7%AC%AC%E4%BA%94%E5%AD%A3
 
 Playback Cases
 - Not reached
 
 Failed Case Diagnostics
-- 银河的一票 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5812939.html
+- 克拉克森的农场第五季 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813074.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5812939.html
-- 黄泉的使者 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5812956.html
+  - `GET 200` https://www.libvio.cam/detail/5813074.html
+- 星城第一季 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813073.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5812956.html
-- 致命之旅 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813070.html
+  - `GET 200` https://www.libvio.cam/detail/5813073.html
+- 幽旅巫咒 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813072.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813070.html
+  - `GET 200` https://www.libvio.cam/detail/5813072.html
 
 </details>
 
@@ -279,14 +279,14 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `错付`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%94%99%E4%BB%98&submit=
+- Keyword: `为时已是寿司`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E6%97%B6%E5%B7%B2%E6%98%AF%E5%AF%BF%E5%8F%B8&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 为时已是寿司 | 第1集 | https://vid.dbokutv.com/20260409/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNTpUNDpSoqmCIqmC44nGq56EKOkRN0q/chunklist.m3u8 |
 | OK | 错付 | 第1集 | https://vid.dbokutv.com/20260529/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBMDcBJ0nBJ0nGpb2E30pE2vjS34/chunklist.m3u8 |
-| OK | 银河的一票 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNbeP7bmBJ0nBJ0pC38rCZOrCYvjS34/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 
 </details>
