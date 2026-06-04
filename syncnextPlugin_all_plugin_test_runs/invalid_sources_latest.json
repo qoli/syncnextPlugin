@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-03T04:53:42.998Z",
+  "generatedAt": "2026-06-04T04:54:11.719Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,10 +31,76 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 3
+        "callback_timeout": 1,
+        "plugin_empty_view": 2
       },
       "fatalErrors": [],
       "failedCases": [
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "寡妇湾",
+          "episodeTitle": "HD3播放 第01集",
+          "detailURL": "https://www.libvio.cam/detail/5812946.html",
+          "episodeURL": "https://www.libvio.cam/play/5812946-6-1.html",
+          "playURL": "",
+          "probe": null,
+          "error": "callback timeout (player)",
+          "reasonCode": "callback_timeout",
+          "reasonText": "等待插件回調超時，可能是站點回應慢或頁面結構改版",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/play/5812946-6-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            },
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/static/player/lbyy.js",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            },
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/static/player/artplayer/?url=2f6a4a32747a7274493444644c65475a773149755135656e7854764233302f6d4b3563636643757a4e45773d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2946-6-2.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            },
+            {
+              "method": "POST",
+              "url": "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php",
+              "status": 504,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "犯罪记录第二季",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813035.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813035.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
         {
           "ok": false,
           "stage": "episodes",
@@ -51,50 +117,6 @@
             {
               "method": "GET",
               "url": "https://www.libvio.cam/detail/5813074.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "星城第一季",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813073.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813073.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "幽旅巫咒",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813072.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813072.html",
               "status": 200,
               "safeLine": false,
               "error": ""
