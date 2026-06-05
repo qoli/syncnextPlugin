@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T04:54:11.719Z",
+  "generatedAt": "2026-06-05T04:48:02.077Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,18 +31,40 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "callback_timeout": 1,
-        "plugin_empty_view": 2
+        "plugin_empty_view": 2,
+        "callback_timeout": 1
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "伪装的真实之吻",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813064.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813064.html",
+              "status": 520,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
           "stage": "player",
-          "mediaTitle": "寡妇湾",
+          "mediaTitle": "掩耳盗邻第二季",
           "episodeTitle": "HD3播放 第01集",
-          "detailURL": "https://www.libvio.cam/detail/5812946.html",
-          "episodeURL": "https://www.libvio.cam/play/5812946-6-1.html",
+          "detailURL": "https://www.libvio.cam/detail/5812892.html",
+          "episodeURL": "https://www.libvio.cam/play/5812892-2-1.html",
           "playURL": "",
           "probe": null,
           "error": "callback timeout (player)",
@@ -51,29 +73,8 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/play/5812946-6-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/lbyy.js",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/artplayer/?url=2f6a4a32747a7274493444644c65475a773149755135656e7854764233302f6d4b3563636643757a4e45773d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2946-6-2.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "POST",
-              "url": "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php",
-              "status": 504,
+              "url": "https://www.libvio.cam/play/5812892-2-1.html",
+              "status": 520,
               "safeLine": false,
               "error": ""
             }
@@ -82,9 +83,9 @@
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "犯罪记录第二季",
+          "mediaTitle": "向流星许愿的我们",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813035.html",
+          "detailURL": "https://www.libvio.cam/detail/5812840.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -94,29 +95,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813035.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "克拉克森的农场第五季",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813074.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813074.html",
+              "url": "https://www.libvio.cam/detail/5812840.html",
               "status": 200,
               "safeLine": false,
               "error": ""

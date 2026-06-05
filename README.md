@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-04T04:54:11.719Z`
+Generated: `2026-06-05T04:48:02.077Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,10 +23,10 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | Fail 0/1 | 2/5 | callback_timeout:1, plugin_empty_view:2 |
+| libvio | plugin_libvio | Partial | OK 1/2 | Empty | Fail 0/1 | 1/5 | search_empty:1, plugin_empty_view:2, callback_timeout:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: callback_timeout:1, plugin_empty_view:2
+- `plugin_libvio` libvio: plugin_empty_view:2, callback_timeout:1
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `错嫁将军府，食色皆偏爱`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%94%99%E5%AB%81%E5%B0%86%E5%86%9B%E5%BA%9C%EF%BC%8C%E9%A3%9F%E8%89%B2%E7%9A%86%E5%81%8F%E7%88%B1/vod/0/1/4
+- Keyword: `天降小红娘，我来助您成仙`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%A4%A9%E9%99%8D%E5%B0%8F%E7%BA%A2%E5%A8%98%EF%BC%8C%E6%88%91%E6%9D%A5%E5%8A%A9%E6%82%A8%E6%88%90%E4%BB%99/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 错嫁将军府，食色皆偏爱 | 第1集 | https://europe.olemovienews.com/ts4/20260604/EscjBECi/mp4/EscjBECi.mp4/clipTo/88000/master.m3u8 |
-| OK | 暖暖入怀，福满京华 | 第1集 | https://europe.olemovienews.com/ts4/20260604/qDtjlwuA/mp4/qDtjlwuA.mp4/clipTo/112640/master.m3u8 |
-| OK | 报告魔尊：帝君他对你动了凡心 | 第1集 | https://europe.olemovienews.com/ts4/20260604/ufsiCFfg/mp4/ufsiCFfg.mp4/clipTo/180000/master.m3u8 |
+| OK | 天降小红娘，我来助您成仙啦 | 第1集 | https://europe.olemovienews.com/ts4/20260605/niGfmxtf/mp4/niGfmxtf.mp4/clipTo/118760/master.m3u8 |
+| OK | 流放岭南第一天，全家馋哭了 | 第1集 | https://europe.olemovienews.com/ts4/20260605/yEEdIhpa/mp4/yEEdIhpa.mp4/clipTo/359533/master.m3u8 |
+| OK | 重生拒婚：我成了新太子妃 | 第1集 | https://europe.olemovienews.com/ts4/20260605/ozepihbc/mp4/ozepihbc.mp4/clipTo/130800/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,25 +93,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `加油吧！中村君!!`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `淡岛百景`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 加油吧！中村君!! | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_1e23ZpsPCKB0NJfEWRNKzC6i44VRqV2R9HqhJx5baKfOJ00HZr2TmUa9uD%2BMO5khi7w5TVXU%2BpfO5pQrhXCT4aW%2BVXA8TnW%2Bj5cMaslVfhTOnY3pUlRV3GA6 |
-| OK | Candy Caries 蛀在糖糖里 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_999aFUnL68x21IIDzXBeWDb8VwJy5XlF%2Fn7rR3P41Jih7gcc%2BwYYESjRgGEfYhIY2pC3DKZn%2F4gjtrGwvKVC3OfLuCKZunYMdrjS%2BYwVJb5V%2FD6%2BBdHsPtRn |
-| OK | 最强王者的第二人生 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_229fcXn4xI7659EXhKUuGpOBe%2B46PGbaoEzr8pZklGviKMyMZOGJzJPNUsbG9BFgE1zizKHaYMqiiAevzU%2BNjvbJq5e%2BU%2F03AbBCd146F80lWahbKErd4T8I |
-
-Failed Case Diagnostics
-- keyword:加油吧！中村君!! | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+| OK | 淡岛百景 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_827agyLY84Fs32FZ5cv0Tp1A1%2BQx5oo7zdQnDhm8k2LtOlyu38090V6qRlqmXLe5G9%2Bh6PuMGxsl%2F803lc%2FZbEeRmlAmpY6dvkN0pRNVBa%2BzouNwclTXKobh |
+| OK | 轮回的花瓣 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_8c02f2WdWt8xBxVQsjB7ahW8TEzCov%2FrONAnilJOTmW%2F2PYMvjZQz9C0%2Fcb1eu%2BGBPLEH%2FeXtoLIsI3OOvDc6BDCv1AF2d0wa2i8rirURc56vZ8rqo4mYM52 |
+| OK | 雾尾粉丝后援会 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_485ae%2BYtcsLJ8snaMwvqai4kbDN2f5KG5Eiqub5Bst0EP4pZeX6O5FnR9ZWX8jmSHqGiYsJX2hdRy7KycKip78I1PEh%2BS4I79SloK8mZXS33ikeHIMN9EcIt |
 
 </details>
 
@@ -202,49 +193,53 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Fail 0/1 · reasons=callback_timeout:1, plugin_empty_view:2</summary>
+<summary>libvio · Partial · conn=OK 1/2 · search=Empty · playback=Fail 0/1 · reasons=search_empty:1, plugin_empty_view:2, callback_timeout:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
-- Cases: `2/5`
-- Reasons: `callback_timeout:1, plugin_empty_view:2`
+- Cases: `1/5`
+- Reasons: `search_empty:1, plugin_empty_view:2, callback_timeout:1`
 - Note: libvio
 
 Connectivity
 - [OK] `HEAD 200` https://www.libvio.cam/
-- [OK] `HEAD 200` https://www.libvio.cam/search/-------------.html?wd=test
+- [FAIL] `GET 520` https://www.libvio.cam/search/-------------.html?wd=test | status 520
 
 Search
-- Status: `OK`
-- Keyword: `寡妇湾`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E5%AF%A1%E5%A6%87%E6%B9%BE
+- Status: `Empty`
+- Keyword: `伪装的真实之吻`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E4%BC%AA%E8%A3%85%E7%9A%84%E7%9C%9F%E5%AE%9E%E4%B9%8B%E5%90%BB
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| FAIL | 寡妇湾 | HD3播放 第01集 | callback_timeout |
+| FAIL | 掩耳盗邻第二季 | HD3播放 第01集 | callback_timeout |
 
 Failed Case Diagnostics
-- 寡妇湾 | HD3播放 第01集 | stage=`player` | reason=`callback_timeout`
-  - detailURL: https://www.libvio.cam/detail/5812946.html
-  - episodeURL: https://www.libvio.cam/play/5812946-6-1.html
+- keyword:伪装的真实之吻 | stage=`search` | reason=`search_empty`
+  - detailURL: https://www.libvio.cam/search/-------------.html?wd=%E4%BC%AA%E8%A3%85%E7%9A%84%E7%9C%9F%E5%AE%9E%E4%B9%8B%E5%90%BB
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 520` https://www.libvio.cam/search/-------------.html?wd=%E4%BC%AA%E8%A3%85%E7%9A%84%E7%9C%9F%E5%AE%9E%E4%B9%8B%E5%90%BB
+- 伪装的真实之吻 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813064.html
+  - detail: 插件回傳 emptyView，未取得可播放地址
+  - http diagnostics:
+  - `GET 520` https://www.libvio.cam/detail/5813064.html
+- 掩耳盗邻第二季 | HD3播放 第01集 | stage=`player` | reason=`callback_timeout`
+  - detailURL: https://www.libvio.cam/detail/5812892.html
+  - episodeURL: https://www.libvio.cam/play/5812892-2-1.html
   - detail: 等待插件回調超時，可能是站點回應慢或頁面結構改版
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/play/5812946-6-1.html
-  - `GET 200` https://www.libvio.cam/static/player/lbyy.js
-  - `GET 200` https://www.libvio.cam/static/player/artplayer/?url=2f6a4a32747a7274493444644c65475a773149755135656e7854764233302f6d4b3563636643757a4e45773d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2946-6-2.html
-  - `POST 504` https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php
-- 犯罪记录第二季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813035.html
+  - `GET 520` https://www.libvio.cam/play/5812892-2-1.html
+- 向流星许愿的我们 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5812840.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813035.html
-- 克拉克森的农场第五季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813074.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813074.html
+  - `GET 200` https://www.libvio.cam/detail/5812840.html
 
 </details>
 
@@ -265,15 +260,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `第一个男人`
-- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
+- Keyword: `红色珍珠`
+- URL: https://www.thanju.com/search/%E7%BA%A2%E8%89%B2%E7%8F%8D%E7%8F%A0.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 | OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 | OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
-| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 
 </details>
 
@@ -294,15 +289,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `山神的新郎`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%B1%B1%E7%A5%9E%E7%9A%84%E6%96%B0%E9%83%8E&submit=
+- Keyword: `未解决之女警视厅文件搜查`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9C%AA%E8%A7%A3%E5%86%B3%E4%B9%8B%E5%A5%B3%E8%AD%A6%E8%A7%86%E5%8E%85%E6%96%87%E4%BB%B6%E6%90%9C%E6%9F%A5&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 山神的新郎 | 第1集 | https://vid.dbokutv.com/20260601/lxj-ssdxl-01-03B3A3866.mp4/chunklist.m3u8 |
-| OK | 逍遥四公子 | 第1集 | https://vid.dbokutv.com/20260601/lxj-xysgz-01-02ED99B18.mp4/chunklist.m3u8 |
-| OK | 耀眼 | 第1集 | https://vid.dbokutv.com/20260528/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejUNajC34jC38mGJauDK8tBcrmD0/chunklist.m3u8 |
+| OK | 未解决之女警视厅文件搜查官第3季 | 第1集 | https://vid.dbokutv.com/20260417/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNTgQdfkQdDqTsfpOsTaCsejC34jC38uGJ4nDZasBcrmD0/chunklist.m3u8 |
+| OK | 爱在连理里 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBM5wR6niBJ0nBJ0mGZb1EKOsCYvjS34/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 
 </details>
 
