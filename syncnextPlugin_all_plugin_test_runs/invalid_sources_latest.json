@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-05T04:48:02.077Z",
+  "generatedAt": "2026-06-06T04:38:41.347Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,17 +31,16 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 2,
-        "callback_timeout": 1
+        "plugin_empty_view": 2
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "伪装的真实之吻",
+          "mediaTitle": "田锁兄弟",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813064.html",
+          "detailURL": "https://www.libvio.cam/detail/5812921.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -51,30 +50,8 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813064.html",
-              "status": 520,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "掩耳盗邻第二季",
-          "episodeTitle": "HD3播放 第01集",
-          "detailURL": "https://www.libvio.cam/detail/5812892.html",
-          "episodeURL": "https://www.libvio.cam/play/5812892-2-1.html",
-          "playURL": "",
-          "probe": null,
-          "error": "callback timeout (player)",
-          "reasonCode": "callback_timeout",
-          "reasonText": "等待插件回調超時，可能是站點回應慢或頁面結構改版",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/play/5812892-2-1.html",
-              "status": 520,
+              "url": "https://www.libvio.cam/detail/5812921.html",
+              "status": 200,
               "safeLine": false,
               "error": ""
             }
@@ -83,9 +60,9 @@
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "向流星许愿的我们",
+          "mediaTitle": "星城第一季",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5812840.html",
+          "detailURL": "https://www.libvio.cam/detail/5813073.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -95,7 +72,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5812840.html",
+              "url": "https://www.libvio.cam/detail/5813073.html",
               "status": 200,
               "safeLine": false,
               "error": ""
