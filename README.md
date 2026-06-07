@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-06T04:38:41.347Z`
+Generated: `2026-06-07T04:51:52.701Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,10 +23,10 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 1/1 | 3/5 | plugin_empty_view:2 |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 2/2 | 4/5 | plugin_empty_view:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:2
+- `plugin_libvio` libvio: plugin_empty_view:1
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `卧底，我本色出演就行`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%8D%A7%E5%BA%95%EF%BC%8C%E6%88%91%E6%9C%AC%E8%89%B2%E5%87%BA%E6%BC%94%E5%B0%B1%E8%A1%8C/vod/0/1/4
+- Keyword: `穿书：反派总裁的逆袭之路`
+- URL: https://api.olelive.com/v1/pub/index/search/%E7%A9%BF%E4%B9%A6%EF%BC%9A%E5%8F%8D%E6%B4%BE%E6%80%BB%E8%A3%81%E7%9A%84%E9%80%86%E8%A2%AD%E4%B9%8B%E8%B7%AF/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 卧底，我本色出演就行 | 第第1集集 | https://europe.olemovienews.com/ts4/20260606/uyeDimaz/mp4/uyeDimaz.mp4/clipTo/137320/master.m3u8 |
-| OK | 你资助我上清北，我护你下半生 | 第1集 | https://europe.olemovienews.com/ts4/20260606/uAucxhmB/mp4/uAucxhmB.mp4/clipTo/214500/master.m3u8 |
-| OK | 我的系统能合成万物 | 第第1集集 | https://europe.olemovienews.com/ts4/20260606/nmcbAGak/mp4/nmcbAGak.mp4/clipTo/185400/master.m3u8 |
+| OK | 穿书：反派总裁的逆袭之路，这次我当主角 | 第1集 | https://europe.olemovienews.com/ts4/20260607/hEADxcfy/mp4/hEADxcfy.mp4/clipTo/208833/master.m3u8 |
+| OK | 透视后，我被女总裁缠上了 | 第1集 | https://europe.olemovienews.com/ts4/20260607/xFcHzymF/mp4/xFcHzymF.mp4/clipTo/159760/master.m3u8 |
+| OK | 为给父母争口气，我以身入局 | 第1集 | https://europe.olemovienews.com/ts4/20260607/cvnprdun/mp4/cvnprdun.mp4/clipTo/123666/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,25 +93,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `上伊那牡丹，酒醉身姿似百`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `勇者之屑`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8B%87%E8%80%85%E4%B9%8B%E5%B1%91
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_18dbnXR3A6Bh90s5RqaIAmyDMqJcdbzufLqB%2BjwvkoHecNf3MbgeNcTXx7bLAt5mW0jBEYPW43%2FjbWRy19CT2PDp3%2FbtknZKb3jK7MYxr%2FuZ3nsiF96YLOgo |
-| OK | 冻结地球 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_8a4bZJbT%2BnCgOjR9yOXKy1UuiSNmUqjnuiCWGLg4eY%2FYPE6%2BlgzTiecVPvobW%2FTqmV3HxeezEppT2W5X%2FYBEtcaYCkzmOS3h19%2BdA2jGpWmc1JVvuK%2FNAQd3 |
-| OK | 神之水滴 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_1809h7e2TgDKnjGgfO4M%2FRGSdKg9OGbIXZfOORh732mQ5OGxEhcqH3O5I5l0yjD0v5CEr7TcpMO5DaPgxMR0CUaKYLpbIczRYCcvfg1Qmm1IBKttc6N7iG0Y |
-
-Failed Case Diagnostics
-- keyword:上伊那牡丹，酒醉身姿似百 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+| OK | 勇者之屑 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_94787QDbWDeVdQ%2F6WCFgn4bV9dTQt6jV1M5iqn24nxgMnwPwmwvDnwvVpv1jhKyH%2BivsUlswfPbTpX%2F3cJM4gbZGAKrjvwrTr8Gl7inmqK3h9CoiXvm17pUh |
+| OK | 主播女孩重度依赖 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_652aErhfhNCUqnCgUPF9YuVI4byjCXwh9DE9rtPbKNCvEqzTH6EVnYSHl5HFDTUH9L5NIlvI18UQbxhchTzwlSmvNx2XzsWNAAI5dA9Zk%2BgzN6%2BUwZuBogX%2F |
+| OK | 一叠间漫画咖啡屋生活！ | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_9960PJXF1NA7JAj18b0MSmOsMiCEz%2FL6Pp5EqioqY0l63I%2FwZMzatHXjx4CXbYTKuokujrc3tPOBU%2F8vkV5SQbTymCRS7z1tOyV0i2nKCpx%2B2QM7ZdT6RUHs |
 
 </details>
 
@@ -202,13 +193,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 1/1 · reasons=plugin_empty_view:2</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 2/2 · reasons=plugin_empty_view:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
-- Cases: `3/5`
-- Reasons: `plugin_empty_view:2`
+- Cases: `4/5`
+- Reasons: `plugin_empty_view:1`
 - Note: libvio
 
 Connectivity
@@ -217,25 +208,21 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `田锁兄弟`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E7%94%B0%E9%94%81%E5%85%84%E5%BC%9F
+- Keyword: `新进职员姜会长`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E6%96%B0%E8%BF%9B%E8%81%8C%E5%91%98%E5%A7%9C%E4%BC%9A%E9%95%BF
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我的王室死对头 | HD3播放 第01集 | https://cloudcube.wuxi.cn/cloudcube-jswx-person/PERSONCLOUD/11aff610-a54b-486d-8896-788b61477c04.mp4?x-obs-traffic-limit=819200&X-Amz-Date=20260606T023339Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&x-amz-CLIENTTYPEIN=UNKNOWN&X-Amz-Credential=SZshenghuo/20260606/us-east-1/s3/aws4_request&x-amz-UID=10000004749791&response-content-disposition=attachment%3Bfilename%3DMy.Royal.Nemesis.S01E01.mp4&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=CORP&X-Amz-SignedHeaders=host&X-Amz-Expires=10800&x-amz-FSIZE=1274552523&x-amz-UFID=71477317129974113&X-Amz-Signature=05e0fcecc1de26232fa6cfac5f636b94c4e5052191b21cf76c914811e0c7ca93 |
+| OK | 我的王室死对头 | HD7播放 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/ogrereAf8dQWWwnteMWnQhEYlQCMXr65BSPRF4?a=1426&x-tos-expires=1781315704&ch=0&x-tos-signature=gMr4aDiazzQZ3klWN14z32ASYu0yXqL7BnPJdUaV&cr=8&dr=8&er=0&x-signature=VP5B5agTgC%2BLrAqVcafe8kB0vsQ%3D&lr=test&cd=4%7C3%7C0%7C9&br=1798&bt=1469&x-tos-authkey=d2fe1903e1a0af10956314ab507feb41&cs=5&x-expires=1781062680&ds=6&ft=QSwZE2py9i1vIrJhwYSg&mime_type=video_mp4&qs=13&rc=naF4CKDwXa0IkqBxo1E2ykEIN6DGzEYlMWfA7q7hR1umGSo1tg%3D%3D&btag=a0000e446600000&dy_q=1778073560&l=202605214ed31b8083a75bdc9b6f14a71&filename=BBA@ckfiv.mp4 |
+| OK | 大叔再出招 | HD7播放 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/osCb6fH6DAoqFJXaqiEEQMIeEBDIGaFg7q1RnH?a=1350&ch=1&cr=3&dr=8&x-signature=cJeg%2Blm9IRZoEWjJU0sWHb5E24A%3D&er=0&x-tos-signature=enNxYTOsL5hjy3Y2gJyWj0exvuGaD2JVxx4OovWz&lr=test&cd=2%7C5%7C0%7C3&br=1500&bt=1403&x-tos-expires=1782216177&cs=8&ds=5&x-tos-authkey=3e67cc953efd31cc52ef2fb5b3ea5c33&ft=jc3RnsTaRFQHAUgEvdWd&x-expires=1781060882&mime_type=video_mp4&qs=13&rc=JlJAEkFmR3oVv0hmNUQNf5sLuVXGj02MhktbtNlIghykGLXmzZ%3D%3D&btag=a0000e227110000&dy_q=1778023070&l=2026052167aeb7f84fbfc227eb4392aae&filename=BBA@ckfiv.mp4 |
 
 Failed Case Diagnostics
-- 田锁兄弟 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5812921.html
+- 新进职员姜会长 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813067.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5812921.html
-- 星城第一季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813073.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813073.html
+  - `GET 200` https://www.libvio.cam/detail/5813067.html
 
 </details>
 
@@ -256,15 +243,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我的王室死对头`
-- URL: https://www.thanju.com/search/%E6%88%91%E7%9A%84%E7%8E%8B%E5%AE%A4%E6%AD%BB%E5%AF%B9%E5%A4%B4.html
+- Keyword: `给你爱情处方`
+- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 新进职员姜会长 | 01 | https://cdn.vvvip-plays33.cc/20260531/14095_1f3f1ae7/index.m3u8 |
 | OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
-| OK | 大叔再出招 | 01 | https://cdn.vvvip-plays33.cc/20260522/13861_320274ee/index.m3u8 |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 
 </details>
 
@@ -285,15 +272,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `孤独的美食家第11季`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%AD%A4%E7%8B%AC%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6%E7%AC%AC11%E5%AD%A3&submit=
+- Keyword: `给你爱情处方`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 孤独的美食家第11季 | 第1集 | https://vid.dbokutv.com/20260404/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBMTaP6rpQcGnCMejC34jC314H3GsC38rBcrmD0/chunklist.m3u8 |
-| OK | 刑警重回原点 | 第1集 | https://vid.dbokutv.com/20260425/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejU6fwQ7baBJ0nBJ0nC4D6DZH1HIvjS34/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
+| OK | 新进职员姜会长 | 第1集 | https://vid.dbokutv.com/20260531/lxj-xjzyjhc-01-0129E2084.mp4/chunklist.m3u8 |
+| OK | 我的王室死对头 | 第1集 | https://vid.dbokutv.com/20260509/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTaTtDpP7GjC34jC34oGJH3C3L2BcrmD0/chunklist.m3u8 |
 
 </details>
 
