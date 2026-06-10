@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-09T04:41:55.461Z`
+Generated: `2026-06-10T04:47:54.848Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -26,7 +26,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 1/2 | Empty | Not Reached | 1/5 | search_empty:1, plugin_empty_view:3 |
+| libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:3
+- `plugin_libvio` libvio: fatal_error:1
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `香谋天下`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%A6%99%E8%B0%8B%E5%A4%A9%E4%B8%8B/vod/0/1/4
+- Keyword: `规矩是你定的，破产是你选`
+- URL: https://api.olelive.com/v1/pub/index/search/%E8%A7%84%E7%9F%A9%E6%98%AF%E4%BD%A0%E5%AE%9A%E7%9A%84%EF%BC%8C%E7%A0%B4%E4%BA%A7%E6%98%AF%E4%BD%A0%E9%80%89/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 香谋天下 | 第1集 | https://europe.olemovienews.com/ts4/20260609/yhtEfkis/mp4/yhtEfkis.mp4/clipTo/120666/master.m3u8 |
-| OK | 假死王爷，别来无恙 | 第1集 | https://europe.olemovienews.com/ts4/20260609/yffcoGyf/mp4/yffcoGyf.mp4/clipTo/163833/master.m3u8 |
-| OK | 错嫁迎荣华 | 第1集 | https://europe.olemovienews.com/ts4/20260609/ndfEkgzq/mp4/ndfEkgzq.mp4/clipTo/73033/master.m3u8 |
+| OK | 规矩是你定的，破产是你选的 | 第01集 | https://europe.olemovienews.com/ts4/20260610/ojrwBydl/mp4/ojrwBydl.mp4/clipTo/146366/master.m3u8 |
+| OK | 误入直播间，我清算一切 | 第01集 | https://europe.olemovienews.com/ts4/20260610/cludzauh/mp4/cludzauh.mp4/clipTo/178400/master.m3u8 |
+| OK | 半生付出换心寒 | 第01集 | https://europe.olemovienews.com/ts4/20260610/cdjmhnzr/mp4/cdjmhnzr.mp4/clipTo/150920/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `日本三国`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%97%A5%E6%9C%AC%E4%B8%89%E5%9B%BD
+- Keyword: `欺诈游戏`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 日本三国 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_8eb61JsAUHl5RMK4MfSuGm7Cz%2B0y6NsNnJvVqi1%2BEZjRUd9VTYMUCyOy3Yn9i%2BrUuDEwt6O4oyT0USjYC5O3jfo1F1MZqbYvPsJ8x%2BwKEwCOeE9NLmEj1LQl |
-| OK | 尖帽子的魔法工坊 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_6097CiQsa5v7d8uKGzrSG8nNKqyJMtofjyETcD%2By7fz8PkLu8M5sMPYwpHAHkz0mRp9KCCTOUT9gVSKs9hS1iGyh%2FKeFgsmhO5hNo3%2BIgFPOr6LO1KMygkA9 |
-| OK | 异世界悠闲农家 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_2eebF5Dp8z2VjSatWF9yXZqRuvQ8i32LalFFELb3gJFBNjp9CqtA7A0%2ByLhJFLmKOcapEnMJqgIQ3hgbmzr19vi0G%2BWkNWJGaSvrhL6vg%2BQnEGzpki8d77Up |
+| OK | 欺诈游戏 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_f05bCBD4FiHbNms6cKA66c4G02i3QcytkUpNsom%2BZ8o8nQk%2FklqdHjISDDZVsZt4dLaYvYQRyboTNOF6z5rQdokLJM6CntnuKlo2wP7UKuXil%2B3az7tF4LAQ |
+| OK | 左撇子艾伦 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_7ea94WXYV7Pm%2BM8VJ4ebgc7%2B7%2B97h8e03FnDu5CgFDmbF1B%2BLhA%2F9MXCFcURwRtOFGif2aJeNDl2I8VhWFDdSbb9l8LNkyHtUQcySpRpklplz9M7wWiXQtogyg |
+| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_854eWsobtoMV0E2W9xYvO9NU%2BNZw%2F363pdCuUAFKqKpf6zdEQSBsZ8t9sjmmh%2FOKe6Z265sHwBXOPnywOYzJ%2BZ6vgLZM%2BAsvfvz5yqFd%2FtmrQaj1wrwH53Y0 |
 
 </details>
 
@@ -193,23 +193,25 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 1/2 · search=Empty · playback=Not Reached · reasons=search_empty:1, plugin_empty_view:3</summary>
+<summary>libvio · Fatal · conn=Fail 0/2 · search=Empty · playback=Not Reached · reasons=connectivity_failed:1, search_empty:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
-- Overall: `Partial`
-- Cases: `1/5`
-- Reasons: `search_empty:1, plugin_empty_view:3`
+- Overall: `Fatal`
+- Cases: `0/2`
+- Reasons: `connectivity_failed:1, search_empty:1`
 - Note: libvio
+- Fatal Errors:
+  - `no medias returned; no medias returned`
 
 Connectivity
-- [OK] `HEAD 200` https://www.libvio.cam/
+- [FAIL] `GET 520` https://www.libvio.cam/ | status 520
 - [FAIL] `GET 520` https://www.libvio.cam/search/-------------.html?wd=test | status 520
 
 Search
 - Status: `Empty`
-- Keyword: `欺诈游戏`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
+- Keyword: `test`
+- URL: https://www.libvio.cam/search/-------------.html?wd=test
 - Reason: `search_empty`
 - Detail: 搜尋執行成功但結果為空
 
@@ -217,26 +219,17 @@ Playback Cases
 - Not reached
 
 Failed Case Diagnostics
-- keyword:欺诈游戏 | stage=`search` | reason=`search_empty`
-  - detailURL: https://www.libvio.cam/search/-------------.html?wd=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
+- connectivity | stage=`connectivity` | reason=`connectivity_failed`
+  - detailURL: https://www.libvio.cam/
+  - detail: 插件站點連通性檢查失敗
+  - http diagnostics:
+  - `GET 520` https://www.libvio.cam/ | status 520
+  - `GET 520` https://www.libvio.cam/search/-------------.html?wd=test | status 520
+- keyword:test | stage=`search` | reason=`search_empty`
+  - detailURL: https://www.libvio.cam/search/-------------.html?wd=test
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 520` https://www.libvio.cam/search/-------------.html?wd=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
-- 欺诈游戏 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5812943.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 520` https://www.libvio.cam/detail/5812943.html
-- 摩绪 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813049.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 520` https://www.libvio.cam/detail/5813049.html
-- 尖帽子的魔法工坊 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5812942.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 520` https://www.libvio.cam/detail/5812942.html
+  - `GET 520` https://www.libvio.cam/search/-------------.html?wd=test
 
 </details>
 
@@ -257,15 +250,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `第一个男人`
-- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
+- Keyword: `医到孤岛爱上你`
+- URL: https://www.thanju.com/search/%E5%8C%BB%E5%88%B0%E5%AD%A4%E5%B2%9B%E7%88%B1%E4%B8%8A%E4%BD%A0.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 | OK | 医到孤岛爱上你 | 01 | https://cdn.yzzy31-play.com/20260601/21399_07e6663e/index.m3u8 |
 | OK | 菜鸟炊事兵 | 01 | https://player.yzzyvip-35.com/20260511/6413_a543c921/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 
 </details>
 
@@ -286,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `罪案现场`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BD%AA%E6%A1%88%E7%8E%B0%E5%9C%BA&submit=
+- Keyword: `为时已是寿司`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E6%97%B6%E5%B7%B2%E6%98%AF%E5%AF%BF%E5%8F%B8&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 罪案现场 | 第1集 | https://vid.dbokutv.com/20260604/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsTsRsGlR7XgBNfXU6CjC34jC396CpWpCK92BcrmD0/chunklist.m3u8 |
-| OK | 烟蓝雨后晴 | 第1集 | https://vid.dbokutv.com/20260415/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBNbiUMXnBJ0nBJ0mEJb5C44qH2vjS34/chunklist.m3u8 |
-| OK | 风带有香气 | 第1集 | https://vid.dbokutv.com/20260331/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBMPaUNXnBJ0nBJ0pCK95GJ0uH2vjS34/chunklist.m3u8 |
+| OK | 为时已是寿司 | 第1集 | https://vid.dbokutv.com/20260409/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNTpUNDpSoqmCIqmC44nGq56EKOkRN0q/chunklist.m3u8 |
+| OK | 安全距离 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8Nj3aubh2ujJOMc1YMc1aPd9YX6faYbpQu64/chunklist.m3u8 |
+| OK | 红了樱桃绿了芭蕉 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlR7XgBMXiUNHiR69nBJ0nBJ0mDZb6CpL5DYvjS34/chunklist.m3u8 |
 
 </details>
 
