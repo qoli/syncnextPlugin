@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-12T04:53:26.957Z`
+Generated: `2026-06-13T04:48:39.776Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,10 +23,10 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
+| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 1/2 | Empty | Not Reached | 1/5 | search_empty:1, plugin_empty_view:3 |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 2/2 | 4/5 | plugin_empty_view:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:3
+- `plugin_libvio` libvio: plugin_empty_view:1
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `你又被杀了呢，侦探大人`
-- URL: https://api.olelive.com/v1/pub/index/search/%E4%BD%A0%E5%8F%88%E8%A2%AB%E6%9D%80%E4%BA%86%E5%91%A2%EF%BC%8C%E4%BE%A6%E6%8E%A2%E5%A4%A7%E4%BA%BA/vod/0/1/4
+- Keyword: `香港探秘地图【粤语】`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%A6%99%E6%B8%AF%E6%8E%A2%E7%A7%98%E5%9C%B0%E5%9B%BE%E3%80%90%E7%B2%A4%E8%AF%AD%E3%80%91/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 你又被杀了呢，侦探大人 | 第01集 | https://europe.olemovienews.com/ts4/20260402/p2aj6efz/mp4/p2aj6efz.mp4/master.m3u8 |
-| OK | 吞噬魔物的冒险者 | 第01集 | https://europe.olemovienews.com/ts4/20260402/g2q0l1oa/mp4/g2q0l1oa.mp4/master.m3u8 |
-| OK | 淡岛百景 | 第01集 | https://europe.olemovienews.com/ts4/20260410/eefa6870/mp4/eefa6870.mp4/master.m3u8 |
+| OK | 香港探秘地图【粤语】 | 第01集 | https://europe.olemovienews.com/ts4/20260518/y00skv3i/mp4/y00skv3i.mp4/master.m3u8 |
+| OK | 香港探秘地图【国语】 | 第01集 | https://europe.olemovienews.com/ts4/20260518/m8r7r8cv/mp4/m8r7r8cv.mp4/master.m3u8 |
+| OK | 镖人 第二季 | 第01集 | https://europe.olemovienews.com/ts4/20260611/tiw4y3r3/mp4/tiw4y3r3.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `4/5`
+- Reasons: `search_empty:1`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,16 +93,25 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `OK`
-- Keyword: `淡岛百景`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
+- Status: `Empty`
+- Keyword: `上伊那牡丹，酒醉身姿似百`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 淡岛百景 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_8979liC84jlxWE8ENYoPzzeC50yNjHt6pdUTWwP7lD1XDe2dcCu3kNaVuC%2Bz0nOhkDNyjq2owwxBqJwmhIUvgdSEktoiQeiKXeU2sgtp3OZTzOTAzvt4DEhJ |
-| OK | 躲在超市后门抽烟的两人 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_483b23KRaxI8zaioUyuyC3E71uqSs7KJGez7TDdxYzDW9TD7i06wBGgh21dQEWkQ3EmiFpG2WU%2B0s2Y46VyXwjv1lI%2FzUaxNJpoKjQSMvJAzRoKmXyMZ4D4MYI8ddaURmPQj2tnc2oYP0DhEDjcCNpnsmSFFwQ |
-| OK | 轮回的花瓣 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_43d0I7f6D%2FnmzAgAtdkuQLArFQ6qPxk5hzJL2VUSJKMWDNmSPv8QhW3tMFuABYYVniEnRK2oqr2Fn2P4XXM16LNB23n2JM9isSeSSW0H9Yb9Y9Pw4%2FxIcGc3 |
+| OK | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_02c2kbd5awVTpdizO6hENqrHXLZNBVT5gwE%2FbT4kiR4dZYjWgcPAtV0snGHJhc3lz6RyxctS80zU0sWnkanE9O4J52T8UZDiKB0vnbAO7pltXhzXZ1gvmRhn |
+| OK | 冻结地球 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_d38cn9Va5WY23OqFbpwQkAlbwQCdggRu9fqZqXR3ipkmivcBd79FVyGuZhZUGkWAKhx82cOpScRj7mWXkeaVRMrczfa8wh1W4t%2FWQv%2BTUIXvKF36ACkyYHtX |
+| OK | 神之水滴 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_e144ciQAHt7B75pens6V6bAspXVpuD6sSmqo9btaHGd4NqtLw2vzCBZ19PMEdjd%2FHd3GtxKhvgToJFZ5jV1JH7HTOR9b5pa2CNwTX93ivitYDXYm92SwB3os |
+
+Failed Case Diagnostics
+- keyword:上伊那牡丹，酒醉身姿似百 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
 
 </details>
 
@@ -193,50 +202,36 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 1/2 · search=Empty · playback=Not Reached · reasons=search_empty:1, plugin_empty_view:3</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 2/2 · reasons=plugin_empty_view:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
-- Cases: `1/5`
-- Reasons: `search_empty:1, plugin_empty_view:3`
+- Cases: `4/5`
+- Reasons: `plugin_empty_view:1`
 - Note: libvio
 
 Connectivity
 - [OK] `HEAD 200` https://www.libvio.cam/
-- [FAIL] `GET 520` https://www.libvio.cam/search/-------------.html?wd=test | status 520
+- [OK] `HEAD 200` https://www.libvio.cam/search/-------------.html?wd=test
 
 Search
-- Status: `Empty`
-- Keyword: `格斗实况`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E6%A0%BC%E6%96%97%E5%AE%9E%E5%86%B5
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `田锁兄弟`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E7%94%B0%E9%94%81%E5%85%84%E5%BC%9F
 
 Playback Cases
-- Not reached
+| Result | Media | Episode | Output |
+| --- | --- | --- | --- |
+| OK | 我的王室死对头 | HD7播放 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/ogrereAf8dQWWwnteMWnQhEYlQCMXr65BSPRF4?x-tos-authkey=1de16a33e066bd390e4c5a17a98a22c2&a=1066&ch=0&cr=10&dr=5&er=0&x-expires=1781579135&lr=test&cd=2%7C8%7C0%7C6&br=1925&bt=1579&cs=5&x-tos-expires=1781942428&ds=8&ft=G6am78DN2dnncSYhvgx1&mime_type=video_mp4&x-signature=P4K%2BpTsw3RsIgCIc2y%2FqqlvtQYs%3D&qs=13&x-tos-signature=E2sUejzB9TQP0m5tGGXfPVDbpJVU9rF1ZIS5oeEc&rc=p63Bj2UnMvN0qVj47jzAVikOi7N1gp3FkJzNXvtn6O3VbKLuow%3D%3D&btag=a0000e865580000&dy_q=1778094942&l=202605219e1066faaa2bacbafc80ff820&filename=BBA@ckfiv.mp4 |
+| OK | 大叔再出招 | HD7播放 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/osCb6fH6DAoqFJXaqiEEQMIeEBDIGaFg7q1RnH?x-signature=KjATpr%2Bipks1rGSagK%2BttZP65bQ%3D&a=1701&ch=3&cr=4&x-expires=1781579677&dr=4&x-tos-expires=1782983309&er=0&x-tos-authkey=b6548327776ac6ade6647583d45aefe2&lr=test&cd=2%7C6%7C0%7C2&br=1508&bt=1593&cs=6&ds=4&ft=k21hDZ6OMJarHzD92yTv&mime_type=video_mp4&qs=13&x-tos-signature=6c62n7BOjpS2L9EVJeFAeXHpicykX8Iitvn5Qz8U&rc=Ty96yhLfDIKEkMziDsxePgzNUnhFM32T1X8Kr2OcyO5ZHLqPiT%3D%3D&btag=a0000e214660000&dy_q=1778070278&l=2026052118b743851502a951ff054e986&filename=BBA@ckfiv.mp4 |
 
 Failed Case Diagnostics
-- keyword:格斗实况 | stage=`search` | reason=`search_empty`
-  - detailURL: https://www.libvio.cam/search/-------------.html?wd=%E6%A0%BC%E6%96%97%E5%AE%9E%E5%86%B5
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 520` https://www.libvio.cam/search/-------------.html?wd=%E6%A0%BC%E6%96%97%E5%AE%9E%E5%86%B5
-- 格斗实况 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813085.html
+- 田锁兄弟 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5812921.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813085.html
-- 双喜 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813084.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 520` https://www.libvio.cam/detail/5813084.html
-- 机械之声的传奇第四季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813083.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813083.html
+  - `GET 200` https://www.libvio.cam/detail/5812921.html
 
 </details>
 
@@ -257,15 +252,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `第一个男人`
-- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
+- Keyword: `我的王室死对头`
+- URL: https://www.thanju.com/search/%E6%88%91%E7%9A%84%E7%8E%8B%E5%AE%A4%E6%AD%BB%E5%AF%B9%E5%A4%B4.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
+| OK | 大叔再出招 | 01 | https://cdn.vvvip-plays33.cc/20260522/13861_320274ee/index.m3u8 |
 | OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
-| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
-| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 
 </details>
 
@@ -286,15 +281,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `红了樱桃绿了芭蕉`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BA%A2%E4%BA%86%E6%A8%B1%E6%A1%83%E7%BB%BF%E4%BA%86%E8%8A%AD%E8%95%89&submit=
+- Keyword: `我们愉快的好日子`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 红了樱桃绿了芭蕉 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlR7XgBMXiUNHiR69nBJ0nBJ0mDZb6CpL5DYvjS34/chunklist.m3u8 |
-| OK | 安全距离 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8Nj3aubh2ujJOMc1YMc1aPd9YX6faYbpQu64/chunklist.m3u8 |
-| OK | 格斗实况 喧嘩独学 | 第1集 | https://vid.dbokutv.com/20260612/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejPsHpQtXaU2qmCIqmCpGpHJWuEJSkRN0q/chunklist.m3u8 |
+| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 大叔再出招 | 第1集 | https://vid.dbokutv.com/20260524/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBMHpUcDwBJ0nBJ0nDqOuGKD3GovjS34/chunklist.m3u8 |
+| OK | 我的王室死对头 | 第1集 | https://vid.dbokutv.com/20260509/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTaTtDpP7GjC34jC34oGJH3C3L2BcrmD0/chunklist.m3u8 |
 
 </details>
 
