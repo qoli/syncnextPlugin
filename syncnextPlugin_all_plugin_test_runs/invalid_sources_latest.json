@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T04:54:26.014Z",
+  "generatedAt": "2026-06-15T04:54:06.049Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,10 +31,32 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 1
+        "plugin_empty_view": 2
       },
       "fatalErrors": [],
       "failedCases": [
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "瑞克和莫蒂第九季",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813057.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813057.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
         {
           "ok": false,
           "stage": "episodes",
