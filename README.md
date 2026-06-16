@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-15T04:54:06.049Z`
+Generated: `2026-06-16T04:55:10.300Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -26,7 +26,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 1/1 | 3/5 | plugin_empty_view:2 |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 2/2 | 4/5 | plugin_empty_view:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:2
+- `plugin_libvio` libvio: plugin_empty_view:1
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `幽灵音乐会：遗失的歌曲`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%B9%BD%E7%81%B5%E9%9F%B3%E4%B9%90%E4%BC%9A%EF%BC%9A%E9%81%97%E5%A4%B1%E7%9A%84%E6%AD%8C%E6%9B%B2/vod/0/1/4
+- Keyword: `尖帽子的魔法工坊`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 幽灵音乐会：遗失的歌曲 | 第01集 | https://europe.olemovienews.com/ts4/20260405/hceqemwj/mp4/hceqemwj.mp4/master.m3u8 |
-| OK | 黑猫和魔女的课堂 | 第01集 | https://europe.olemovienews.com/ts4/20260412/o379rjpz/mp4/o379rjpz.mp4/master.m3u8 |
-| OK | 新进职员姜会长 | 第01集 | https://europe.olemovienews.com/ts4/20260530/jawrua88/mp4/jawrua88.mp4/master.m3u8 |
+| OK | 尖帽子的魔法工坊 | 第01集 | https://europe.olemovienews.com/ts4/20260407/3tmyuahz/mp4/3tmyuahz.mp4/master.m3u8 |
+| OK | 爱情有烟火 | 第01集 | https://europe.olemovienews.com/ts4/20260615/3bn4sqpq/mp4/3bn4sqpq.mp4/master.m3u8 |
+| OK | 莫离 | 第01集 | https://europe.olemovienews.com/ts4/20260609/ngnmcv2o/mp4/ngnmcv2o.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `淫狱团地`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%AB%E7%8B%B1%E5%9B%A2%E5%9C%B0
+- Keyword: `日本三国`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%97%A5%E6%9C%AC%E4%B8%89%E5%9B%BD
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 淫狱团地 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_a240OFp5RiOt%2FhIPKpylJ3%2FX92NW%2FeCOc6bsXUt%2BI%2B99DZ%2FvdZiRdQPRyKUHzmCg6lM02VKAhDbwaWenDDdeAINYBR9DnXV9LMDj%2FakRjuW3npVdC5aDdeUJ |
-| OK | 幽灵音乐会 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_e0f4rL4YyUzPpYd0ziJRBMKXICbFvJkymwiFPk98tJb8bRDpTPYKPbBWai1dF9FlrKCSJ%2Frnt4iZKIQI0V03hmM%2Fdd3JwtFl%2B5obOQNFgH7H6cSfCBex4ZLf |
-| OK | 黑猫与魔女的教室 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_1f2562Q6TqvKsQcfVUMe%2FHyrQMlRHKovRxMnFyQx8H55sORzjhOGR8jzcH0o1ZLNy%2BBI3EFPZ0UfdxLzZi7K8QAeG9lI5ueVb21MCtDs6y2awUYzM98d5sXd |
+| OK | 日本三国 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_2f9bI77S67MtWYtt0cV5f6hc9Vqh%2FM%2B3hkU%2BWgLnc8JJWx5ErUfqLCMj8tTpcycX7767EA1HkZB5iO4UFhLKD6q8eVYfcDtVUNef4ZEU2dE0HSwOO%2BJwOf0j |
+| OK | 尖帽子的魔法工坊 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_6869z7o02ZxnUgel3MhEtLBwCBIbHNOqB0vbp5Lr5esPshrpNcMffDsVArmEWFGzbX9nUUoRDg%2BzQQSKpAuC8KpmhcMgVnvM%2FEm40TpFAxtFqALyD3w7QKbY |
+| OK | 异世界悠闲农家 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_8ae6SIITEkF3zx8A23Ey61GI2GhnEp1sLCvw%2FcZsVQiWBo%2FlhzV4UPmLzC449WEY8AQXddMiQp%2FlvdR8Oyit3c272E8%2FkXkehJXu0UV40FIqU2l%2FizqQvb30 |
 
 </details>
 
@@ -193,13 +193,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 1/1 · reasons=plugin_empty_view:2</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 2/2 · reasons=plugin_empty_view:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
-- Cases: `3/5`
-- Reasons: `plugin_empty_view:2`
+- Cases: `4/5`
+- Reasons: `plugin_empty_view:1`
 - Note: libvio
 
 Connectivity
@@ -208,25 +208,21 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `瑞克和莫蒂第九季`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E7%91%9E%E5%85%8B%E5%92%8C%E8%8E%AB%E8%92%82%E7%AC%AC%E4%B9%9D%E5%AD%A3
+- Keyword: `欺诈游戏`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 达顿牧场 | HD7播放 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/oIbBLPUIif6GDCcEAVEeheIJL1OrYwICrWuWwI?x-tos-authkey=c9c2fb41477936379f7f0e4f3e7e3799&a=1767&ch=1&x-signature=P4Ea%2Fwn68YVsrEFy%2FUtIycHFWw0%3D&cr=8&x-tos-signature=QTw3bCgCEqFFR6OLHkfW6oWn3gNY3bV8Bi3AxUOL&dr=6&er=0&lr=test&cd=2%7C7%7C0%7C8&br=1937&x-tos-expires=1783045935&bt=1455&cs=6&ds=8&ft=9l25rcLDZ0Yd3bnzutZF&x-expires=1781751929&mime_type=video_mp4&qs=13&rc=ieSlsNWAn0taQBzgEI4JqGp61TwP4PQCrLEE0afX3Z3w60asXD%3D%3D&btag=a0000e287840000&dy_q=1778038289&l=202605216c4c54c1af2d6eb75dcb5eef0&filename=BBA@ckfiv.mp4 |
+| OK | 欺诈游戏 | HD7播放 第01话 | https://v16s.hypstarcdn.com/cd4267abdf83f37041bbe5a4edbb8fd6/6a34bfee/video/tos/alisg/tos-alisg-ve-0051c001-sg/o0fNQDpCS8wO24EnD7BNInXtglFfBpA90kDQgE/?filename=BBA@ckfiv.mp4 |
+| OK | 尖帽子的魔法工坊 | HD7播放 第01话 | https://v16-cc.capcut.com/d2cdc55123bf503c3a61c89b83b77576/6a34c6eb/video/tos/alisg/tos-alisg-ve-0051c001-sg/o4YaweatBEv33T1AAdiUQCNTRBfFp2BIi5gsD0/?filename=BBA@ckfiv.mp4 |
 
 Failed Case Diagnostics
-- 瑞克和莫蒂第九季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813057.html
+- 医到孤岛爱上你 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813068.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813057.html
-- 新进职员姜会长 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813067.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813067.html
+  - `GET 200` https://www.libvio.cam/detail/5813068.html
 
 </details>
 
@@ -247,15 +243,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `新进职员姜会长`
-- URL: https://www.thanju.com/search/%E6%96%B0%E8%BF%9B%E8%81%8C%E5%91%98%E5%A7%9C%E4%BC%9A%E9%95%BF.html
+- Keyword: `第一个男人`
+- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 新进职员姜会长 | 01 | https://cdn.vvvip-plays33.cc/20260531/14095_1f3f1ae7/index.m3u8 |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
-| OK | 我的王室死对头 | 01 | https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
+| OK | 医到孤岛爱上你 | 01 | https://cdn.yzzy31-play.com/20260601/21399_07e6663e/index.m3u8 |
+| OK | 菜鸟炊事兵 | 01 | https://player.yzzyvip-35.com/20260511/6413_a543c921/index.m3u8 |
 
 </details>
 
@@ -284,7 +280,7 @@ Playback Cases
 | --- | --- | --- | --- |
 | OK | 红了樱桃绿了芭蕉 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlR7XgBMXiUNHiR69nBJ0nBJ0mDZb6CpL5DYvjS34/chunklist.m3u8 |
 | OK | 安全距离 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8Nj3aubh2ujJOMc1YMc1aPd9YX6faYbpQu64/chunklist.m3u8 |
-| OK | 给你爱情处方 | 第1集 | https://vid.dbokutv.com/20260202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfkON5ZPYqmCIqmCZKtEJX4CaCkRN0q/chunklist.m3u8 |
+| OK | 银河的一票 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNbeP7bmBJ0nBJ0pC38rCZOrCYvjS34/chunklist.m3u8 |
 
 </details>
 
