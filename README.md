@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-16T04:55:10.300Z`
+Generated: `2026-06-17T04:53:48.451Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -26,7 +26,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 2/2 | 4/5 | plugin_empty_view:1 |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 1/1 | 3/5 | plugin_empty_view:2 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:1
+- `plugin_libvio` libvio: plugin_empty_view:2
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `尖帽子的魔法工坊`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%B0%96%E5%B8%BD%E5%AD%90%E7%9A%84%E9%AD%94%E6%B3%95%E5%B7%A5%E5%9D%8A/vod/0/1/4
+- Keyword: `女神“异世界转生想成为什`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%A5%B3%E7%A5%9E%E2%80%9C%E5%BC%82%E4%B8%96%E7%95%8C%E8%BD%AC%E7%94%9F%E6%83%B3%E6%88%90%E4%B8%BA%E4%BB%80/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 尖帽子的魔法工坊 | 第01集 | https://europe.olemovienews.com/ts4/20260407/3tmyuahz/mp4/3tmyuahz.mp4/master.m3u8 |
-| OK | 爱情有烟火 | 第01集 | https://europe.olemovienews.com/ts4/20260615/3bn4sqpq/mp4/3bn4sqpq.mp4/master.m3u8 |
-| OK | 莫离 | 第01集 | https://europe.olemovienews.com/ts4/20260609/ngnmcv2o/mp4/ngnmcv2o.mp4/master.m3u8 |
+| OK | 女神“异世界转生想成为什么”我“勇者的肋骨” | 第01集 | https://europe.olemovienews.com/ts4/20260408/ek0bsgur/mp4/ek0bsgur.mp4/master.m3u8 |
+| OK | 当前、正被打扰中！ | 第01集 | https://europe.olemovienews.com/ts4/20260408/bz5jtdzz/mp4/bz5jtdzz.mp4/master.m3u8 |
+| OK | 炽夏 | 第01集 | https://europe.olemovienews.com/ts4/20260616/055nrckc/mp4/055nrckc.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `日本三国`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%97%A5%E6%9C%AC%E4%B8%89%E5%9B%BD
+- Keyword: `左撇子艾伦`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B7%A6%E6%92%87%E5%AD%90%E8%89%BE%E4%BC%A6
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 日本三国 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_2f9bI77S67MtWYtt0cV5f6hc9Vqh%2FM%2B3hkU%2BWgLnc8JJWx5ErUfqLCMj8tTpcycX7767EA1HkZB5iO4UFhLKD6q8eVYfcDtVUNef4ZEU2dE0HSwOO%2BJwOf0j |
-| OK | 尖帽子的魔法工坊 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_6869z7o02ZxnUgel3MhEtLBwCBIbHNOqB0vbp5Lr5esPshrpNcMffDsVArmEWFGzbX9nUUoRDg%2BzQQSKpAuC8KpmhcMgVnvM%2FEm40TpFAxtFqALyD3w7QKbY |
-| OK | 异世界悠闲农家 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_8ae6SIITEkF3zx8A23Ey61GI2GhnEp1sLCvw%2FcZsVQiWBo%2FlhzV4UPmLzC449WEY8AQXddMiQp%2FlvdR8Oyit3c272E8%2FkXkehJXu0UV40FIqU2l%2FizqQvb30 |
+| OK | 左撇子艾伦 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_f5b8jApyDR8SksEYgxB9dRKyVFlHVSGS8fjGqTFi%2Fyv89SXaKDomHhuD%2FBHsqGNwNnNx4ycqWyaJuykTSivkOGDa9ZiqMp3CK2ee3HywjjBwEppiuLNX4KyXmw |
+| OK | 和班上第二可爱的女孩成为朋友 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_97e4RvLWenNT0MY8WxcksleD7wnX%2FEOi2Fh3lbyu2pjBQFdpgGGRqaCannRKi5xEfbAZGTrF0m8NAga91kUTjxvgZ7%2B%2B8BeUGY2NwZdfJBIi7yzJcNtXgJ64 |
+| OK | 想结束这场“我爱你”的游戏 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_02c2kbd5awVTpdizO6gTY67CAeEUU13wgwAwYmgkiR4dZYjWgcPAtV0snGHJhc3lz6RyxctS80zU0sWnkanE8O4J52L7XZC1LB98mLZf6JltXhzXZ1gvmRhn |
 
 </details>
 
@@ -193,13 +193,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 2/2 · reasons=plugin_empty_view:1</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 1/1 · reasons=plugin_empty_view:2</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `plugin_empty_view:1`
+- Cases: `3/5`
+- Reasons: `plugin_empty_view:2`
 - Note: libvio
 
 Connectivity
@@ -208,16 +208,20 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `欺诈游戏`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
+- Keyword: `寡妇湾`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E5%AF%A1%E5%A6%87%E6%B9%BE
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 欺诈游戏 | HD7播放 第01话 | https://v16s.hypstarcdn.com/cd4267abdf83f37041bbe5a4edbb8fd6/6a34bfee/video/tos/alisg/tos-alisg-ve-0051c001-sg/o0fNQDpCS8wO24EnD7BNInXtglFfBpA90kDQgE/?filename=BBA@ckfiv.mp4 |
-| OK | 尖帽子的魔法工坊 | HD7播放 第01话 | https://v16-cc.capcut.com/d2cdc55123bf503c3a61c89b83b77576/6a34c6eb/video/tos/alisg/tos-alisg-ve-0051c001-sg/o4YaweatBEv33T1AAdiUQCNTRBfFp2BIi5gsD0/?filename=BBA@ckfiv.mp4 |
+| OK | 寡妇湾 | HD7播放 第01集 | https://lf26-imcloud-file-sign.bytetos.com/tos-cn-v-5f73e7/oMIrIETOn4HfIFczGBIc85LP6e0CKAesIO1CtQ?a=1429&x-expires=1781927530&ch=0&x-tos-expires=1783186189&cr=3&dr=2&er=0&lr=test&x-tos-signature=tuDNpHIL2DuOf8EL7L5OY13SiOO6kZnE7W63JPF7&cd=5%7C4%7C0%7C5&br=1769&x-tos-authkey=cf1ad64ff5ad03b36b3f4ed51c156bf3&bt=1483&cs=4&ds=7&ft=Z1NeFbPbVRqj9HjaxhV2&x-signature=iv444uKoz8DSWq1w%2BPzqpBVX578%3D&mime_type=video_mp4&qs=13&rc=M0WZgP93htAJqx8OMrRsqeDR3ustPPMByh71MRt8RuL4WYrVaM%3D%3D&btag=a0000e194860000&dy_q=1778054696&l=20260521387a8836c018247123d846bcb&filename=BBA@ckfiv.mp4 |
 
 Failed Case Diagnostics
+- 克拉克森的农场第五季 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813074.html
+  - detail: 插件回傳 emptyView，未取得可播放地址
+  - http diagnostics:
+  - `GET 200` https://www.libvio.cam/detail/5813074.html
 - 医到孤岛爱上你 | stage=`episodes` | reason=`plugin_empty_view`
   - detailURL: https://www.libvio.cam/detail/5813068.html
   - detail: 插件回傳 emptyView，未取得可播放地址
@@ -243,15 +247,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `第一个男人`
-- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
+- Keyword: `医到孤岛爱上你`
+- URL: https://www.thanju.com/search/%E5%8C%BB%E5%88%B0%E5%AD%A4%E5%B2%9B%E7%88%B1%E4%B8%8A%E4%BD%A0.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 | OK | 医到孤岛爱上你 | 01 | https://cdn.yzzy31-play.com/20260601/21399_07e6663e/index.m3u8 |
 | OK | 菜鸟炊事兵 | 01 | https://player.yzzyvip-35.com/20260511/6413_a543c921/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 
 </details>
 
@@ -272,15 +276,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `红了樱桃绿了芭蕉`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%BA%A2%E4%BA%86%E6%A8%B1%E6%A1%83%E7%BB%BF%E4%BA%86%E8%8A%AD%E8%95%89&submit=
+- Keyword: `女画师`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%A5%B3%E7%94%BB%E5%B8%88&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 红了樱桃绿了芭蕉 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlR7XgBMXiUNHiR69nBJ0nBJ0mDZb6CpL5DYvjS34/chunklist.m3u8 |
+| OK | 女画师 | 第1集 | https://vid.dbokutv.com/20260616/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtPsRsGlQ79nBMveSoqmCIqmCaL3GpH2GZ0kRN0q/chunklist.m3u8 |
 | OK | 安全距离 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8Nj3aubh2ujJOMc1YMc1aPd9YX6faYbpQu64/chunklist.m3u8 |
-| OK | 银河的一票 | 第1集 | https://vid.dbokutv.com/20260421/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNbeP7bmBJ0nBJ0pC38rCZOrCYvjS34/chunklist.m3u8 |
+| OK | 所爱之人 | 第1集 | https://vid.dbokutv.com/20260411/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xOy6ejSs5wSYqmCIqmCZ4pE3GnHJGkRN0q/chunklist.m3u8 |
 
 </details>
 
