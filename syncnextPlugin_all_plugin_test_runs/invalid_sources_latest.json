@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T04:53:48.451Z",
+  "generatedAt": "2026-06-18T04:53:09.872Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,16 +31,16 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 2
+        "plugin_empty_view": 3
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "克拉克森的农场第五季",
+          "mediaTitle": "太阳的后裔",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813074.html",
+          "detailURL": "https://www.libvio.cam/detail/5813098.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -50,7 +50,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813074.html",
+              "url": "https://www.libvio.cam/detail/5813098.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -60,9 +60,9 @@
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "医到孤岛爱上你",
+          "mediaTitle": "度假季",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813068.html",
+          "detailURL": "https://www.libvio.cam/detail/5813096.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -72,7 +72,29 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813068.html",
+              "url": "https://www.libvio.cam/detail/5813096.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "小镇魔发师",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813095.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813095.html",
               "status": 200,
               "safeLine": false,
               "error": ""
