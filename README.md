@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-18T04:53:09.872Z`
+Generated: `2026-06-19T04:54:02.532Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,7 +23,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Partial | OK 2/2 | OK | Not Reached | 2/5 | plugin_empty_view:3 |
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `加油吧！中村君！`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B%EF%BC%81/vod/0/1/4
+- Keyword: `你又被杀了呢，侦探大人`
+- URL: https://api.olelive.com/v1/pub/index/search/%E4%BD%A0%E5%8F%88%E8%A2%AB%E6%9D%80%E4%BA%86%E5%91%A2%EF%BC%8C%E4%BE%A6%E6%8E%A2%E5%A4%A7%E4%BA%BA/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 加油吧！中村君！ | 第01集 | https://europe.olemovienews.com/ts4/20260402/piuingqd/mp4/piuingqd.mp4/master.m3u8 |
-| OK | 心间错 | 第01集 | https://europe.olemovienews.com/ts4/20260617/tp0dvmh7/mp4/tp0dvmh7.mp4/master.m3u8 |
-| OK | 翘楚 | 第01集 | https://europe.olemovienews.com/ts4/20260602/w3wbw5j4/mp4/w3wbw5j4.mp4/master.m3u8 |
+| OK | 你又被杀了呢，侦探大人 | 第01集 | https://europe.olemovienews.com/ts4/20260402/p2aj6efz/mp4/p2aj6efz.mp4/master.m3u8 |
+| OK | 吞噬魔物的冒险者 | 第01集 | https://europe.olemovienews.com/ts4/20260402/g2q0l1oa/mp4/g2q0l1oa.mp4/master.m3u8 |
+| OK | 淡岛百景 | 第01集 | https://europe.olemovienews.com/ts4/20260410/eefa6870/mp4/eefa6870.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,25 +93,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `加油吧！中村君!!`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `淡岛百景`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 加油吧！中村君!! | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_cc1cdvL%2FTJqwCcmeiieREL16RxphOEy72b%2FI4cKkNag1mon%2FOIai0O0dO9RpTdKmwnXn%2Fi02PjpOctsfb0UXoaiIb34Mozmw7ZcnSdjaKlUC%2FXneXAhT%2FXsS |
-| OK | 转生成自动贩卖机的我今天也在迷宫徘徊 第三季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_a1bbZEwrmZgP7z62BnCxjZ3rTE%2B%2BaCz8WWT16DIfDdsYLJFPBXyRSvtmTWqybCZTTxnLZqkxr82PwKF29uqj3qphqLQZxoEWPKwb8wAidNXtLzexXeOqbG41Lw |
-| OK | 冰之城墙 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_25c06MIROhWNIpS%2BhKhROY6fxkLtQ7EwtEVk4gLDhq17aavPovyYYDs4SegDYcoHCN4vj15luQN9Zv4aep5ZjcFiKWhYZx3pGQVpdrTbU0%2BSMuB0%2BtnfT%2BEI |
-
-Failed Case Diagnostics
-- keyword:加油吧！中村君!! | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%8A%A0%E6%B2%B9%E5%90%A7%EF%BC%81%E4%B8%AD%E6%9D%91%E5%90%9B!!
+| OK | 淡岛百景 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_d9e6ylxbsUFG86%2BOhmO9THwhx6H3XAnAxfc5f8d7%2FlIT5CK1%2BibQuw1FzfSL4GYt6d%2BWaaSwFa9JA%2BZxrMxf8lfFkbf8Rmx2b1MVY6UkeukVT4XMV8jjiOWb |
+| OK | 轮回的花瓣 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_d64d8nzBTCehKMszeLTq3ftHp62BnOQi8bWaOg6p1kLEi3L9ifeBP3tQioIRtdcWopqyAGeiaMLBvpn5%2BsdtKmg4NwA%2BfmexAT%2BK2NpPSq1TZ5S9xrG5gRQk |
+| OK | 雾尾粉丝后援会 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_dc94FDp2Vj2OQWq%2Ftb0VJlv5HOTGXBPWqs5iokfI2xAhSxY7CAM0k7PhvpkSjtb3g89SNVw8Dol98xN076Q%2FdsLDIT2z22hAQheuIu1%2BeVuogYUNuqjbzHvF |
 
 </details>
 
@@ -217,28 +208,28 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `太阳的后裔`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E5%A4%AA%E9%98%B3%E7%9A%84%E5%90%8E%E8%A3%94
+- Keyword: `伪装的真实之吻`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E4%BC%AA%E8%A3%85%E7%9A%84%E7%9C%9F%E5%AE%9E%E4%B9%8B%E5%90%BB
 
 Playback Cases
 - Not reached
 
 Failed Case Diagnostics
-- 太阳的后裔 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813098.html
+- 伪装的真实之吻 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813064.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813098.html
-- 度假季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813096.html
+  - `GET 200` https://www.libvio.cam/detail/5813064.html
+- 因为不想吃亏 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813126.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813096.html
-- 小镇魔发师 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813095.html
+  - `GET 200` https://www.libvio.cam/detail/5813126.html
+- 我会找到你 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813125.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813095.html
+  - `GET 200` https://www.libvio.cam/detail/5813125.html
 
 </details>
 
@@ -259,15 +250,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `第一个男人`
-- URL: https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
+- Keyword: `我们愉快的好日子`
+- URL: https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
-| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 | OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 
 </details>
 
@@ -288,13 +279,13 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `安全距离`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%AE%89%E5%85%A8%E8%B7%9D%E7%A6%BB&submit=
+- Keyword: `今夜在秘密厨房`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%BB%8A%E5%A4%9C%E5%9C%A8%E7%A7%98%E5%AF%86%E5%8E%A8%E6%88%BF&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 安全距离 | 第1集 | https://vid.dbokutv.com/20260609/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8Nj3aubh2ujJOMc1YMc1aPd9YX6faYbpQu64/chunklist.m3u8 |
+| OK | 今夜在秘密厨房 | 第1集 | https://vid.dbokutv.com/20260411/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBMfvUcrjOsOjC34jC3CvGK8nH3WtBcrmD0/chunklist.m3u8 |
 | OK | 女画师 | 第1集 | https://vid.dbokutv.com/20260616/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtPsRsGlQ79nBMveSoqmCIqmCaL3GpH2GZ0kRN0q/chunklist.m3u8 |
 | OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
 
