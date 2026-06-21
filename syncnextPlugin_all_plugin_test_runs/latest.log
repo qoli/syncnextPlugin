@@ -10,35 +10,43 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "82671",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260620-1/684ea37406f9be3b707cabb4f600a160.jpg",
-  "title": "真爱留声",
-  "descriptionText": "超清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82671/true"
+  "id": "80974",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260405-1/c3684850d221d443fac92839f0bb7fb0.jpg",
+  "title": "楠木邸的神明庭院",
+  "descriptionText": "更新至第12集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/80974/true"
 }
-[plugin 1] search keyword=真爱留声 url=https://api.olelive.com/v1/pub/index/search/%E7%9C%9F%E7%88%B1%E7%95%99%E5%A3%B0/vod/0/1/4
-[plugin 1] search results=0
-[FAIL] 新歐樂影院 | search(真爱留声) -> 0
-[OK] 新歐樂影院 | 真爱留声 | 立即播放 -> https://europe.olemovienews.com/ts4/20260619/aid7acel/mp4/aid7acel.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 凡人修仙传 | 第01集 -> https://europe.olemovienews.com/ts1/20200726/bewBHFlz/mp4/bewBHFlz.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 莫离 | 第01集 -> https://europe.olemovienews.com/ts4/20260609/ngnmcv2o/mp4/ngnmcv2o.mp4/master.m3u8 | candidates=1
+[plugin 1] search keyword=楠木邸的神明庭院 url=https://api.olelive.com/v1/pub/index/search/%E6%A5%A0%E6%9C%A8%E9%82%B8%E7%9A%84%E7%A5%9E%E6%98%8E%E5%BA%AD%E9%99%A2/vod/0/1/4
+[plugin 1] search results=1
+[plugin 1] search sample(index=0)
+{
+  "id": "80974",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260405-1/c3684850d221d443fac92839f0bb7fb0.jpg",
+  "title": "楠木邸的神明庭院",
+  "descriptionText": "更新至第12集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/80974/true"
+}
+[OK] 新歐樂影院 | search(楠木邸的神明庭院) -> 1
+[OK] 新歐樂影院 | 楠木邸的神明庭院 | 第01集 -> https://europe.olemovienews.com/ts4/20260404/u2qgd2s7/mp4/u2qgd2s7.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 春夏秋冬代行者 春之舞 | 第01集 -> https://europe.olemovienews.com/ts4/20260328/ujll5z16/mp4/ujll5z16.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 云秀行 | 第01集 -> https://europe.olemovienews.com/ts4/20260620/sweuhwom/mp4/sweuhwom.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260080",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260080.jpg",
-  "title": "上伊那牡丹，酒醉身姿似百合花般",
+  "id": "20260090",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260090.jpg",
+  "title": "一叠间漫画咖啡屋生活！",
   "descriptionText": "第11集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260080"
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260090"
 }
-[plugin 2] search keyword=上伊那牡丹，酒醉身姿似百 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9%EF%BC%8C%E9%85%92%E9%86%89%E8%BA%AB%E5%A7%BF%E4%BC%BC%E7%99%BE
+[plugin 2] search keyword=一叠间漫画咖啡屋生活！ url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%B8%80%E5%8F%A0%E9%97%B4%E6%BC%AB%E7%94%BB%E5%92%96%E5%95%A1%E5%B1%8B%E7%94%9F%E6%B4%BB%EF%BC%81
 [plugin 2] search results=0
-[FAIL] 新 AGE 動漫 | search(上伊那牡丹，酒醉身姿似百) -> 0
-[OK] 新 AGE 動漫 | 上伊那牡丹，酒醉身姿似百合花般 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_f0b20Lo%2B6OffVGsKZ3rHjygP%2F8Z4lDxqqLE1Lrn%2Fyz4Ris43uso9BXaKNXC2XjI6S1Kwh%2FDbktk7QPE9POeDie2BtOQD3nNBCKXEMhV2vBCDF7BySu5PKkgH | candidates=6
-[OK] 新 AGE 動漫 | 冻结地球 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_d411YquOzvDGcxTluoB3HSg4ivDxZb790mlKJcABSgd4pksA5g9ck7CxT%2Fp4Ho4kmQ49dmXFSHzDPfPoATM18PmOCHbRTcOYgKgm36tB9hkFvn7KV7KYGQZB | candidates=6
-[OK] 新 AGE 動漫 | 神之水滴 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_af8awC24QLT7zfHpi9MrC1OHKJdb8o7AESsH962iGxJM%2F76L5OPtY3rgj%2FRs9IGY7akW4Gk2pErHrTHuQYQeGBopGErzt%2FiorBlG6PRYohSV0YtojmHVwOHQ | candidates=6
+[FAIL] 新 AGE 動漫 | search(一叠间漫画咖啡屋生活！) -> 0
+[OK] 新 AGE 動漫 | 一叠间漫画咖啡屋生活！ | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_8ecezHlkoRAMxyrk62zqA3Qw9VVuGT%2FqzaIFL%2BdI3HIASG%2BSE%2FB4dBRjLSQnvgbSDNSfJeQ47KRXQylsjxNuoysxNioENVoIXGFnCFBm5Z6SIoHmiKrK2778 | candidates=6
+[OK] 新 AGE 動漫 | 主播女孩重度依赖 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_d369T9F5UyM7%2F9J4KEzH4zzv0fpuQbO42SecfwMBn%2F76lR2KAC6VOQb326O2QXFqffA7NP3i4sr0faQnrJLkNCKhUNnMiuXkGuRkuZ7tpNHWh8u2%2BWSkVDsM | candidates=6
+[OK] 新 AGE 動漫 | 楠木邸的神明庭院 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_83c55MYbn3umD9w5w%2BycQc7SFSri4anvX20EeVoGHU4wxC3ywkYEIxXUBuzHXWtKzpvqWnYl%2F0ZsO1FNIN8cnV0K%2ByTdF3IGtSlhPd4lUvc%2FnN4PjTzXy69B | candidates=6
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -56,30 +64,38 @@
 [plugin 5] medias total=60, testing=3
 [plugin 5] buildMedias sample(index=0)
 {
-  "id": "https://www.libvio.cam/detail/5813146.html",
-  "coverURLString": "https://pic3.yzzyimg.online/upload/vod/2026-06-20/202606201781929231.jpg",
-  "title": "豆豆农场",
-  "descriptionText": "01期/周六更新",
-  "detailURLString": "https://www.libvio.cam/detail/5813146.html"
+  "id": "https://www.libvio.cam/detail/5812956.html",
+  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260405-1/25b2c63bfc9f03b2230abf39188d9b1a.jpg",
+  "title": "黄泉的使者",
+  "descriptionText": "第12集/周六更新",
+  "detailURLString": "https://www.libvio.cam/detail/5812956.html"
 }
-[plugin 5] search keyword=豆豆农场 url=https://www.libvio.cam/search/-------------.html?wd=%E8%B1%86%E8%B1%86%E5%86%9C%E5%9C%BA
-[plugin 5] search results=0
-[FAIL] libvio | search(豆豆农场) -> 0
-[FAIL] libvio | 豆豆农场 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
-[FAIL] libvio | 孤独的美食家第十一季 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
-[FAIL] libvio | 田锁兄弟 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[plugin 5] search keyword=黄泉的使者 url=https://www.libvio.cam/search/-------------.html?wd=%E9%BB%84%E6%B3%89%E7%9A%84%E4%BD%BF%E8%80%85
+[plugin 5] search results=1
+[plugin 5] search sample(index=0)
+{
+  "id": "https://www.libvio.cam/detail/5812956.html",
+  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260405-1/25b2c63bfc9f03b2230abf39188d9b1a.jpg",
+  "title": "黄泉的使者",
+  "descriptionText": "第12集/周六更新",
+  "detailURLString": "https://www.libvio.cam/detail/5812956.html"
+}
+[OK] libvio | search(黄泉的使者) -> 1
+[FAIL] libvio | 黄泉的使者 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[FAIL] libvio | 新进职员姜会长 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[FAIL] libvio | 欠你的那场婚礼 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
 [plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
 [OK] 韩剧网 | connectivity -> 3 target(s), pass=https://www.thanju.com
 [plugin 6] medias total=30, testing=3
 [plugin 6] buildMedias sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2536.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/6a35f4833afe2.jpg",
-  "title": "人夫总动员",
-  "descriptionText": "0 · 陈善圭 孔明 金知硕 尹敬浩",
-  "detailURLString": "https://www.thanju.com/detail/2536.html"
+  "id": "https://www.thanju.com/detail/2533.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/6a1b867d3d9cb.jpg",
+  "title": "新进职员姜会长",
+  "descriptionText": "第7集 · 李濬荣 孙贤周 李周明 全慧珍",
+  "detailURLString": "https://www.thanju.com/detail/2533.html"
 }
-[plugin 6] search keyword=人夫总动员 url=https://www.thanju.com/search/%E4%BA%BA%E5%A4%AB%E6%80%BB%E5%8A%A8%E5%91%98.html
+[plugin 6] search keyword=新进职员姜会长 url=https://www.thanju.com/search/%E6%96%B0%E8%BF%9B%E8%81%8C%E5%91%98%E5%A7%9C%E4%BC%9A%E9%95%BF.html
 [plugin 6] search results=2
 [plugin 6] search sample(index=0)
 {
@@ -89,38 +105,38 @@
   "descriptionText": "人夫总动员",
   "detailURLString": "https://www.thanju.com/detail/2536.html"
 }
-[OK] 韩剧网 | search(人夫总动员) -> 2
-[OK] 韩剧网 | 人夫总动员 | HD -> https://cdn.yzzyvip-29.com/20260619/24972_2145031a/index.m3u8 | candidates=1
-[OK] 韩剧网 | 我们愉快的好日子 | 01 -> https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 | candidates=1
-[OK] 韩剧网 | 第一个男人 | 01 -> https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 | candidates=1
+[OK] 韩剧网 | search(新进职员姜会长) -> 2
+[OK] 韩剧网 | 新进职员姜会长 | 01 -> https://cdn.vvvip-plays33.cc/20260531/14095_1f3f1ae7/index.m3u8 | candidates=1
+[OK] 韩剧网 | 大叔再出招 | 01 -> https://cdn.vvvip-plays33.cc/20260522/13861_320274ee/index.m3u8 | candidates=1
+[OK] 韩剧网 | 我的王室死对头 | 01 -> https://cdn.vvvip-plays33.cc/20260508/13433_c7876d6b/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/145969.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/qfGehIYB7NHHTmvMNsPQw2wTH06.jpg",
-  "title": "白夜暗影",
-  "descriptionText": "更新至15集",
-  "detailURLString": "https://www.dbku.tv/voddetail/145969.html"
+  "id": "https://www.dbku.tv/voddetail/144999.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/ArPS96v7bc0qUVJSwATvVclOSMZ.jpg",
+  "title": "大叔再出招",
+  "descriptionText": "更新至10集",
+  "detailURLString": "https://www.dbku.tv/voddetail/144999.html"
 }
-[plugin 7] search keyword=白夜暗影 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%99%BD%E5%A4%9C%E6%9A%97%E5%BD%B1&submit=
+[plugin 7] search keyword=大叔再出招 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%A4%A7%E5%8F%94%E5%86%8D%E5%87%BA%E6%8B%9B&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/145969.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/qfGehIYB7NHHTmvMNsPQw2wTH06.jpg",
-  "title": "白夜暗影",
-  "descriptionText": "更新至15集",
-  "detailURLString": "https://www.dbku.tv/voddetail/145969.html"
+  "id": "https://www.dbku.tv/voddetail/144999.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/ArPS96v7bc0qUVJSwATvVclOSMZ.jpg",
+  "title": "大叔再出招",
+  "descriptionText": "更新至10集",
+  "detailURLString": "https://www.dbku.tv/voddetail/144999.html"
 }
-[OK] 独播库 | search(白夜暗影) -> 1
-[OK] 独播库 | 白夜暗影 | 第1集 -> https://vid.dbokutv.com/20260620/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlQ79nBM9vONajC34jC354HJWuCp4vBcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 似火年华 | 第1集 -> https://vid.dbokutv.com/20260615/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlQ79nBNDeRcWjC34jC34uDJ54HJD6BcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 妻本善良 | 第1集 -> https://vid.dbokutv.com/20260618/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xGvE9QuiJcs5fWObfWP6QCY8HoOcfSsk1K/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(大叔再出招) -> 1
+[OK] 独播库 | 大叔再出招 | 第1集 -> https://vid.dbokutv.com/20260524/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBMHpUcDwBJ0nBJ0nDqOuGKD3GovjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 我的王室死对头 | 第1集 -> https://vid.dbokutv.com/20260509/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTaTtDpP7GjC34jC34oGJH3C3L2BcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 爱情有烟火 | 第1集 -> https://vid.dbokutv.com/20260616/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBM5nUNbeBJ0nBJ0nHJ4sE3P2HIvjS34/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_113347fd-5969-42e7-bebd-b0b4765b5d8f
-[summary] plugins=7, fatal=2, cases=29, ok=18, fail=11, invalidSources=3
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_50f4db4b-3ce9-4c46-8da3-00bdb4c6bea8
+[summary] plugins=7, fatal=2, cases=29, ok=20, fail=9, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
