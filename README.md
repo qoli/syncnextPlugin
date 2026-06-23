@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-22T04:54:03.260Z`
+Generated: `2026-06-23T04:40:50.001Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,10 +23,10 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | Empty | OK 2/2 | 2/5 | connectivity_failed:1, search_empty:1, unknown:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 1/2 | Empty | Not Reached | 1/5 | search_empty:1, plugin_empty_view:3 |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | Partial 1/2 | 3/5 | callback_timeout:1, plugin_empty_view:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -36,7 +36,7 @@ Invalid sources: `4`
 - `plugin_olevod` 新歐樂影院: unknown:1
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:3
+- `plugin_libvio` libvio: callback_timeout:1, plugin_empty_view:1
 
 ### Plugin Details
 
@@ -57,16 +57,16 @@ Connectivity
 
 Search
 - Status: `Empty`
-- Keyword: `困在心绪里的儿子`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%9B%B0%E5%9C%A8%E5%BF%83%E7%BB%AA%E9%87%8C%E7%9A%84%E5%84%BF%E5%AD%90/vod/0/1/4
+- Keyword: `天才瑞普利2`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%A4%A9%E6%89%8D%E7%91%9E%E6%99%AE%E5%88%A92/vod/0/1/4
 - Reason: `search_empty`
 - Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 传奇办公室：中央情报 第二季 | 第01集 | https://europe.olemovienews.com/ts4/20260621/d0b4if6q/mp4/d0b4if6q.mp4/master.m3u8 |
-| OK | 渎神者的灵扉 | 立即播放 | https://europe.olemovienews.com/ts4/20260621/6128mvvt/mp4/6128mvvt.mp4/master.m3u8 |
+| OK | 尖帽子的魔法工坊 | 第01集 | https://europe.olemovienews.com/ts4/20260407/3tmyuahz/mp4/3tmyuahz.mp4/master.m3u8 |
+| OK | 异世界悠闲农家 第二季 | 第01集 | https://europe.olemovienews.com/ts4/20260406/iy9618lf/mp4/iy9618lf.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -76,27 +76,27 @@ Failed Case Diagnostics
   - `GET 404` https://api.olelive.com/ | status 404
   - `GET 401` https://api.olelive.com/v1/pub/vod/newest/1/12 | status 401
   - `GET 401` https://api.olelive.com/v1/pub/index/search/test/vod/0/1/4 | status 401
-- keyword:困在心绪里的儿子 | stage=`search` | reason=`search_empty`
-  - detailURL: https://api.olelive.com/v1/pub/index/search/%E5%9B%B0%E5%9C%A8%E5%BF%83%E7%BB%AA%E9%87%8C%E7%9A%84%E5%84%BF%E5%AD%90/vod/0/1/4
+- keyword:天才瑞普利2 | stage=`search` | reason=`search_empty`
+  - detailURL: https://api.olelive.com/v1/pub/index/search/%E5%A4%A9%E6%89%8D%E7%91%9E%E6%99%AE%E5%88%A92/vod/0/1/4
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 200` https://api.olelive.com/v1/pub/index/search/%E5%9B%B0%E5%9C%A8%E5%BF%83%E7%BB%AA%E9%87%8C%E7%9A%84%E5%84%BF%E5%AD%90/vod/0/1/4?_vv=ad908039a101091eecd1414b884321ae
-- 困在心绪里的儿子 | stage=`episodes` | reason=`unknown`
-  - detailURL: https://api.olelive.com/v1/pub/vod/detail/43792/true
+  - `GET 200` https://api.olelive.com/v1/pub/index/search/%E5%A4%A9%E6%89%8D%E7%91%9E%E6%99%AE%E5%88%A92/vod/0/1/4?_vv=3910982cbf21079cbfa1438608e32df0
+- 天才瑞普利2 | stage=`episodes` | reason=`unknown`
+  - detailURL: https://api.olelive.com/v1/pub/vod/detail/82688/true
   - detail: no episodes
   - http diagnostics:
-  - `GET 200` https://api.olelive.com/v1/pub/vod/detail/43792/true?_vv=ad908039a101091eecd1414b884321ae
+  - `GET 200` https://api.olelive.com/v1/pub/vod/detail/82688/true?_vv=90e0991ffaf106840031423054432cdf
 
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -105,25 +105,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `魔法的姐妹露露和莉莉`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E9%AD%94%E6%B3%95%E7%9A%84%E5%A7%90%E5%A6%B9%E9%9C%B2%E9%9C%B2%E5%92%8C%E8%8E%89%E8%8E%89
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `日本三国`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%97%A5%E6%9C%AC%E4%B8%89%E5%9B%BD
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 魔法的姐妹露露和莉莉 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_17a9gcIQS6cQdUePXHZB69BnvIbYkMLkh%2Fv%2BlF%2BTtGqSH0cfdRp5kMxz4ifnv1nRAQm01fQUZOvBQ7U%2BYW6w6ECln2Qp%2BExzY7eAS0PWv3f5L6CnzOehqCMw |
-| OK | 淫狱团地 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_0f3dD7RxMiOSCJSn3aQ%2FrmtxlooYTjN%2F671pq4LmJbqbht%2BWzXNFhvz7kuN1gv6ar8AVS7U5EV07su0x88X4Ao549Se175eRqsdV6YwkKUcqthvHt6fU0qtz |
-| OK | 幽灵音乐会 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_7150ni2WVzeCLQixX%2FUUoCeuYJm0PFvufKr4Rp9tMw9zWNHAXPgPGD90ulKTOBuq%2B5IOuGbKycS0xzFbkL2MgE1RzftIABHf%2BM50RYvG%2F%2BCMoYz%2FWRCxIwCn |
-
-Failed Case Diagnostics
-- keyword:魔法的姐妹露露和莉莉 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E9%AD%94%E6%B3%95%E7%9A%84%E5%A7%90%E5%A6%B9%E9%9C%B2%E9%9C%B2%E5%92%8C%E8%8E%89%E8%8E%89
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E9%AD%94%E6%B3%95%E7%9A%84%E5%A7%90%E5%A6%B9%E9%9C%B2%E9%9C%B2%E5%92%8C%E8%8E%89%E8%8E%89
+| OK | 日本三国 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_3ec3wWbZpdEqdRkoMaa4pNgTr9Pky3V2e9ukN3qykGb%2Fl%2BrHLGCZexEz8vvcMnPOaW2ThysPXTR4YKU4whLagGdl67MCfQSyZ5jdnjQSvJtwytYzio06gocK |
+| OK | 尖帽子的魔法工坊 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_fe14hYz%2FzXz%2FgRgPdGJkgAMYdU76Mj5WqZTFBLVIqyIm7cVxDFSsxdV%2Fry9OMNbTvJMY4Cu9WPU9rsUuWzNZHVpakb11zelywiJuGhTQfZyk1X7iHrWEgf4L |
+| OK | 木头风纪委员和迷你裙JK的故事 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_38abS2NAr3xzEb8%2FaLsC1%2FlxTJNGOCtnoxM1QVXXz6mGmbwyqyHzZ0AIxTgEtgNS%2BR7TLgrLUMGuk5vZbbgJzOJPQBwfHmwyMdfJsBVTkYbRINZDC5F9fck4 |
 
 </details>
 
@@ -214,50 +205,45 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 1/2 · search=Empty · playback=Not Reached · reasons=search_empty:1, plugin_empty_view:3</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Partial 1/2 · reasons=callback_timeout:1, plugin_empty_view:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
-- Cases: `1/5`
-- Reasons: `search_empty:1, plugin_empty_view:3`
+- Cases: `3/5`
+- Reasons: `callback_timeout:1, plugin_empty_view:1`
 - Note: libvio
 
 Connectivity
 - [OK] `HEAD 200` https://www.libvio.cam/
-- [FAIL] `GET 520` https://www.libvio.cam/search/-------------.html?wd=test | status 520
+- [OK] `HEAD 200` https://www.libvio.cam/search/-------------.html?wd=test
 
 Search
-- Status: `Empty`
-- Keyword: `龙之家族第三季`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E9%BE%99%E4%B9%8B%E5%AE%B6%E6%97%8F%E7%AC%AC%E4%B8%89%E5%AD%A3
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `欺诈游戏`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
 
 Playback Cases
-- Not reached
+| Result | Media | Episode | Output |
+| --- | --- | --- | --- |
+| FAIL | 欺诈游戏 | HD7播放 第01话 | callback_timeout |
+| OK | 尖帽子的魔法工坊 | HD7播放 第01话 | https://v16-aiop.bytepluscdn.com/02dfca09d3f08515668f209e0ade2689/6a3e07bd/video/tos/alisg/tos-alisg-ve-0051c001-sg/o4YaweatBEv33T1AAdiUQCNTRBfFp2BIi5gsD0/?filename=BBA@ckfiv.mp4 |
 
 Failed Case Diagnostics
-- keyword:龙之家族第三季 | stage=`search` | reason=`search_empty`
-  - detailURL: https://www.libvio.cam/search/-------------.html?wd=%E9%BE%99%E4%B9%8B%E5%AE%B6%E6%97%8F%E7%AC%AC%E4%B8%89%E5%AD%A3
-  - detail: 搜尋執行成功但結果為空
+- 欺诈游戏 | HD7播放 第01话 | stage=`player` | reason=`callback_timeout`
+  - detailURL: https://www.libvio.cam/detail/5812943.html
+  - episodeURL: https://www.libvio.cam/play/5812943-4-1.html
+  - detail: 等待插件回調超時，可能是站點回應慢或頁面結構改版
   - http diagnostics:
-  - `GET 520` https://www.libvio.cam/search/-------------.html?wd=%E9%BE%99%E4%B9%8B%E5%AE%B6%E6%97%8F%E7%AC%AC%E4%B8%89%E5%AD%A3
-- 龙之家族第三季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813148.html
+  - `GET 200` https://www.libvio.cam/play/5812943-4-1.html
+  - `GET 200` https://www.libvio.cam/static/player/BBA.js
+  - `GET 200` https://www.libvio.cam/static/player/artplayer/?url=5a614d573035683671514d427666614858436639717062517a56564d384b727969633577367561636e737330436869507966666d7661666a68444374316c50684f4a433155707a44504c36576f5948367a435952454c76374b713159316779364b34415843324249345a33356235653934705131375835586d517574707a41366e69315348704c56615769764b7156584b4649467233504d58487a5356364b693747714959706c305852326c34385166335a4d4e566f392f423336303759504f2f2f366d4a73734d4b4a54774258732f634b4e4d782b31315638673447516c7142594b58436646766b595370443054534974694e70714e54345169516e42323858344f6e43393170504141674b62536444695a4b625850716635496a6f6b505236616850534f464c37364c644337466571745531516349436848625135746670725649363231366d666849774779785176353642765879336f75692b4f50496d51666c6652333465356d66764969754359363767503150636c77746a686c71774b5376586159346d6f374544377863753175714c777333315842503265326b6f2f5844314878442f31364c2b4f39614d6a4d5176786d38497573433264546e346e6773774f5a316674722b493745386d51632f6d4d6e6f4c774965386f4139645735516a4a386f684447427072495049617374704c6b775037323074305658754c31536e416a4d43636e6e317a374b444b6d706379564b33443433494662524562396c425578394541533569382b73793369575a617741706d6f43796449596d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2943-4-2.html
+  - `POST 200` https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php
+- 医到孤岛爱上你 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813068.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813148.html
-- 新进职员姜会长 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813067.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 520` https://www.libvio.cam/detail/5813067.html
-- 星城第一季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813073.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 520` https://www.libvio.cam/detail/5813073.html
+  - `GET 200` https://www.libvio.cam/detail/5813068.html
 
 </details>
 
@@ -278,15 +264,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `新进职员姜会长`
-- URL: https://www.thanju.com/search/%E6%96%B0%E8%BF%9B%E8%81%8C%E5%91%98%E5%A7%9C%E4%BC%9A%E9%95%BF.html
+- Keyword: `明天也要上班！`
+- URL: https://www.thanju.com/search/%E6%98%8E%E5%A4%A9%E4%B9%9F%E8%A6%81%E4%B8%8A%E7%8F%AD%EF%BC%81.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 新进职员姜会长 | 01 | https://cdn.vvvip-plays33.cc/20260531/14095_1f3f1ae7/index.m3u8 |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
-| OK | 大叔再出招 | 01 | https://cdn.vvvip-plays33.cc/20260522/13861_320274ee/index.m3u8 |
+| OK | 明天也要上班！ | 01 | https://cdn.yzzy28-play.com/20260622/31686_1f034ade/index.m3u8 |
+| OK | 医到孤岛爱上你 | 01 | https://cdn.yzzy31-play.com/20260601/21399_07e6663e/index.m3u8 |
+| OK | 第一个男人 | 01 | https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 |
 
 </details>
 
@@ -307,15 +293,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `监狱星级餐厅`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%9B%91%E7%8B%B1%E6%98%9F%E7%BA%A7%E9%A4%90%E5%8E%85&submit=
+- Keyword: `白夜暗影`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%99%BD%E5%A4%9C%E6%9A%97%E5%BD%B1&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 监狱星级餐厅 | 第1集 | https://vid.dbokutv.com/20260525/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJWlQ7PlP2ysF3KMjJoy6fZT2qmCYqmCaKmEK8sD4GkRN0q/chunklist.m3u8 |
-| OK | 顾问：书写死亡的男人 | 第1集 | https://vid.dbokutv.com/20260622/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBMTtStXpTsHkSYqmCIqmCJGuCa8nCJ4kRN0q/chunklist.m3u8 |
-| OK | 东京P.D.警视厅公关二课第2季 | 第1集 | https://vid.dbokutv.com/20260622/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBMHgS2vaBcfpT6TdPMjaCcejC34jC316EK56DpauBcrmD0/chunklist.m3u8 |
+| OK | 白夜暗影 | 第1集 | https://vid.dbokutv.com/20260620/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlQ79nBM9vONajC34jC354HJWuCp4vBcrmD0/chunklist.m3u8 |
+| OK | 妻本善良 | 第1集 | https://vid.dbokutv.com/20260618/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xGvE9QuiJcs5fWObfWP6QCY8HoOcfSsk1K/chunklist.m3u8 |
+| OK | 一念初见锦衣谣 | 第1集 | https://vid.dbokutv.com/20260620/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlQ79nBNbkOsfgUNajC34jC316Gp4qHZ11BcrmD0/chunklist.m3u8 |
 
 </details>
 
