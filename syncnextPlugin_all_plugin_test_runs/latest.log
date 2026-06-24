@@ -10,43 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "82688",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260622-1/e819d7ac88eedeb5483c1a61d1ae791a.jpg",
-  "title": "天才瑞普利2",
-  "descriptionText": "超清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82688/true"
+  "id": "81056",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260407-1/efd07ca38a7b4fc6fa1045926fa07625.jpg",
+  "title": "身为悲剧始作俑者的最强邪恶BOSS女王为民竭心尽力。 第二季 ",
+  "descriptionText": "完结",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81056/true"
 }
-[plugin 1] search keyword=天才瑞普利2 url=https://api.olelive.com/v1/pub/index/search/%E5%A4%A9%E6%89%8D%E7%91%9E%E6%99%AE%E5%88%A92/vod/0/1/4
-[plugin 1] search results=0
-[FAIL] 新歐樂影院 | search(天才瑞普利2) -> 0
-[FAIL] 新歐樂影院 | 天才瑞普利2 | no episodes | reason=unknown
-[OK] 新歐樂影院 | 尖帽子的魔法工坊 | 第01集 -> https://europe.olemovienews.com/ts4/20260407/3tmyuahz/mp4/3tmyuahz.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 异世界悠闲农家 第二季 | 第01集 -> https://europe.olemovienews.com/ts4/20260406/iy9618lf/mp4/iy9618lf.mp4/master.m3u8 | candidates=1
+[plugin 1] search keyword=身为悲剧始作俑者的最强邪 url=https://api.olelive.com/v1/pub/index/search/%E8%BA%AB%E4%B8%BA%E6%82%B2%E5%89%A7%E5%A7%8B%E4%BD%9C%E4%BF%91%E8%80%85%E7%9A%84%E6%9C%80%E5%BC%BA%E9%82%AA/vod/0/1/4
+[plugin 1] search results=2
+[plugin 1] search sample(index=0)
+{
+  "id": "81056",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260407-1/efd07ca38a7b4fc6fa1045926fa07625.jpg",
+  "title": "身为悲剧始作俑者的最强邪恶BOSS女王为民竭心尽力。 第二季 ",
+  "descriptionText": "完结",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/81056/true"
+}
+[OK] 新歐樂影院 | search(身为悲剧始作俑者的最强邪) -> 2
+[OK] 新歐樂影院 | 身为悲剧始作俑者的最强邪恶BOSS女王为民竭心尽力。 第二季  | 第01集 -> https://europe.olemovienews.com/ts4/20260407/qyzffytq/mp4/qyzffytq.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 婚姻剧毒 | 第01集 -> https://europe.olemovienews.com/ts4/20260407/qn32ezk5/mp4/qn32ezk5.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 复制品的我也会谈恋爱 | 第01集 -> https://europe.olemovienews.com/ts4/20260407/raj7vr58/mp4/raj7vr58.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260070",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260070.jpg",
-  "title": "日本三国",
-  "descriptionText": "第12集(完结) · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260070"
+  "id": "20260072",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260072.jpg",
+  "title": "左撇子艾伦",
+  "descriptionText": "已完结 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260072"
 }
-[plugin 2] search keyword=日本三国 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%97%A5%E6%9C%AC%E4%B8%89%E5%9B%BD
+[plugin 2] search keyword=左撇子艾伦 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B7%A6%E6%92%87%E5%AD%90%E8%89%BE%E4%BC%A6
 [plugin 2] search results=1
 [plugin 2] search sample(index=0)
 {
-  "id": "20260070",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260070.jpg",
-  "title": "日本三国",
-  "descriptionText": "第12集(完结) · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260070"
+  "id": "20260072",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260072.jpg",
+  "title": "左撇子艾伦",
+  "descriptionText": "已完结 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260072"
 }
-[OK] 新 AGE 動漫 | search(日本三国) -> 1
-[OK] 新 AGE 動漫 | 日本三国 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_3ec3wWbZpdEqdRkoMaa4pNgTr9Pky3V2e9ukN3qykGb%2Fl%2BrHLGCZexEz8vvcMnPOaW2ThysPXTR4YKU4whLagGdl67MCfQSyZ5jdnjQSvJtwytYzio06gocK | candidates=6
-[OK] 新 AGE 動漫 | 尖帽子的魔法工坊 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_fe14hYz%2FzXz%2FgRgPdGJkgAMYdU76Mj5WqZTFBLVIqyIm7cVxDFSsxdV%2Fry9OMNbTvJMY4Cu9WPU9rsUuWzNZHVpakb11zelywiJuGhTQfZyk1X7iHrWEgf4L | candidates=6
-[OK] 新 AGE 動漫 | 木头风纪委员和迷你裙JK的故事 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_38abS2NAr3xzEb8%2FaLsC1%2FlxTJNGOCtnoxM1QVXXz6mGmbwyqyHzZ0AIxTgEtgNS%2BR7TLgrLUMGuk5vZbbgJzOJPQBwfHmwyMdfJsBVTkYbRINZDC5F9fck4 | candidates=6
+[OK] 新 AGE 動漫 | search(左撇子艾伦) -> 1
+[OK] 新 AGE 動漫 | 左撇子艾伦 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_bf2cVWWEp5PvusOF8Looic%2BS0EzYLb4NmP3qn5GbuANcVcV8P%2BR2lnylHrV43gqhJQL2f8eSVIBMJkPtAecmESc1F%2BkcDFx4She8oFDzyMt%2F%2FPo7K5vsh%2FOfwQ | candidates=6
+[OK] 新 AGE 動漫 | 和班上第二可爱的女孩成为朋友 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_db8cfjEFXtvz8zA%2FZWRLMngpJSwEfMWte%2FByggC%2FNTpyGiFfDghKFWqN1CeZMwZKzUh9Ag%2F4qwtsuzFE3Ev5Hn%2FY7oBMAXTwq9dq%2F9UgXZ3r6Hi3tZexudHQ | candidates=6
+[OK] 新 AGE 動漫 | 欺诈游戏 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_d269nD0WUAloIAfJF3Zz8QyurquS64oEZMKNAgCxGEZ8%2FLQzZ65HRk91wGsaoRDIrPn0bowhXJ%2FytK3EDZJ9w70WsslQ9nboDdBCc5UDMYHq82iTWCcaqXGG | candidates=6
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -64,38 +72,38 @@
 [plugin 5] medias total=60, testing=3
 [plugin 5] buildMedias sample(index=0)
 {
-  "id": "https://www.libvio.cam/detail/5812943.html",
-  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260407-1/3c087c200945e36156d93cd07fce2ee5.jpg",
-  "title": "欺诈游戏",
-  "descriptionText": "第12集/周一更新",
-  "detailURLString": "https://www.libvio.cam/detail/5812943.html"
+  "id": "https://www.libvio.cam/detail/5813171.html",
+  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260622-1/87a14ae4e99387693f91b9dd6ac8fdb7.jpg",
+  "title": "明天也要上班！",
+  "descriptionText": "第02集/周二更新",
+  "detailURLString": "https://www.libvio.cam/detail/5813171.html"
 }
-[plugin 5] search keyword=欺诈游戏 url=https://www.libvio.cam/search/-------------.html?wd=%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F
+[plugin 5] search keyword=明天也要上班！ url=https://www.libvio.cam/search/-------------.html?wd=%E6%98%8E%E5%A4%A9%E4%B9%9F%E8%A6%81%E4%B8%8A%E7%8F%AD%EF%BC%81
 [plugin 5] search results=1
 [plugin 5] search sample(index=0)
 {
-  "id": "https://www.libvio.cam/detail/5812943.html",
-  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260407-1/3c087c200945e36156d93cd07fce2ee5.jpg",
-  "title": "欺诈游戏",
-  "descriptionText": "第12集/周一更新",
-  "detailURLString": "https://www.libvio.cam/detail/5812943.html"
+  "id": "https://www.libvio.cam/detail/5813171.html",
+  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260622-1/87a14ae4e99387693f91b9dd6ac8fdb7.jpg",
+  "title": "明天也要上班！",
+  "descriptionText": "第02集/周二更新",
+  "detailURLString": "https://www.libvio.cam/detail/5813171.html"
 }
-[OK] libvio | search(欺诈游戏) -> 1
-[FAIL] libvio | 欺诈游戏 | HD7播放 第01话 -> callback timeout (player) | reason=callback_timeout
-[OK] libvio | 尖帽子的魔法工坊 | HD7播放 第01话 -> https://v16-aiop.bytepluscdn.com/02dfca09d3f08515668f209e0ade2689/6a3e07bd/video/tos/alisg/tos-alisg-ve-0051c001-sg/o4YaweatBEv33T1AAdiUQCNTRBfFp2BIi5gsD0/?filename=BBA@ckfiv.mp4 | candidates=1
-[FAIL] libvio | 医到孤岛爱上你 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[OK] libvio | search(明天也要上班！) -> 1
+[FAIL] libvio | 明天也要上班！ | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[FAIL] libvio | 曼哈顿打拼日记第一季 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[FAIL] libvio | 河狸变身计划 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
 [plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
 [OK] 韩剧网 | connectivity -> 3 target(s), pass=https://www.thanju.com
 [plugin 6] medias total=30, testing=3
 [plugin 6] buildMedias sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2537.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/6a39594f5c9da.jpg",
-  "title": "明天也要上班！",
-  "descriptionText": "第1集 · 徐仁国 朴智贤 姜美娜 崔京勋",
-  "detailURLString": "https://www.thanju.com/detail/2537.html"
+  "id": "https://www.thanju.com/detail/2534.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/6a1da424bbfe2.jpg",
+  "title": "医到孤岛爱上你",
+  "descriptionText": "第8集 · 李宰旭 辛睿恩 洪民基 李秀敬",
+  "detailURLString": "https://www.thanju.com/detail/2534.html"
 }
-[plugin 6] search keyword=明天也要上班！ url=https://www.thanju.com/search/%E6%98%8E%E5%A4%A9%E4%B9%9F%E8%A6%81%E4%B8%8A%E7%8F%AD%EF%BC%81.html
+[plugin 6] search keyword=医到孤岛爱上你 url=https://www.thanju.com/search/%E5%8C%BB%E5%88%B0%E5%AD%A4%E5%B2%9B%E7%88%B1%E4%B8%8A%E4%BD%A0.html
 [plugin 6] search results=2
 [plugin 6] search sample(index=0)
 {
@@ -105,38 +113,38 @@
   "descriptionText": "明天也要上班！",
   "detailURLString": "https://www.thanju.com/detail/2537.html"
 }
-[OK] 韩剧网 | search(明天也要上班！) -> 2
-[OK] 韩剧网 | 明天也要上班！ | 01 -> https://cdn.yzzy28-play.com/20260622/31686_1f034ade/index.m3u8 | candidates=1
+[OK] 韩剧网 | search(医到孤岛爱上你) -> 2
 [OK] 韩剧网 | 医到孤岛爱上你 | 01 -> https://cdn.yzzy31-play.com/20260601/21399_07e6663e/index.m3u8 | candidates=1
+[OK] 韩剧网 | 明天也要上班！ | 01 -> https://cdn.yzzy28-play.com/20260622/31686_1f034ade/index.m3u8 | candidates=1
 [OK] 韩剧网 | 第一个男人 | 01 -> https://cdn.yzzy31-play.com/20251216/9033_3613ef1e/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/145969.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/qfGehIYB7NHHTmvMNsPQw2wTH06.jpg",
-  "title": "白夜暗影",
-  "descriptionText": "全29集",
-  "detailURLString": "https://www.dbku.tv/voddetail/145969.html"
+  "id": "https://www.dbku.tv/voddetail/143362.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/atEEKjmvJdBIjZmBzyiReulQ2zp.jpg",
+  "title": "我们愉快的好日子",
+  "descriptionText": "更新至60集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143362.html"
 }
-[plugin 7] search keyword=白夜暗影 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%99%BD%E5%A4%9C%E6%9A%97%E5%BD%B1&submit=
+[plugin 7] search keyword=我们愉快的好日子 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/145969.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/qfGehIYB7NHHTmvMNsPQw2wTH06.jpg",
-  "title": "白夜暗影",
-  "descriptionText": "全29集",
-  "detailURLString": "https://www.dbku.tv/voddetail/145969.html"
+  "id": "https://www.dbku.tv/voddetail/143362.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/atEEKjmvJdBIjZmBzyiReulQ2zp.jpg",
+  "title": "我们愉快的好日子",
+  "descriptionText": "更新至60集",
+  "detailURLString": "https://www.dbku.tv/voddetail/143362.html"
 }
-[OK] 独播库 | search(白夜暗影) -> 1
-[OK] 独播库 | 白夜暗影 | 第1集 -> https://vid.dbokutv.com/20260620/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlQ79nBM9vONajC34jC354HJWuCp4vBcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 妻本善良 | 第1集 -> https://vid.dbokutv.com/20260618/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xGvE9QuiJcs5fWObfWP6QCY8HoOcfSsk1K/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 一念初见锦衣谣 | 第1集 -> https://vid.dbokutv.com/20260620/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlQ79nBNbkOsfgUNajC34jC316Gp4qHZ11BcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(我们愉快的好日子) -> 1
+[OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 红色珍珠 | 第1集 -> https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 100天后分手的我和他 | 第1集 -> https://vid.dbokutv.com/20260527/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejCJ0mT6XcSsHtQ7GjC34jC393D44oD3aqBcrmD0/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_fdc10021-d31a-4f89-9a1d-fe2171bc7107
-[summary] plugins=7, fatal=2, cases=29, ok=20, fail=9, invalidSources=4
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_a0daa2f9-7986-4b26-8bca-d05484877fcb
+[summary] plugins=7, fatal=2, cases=29, ok=21, fail=8, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log

@@ -1,40 +1,7 @@
 {
-  "generatedAt": "2026-06-23T04:40:50.001Z",
-  "invalidPluginsCount": 4,
+  "generatedAt": "2026-06-24T04:43:11.598Z",
+  "invalidPluginsCount": 3,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_olevod",
-      "pluginName": "新歐樂影院",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
-      "reasonCounts": {
-        "unknown": 1
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "天才瑞普利2",
-          "episodeTitle": "",
-          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/82688/true",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "no episodes",
-          "reasonCode": "unknown",
-          "reasonText": "no episodes",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://api.olelive.com/v1/pub/vod/detail/82688/true?_vv=90e0991ffaf106840031423054432cdf",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
     {
       "pluginFolder": "plugin_czzy",
       "pluginName": "廠長資源",
@@ -64,60 +31,16 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "callback_timeout": 1,
-        "plugin_empty_view": 1
+        "plugin_empty_view": 3
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
-          "stage": "player",
-          "mediaTitle": "欺诈游戏",
-          "episodeTitle": "HD7播放 第01话",
-          "detailURL": "https://www.libvio.cam/detail/5812943.html",
-          "episodeURL": "https://www.libvio.cam/play/5812943-4-1.html",
-          "playURL": "",
-          "probe": null,
-          "error": "callback timeout (player)",
-          "reasonCode": "callback_timeout",
-          "reasonText": "等待插件回調超時，可能是站點回應慢或頁面結構改版",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/play/5812943-4-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/BBA.js",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/artplayer/?url=5a614d573035683671514d427666614858436639717062517a56564d384b727969633577367561636e737330436869507966666d7661666a68444374316c50684f4a433155707a44504c36576f5948367a435952454c76374b713159316779364b34415843324249345a33356235653934705131375835586d517574707a41366e69315348704c56615769764b7156584b4649467233504d58487a5356364b693747714959706c305852326c34385166335a4d4e566f392f423336303759504f2f2f366d4a73734d4b4a54774258732f634b4e4d782b31315638673447516c7142594b58436646766b595370443054534974694e70714e54345169516e42323858344f6e43393170504141674b62536444695a4b625850716635496a6f6b505236616850534f464c37364c644337466571745531516349436848625135746670725649363231366d666849774779785176353642765879336f75692b4f50496d51666c6652333465356d66764969754359363767503150636c77746a686c71774b5376586159346d6f374544377863753175714c777333315842503265326b6f2f5844314878442f31364c2b4f39614d6a4d5176786d38497573433264546e346e6773774f5a316674722b493745386d51632f6d4d6e6f4c774965386f4139645735516a4a386f684447427072495049617374704c6b775037323074305658754c31536e416a4d43636e6e317a374b444b6d706379564b33443433494662524562396c425578394541533569382b73793369575a617741706d6f43796449596d&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F2943-4-2.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "POST",
-              "url": "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
           "stage": "episodes",
-          "mediaTitle": "医到孤岛爱上你",
+          "mediaTitle": "明天也要上班！",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813068.html",
+          "detailURL": "https://www.libvio.cam/detail/5813171.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -127,7 +50,51 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813068.html",
+              "url": "https://www.libvio.cam/detail/5813171.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "曼哈顿打拼日记第一季",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813071.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813071.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "河狸变身计划",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813172.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813172.html",
               "status": 200,
               "safeLine": false,
               "error": ""
