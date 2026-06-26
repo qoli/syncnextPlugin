@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T04:41:01.411Z",
+  "generatedAt": "2026-06-26T04:44:08.674Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,10 +31,54 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 2
+        "plugin_empty_view": 3
       },
       "fatalErrors": [],
       "failedCases": [
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "检察官室的提案",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813180.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813180.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "降世神通：最后的气宗第二季",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813179.html",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/detail/5813179.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
         {
           "ok": false,
           "stage": "episodes",
@@ -51,28 +95,6 @@
             {
               "method": "GET",
               "url": "https://www.libvio.cam/detail/5813178.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "机械之声的传奇第四季",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813083.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813083.html",
               "status": 200,
               "safeLine": false,
               "error": ""

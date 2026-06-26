@@ -10,35 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "82695",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260625-1/d310f8a3d2eb8c23cdfd789f442b80a6.jpg",
-  "title": "调音师",
-  "descriptionText": "超清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82695/true"
+  "id": "82698",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260625-1/d6fb1a39306d35998d4613689a24f9e0.jpg",
+  "title": "斩神之凡尘神域 第二季",
+  "descriptionText": "更新至第03集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82698/true"
 }
-[plugin 1] search keyword=调音师 url=https://api.olelive.com/v1/pub/index/search/%E8%B0%83%E9%9F%B3%E5%B8%88/vod/0/1/4
-[plugin 1] search results=0
-[FAIL] 新歐樂影院 | search(调音师) -> 0
-[OK] 新歐樂影院 | 调音师 | 立即播放 -> https://europe.olemovienews.com/ts4/20260624/q9geo6d0/mp4/q9geo6d0.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 地球超新鲜 第二季 | 超前抢鲜看 -> https://europe.olemovienews.com/ts4/20260624/kfz86tc4/mp4/kfz86tc4.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 脱口秀和Ta的朋友们 第三季 | 先导片 -> https://europe.olemovienews.com/ts4/20260624/27tyyrvp/mp4/27tyyrvp.mp4/master.m3u8 | candidates=1
+[plugin 1] search keyword=斩神之凡尘神域 url=https://api.olelive.com/v1/pub/index/search/%E6%96%A9%E7%A5%9E%E4%B9%8B%E5%87%A1%E5%B0%98%E7%A5%9E%E5%9F%9F/vod/0/1/4
+[plugin 1] search results=2
+[plugin 1] search sample(index=0)
+{
+  "id": "82698",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260625-1/d6fb1a39306d35998d4613689a24f9e0.jpg",
+  "title": "斩神之凡尘神域 第二季",
+  "descriptionText": "更新至第03集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82698/true"
+}
+[OK] 新歐樂影院 | search(斩神之凡尘神域) -> 2
+[OK] 新歐樂影院 | 斩神之凡尘神域 第二季 | 第01集 -> https://europe.olemovienews.com/ts4/20260625/8wctschq/mp4/8wctschq.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 淡岛百景 | 第01集 -> https://europe.olemovienews.com/ts4/20260410/eefa6870/mp4/eefa6870.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 库兹马唱歌的话家里哆啰啰 | 第01集 -> https://europe.olemovienews.com/ts4/20260409/eq62qbmd/mp4/eq62qbmd.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260075",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260075.jpg",
-  "title": "最强王者的第二人生 第二季",
+  "id": "20260084",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260084.jpg",
+  "title": "淡岛百景",
   "descriptionText": "第12集(完结) · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260075"
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260084"
 }
-[plugin 2] search keyword=最强王者的第二人生 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
-[plugin 2] search results=0
-[FAIL] 新 AGE 動漫 | search(最强王者的第二人生) -> 0
-[OK] 新 AGE 動漫 | 最强王者的第二人生 第二季 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_ed36MUvICBi8sB2%2BdThN9HMFn5YW2aNEbr3cWs1anYCxTWVg2S0FfWDrBopuIBH8tk7veiRMicEERIlUepCbHx5oZw23SjsnoNvJ7Mrwd1FY%2FOE0ZGSYwnPg | candidates=6
-[OK] 新 AGE 動漫 | Candy Caries 蛀在糖糖里 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_82aaZi8lb043QUDLaMaSaTcVhKnhTpFxM9%2BipI2ggSqjcJ0e%2BQKqXBHuUs%2FU72nGzYfl3zXpBl6uV3vRgsAqA83%2Bd8ccm7Px2bXMfyq23Gyz%2BrxwZiUO0NKa | candidates=6
-[OK] 新 AGE 動漫 | 租借女友 第五季 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_a3e3NY4w2ABD%2FHi2VdEucukcON3rtQmZ8PxXV9ynFsZvhlZ2XLm3FHQU6YPIZSAO%2BCpM15p6XrHsDEWweVtB7uw9p6O%2BhNN6QlZ99j0B04YHBuxeVhlnjrbP | candidates=6
+[plugin 2] search keyword=淡岛百景 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
+[plugin 2] search results=1
+[plugin 2] search sample(index=0)
+{
+  "id": "20260084",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260084.jpg",
+  "title": "淡岛百景",
+  "descriptionText": "第12集(完结) · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260084"
+}
+[OK] 新 AGE 動漫 | search(淡岛百景) -> 1
+[OK] 新 AGE 動漫 | 淡岛百景 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_413elR0nEWzTUqAv4w3SseBe9UIF%2Bi9QUYniDdN6uKaOzoX6ZaWHER5oNf5dzRo%2Bzo5HrUT%2FHc6jftuBJJ36nOmFVdyEVgicz2TG1O7Uzx1m%2FN5BLx4l1Vn2 | candidates=3
+[OK] 新 AGE 動漫 | 轮回的花瓣 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_38e7XH1sRoLd7Jfm%2BtfkUR2i8Oc%2Fkqjte27WroU1TRURFsHwkLOT9GDq0efj7lbo9xhoVxJb1iI1bWmmJfi8NPdgrfOsowJ8nMWskKqJraAEMmlJUVurvEmA | candidates=6
+[OK] 新 AGE 動漫 | 石纪元 科学与未来 第3部分 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_c10d9EhFzferf%2BreT0bt%2FaoEZYbSKk6WYrATdsykBF1LEyfZ5Y290B6PebGndm4KIR3%2BpPjMyEg9nfXgFvy4c8rRWAdz3PDH6j0 | candidates=2
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -56,26 +72,26 @@
 [plugin 5] medias total=60, testing=3
 [plugin 5] buildMedias sample(index=0)
 {
-  "id": "https://www.libvio.cam/detail/5813178.html",
-  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260517-1/25b7afca8d3ed2c2f53a6c33c767dbc2.jpg",
-  "title": "绵羊侦探团",
-  "descriptionText": "HD中字",
-  "detailURLString": "https://www.libvio.cam/detail/5813178.html"
+  "id": "https://www.libvio.cam/detail/5813180.html",
+  "coverURLString": "https://pic3.yzzyimg.online/upload/vod/2026-06-25/202606251782400782.jpg",
+  "title": "检察官室的提案",
+  "descriptionText": "02集/周五更新",
+  "detailURLString": "https://www.libvio.cam/detail/5813180.html"
 }
-[plugin 5] search keyword=绵羊侦探团 url=https://www.libvio.cam/search/-------------.html?wd=%E7%BB%B5%E7%BE%8A%E4%BE%A6%E6%8E%A2%E5%9B%A2
+[plugin 5] search keyword=检察官室的提案 url=https://www.libvio.cam/search/-------------.html?wd=%E6%A3%80%E5%AF%9F%E5%AE%98%E5%AE%A4%E7%9A%84%E6%8F%90%E6%A1%88
 [plugin 5] search results=1
 [plugin 5] search sample(index=0)
 {
-  "id": "https://www.libvio.cam/detail/5813178.html",
-  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260517-1/25b7afca8d3ed2c2f53a6c33c767dbc2.jpg",
-  "title": "绵羊侦探团",
-  "descriptionText": "HD中字",
-  "detailURLString": "https://www.libvio.cam/detail/5813178.html"
+  "id": "https://www.libvio.cam/detail/5813180.html",
+  "coverURLString": "https://pps.vodfeiss.com/upload/vod/20260626-1/cec3266f00e4032fea90e4d49e4adab2.jpg",
+  "title": "检察官室的提案",
+  "descriptionText": "02集/周五更新",
+  "detailURLString": "https://www.libvio.cam/detail/5813180.html"
 }
-[OK] libvio | search(绵羊侦探团) -> 1
+[OK] libvio | search(检察官室的提案) -> 1
+[FAIL] libvio | 检察官室的提案 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[FAIL] libvio | 降世神通：最后的气宗第二季 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
 [FAIL] libvio | 绵羊侦探团 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
-[OK] libvio | 租借女友第五季 | HD7播放 第01话 -> https://v16-cc.capcut.com/6af37c360dda623a28b2a594dbb37460/6a40a4da/video/tos/alisg/tos-alisg-ve-0051c001-sg/o0VB9NpIWPrD5BaVg1QVlfEmFDANXn1q888MeQ/?filename=BBA.mp4 | candidates=1
-[FAIL] libvio | 机械之声的传奇第四季 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
 [plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
 [OK] 韩剧网 | connectivity -> 3 target(s), pass=https://www.thanju.com
 [plugin 6] medias total=30, testing=3
@@ -84,7 +100,7 @@
   "id": "https://www.thanju.com/detail/2441.html",
   "coverURLString": "https://pp.thanju.com/U/vod/694129f8a069f.jpg",
   "title": "第一个男人",
-  "descriptionText": "第133集 · 咸恩静 尹善宇 朴健一 吴贤庆",
+  "descriptionText": "第134集 · 咸恩静 尹善宇 朴健一 吴贤庆",
   "detailURLString": "https://www.thanju.com/detail/2441.html"
 }
 [plugin 6] search keyword=第一个男人 url=https://www.thanju.com/search/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%B7%E4%BA%BA.html
@@ -106,29 +122,29 @@
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/146208.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/7MwjEOnREP3s1DavriODmo9aven.jpg",
-  "title": "长安女子鉴",
-  "descriptionText": "更新至8集",
-  "detailURLString": "https://www.dbku.tv/voddetail/146208.html"
+  "id": "https://www.dbku.tv/voddetail/145846.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/yxhg6jlJJECMjHRiioHiwZImzem.jpg",
+  "title": "妻本善良",
+  "descriptionText": "更新至18集",
+  "detailURLString": "https://www.dbku.tv/voddetail/145846.html"
 }
-[plugin 7] search keyword=长安女子鉴 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%95%BF%E5%AE%89%E5%A5%B3%E5%AD%90%E9%89%B4&submit=
+[plugin 7] search keyword=妻本善良 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%A6%BB%E6%9C%AC%E5%96%84%E8%89%AF&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/146208.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/7MwjEOnREP3s1DavriODmo9aven.jpg",
-  "title": "长安女子鉴",
-  "descriptionText": "更新至8集",
-  "detailURLString": "https://www.dbku.tv/voddetail/146208.html"
+  "id": "https://www.dbku.tv/voddetail/145846.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/yxhg6jlJJECMjHRiioHiwZImzem.jpg",
+  "title": "妻本善良",
+  "descriptionText": "更新至18集",
+  "detailURLString": "https://www.dbku.tv/voddetail/145846.html"
 }
-[OK] 独播库 | search(长安女子鉴) -> 1
-[OK] 独播库 | 长安女子鉴 | 第1集 -> https://vid.dbokutv.com/20260625/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xGvE9QniBSycejC34jC3CrC4OmDZWqBcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 红色珍珠 | 第1集 -> https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(妻本善良) -> 1
+[OK] 独播库 | 妻本善良 | 第1集 -> https://vid.dbokutv.com/20260618/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xGvE9QuiJcs5fWObfWP6QCY8HoOcfSsk1K/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 一念初见锦衣谣 | 第1集 -> https://vid.dbokutv.com/20260620/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlQ79nBNbkOsfgUNajC34jC316Gp4qHZ11BcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 大吉中介 | 第1集 -> https://vid.dbokutv.com/20260625/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlQ79nBMHgUcejC34jC38uHaKqGZD6BcrmD0/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_4ba5f0a1-8c8f-41ec-b339-ba5b88664d09
-[summary] plugins=7, fatal=2, cases=29, ok=20, fail=9, invalidSources=3
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_dfdd24f0-f4ce-4361-a14c-b276d6050f00
+[summary] plugins=7, fatal=2, cases=29, ok=21, fail=8, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log

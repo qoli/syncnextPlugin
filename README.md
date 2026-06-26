@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-06-25T04:41:01.411Z`
+Generated: `2026-06-26T04:44:08.674Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -22,11 +22,11 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | Empty | OK 3/3 | 3/5 | connectivity_failed:1, search_empty:1 |
-| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
+| 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
+| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | OK 1/1 | 3/5 | plugin_empty_view:2 |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | Not Reached | 2/5 | plugin_empty_view:3 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,18 +35,18 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:2
+- `plugin_libvio` libvio: plugin_empty_view:3
 
 ### Plugin Details
 
 <details>
-<summary>新歐樂影院 · Partial · conn=Fail 0/3 · search=Empty · playback=OK 3/3 · reasons=connectivity_failed:1, search_empty:1</summary>
+<summary>新歐樂影院 · Partial · conn=Fail 0/3 · search=OK · playback=OK 3/3 · reasons=connectivity_failed:1</summary>
 
 - Folder: `plugin_olevod`
 - Entry: `新歐樂影院`
 - Overall: `Partial`
-- Cases: `3/5`
-- Reasons: `connectivity_failed:1, search_empty:1`
+- Cases: `4/5`
+- Reasons: `connectivity_failed:1`
 - Note: 海外 IP 無廣告
 
 Connectivity
@@ -55,18 +55,16 @@ Connectivity
 - [FAIL] `GET 401` https://api.olelive.com/v1/pub/index/search/test/vod/0/1/4 | status 401
 
 Search
-- Status: `Empty`
-- Keyword: `调音师`
-- URL: https://api.olelive.com/v1/pub/index/search/%E8%B0%83%E9%9F%B3%E5%B8%88/vod/0/1/4
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `斩神之凡尘神域`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%96%A9%E7%A5%9E%E4%B9%8B%E5%87%A1%E5%B0%98%E7%A5%9E%E5%9F%9F/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 调音师 | 立即播放 | https://europe.olemovienews.com/ts4/20260624/q9geo6d0/mp4/q9geo6d0.mp4/master.m3u8 |
-| OK | 地球超新鲜 第二季 | 超前抢鲜看 | https://europe.olemovienews.com/ts4/20260624/kfz86tc4/mp4/kfz86tc4.mp4/master.m3u8 |
-| OK | 脱口秀和Ta的朋友们 第三季 | 先导片 | https://europe.olemovienews.com/ts4/20260624/27tyyrvp/mp4/27tyyrvp.mp4/master.m3u8 |
+| OK | 斩神之凡尘神域 第二季 | 第01集 | https://europe.olemovienews.com/ts4/20260625/8wctschq/mp4/8wctschq.mp4/master.m3u8 |
+| OK | 淡岛百景 | 第01集 | https://europe.olemovienews.com/ts4/20260410/eefa6870/mp4/eefa6870.mp4/master.m3u8 |
+| OK | 库兹马唱歌的话家里哆啰啰 | 第01集 | https://europe.olemovienews.com/ts4/20260409/eq62qbmd/mp4/eq62qbmd.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -76,22 +74,17 @@ Failed Case Diagnostics
   - `GET 404` https://api.olelive.com/ | status 404
   - `GET 401` https://api.olelive.com/v1/pub/vod/newest/1/12 | status 401
   - `GET 401` https://api.olelive.com/v1/pub/index/search/test/vod/0/1/4 | status 401
-- keyword:调音师 | stage=`search` | reason=`search_empty`
-  - detailURL: https://api.olelive.com/v1/pub/index/search/%E8%B0%83%E9%9F%B3%E5%B8%88/vod/0/1/4
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://api.olelive.com/v1/pub/index/search/%E8%B0%83%E9%9F%B3%E5%B8%88/vod/0/1/4?_vv=c2e0819105511455449178c36313229b
 
 </details>
 
 <details>
-<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
+<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `Partial`
-- Cases: `4/5`
-- Reasons: `search_empty:1`
+- Overall: `OK`
+- Cases: `5/5`
+- Reasons: `-`
 - Note: AGE 動漫
 
 Connectivity
@@ -100,25 +93,16 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `Empty`
-- Keyword: `最强王者的第二人生`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
-- Reason: `search_empty`
-- Detail: 搜尋執行成功但結果為空
+- Status: `OK`
+- Keyword: `淡岛百景`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B7%A1%E5%B2%9B%E7%99%BE%E6%99%AF
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 最强王者的第二人生 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_ed36MUvICBi8sB2%2BdThN9HMFn5YW2aNEbr3cWs1anYCxTWVg2S0FfWDrBopuIBH8tk7veiRMicEERIlUepCbHx5oZw23SjsnoNvJ7Mrwd1FY%2FOE0ZGSYwnPg |
-| OK | Candy Caries 蛀在糖糖里 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_82aaZi8lb043QUDLaMaSaTcVhKnhTpFxM9%2BipI2ggSqjcJ0e%2BQKqXBHuUs%2FU72nGzYfl3zXpBl6uV3vRgsAqA83%2Bd8ccm7Px2bXMfyq23Gyz%2BrxwZiUO0NKa |
-| OK | 租借女友 第五季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_a3e3NY4w2ABD%2FHi2VdEucukcON3rtQmZ8PxXV9ynFsZvhlZ2XLm3FHQU6YPIZSAO%2BCpM15p6XrHsDEWweVtB7uw9p6O%2BhNN6QlZ99j0B04YHBuxeVhlnjrbP |
-
-Failed Case Diagnostics
-- keyword:最强王者的第二人生 | stage=`search` | reason=`search_empty`
-  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
-  - detail: 搜尋執行成功但結果為空
-  - http diagnostics:
-  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9C%80%E5%BC%BA%E7%8E%8B%E8%80%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%BA%BA%E7%94%9F
+| OK | 淡岛百景 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_413elR0nEWzTUqAv4w3SseBe9UIF%2Bi9QUYniDdN6uKaOzoX6ZaWHER5oNf5dzRo%2Bzo5HrUT%2FHc6jftuBJJ36nOmFVdyEVgicz2TG1O7Uzx1m%2FN5BLx4l1Vn2 |
+| OK | 轮回的花瓣 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_38e7XH1sRoLd7Jfm%2BtfkUR2i8Oc%2Fkqjte27WroU1TRURFsHwkLOT9GDq0efj7lbo9xhoVxJb1iI1bWmmJfi8NPdgrfOsowJ8nMWskKqJraAEMmlJUVurvEmA |
+| OK | 石纪元 科学与未来 第3部分 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_c10d9EhFzferf%2BreT0bt%2FaoEZYbSKk6WYrATdsykBF1LEyfZ5Y290B6PebGndm4KIR3%2BpPjMyEg9nfXgFvy4c8rRWAdz3PDH6j0 |
 
 </details>
 
@@ -209,13 +193,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=OK 1/1 · reasons=plugin_empty_view:2</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Not Reached · reasons=plugin_empty_view:3</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
-- Cases: `3/5`
-- Reasons: `plugin_empty_view:2`
+- Cases: `2/5`
+- Reasons: `plugin_empty_view:3`
 - Note: libvio
 
 Connectivity
@@ -224,25 +208,28 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `绵羊侦探团`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E7%BB%B5%E7%BE%8A%E4%BE%A6%E6%8E%A2%E5%9B%A2
+- Keyword: `检察官室的提案`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E6%A3%80%E5%AF%9F%E5%AE%98%E5%AE%A4%E7%9A%84%E6%8F%90%E6%A1%88
 
 Playback Cases
-| Result | Media | Episode | Output |
-| --- | --- | --- | --- |
-| OK | 租借女友第五季 | HD7播放 第01话 | https://v16-cc.capcut.com/6af37c360dda623a28b2a594dbb37460/6a40a4da/video/tos/alisg/tos-alisg-ve-0051c001-sg/o0VB9NpIWPrD5BaVg1QVlfEmFDANXn1q888MeQ/?filename=BBA.mp4 |
+- Not reached
 
 Failed Case Diagnostics
+- 检察官室的提案 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813180.html
+  - detail: 插件回傳 emptyView，未取得可播放地址
+  - http diagnostics:
+  - `GET 200` https://www.libvio.cam/detail/5813180.html
+- 降世神通：最后的气宗第二季 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813179.html
+  - detail: 插件回傳 emptyView，未取得可播放地址
+  - http diagnostics:
+  - `GET 200` https://www.libvio.cam/detail/5813179.html
 - 绵羊侦探团 | stage=`episodes` | reason=`plugin_empty_view`
   - detailURL: https://www.libvio.cam/detail/5813178.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
   - `GET 200` https://www.libvio.cam/detail/5813178.html
-- 机械之声的传奇第四季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813083.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813083.html
 
 </details>
 
@@ -292,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `长安女子鉴`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%95%BF%E5%AE%89%E5%A5%B3%E5%AD%90%E9%89%B4&submit=
+- Keyword: `妻本善良`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%A6%BB%E6%9C%AC%E5%96%84%E8%89%AF&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 长安女子鉴 | 第1集 | https://vid.dbokutv.com/20260625/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xGvE9QniBSycejC34jC3CrC4OmDZWqBcrmD0/chunklist.m3u8 |
-| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 妻本善良 | 第1集 | https://vid.dbokutv.com/20260618/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xGvE9QuiJcs5fWObfWP6QCY8HoOcfSsk1K/chunklist.m3u8 |
+| OK | 一念初见锦衣谣 | 第1集 | https://vid.dbokutv.com/20260620/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlQ79nBNbkOsfgUNajC34jC316Gp4qHZ11BcrmD0/chunklist.m3u8 |
+| OK | 大吉中介 | 第1集 | https://vid.dbokutv.com/20260625/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlQ79nBMHgUcejC34jC38uHaKqGZD6BcrmD0/chunklist.m3u8 |
 
 </details>
 
