@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-27T04:37:50.027Z",
-  "invalidPluginsCount": 4,
+  "generatedAt": "2026-06-28T04:48:25.323Z",
+  "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
       "pluginFolder": "plugin_czzy",
@@ -30,61 +30,6 @@
       "pluginFolder": "plugin_libvio",
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
-      "reasonCounts": {
-        "plugin_empty_view": 2
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "绘梦婚礼",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813145.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813145.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "金特务：本色回归",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813184.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813184.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "pluginFolder": "plugin_thanju",
-      "pluginName": "韩剧网",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_thanju/config.json",
       "reasonCounts": {
         "fatal_error": 1
       },
