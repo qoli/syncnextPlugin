@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T04:39:55.108Z",
+  "generatedAt": "2026-07-03T06:41:08.765Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,16 +31,16 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 3
+        "plugin_empty_view": 1
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "艾丽第一季",
+          "mediaTitle": "末日地堡第三季",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813254.html",
+          "detailURL": "https://www.libvio.cam/detail/5813286.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -50,51 +50,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813254.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "X战警97第二季",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813253.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813253.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "福尔摩斯小姐3",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813251.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813251.html",
+              "url": "https://www.libvio.cam/detail/5813286.html",
               "status": 200,
               "safeLine": false,
               "error": ""
