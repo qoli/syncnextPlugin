@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-05T06:49:39.395Z",
+  "generatedAt": "2026-07-06T07:22:50.386Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,16 +31,17 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 2
+        "plugin_empty_view": 2,
+        "callback_timeout": 1
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "晚酌的流派5：夏篇",
+          "mediaTitle": "鬼上车",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813349.html",
+          "detailURL": "https://www.libvio.cam/detail/5813424.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -50,7 +51,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813349.html",
+              "url": "https://www.libvio.cam/detail/5813424.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -60,9 +61,9 @@
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "黄泉的使者",
+          "mediaTitle": "瑞克和莫蒂第九季",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5812956.html",
+          "detailURL": "https://www.libvio.cam/detail/5813057.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -72,7 +73,43 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5812956.html",
+              "url": "https://www.libvio.cam/detail/5813057.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "龙之家族第三季",
+          "episodeTitle": "BD1播放 1",
+          "detailURL": "https://www.libvio.cam/detail/5813148.html",
+          "episodeURL": "https://www.libvio.cam/play/5813148-8-1.html",
+          "playURL": "",
+          "probe": null,
+          "error": "callback timeout (player)",
+          "reasonCode": "callback_timeout",
+          "reasonText": "等待插件回調超時，可能是站點回應慢或頁面結構改版",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/play/5813148-8-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            },
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/static/player/4kvm.js",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            },
+            {
+              "method": "GET",
+              "url": "https://www.libvio.cam/static/player/artplayer/?url=383953486d41764a2b384b48527279666a375734312f6a4a337267685639634630686d44695946304638484c324861344a6a7a2b6c3164676b327554554b7635&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F3148-8-2.html",
               "status": 200,
               "safeLine": false,
               "error": ""
