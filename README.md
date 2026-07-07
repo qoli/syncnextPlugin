@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-06T07:22:50.386Z`
+Generated: `2026-07-07T06:56:01.303Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -26,7 +26,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | Fail 0/1 | 2/5 | plugin_empty_view:2, callback_timeout:1 |
+| libvio | plugin_libvio | Partial | OK 2/2 | OK | Fail 0/2 | 2/5 | plugin_empty_view:1, callback_timeout:2 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:2, callback_timeout:1
+- `plugin_libvio` libvio: plugin_empty_view:1, callback_timeout:2
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `大道独行之蝶龙变`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%A4%A7%E9%81%93%E7%8B%AC%E8%A1%8C%E4%B9%8B%E8%9D%B6%E9%BE%99%E5%8F%98/vod/0/1/4
+- Keyword: `野狗骨头`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 大道独行之蝶龙变 | 第01集 | https://europe.olemovienews.com/ts4/20260420/4r08w569/mp4/4r08w569.mp4/master.m3u8 |
-| OK | 瑞克和莫蒂 第九季 | 第01集 | https://europe.olemovienews.com/ts4/20260525/wveeivkw/mp4/wveeivkw.mp4/master.m3u8 |
-| OK | 龙之家族 第三季 | 第01集 | https://europe.olemovienews.com/ts4/20260622/tozgzc7h/mp4/tozgzc7h.mp4/master.m3u8 |
+| OK | 野狗骨头 | 第01集 | https://europe.olemovienews.com/ts4/20260705/j0zawap2/mp4/j0zawap2.mp4/master.m3u8 |
+| OK | 悬案 | 第01集 | https://europe.olemovienews.com/ts4/20260703/01ov5ort/mp4/01ov5ort.mp4/master.m3u8 |
+| OK | 京城奇探 | 第01集 | https://europe.olemovienews.com/ts4/20260705/y9i0s8u3/mp4/y9i0s8u3.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `碧蓝航线`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF
+- Keyword: `碧蓝之海`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E7%A2%A7%E8%93%9D%E4%B9%8B%E6%B5%B7
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 碧蓝航线 微速前行 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_67e3A3DWlhC7rlHImcMxW9bjiJmli2i6SRx5JJJINGre9vaWxMKuJ862Ix25zKzIeT7mJ5Yj6D0w6n30a76reRK7ZzDJxjW0xXK%2BC9HBbd7mTxcMKRvawi8H |
-| OK | 再见，拉拉 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_fefclCPgJx0LVOdWkA2nlF7CSxDSWpwLcodwgLSlbEdIj%2Fx0qwmYFI%2BlrbLA%2BTLz5N7kcH4UcGJfqi99kc9rz62nfBI566jFXou%2FHKEQzpa8XqVIzTp5%2FWv9 |
-| OK | 二十世纪电气目录 | 第1集 | https://jx.wuzhoupai.com:8443/vip/?url=age_23d4vzF0ka9fE9cNfB98F5GOTwYriVltsphy38zN1EnZKywgrDQTXiWcjzJuT6plmE8lUwazu64YFwZWwPXVP6ax |
+| OK | 碧蓝之海 第三季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_a257xCZ7%2Bj4Ml0QdvynufYE75iTcUsqHjqY5bvirSv8xpDJrSgl64chua508OhDUIKh%2Fj25oVkw%2BIkAcB5l%2FfWWwEk579xsuHDpNB2G3KYiAvx7zvEfh63Xs |
+| OK | 斗球儿弹子 | 第1集 | https://jx.wuzhoupai.com:8443/vip/?url=age_0ab8%2BTBl7%2F%2FmxxtvXPO0eQOPOr8%2Fyl9L0GBx2Qq%2Fn6CmQa3w3PQwvZJ8RypZT%2BSxL2QlFky%2FbULusgTPBGFfkvUK |
+| OK | 被遗弃圣女的异世界美食之旅 用隐藏技能召唤了露营车 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_27e1MokQ%2F4wyT19F7ChUsvhS9jz2v%2BkCgyRtXR2quEZI70O%2Fg6eyWUFyxJ8GI5PeVAnxuvCiKBEUvMP1pKNRCxgBOe%2BDaXdPvUpwX9z016BD%2F9ZSas0TcmfL |
 
 </details>
 
@@ -193,13 +193,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Fail 0/1 · reasons=plugin_empty_view:2, callback_timeout:1</summary>
+<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Fail 0/2 · reasons=plugin_empty_view:1, callback_timeout:2</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
 - Overall: `Partial`
 - Cases: `2/5`
-- Reasons: `plugin_empty_view:2, callback_timeout:1`
+- Reasons: `plugin_empty_view:1, callback_timeout:2`
 - Note: libvio
 
 Connectivity
@@ -208,33 +208,38 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `鬼上车`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E9%AC%BC%E4%B8%8A%E8%BD%A6
+- Keyword: `蒙上你的眼`
+- URL: https://www.libvio.cam/search/-------------.html?wd=%E8%92%99%E4%B8%8A%E4%BD%A0%E7%9A%84%E7%9C%BC
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| FAIL | 龙之家族第三季 | BD1播放 1 | callback_timeout |
+| FAIL | 奇探佩辛丝第二季 | 4K蓝光 第1集 | callback_timeout |
+| FAIL | 奇探佩辛丝第一季 | 4K蓝光 第1集 | callback_timeout |
 
 Failed Case Diagnostics
-- 鬼上车 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813424.html
+- 蒙上你的眼 | stage=`episodes` | reason=`plugin_empty_view`
+  - detailURL: https://www.libvio.cam/detail/5813458.html
   - detail: 插件回傳 emptyView，未取得可播放地址
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813424.html
-- 瑞克和莫蒂第九季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813057.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813057.html
-- 龙之家族第三季 | BD1播放 1 | stage=`player` | reason=`callback_timeout`
-  - detailURL: https://www.libvio.cam/detail/5813148.html
-  - episodeURL: https://www.libvio.cam/play/5813148-8-1.html
+  - `GET 200` https://www.libvio.cam/detail/5813458.html
+- 奇探佩辛丝第二季 | 4K蓝光 第1集 | stage=`player` | reason=`callback_timeout`
+  - detailURL: https://www.libvio.cam/detail/5813456.html
+  - episodeURL: https://www.libvio.cam/play/5813456-4-1.html
   - detail: 等待插件回調超時，可能是站點回應慢或頁面結構改版
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/play/5813148-8-1.html
-  - `GET 200` https://www.libvio.cam/static/player/4kvm.js
-  - `GET 200` https://www.libvio.cam/static/player/artplayer/?url=383953486d41764a2b384b48527279666a375734312f6a4a337267685639634630686d44695946304638484c324861344a6a7a2b6c3164676b327554554b7635&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F3148-8-2.html
+  - `GET 200` https://www.libvio.cam/play/5813456-4-1.html
+  - `GET 200` https://www.libvio.cam/static/player/jdyx.js
+  - `GET 200` https://www.libvio.cam/static/player/artplayer/?url=4e734d374c54754f76356873756975515169594d476d6853774344454274736b332b394b43505057734268335579304d4b626e446c6659484a3865666f4d724e&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F3456-4-2.html
+  - `POST 200` https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php
+- 奇探佩辛丝第一季 | 4K蓝光 第1集 | stage=`player` | reason=`callback_timeout`
+  - detailURL: https://www.libvio.cam/detail/5813457.html
+  - episodeURL: https://www.libvio.cam/play/5813457-4-1.html
+  - detail: 等待插件回調超時，可能是站點回應慢或頁面結構改版
+  - http diagnostics:
+  - `GET 200` https://www.libvio.cam/play/5813457-4-1.html
+  - `GET 200` https://www.libvio.cam/static/player/artplayer/?url=47354f455875307a4a477a4b594e344b3773304e7443525a615756384b64785645324e79345750436a6f5774766232436a663852754d436d37565a6e757a4259&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F3457-4-2.html
+  - `POST 200` https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php
 
 </details>
 
@@ -255,15 +260,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `给你爱情处方`
-- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
+- Keyword: `家庭关系证明书`
+- URL: https://www.thanju.com/search/%E5%AE%B6%E5%BA%AD%E5%85%B3%E7%B3%BB%E8%AF%81%E6%98%8E%E4%B9%A6.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
-| OK | 共感细胞 | 01 | https://cdn.yzzy28-play.com/20260704/32161_f76864d0/index.m3u8 |
-| OK | 新进职员姜会长 | 01 | https://cdn.vvvip-plays33.cc/20260531/14095_1f3f1ae7/index.m3u8 |
+| OK | 家庭关系证明书 | 01 | https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 |
+| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 
 </details>
 
@@ -284,14 +289,14 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `谜案拼图`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E8%B0%9C%E6%A1%88%E6%8B%BC%E5%9B%BE&submit=
+- Keyword: `千香`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%8D%83%E9%A6%99&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 谜案拼图 | 第1集 | https://vid.dbokutv.com/20260630/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlQ79nBMrXS7GjC34jC315CqOoGaH3BcrmD0/chunklist.m3u8 |
-| OK | 野狗骨头 | 第1集 | https://vid.dbokutv.com/20260705/lxj-yggt-01-007FE7C41.mp4/chunklist.m3u8 |
+| OK | 千香 | 第1集 | https://vid.dbokutv.com/20260627/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBN5uBJ0nBJ0pCJKqHJCqH2vjS34/chunklist.m3u8 |
+| OK | 悬案 | 第1集 | https://vid.dbokutv.com/20260703/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xOy6ejU64jC34jC30tGK8vDpWuBcrmD0/chunklist.m3u8 |
 | OK | 春花宴 | 第1集 | https://vid.dbokutv.com/20260705/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qnj3oMc1YMc1WY6neY6PiSbpQu64/chunklist.m3u8 |
 
 </details>
