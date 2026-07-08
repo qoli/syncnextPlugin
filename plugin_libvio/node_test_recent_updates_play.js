@@ -139,6 +139,41 @@ function extractAttr(tagHTML, attrName) {
   return hit && hit[1] ? hit[1].trim() : "";
 }
 
+function stripTags(text) {
+  return String(text || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isUnsupportedSourceTitle(title) {
+  const text = String(title || "");
+  return (
+    text.includes("网盘") ||
+    text.includes("網盤") ||
+    text.includes("百度") ||
+    text.includes("夸克") ||
+    text.includes("UC")
+  );
+}
+
+function sourcePriority(title) {
+  const text = String(title || "").toUpperCase();
+  if (text.includes("BD") || text.includes("蓝光") || text.includes("藍光")) {
+    return 10;
+  }
+  if (text.includes("HD5") || text.includes("高清")) {
+    return 20;
+  }
+  return 50;
+}
+
+function normalizedEpisodeKey(title, index) {
+  const text = String(title || "").replace(/\s+/g, "").trim();
+  return text || `episode-${index}`;
+}
+
 function parseRecentMedias(indexHTML, host) {
   const medias = [];
   const seen = new Set();
@@ -161,37 +196,78 @@ function parseRecentMedias(indexHTML, host) {
   return medias;
 }
 
-function parseEpisodes(detailHTML, host) {
-  const sections =
-    String(detailHTML || "").match(
-      /<([a-z]+)\b[^>]*class=["'][^"']*\bstui-content__playlist\b[^"']*["'][^>]*>[\s\S]*?<\/\1>/gi
-    ) || [];
-  if (sections.length === 0) return [];
+function parsePlaylistGroups(detailHTML, host) {
+  const groups = [];
+  const blockPattern =
+    /<div\b[^>]*class=["'][^"']*\b(?:stui-vodlist__head|panel-head)\b[^"']*["'][^>]*>[\s\S]*?<h3[^>]*>([\s\S]*?)<\/h3>[\s\S]*?<\/div>\s*<ul\b[^>]*class=["'][^"']*\bstui-content__playlist\b[^"']*["'][^>]*>([\s\S]*?)<\/ul>/gi;
+  let blockMatch;
 
-  const links = [];
-  const seen = new Set();
-  for (const section of sections) {
+  while ((blockMatch = blockPattern.exec(String(detailHTML || ""))) !== null) {
+    const sourceTitle = stripTags(blockMatch[1]);
+    if (!sourceTitle || isUnsupportedSourceTitle(sourceTitle)) continue;
+
+    const episodes = [];
     const aRE = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
     let hit;
-    while ((hit = aRE.exec(section)) !== null) {
+    while ((hit = aRE.exec(blockMatch[2])) !== null) {
       const href = toAbsoluteURL(host, hit[1]);
-      if (!href || seen.has(href)) continue;
-      seen.add(href);
+      if (!href) continue;
 
-      const title = String(hit[2] || "")
-        .replace(/<[^>]+>/g, " ")
-        .replace(/&nbsp;/gi, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-
-      links.push({
-        title: title || href.split("/").pop(),
+      episodes.push({
+        title: stripTags(hit[2]) || href.split("/").pop(),
         playPageURL: href,
+      });
+    }
+
+    if (episodes.length) {
+      groups.push({
+        title: sourceTitle,
+        episodes,
       });
     }
   }
 
-  return links;
+  return groups;
+}
+
+function parseEpisodes(detailHTML, host) {
+  const groups = parsePlaylistGroups(detailHTML, host)
+    .map((group, index) => ({
+      group,
+      index,
+      priority: sourcePriority(group.title),
+    }))
+    .sort((left, right) =>
+      left.priority === right.priority ? left.index - right.index : left.priority - right.priority
+    )
+    .map((item) => item.group);
+
+  const buckets = [];
+  const bucketByKey = new Map();
+
+  for (const group of groups) {
+    for (let episodeIndex = 0; episodeIndex < group.episodes.length; episodeIndex++) {
+      const episode = group.episodes[episodeIndex];
+      const key = normalizedEpisodeKey(episode.title, episodeIndex);
+      let bucket = bucketByKey.get(key);
+      if (!bucket) {
+        bucket = {
+          title: episode.title || key,
+          sources: [],
+        };
+        bucketByKey.set(key, bucket);
+        buckets.push(bucket);
+      }
+
+      bucket.sources.push({
+        source: group.title,
+        title: episode.title,
+        playPageURL: episode.playPageURL,
+      });
+    }
+  }
+
+  return buckets;
 }
 
 function parsePlayerConfig(playPageHTML) {
@@ -523,6 +599,38 @@ async function extractRealPlayURL(playPageURL, host) {
   return realURL;
 }
 
+async function extractRealPlayCandidates(episode, host) {
+  const candidates = [];
+  const errors = [];
+  const seen = new Set();
+
+  for (const source of episode.sources || []) {
+    try {
+      const realURL = await extractRealPlayURL(source.playPageURL, host);
+      if (realURL && !seen.has(realURL)) {
+        seen.add(realURL);
+        candidates.push({
+          source: source.source,
+          playPageURL: source.playPageURL,
+          realURL,
+        });
+      }
+    } catch (error) {
+      errors.push(
+        `${source.source || "unknown"} ${source.playPageURL || ""}: ${
+          error.message || String(error)
+        }`
+      );
+    }
+  }
+
+  if (!candidates.length) {
+    throw new Error(`no playable candidates: ${errors.join(" | ")}`);
+  }
+
+  return candidates;
+}
+
 async function findAvailableHost(candidates) {
   for (const candidate of candidates) {
     const host = normalizeHost(candidate);
@@ -584,17 +692,21 @@ async function main() {
 
         for (const ep of targetEpisodes) {
           try {
-            const realURL = await extractRealPlayURL(ep.playPageURL, host);
+            const candidates = await extractRealPlayCandidates(ep, host);
+            const winner = candidates[0];
             results.push({
               ok: true,
               unsupported: false,
               mediaTitle: media.title,
               episodeTitle: ep.title,
-              playPageURL: ep.playPageURL,
-              realURL,
+              playPageURL: winner.playPageURL,
+              realURL: winner.realURL,
+              candidateCount: candidates.length,
             });
             logger.log(
-              `[OK] ${i + 1}/${selected.length} ${media.title} | ${ep.title} -> ${realURL}`
+              `[OK] ${i + 1}/${selected.length} ${media.title} | ${
+                ep.title
+              } | candidates=${candidates.length} -> ${winner.realURL}`
             );
           } catch (error) {
             const errorText = error.message || String(error);
@@ -604,7 +716,8 @@ async function main() {
               unsupported,
               mediaTitle: media.title,
               episodeTitle: ep.title,
-              playPageURL: ep.playPageURL,
+              playPageURL:
+                ep.sources && ep.sources[0] ? ep.sources[0].playPageURL : media.detailURL,
               error: errorText,
             });
             logger.log(

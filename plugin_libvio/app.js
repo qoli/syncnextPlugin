@@ -17,6 +17,7 @@ var PLAYER_API_BASE_CACHE = {};
 var PLAYER_API_BASE_PENDING = {};
 var SMARTPLAY_API_URL =
   "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php";
+var EPISODE_CANDIDATES_PAYLOAD_PREFIX = "syncnext-libvio://episode-candidates?data=";
 
 function print(params) {
   console.log(JSON.stringify(params));
@@ -45,6 +46,16 @@ function buildEpisodeData(id, title, episodeDetailURL) {
     id: id,
     title: title,
     episodeDetailURL: episodeDetailURL,
+  };
+}
+
+function buildPlayerCandidate(url) {
+  return {
+    url: url,
+    headers: {
+      "User-Agent": UA,
+      Referer: REFERER_URL,
+    },
   };
 }
 
@@ -980,6 +991,123 @@ function extractPlayablePlaylistGroups(body) {
   return groups;
 }
 
+function sourcePriority(title) {
+  var text = String(title || "").toUpperCase();
+  if (text.indexOf("BD") >= 0 || text.indexOf("蓝光") >= 0 || text.indexOf("藍光") >= 0) {
+    return 10;
+  }
+  if (text.indexOf("HD5") >= 0 || text.indexOf("高清") >= 0) {
+    return 20;
+  }
+  return 50;
+}
+
+function sortedPlayablePlaylistGroups(groups) {
+  var list = [];
+  for (var i = 0; i < groups.length; i++) {
+    list.push({
+      group: groups[i],
+      index: i,
+      priority: sourcePriority(groups[i].title),
+    });
+  }
+
+  list.sort(function (left, right) {
+    if (left.priority !== right.priority) {
+      return left.priority - right.priority;
+    }
+    return left.index - right.index;
+  });
+
+  var sorted = [];
+  for (var index = 0; index < list.length; index++) {
+    sorted.push(list[index].group);
+  }
+  return sorted;
+}
+
+function normalizedEpisodeKey(title, index) {
+  var text = String(title || "")
+    .replace(/\s+/g, "")
+    .trim();
+  return text || "episode-" + index;
+}
+
+function encodeEpisodeSourcesPayload(sources) {
+  return (
+    EPISODE_CANDIDATES_PAYLOAD_PREFIX +
+    encodeURIComponent(
+      JSON.stringify({
+        sources: sources,
+      })
+    )
+  );
+}
+
+function parseEpisodeSourcesPayload(inputURL) {
+  var value = String(inputURL || "");
+  if (value.indexOf(EPISODE_CANDIDATES_PAYLOAD_PREFIX) !== 0) {
+    return null;
+  }
+
+  var json = decodeURIComponent(value.substring(EPISODE_CANDIDATES_PAYLOAD_PREFIX.length));
+  var payload = JSON.parse(json);
+  if (!payload || !payload.sources || !payload.sources.length) {
+    throw new Error("empty episode candidates payload");
+  }
+
+  return payload.sources;
+}
+
+function buildAggregatedEpisodes(playlistGroups) {
+  var groups = sortedPlayablePlaylistGroups(playlistGroups);
+  var buckets = [];
+  var bucketByKey = {};
+
+  for (var groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+    var group = groups[groupIndex];
+    for (var episodeIndex = 0; episodeIndex < group.episodes.length; episodeIndex++) {
+      var episode = group.episodes[episodeIndex];
+      var key = normalizedEpisodeKey(episode.title, episodeIndex);
+      var bucket = bucketByKey[key];
+
+      if (!bucket) {
+        bucket = {
+          key: key,
+          title: episode.title || key,
+          sources: [],
+        };
+        bucketByKey[key] = bucket;
+        buckets.push(bucket);
+      }
+
+      bucket.sources.push({
+        source: group.title,
+        title: episode.title,
+        href: episode.href,
+      });
+    }
+  }
+
+  var episodes = [];
+  for (var index = 0; index < buckets.length; index++) {
+    var item = buckets[index];
+    if (!item.sources.length) {
+      continue;
+    }
+
+    episodes.push(
+      buildEpisodeData(
+        item.sources[0].href,
+        item.title,
+        encodeEpisodeSourcesPayload(item.sources)
+      )
+    );
+  }
+
+  return episodes;
+}
+
 function mapWithConcurrency(items, limit, worker, callback) {
   limit = Math.max(1, limit || 1);
 
@@ -1108,6 +1236,63 @@ function buildMedias(inputURL) {
   });
 }
 
+function resolvePlayableCandidateFromPlayPage(playPageURL, callback) {
+  $http
+    .fetch({
+      url: buildAbsoluteURL(playPageURL),
+      method: "GET",
+      headers: {
+        "User-Agent": UA,
+        Referer: REFERER_URL,
+      },
+    })
+    .then(function (res) {
+      var config = extractPlayerConfig(res.body);
+      if (!config || config.from === "kuake" || config.from === "uc") {
+        callback(null);
+        return;
+      }
+
+      resolvePlayableURLByConfig(config, function (playURL) {
+        callback(playURL ? buildPlayerCandidate(playURL) : null);
+      });
+    })
+    .catch(function () {
+      callback(null);
+    });
+}
+
+function resolvePlayerCandidatesFromSources(sources, index, candidates, seen, callback) {
+  if (index >= sources.length) {
+    callback(candidates);
+    return;
+  }
+
+  var source = sources[index] || {};
+  resolvePlayableCandidateFromPlayPage(source.href, function (candidate) {
+    if (candidate && candidate.url && !seen[candidate.url]) {
+      seen[candidate.url] = true;
+      candidates.push(candidate);
+    }
+
+    resolvePlayerCandidatesFromSources(sources, index + 1, candidates, seen, callback);
+  });
+}
+
+function gotoPlayCandidates(candidates) {
+  if (!candidates || !candidates.length) {
+    reportPlayerUnavailable("libvio: 找不到可用的播放地址");
+    return;
+  }
+
+  if (typeof $next.toPlayerCandidates !== "function") {
+    reportPlayerUnavailable("libvio: 需要支持候选播放地址的 Syncnext 版本");
+    return;
+  }
+
+  $next.toPlayerCandidates(JSON.stringify(candidates));
+}
+
 function Episodes(inputURL) {
   var req = {
     url: buildAbsoluteURL(inputURL),
@@ -1130,25 +1315,28 @@ function Episodes(inputURL) {
     }
 
     var playlistGroups = extractPlayablePlaylistGroups(res.body);
-    for (var groupIndex = 0; groupIndex < playlistGroups.length; groupIndex++) {
-      var group = playlistGroups[groupIndex];
-      for (var episodeIndex = 0; episodeIndex < group.episodes.length; episodeIndex++) {
-        var episode = group.episodes[episodeIndex];
-        datas.push(
-          buildEpisodeData(
-            episode.href,
-            group.title + " " + episode.title,
-            episode.href
-          )
-        );
-      }
-    }
+    datas = buildAggregatedEpisodes(playlistGroups);
 
     $next.toEpisodes(JSON.stringify(datas));
   });
 }
 
 function Player(inputURL) {
+  var sources = null;
+  try {
+    sources = parseEpisodeSourcesPayload(inputURL);
+  } catch (error) {
+    reportPlayerUnavailable("libvio: 播放候选资料无效");
+    return;
+  }
+
+  if (sources) {
+    resolvePlayerCandidatesFromSources(sources, 0, [], {}, function (candidates) {
+      gotoPlayCandidates(candidates);
+    });
+    return;
+  }
+
   $http
     .fetch({
       url: buildAbsoluteURL(inputURL),
