@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T06:56:01.303Z",
+  "generatedAt": "2026-07-08T06:06:03.805Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
@@ -31,17 +31,16 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 1,
-        "callback_timeout": 2
+        "plugin_empty_view": 3
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "蒙上你的眼",
+          "mediaTitle": "火遮眼",
           "episodeTitle": "",
-          "detailURL": "https://www.libvio.cam/detail/5813458.html",
+          "detailURL": "https://www.libvio.cam/detail/5813475.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -51,7 +50,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/detail/5813458.html",
+              "url": "https://www.libvio.cam/detail/5813475.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -60,41 +59,20 @@
         },
         {
           "ok": false,
-          "stage": "player",
-          "mediaTitle": "奇探佩辛丝第二季",
-          "episodeTitle": "4K蓝光 第1集",
-          "detailURL": "https://www.libvio.cam/detail/5813456.html",
-          "episodeURL": "https://www.libvio.cam/play/5813456-4-1.html",
+          "stage": "episodes",
+          "mediaTitle": "杖与剑的魔剑谭第二季",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813476.html",
+          "episodeURL": "",
           "playURL": "",
           "probe": null,
-          "error": "callback timeout (player)",
-          "reasonCode": "callback_timeout",
-          "reasonText": "等待插件回調超時，可能是站點回應慢或頁面結構改版",
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/play/5813456-4-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/jdyx.js",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/artplayer/?url=4e734d374c54754f76356873756975515169594d476d6853774344454274736b332b394b43505057734268335579304d4b626e446c6659484a3865666f4d724e&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F3456-4-2.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "POST",
-              "url": "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php",
+              "url": "https://www.libvio.cam/detail/5813476.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -103,34 +81,20 @@
         },
         {
           "ok": false,
-          "stage": "player",
-          "mediaTitle": "奇探佩辛丝第一季",
-          "episodeTitle": "4K蓝光 第1集",
-          "detailURL": "https://www.libvio.cam/detail/5813457.html",
-          "episodeURL": "https://www.libvio.cam/play/5813457-4-1.html",
+          "stage": "episodes",
+          "mediaTitle": "杖与剑的魔剑谭",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvio.cam/detail/5813477.html",
+          "episodeURL": "",
           "playURL": "",
           "probe": null,
-          "error": "callback timeout (player)",
-          "reasonCode": "callback_timeout",
-          "reasonText": "等待插件回調超時，可能是站點回應慢或頁面結構改版",
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvio.cam/play/5813457-4-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvio.cam/static/player/artplayer/?url=47354f455875307a4a477a4b594e344b3773304e7443525a615756384b64785645324e79345750436a6f5774766232436a663852754d436d37565a6e757a4259&next=https%3A%2F%2Fwww.libvio.cam%2Fplay%2F3457-4-2.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "POST",
-              "url": "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php",
+              "url": "https://www.libvio.cam/detail/5813477.html",
               "status": 200,
               "safeLine": false,
               "error": ""
