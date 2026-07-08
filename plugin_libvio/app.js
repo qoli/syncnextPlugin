@@ -1,6 +1,6 @@
 `user script`;
 
-var FALLBACK_HOST = "https://www.libvio.cam";
+var FALLBACK_HOST = "https://www.libvios.com";
 var BASE_URL = normalizeHost(
   typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost
     ? __syncnextPrimaryHost
@@ -67,7 +67,7 @@ function rebaseLibvioURL(url) {
   }
 
   return value.replace(
-    /^https?:\/\/(?:www\.)?(?:libviohd\.com|libvios\.com|libvio\.(?:app|art|cam|cc|cloud|com|fun|in|la|life|link|me|mov|pro|pw|run|site|vip)|libhd\.com)(?=\/|$)/i,
+    /^https?:\/\/(?:www\.)?(?:(?:libviohd|libvios|libviobd|libhd)\.com|libvio\.host|libvio\.(?:app|art|cam|cc|cloud|com|fun|in|la|life|link|me|mov|pro|pw|run|site|vip))(?=\/|$)/i,
     BASE_URL
   );
 }
@@ -104,6 +104,9 @@ function HostsProbeRequest() {
         "ERR_SERVICE_UNAVAILABLE",
         "域名停用",
         "停用通知",
+        "站点导航",
+        "發布頁",
+        "发布页",
         "Region Restricted",
         "Not Available",
         "cf-browser-verification",
@@ -121,6 +124,9 @@ function HostsProbeRequest() {
         "503",
         "域名停用",
         "停用通知",
+        "站点导航",
+        "發布頁",
+        "发布页",
         "Region Restricted",
         "Not Available",
       ],
@@ -697,6 +703,11 @@ function resolvePlayableURLByConfig(config, callback) {
     return;
   }
 
+  if (looksLikeResolvedMediaURL(url)) {
+    callback(normalizePlayableURL(url));
+    return;
+  }
+
   if (from === "ty_new1") {
     fetchPlayableURLByAPI(buildAbsoluteURL("/vid/ty4.php?url=" + url), callback);
     return;
@@ -875,7 +886,7 @@ function extractPlayablePlaylistGroups(body) {
   var groups = [];
   var html = String(body || "");
   var blockPattern =
-    /<div\b[^>]*class=["'][^"']*\bstui-vodlist__head\b[^"']*["'][^>]*>[\s\S]*?<h3[^>]*>([\s\S]*?)<\/h3>[\s\S]*?<\/div>\s*<ul\b[^>]*class=["'][^"']*\bstui-content__playlist\b[^"']*["'][^>]*>([\s\S]*?)<\/ul>/gi;
+    /<div\b[^>]*class=["'][^"']*\b(?:stui-vodlist__head|panel-head)\b[^"']*["'][^>]*>[\s\S]*?<h3[^>]*>([\s\S]*?)<\/h3>[\s\S]*?<\/div>\s*<ul\b[^>]*class=["'][^"']*\bstui-content__playlist\b[^"']*["'][^>]*>([\s\S]*?)<\/ul>/gi;
   var blockMatch;
 
   while ((blockMatch = blockPattern.exec(html)) !== null) {
@@ -1091,18 +1102,18 @@ function Player(inputURL) {
     .then(function (res) {
       var config = extractPlayerConfig(res.body);
       if (!config) {
-        print("libvio: 读取播放器配置失败");
+        reportPlayerUnavailable("libvio: 读取播放器配置失败");
         return;
       }
 
       if (config.from === "kuake" || config.from === "uc") {
-        print("未能支持網盤播放，請按返回");
+        reportPlayerUnavailable("未能支持網盤播放，請按返回");
         return;
       }
 
       resolvePlayableURLByConfig(config, function (playURL) {
         if (!playURL) {
-          print("libvio: 解析播放地址失败(" + config.from + ")");
+          reportPlayerUnavailable("libvio: 解析播放地址失败(" + config.from + ")");
           return;
         }
 
@@ -1110,8 +1121,15 @@ function Player(inputURL) {
       });
     })
     .catch(function () {
-      print("libvio: 播放页请求失败");
+      reportPlayerUnavailable("libvio: 播放页请求失败");
     });
+}
+
+function reportPlayerUnavailable(message) {
+  if ($next.emptyView) {
+    $next.emptyView(message);
+  }
+  print(message);
 }
 
 function gotoPlay(url) {
