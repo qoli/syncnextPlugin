@@ -89,6 +89,23 @@ async function fetchText(url, referer) {
   return { status: res.status, body, finalURL: res.url };
 }
 
+async function fetchTextWithoutReferer(url) {
+  const res = await fetch(url, {
+    method: "GET",
+    headers: {
+      "User-Agent": UA,
+      Accept:
+        "text/html,application/xhtml+xml,application/xml;q=0.9,application/json,*/*;q=0.8",
+      "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+    },
+    redirect: "follow",
+    timeout: 20000,
+  });
+  const body = await res.text();
+
+  return { status: res.status, body, finalURL: res.url };
+}
+
 async function postJSON(url, body, referer, origin) {
   const res = await fetch(url, {
     method: "POST",
@@ -416,6 +433,13 @@ function extractPlayableURL(body) {
   return "";
 }
 
+function extractYD189ParseURL(body) {
+  const hit = String(body || "").match(
+    /fetch\(["']([^"']*\/vid\/parse_yd\.php[^"']*)["']/
+  );
+  return hit && hit[1] ? normalizePlayableURL(hit[1]) : "";
+}
+
 async function extractRealPlayURL(playPageURL, host) {
   const playPageRes = await fetchText(playPageURL, `${host}/`);
   const config = parsePlayerConfig(playPageRes.body);
@@ -448,6 +472,24 @@ async function extractRealPlayURL(playPageURL, host) {
 
   if (playAPIBase.includes("/static/player/artplayer/")) {
     return resolveArtplayerURL(playAPIBase, config, host, playPageURL);
+  }
+
+  if (from === "yd189") {
+    const ydPlayerURL = toAbsoluteURL(
+      host,
+      `${playAPIBase}${url}&next=${next}&id=${id}&nid=${nid}`
+    );
+    const ydRes = await fetchText(ydPlayerURL, playPageURL);
+    const parseURL = extractYD189ParseURL(ydRes.body);
+    if (!parseURL) {
+      throw new Error("yd189 parse url not found");
+    }
+    const parseRes = await fetchTextWithoutReferer(toAbsoluteURL(host, parseURL));
+    const data = JSON.parse(parseRes.body);
+    if (!data || !data.url) {
+      throw new Error(`yd189 parse failed: ${(data && data.error) || "empty url"}`);
+    }
+    return normalizePlayableURL(data.url);
   }
 
   let playAPIURL = "";

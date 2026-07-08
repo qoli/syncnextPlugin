@@ -639,6 +639,57 @@ function fetchPlayableURLByAPI(playAPIURL, callback) {
     });
 }
 
+function extractYD189ParseURL(body) {
+  if (!body) {
+    return "";
+  }
+
+  var matched = body.match(/fetch\(["']([^"']*\/vid\/parse_yd\.php[^"']*)["']/);
+  return matched && matched[1] ? normalizePlayableURL(matched[1]) : "";
+}
+
+function resolveYD189URL(ydPlayerURL, callback) {
+  $http
+    .fetch({
+      url: buildAbsoluteURL(ydPlayerURL),
+      method: "GET",
+      headers: {
+        "User-Agent": UA,
+        Referer: REFERER_URL,
+      },
+    })
+    .then(function (res) {
+      var parseURL = extractYD189ParseURL(res.body);
+      if (!parseURL) {
+        callback("");
+        return;
+      }
+
+      $http
+        .fetch({
+          url: buildAbsoluteURL(parseURL),
+          method: "GET",
+          headers: {
+            "User-Agent": UA,
+          },
+        })
+        .then(function (parseRes) {
+          try {
+            var data = JSON.parse(parseRes.body);
+            callback(data && data.url ? normalizePlayableURL(data.url) : "");
+          } catch (error) {
+            callback("");
+          }
+        })
+        .catch(function () {
+          callback("");
+        });
+    })
+    .catch(function () {
+      callback("");
+    });
+}
+
 function getPlayAPIBaseForSource(from, callback) {
   if (!from) {
     callback("");
@@ -721,6 +772,14 @@ function resolvePlayableURLByConfig(config, callback) {
 
     if (playAPIBase.indexOf("/static/player/artplayer/") >= 0) {
       resolveArtplayerURL(playAPIBase, config, callback);
+      return;
+    }
+
+    if (from === "yd189") {
+      resolveYD189URL(
+        buildAbsoluteURL(playAPIBase + url + "&next=" + next + "&id=" + id + "&nid=" + nid),
+        callback
+      );
       return;
     }
 
