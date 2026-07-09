@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-08T06:06:03.805Z`
+Generated: `2026-07-09T06:53:29.481Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -26,7 +26,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
-| libvio | plugin_libvio | Partial | OK 2/2 | OK | Not Reached | 2/5 | plugin_empty_view:3 |
+| libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | 韩剧网 | plugin_thanju | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 | 独播库 | plugin_dbku | OK | OK 3/3 | OK | OK 3/3 | 5/5 | - |
 
@@ -35,7 +35,7 @@ Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [l
 Invalid sources: `3`
 - `plugin_czzy` 廠長資源: fatal_error:1
 - `plugin_youknow` YouKnowTV: fatal_error:1
-- `plugin_libvio` libvio: plugin_empty_view:3
+- `plugin_libvio` libvio: fatal_error:1
 
 ### Plugin Details
 
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `地球超新鲜`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%9C%B0%E7%90%83%E8%B6%85%E6%96%B0%E9%B2%9C/vod/0/1/4
+- Keyword: `野狗骨头`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 地球超新鲜 第二季 | 超前抢鲜看 | https://europe.olemovienews.com/ts4/20260624/kfz86tc4/mp4/kfz86tc4.mp4/master.m3u8 |
-| OK | 五十公里桃花坞6 | 线上集结 | https://europe.olemovienews.com/ts4/20260507/0ftfkyxk/mp4/0ftfkyxk.mp4/master.m3u8 |
-| OK | 喜欢你我也是 第六季 | 先导片 | https://europe.olemovienews.com/ts4/20260602/3dzjp9j2/mp4/3dzjp9j2.mp4/master.m3u8 |
+| OK | 野狗骨头 | 第01集 | https://europe.olemovienews.com/ts4/20260705/j0zawap2/mp4/j0zawap2.mp4/master.m3u8 |
+| OK | 镖人 第二季 | 第01集 | https://europe.olemovienews.com/ts4/20260611/tiw4y3r3/mp4/tiw4y3r3.mp4/master.m3u8 |
+| OK | 神墓 第三季 | 第01集 | https://europe.olemovienews.com/ts4/20250808/3v5wa2mo/mp4/3v5wa2mo.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `幼女战记`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B9%BC%E5%A5%B3%E6%88%98%E8%AE%B0
+- Keyword: `LV999的村民`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=LV999%E7%9A%84%E6%9D%91%E6%B0%91
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 幼女战记 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_d1f1g5gO%2BGtediMTJctjKlV8zx9cRbF19sWlsH611MKMzJ3%2Bq3RIWjwt7ihh6UV71y4PRAZnOxZASAeuIIXWipc%2BB8wcy%2Fi8vHBO%2Bs%2FOxNkV5MIb180ifm7zVy%2Be4RlULPSr4w |
-| OK | 最强出涸皇子的暗跃帝位争夺 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_f3b2giTVRD2Z0gnTKHqf0G5KQFQYMeZvnyv7hC%2B1jPXCMUCbeltYPHnZDi7bPti9eghyDIzv%2FWmnXlOmqSz2YVds9GGCIV3w7%2FJYL%2FVzHp6RVr00GtQEAGhRUhyK7mMFfC5kNBXFWRj%2BASBKnfBJfF%2BqFMOBi2Iu1ySV |
-| OK | 暴走千金立誓复仇。～用魔导书之力碾碎祖国～ | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_8e123ETLxqIHw%2B0qLit2C%2Fa9AM5clhu68gzPrJGfpOk6qGNx3zFXe2dyrU2YcbSL3vQDbtK6uP9DgfDdQ0S109n5AMMZbgcxYFzwK7VzKvz%2BwqIuhrNHs23qOJWEHxScwRuXtteTaHpLMxhGpmL6lE59WEReicWljlMEsf3GteiduzQz2pe6OQ |
+| OK | LV999的村民 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_0623KJmUe1iG2V0ZY%2BaI0huY79lAgIgwM6wAUomisYyEfibiSHAGxBvsixhNxrSlded%2FqVogJ0ok346ok3j34VdUPe1bN%2BG31CcOdjYrA7dh8pjiSEbtpc9r |
+| OK | 无职转生Ⅲ 到了异世界就拿出真本事 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_a7f9y%2FijZvpjBVs5ZBqSJoBneEe23cImF0BzmOUVlE6tRnQdQDTcwJnBRR95OdkgmPWDr%2Bbv%2FE51mIMP1pmiYwLcqXs34GrDyfuiWA9KimAcSUJ0tAxOlYsf |
+| OK | 乙女游戏世界对路人角色很不友好 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_a369TAL16%2BANLuZNfptP9E4uOuQDK782qILOw%2F%2BoRmlruJP7OIqnO%2FZPPbn8RpBj37Nui5LmfK7nEfgJGLzJFIhuK3I29vR3hB3FD%2FYrAZMsZH9WUZR3ebrd |
 
 </details>
 
@@ -193,43 +193,43 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>libvio · Partial · conn=OK 2/2 · search=OK · playback=Not Reached · reasons=plugin_empty_view:3</summary>
+<summary>libvio · Fatal · conn=Fail 0/2 · search=Empty · playback=Not Reached · reasons=connectivity_failed:1, search_empty:1</summary>
 
 - Folder: `plugin_libvio`
 - Entry: `libvio`
-- Overall: `Partial`
-- Cases: `2/5`
-- Reasons: `plugin_empty_view:3`
+- Overall: `Fatal`
+- Cases: `0/2`
+- Reasons: `connectivity_failed:1, search_empty:1`
 - Note: libvio
+- Fatal Errors:
+  - `no medias returned; no medias returned`
 
 Connectivity
-- [OK] `HEAD 200` https://www.libvio.cam/
-- [OK] `HEAD 200` https://www.libvio.cam/search/-------------.html?wd=test
+- [FAIL] `GET 403` https://www.libvios.com/ | status 403
+- [FAIL] `GET 403` https://www.libvios.com/search/-------------.html?wd=test | status 403
 
 Search
-- Status: `OK`
-- Keyword: `火遮眼`
-- URL: https://www.libvio.cam/search/-------------.html?wd=%E7%81%AB%E9%81%AE%E7%9C%BC
+- Status: `Empty`
+- Keyword: `test`
+- URL: https://www.libvios.com/search/-------------.html?wd=test
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 - Not reached
 
 Failed Case Diagnostics
-- 火遮眼 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813475.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
+- connectivity | stage=`connectivity` | reason=`connectivity_failed`
+  - detailURL: https://www.libvios.com/
+  - detail: 插件站點連通性檢查失敗
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813475.html
-- 杖与剑的魔剑谭第二季 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813476.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
+  - `GET 403` https://www.libvios.com/ | status 403
+  - `GET 403` https://www.libvios.com/search/-------------.html?wd=test | status 403
+- keyword:test | stage=`search` | reason=`search_empty`
+  - detailURL: https://www.libvios.com/search/-------------.html?wd=test
+  - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813476.html
-- 杖与剑的魔剑谭 | stage=`episodes` | reason=`plugin_empty_view`
-  - detailURL: https://www.libvio.cam/detail/5813477.html
-  - detail: 插件回傳 emptyView，未取得可播放地址
-  - http diagnostics:
-  - `GET 200` https://www.libvio.cam/detail/5813477.html
+  - `GET 403` https://www.libvios.com/search/-------------.html?wd=test
 
 </details>
 
@@ -250,15 +250,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
+- Keyword: `红色珍珠`
+- URL: https://www.thanju.com/search/%E7%BA%A2%E8%89%B2%E7%8F%8D%E7%8F%A0.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 | OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
-| OK | 医到孤岛爱上你 | 01 | https://cdn.yzzy31-play.com/20260601/21399_07e6663e/index.m3u8 |
+| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
+| OK | 家庭关系证明书 | 01 | https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 |
 
 </details>
 
@@ -279,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `Crossroad救命救`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=Crossroad%E6%95%91%E5%91%BD%E6%95%91&submit=
+- Keyword: `谜案拼图`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E8%B0%9C%E6%A1%88%E6%8B%BC%E5%9B%BE&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | Crossroad救命救急的约定 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejOt9lStDoRs5aQcrgQcHvP2qmCIqmCZb4Dp8mHKKkRN0q/chunklist.m3u8 |
-| OK | 红色珍珠 | 第1集 | https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 |
-| OK | 我们愉快的好日子 | 第1集 | https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 |
+| OK | 谜案拼图 | 第1集 | https://vid.dbokutv.com/20260630/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlQ79nBMrXS7GjC34jC315CqOoGaH3BcrmD0/chunklist.m3u8 |
+| OK | 春花宴 | 第1集 | https://vid.dbokutv.com/20260705/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qnj3oMc1YMc1WY6neY6PiSbpQu64/chunklist.m3u8 |
+| OK | 少侠逆袭攻略 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 |
 
 </details>
 
