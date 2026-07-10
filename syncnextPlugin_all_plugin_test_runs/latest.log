@@ -10,51 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "82791",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260705-1/d4d876d2f36e8c2fcece955565607ba2.jpg",
-  "title": "野狗骨头",
-  "descriptionText": "更新至第11集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82791/true"
+  "id": "82433",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260605-1/13365e5d7876d88468fec33fd05337aa.jpg",
+  "title": "恐怖角",
+  "descriptionText": "更新至第07集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82433/true"
 }
-[plugin 1] search keyword=野狗骨头 url=https://api.olelive.com/v1/pub/index/search/%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4/vod/0/1/4
+[plugin 1] search keyword=恐怖角 url=https://api.olelive.com/v1/pub/index/search/%E6%81%90%E6%80%96%E8%A7%92/vod/0/1/4
 [plugin 1] search results=1
 [plugin 1] search sample(index=0)
 {
-  "id": "82791",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260705-1/d4d876d2f36e8c2fcece955565607ba2.jpg",
-  "title": "野狗骨头",
-  "descriptionText": "更新至第11集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82791/true"
+  "id": "82433",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260605-1/13365e5d7876d88468fec33fd05337aa.jpg",
+  "title": "恐怖角",
+  "descriptionText": "更新至第07集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82433/true"
 }
-[OK] 新歐樂影院 | search(野狗骨头) -> 1
-[OK] 新歐樂影院 | 野狗骨头 | 第01集 -> https://europe.olemovienews.com/ts4/20260705/j0zawap2/mp4/j0zawap2.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 镖人 第二季 | 第01集 -> https://europe.olemovienews.com/ts4/20260611/tiw4y3r3/mp4/tiw4y3r3.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 神墓 第三季 | 第01集 -> https://europe.olemovienews.com/ts4/20250808/3v5wa2mo/mp4/3v5wa2mo.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(恐怖角) -> 1
+[OK] 新歐樂影院 | 恐怖角 | 第01集 -> https://europe.olemovienews.com/ts4/20260605/2eqqaknr/mp4/2eqqaknr.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 沧元图 | 第01集 -> https://europe.olemovienews.com/ts2/20230622/houFsDqd/mp4/houFsDqd.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 少女怪兽焦糖味 | 第01集 -> https://europe.olemovienews.com/ts4/20260702/gozgowiu/mp4/gozgowiu.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260214",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260214.jpg",
-  "title": "LV999的村民",
-  "descriptionText": "第03集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260214"
+  "id": "20260200",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260200.jpg",
+  "title": "尼古喵喵",
+  "descriptionText": "第02集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260200"
 }
-[plugin 2] search keyword=LV999的村民 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=LV999%E7%9A%84%E6%9D%91%E6%B0%91
+[plugin 2] search keyword=尼古喵喵 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%BC%E5%8F%A4%E5%96%B5%E5%96%B5
 [plugin 2] search results=1
 [plugin 2] search sample(index=0)
 {
-  "id": "20260214",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260214.jpg",
-  "title": "LV999的村民",
-  "descriptionText": "第03集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260214"
+  "id": "20260200",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260200.jpg",
+  "title": "尼古喵喵",
+  "descriptionText": "第02集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260200"
 }
-[OK] 新 AGE 動漫 | search(LV999的村民) -> 1
-[OK] 新 AGE 動漫 | LV999的村民 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_0623KJmUe1iG2V0ZY%2BaI0huY79lAgIgwM6wAUomisYyEfibiSHAGxBvsixhNxrSlded%2FqVogJ0ok346ok3j34VdUPe1bN%2BG31CcOdjYrA7dh8pjiSEbtpc9r | candidates=4
-[OK] 新 AGE 動漫 | 无职转生Ⅲ 到了异世界就拿出真本事 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_a7f9y%2FijZvpjBVs5ZBqSJoBneEe23cImF0BzmOUVlE6tRnQdQDTcwJnBRR95OdkgmPWDr%2Bbv%2FE51mIMP1pmiYwLcqXs34GrDyfuiWA9KimAcSUJ0tAxOlYsf | candidates=4
-[OK] 新 AGE 動漫 | 乙女游戏世界对路人角色很不友好 第二季 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_a369TAL16%2BANLuZNfptP9E4uOuQDK782qILOw%2F%2BoRmlruJP7OIqnO%2FZPPbn8RpBj37Nui5LmfK7nEfgJGLzJFIhuK3I29vR3hB3FD%2FYrAZMsZH9WUZR3ebrd | candidates=4
+[OK] 新 AGE 動漫 | search(尼古喵喵) -> 1
+[OK] 新 AGE 動漫 | 尼古喵喵 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_0cd7FC6tSHtjD7EJ4xjhA6IWqe3J0PJlTdp%2FmL6fVT5yhEPXdtEnZ608XmbdzStezfyO5rY%2B0Vb54WI8zWdkLFStA1Hw%2FkJH%2BlPYCSDdxOoQBqj348g6ypv9 | candidates=4
+[OK] 新 AGE 動漫 | 元祖！BanG Dream Chan | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_f998ATMvxXNuVSaFdSBE3rYOoKulbd8X%2FR018R4b8iwSoRejJqIoojj2Gdc0nMI1hF6syv4t600oFo6bY0jfH%2B0whLfmlbV8DyM | candidates=2
+[OK] 新 AGE 動漫 | BanG Dream! YUME∞MITA | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_b35cWaDYbSMu5FCJ5SkMAnf7xgnR2Sbfasiow4BECq2cV%2BNTuD12EGDcw6z7U0LkZpC%2BYFLRtrPXQ6BaoO2NTAWhR%2Fmd4cLmt%2FUXld%2BaYBkE2ZYD5OYqwcMZ | candidates=4
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -81,7 +81,7 @@
   "id": "https://www.thanju.com/detail/2488.html",
   "coverURLString": "https://pp.thanju.com/U/vod/699d0f2e65bb5.jpg",
   "title": "红色珍珠",
-  "descriptionText": "第80集 · 朴真熙 李甫姫 李元宗 韩振熙",
+  "descriptionText": "第81集 · 朴真熙 李甫姫 李元宗 韩振熙",
   "detailURLString": "https://www.thanju.com/detail/2488.html"
 }
 [plugin 6] search keyword=红色珍珠 url=https://www.thanju.com/search/%E7%BA%A2%E8%89%B2%E7%8F%8D%E7%8F%A0.html
@@ -103,28 +103,28 @@
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/146704.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/wEXrEWqpYgPGDkdUEKmmRVR2C6D.jpg",
-  "title": "谜案拼图",
-  "descriptionText": "更新至30集",
-  "detailURLString": "https://www.dbku.tv/voddetail/146704.html"
+  "id": "https://www.dbku.tv/voddetail/146478.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/Cdnzjeu1pZ1ljF3ZtGV0a33Qq3.jpg",
+  "title": "千香",
+  "descriptionText": "更新至25集",
+  "detailURLString": "https://www.dbku.tv/voddetail/146478.html"
 }
-[plugin 7] search keyword=谜案拼图 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E8%B0%9C%E6%A1%88%E6%8B%BC%E5%9B%BE&submit=
+[plugin 7] search keyword=千香 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%8D%83%E9%A6%99&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/146704.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/wEXrEWqpYgPGDkdUEKmmRVR2C6D.jpg",
-  "title": "谜案拼图",
-  "descriptionText": "更新至30集",
-  "detailURLString": "https://www.dbku.tv/voddetail/146704.html"
+  "id": "https://www.dbku.tv/voddetail/146478.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/Cdnzjeu1pZ1ljF3ZtGV0a33Qq3.jpg",
+  "title": "千香",
+  "descriptionText": "更新至25集",
+  "detailURLString": "https://www.dbku.tv/voddetail/146478.html"
 }
-[OK] 独播库 | search(谜案拼图) -> 1
-[OK] 独播库 | 谜案拼图 | 第1集 -> https://vid.dbokutv.com/20260630/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlQ79nBMrXS7GjC34jC315CqOoGaH3BcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(千香) -> 1
+[OK] 独播库 | 千香 | 第1集 -> https://vid.dbokutv.com/20260627/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBN5uBJ0nBJ0pCJKqHJCqH2vjS34/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 春花宴 | 第1集 -> https://vid.dbokutv.com/20260705/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qnj3oMc1YMc1WY6neY6PiSbpQu64/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 少侠逆袭攻略 | 第1集 -> https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_0a97bb0c-effc-441a-b04e-a7a7c7d2b991
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_85763664-5842-4b7d-9a91-4a6cecd9520b
 [summary] plugins=7, fatal=3, cases=26, ok=19, fail=7, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json

@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-09T06:53:29.481Z`
+Generated: `2026-07-10T06:53:42.179Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `野狗骨头`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4/vod/0/1/4
+- Keyword: `恐怖角`
+- URL: https://api.olelive.com/v1/pub/index/search/%E6%81%90%E6%80%96%E8%A7%92/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 野狗骨头 | 第01集 | https://europe.olemovienews.com/ts4/20260705/j0zawap2/mp4/j0zawap2.mp4/master.m3u8 |
-| OK | 镖人 第二季 | 第01集 | https://europe.olemovienews.com/ts4/20260611/tiw4y3r3/mp4/tiw4y3r3.mp4/master.m3u8 |
-| OK | 神墓 第三季 | 第01集 | https://europe.olemovienews.com/ts4/20250808/3v5wa2mo/mp4/3v5wa2mo.mp4/master.m3u8 |
+| OK | 恐怖角 | 第01集 | https://europe.olemovienews.com/ts4/20260605/2eqqaknr/mp4/2eqqaknr.mp4/master.m3u8 |
+| OK | 沧元图 | 第01集 | https://europe.olemovienews.com/ts2/20230622/houFsDqd/mp4/houFsDqd.mp4/master.m3u8 |
+| OK | 少女怪兽焦糖味 | 第01集 | https://europe.olemovienews.com/ts4/20260702/gozgowiu/mp4/gozgowiu.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `LV999的村民`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=LV999%E7%9A%84%E6%9D%91%E6%B0%91
+- Keyword: `尼古喵喵`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%BC%E5%8F%A4%E5%96%B5%E5%96%B5
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | LV999的村民 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_0623KJmUe1iG2V0ZY%2BaI0huY79lAgIgwM6wAUomisYyEfibiSHAGxBvsixhNxrSlded%2FqVogJ0ok346ok3j34VdUPe1bN%2BG31CcOdjYrA7dh8pjiSEbtpc9r |
-| OK | 无职转生Ⅲ 到了异世界就拿出真本事 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_a7f9y%2FijZvpjBVs5ZBqSJoBneEe23cImF0BzmOUVlE6tRnQdQDTcwJnBRR95OdkgmPWDr%2Bbv%2FE51mIMP1pmiYwLcqXs34GrDyfuiWA9KimAcSUJ0tAxOlYsf |
-| OK | 乙女游戏世界对路人角色很不友好 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_a369TAL16%2BANLuZNfptP9E4uOuQDK782qILOw%2F%2BoRmlruJP7OIqnO%2FZPPbn8RpBj37Nui5LmfK7nEfgJGLzJFIhuK3I29vR3hB3FD%2FYrAZMsZH9WUZR3ebrd |
+| OK | 尼古喵喵 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_0cd7FC6tSHtjD7EJ4xjhA6IWqe3J0PJlTdp%2FmL6fVT5yhEPXdtEnZ608XmbdzStezfyO5rY%2B0Vb54WI8zWdkLFStA1Hw%2FkJH%2BlPYCSDdxOoQBqj348g6ypv9 |
+| OK | 元祖！BanG Dream Chan | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_f998ATMvxXNuVSaFdSBE3rYOoKulbd8X%2FR018R4b8iwSoRejJqIoojj2Gdc0nMI1hF6syv4t600oFo6bY0jfH%2B0whLfmlbV8DyM |
+| OK | BanG Dream! YUME∞MITA | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_b35cWaDYbSMu5FCJ5SkMAnf7xgnR2Sbfasiow4BECq2cV%2BNTuD12EGDcw6z7U0LkZpC%2BYFLRtrPXQ6BaoO2NTAWhR%2Fmd4cLmt%2FUXld%2BaYBkE2ZYD5OYqwcMZ |
 
 </details>
 
@@ -279,13 +279,13 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `谜案拼图`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E8%B0%9C%E6%A1%88%E6%8B%BC%E5%9B%BE&submit=
+- Keyword: `千香`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%8D%83%E9%A6%99&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 谜案拼图 | 第1集 | https://vid.dbokutv.com/20260630/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlQ79nBMrXS7GjC34jC315CqOoGaH3BcrmD0/chunklist.m3u8 |
+| OK | 千香 | 第1集 | https://vid.dbokutv.com/20260627/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBN5uBJ0nBJ0pCJKqHJCqH2vjS34/chunklist.m3u8 |
 | OK | 春花宴 | 第1集 | https://vid.dbokutv.com/20260705/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qnj3oMc1YMc1WY6neY6PiSbpQu64/chunklist.m3u8 |
 | OK | 少侠逆袭攻略 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 |
 
