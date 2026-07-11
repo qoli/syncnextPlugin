@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-10T06:53:42.179Z`
+Generated: `2026-07-11T05:48:11.159Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `恐怖角`
-- URL: https://api.olelive.com/v1/pub/index/search/%E6%81%90%E6%80%96%E8%A7%92/vod/0/1/4
+- Keyword: `非份之罪【粤语】`
+- URL: https://api.olelive.com/v1/pub/index/search/%E9%9D%9E%E4%BB%BD%E4%B9%8B%E7%BD%AA%E3%80%90%E7%B2%A4%E8%AF%AD%E3%80%91/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 恐怖角 | 第01集 | https://europe.olemovienews.com/ts4/20260605/2eqqaknr/mp4/2eqqaknr.mp4/master.m3u8 |
-| OK | 沧元图 | 第01集 | https://europe.olemovienews.com/ts2/20230622/houFsDqd/mp4/houFsDqd.mp4/master.m3u8 |
-| OK | 少女怪兽焦糖味 | 第01集 | https://europe.olemovienews.com/ts4/20260702/gozgowiu/mp4/gozgowiu.mp4/master.m3u8 |
+| OK | 非份之罪【粤语】 | 第01集 | https://europe.olemovienews.com/ts4/20260629/b4olib5y/mp4/b4olib5y.mp4/master.m3u8 |
+| OK | 非份之罪【国语】 | 第01集 | https://europe.olemovienews.com/ts4/20260629/1qxpuyz9/mp4/1qxpuyz9.mp4/master.m3u8 |
+| OK | 种墨园 | 第01集 | https://europe.olemovienews.com/ts4/20260623/pecs731v/mp4/pecs731v.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `尼古喵喵`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%B0%BC%E5%8F%A4%E5%96%B5%E5%96%B5
+- Keyword: `地狱模式`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%9C%B0%E7%8B%B1%E6%A8%A1%E5%BC%8F
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 尼古喵喵 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_0cd7FC6tSHtjD7EJ4xjhA6IWqe3J0PJlTdp%2FmL6fVT5yhEPXdtEnZ608XmbdzStezfyO5rY%2B0Vb54WI8zWdkLFStA1Hw%2FkJH%2BlPYCSDdxOoQBqj348g6ypv9 |
-| OK | 元祖！BanG Dream Chan | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_f998ATMvxXNuVSaFdSBE3rYOoKulbd8X%2FR018R4b8iwSoRejJqIoojj2Gdc0nMI1hF6syv4t600oFo6bY0jfH%2B0whLfmlbV8DyM |
-| OK | BanG Dream! YUME∞MITA | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_b35cWaDYbSMu5FCJ5SkMAnf7xgnR2Sbfasiow4BECq2cV%2BNTuD12EGDcw6z7U0LkZpC%2BYFLRtrPXQ6BaoO2NTAWhR%2Fmd4cLmt%2FUXld%2BaYBkE2ZYD5OYqwcMZ |
+| OK | 地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～ 第2季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_cae9yk6iISaf0yR2cXd3SlFhpLS%2Bjn%2BJrv%2BgE6ZGdiLbKhv1uqbTzL5ajO3sm5gD9YPe%2BCbNb%2FRgjPXZWv0BPv9WsaNOMCsYNPDDF7zBUUDKiZdgE9wnFTpx |
+| OK | 正后方的神威 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_b402p2qu3kgy%2FZ%2B%2B%2FgPaKobV52VBPQ%2FtXYZOorhrH2g2KwqnUM8%2FLY80qg8c5g2L5e2SJPJd9jmJhuJ9zkfpHfCsNlUs1NZ1k3jZSd6XY3L9gsizAV4xsVFY |
+| OK | 我家的弟弟们真是让您费心了 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_e6c0rPNPcsn3R3F0888KEwVPBY8Jj%2BK7sN9hEZpKBiGu1xE0ZXFJm3kaIwKSkEh4iZFnMIv6%2BDJQhv0XkzVU855C1GapVPq1AeOLm4%2FmWgyI0GDWDcSh3qdj |
 
 </details>
 
@@ -250,14 +250,14 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `红色珍珠`
-- URL: https://www.thanju.com/search/%E7%BA%A2%E8%89%B2%E7%8F%8D%E7%8F%A0.html
+- Keyword: `我们愉快的好日子`
+- URL: https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 | OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
+| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 | OK | 家庭关系证明书 | 01 | https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 |
 
 </details>
@@ -286,8 +286,8 @@ Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
 | OK | 千香 | 第1集 | https://vid.dbokutv.com/20260627/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBN5uBJ0nBJ0pCJKqHJCqH2vjS34/chunklist.m3u8 |
-| OK | 春花宴 | 第1集 | https://vid.dbokutv.com/20260705/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qnj3oMc1YMc1WY6neY6PiSbpQu64/chunklist.m3u8 |
-| OK | 少侠逆袭攻略 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 |
+| OK | 谜案拼图 | 第1集 | https://vid.dbokutv.com/20260630/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlQ79nBMrXS7GjC34jC315CqOoGaH3BcrmD0/chunklist.m3u8 |
+| OK | 艾米丽与玛丽亚 | 第1集 | https://vid.dbokutv.com/20260622/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHbTcyo5xOy6ejOMriUMriUIqmCIqmCZOtDa8nDp0kRN0q/chunklist.m3u8 |
 
 </details>
 
