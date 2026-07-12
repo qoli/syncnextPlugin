@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-11T05:48:11.159Z`
+Generated: `2026-07-12T06:11:54.184Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `非份之罪【粤语】`
-- URL: https://api.olelive.com/v1/pub/index/search/%E9%9D%9E%E4%BB%BD%E4%B9%8B%E7%BD%AA%E3%80%90%E7%B2%A4%E8%AF%AD%E3%80%91/vod/0/1/4
+- Keyword: `千香`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%8D%83%E9%A6%99/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 非份之罪【粤语】 | 第01集 | https://europe.olemovienews.com/ts4/20260629/b4olib5y/mp4/b4olib5y.mp4/master.m3u8 |
-| OK | 非份之罪【国语】 | 第01集 | https://europe.olemovienews.com/ts4/20260629/1qxpuyz9/mp4/1qxpuyz9.mp4/master.m3u8 |
-| OK | 种墨园 | 第01集 | https://europe.olemovienews.com/ts4/20260623/pecs731v/mp4/pecs731v.mp4/master.m3u8 |
+| OK | 千香 | 第01集 | https://europe.olemovienews.com/ts4/20260627/iy548ymf/mp4/iy548ymf.mp4/master.m3u8 |
+| OK | 说唱巅峰对决2026 | 先导片 | https://europe.olemovienews.com/ts4/20260627/6piwi5ef/mp4/6piwi5ef.mp4/master.m3u8 |
+| OK | 喜欢你我也是 第六季 | 先导片 | https://europe.olemovienews.com/ts4/20260602/3dzjp9j2/mp4/3dzjp9j2.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `地狱模式`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%9C%B0%E7%8B%B1%E6%A8%A1%E5%BC%8F
+- Keyword: `黄泉使者`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E9%BB%84%E6%B3%89%E4%BD%BF%E8%80%85
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～ 第2季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_cae9yk6iISaf0yR2cXd3SlFhpLS%2Bjn%2BJrv%2BgE6ZGdiLbKhv1uqbTzL5ajO3sm5gD9YPe%2BCbNb%2FRgjPXZWv0BPv9WsaNOMCsYNPDDF7zBUUDKiZdgE9wnFTpx |
-| OK | 正后方的神威 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_b402p2qu3kgy%2FZ%2B%2B%2FgPaKobV52VBPQ%2FtXYZOorhrH2g2KwqnUM8%2FLY80qg8c5g2L5e2SJPJd9jmJhuJ9zkfpHfCsNlUs1NZ1k3jZSd6XY3L9gsizAV4xsVFY |
-| OK | 我家的弟弟们真是让您费心了 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_e6c0rPNPcsn3R3F0888KEwVPBY8Jj%2BK7sN9hEZpKBiGu1xE0ZXFJm3kaIwKSkEh4iZFnMIv6%2BDJQhv0XkzVU855C1GapVPq1AeOLm4%2FmWgyI0GDWDcSh3qdj |
+| OK | 黄泉使者 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_af38BKEmApDQb3QvqAs0RzpohR6U9v73EFbIt4InM0cyUICB9i%2BIy86uArX6WaBkdoE0BAlMcFw0aa8AbwGVRJny4U4NOzzujsX4QJxwfRga2S2l1C8K7MwB |
+| OK | 穹庐下的魔女 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_3ec6y%2BpyynmeF6rdfs2%2B09jCRe3v1yEWIynEVAcPvWbJ8oSaAVLDXcNOLgL3UW%2FhkBwyZl2BWXEFo%2FPyz6JZ20flTFHahI4ZSarXviwejWU%2FS%2FMbyzoT0G0w |
+| OK | 魔法少女奈叶 EXCEEDS Gun Blaze Vengeance | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_452dEBoHJy%2BWCtacvvGOpY7LYiAJdxfDVI9cGdjgrGLJLcqMgYBZtSqNiBaG6jNZGvwGlmNN1mYEPHKiIIIURh9JdiZllv%2F%2B00APju%2BUYFSNeJq%2F7HE63PZM |
 
 </details>
 
@@ -250,15 +250,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
+- Keyword: `公寓黑风暴`
+- URL: https://www.thanju.com/search/%E5%85%AC%E5%AF%93%E9%BB%91%E9%A3%8E%E6%9A%B4.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
-| OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
-| OK | 家庭关系证明书 | 01 | https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 |
+| OK | 公寓黑风暴 | 01 | https://vvip.high26-playback.com/20260711/24705_7ffc2fa4/index.m3u8 |
+| OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
+| OK | 共感细胞 | 01 | https://cdn.yzzy28-play.com/20260704/32161_f76864d0/index.m3u8 |
 
 </details>
 
@@ -279,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `千香`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%8D%83%E9%A6%99&submit=
+- Keyword: `野狗骨头`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 千香 | 第1集 | https://vid.dbokutv.com/20260627/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBN5uBJ0nBJ0pCJKqHJCqH2vjS34/chunklist.m3u8 |
-| OK | 谜案拼图 | 第1集 | https://vid.dbokutv.com/20260630/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlQ79nBMrXS7GjC34jC315CqOoGaH3BcrmD0/chunklist.m3u8 |
-| OK | 艾米丽与玛丽亚 | 第1集 | https://vid.dbokutv.com/20260622/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHbTcyo5xOy6ejOMriUMriUIqmCIqmCZOtDa8nDp0kRN0q/chunklist.m3u8 |
+| OK | 野狗骨头 | 第1集 | https://vid.dbokutv.com/20260705/lxj-yggt-01-007FE7C41.mp4/chunklist.m3u8 |
+| OK | 少侠逆袭攻略 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 |
+| OK | 春花宴 | 第1集 | https://vid.dbokutv.com/20260705/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qnj3oMc1YMc1WY6neY6PiSbpQu64/chunklist.m3u8 |
 
 </details>
 
