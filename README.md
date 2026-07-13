@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-12T06:11:54.184Z`
+Generated: `2026-07-13T06:28:44.557Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `千香`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%8D%83%E9%A6%99/vod/0/1/4
+- Keyword: `夫妻的博弈【粤语】`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%A4%AB%E5%A6%BB%E7%9A%84%E5%8D%9A%E5%BC%88%E3%80%90%E7%B2%A4%E8%AF%AD%E3%80%91/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 千香 | 第01集 | https://europe.olemovienews.com/ts4/20260627/iy548ymf/mp4/iy548ymf.mp4/master.m3u8 |
-| OK | 说唱巅峰对决2026 | 先导片 | https://europe.olemovienews.com/ts4/20260627/6piwi5ef/mp4/6piwi5ef.mp4/master.m3u8 |
-| OK | 喜欢你我也是 第六季 | 先导片 | https://europe.olemovienews.com/ts4/20260602/3dzjp9j2/mp4/3dzjp9j2.mp4/master.m3u8 |
+| OK | 夫妻的博弈【粤语】 | 第01集 | https://europe.olemovienews.com/ts5/20260710/5o8mjori/mp4/5o8mjori.mp4/master.m3u8 |
+| OK | 夫妻的博弈【国语】 | 第01集 | https://europe.olemovienews.com/ts5/20260710/hy3f1ly7/mp4/hy3f1ly7.mp4/master.m3u8 |
+| OK | Running Man | 20160710 | https://europe.olemovienews.com/20160713/TKjWtAvg/index.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `黄泉使者`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E9%BB%84%E6%B3%89%E4%BD%BF%E8%80%85
+- Keyword: `碧蓝航线`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 黄泉使者 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_af38BKEmApDQb3QvqAs0RzpohR6U9v73EFbIt4InM0cyUICB9i%2BIy86uArX6WaBkdoE0BAlMcFw0aa8AbwGVRJny4U4NOzzujsX4QJxwfRga2S2l1C8K7MwB |
-| OK | 穹庐下的魔女 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_3ec6y%2BpyynmeF6rdfs2%2B09jCRe3v1yEWIynEVAcPvWbJ8oSaAVLDXcNOLgL3UW%2FhkBwyZl2BWXEFo%2FPyz6JZ20flTFHahI4ZSarXviwejWU%2FS%2FMbyzoT0G0w |
-| OK | 魔法少女奈叶 EXCEEDS Gun Blaze Vengeance | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_452dEBoHJy%2BWCtacvvGOpY7LYiAJdxfDVI9cGdjgrGLJLcqMgYBZtSqNiBaG6jNZGvwGlmNN1mYEPHKiIIIURh9JdiZllv%2F%2B00APju%2BUYFSNeJq%2F7HE63PZM |
+| OK | 碧蓝航线 微速前行 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_d502D5OSGX8lS%2BBORaxZxCbg9L34J7Hetqg7kPdhHPGi4X%2B3TMgnqXYpOAKSnGNyJeoDkInemyzJNqwWaLpmItDj5VjAP5kgFQzYWq0n0vrK5C6DOTDg6JIR |
+| OK | 恶女不才，请多关照 ～雏宫蝶鼠换身传～ | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_7894ug7wH2Ak54jyIGj2rR0PD7eU27TTvaqhQzb5bBCqE3gM0mMB0zQ2BlzTR326d%2BXB3uWOdNGRAP3p1RWGPj59O9UNmlrNxxYyoRpZcNPIWQSzVDfk3eWa |
+| OK | 再见，拉拉 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_ef71CkTdHnqvKinhGxlcAZc8leG9ISmBXnnK0hQ%2B67n7aDAUqx06Zf8kKC33xdWMXsSaJXlCOiJPdFZ7emrDKiT%2BssNYNHiOP4AFAokVjFc910SAhOprq%2FKr |
 
 </details>
 
@@ -250,15 +250,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `公寓黑风暴`
-- URL: https://www.thanju.com/search/%E5%85%AC%E5%AF%93%E9%BB%91%E9%A3%8E%E6%9A%B4.html
+- Keyword: `给你爱情处方`
+- URL: https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 公寓黑风暴 | 01 | https://vvip.high26-playback.com/20260711/24705_7ffc2fa4/index.m3u8 |
 | OK | 给你爱情处方 | 01 | https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 |
 | OK | 共感细胞 | 01 | https://cdn.yzzy28-play.com/20260704/32161_f76864d0/index.m3u8 |
+| OK | 公寓黑风暴 | 01 | https://vvip.high26-playback.com/20260711/24705_7ffc2fa4/index.m3u8 |
 
 </details>
 
@@ -279,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `野狗骨头`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4&submit=
+- Keyword: `春花宴`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%98%A5%E8%8A%B1%E5%AE%B4&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 野狗骨头 | 第1集 | https://vid.dbokutv.com/20260705/lxj-yggt-01-007FE7C41.mp4/chunklist.m3u8 |
-| OK | 少侠逆袭攻略 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 |
 | OK | 春花宴 | 第1集 | https://vid.dbokutv.com/20260705/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qnj3oMc1YMc1WY6neY6PiSbpQu64/chunklist.m3u8 |
+| OK | 少侠逆袭攻略 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 |
+| OK | 千香 | 第1集 | https://vid.dbokutv.com/20260627/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlR7XgBN5uBJ0nBJ0pCJKqHJCqH2vjS34/chunklist.m3u8 |
 
 </details>
 
