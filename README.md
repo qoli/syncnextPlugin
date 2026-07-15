@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-14T05:39:12.510Z`
+Generated: `2026-07-15T05:40:28.347Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `天才厨人`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%A4%A9%E6%89%8D%E5%8E%A8%E4%BA%BA/vod/0/1/4
+- Keyword: `千香`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%8D%83%E9%A6%99/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 天才厨人 | 第20260611期上 | https://europe.olemovienews.com/ts4/20260611/2n6dxpjl/mp4/2n6dxpjl.mp4/master.m3u8 |
-| OK | 喜欢你我也是 第六季 | 先导片 | https://europe.olemovienews.com/ts4/20260602/3dzjp9j2/mp4/3dzjp9j2.mp4/master.m3u8 |
-| OK | 九阳武神 | 第01集 | https://europe.olemovienews.com/ts4/20251122/xinz7hkf/mp4/xinz7hkf.mp4/master.m3u8 |
+| OK | 千香 | 第01集 | https://europe.olemovienews.com/ts4/20260627/iy548ymf/mp4/iy548ymf.mp4/master.m3u8 |
+| OK | 百花杀 | 第01集 | https://europe.olemovienews.com/ts5/20260709/oem5f3p6/mp4/oem5f3p6.mp4/master.m3u8 |
+| OK | 非诚勿扰 | 20190928 | https://europe.olemovienews.com/ts1/20190929/IatEinta/mp4/IatEinta.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `碧蓝之海`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E7%A2%A7%E8%93%9D%E4%B9%8B%E6%B5%B7
+- Keyword: `假面骑士ZZZ`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%81%87%E9%9D%A2%E9%AA%91%E5%A3%ABZZZ
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 碧蓝之海 第三季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_9cb59N5%2F525XAcIlSy70uDnthTTmMVQHNDHNCQAMwZhdqFbfmtCsjGa%2BmD1td1rLzcpFqIkL86OCacswmeB0qPgsbnWR5%2FGcQX6wOwFrjiHCG0Sogk2OPHdZ |
-| OK | 斗球儿弹子 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_0d938j3kd1RMcoaXqbuaaQzuX97ZKO4dkLObJpp94SG8A7wZKdF2oFk6bYwhCyBOwCz6E2UVq%2BeOAeN3KAmYCBadYIdvRYmpQ3elOQ9Q4IQWYDaMTbQeiL16 |
-| OK | 最强出涸皇子的暗跃帝位争夺 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_abbdlvxQhyKKQ%2BBbWK%2BbzRN%2B6et6a2KW86FWWk%2BIegZ8T8aocZfcZd%2BX4bOVm90hcfKhjCDemvUcM8qNYAEtjOuuBYNDXqToUDT6IXucRe0XW4E4%2FuWqOd7P |
+| OK | 假面骑士ZZZ | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_7f89hjDSp9qW%2Fi%2FO4W6uRHAWefUjl1dcrJdE7EsNVTtF1Gh4sYwUq9gPLwjBQvp8LdoOlqCNaf%2FBPzjb51aBL75uukQ0xIfd6spFjYUm2diZbQLizdtAVBTY |
+| OK | 柔光魔女股份有限公司 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_27acXeW1tGra5zHfoHMWf%2B%2BJ%2F%2FrAIZzUxhB2Tu9naGZlAsX%2B7eCACH%2FZiAUlXqZ3GOOf4H0ykf1uAbaXj8oOxDQZmjrb70t95gBlNup9Bph2SMUPcKi2cXhH |
+| OK | 雷霆三人行 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_e855Xw%2F6kpGQY7D3a19uxXTt7QDE226wz9VWFJhvS2M5Z4nDN1hYDP%2F3hPnxsPbWRGgCYujCqGXsxAFaSQmlgSXI%2BOu84BlxZ73cxoLPb3b0yYq9hFQOShJU |
 
 </details>
 
@@ -250,14 +250,14 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `我们愉快的好日子`
-- URL: https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
+- Keyword: `红色珍珠`
+- URL: https://www.thanju.com/search/%E7%BA%A2%E8%89%B2%E7%8F%8D%E7%8F%A0.html
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 | OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
+| OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 | OK | 给你梦想 | 01 | https://cdn.yzzy28-play.com/20260713/32446_8aa7db6b/index.m3u8 |
 
 </details>
@@ -279,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `野狗骨头`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4&submit=
+- Keyword: `少侠逆袭攻略`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%B0%91%E4%BE%A0%E9%80%86%E8%A2%AD%E6%94%BB%E7%95%A5&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
+| OK | 少侠逆袭攻略 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 |
 | OK | 野狗骨头 | 第1集 | https://vid.dbokutv.com/20260705/lxj-yggt-01-007FE7C41.mp4/chunklist.m3u8 |
-| OK | 我叫任非凡 | 第1集 | https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlQ79nBNTgScPcBJ0nBJ0oC3GrEJ0uH2vjS34/chunklist.m3u8 |
-| OK | 她可爱得厉害 | 第1集 | https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlQ79nBNHhOMHiQ2qmCIqmCZ0sHZKqD44kRN0q/chunklist.m3u8 |
+| OK | 为你而来 | 第1集 | https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsXsRsGlQ79nBNTkPMmjC34jC34oEJ52GpWuBcrmD0/chunklist.m3u8 |
 
 </details>
 
