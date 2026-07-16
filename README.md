@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-15T05:40:28.347Z`
+Generated: `2026-07-16T05:48:25.959Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -23,7 +23,7 @@ Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/s
 | Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 新歐樂影院 | plugin_olevod | Partial | Fail 0/3 | OK | OK 3/3 | 4/5 | connectivity_failed:1 |
-| 新 AGE 動漫 | plugin_age | OK | OK 2/3 | OK | OK 3/3 | 5/5 | - |
+| 新 AGE 動漫 | plugin_age | Partial | OK 2/3 | Empty | OK 3/3 | 4/5 | search_empty:1 |
 | 廠長資源 | plugin_czzy | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | YouKnowTV | plugin_youknow | Fatal | Fail 0/3 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
 | libvio | plugin_libvio | Fatal | Fail 0/2 | Empty | Not Reached | 0/2 | connectivity_failed:1, search_empty:1 |
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `千香`
-- URL: https://api.olelive.com/v1/pub/index/search/%E5%8D%83%E9%A6%99/vod/0/1/4
+- Keyword: `中餐厅·南洋拾光季`
+- URL: https://api.olelive.com/v1/pub/index/search/%E4%B8%AD%E9%A4%90%E5%8E%85%C2%B7%E5%8D%97%E6%B4%8B%E6%8B%BE%E5%85%89%E5%AD%A3/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 千香 | 第01集 | https://europe.olemovienews.com/ts4/20260627/iy548ymf/mp4/iy548ymf.mp4/master.m3u8 |
-| OK | 百花杀 | 第01集 | https://europe.olemovienews.com/ts5/20260709/oem5f3p6/mp4/oem5f3p6.mp4/master.m3u8 |
-| OK | 非诚勿扰 | 20190928 | https://europe.olemovienews.com/ts1/20190929/IatEinta/mp4/IatEinta.mp4/master.m3u8 |
+| OK | 中餐厅·南洋拾光季 | EP00 | https://europe.olemovienews.com/ts4/20260618/xrhy3o7h/mp4/xrhy3o7h.mp4/master.m3u8 |
+| OK | 我们的宿舍•归心季 | EP00 | https://europe.olemovienews.com/ts4/20260609/lus13ea0/mp4/lus13ea0.mp4/master.m3u8 |
+| OK | 妻子的浪漫旅行2026 | 第20260409期 | https://europe.olemovienews.com/ts4/20260409/e5u2pk97/mp4/e5u2pk97.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -78,13 +78,13 @@ Failed Case Diagnostics
 </details>
 
 <details>
-<summary>新 AGE 動漫 · OK · conn=OK 2/3 · search=OK · playback=OK 3/3 · reasons=-</summary>
+<summary>新 AGE 動漫 · Partial · conn=OK 2/3 · search=Empty · playback=OK 3/3 · reasons=search_empty:1</summary>
 
 - Folder: `plugin_age`
 - Entry: `新 AGE`
-- Overall: `OK`
-- Cases: `5/5`
-- Reasons: `-`
+- Overall: `Partial`
+- Cases: `4/5`
+- Reasons: `search_empty:1`
 - Note: AGE 動漫
 
 Connectivity
@@ -93,16 +93,25 @@ Connectivity
 - [OK] `HEAD 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=test
 
 Search
-- Status: `OK`
-- Keyword: `假面骑士ZZZ`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%81%87%E9%9D%A2%E9%AA%91%E5%A3%ABZZZ
+- Status: `Empty`
+- Keyword: `克雷瓦提斯2：魔兽之王与`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%85%8B%E9%9B%B7%E7%93%A6%E6%8F%90%E6%96%AF2%EF%BC%9A%E9%AD%94%E5%85%BD%E4%B9%8B%E7%8E%8B%E4%B8%8E
+- Reason: `search_empty`
+- Detail: 搜尋執行成功但結果為空
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 假面骑士ZZZ | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_7f89hjDSp9qW%2Fi%2FO4W6uRHAWefUjl1dcrJdE7EsNVTtF1Gh4sYwUq9gPLwjBQvp8LdoOlqCNaf%2FBPzjb51aBL75uukQ0xIfd6spFjYUm2diZbQLizdtAVBTY |
-| OK | 柔光魔女股份有限公司 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_27acXeW1tGra5zHfoHMWf%2B%2BJ%2F%2FrAIZzUxhB2Tu9naGZlAsX%2B7eCACH%2FZiAUlXqZ3GOOf4H0ykf1uAbaXj8oOxDQZmjrb70t95gBlNup9Bph2SMUPcKi2cXhH |
-| OK | 雷霆三人行 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_e855Xw%2F6kpGQY7D3a19uxXTt7QDE226wz9VWFJhvS2M5Z4nDN1hYDP%2F3hPnxsPbWRGgCYujCqGXsxAFaSQmlgSXI%2BOu84BlxZ73cxoLPb3b0yYq9hFQOShJU |
+| OK | 克雷瓦提斯2：魔兽之王与虚伪的勇者传承 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_b22bVk4xfnakG8w%2Bl0Z8JlYUw8AYwiRKW9Ucbnp3VN%2BtZalY4Y%2FNwKcelLFxHzG5L5X9YexU9U7HtZ5hwOlWkG33FB%2Fw9QvXYB0PaEXSyXaDwnWOzCUInvWZ |
+| OK | 女主角？圣女？不，我是杂役女仆（自豪）！ | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_79c0jlpM5W%2BokTiLHD2%2FRUTgzr9Ov1GuhQ6Ipvbbn2Zx%2B6N%2B0RMvmDlc0ZQOxouPamVFHy%2FqQ4VWx74iGXIJdQm%2BQ9N%2FLLt0x3n2KPrjEbMQ1ojG44KYYT7V |
+| OK | 乙女游戏世界对路人角色很不友好 第二季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_f15acROD4AyVWew0xa0unFoZlokN0GK2FQd6uBNZWXrD0olVJYgNyVFHhUweU3pRUllDQ2CkM%2FXWDklIMWfJ3RAxD%2FGSnJKdQmcHUIMSD%2BR4RUSM9yIb0aHM |
+
+Failed Case Diagnostics
+- keyword:克雷瓦提斯2：魔兽之王与 | stage=`search` | reason=`search_empty`
+  - detailURL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%85%8B%E9%9B%B7%E7%93%A6%E6%8F%90%E6%96%AF2%EF%BC%9A%E9%AD%94%E5%85%BD%E4%B9%8B%E7%8E%8B%E4%B8%8E
+  - detail: 搜尋執行成功但結果為空
+  - http diagnostics:
+  - `GET 200` https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%85%8B%E9%9B%B7%E7%93%A6%E6%8F%90%E6%96%AF2%EF%BC%9A%E9%AD%94%E5%85%BD%E4%B9%8B%E7%8E%8B%E4%B8%8E
 
 </details>
 
@@ -258,7 +267,7 @@ Playback Cases
 | --- | --- | --- | --- |
 | OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
 | OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
-| OK | 给你梦想 | 01 | https://cdn.yzzy28-play.com/20260713/32446_8aa7db6b/index.m3u8 |
+| OK | 家庭关系证明书 | 01 | https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 |
 
 </details>
 
@@ -279,14 +288,14 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `少侠逆袭攻略`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%B0%91%E4%BE%A0%E9%80%86%E8%A2%AD%E6%94%BB%E7%95%A5&submit=
+- Keyword: `野狗骨头`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 少侠逆袭攻略 | 第1集 | https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 |
 | OK | 野狗骨头 | 第1集 | https://vid.dbokutv.com/20260705/lxj-yggt-01-007FE7C41.mp4/chunklist.m3u8 |
+| OK | 我叫任非凡 | 第1集 | https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlQ79nBNTgScPcBJ0nBJ0oC3GrEJ0uH2vjS34/chunklist.m3u8 |
 | OK | 为你而来 | 第1集 | https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsXsRsGlQ79nBNTkPMmjC34jC34oEJ52GpWuBcrmD0/chunklist.m3u8 |
 
 </details>

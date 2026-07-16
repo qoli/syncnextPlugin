@@ -10,51 +10,43 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "82723",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260627-1/64297858a15078d542fcfff65da42dd4.jpg",
-  "title": "千香",
-  "descriptionText": "完结",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82723/true"
+  "id": "82661",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260618-1/e6bda451b0444040800841f5e0dbbca8.jpg",
+  "title": "中餐厅·南洋拾光季",
+  "descriptionText": "更新至合伙人手记第5期",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82661/true"
 }
-[plugin 1] search keyword=千香 url=https://api.olelive.com/v1/pub/index/search/%E5%8D%83%E9%A6%99/vod/0/1/4
+[plugin 1] search keyword=中餐厅·南洋拾光季 url=https://api.olelive.com/v1/pub/index/search/%E4%B8%AD%E9%A4%90%E5%8E%85%C2%B7%E5%8D%97%E6%B4%8B%E6%8B%BE%E5%85%89%E5%AD%A3/vod/0/1/4
 [plugin 1] search results=1
 [plugin 1] search sample(index=0)
 {
-  "id": "82723",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260627-1/64297858a15078d542fcfff65da42dd4.jpg",
-  "title": "千香",
-  "descriptionText": "完结",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82723/true"
+  "id": "82661",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260618-1/e6bda451b0444040800841f5e0dbbca8.jpg",
+  "title": "中餐厅·南洋拾光季",
+  "descriptionText": "更新至合伙人手记第5期",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82661/true"
 }
-[OK] 新歐樂影院 | search(千香) -> 1
-[OK] 新歐樂影院 | 千香 | 第01集 -> https://europe.olemovienews.com/ts4/20260627/iy548ymf/mp4/iy548ymf.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 百花杀 | 第01集 -> https://europe.olemovienews.com/ts5/20260709/oem5f3p6/mp4/oem5f3p6.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 非诚勿扰 | 20190928 -> https://europe.olemovienews.com/ts1/20190929/IatEinta/mp4/IatEinta.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(中餐厅·南洋拾光季) -> 1
+[OK] 新歐樂影院 | 中餐厅·南洋拾光季 | EP00 -> https://europe.olemovienews.com/ts4/20260618/xrhy3o7h/mp4/xrhy3o7h.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 我们的宿舍•归心季 | EP00 -> https://europe.olemovienews.com/ts4/20260609/lus13ea0/mp4/lus13ea0.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 妻子的浪漫旅行2026 | 第20260409期 -> https://europe.olemovienews.com/ts4/20260409/e5u2pk97/mp4/e5u2pk97.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20250188",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20250188.jpg",
-  "title": "假面骑士ZZZ",
-  "descriptionText": "第44集 · WEB",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20250188"
+  "id": "20260177",
+  "coverURLString": "https://cdn.aqdstatic.com:966/age/20260177.jpg",
+  "title": "克雷瓦提斯2：魔兽之王与虚伪的勇者传承",
+  "descriptionText": "第03集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260177"
 }
-[plugin 2] search keyword=假面骑士ZZZ url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%81%87%E9%9D%A2%E9%AA%91%E5%A3%ABZZZ
-[plugin 2] search results=1
-[plugin 2] search sample(index=0)
-{
-  "id": "20250188",
-  "coverURLString": "https://cdn.aqdstatic.com:966/age/20250188.jpg",
-  "title": "假面骑士ZZZ",
-  "descriptionText": "第44集 · WEB",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20250188"
-}
-[OK] 新 AGE 動漫 | search(假面骑士ZZZ) -> 1
-[OK] 新 AGE 動漫 | 假面骑士ZZZ | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_7f89hjDSp9qW%2Fi%2FO4W6uRHAWefUjl1dcrJdE7EsNVTtF1Gh4sYwUq9gPLwjBQvp8LdoOlqCNaf%2FBPzjb51aBL75uukQ0xIfd6spFjYUm2diZbQLizdtAVBTY | candidates=7
-[OK] 新 AGE 動漫 | 柔光魔女股份有限公司 第二季 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_27acXeW1tGra5zHfoHMWf%2B%2BJ%2F%2FrAIZzUxhB2Tu9naGZlAsX%2B7eCACH%2FZiAUlXqZ3GOOf4H0ykf1uAbaXj8oOxDQZmjrb70t95gBlNup9Bph2SMUPcKi2cXhH | candidates=4
-[OK] 新 AGE 動漫 | 雷霆三人行 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_e855Xw%2F6kpGQY7D3a19uxXTt7QDE226wz9VWFJhvS2M5Z4nDN1hYDP%2F3hPnxsPbWRGgCYujCqGXsxAFaSQmlgSXI%2BOu84BlxZ73cxoLPb3b0yYq9hFQOShJU | candidates=4
+[plugin 2] search keyword=克雷瓦提斯2：魔兽之王与 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%85%8B%E9%9B%B7%E7%93%A6%E6%8F%90%E6%96%AF2%EF%BC%9A%E9%AD%94%E5%85%BD%E4%B9%8B%E7%8E%8B%E4%B8%8E
+[plugin 2] search results=0
+[FAIL] 新 AGE 動漫 | search(克雷瓦提斯2：魔兽之王与) -> 0
+[OK] 新 AGE 動漫 | 克雷瓦提斯2：魔兽之王与虚伪的勇者传承 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_b22bVk4xfnakG8w%2Bl0Z8JlYUw8AYwiRKW9Ucbnp3VN%2BtZalY4Y%2FNwKcelLFxHzG5L5X9YexU9U7HtZ5hwOlWkG33FB%2Fw9QvXYB0PaEXSyXaDwnWOzCUInvWZ | candidates=4
+[OK] 新 AGE 動漫 | 女主角？圣女？不，我是杂役女仆（自豪）！ | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_79c0jlpM5W%2BokTiLHD2%2FRUTgzr9Ov1GuhQ6Ipvbbn2Zx%2B6N%2B0RMvmDlc0ZQOxouPamVFHy%2FqQ4VWx74iGXIJdQm%2BQ9N%2FLLt0x3n2KPrjEbMQ1ojG44KYYT7V | candidates=4
+[OK] 新 AGE 動漫 | 乙女游戏世界对路人角色很不友好 第二季 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_f15acROD4AyVWew0xa0unFoZlokN0GK2FQd6uBNZWXrD0olVJYgNyVFHhUweU3pRUllDQ2CkM%2FXWDklIMWfJ3RAxD%2FGSnJKdQmcHUIMSD%2BR4RUSM9yIb0aHM | candidates=4
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -81,7 +73,7 @@
   "id": "https://www.thanju.com/detail/2488.html",
   "coverURLString": "https://pp.thanju.com/U/vod/699d0f2e65bb5.jpg",
   "title": "红色珍珠",
-  "descriptionText": "第84集 · 朴真熙 李甫姫 李元宗 韩振熙",
+  "descriptionText": "第85集 · 朴真熙 李甫姫 李元宗 韩振熙",
   "detailURLString": "https://www.thanju.com/detail/2488.html"
 }
 [plugin 6] search keyword=红色珍珠 url=https://www.thanju.com/search/%E7%BA%A2%E8%89%B2%E7%8F%8D%E7%8F%A0.html
@@ -97,35 +89,35 @@
 [OK] 韩剧网 | search(红色珍珠) -> 2
 [OK] 韩剧网 | 红色珍珠 | 01 -> https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 | candidates=1
 [OK] 韩剧网 | 我们愉快的好日子 | 01 -> https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 | candidates=1
-[OK] 韩剧网 | 给你梦想 | 01 -> https://cdn.yzzy28-play.com/20260713/32446_8aa7db6b/index.m3u8 | candidates=1
+[OK] 韩剧网 | 家庭关系证明书 | 01 -> https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/147331.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/46ADSlT6Y85XwG0AKu8SgI2QV3y.jpg",
-  "title": "少侠逆袭攻略",
-  "descriptionText": "更新至17集",
-  "detailURLString": "https://www.dbku.tv/voddetail/147331.html"
+  "id": "https://www.dbku.tv/voddetail/147143.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/ixwG1ECra9rSTuRCql81mkMoLVO.jpg",
+  "title": "野狗骨头",
+  "descriptionText": "更新至22集",
+  "detailURLString": "https://www.dbku.tv/voddetail/147143.html"
 }
-[plugin 7] search keyword=少侠逆袭攻略 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%B0%91%E4%BE%A0%E9%80%86%E8%A2%AD%E6%94%BB%E7%95%A5&submit=
+[plugin 7] search keyword=野狗骨头 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%87%8E%E7%8B%97%E9%AA%A8%E5%A4%B4&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/147331.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/46ADSlT6Y85XwG0AKu8SgI2QV3y.jpg",
-  "title": "少侠逆袭攻略",
-  "descriptionText": "更新至17集",
-  "detailURLString": "https://www.dbku.tv/voddetail/147331.html"
+  "id": "https://www.dbku.tv/voddetail/147143.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/ixwG1ECra9rSTuRCql81mkMoLVO.jpg",
+  "title": "野狗骨头",
+  "descriptionText": "更新至22集",
+  "detailURLString": "https://www.dbku.tv/voddetail/147143.html"
 }
-[OK] 独播库 | search(少侠逆袭攻略) -> 1
-[OK] 独播库 | 少侠逆袭攻略 | 第1集 -> https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlQ79nBNDuRdXdR2qmCIqmCJX2D4D5CZWkRN0q/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(野狗骨头) -> 1
 [OK] 独播库 | 野狗骨头 | 第1集 -> https://vid.dbokutv.com/20260705/lxj-yggt-01-007FE7C41.mp4/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 我叫任非凡 | 第1集 -> https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlQ79nBNTgScPcBJ0nBJ0oC3GrEJ0uH2vjS34/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 为你而来 | 第1集 -> https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsXsRsGlQ79nBNTkPMmjC34jC34oEJ52GpWuBcrmD0/chunklist.m3u8 | candidates=1
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_02fd3fe6-96a7-4819-bc81-69aeb731856a
-[summary] plugins=7, fatal=3, cases=26, ok=19, fail=7, invalidSources=3
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_7b58af20-b6c8-4e79-bba1-8c65861fceff
+[summary] plugins=7, fatal=3, cases=26, ok=18, fail=8, invalidSources=3
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
