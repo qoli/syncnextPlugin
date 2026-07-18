@@ -30,6 +30,10 @@ function buildEpisodeData(id, title, episodeDetailURL) {
   };
 }
 
+function normalizeCoverURL(url) {
+  return url.replace(/&amp;/gi, "&");
+}
+
 function findAllByKey(obj, keyToFind) {
   return (
     Object.entries(obj).reduce(
@@ -89,7 +93,9 @@ function buildMedias(inputURL) {
 
       var title = findAllByKey(dom, "title")[0].replace("立刻播放", "");
       var href = findAllByKey(dom, "href")[0];
-      var coverURLString = findAllByKey(dom, "data-src")[0];
+      var coverURLString = normalizeCoverURL(
+        findAllByKey(dom, "data-src")[0]
+      );
 
       href = buildURL(href);
 
@@ -147,7 +153,9 @@ function Search(inputURL, key) {
 
       var title = findAllByKey(dom, "alt")[0];
       var href = findAllByKey(dom, "href")[0];
-      var coverURLString = findAllByKey(dom, "data-src")[0];
+      var coverURLString = normalizeCoverURL(
+        findAllByKey(dom, "data-src")[0]
+      );
 
       href = buildURL(href);
 
