@@ -1,0 +1,61 @@
+{
+  "name": "Gimy TV",
+  "description": "Gimy TV 剧迷影视资源",
+  "host": "https://gimy.tv",
+  "hosts": [
+    "https://gimy.tv"
+  ],
+  "files": [
+    "app.js"
+  ],
+  "pages": [
+    {
+      "key": "index",
+      "title": "首页精选",
+      "url": "https://gimy.tv/",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "tv",
+      "title": "电视剧",
+      "url": "https://gimy.tv/genre/2---${pageNumber}.html",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "电影",
+      "url": "https://gimy.tv/genre/1---${pageNumber}.html",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "variety",
+      "title": "综艺",
+      "url": "https://gimy.tv/genre/3---${pageNumber}.html",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "动漫",
+      "url": "https://gimy.tv/genre/4---${pageNumber}.html",
+      "timeout": 20,
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "timeout": 20,
+    "javascript": "Episodes"
+  },
+  "player": {
+    "timeout": 20,
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "https://gimy.tv/search/${keyword}----------1---.html",
+    "timeout": 20,
+    "javascript": "Search"
+  }
+}
