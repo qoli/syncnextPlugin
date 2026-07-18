@@ -509,6 +509,44 @@ function extractPlayableURL(body) {
   return "";
 }
 
+function extractLibvioPlayerConfig(body) {
+  const hit = String(body || "").match(
+    /window\.LIBVIO_CFG\s*=\s*(\{[\s\S]*?\})\s*;/i
+  );
+  if (!hit || !hit[1]) {
+    throw new Error("ty_new1 player config not found");
+  }
+
+  const config = JSON.parse(hit[1]);
+  if (!config.parseUrl || !config.rawUrl) {
+    throw new Error("ty_new1 player config is incomplete");
+  }
+  return config;
+}
+
+async function resolveTYNew1URL(config, host, playPageURL) {
+  const playerURL = toAbsoluteURL(
+    host,
+    `/vid/ty4.php?url=${config.url}&next=${config.link_next || ""}&id=${
+      config.id || ""
+    }&nid=${config.nid || ""}`
+  );
+  const playerRes = await fetchText(playerURL, playPageURL);
+  const playerConfig = extractLibvioPlayerConfig(playerRes.body);
+  const parseURL = toAbsoluteURL(host, playerConfig.parseUrl);
+  const data = await postJSON(
+    parseURL,
+    { url: playerConfig.rawUrl },
+    playerURL,
+    host
+  );
+
+  if (!data || data.fatal || !data.url) {
+    throw new Error(`ty_new1 parse failed: ${(data && data.msg) || "empty url"}`);
+  }
+  return normalizePlayableURL(data.url);
+}
+
 function extractYD189ParseURL(body) {
   const hit = String(body || "").match(
     /fetch\(["']([^"']*\/vid\/parse_yd\.php[^"']*)["']/
@@ -536,16 +574,16 @@ async function extractRealPlayURL(playPageURL, host) {
     throw new Error("uc not supported by plugin");
   }
 
+  if (from === "ty_new1") {
+    return resolveTYNew1URL(config, host, playPageURL);
+  }
+
   const playerJSRes = await fetchText(
     `${normalizeHost(host)}/static/player/${from}.js`,
     `${host}/`
   );
 
   let playAPIBase = extractPlayAPIBase(playerJSRes.body, host);
-  if (from === "ty_new1") {
-    playAPIBase = `${normalizeHost(host)}/vid/ty4.php?url=`;
-  }
-
   if (playAPIBase.includes("/static/player/artplayer/")) {
     return resolveArtplayerURL(playAPIBase, config, host, playPageURL);
   }
@@ -584,12 +622,8 @@ async function extractRealPlayURL(playPageURL, host) {
     return decodeStr(htoStr(strRevers(data)));
   }
 
-  if (from === "ty_new1") {
-    playAPIURL = `${playAPIBase}${url}`;
-  } else {
-    playAPIURL = `${playAPIBase}${url}&next=${next}&id=${id}&nid=${nid}`;
-    playAPIURL = toAbsoluteURL(host, playAPIURL);
-  }
+  playAPIURL = `${playAPIBase}${url}&next=${next}&id=${id}&nid=${nid}`;
+  playAPIURL = toAbsoluteURL(host, playAPIURL);
 
   const playRes = await fetchText(playAPIURL, `${host}/`);
   const realURL = extractPlayableURL(playRes.body);

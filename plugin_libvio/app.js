@@ -650,6 +650,85 @@ function fetchPlayableURLByAPI(playAPIURL, callback) {
     });
 }
 
+function extractLibvioPlayerConfig(body) {
+  var matched = String(body || "").match(
+    /window\.LIBVIO_CFG\s*=\s*(\{[\s\S]*?\})\s*;/i
+  );
+  if (!matched || !matched[1]) {
+    return null;
+  }
+
+  try {
+    var config = JSON.parse(matched[1]);
+    if (!config.parseUrl || !config.rawUrl) {
+      return null;
+    }
+    return config;
+  } catch (error) {
+    return null;
+  }
+}
+
+function resolveTYNew1URL(config, callback) {
+  var next = config.link_next || "";
+  var id = config.id || "";
+  var nid = config.nid || "";
+  var playerURL = buildAbsoluteURL(
+    "/vid/ty4.php?url=" +
+      config.url +
+      "&next=" +
+      next +
+      "&id=" +
+      id +
+      "&nid=" +
+      nid
+  );
+
+  $http
+    .fetch({
+      url: playerURL,
+      method: "GET",
+      headers: {
+        "User-Agent": UA,
+        Referer: REFERER_URL,
+      },
+    })
+    .then(function (res) {
+      var playerConfig = extractLibvioPlayerConfig(res.body);
+      if (!playerConfig) {
+        callback("");
+        return;
+      }
+
+      $http
+        .fetch({
+          url: buildAbsoluteURL(playerConfig.parseUrl),
+          method: "POST",
+          body: JSON.stringify({ url: playerConfig.rawUrl }),
+          headers: {
+            "Content-Type": "application/json",
+            Origin: BASE_URL,
+            Referer: playerURL,
+            "User-Agent": UA,
+          },
+        })
+        .then(function (parseRes) {
+          try {
+            var data = JSON.parse(parseRes.body);
+            callback(data && !data.fatal && data.url ? normalizePlayableURL(data.url) : "");
+          } catch (error) {
+            callback("");
+          }
+        })
+        .catch(function () {
+          callback("");
+        });
+    })
+    .catch(function () {
+      callback("");
+    });
+}
+
 function extractYD189ParseURL(body) {
   if (!body) {
     return "";
@@ -771,7 +850,7 @@ function resolvePlayableURLByConfig(config, callback) {
   }
 
   if (from === "ty_new1") {
-    fetchPlayableURLByAPI(buildAbsoluteURL("/vid/ty4.php?url=" + url), callback);
+    resolveTYNew1URL(config, callback);
     return;
   }
 
