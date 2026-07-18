@@ -177,17 +177,18 @@ function HostsProbeRequest() {
 - **多分類支援**：在 `config.json.pages` 中新增多組分頁，並共用 `buildMedias` 或定義新的解析函式。
 - **錯誤處理**：請在 `$http.fetch().then(success, error)` 的錯誤 callback 回傳 `$next.toMedias("[]", key)`，避免 Syncnext 卡住（tvOS JSCore 不支援 `.catch`）。
 
-## 6. 測試與驗證清單
+## 6. 測試入口
 
-1. `npm install`（首次）→ `node node_Test.js plugin_<provider>/app.js` 驗證函式載入是否無誤。
-2. `npx browserify plugin_<provider>/app.js -o plugin_<provider>/dist.js`（若需要單檔輸出）。
-3. `bash localServer.sh`，使用 `test/` 內的 fixture 進行手動測試；可為新插件加上對應的 HTML/JSON 範例。
-4. 在 Syncnext App 中驗證：
+完整的測試層次、結果判讀與 smoke 產物規則以 [../TESTING.md](../TESTING.md) 為準；正式來源登錄與發布順序以 [../MAINTENANCE.md](../MAINTENANCE.md) 為準。本節只保留本藍本建立後應立即完成的工作。
+
+1. 依 [../TESTING.md](../TESTING.md) 執行新插件的最低驗證；`node node_Test.js plugin_<provider>/app.js` 並不會載入插件，該路徑會被當成播放器 URL，不能作為插件驗證命令。
+2. 新增可重複執行的 fixture／Node 測試；必要時以 `bash localServer.sh` 服務 `test/` 內的 HTML／JSON 範例。
+3. 依 `TESTING.md` 在 Syncnext App 中驗證：
    - 若有 `hosts`，檢查啟動 log 中的 `HostsBootstrap` 是否選中了正確域名。
    - Home/Category 分頁可翻頁。
    - 搜尋輸入文字能得到結果。
    - `Episodes` 列出完整分集。
    - `Play` 成功返回可播 URL（建議測試多部影片）。
-5. 移除 `print()` 等除錯輸出，再提交 PR。
+4. 移除 `print()` 等除錯輸出，再依 `MAINTENANCE.md` 進行提交與發布。
 
 照此藍本調整 URL、CSS class、API 路徑，即可快速建立新的 `plugin_<provider>` 並保持與 `plugin_colafun` 一致的行為與介面。

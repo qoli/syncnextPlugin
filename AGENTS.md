@@ -5,19 +5,22 @@ Syncnext channel plugins live here; keep contributions reproducible and aligned 
 ## Project Structure & Module Organization
 
 - Root-level `plugin_*` directories map one-to-one with providers. Each includes `config.json`, executable logic (`app.js`/`main.js`), and helper libraries such as `txml.js`.
-- Shared references sit at the repo root: `doc.md` documents `$http`/`$next`, `node_Test.js` is the parsing harness, and `localServer.sh` + `test/` host captured HTML or `.m3u8` payloads.
+- Shared references sit at the repo root: `doc.md` owns `$http`/`$next` protocol, `TESTING.md` owns test requirements and smoke artifacts, `MAINTENANCE.md` owns release operations, `node_Test.js` is the parsing harness, and `localServer.sh` + `test/` host captured HTML or `.m3u8` payloads.
 
 ## Build, Test, and Development Commands
 
 - `npm install` — installs browserify and utility deps required by plugins.
 - `node node_Test.js` — runs the reference parser; copy it when stubbing new endpoints or validating JSON structures.
+- `node --check plugin_<provider>/app.js` — checks a plugin's JavaScript syntax without making network requests.
+- `python -m json.tool plugin_<provider>/config.json >/dev/null` — validates a plugin's manifest JSON.
+- `node node_test_all_plugins.js --only=plugin_<provider> --output-dir /tmp/syncnext-plugin-smoke --history-mode=latest-only` — runs one plugin's integration smoke test without adding result files to the repository.
 - `npx browserify plugin_wogg/app.js -o plugin_wogg/dist.js` — bundle a plugin into a single file when Syncnext needs packaged output (replace the paths per plugin).
 - `bash localServer.sh` — serves `test/` on `http://localhost:8000` for quick manual playback tests against stored fixtures.
 
 ## Coding Style & Naming Conventions
 
 - Use 2-space indentation, semicolons, and prefer `const`/`let`; limit `var` to legacy sections.
-- Export the canonical entry points (`Home`, `Search`, `Play`, `Category`) expected by Syncnext and avoid polluting the global scope.
+- The entry-point function names are declared by each `config.json` page's `javascript` value (for example, `buildMedias`, `Search`, `Episodes`, and `Player`); do not impose hard-coded names such as `Home` or `Category`.
 - Keep folders snake-cased as `plugin_<provider>` and reuse that prefix in file names plus commit messages for discoverability.
 - Break complex scraping into helpers (e.g., `buildMediaData`) and leave concise comments when formatting or signature logic is non-obvious.
 

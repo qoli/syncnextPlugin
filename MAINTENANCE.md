@@ -1,329 +1,316 @@
-# Syncnext Plugin Maintenance SOP
+# Syncnext 插件新增／維護／發布 Runbook
 
-這份文檔描述 `SyncnextPlugin_official` 的日常維護流程。目標是讓插件更新、規則同步、用戶公告和提交發布可以穩定重複執行。
+`MAINTENANCE.md` 是 `SyncnextPlugin_official` 唯一的操作型 runbook：新增插件、修復既有插件、登錄 v3 來源、發布用戶公告，都必須依本文件執行。`README.md`、`doc.md`、藍圖與 App 文件只描述介面或背景；若流程敘述與本文件不同，以本文件為準。
 
-## 維護範圍
+文件責任分界：技術 payload 與 runtime 契約見 [doc.md](./doc.md)；測試層次、結果判讀與 smoke 產物見 [TESTING.md](./TESTING.md)；本文件只負責把已驗證的變更依正確順序推送、登錄、匯出與發布。
 
-- 插件 repo：`SyncnextPlugin_official`
-- Clash / Passwall 規則 repo：`SyncnextClash`
-- 主 App repo：`Syncnext`
-- 用戶更新日誌：Notion「Syncnext 頻道更新日誌」
-- Telegram 發布腳本：`telegram/post_channel_changelog.sh`
-- Telegram 固定配圖：`telegram/SyncnextChannelChangelog.png`
+## 0. 目的、邊界與不可跳過的規則
 
-不同 repo 的變更要分開提交。不要把插件、Clash 規則、主 App 的無關修改混在同一個 commit。
+本 runbook 處理三種工作：
 
-## 1. 定位插件
+1. **新增**：建立 `plugin_<provider>`、讓它可被 App 下載，並登錄正式 v3 來源。
+2. **維護**：修正既有插件的站點、解析、播放或設定問題。
+3. **發布**：把已對用戶生效的更新寫入更新日誌並發到 Telegram。
 
-插件都放在 repo 根目錄的 `plugin_*` 目錄下：
+涉及的系統與責任如下：
+
+| 系統 | 用途 | 可修改內容 | 不能混入的內容 |
+| --- | --- | --- | --- |
+| `SyncnextPlugin_official` | 插件程式、測試、維護文件、Telegram 文案 | `plugin_*`、專屬測試、此 runbook | `SyncnextAPI` JSON、Clash 規則、App 程式 |
+| Notion v3 來源表 | 正式頻道的資料來源 | 一筆來源紀錄 | 插件程式、Telegram 文案 |
+| `SyncnextAPI` | 將 Notion 表匯出成公開 JSON | 只由 workflow 生成的 JSON | 手動編輯 `sourcesv3.json` |
+| Notion 頻道更新日誌 | 用戶可見的變更敘述 | 最新日期區塊 | 維護命令、提交雜湊、內部細節 |
+| Telegram | 公開頻道公告 | 由已核對的日誌產生的文案 | 未讀回 Notion 的草稿 |
+| `SyncnextClash` | 可選的網路規則 | 僅人類明確指定的規則 | 因域名變更而推測的規則 |
+
+不可違反的規則：
+
+- `SyncnextAPI/sourcesv3.json` 是 **Notion 來源表的自動匯出成品**。不得手動新增、刪除、排序或修正該檔。
+- 新插件必須先推送到公開插件 repo，讓 `config.json` 的 raw URL 可讀，再把該 URL 登錄到 Notion 來源表。
+- Notion 的「v3 來源表」與「頻道更新日誌」是兩個獨立資源；其中一個可讀寫，不代表另一個也可讀寫。
+- 未通過下列 Notion 權限 preflight，不得以手動修改 JSON、另一張表或臨時公開 URL 繞過。
+- 不因插件域名變動而查詢或修改 `SyncnextClash`；要先取得人類明確同意。任何修改還需要第二次、含具體規則內容的明確指令。
+- 不把不同 repo 的變更放進同一個 commit。
+- 不向用戶公告命令、測試、headers、repo 路徑、提交雜湊或其他維護細節。
+
+## 1. 固定資源與資料契約
+
+### 1.1 已知資源
+
+| 名稱 | 識別／位置 | 用途 |
+| --- | --- | --- |
+| 插件 repo | `/Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official` | 插件邏輯與測試；remote 為 `qoli/syncnextPlugin` |
+| API repo | `/Volumes/Data/Github/SyncnextProjects/SyncnextAPI` | 自動生成並發布資料 JSON；remote 為 `qoli/syncnext-api` |
+| v3 來源表 | Notion page `58f3de30e9dc4b7f8de6a714150057f4`；data source `49162846-b78c-423a-a42c-0deca2033053` | `sourcesv3.json` 的唯一資料來源 |
+| 頻道更新日誌 | Notion page `c79c74fb231648b4a0fb41d2d161bd72` | 用戶可見公告的來源 |
+| 匯出 workflow | `qoli/syncnext-api` 的 **Download JSON** | 執行 `notion-api-worker`，自動提交生成結果 |
+| 公開 v3 JSON | `https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json` | App 與 subscription smoke 的驗證目標 |
+| Telegram 發布器 | `telegram/post_channel_changelog.sh` | 讀取已核對的 Markdown 並發布 |
+
+以上 Notion ID 是操作定位，並非權限授予；若資源搬遷，先更新本節，再開始發布。
+
+### 1.2 v3 插件來源紀錄
+
+新增官方插件時，來源表至少要有：
+
+| 欄位 | 要求 |
+| --- | --- |
+| `name` | 用戶可辨識的頻道名稱 |
+| `api` | `syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_<provider>/config.json` |
+| `Search` | 與插件能力一致的布林值 |
+| `Top` | 由產品決策指定的布林值；不得自行預設置頂 |
+| `note` | 對用戶有用的短提示；沒有必要時留空 |
+| `id` | 由 Notion／匯出資料保留的穩定識別，不以複製貼上覆蓋既有值 |
+
+可選欄位如 `Cover`、`Priority` 只在已有明確產品需求時填入。不要把 cookie、token、內部網址或測試說明放入表格。
+
+## 2. Notion 權限 Preflight（任何寫入前）
+
+預設使用已授權的 Notion API／connector；不要從瀏覽器 Cookie、環境檔或腳本讀取及轉存憑證。若 API 無法存取，而使用者明確提供已登入的 Arc session，可在該 session 以 UI 操作並立刻讀回確認。
+
+開始新增或發布前，逐項確認：
+
+| Gate | 要求 | 失敗時的處置 |
+| --- | --- | --- |
+| 來源表 read | 能列出 v3 來源表並看到現有列與欄位 | 請表格擁有者把資料庫／data source 分享給 integration；停止來源表流程 |
+| 來源表 write | 能建立一筆測試以外的正式列，或已確認有編輯權 | 不得手動改 `sourcesv3.json`；請求編輯權 |
+| 日誌 read | 能讀回目前最上方日期區塊 | 不發布 Telegram；請求頁面讀取權 |
+| 日誌 write | 能在最上方建立最新日期區塊 | 不以本地 Markdown 取代 Notion；請求編輯權 |
+| API workflow | 對 `qoli/syncnext-api` 可 dispatch 並讀取 workflow 結果 | 由有權限者執行匯出並提供成功 run URL；不要自行提交生成 JSON |
+| 插件 repo | 可推送 `qoli/syncnextPlugin` 的預期分支 | 不建立指向未公開 config 的來源列 |
+| Telegram | 可做 dry-run，且發布憑證／目標已被腳本安全處理 | 不在未預覽時發布 |
+
+Preflight 結果應記錄為「可讀／可寫／不可用」及阻塞資源，不要記錄 token、cookie 或其內容。
+
+## 3. 共同準備與問題定位
+
+在插件 repo 開始：
 
 ```bash
 cd /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official
-ls plugin_*
+git status --short
+git branch --show-current
 ```
 
-典型插件結構：
+先讀 `plugin_<provider>/config.json`，再讀 `app.js` 與既有專屬測試。從 app log、smoke 結果、fixture 或實際 DOM/API 確認故障階段：
+
+- 首頁／分類列表
+- 搜尋
+- 詳情與分集
+- 播放地址解析
+- headers／Referer 交接
+- HLS／AVPlayer 實際載入
+
+不要把單一影片失效、Cloudflare／SafeLine、403、地域限制或直播上游波動直接判為 parser 壞掉。需要瀏覽器驗證時，優先使用已登入的 Arc CDP session，不要啟動另一個持久化瀏覽器。
+
+## 4. 新增插件流程
+
+### 4.1 建立與實作
+
+1. 完成第 2 節 preflight；至少來源表、插件 repo 與 API workflow 必須可用。
+2. 建立 `plugin_<provider>/config.json`、`app.js`，並加上可重複執行的 `node_test_*.js` fixture 測試。
+3. 讓 `config.json` 的 page `javascript` 名稱與實際函式一致；入口函式不是固定的 `Home`／`Play` 等名稱，而由設定宣告。
+4. 驗證列表、搜尋、分集與播放。多候選播放必須傳 `JSON.stringify([{ url, headers }, ...])` 給 `$next.toPlayerCandidates`，不可包成 `{ candidates: [...] }`。
+5. 對多 host 站點，把目前穩定主站放在 `host`，候選放在 `hosts`，並提供 `HostsProbeRequest()`；所有相對、跳轉與播放 URL 要以選中的 host 正規化。
+
+### 4.2 本機驗證
+
+測試命令、通過定義與產物清理以 [TESTING.md](./TESTING.md) 為唯一契約；本節只列出進入發布 gate 前的最低操作。
+
+至少執行：
+
+```bash
+node --check plugin_<provider>/app.js
+python -m json.tool plugin_<provider>/config.json >/dev/null
+node plugin_<provider>/node_test_*.js
+git diff --check
+```
+
+需要整合 smoke 時，限縮插件並使用暫存輸出，避免污染 repo：
+
+```bash
+tmp_dir=$(mktemp -d /tmp/syncnext-plugin-smoke.XXXXXX)
+node node_test_all_plugins.js \
+  --only=plugin_<provider> \
+  --output-dir "$tmp_dir" \
+  --history-mode=latest-only
+```
+
+`node node_test_all_plugins.js --help` 只顯示選項、不建立輸出；未指定 `--only` 會測試所有本機插件。遠端限制要在結果中如實標示，不可偽裝為通過。
+
+### 4.3 推送插件並驗證公開 config
+
+只有測試通過後才建立插件 repo commit。staging 必須只包含本次插件、測試與有意修改的文件：
+
+```bash
+git status --short
+git diff --stat
+git add plugin_<provider>/app.js plugin_<provider>/config.json plugin_<provider>/node_test_*.js
+git commit -m "✨ feat(plugin_<provider>): add provider"
+git push origin main
+```
+
+若推送被拒，先檢查差異並 rebase；rebase 後重新執行受影響的驗證，再推送。
+
+接著驗證 raw config，而非只驗證本機檔：
+
+```bash
+config_url="https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_<provider>/config.json"
+curl --fail --silent --show-error "$config_url" | python -m json.tool >/dev/null
+```
+
+此 gate 失敗時，停止，不要登錄 Notion 來源表。
+
+### 4.4 登錄來源表、匯出並驗證
+
+1. 在 Notion v3 來源表建立一筆資料，欄位遵守第 1.2 節；`api` 使用已驗證的 config URL 加上 `syncnextPlugin://` 前綴。
+2. 讀回剛建立的列，核對 `name`、`api`、`Search`、`Top`、`note`；確認沒有重複 `api` 或意外修改其他列。
+3. dispatch `qoli/syncnext-api` 的 **Download JSON** workflow，等待它成功：
+
+```bash
+gh workflow run "Download JSON" --repo qoli/syncnext-api
+gh run list --repo qoli/syncnext-api --workflow "Download JSON" --limit 1
+gh run watch <run-id> --repo qoli/syncnext-api --exit-status
+```
+
+workflow 會執行 `notion-api-worker/src/export-json.ts` 並自動提交 JSON；不要手動修改或提交 `sourcesv3.json`。除了 run 結果為 success，還要檢查 job log 是否顯示 `Updated sourcesv3.json: <n> items`，而非「fetch failed／fetched empty payload; keeping existing file」的 warning。匯出器會在失敗時保留舊檔，故 workflow success 本身不足以證明來源已更新。
+4. 讀取遠端 raw `sourcesv3.json`，確認 JSON 合法，且剛新增的 `api` 恰好出現一次：
+
+```bash
+sources_url="https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json"
+curl --fail --silent --show-error "$sources_url" > /tmp/sourcesv3.json
+python -m json.tool /tmp/sourcesv3.json >/dev/null
+```
+
+以 parser 或明確欄位比對 `name` 與完整 `api`；不要只 grep 到 provider 名稱就宣告成功。
+
+5. 以 subscription 清單驗證新來源可被 smoke runner 發現：
+
+```bash
+tmp_dir=$(mktemp -d /tmp/syncnext-subscription-smoke.XXXXXX)
+node node_test_all_plugins.js \
+  --discovery=subscriptions \
+  --subscriptions-url="$sources_url" \
+  --only=plugin_<provider> \
+  --output-dir="$tmp_dir" \
+  --history-mode=latest-only
+```
+
+任何一個遠端 gate 失敗時，回到其擁有系統修正：config 問題回插件 repo、資料列問題回 Notion、匯出失敗回 workflow 權限／日誌。不可直接改 JSON 成品。
+
+## 5. 維護既有插件流程
+
+1. 執行第 3 節定位，完成最小修正與第 4.2 節驗證。
+2. 只提交／推送插件 repo 的預期檔案；推送後仍要驗證遠端 raw config。
+3. 僅當來源表欄位（名稱、入口 URL、搜尋、置頂、提示）需要變動時，才走第 4.4 節的來源表、匯出與遠端 JSON 驗證。
+4. 若只改插件程式且 `api` 不變，不必重跑 `Download JSON`；但用戶可感知的修復仍要依第 7 節公告。
+5. 發現域名改動時，先提出是否要**查詢** `SyncnextClash` 的問題。未得到同意前，完全不讀取或修改該 repo；獲得查詢同意後只列出匹配，等待第二次具體修改指令。
+
+## 6. Smoke 輸出管理與清理
+
+`node_test_all_plugins.js` 的預設輸出位置是 repo 下的 `syncnextPlugin_all_plugin_test_runs/`。預設 `history-mode=keep` 會建立時間戳資料夾，並更新：
 
 ```text
-plugin_xxx/
-  config.json
-  app.js
-  node_test_*.js
+syncnextPlugin_all_plugin_test_runs/<timestamp>/
+syncnextPlugin_all_plugin_test_runs/latest.json
+syncnextPlugin_all_plugin_test_runs/latest.log
+syncnextPlugin_all_plugin_test_runs/latest.summary.log
+syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.*
 ```
 
-先讀 `config.json`，再讀 `app.js`。不要直接假設站點仍使用舊域名、舊 selector 或舊 API。
+規則：
 
-## 2. 更新域名與多 Hosts
+- 日常與單插件調試一律使用第 4.2 節的 `/tmp` 輸出；完成後由系統暫存區管理，不把結果留在 repo。
+- 只有明確要更新受版本控制的 smoke 狀態或 README 區塊時，才使用 repo 輸出／`--update-readme`，並在 commit 中包含這些生成檔。
+- 若誤在 repo 根目錄執行，先以 `git status --short` 與 `git diff` 精確列出本次生成的檔案；只移除本次新建的時間戳資料夾，並只還原本次改動的 generated latest 檔。不要清理整個歷史資料夾，也不要碰使用者既有輸出。
+- 在清理後再次確認 `git status --short`；未經明確意圖，不應留下 smoke 輸出變更。
 
-當站點換域名或發布頁提供多條線路時，優先使用多 Hosts 方案。
+## 7. 用戶更新日誌與 Telegram 發布
 
-`config.json` 建議格式：
+只有當修正已推送，且若涉及來源表則已通過第 4.4 節遠端驗證，才進入公告。
 
-```json
-{
-  "host": "https://primary.example.com/",
-  "hosts": [
-    "https://primary.example.com",
-    "https://backup.example.com"
-  ]
-}
-```
+### 7.1 Notion 更新日誌
 
-維護要求：
-
-- `host` 放目前最穩定的主線路。
-- `hosts` 放可探測的候選線路。
-- 插件內提供 `HostsProbeRequest()`，讓 App 可以探測可用線路。
-- 不要只在 `app.js` 裡硬編碼單一域名。
-- 相對 URL、舊域名跳轉 URL、播放器 URL 都要 rebasing 到目前選中的 host。
-- 站點需要 UA、Referer 或 Origin 時，集中放在 helper 裡，不要散落在每個請求中。
-
-若站點有官方發布頁，域名來源以發布頁為準；維護時同步清理失效域名。
-
-## 3. 插件驗證
-
-每次改插件後至少執行：
-
-```bash
-python -m json.tool plugin_xxx/config.json >/dev/null
-node --check plugin_xxx/app.js
-```
-
-如果插件有專用測試腳本：
-
-```bash
-node --check plugin_xxx/node_test_*.js
-node plugin_xxx/node_test_*.js
-```
-
-全量或指定插件 smoke test：
-
-```bash
-node node_test_all_plugins.js --only=plugin_xxx
-```
-
-判斷測試結果時要區分：
-
-- 語法錯誤：必須修復。
-- JSON 結構錯誤：必須修復。
-- selector / parser 回傳空：優先用瀏覽器或 fixture 確認 DOM/API 是否變更。
-- 403、Cloudflare、SafeLine、地區限制：標記為遠端限制，不要當成語法驗證失敗。
-- 播放地址失效：確認是單集資源問題還是解析流程問題。
-
-## 4. Clash / Passwall 規則人工確認
-
-當插件域名更新時，不要自行推導是否需要調整 `SyncnextClash`。
-
-正確流程是：先詢問人類是否需要查詢 Clash / Passwall 中是否存在相似域名規則；查詢確認只代表可以列出匹配結果，不代表可以修改。任何規則修改都需要人類再次明確指示具體改法。
-
-```bash
-cd /Volumes/Data/Github/SyncnextProjects/SyncnextClash
-```
-
-常見文件：
+在 Notion page `c79c74fb231648b4a0fb41d2d161bd72` 最上方新增當日區塊：
 
 ```text
-Unbreak-classical.yaml
-proxy-classical.yaml
-passwall/direct_host
-passwall/proxy_host
-```
-
-`SyncnextClash` 對域名只有三種維護狀態：
-
-1. 中國直連：Clash 使用 `Unbreak-classical.yaml`，Passwall 使用 `passwall/direct_host`。
-2. 中國需要代理：Clash 使用 `proxy-classical.yaml`，Passwall 使用 `passwall/proxy_host`。
-3. 沒有規則：不加入 `SyncnextClash`，交給 Clash 預設規則處理。
-
-人工確認原則：
-
-- 規則維護只能根據人類確認的域名範圍執行。
-- 不要因為插件域名更新，就自動新增、刪除或改寫 Clash / Passwall 規則。
-- 不要按「主站、API、CDN、播放器」等功能分類自行決定規則。
-- 不要自行把候選域名歸類到「中國直連」、「中國需要代理」或「沒有規則」。
-- 可以在獲得同意後查詢相似域名規則，並把查詢結果列出來交給人類決定。
-- 只有在人類明確指示後，才能修改 `Unbreak-classical.yaml`、`proxy-classical.yaml`、`passwall/direct_host`、`passwall/proxy_host` 或其他規則文件。
-- 人類沒有確認時，插件維護流程不應修改 `SyncnextClash`。
-- Clash repo 單獨 commit，不和插件 repo 混在一起。
-
-詢問範例：
-
-```text
-插件域名已更新。是否需要我去 SyncnextClash 查詢是否存在相似域名規則？
-我只會先列出匹配結果，不會自行修改規則。
-```
-
-獲得同意後，可以只做查詢：
-
-```bash
-rg -n "example|example-old|example-new" \
-  Unbreak-classical.yaml \
-  proxy-classical.yaml \
-  passwall/direct_host \
-  passwall/proxy_host
-```
-
-查詢後回報：
-
-- 找到哪些相似域名。
-- 分別在哪些文件。
-- 目前文件中已有的規則形態。
-- 建議不要直接修改，等待人類確認具體改法。
-
-如果人類已確認需要修改規則，修改後再做基本檢查：
-
-```bash
-python - <<'PY'
-from pathlib import Path
-
-for path in ("passwall/direct_host", "passwall/proxy_host"):
-    items = [
-        x.strip()
-        for x in Path(path).read_text().splitlines()
-        if x.strip() and not x.strip().startswith("#")
-    ]
-    dupes = sorted({x for x in items if items.count(x) > 1})
-    print(f"{path} duplicates:", dupes)
-PY
-```
-
-## 5. Notion 用戶更新日誌
-
-插件或規則更新完成後，更新 Notion「Syncnext 頻道更新日誌」。
-
-內容要求：
-
-- 面向用戶，不面向維護者。
-- 說明用戶能感知到的變化與影響。
-- 只有在人類確認並實際調整網路規則後，才提及 Clash / Passwall 或網路規則。
-- 不寫 commit hash。
-- 不寫測試命令。
-- 不寫 repo 路徑。
-- 不寫 Node、curl、runtime、內部 helper 名稱。
-- 不寫「已驗證」這類內部流程描述。
-
-推薦格式：
-
-```text
-# 2026-04-27
+# <mention-date start="YYYY-MM-DD"/>
 ### 更新：
-- 「插件名稱」更新域名適配，改善部分網路環境下無法開啟的問題。
+- 「插件名稱」用戶可理解的變化。
 ```
 
-## 6. Telegram 發布
+讀回最上方區塊並確認日期、文案和排序。公告只說用戶影響，例如「修復部分影片無法開啟」；只有人類已批准並實際更改規則時才提及網路規則。
 
-Telegram 發布腳本在插件 repo：
+### 7.2 Telegram
 
-```bash
-cd /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official/telegram
-./post_channel_changelog.sh
-```
-
-腳本會：
-
-- 預設使用已存在的 Telegram Markdown，不重新抽 Notion。
-- 使用固定配圖 `SyncnextChannelChangelog.png` 發布到 Telegram 頻道。
-- 預設發布到 `@RonnieAppsChannel`。
-
-默認維護流程：
-
-1. 先手動更新 Notion「Syncnext 頻道更新日誌」。
-2. 讀回 Notion 最新日期區塊，確認內容正確。
-3. 將最新日期區塊整理成 Telegram Markdown，寫入：
+從已讀回的最新 Notion 區塊手動更新：
 
 ```text
 syncnextPlugin_all_plugin_test_runs/channel_changelog.md
 ```
 
-4. 使用 `--skip-copilot` 模式預覽與發布。
+格式：
 
-只有在人類明確要求重新抽 Notion / Copilot 改寫時，才使用 `--use-copilot`。
+```markdown
+*Syncnext 頻道更新日誌*
 
-腳本也保留 Copilot 模式：
-
-- 使用 `--use-copilot` 從 Notion「Syncnext 頻道更新日誌」抽取最新日期區塊。
-- 改寫成 Telegram Markdown。
-- 使用固定配圖 `SyncnextChannelChangelog.png` 發布到 Telegram 頻道。
-- 預設發布到 `@RonnieAppsChannel`。
-
-常用命令：
-
-```bash
-# 預覽已存在的 markdown，不發送（默認 skip-copilot）
-./post_channel_changelog.sh --dry-run
-
-# 使用已存在的 markdown，不重新抽 Notion
-./post_channel_changelog.sh --skip-copilot
-
-# 預覽已存在的 markdown
-./post_channel_changelog.sh --skip-copilot --dry-run
-
-# 明確要求 Copilot 從 Notion 重新抽取並生成 markdown
-./post_channel_changelog.sh --use-copilot --dry-run
-
-# 指定頻道
-./post_channel_changelog.sh --chat-id @YourChannel
-
-# 指定 token
-TELEGRAM_BOT_TOKEN=xxx ./post_channel_changelog.sh
-
-# 指定配圖
-./post_channel_changelog.sh --image /path/to/image.png
+*YYYY-MM-DD 更新：*
+- 「插件名稱」用戶可理解的變化。
 ```
 
-預設 token 文件來自主 App repo：
-
-```text
-/Volumes/Data/Github/SyncnextProjects/Syncnext/telegram/.token
-```
-
-如果 Telegram 文案短於 caption 限制，腳本會用 `sendPhoto` + caption；如果文案較長，腳本會先發圖，再分段發文字。
-
-## 7. Git 提交與推送
-
-提交前確認 repo 狀態：
-
-```bash
-git status --short
-git diff --stat
-```
-
-提交規範：
-
-- 插件邏輯：`🔧 chore(plugin_xxx): update hosts`
-- Telegram 工具：`🔧 chore(telegram): add channel changelog publisher`
-- 測試或 smoke 狀態：`🤖 chore(smoke): update plugin smoke status`
-
-提交插件 repo：
+先 dry-run，核對日期和內容，再發布：
 
 ```bash
 cd /Volumes/Data/Github/SyncnextProjects/SyncnextPlugin_official
-git add plugin_xxx config_or_script
-git commit -m "🔧 chore(plugin_xxx): update hosts"
-git push
+./telegram/post_channel_changelog.sh --skip-copilot --dry-run
+./telegram/post_channel_changelog.sh --skip-copilot
 ```
 
-提交 Clash repo：
+`--skip-copilot` 是預設且唯一的常規流程。只有使用者明確要求重新由 Copilot 擷取／改寫時，才使用 `--use-copilot`。不得發布舊日期的 `channel_changelog.md`。
+
+## 8. Commit、推送與回報
+
+提交前逐 repo 核對範圍：
 
 ```bash
-cd /Volumes/Data/Github/SyncnextProjects/SyncnextClash
-git add <人類確認需要修改的規則文件>
-git commit -m "🔧 chore(rules): update provider domains"
-git push
+git status --short
+git diff --check
+git diff --stat
 ```
 
-如果 `git push` 被拒絕，先 fetch/rebase：
+- 插件、測試與此 runbook：在 `SyncnextPlugin_official` 建立獨立 commit。
+- `sourcesv3.json`：由 `SyncnextAPI` workflow 自動提交；不建立人工資料 commit。
+- Clash 規則：只有明確授權時，在 `SyncnextClash` 建立獨立 commit。
+- App 程式：除非任務明確要求，保持完全不動。
 
-```bash
-git fetch origin
-git rebase origin/main
-git push
-```
+完成回報至少包含：
 
-rebase 後要重新確認本地變更仍然符合預期。
+- 變更的插件與提交／推送狀態。
+- Notion preflight 的資源可用性與任何阻塞項。
+- 來源表是否更新；若有，workflow 成功狀態與遠端 `sourcesv3.json`／config 驗證結果。
+- 測試命令、結果，以及遠端限制與已知限制。
+- Notion 日誌讀回、Telegram dry-run 與發布結果。
+- 是否完全未查詢／修改 `SyncnextClash`。
 
-## 8. 完整維護 Checklist
+## 9. 快速 Checklist
 
-維護某個插件時照以下順序執行：
+### 新增插件
 
-- 定位 `plugin_xxx`。
-- 檢查官方站點或發布頁的目前域名。
-- 更新 `config.json` 的 `host` / `hosts`。
-- 更新 `app.js` 的請求 host、headers、URL rebasing。
-- 執行 JSON 與 JS 語法檢查。
-- 執行插件專用測試或 smoke test。
-- 若域名變更，詢問人類是否需要查詢 `SyncnextClash` 相似域名規則；未確認前不要修改規則。
-- 更新 Notion 用戶更新日誌。
-- 讀回 Notion 最新日期區塊，手動整理 `syncnextPlugin_all_plugin_test_runs/channel_changelog.md`。
-- 用 `telegram/post_channel_changelog.sh --skip-copilot --dry-run` 預覽 Telegram 文案。
-- 確認文案後執行 `telegram/post_channel_changelog.sh --skip-copilot` 發布。
-- 分 repo commit。
-- 分 repo push。
+- [ ] Notion 來源表、日誌、API workflow、插件 repo、Telegram 均通過 preflight。
+- [ ] 插件程式、設定與可重複 fixture 測試完成。
+- [ ] JS／JSON／專屬測試／限定 smoke 通過。
+- [ ] 插件已推送，遠端 raw config 可讀且 JSON 合法。
+- [ ] Notion v3 來源列已讀回且無重複。
+- [ ] **Download JSON** 成功，遠端 `sourcesv3.json` 中有且僅有一筆正確入口。
+- [ ] subscription smoke 能發現並驗證新來源。
+- [ ] Notion 最新日誌已讀回；Telegram dry-run 後已發布。
+- [ ] 無意外 smoke 輸出、無未授權的 Clash／App 變更。
 
-## 9. 常見風險
+### 維護既有插件
 
-- 上游站點返回 403，不一定代表插件壞了；先確認是否反爬、地區限制或 challenge 頁。
-- 多 Hosts 中某些域名可打開首頁，但搜索或播放器接口不可用；不要只測首頁。
-- 播放頁可能返回舊域名、相對路徑或跳轉 URL；必須做 URL normalize。
-- Notion 更新日誌不要包含維護者語言，Telegram 發出去後用戶只需要知道影響。
-- 主 App repo 常有獨立開發中的 Swift 變更；維護插件時不要碰或 revert 這些無關變更。
+- [ ] 從具體證據定位故障階段並完成最小修正。
+- [ ] JS／JSON／專屬測試與必要 smoke 通過。
+- [ ] 插件推送後，遠端 raw config 已驗證。
+- [ ] 僅在來源欄位改變時更新 Notion 表並重跑匯出。
+- [ ] 用戶可感知的變更已依序完成 Notion 讀回、Telegram dry-run 與發布。
+- [ ] 未經首次明確人類授權，未查詢 `SyncnextClash`；未經第二次含具體規則的指令，未修改它。
