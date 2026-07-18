@@ -376,7 +376,7 @@ function Player(episodeURL) {
           headers: headers,
         };
       });
-      $next.toPlayerCandidates(JSON.stringify({ candidates: candidates }));
+      $next.toPlayerCandidates(JSON.stringify(candidates));
       return;
     }
 
