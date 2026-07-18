@@ -14,7 +14,7 @@ https://qoli.notion.site/5f834305a2074bc383e1fa521ca93f63?pvs=4
 ## Automated Bun Smoke Status
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-17T05:51:03.880Z`
+Generated: `2026-07-18T05:35:14.228Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
@@ -56,15 +56,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `说唱巅峰对决2026`
-- URL: https://api.olelive.com/v1/pub/index/search/%E8%AF%B4%E5%94%B1%E5%B7%85%E5%B3%B0%E5%AF%B9%E5%86%B32026/vod/0/1/4
+- Keyword: `天赐的声音`
+- URL: https://api.olelive.com/v1/pub/index/search/%E5%A4%A9%E8%B5%90%E7%9A%84%E5%A3%B0%E9%9F%B3/vod/0/1/4
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 说唱巅峰对决2026 | 先导片 | https://europe.olemovienews.com/ts4/20260627/6piwi5ef/mp4/6piwi5ef.mp4/master.m3u8 |
-| OK | 种地吧 第四季 | 先导片 | https://europe.olemovienews.com/ts4/20260513/zd1mc7f7/mp4/zd1mc7f7.mp4/master.m3u8 |
-| OK | 天才厨人 | 第20260611期上 | https://europe.olemovienews.com/ts4/20260611/2n6dxpjl/mp4/2n6dxpjl.mp4/master.m3u8 |
+| OK | 天赐的声音 第七季 | 第20260612期 | https://europe.olemovienews.com/ts4/20260613/tm7ruuhk/mp4/tm7ruuhk.mp4/master.m3u8 |
+| OK | 喜欢你我也是 第六季 | 先导片 | https://europe.olemovienews.com/ts4/20260602/3dzjp9j2/mp4/3dzjp9j2.mp4/master.m3u8 |
+| OK | 喜剧之王单口季 第三季 | 先导片 | https://europe.olemovienews.com/ts4/20260702/3mx57m5l/mp4/3mx57m5l.mp4/master.m3u8 |
 
 Failed Case Diagnostics
 - connectivity | stage=`connectivity` | reason=`connectivity_failed`
@@ -94,15 +94,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `梅比乌斯之尘`
-- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%A2%85%E6%AF%94%E4%B9%8C%E6%96%AF%E4%B9%8B%E5%B0%98
+- Keyword: `地狱模式`
+- URL: https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%9C%B0%E7%8B%B1%E6%A8%A1%E5%BC%8F
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 梅比乌斯之尘 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_d974Aij3f9oBh%2FVG2ZZRE%2BU8%2BggwcTViAmDEl9eb1%2FMom4RMFFpyeRtuwuVpBmw4ddmB3hVdV6oOl1YRradRYVFiQXcP%2Bwi5MQ%2BVLGMHVZgQalJqLr3FbyBO |
-| OK | 尼古喵喵 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_dfe0rqrSLFDcTE9BngMY3xA2IVZp1Y6KcpnuPqfD7Ruu5oYn83QnGGOxPXHiE5U8lVsdByDHE9Mem43blyNmWcYA316pUkwSpT4rvPduEGoBotYoG4yawwdU |
-| OK | 落第贤者的学院无双 第二回转生，S等级作弊魔术师冒险记 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_49ffgHvIA0RYOWgdGiOl8BxCHfUZveOyIrjLl26BG1Osqpagdv0J%2BiWPq1y14dQpp4ufPwuso77%2F8JXiuLcVzXf1kSk021nGzdnUxZu6KRE2psFSebSM66eo |
+| OK | 地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～ 第2季 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_059ai3OlOPwQHbGv0YLLiLh9r8VTkvxCUztgIhIWKm%2Fzi0rdWl7lY2XzAuISvWEFypWETH1TvB6f4La7uKvmxbN7Ld7hcEF%2Bfa0RIswUkX%2Fk47BvJ7XfVCrk |
+| OK | 我家的弟弟们真是让您费心了 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_486e74HPPPhtd2w7oKXrU27DnGZBWkQ%2FR6bHLo8BkDCjnYglasyPEMOyWPHYvKoY3rRWVI071CPlAYL2bOrecqLdU2Qho6EiRu1z5Gw74kKlwds4bQEussYW |
+| OK | 正后方的神威 | 第01集 | https://jx.wuzhoupai.com:8443/m3u8/?url=age_afbbo87b3omAPwfT%2Bfyfcr1pCq9nb%2FWxbV8sVadjyOSy8DtjIVypgeV9if1fykJVtP6PSMQGS9UG3%2BRYp1dIoM0qg41W7HklcGYQzhPi%2Fs2fvDOYIXP82aFn |
 
 </details>
 
@@ -205,8 +205,8 @@ Failed Case Diagnostics
   - `no medias returned; no medias returned`
 
 Connectivity
-- [FAIL] `GET 0` https://www.libvios.com/ | The operation was aborted.
-- [FAIL] `GET 0` https://www.libvios.com/search/-------------.html?wd=test | The operation was aborted.
+- [FAIL] `GET 403` https://www.libvios.com/ | status 403
+- [FAIL] `GET 403` https://www.libvios.com/search/-------------.html?wd=test | status 403
 
 Search
 - Status: `Empty`
@@ -223,13 +223,13 @@ Failed Case Diagnostics
   - detailURL: https://www.libvios.com/
   - detail: 插件站點連通性檢查失敗
   - http diagnostics:
-  - `GET 0` https://www.libvios.com/ | The operation was aborted.
-  - `GET 0` https://www.libvios.com/search/-------------.html?wd=test | The operation was aborted.
+  - `GET 403` https://www.libvios.com/ | status 403
+  - `GET 403` https://www.libvios.com/search/-------------.html?wd=test | status 403
 - keyword:test | stage=`search` | reason=`search_empty`
   - detailURL: https://www.libvios.com/search/-------------.html?wd=test
   - detail: 搜尋執行成功但結果為空
   - http diagnostics:
-  - `GET 0` https://www.libvios.com/search/-------------.html?wd=test | The operation was aborted.
+  - `GET 403` https://www.libvios.com/search/-------------.html?wd=test
 
 </details>
 
@@ -258,7 +258,7 @@ Playback Cases
 | --- | --- | --- | --- |
 | OK | 我们愉快的好日子 | 01 | https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 |
 | OK | 红色珍珠 | 01 | https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 |
-| OK | 家庭关系证明书 | 01 | https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 |
+| OK | 金特务：本色回归 | 01 | https://player.yzzyvip-35.com/20260626/9642_137ffea9/index.m3u8 |
 
 </details>
 
@@ -279,15 +279,15 @@ Connectivity
 
 Search
 - Status: `OK`
-- Keyword: `她可爱得厉害`
-- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%A5%B9%E5%8F%AF%E7%88%B1%E5%BE%97%E5%8E%89%E5%AE%B3&submit=
+- Keyword: `为你而来`
+- URL: https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E4%BD%A0%E8%80%8C%E6%9D%A5&submit=
 
 Playback Cases
 | Result | Media | Episode | Output |
 | --- | --- | --- | --- |
-| OK | 她可爱得厉害 | 第1集 | https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlQ79nBNHhOMHiQ2qmCIqmCZ0sHZKqD44kRN0q/chunklist.m3u8 |
-| OK | 野狗骨头 | 第1集 | https://vid.dbokutv.com/20260705/lxj-yggt-01-007FE7C41.mp4/chunklist.m3u8 |
-| OK | 我叫任非凡 | 第1集 | https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlQ79nBNTgScPcBJ0nBJ0oC3GrEJ0uH2vjS34/chunklist.m3u8 |
+| OK | 为你而来 | 第1集 | https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsXsRsGlQ79nBNTkPMmjC34jC34oEJ52GpWuBcrmD0/chunklist.m3u8 |
+| OK | 直到T恤干透 | 第1集 | https://vid.dbokutv.com/20260712/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBNfaT7XdT2qmCIqmC4P2Ca92GJ0kRN0q/chunklist.m3u8 |
+| OK | 犯罪者 | 第1集 | https://vid.dbokutv.com/20260718/lxj-fzz-01-00DC5DBA3.mp4/chunklist.m3u8 |
 
 </details>
 
