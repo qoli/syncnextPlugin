@@ -15,12 +15,38 @@ const README_STATUS_END = "<!-- AUTO-SMOKE-STATUS:END -->";
 function getArg(name, fallback) {
   const prefix = `--${name}=`;
   const hit = process.argv.find((arg) => arg.startsWith(prefix));
-  if (!hit) return fallback;
-  return hit.slice(prefix.length);
+  if (hit) return hit.slice(prefix.length);
+
+  const flag = `--${name}`;
+  const index = process.argv.indexOf(flag);
+  if (index < 0) return fallback;
+
+  const value = process.argv[index + 1];
+  return value && !value.startsWith("--") ? value : fallback;
 }
 
 function hasFlag(name) {
   return process.argv.includes(`--${name}`);
+}
+
+function printUsage() {
+  process.stdout.write(`Usage: node node_test_all_plugins.js [options]\n\n`);
+  process.stdout.write(`Value options accept either --name=value or --name value.\n\n`);
+  process.stdout.write(`Discovery:\n`);
+  process.stdout.write(`  --discovery=local|subscriptions  Select local plugin folders (default) or sourcesv3.\n`);
+  process.stdout.write(`  --plugin-root=PATH               Override the local plugin root.\n`);
+  process.stdout.write(`  --only=plugin_name[,plugin_name] Run only the named plugin folders.\n`);
+  process.stdout.write(`  --subscriptions-url=URL          Override the sourcesv3 URL.\n`);
+  process.stdout.write(`  --subscriptions-file=PATH        Read subscriptions from a local JSON file.\n\n`);
+  process.stdout.write(`Output:\n`);
+  process.stdout.write(`  --output-dir=PATH                Parent directory for test output (default: repository root).\n`);
+  process.stdout.write(`  --output-folder=NAME             Output directory name.\n`);
+  process.stdout.write(`  --history-mode=keep|latest-only  Keep timestamped runs (default) or only latest files.\n`);
+  process.stdout.write(`  --update-readme=PATH             Replace the managed smoke-status block in a README.\n\n`);
+  process.stdout.write(`Checks:\n`);
+  process.stdout.write(`  --skip-connectivity-check  --skip-search-test  --no-probe\n`);
+  process.stdout.write(`  --strict-connectivity-check  --strict-probe  --all-episodes\n`);
+  process.stdout.write(`  --help                          Print this help without creating test output.\n`);
 }
 
 function toInt(value, fallback) {
@@ -2181,33 +2207,13 @@ function buildReadmeStatusSection(report, invalidSources, meta) {
   lines.push("> Bun/Node smoke status only.");
   lines.push("> It does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.");
   lines.push("");
-  lines.push("| Plugin | Folder | Overall | Connectivity | Search | Playback | Cases | Reasons |");
-  lines.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
-
-  for (const plugin of report.plugins || []) {
-    lines.push(
-      `| ${escapeMarkdownTableCell(plugin.pluginName || "-")} | ${escapeMarkdownTableCell(plugin.pluginFolder || "-")} | ${compactSmokeStatus(plugin)} | ${escapeMarkdownTableCell(formatConnectivityStatus(plugin))} | ${escapeMarkdownTableCell(formatSearchStatus(plugin))} | ${escapeMarkdownTableCell(formatPlaybackStatus(plugin))} | ${formatCaseCounts(plugin)} | ${escapeMarkdownTableCell(formatReasonCounts(buildReasonCountsForPlugin(plugin)))} |`
-    );
-  }
-
+  lines.push(`- Plugins: \`${report.summary.pluginsTotal}\``);
+  lines.push(`- Cases: \`${report.summary.ok}/${report.summary.casesTotal}\` passed`);
+  lines.push(`- Fatal plugins: \`${report.summary.pluginsWithFatalErrors}\``);
+  lines.push(`- Invalid source entries: \`${invalidSources.invalidPluginsCount}\``);
   lines.push("");
-  lines.push(`Latest files: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json)`);
-  if (invalidSources && invalidSources.invalidPluginsCount > 0) {
-    lines.push("");
-    lines.push(`Invalid sources: \`${invalidSources.invalidPluginsCount}\``);
-    for (const item of invalidSources.invalidPlugins || []) {
-      lines.push(
-        `- \`${item.pluginFolder || "-"}\` ${item.pluginName || "-"}: ${formatReasonCounts(item.reasonCounts)}`
-      );
-    }
-  }
-  lines.push("");
-  lines.push(`### Plugin Details`);
-  lines.push("");
-  for (const plugin of report.plugins || []) {
-    lines.push(buildPluginDetailsMarkdown(plugin));
-    lines.push("");
-  }
+  lines.push(`Detailed diagnostics: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json), and [invalid sources](./syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.json).`);
+  lines.push(`Interpretation and rerun rules: [TESTING.md](./TESTING.md).`);
 
   return lines.join("\n");
 }
@@ -2240,7 +2246,7 @@ function buildJobSummary(report) {
     );
   }
   lines.push("");
-  lines.push(`See README for full plugin-by-plugin details.`);
+  lines.push(`See syncnextPlugin_all_plugin_test_runs/latest.json and latest.summary.log for detailed diagnostics.`);
   return lines.join("\n") + "\n";
 }
 
@@ -2277,6 +2283,11 @@ async function writeJobSummary(summaryPath, content) {
 }
 
 async function main() {
+  if (hasFlag("help") || hasFlag("h")) {
+    printUsage();
+    return;
+  }
+
   const timestamp = tsCompact();
   const pluginRoot = path.resolve(getArg("plugin-root", __dirname));
   const outputDir = path.resolve(getArg("output-dir", __dirname));
