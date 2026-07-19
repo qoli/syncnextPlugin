@@ -3,7 +3,7 @@
 var HOST =
   typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost.trim()
     ? __syncnextPrimaryHost.trim().replace(/\/+$/, "")
-    : "https://bgm.girigirilove.com";
+    : "https://ani.girigirilove.com";
 
 var DEFAULT_HEADERS = {
   "User-Agent":
@@ -130,7 +130,7 @@ function buildURL(href) {
 
 function rebaseSiteURL(url) {
   return url.replace(
-    /^https?:\/\/(anime|bgm)\.girigirilove\.com(?=\/|$)/i,
+    /^https?:\/\/(ani|anime|bgm)\.girigirilove\.com(?=\/|$)/i,
     HOST
   );
 }
