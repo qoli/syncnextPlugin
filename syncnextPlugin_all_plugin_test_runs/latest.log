@@ -4,57 +4,57 @@
 [runner] bun
 [discovery] subscriptions
 [subscriptions] https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json
-[plugins] discovered=8, testing=8, reservedSkipped=0
+[plugins] discovered=9, testing=9, reservedSkipped=0
 [plugin 1] 新歐樂影院 | mode=subscriptions | index=https://api.olelive.com/v1/pub/vod/newest/1/12
 [FAIL] 新歐樂影院 | connectivity -> 3 target(s)
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "82667",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260619-1/3c26c287da335a331f206102fe07bd20.jpg",
-  "title": "忙忙碌碌寻宝藏2",
-  "descriptionText": "更新至第20260719期（下）",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82667/true"
+  "id": "82881",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260717-1/a82465b00c225cf4a197103c10dd845d.jpg",
+  "title": "二龙湖·村暖花开3",
+  "descriptionText": "更新至第08集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82881/true"
 }
-[plugin 1] search keyword=忙忙碌碌寻宝藏2 url=https://api.olelive.com/v1/pub/index/search/%E5%BF%99%E5%BF%99%E7%A2%8C%E7%A2%8C%E5%AF%BB%E5%AE%9D%E8%97%8F2/vod/0/1/4
+[plugin 1] search keyword=二龙湖·村暖花开3 url=https://api.olelive.com/v1/pub/index/search/%E4%BA%8C%E9%BE%99%E6%B9%96%C2%B7%E6%9D%91%E6%9A%96%E8%8A%B1%E5%BC%803/vod/0/1/4
 [plugin 1] search results=1
 [plugin 1] search sample(index=0)
 {
-  "id": "82667",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260619-1/3c26c287da335a331f206102fe07bd20.jpg",
-  "title": "忙忙碌碌寻宝藏2",
-  "descriptionText": "更新至第20260719期（下）",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82667/true"
+  "id": "82881",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260717-1/a82465b00c225cf4a197103c10dd845d.jpg",
+  "title": "二龙湖·村暖花开3",
+  "descriptionText": "更新至第08集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82881/true"
 }
-[OK] 新歐樂影院 | search(忙忙碌碌寻宝藏2) -> 1
-[OK] 新歐樂影院 | 忙忙碌碌寻宝藏2 | 加时篇 -> https://europe.olemovienews.com/ts4/20260619/ev0rmb7b/mp4/ev0rmb7b.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 这一秒过火 | 第01集 -> https://europe.olemovienews.com/ts5/20260719/s3ugmxt3/mp4/s3ugmxt3.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 说唱巅峰对决2026 | 先导片 -> https://europe.olemovienews.com/ts4/20260627/6piwi5ef/mp4/6piwi5ef.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(二龙湖·村暖花开3) -> 1
+[OK] 新歐樂影院 | 二龙湖·村暖花开3 | 第01集 -> https://europe.olemovienews.com/ts5/20260717/yhl92lw4/mp4/yhl92lw4.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | Running Man | 20160710 -> https://europe.olemovienews.com/20160713/TKjWtAvg/index.m3u8 | candidates=1
+[OK] 新歐樂影院 | 快乐老家 | 先导片 -> https://europe.olemovienews.com/ts4/20260625/kmj4op2f/mp4/kmj4op2f.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260173",
-  "coverURLString": "https://gimg3.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260173.jpg",
-  "title": "人造人009 涅墨西斯",
-  "descriptionText": "已完结 · WEB",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260173"
+  "id": "20000001",
+  "coverURLString": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20000001.jpg",
+  "title": "海贼王",
+  "descriptionText": "第1169集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20000001"
 }
-[plugin 2] search keyword=人造人009 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E4%BA%BA%E9%80%A0%E4%BA%BA009
-[plugin 2] search results=1
+[plugin 2] search keyword=海贼王 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%B5%B7%E8%B4%BC%E7%8E%8B
+[plugin 2] search results=24
 [plugin 2] search sample(index=0)
 {
-  "id": "20260173",
-  "coverURLString": "https://gimg3.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260173.jpg",
-  "title": "人造人009 涅墨西斯",
-  "descriptionText": "已完结 · WEB",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260173"
+  "id": "20000001",
+  "coverURLString": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20000001.jpg",
+  "title": "海贼王",
+  "descriptionText": "第1169集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20000001"
 }
-[OK] 新 AGE 動漫 | search(人造人009) -> 1
-[OK] 新 AGE 動漫 | 人造人009 涅墨西斯 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_8a54nxm7F7muAkCkxJcnT4S9GrqCzfpgD1IfbnVAGhLtdEqFnFXuIVsnudJAImljz%2FK6iV8bUY42RHlsX%2FVNAf%2FjBJ0U9RWGDyjkFryAmwM9m5hNh3sgVEyiQttx4QRSe0ThQu3oQ5c | candidates=2
-[OK] 新 AGE 動漫 | 穹庐下的魔女 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_5e3c%2BVWEnlajS3NaxhBSzSoxXMHBTK3JHK946q%2Fo08MXzOjHDjsLjLSCI9k4w9nq1mEGWIyQlH2sG5UrU3k0eFhdWRKyECThqNxH%2BtJSAQuQANDI6vWXuUFa | candidates=4
-[OK] 新 AGE 動漫 | 黄泉使者 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_224efJiRTLGMBIkqMUOUKhAMs0daMFnOa3ccpbXj06BLgWty3Xm1PtJqRlcC4sfrpJEOB2MJGv%2BaCPfFquFQw89QOSArAJ0JbJFJbeUipVp8Y%2FNPy%2B%2B8sV3e | candidates=6
+[OK] 新 AGE 動漫 | search(海贼王) -> 24
+[OK] 新 AGE 動漫 | 海贼王 | 第0001集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_47ba6rMCaIwkvgrotGcn5h3CMy%2FdKYMVANn6Ho0v1OkjKjt9rKo6yRHszbyAmxLOtunXLz36a8utkTkoumjfNNCr3KGdCGEfbje7c90qE5KJjuAf2FJhNioZ | candidates=7
+[OK] 新 AGE 動漫 | 恶女不才，请多关照 ～雏宫蝶鼠换身传～ | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_f3fcvitOKk5Sz3oUzllL6PzqPlV2Rebf%2BWgMd0MUQZywbNi7d30JtuJUsH6HbMcAMa1%2FAxXjQGj49oELeIUibAMO2frOXTKoIv0ORQIULZLcU%2FXYWWJbSgEo | candidates=4
+[OK] 新 AGE 動漫 | 再见，拉拉 | 第01集 -> https://jx.wuzhoupai.com:8443/m3u8/?url=age_b8d9Nu97oQWowylIGaLvbpBRQIwKDj1XMzG4mBRN%2F%2BbrKqqLdBAnaBMRG9IlTaEUj80A2ICyPVvr7UWgIxLSLu2hAJEsCujPCthxN0MykC9y9ppMmuyglPB%2F | candidates=4
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -78,13 +78,13 @@
 [plugin 6] medias total=30, testing=3
 [plugin 6] buildMedias sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2549.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/6a5b91783068f.jpg",
-  "title": "毛骨悚然的恋爱",
-  "descriptionText": "第1集 · 朴恩斌 梁世宗 邕圣祐",
-  "detailURLString": "https://www.thanju.com/detail/2549.html"
+  "id": "https://www.thanju.com/detail/2474.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/697f09d220d06.jpg",
+  "title": "给你爱情处方",
+  "descriptionText": "50集全 · 陈世妍 朴基雄 金承秀 柳好贞",
+  "detailURLString": "https://www.thanju.com/detail/2474.html"
 }
-[plugin 6] search keyword=毛骨悚然的恋爱 url=https://www.thanju.com/search/%E6%AF%9B%E9%AA%A8%E6%82%9A%E7%84%B6%E7%9A%84%E6%81%8B%E7%88%B1.html
+[plugin 6] search keyword=给你爱情处方 url=https://www.thanju.com/search/%E7%BB%99%E4%BD%A0%E7%88%B1%E6%83%85%E5%A4%84%E6%96%B9.html
 [plugin 6] search results=2
 [plugin 6] search sample(index=0)
 {
@@ -94,44 +94,68 @@
   "descriptionText": "毛骨悚然的恋爱",
   "detailURLString": "https://www.thanju.com/detail/2549.html"
 }
-[OK] 韩剧网 | search(毛骨悚然的恋爱) -> 2
-[OK] 韩剧网 | 毛骨悚然的恋爱 | 01 -> https://cdn.yzzyvip-29.com/20260718/25782_e9ef4cc2/index.m3u8 | candidates=1
-[OK] 韩剧网 | 婚姻之后 | 01 -> https://cdn.yzzyvip-29.com/20260704/25457_2ff71cb9/index.m3u8 | candidates=1
-[OK] 韩剧网 | 我们愉快的好日子 | 01 -> https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 | candidates=1
+[OK] 韩剧网 | search(给你爱情处方) -> 2
+[OK] 韩剧网 | 给你爱情处方 | 01 -> https://cdn.yzzyvip-29.com/20260201/16425_49d7d186/index.m3u8 | candidates=1
+[OK] 韩剧网 | 共感细胞 | 01 -> https://cdn.yzzy28-play.com/20260704/32161_f76864d0/index.m3u8 | candidates=1
+[OK] 韩剧网 | 公寓黑风暴 | 01 -> https://vvip.high26-playback.com/20260711/24705_7ffc2fa4/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/147607.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/2yug5jlG657DKjPtc80GiBORH1q.jpg",
-  "title": "我叫任非凡",
-  "descriptionText": "全24集",
-  "detailURLString": "https://www.dbku.tv/voddetail/147607.html"
+  "id": "https://www.dbku.tv/voddetail/147615.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/phgwshWDkl0ALDYlOBgodeal9p5.jpg",
+  "title": "为你而来",
+  "descriptionText": "更新至20集",
+  "detailURLString": "https://www.dbku.tv/voddetail/147615.html"
 }
-[plugin 7] search keyword=我叫任非凡 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%91%E5%8F%AB%E4%BB%BB%E9%9D%9E%E5%87%A1&submit=
+[plugin 7] search keyword=为你而来 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%B8%BA%E4%BD%A0%E8%80%8C%E6%9D%A5&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/147607.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/2yug5jlG657DKjPtc80GiBORH1q.jpg",
-  "title": "我叫任非凡",
-  "descriptionText": "全24集",
-  "detailURLString": "https://www.dbku.tv/voddetail/147607.html"
+  "id": "https://www.dbku.tv/voddetail/147615.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/phgwshWDkl0ALDYlOBgodeal9p5.jpg",
+  "title": "为你而来",
+  "descriptionText": "更新至20集",
+  "detailURLString": "https://www.dbku.tv/voddetail/147615.html"
 }
-[OK] 独播库 | search(我叫任非凡) -> 1
-[OK] 独播库 | 我叫任非凡 | 第1集 -> https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlQ79nBNTgScPcBJ0nBJ0oC3GrEJ0uH2vjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(为你而来) -> 1
 [OK] 独播库 | 为你而来 | 第1集 -> https://vid.dbokutv.com/20260713/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsXsRsGlQ79nBNTkPMmjC34jC34oEJ52GpWuBcrmD0/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 野狗骨头 | 第1集 -> https://vid.dbokutv.com/20260705/lxj-yggt-01-007FE7C41.mp4/chunklist.m3u8 | candidates=1
-[plugin 8] Gimy TV | mode=subscriptions | index=https://gimy.tv/
+[OK] 独播库 | 春花宴 | 第1集 -> https://vid.dbokutv.com/20260705/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xGvE9Qnj3oMc1YMc1WY6neY6PiSbpQu64/chunklist.m3u8 | candidates=1
+[plugin 8] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
+[OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
+[plugin 8] medias total=48, testing=3
+[plugin 8] buildMedias sample(index=0)
+{
+  "id": "https://ani.girigirilove.com/GV27001/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260403-1/7ec48c897cd9a91c04666773f4f47c00.webp",
+  "title": "摩绪",
+  "detailURLString": "https://ani.girigirilove.com/GV27001/"
+}
+[plugin 8] search keyword=摩绪 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E6%91%A9%E7%BB%AA
+[plugin 8] search results=1
+[plugin 8] search sample(index=0)
+{
+  "id": "https://ani.girigirilove.com/GV27001/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260403-1/7ec48c897cd9a91c04666773f4f47c00.webp",
+  "title": "摩绪",
+  "descriptionText": "更新至16集 / 23點30分",
+  "detailURLString": "https://ani.girigirilove.com/GV27001/"
+}
+[OK] grigrilove | search(摩绪) -> 1
+[OK] grigrilove | 摩绪 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/04/cht/MAOCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 碧蓝航线 微速前行 第二季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/AzurLaneBisokuZenshinNiS2CHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | Let&#039;s Go 怪奇组 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/LetsGoKaikigumiCHT/01/playlist.m3u8 | candidates=1
+[plugin 9] Gimy TV | mode=subscriptions | index=https://gimy.tv/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
-[plugin 8] medias total=0, testing=0
-[plugin 8] search keyword=test url=https://gimy.tv/search/test----------1---.html
-[plugin 8] search results=0
+[plugin 9] medias total=0, testing=0
+[plugin 9] search keyword=test url=https://gimy.tv/search/test----------1---.html
+[plugin 9] search results=0
 [FAIL] Gimy TV | search(test) -> 0
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_7c08f700-1ac8-4033-8612-c923d97400ba
-[summary] plugins=8, fatal=4, cases=28, ok=19, fail=9, invalidSources=4
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_dbb254a0-f77b-45b8-975b-961ae4145684
+[summary] plugins=9, fatal=4, cases=33, ok=24, fail=9, invalidSources=4
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
