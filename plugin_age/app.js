@@ -93,7 +93,15 @@ function isHTTPURL(inputURL) {
 }
 
 function isResolverURL(inputURL) {
-  return /^https?:\/\/jx\.ejtsyc\.com:8443\/(m3u8|vip)\/\?url=/i.test(String(inputURL || ''));
+  try {
+    var resolverURL = new URL(String(inputURL || ''));
+    var pathMatches = /^\/(m3u8|vip)\/?$/i.test(resolverURL.pathname || '');
+    var providerReference = resolverURL.searchParams.get('url') || '';
+
+    return /^https?:$/i.test(resolverURL.protocol) && pathMatches && /^age_/i.test(providerReference);
+  } catch (error) {
+    return false;
+  }
 }
 
 function normalizePlayURL(playURL, baseURL) {

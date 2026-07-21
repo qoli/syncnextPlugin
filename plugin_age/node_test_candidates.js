@@ -268,6 +268,19 @@ async function runLegacyPayloadCase(runtime) {
 async function main() {
   const runtime = createRuntime();
 
+  assert(
+    runtime.context.isResolverURL('https://resolver.example:8443/m3u8/?url=age_fixture'),
+    'AGE resolver recognition must follow the provider reference contract rather than one host'
+  );
+  assert(
+    !runtime.context.isResolverURL('https://resolver.example:8443/m3u8/?url=unrelated_fixture'),
+    'non-AGE resolver references must not be accepted'
+  );
+  assert(
+    !runtime.context.isResolverURL('https://media.example/video/index.m3u8'),
+    'direct media playlists must not be treated as resolver pages'
+  );
+
   for (const testCase of CASES) {
     await runEpisodesCase(runtime, testCase);
   }
