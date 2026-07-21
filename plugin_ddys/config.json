@@ -1,0 +1,49 @@
+{
+  "name": "低调影视",
+  "description": "DDYS WordPress 來源，需通過 ddys-protect 驗證閘道",
+  "notification": "需要 OCR API 端點配置才能自動通過圖形驗證碼",
+  "host": "https://ddys.app",
+  "files": ["txml.js", "crypto-js.min.js", "util.js", "app.js"],
+  "pages": [
+    {
+      "key": "index",
+      "title": "最近更新",
+      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "movie",
+      "title": "电影",
+      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}&categories=2",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "tv",
+      "title": "电视剧",
+      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}&categories=3",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "anime",
+      "title": "动漫",
+      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}&categories=4",
+      "javascript": "buildMedias"
+    },
+    {
+      "key": "variety",
+      "title": "综艺",
+      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}&categories=5",
+      "javascript": "buildMedias"
+    }
+  ],
+  "episodes": {
+    "javascript": "Episodes"
+  },
+  "player": {
+    "javascript": "Player"
+  },
+  "search": {
+    "url": "https://ddys.app/wp-json/wp/v2/posts?search=${keyword}&per_page=20",
+    "javascript": "Search"
+  }
+}
