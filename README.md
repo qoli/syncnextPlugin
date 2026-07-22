@@ -23,7 +23,7 @@
 ## 最新 Smoke 摘要
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-07-21T06:05:33.647Z`
+Generated: `2026-07-22T06:03:53.667Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
