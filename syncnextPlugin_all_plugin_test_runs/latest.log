@@ -10,43 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "50289",
-  "coverURLString": "https://static.olelive.com/upload/vod/20230923-1/dada8c401011a4f0f46797e3f2a99aca.jpg",
-  "title": "逆天邪神",
-  "descriptionText": "更新至第47集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/50289/true"
+  "id": "82008",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260520-1/37dee5bd5d7567fa95c0c2e8edf60dcb.jpg",
+  "title": "开始推理吧 第四季",
+  "descriptionText": "更新至万事屋加更第7期",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82008/true"
 }
-[plugin 1] search keyword=逆天邪神 url=https://api.olelive.com/v1/pub/index/search/%E9%80%86%E5%A4%A9%E9%82%AA%E7%A5%9E/vod/0/1/4
-[plugin 1] search results=1
+[plugin 1] search keyword=开始推理吧 url=https://api.olelive.com/v1/pub/index/search/%E5%BC%80%E5%A7%8B%E6%8E%A8%E7%90%86%E5%90%A7/vod/0/1/4
+[plugin 1] search results=4
 [plugin 1] search sample(index=0)
 {
-  "id": "50289",
-  "coverURLString": "https://static.olelive.com/upload/vod/20230923-1/dada8c401011a4f0f46797e3f2a99aca.jpg",
-  "title": "逆天邪神",
-  "descriptionText": "更新至第47集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/50289/true"
+  "id": "82008",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260520-1/37dee5bd5d7567fa95c0c2e8edf60dcb.jpg",
+  "title": "开始推理吧 第四季",
+  "descriptionText": "更新至《副本存档中》第7期",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82008/true"
 }
-[OK] 新歐樂影院 | search(逆天邪神) -> 1
-[OK] 新歐樂影院 | 逆天邪神 | 第01集 -> https://europe.olemovienews.com/ts2/20230923/Jwvgtgyy/mp4/Jwvgtgyy.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(开始推理吧) -> 4
+[OK] 新歐樂影院 | 开始推理吧 第四季 | 序 -> https://europe.olemovienews.com/ts4/20260520/mk9p47mo/mp4/mk9p47mo.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 说唱巅峰对决2026 | 先导片 -> https://europe.olemovienews.com/ts4/20260627/6piwi5ef/mp4/6piwi5ef.mp4/master.m3u8 | candidates=1
 [OK] 新歐樂影院 | 种地吧 第四季 | 先导片 -> https://europe.olemovienews.com/ts4/20260513/zd1mc7f7/mp4/zd1mc7f7.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 歌手2026 | 特别企划0515 -> https://europe.olemovienews.com/ts4/20260516/gikfrax5/mp4/gikfrax5.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260177",
-  "coverURLString": "https://gimg2.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260177.jpg",
-  "title": "克雷瓦提斯2：魔兽之王与虚伪的勇者传承",
-  "descriptionText": "第03集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260177"
+  "id": "20260245",
+  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260245.jpg",
+  "title": "暗芝居 第十七季",
+  "descriptionText": "第02集 · 剧场版",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260245"
 }
-[plugin 2] search keyword=克雷瓦提斯2：魔兽之王与 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E5%85%8B%E9%9B%B7%E7%93%A6%E6%8F%90%E6%96%AF2%EF%BC%9A%E9%AD%94%E5%85%BD%E4%B9%8B%E7%8E%8B%E4%B8%8E
-[plugin 2] search results=0
-[FAIL] 新 AGE 動漫 | search(克雷瓦提斯2：魔兽之王与) -> 0
-[OK] 新 AGE 動漫 | 克雷瓦提斯2：魔兽之王与虚伪的勇者传承 | 第01集 -> https://vip.ffzy-plays.com/20260708/55531_ca1df370/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | LV999的村民 | 第01集 -> https://vip.ffzy-plays.com/20260702/55331_362bb9e8/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 乡下大叔成为剑圣 第二季 | 第01集 -> https://vip.ffzy-plays.com/20260709/55538_de2a10af/index.m3u8 | candidates=4
+[plugin 2] search keyword=暗芝居 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9A%97%E8%8A%9D%E5%B1%85
+[plugin 2] search results=17
+[plugin 2] search sample(index=0)
+{
+  "id": "20260245",
+  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260245.jpg",
+  "title": "暗芝居 第十七季",
+  "descriptionText": "第02集 · 剧场版",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260245"
+}
+[OK] 新 AGE 動漫 | search(暗芝居) -> 17
+[OK] 新 AGE 動漫 | 暗芝居 第十七季 | 第01集 -> https://v.lzcdn31.com/20260721/8748_3c2d59ed/index.m3u8 | candidates=1
+[OK] 新 AGE 動漫 | 梅比乌斯之尘 | 第01集 -> https://vip.ffzy-plays.com/20260717/55855_80debf53/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 被追放的转生重骑士用游戏知识开无双 | 第01集 -> https://vip.ffzy-plays.com/20260703/55346_6384bb05/index.m3u8 | candidates=4
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -73,7 +81,7 @@
   "id": "https://www.thanju.com/detail/2506.html",
   "coverURLString": "https://pp.thanju.com/U/vod/69cb95e2bfb88.jpg",
   "title": "我们愉快的好日子",
-  "descriptionText": "第81集 · 严贤京 尹仲勋 申正允 尹多英",
+  "descriptionText": "第82集 · 严贤京 尹仲勋 申正允 尹多英",
   "detailURLString": "https://www.thanju.com/detail/2506.html"
 }
 [plugin 6] search keyword=我们愉快的好日子 url=https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
@@ -98,7 +106,7 @@
   "id": "https://www.dbku.tv/voddetail/148010.html",
   "coverURLString": "https://image.tmdb.org/t/p/w300/dmCbnxKJIxhX1t4qinEPDmbUqpr.jpg",
   "title": "房州探案录",
-  "descriptionText": "更新至15集",
+  "descriptionText": "更新至20集",
   "detailURLString": "https://www.dbku.tv/voddetail/148010.html"
 }
 [plugin 7] search keyword=房州探案录 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%88%BF%E5%B7%9E%E6%8E%A2%E6%A1%88%E5%BD%95&submit=
@@ -108,37 +116,37 @@
   "id": "https://www.dbku.tv/voddetail/148010.html",
   "coverURLString": "https://image.tmdb.org/t/p/w300/dmCbnxKJIxhX1t4qinEPDmbUqpr.jpg",
   "title": "房州探案录",
-  "descriptionText": "更新至15集",
+  "descriptionText": "更新至20集",
   "detailURLString": "https://www.dbku.tv/voddetail/148010.html"
 }
 [OK] 独播库 | search(房州探案录) -> 1
 [OK] 独播库 | 房州探案录 | 第1集 -> https://vid.dbokutv.com/20260722/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlQ79nBMPwT65iBJ0nBJ0mDpSoDK96HYvjS34/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 春日之地 | 第1集 -> https://vid.dbokutv.com/20260722/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlR7XgBMDoUcGjC34jC394HJCnEJSsBcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 风带有香气 | 第1集 -> https://vid.dbokutv.com/20260331/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBMPaUNXnBJ0nBJ0pCK95GJ0uH2vjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 灼灼不倾城 | 第1集 -> https://vid.dbokutv.com/20260723/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlQ79nBNfwOd5ZBJ0nBJ0nCq8mCZGvEIvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 昭阳公主 | 第1集 -> https://vid.dbokutv.com/20260723/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlR7XgBNfvPtejC34jC356DaCtD4KtBcrmD0/chunklist.m3u8 | candidates=1
 [plugin 8] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
 [OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
 [plugin 8] medias total=48, testing=3
 [plugin 8] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27111/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260701-1/dbb84d7768cf0f41ad57e9db229413cc.webp",
-  "title": "花样少男少女 第2季",
-  "detailURLString": "https://ani.girigirilove.com/GV27111/"
+  "id": "https://ani.girigirilove.com/GV27114/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260702-1/e3806b4c934e3054f099ecdb1f08963d.webp",
+  "title": "少女怪兽焦糖味",
+  "detailURLString": "https://ani.girigirilove.com/GV27114/"
 }
-[plugin 8] search keyword=花样少男少女 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E8%8A%B1%E6%A0%B7%E5%B0%91%E7%94%B7%E5%B0%91%E5%A5%B3
+[plugin 8] search keyword=少女怪兽焦糖味 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E5%B0%91%E5%A5%B3%E6%80%AA%E5%85%BD%E7%84%A6%E7%B3%96%E5%91%B3
 [plugin 8] search results=1
 [plugin 8] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27111/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260701-1/dbb84d7768cf0f41ad57e9db229413cc.webp",
-  "title": "花样少男少女 第2季",
-  "descriptionText": "更新至05集 / 01點30分",
-  "detailURLString": "https://ani.girigirilove.com/GV27111/"
+  "id": "https://ani.girigirilove.com/GV27114/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260702-1/e3806b4c934e3054f099ecdb1f08963d.webp",
+  "title": "少女怪兽焦糖味",
+  "descriptionText": "更新至04集 / 1點28分",
+  "detailURLString": "https://ani.girigirilove.com/GV27114/"
 }
-[OK] grigrilove | search(花样少男少女) -> 1
-[OK] grigrilove | 花样少男少女 第2季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/HanazakarinoKimitachieS2CHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 盜墓王 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/DogulwangCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 女主角？圣女？不，我是杂役女仆（自豪）！ | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/HeroineSeijoIieAllWorksMaiddesuHokoriCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | search(少女怪兽焦糖味) -> 1
+[OK] grigrilove | 少女怪兽焦糖味 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/KAIJUGIRLCARAMELISECHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 梅比乌斯之尘 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/MebiusDust/001/playlist.m3u8 | candidates=1
+[OK] grigrilove | 被追放的转生重骑士用游戏知识开无双 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/TheExiledHeavyKnightKnowsHowtoGametheSystemCHT/01/playlist.m3u8 | candidates=1
 [plugin 9] Gimy TV | mode=subscriptions | index=https://gimy.tv/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 9] medias total=0, testing=0
@@ -146,8 +154,8 @@
 [plugin 9] search results=0
 [FAIL] Gimy TV | search(test) -> 0
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_9e4cf0fe-2f46-4e72-bc27-5a11f6dd74e1
-[summary] plugins=9, fatal=4, cases=33, ok=23, fail=10, invalidSources=4
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_9579d950-2c50-4c0e-82bc-cdadcd7f19b9
+[summary] plugins=9, fatal=4, cases=33, ok=24, fail=9, invalidSources=4
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log

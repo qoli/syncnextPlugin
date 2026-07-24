@@ -1,13 +1,13 @@
-generated_at=2026-07-23T06:09:13.727Z
+generated_at=2026-07-24T06:03:10.186Z
 runner=bun
 discovery=subscriptions
 subscriptions_source=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json
-summary plugins=9 fatal=4 cases=33 ok=23 fail=10 invalidSources=4
+summary plugins=9 fatal=4 cases=33 ok=24 fail=9 invalidSources=4
 disclaimer=Bun/Node smoke test only; it does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.
 
 [plugins]
 - plugin_olevod | 新歐樂影院 | overall=Partial | conn=Fail 0/3 | search=OK | playback=OK 3/3 | cases=4/5 | reasons=connectivity_failed:1
-- plugin_age | 新 AGE 動漫 | overall=Partial | conn=OK 2/3 | search=Empty | playback=OK 3/3 | cases=4/5 | reasons=search_empty:1
+- plugin_age | 新 AGE 動漫 | overall=OK | conn=OK 2/3 | search=OK | playback=OK 3/3 | cases=5/5 | reasons=-
 - plugin_czzy | 廠長資源 | overall=Fatal | conn=Fail 0/3 | search=Empty | playback=Not Reached | cases=0/2 | reasons=connectivity_failed:1, search_empty:1
 - plugin_youknow | YouKnowTV | overall=Fatal | conn=Fail 0/3 | search=Empty | playback=Not Reached | cases=0/2 | reasons=connectivity_failed:1, search_empty:1
 - plugin_libvio | libvio | overall=Fatal | conn=Fail 0/2 | search=Empty | playback=Not Reached | cases=0/2 | reasons=connectivity_failed:1, search_empty:1
