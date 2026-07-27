@@ -10,43 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "82914",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260721-1/31f59da83f80e990d41c7a7f68564d39.jpg",
-  "title": "依然的喜事",
-  "descriptionText": "更新至第15集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82914/true"
+  "id": "82683",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260622-1/9eceea2d1201d106d1ef3da27c57698a.jpg",
+  "title": "龙之家族 第三季",
+  "descriptionText": "更新至第06集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82683/true"
 }
-[plugin 1] search keyword=依然的喜事 url=https://api.olelive.com/v1/pub/index/search/%E4%BE%9D%E7%84%B6%E7%9A%84%E5%96%9C%E4%BA%8B/vod/0/1/4
-[plugin 1] search results=1
+[plugin 1] search keyword=龙之家族 url=https://api.olelive.com/v1/pub/index/search/%E9%BE%99%E4%B9%8B%E5%AE%B6%E6%97%8F/vod/0/1/4
+[plugin 1] search results=3
 [plugin 1] search sample(index=0)
 {
-  "id": "82914",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260721-1/31f59da83f80e990d41c7a7f68564d39.jpg",
-  "title": "依然的喜事",
-  "descriptionText": "更新至第15集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82914/true"
+  "id": "82683",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260622-1/9eceea2d1201d106d1ef3da27c57698a.jpg",
+  "title": "龙之家族 第三季",
+  "descriptionText": "更新至第05集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82683/true"
 }
-[OK] 新歐樂影院 | search(依然的喜事) -> 1
-[OK] 新歐樂影院 | 依然的喜事 | 第01集 -> https://europe.olemovienews.com/ts5/20260721/iu2sddsk/mp4/iu2sddsk.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 二龙湖·村暖花开3 | 第01集 -> https://europe.olemovienews.com/ts5/20260717/yhl92lw4/mp4/yhl92lw4.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 致浅浅的小时光 | 第1集 -> https://europe.olemovienews.com/ts5/20260726/piClwHay/mp4/piClwHay.mp4/clipTo/171866/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(龙之家族) -> 3
+[OK] 新歐樂影院 | 龙之家族 第三季 | 第01集 -> https://europe.olemovienews.com/ts4/20260622/tozgzc7h/mp4/tozgzc7h.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 我的虚构 | 第01集 -> https://europe.olemovienews.com/ts4/20260706/lexodt2w/mp4/lexodt2w.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 尾调 | 第01集 -> https://europe.olemovienews.com/ts5/20260712/v6eyugps/mp4/v6eyugps.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260179",
-  "coverURLString": "https://gimg4.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260179.jpg",
-  "title": "柔光魔女股份有限公司 第二季",
+  "id": "20260183",
+  "coverURLString": "https://gimg3.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260183.jpg",
+  "title": "碧蓝航线 微速前行 第二季",
   "descriptionText": "第04集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260179"
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260183"
 }
-[plugin 2] search keyword=柔光魔女股份有限公司 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%9F%94%E5%85%89%E9%AD%94%E5%A5%B3%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8
-[plugin 2] search results=0
-[FAIL] 新 AGE 動漫 | search(柔光魔女股份有限公司) -> 0
-[OK] 新 AGE 動漫 | 柔光魔女股份有限公司 第二季 | 第01集 -> https://vip.ffzy-plays.com/20260709/55536_1871cafd/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 声称不爱我的下任公爵为何会溺爱我 | 第01集 -> https://vip.ffzy-plays.com/20260709/55537_e89405bb/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 摩绪 | 第01集 -> https://hn.bfvvs.com/play/b2kvMlJd/index.m3u8 | candidates=6
+[plugin 2] search keyword=碧蓝航线 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF
+[plugin 2] search results=4
+[plugin 2] search sample(index=0)
+{
+  "id": "20260183",
+  "coverURLString": "https://gimg3.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260183.jpg",
+  "title": "碧蓝航线 微速前行 第二季",
+  "descriptionText": "第04集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260183"
+}
+[OK] 新 AGE 動漫 | search(碧蓝航线) -> 4
+[OK] 新 AGE 動漫 | 碧蓝航线 微速前行 第二季 | 第01集 -> https://vip.ffzy-plays.com/20260706/55449_debbe6c6/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 黑猫与魔女的教室 | 第01集 -> https://hn.bfvvs.com/play/aM8QkXQe/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | 恶女不才，请多关照 ～雏宫蝶鼠换身传～ | 第01集 -> https://vip.ffzy-plays.com/20260713/55679_f7721687/index.m3u8 | candidates=4
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -64,26 +72,26 @@
 [plugin 5] medias total=48, testing=3
 [plugin 5] buildMedias sample(index=0)
 {
-  "id": "https://www.libvios.com/detail/714893611.html",
-  "coverURLString": "https://img.meituan.net/content/636573a6694e5cf8c74f25e18f626da6252852.png",
-  "title": "斯图尔特未能拯救宇宙",
-  "descriptionText": "第01集/周五更",
-  "detailURLString": "https://www.libvios.com/detail/714893611.html"
+  "id": "https://www.libvios.com/detail/714893521.html",
+  "coverURLString": "https://img.meituan.net/content/71fb8464e975c4073121dabdd5ac9ba9173231.png",
+  "title": "龙之家族 第三季",
+  "descriptionText": "第06集/周一更",
+  "detailURLString": "https://www.libvios.com/detail/714893521.html"
 }
-[plugin 5] search keyword=斯图尔特未能拯救宇宙 url=https://www.libvios.com/search/-------------.html?wd=%E6%96%AF%E5%9B%BE%E5%B0%94%E7%89%B9%E6%9C%AA%E8%83%BD%E6%8B%AF%E6%95%91%E5%AE%87%E5%AE%99
-[plugin 5] search results=1
+[plugin 5] search keyword=龙之家族 url=https://www.libvios.com/search/-------------.html?wd=%E9%BE%99%E4%B9%8B%E5%AE%B6%E6%97%8F
+[plugin 5] search results=3
 [plugin 5] search sample(index=0)
 {
-  "id": "https://www.libvios.com/detail/714893611.html",
-  "coverURLString": "https://img.meituan.net/content/636573a6694e5cf8c74f25e18f626da6252852.png",
-  "title": "斯图尔特未能拯救宇宙",
-  "descriptionText": "第01集/周五更",
-  "detailURLString": "https://www.libvios.com/detail/714893611.html"
+  "id": "https://www.libvios.com/detail/714893521.html",
+  "coverURLString": "https://img.meituan.net/content/71fb8464e975c4073121dabdd5ac9ba9173231.png",
+  "title": "龙之家族 第三季",
+  "descriptionText": "第06集/周一更",
+  "detailURLString": "https://www.libvios.com/detail/714893521.html"
 }
-[OK] libvio | search(斯图尔特未能拯救宇宙) -> 1
-[FAIL] libvio | 斯图尔特未能拯救宇宙 | 第01集 -> emptyView: libvio: 解析播放地址失败(ty_new1) | reason=plugin_empty_view
-[OK] libvio | 金特务：本色回归 | 第01集 -> https://v3.vbing.me/2026/rh/6/Agent.Kim.Reactivated.2026.S01/Agent.Kim.Reactivated.2026.S01E01.mp4 | candidates=1
-[OK] libvio | 犯罪心理：演变 第十九季 | 第01集 -> https://v3.vbing.me/2026/mj/7/Criminal.Minds.S19/Criminal.Minds.S19E01.mp4 | candidates=1
+[OK] libvio | search(龙之家族) -> 3
+[OK] libvio | 龙之家族 第三季 | 第01集 -> https://v.vbing.me/2026/mj/6/Tongari.Boushi.no.Atelier.S01/House.of.the.Dragon.S03E01.FP.mp4 | candidates=1
+[FAIL] libvio | 超级少女 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
+[OK] libvio | 瑞克和莫蒂 第九季 | 第01集 -> https://v3.vbing.me/2026/mj/5/Rick.and.Morty.S09/Rick.and.Morty.S09E01.mp4 | candidates=1
 [plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
 [OK] 韩剧网 | connectivity -> 3 target(s), pass=https://www.thanju.com
 [plugin 6] medias total=30, testing=3
@@ -92,7 +100,7 @@
   "id": "https://www.thanju.com/detail/2552.html",
   "coverURLString": "https://pp.thanju.com/U/vod/6a657639cc091.jpg",
   "title": "爱情来了",
-  "descriptionText": "第1集 · 安喜延",
+  "descriptionText": "第2集 · 安喜延",
   "detailURLString": "https://www.thanju.com/detail/2552.html"
 }
 [plugin 6] search keyword=爱情来了 url=https://www.thanju.com/search/%E7%88%B1%E6%83%85%E6%9D%A5%E4%BA%86.html
@@ -106,58 +114,58 @@
   "detailURLString": "https://www.thanju.com/detail/2552.html"
 }
 [OK] 韩剧网 | search(爱情来了) -> 2
-[OK] 韩剧网 | 爱情来了 | 01 -> https://v8.ppqrrs.com/wjv8/202607/26/FqtkcHrdxx93/video/index.m3u8 | candidates=1
-[OK] 韩剧网 | 公寓黑风暴 | 01 -> https://vvip.high26-playback.com/20260711/24705_7ffc2fa4/index.m3u8 | candidates=1
+[OK] 韩剧网 | 爱情来了 | 01 -> https://cdn.yzzyvip-29.com/20260726/26230_0a2f0579/index.m3u8 | candidates=1
 [OK] 韩剧网 | 共感细胞 | 01 -> https://cdn.yzzy28-play.com/20260704/32161_f76864d0/index.m3u8 | candidates=1
+[OK] 韩剧网 | 公寓黑风暴 | 01 -> https://vvip.high26-playback.com/20260711/24705_7ffc2fa4/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/148075.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/1kpyF4UceNSiTY9yxVNOSdjt7iF.jpg",
-  "title": "昭阳公主",
-  "descriptionText": "更新至9集",
-  "detailURLString": "https://www.dbku.tv/voddetail/148075.html"
+  "id": "https://www.dbku.tv/voddetail/148148.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/yoeJl8eJeElgn527KzBcJJ28bAC.jpg",
+  "title": "如约而至",
+  "descriptionText": "更新至17集",
+  "detailURLString": "https://www.dbku.tv/voddetail/148148.html"
 }
-[plugin 7] search keyword=昭阳公主 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%98%AD%E9%98%B3%E5%85%AC%E4%B8%BB&submit=
+[plugin 7] search keyword=如约而至 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%A6%82%E7%BA%A6%E8%80%8C%E8%87%B3&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/148075.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/1kpyF4UceNSiTY9yxVNOSdjt7iF.jpg",
-  "title": "昭阳公主",
-  "descriptionText": "更新至9集",
-  "detailURLString": "https://www.dbku.tv/voddetail/148075.html"
+  "id": "https://www.dbku.tv/voddetail/148148.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/yoeJl8eJeElgn527KzBcJJ28bAC.jpg",
+  "title": "如约而至",
+  "descriptionText": "更新至17集",
+  "detailURLString": "https://www.dbku.tv/voddetail/148148.html"
 }
-[OK] 独播库 | search(昭阳公主) -> 1
-[OK] 独播库 | 昭阳公主 | 第1集 -> https://vid.dbokutv.com/20260723/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlR7XgBNfvPtejC34jC356DaCtD4KtBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(如约而至) -> 1
+[OK] 独播库 | 如约而至 | 第1集 -> https://vid.dbokutv.com/20260724/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xGvE9QvFBAyYqmCIqmCaOoCZKoE44kRN0q/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 依然的喜事 | 第1集 -> https://vid.dbokutv.com/20260722/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlQ79nBNboP7XpBJ0nBJ0nGqOtDZCtGIvjS34/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 灼灼不倾城 | 第1集 -> https://vid.dbokutv.com/20260723/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlQ79nBNfwOd5ZBJ0nBJ0nCq8mCZGvEIvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 岂有此理 | 第1集 -> https://vid.dbokutv.com/20260717/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlR7XgBN5vOsmjC34jC351CJD3E4P6BcrmD0/chunklist.m3u8 | candidates=1
 [plugin 8] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
 [OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
 [plugin 8] medias total=48, testing=3
 [plugin 8] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV26922/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260209-1/91c0c18641a737d1b10fc532fc278154.jpg",
-  "title": "名侦探光之美少女！",
-  "detailURLString": "https://ani.girigirilove.com/GV26922/"
+  "id": "https://ani.girigirilove.com/GV27001/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260403-1/7ec48c897cd9a91c04666773f4f47c00.webp",
+  "title": "摩绪",
+  "detailURLString": "https://ani.girigirilove.com/GV27001/"
 }
-[plugin 8] search keyword=名侦探光之美少女！ url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E5%90%8D%E4%BE%A6%E6%8E%A2%E5%85%89%E4%B9%8B%E7%BE%8E%E5%B0%91%E5%A5%B3%EF%BC%81
+[plugin 8] search keyword=摩绪 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E6%91%A9%E7%BB%AA
 [plugin 8] search results=1
 [plugin 8] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV26922/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260209-1/91c0c18641a737d1b10fc532fc278154.jpg",
-  "title": "名侦探光之美少女！",
-  "descriptionText": "更新至26集 / 23點30分",
-  "detailURLString": "https://ani.girigirilove.com/GV26922/"
+  "id": "https://ani.girigirilove.com/GV27001/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260403-1/7ec48c897cd9a91c04666773f4f47c00.webp",
+  "title": "摩绪",
+  "descriptionText": "更新至17集 / 23點30分",
+  "detailURLString": "https://ani.girigirilove.com/GV27001/"
 }
-[OK] grigrilove | search(名侦探光之美少女！) -> 1
-[OK] grigrilove | 名侦探光之美少女！ | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/01/cht/StarDetectivePrecureCHT/001/playlist.m3u8 | candidates=1
-[OK] grigrilove | 才女的侍从 在满是高岭之花的贵族学校暗中照顾（毫无生活自理能力的）学院第一大小姐 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/SaijonoOsewaCHT/001/playlist.m3u8 | candidates=1
-[OK] grigrilove | 说了不打算爱我的公爵继承人，不知为何对我宠爱有加 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/KimiwoAisuruKiwaNaiCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | search(摩绪) -> 1
+[OK] grigrilove | 摩绪 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/04/cht/MAOCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 虽然我不是完美恶女～雏宫蝶鼠替换传～ | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/FutsutsukaCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 碧蓝航线 微速前行 第二季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/AzurLaneBisokuZenshinNiS2CHT/01/playlist.m3u8 | candidates=1
 [plugin 9] Gimy TV | mode=subscriptions | index=https://gimy.tv/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 9] medias total=0, testing=0
@@ -165,8 +173,8 @@
 [plugin 9] search results=0
 [FAIL] Gimy TV | search(test) -> 0
 [readme] /home/runner/work/syncnextPlugin/syncnextPlugin/README.md
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_4b8e73f2-4ce3-406c-a95f-5f8972ff05b3
-[summary] plugins=9, fatal=3, cases=36, ok=27, fail=9, invalidSources=4
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_89473e5a-cb7d-476b-8191-c1c790b9a0a6
+[summary] plugins=9, fatal=3, cases=36, ok=28, fail=8, invalidSources=4
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log

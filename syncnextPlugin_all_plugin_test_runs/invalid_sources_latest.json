@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T06:14:32.113Z",
+  "generatedAt": "2026-07-27T06:39:41.668Z",
   "invalidPluginsCount": 4,
   "invalidPlugins": [
     {
@@ -37,35 +37,21 @@
       "failedCases": [
         {
           "ok": false,
-          "stage": "player",
-          "mediaTitle": "斯图尔特未能拯救宇宙",
-          "episodeTitle": "第01集",
-          "detailURL": "https://www.libvios.com/detail/714893611.html",
-          "episodeURL": "https://www.libvios.com/w/714893611-1-1.html",
+          "stage": "episodes",
+          "mediaTitle": "超级少女",
+          "episodeTitle": "",
+          "detailURL": "https://www.libvios.com/detail/714893617.html",
+          "episodeURL": "",
           "playURL": "",
           "probe": null,
-          "error": "emptyView: libvio: 解析播放地址失败(ty_new1)",
+          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
           "reasonCode": "plugin_empty_view",
           "reasonText": "插件回傳 emptyView，未取得可播放地址",
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.libvios.com/w/714893611-1-1.html",
+              "url": "https://www.libvios.com/detail/714893617.html",
               "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://www.libvios.com/vid/ty4.php?url=Ln2hF2wsazSx1Q2GMtiz90jrb82P11tYb92J4WvXMBTVcawHMOzUcLzkMZzigvyiNTTckjxaOuTGYP1vMrTCgc0vMRCO8D1WM0zXcs0fNLz8U22eMBTPcDy8NxzjQtydRTQ2NjE2OTZDNzMyRTc0NkYyRTUzNjE3NjY1MkU3NDY4NjUyRTU1NkU2OTc2NjU3MjczNjUyRTUzMzAzMTQ1MzAzMTJFNkQ3MDM0N0MzMzMyMzQzNzMyMzYzMTM5MzUO0O0O&next=&id=714893611&nid=1",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "POST",
-              "url": "https://www.libvios.com/vid/parse.php?_t=MTc4NTA0NjMzMS45YzNkZGJjOGExNTAyYzU4Y2ZmMWEwNDhjMWM3N2FlNTA0NmMxNDY4OTgxMjdhMjYzNjYxYjlhMDA1OGZmYzgy&id=714893611&nid=1",
-              "status": 403,
               "safeLine": false,
               "error": ""
             }
