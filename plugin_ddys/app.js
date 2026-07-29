@@ -5,8 +5,6 @@ var DDYS_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.3
 var CHALLENGE_API = DDYS_HOST + '/wp-json/ddys-protect/v1/gatecha/challenge';
 var GATE_PAGE_URL = DDYS_HOST + '/';
 
-var OCR_API_URL = '';
-
 var bypassingGate = false;
 var bypassQueue = [];
 
@@ -51,74 +49,29 @@ function isWPBlocked(html) {
 
 // ── ALTCHA PoW solver ───────────────────────────────────────
 
-function countLeadingZeroBits(hexString) {
-  var z = 0;
-  if (typeof hexString !== 'string' || hexString.length === 0) {
-    return 0;
-  }
-  for (var i = 0; i < hexString.length; i += 2) {
-    if (i + 1 >= hexString.length) {
-      break;
-    }
-    var byteStr = hexString.substring(i, i + 2);
-    var byteVal = parseInt(byteStr, 16);
-    if (isNaN(byteVal)) {
-      return z;
-    }
-    if (byteVal === 0) {
-      z += 8;
-    } else {
-      for (var m = 0x80; m > 0; m >>= 1) {
-        if ((byteVal & m) === 0) {
-          z++;
-        } else {
-          return z;
-        }
-      }
-    }
-  }
-  return z;
-}
-
 function solveAltcha(challengeData) {
-  var c = challengeData.challenge;
-  var s = challengeData.salt;
-  var mx = parseInt(challengeData.maxNumber, 10);
-  if (isNaN(mx) || mx < 0) {
-    mx = 100000;
+  if (
+    !challengeData ||
+    challengeData.algorithm !== 'SHA-256' ||
+    typeof challengeData.challenge !== 'string' ||
+    typeof challengeData.salt !== 'string'
+  ) {
+    throw new Error('ALTCHA challenge is malformed');
   }
 
-  var best = 0;
-  var bestZ = 0;
+  var maximum = Number(challengeData.maxNumber);
+  if (!Number.isInteger(maximum) || maximum < 0) {
+    throw new Error('ALTCHA maxNumber is malformed');
+  }
 
-  var coarseStep = Math.max(1, Math.floor(mx / 800));
-  for (var i = 0; i <= mx; i += coarseStep) {
-    var hashHex = CryptoJS.SHA256(c + String(i) + s).toString();
-    var z = countLeadingZeroBits(hashHex);
-    if (z > bestZ) {
-      best = i;
-      bestZ = z;
+  for (var number = 0; number <= maximum; number++) {
+    var candidate = CryptoJS.SHA256(challengeData.salt + String(number)).toString();
+    if (candidate === challengeData.challenge) {
+      return number;
     }
   }
 
-  var fineStart = Math.max(0, best - coarseStep);
-  var fineEnd = Math.min(mx, best + coarseStep);
-  var maxSearch = Math.min(50000, fineEnd - fineStart + 1);
-  var searched = 0;
-  for (var j = fineStart; j <= fineEnd && searched < maxSearch; j++) {
-    searched++;
-    var hashHex2 = CryptoJS.SHA256(c + String(j) + s).toString();
-    var z2 = countLeadingZeroBits(hashHex2);
-    if (z2 > bestZ) {
-      best = j;
-      bestZ = z2;
-      if (z2 >= 20) {
-        break;
-      }
-    }
-  }
-
-  return best;
+  throw new Error('ALTCHA solution was not found within maxNumber');
 }
 
 // ── gate field extraction ───────────────────────────────────
@@ -168,7 +121,14 @@ function matchHintPositions(hintChars, challengeObservations) {
         continue;
       }
       var item = challengeObservations[j];
-      if (item.text === hintChar) {
+      if (
+        item.text === hintChar &&
+        item.bbox &&
+        Number.isFinite(item.bbox.x) &&
+        Number.isFinite(item.bbox.y) &&
+        Number.isFinite(item.bbox.w) &&
+        Number.isFinite(item.bbox.h)
+      ) {
         usedObs[j] = true;
         bestItem = item;
         break;
@@ -186,80 +146,87 @@ function matchHintPositions(hintChars, challengeObservations) {
 }
 
 function visionRecognize(hintB64, challengeB64, callback) {
-  var hintDone = false;
-  var hintChars = [];
-  var challengeObs = [];
+  var completed = false;
+  var hintFinished = false;
+  var challengeFinished = false;
+  var hintResult = null;
+  var challengeResult = null;
 
-  $next.recognizeText(hintB64, function (hintResult) {
-    if (hintResult && hintResult.observations) {
-      hintResult.observations.forEach(function (obs) {
-        var t = String(obs.text || '').trim();
-        if (t) {
-          hintChars.push(t);
-        }
-      });
+  function finishOnce(points, errorMessage) {
+    if (completed) {
+      return;
     }
-    if (challengeObs.length > 0) {
-      callback(matchHintPositions(hintChars, challengeObs), null);
-    } else {
-      hintDone = true;
-    }
-  });
+    completed = true;
+    callback(points, errorMessage);
+  }
 
-  $next.recognizeText(challengeB64, function (chalResult) {
-    if (chalResult && chalResult.observations) {
-      challengeObs = chalResult.observations;
+  function finishWhenReady() {
+    if (!hintFinished || !challengeFinished || completed) {
+      return;
     }
-    if (hintDone) {
-      callback(matchHintPositions(hintChars, challengeObs), null);
+
+    if (!hintResult || hintResult.error) {
+      var hintCode = hintResult && hintResult.error ? hintResult.error.code : 'missing_result';
+      finishOnce(null, 'Hint OCR failed: ' + hintCode);
+      return;
     }
-  });
-}
+    if (!challengeResult || challengeResult.error) {
+      var challengeCode = challengeResult && challengeResult.error
+        ? challengeResult.error.code
+        : 'missing_result';
+      finishOnce(null, 'Challenge OCR failed: ' + challengeCode);
+      return;
+    }
+    if (!Array.isArray(hintResult.observations) || !Array.isArray(challengeResult.observations)) {
+      finishOnce(null, 'OCR result did not contain observations');
+      return;
+    }
 
-function ocrAPI(hintB64, challengeB64, callback) {
-  var req = {
-    url: OCR_API_URL,
-    method: 'POST',
-    headers: {
-      'User-Agent': DDYS_UA,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      hint_image: hintB64,
-      challenge_image: challengeB64,
-    }),
-  };
-
-  $http.fetch(req).then(function (res) {
-    try {
-      var json = JSON.parse(res.body);
-      if (json && json.points && json.points.length > 0) {
-        callback(json.points.map(function (p) {
-          return { x: Math.round(p.x), y: Math.round(p.y) };
-        }), null);
-      } else {
-        callback(null, 'OCR returned no points');
+    var hintChars = [];
+    hintResult.observations.forEach(function (obs) {
+      var text = String(obs.text || '').trim();
+      if (text) {
+        hintChars.push(text);
       }
-    } catch (e) {
-      callback(null, 'OCR response parse error: ' + String(e));
+    });
+
+    if (hintChars.length === 0) {
+      finishOnce(null, 'Hint OCR returned no characters');
+      return;
     }
-  }).catch(function (err) {
-    callback(null, 'OCR request failed: ' + String(err));
+    if (challengeResult.observations.length === 0) {
+      finishOnce(null, 'Challenge OCR returned no characters');
+      return;
+    }
+
+    var points = matchHintPositions(hintChars, challengeResult.observations);
+    if (points.length !== hintChars.length) {
+      finishOnce(null, 'Challenge OCR did not match every hint character');
+      return;
+    }
+    finishOnce(points, null);
+  }
+
+  $vision.recognizeText(hintB64, function (result) {
+    hintResult = result;
+    hintFinished = true;
+    finishWhenReady();
+  });
+
+  $vision.recognizeText(challengeB64, function (result) {
+    challengeResult = result;
+    challengeFinished = true;
+    finishWhenReady();
   });
 }
 
 function solveClickCaptcha(hintB64, challengeB64, callback) {
-  if (typeof $next.recognizeText === 'function') {
-    visionRecognize(hintB64, challengeB64, callback);
+  if (typeof $vision === 'undefined' || typeof $vision.recognizeText !== 'function') {
+    callback(null, 'Syncnext does not provide $vision.recognizeText');
     return;
   }
 
-  if (OCR_API_URL) {
-    ocrAPI(hintB64, challengeB64, callback);
-    return;
-  }
-
-  callback(null, 'No OCR available: configure OCR_API_URL or add $next.recognizeText to Syncnext');
+  visionRecognize(hintB64, challengeB64, callback);
 }
 
 // ── gate bypass orchestration ───────────────────────────────
@@ -298,7 +265,13 @@ function bypassGate(originalURL, callback) {
         return;
       }
 
-      var number = solveAltcha(altchaData);
+      var number;
+      try {
+        number = solveAltcha(altchaData);
+      } catch (solveError) {
+        finishBypass(callback, false, 'ALTCHA solve error: ' + String(solveError));
+        return;
+      }
 
       var altchaSolution = {
         algorithm: altchaData.algorithm || 'SHA-256',
@@ -407,7 +380,7 @@ function safeFetch(url, method, body, contentType, callback) {
   };
 
   $http.fetch(req).then(function (res) {
-    if (isGatePage(res.body)) {
+    if (isGatePage(res.body) || isWPBlocked(res.body)) {
       bypassGate(url, function (success, errMsg) {
         if (success) {
           $http.fetch(req).then(function (retryRes) {

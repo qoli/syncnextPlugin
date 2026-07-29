@@ -6,12 +6,12 @@
 
 ## 簡介
 
-Syncnext 的「插件化頻道協議」允許開發者以 JavaScript 實現自定義頻道、媒體牆、播放列表、搜尋功能，並透過內建 API（`$http` / `$next`）與 Syncnext 主程式互動，使得第三方來源能無縫輸入 Syncnext 內容系統。
+Syncnext 的「插件化頻道協議」允許開發者以 JavaScript 實現自定義頻道、媒體牆、播放列表、搜尋功能，並透過內建 API（`$http` / `$vision` / `$next`）與 Syncnext 主程式互動，使得第三方來源能無縫輸入 Syncnext 內容系統。
 
 此文檔旨在：
 
 * 解釋協議核心概念
-* 完整整理 `$http` 與 `$next` API
+* 完整整理 `$http`、`$vision` 與 `$next` API
 * 提供版本差異與更新歷史
 * 指導如何實作搜尋、媒體牆、播放列表、播放功能
 * 提供開發最佳實踐與常見錯誤示例
@@ -198,6 +198,33 @@ HEAD 特別適合：
 
 * 判斷真實播放地址（如 m3u8 是否存在）
 * 避免 GET 整串影片造成流量浪費
+
+---
+
+# $vision API
+
+`$vision` 提供主程式本機 Vision 文字辨識，不會把圖片傳送到外部 OCR provider。
+
+## `$vision.recognizeText(base64Image, callback)`
+
+輸入必須是原始 Base64 圖片字串，不接受 URL 或 `data:image/...` 前綴。非取消工作會異步回調一次；插件工作取消後不會收到晚到回調。
+
+```js
+$vision.recognizeText(base64Image, function (result) {
+  if (result.error) {
+    $next.emptyView("文字辨識失敗：" + result.error.code);
+    return;
+  }
+
+  result.observations.forEach(function (observation) {
+    // observation.text
+    // observation.confidence
+    // observation.bbox: { x, y, w, h }
+  });
+});
+```
+
+成功結果包含原圖尺寸及逐字符 observations。`bbox` 使用原圖像素，左上角為原點。無效 Base64、不支援圖片、圖片超限、辨識失敗或缺少字符座標都會返回明確 `error.code`；插件不得切換至另一個 OCR provider。
 
 ---
 
