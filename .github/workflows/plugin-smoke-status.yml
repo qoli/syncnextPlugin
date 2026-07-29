@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -38,7 +38,7 @@ jobs:
         run: bun run smoke:ci:soft --job-summary-file="$GITHUB_STEP_SUMMARY"
 
       - name: Upload Untrusted Smoke Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: plugin-smoke-results-${{ github.run_id }}
           retention-days: 1
@@ -59,10 +59,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Download Untrusted Smoke Results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: plugin-smoke-results-${{ github.run_id }}
           path: ${{ runner.temp }}/plugin-smoke-results
