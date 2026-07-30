@@ -18,6 +18,7 @@ var PLAYER_API_BASE_PENDING = {};
 var SMARTPLAY_API_URL =
   "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php";
 var EPISODE_CANDIDATES_PAYLOAD_PREFIX = "syncnext-libvio://episode-candidates?data=";
+var SIGNED_URL_MIN_REMAINING_SECONDS = 15 * 60;
 
 function print(params) {
   console.log(JSON.stringify(params));
@@ -57,6 +58,102 @@ function buildPlayerCandidate(url) {
       Referer: REFERER_URL,
     },
   };
+}
+
+function queryParameterValue(url, name) {
+  var queryIndex = String(url || "").indexOf("?");
+  if (queryIndex < 0) {
+    return "";
+  }
+
+  var fields = String(url).substring(queryIndex + 1).split("&");
+  var expected = String(name || "").toLowerCase();
+  for (var index = 0; index < fields.length; index++) {
+    var separatorIndex = fields[index].indexOf("=");
+    var rawKey = separatorIndex >= 0 ? fields[index].substring(0, separatorIndex) : fields[index];
+    var decodedKey;
+    try {
+      decodedKey = decodeURIComponent(rawKey);
+    } catch (error) {
+      continue;
+    }
+    if (decodedKey.toLowerCase() !== expected) {
+      continue;
+    }
+
+    var rawValue = separatorIndex >= 0 ? fields[index].substring(separatorIndex + 1) : "";
+    try {
+      return decodeURIComponent(rawValue);
+    } catch (error) {
+      return "";
+    }
+  }
+
+  return "";
+}
+
+function parseAmzDateMilliseconds(value) {
+  var matched = String(value || "").match(
+    /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/
+  );
+  if (!matched) {
+    return null;
+  }
+
+  var year = Number(matched[1]);
+  var month = Number(matched[2]) - 1;
+  var day = Number(matched[3]);
+  var hour = Number(matched[4]);
+  var minute = Number(matched[5]);
+  var second = Number(matched[6]);
+  var milliseconds = Date.UTC(year, month, day, hour, minute, second);
+  var parsed = new Date(milliseconds);
+  if (
+    !isFinite(milliseconds) ||
+    parsed.getUTCFullYear() !== year ||
+    parsed.getUTCMonth() !== month ||
+    parsed.getUTCDate() !== day ||
+    parsed.getUTCHours() !== hour ||
+    parsed.getUTCMinutes() !== minute ||
+    parsed.getUTCSeconds() !== second
+  ) {
+    return null;
+  }
+  return milliseconds;
+}
+
+function signedURLRemainingSeconds(url, nowMilliseconds) {
+  var signedAt = parseAmzDateMilliseconds(queryParameterValue(url, "X-Amz-Date"));
+  var validitySeconds = Number(queryParameterValue(url, "X-Amz-Expires"));
+  if (signedAt === null || !isFinite(validitySeconds) || validitySeconds <= 0) {
+    return null;
+  }
+
+  var now = typeof nowMilliseconds === "number" ? nowMilliseconds : Date.now();
+  return (signedAt + validitySeconds * 1000 - now) / 1000;
+}
+
+function preferCandidatesWithSufficientSignedURLTTL(candidates, nowMilliseconds) {
+  var preferred = [];
+  var shortLived = [];
+
+  for (var index = 0; index < candidates.length; index++) {
+    var candidate = candidates[index];
+    var remainingSeconds = signedURLRemainingSeconds(candidate.url, nowMilliseconds);
+
+    if (remainingSeconds === null) {
+      preferred.push(candidate);
+    } else if (remainingSeconds <= 0) {
+      continue;
+    } else if (remainingSeconds < SIGNED_URL_MIN_REMAINING_SECONDS) {
+      shortLived.push(candidate);
+    } else {
+      preferred.push(candidate);
+    }
+  }
+
+  // A short-lived pool remains valid when the provider offers no safer choice.
+  return preferred.length ? preferred : shortLived;
 }
 
 function normalizeHost(host) {
@@ -1359,8 +1456,13 @@ function resolvePlayerCandidatesFromSources(sources, index, candidates, seen, ca
 }
 
 function gotoPlayCandidates(candidates) {
-  if (!candidates || !candidates.length) {
-    reportPlayerUnavailable("libvio: 找不到可用的播放地址");
+  var eligibleCandidates = preferCandidatesWithSufficientSignedURLTTL(candidates || []);
+  if (!eligibleCandidates.length) {
+    reportPlayerUnavailable(
+      candidates && candidates.length
+        ? "libvio: 播放地址已過期"
+        : "libvio: 找不到可用的播放地址"
+    );
     return;
   }
 
@@ -1369,7 +1471,7 @@ function gotoPlayCandidates(candidates) {
     return;
   }
 
-  $next.toPlayerCandidates(JSON.stringify(candidates));
+  $next.toPlayerCandidates(JSON.stringify(eligibleCandidates));
 }
 
 function Episodes(inputURL) {
