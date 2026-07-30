@@ -847,24 +847,29 @@ function extractWpPlayURL(html) {
   return "";
 }
 
-function sendPlayerURL(url, referer) {
+function sendPlayerURL(url, sourceURL, headerPolicy) {
   if (!url) {
     $next.emptyView("找不到可用的播放地址");
     return;
   }
 
-  var playerReferer = referer || HOST;
+  var playerSourceURL = sourceURL || HOST;
   var playerHeaders = {
     "User-Agent": UA,
-    Referer: playerReferer,
   };
-  var playerOrigin = getOrigin(playerReferer);
 
-  if (playerOrigin && playerOrigin.indexOf("py1080p.com") !== -1) {
-    playerHeaders = {
-      "User-Agent": UA,
-      Origin: playerOrigin,
-    };
+  if (headerPolicy === "origin") {
+    var playerOrigin = getOrigin(playerSourceURL);
+    if (!playerOrigin) {
+      $next.emptyView("播放解析失敗，播放器來源無效");
+      return;
+    }
+    playerHeaders.Origin = playerOrigin;
+  } else if (headerPolicy === "referer") {
+    playerHeaders.Referer = playerSourceURL;
+  } else {
+    $next.emptyView("播放解析失敗，缺少播放請求策略");
+    return;
   }
 
   var payload = {
@@ -905,13 +910,13 @@ function resolveIframePlayer(iframeURL, referer) {
       var playURL = extractPlayURLFromIframe(html);
 
       if (playURL) {
-        sendPlayerURL(playURL, target);
+        sendPlayerURL(playURL, target, "origin");
         return;
       }
 
       var fallback = extractWpPlayURL(html);
       if (fallback) {
-        sendPlayerURL(fallback, target);
+        sendPlayerURL(fallback, target, "origin");
         return;
       }
 
@@ -955,7 +960,7 @@ function Player(inputURL) {
 
       var fallback = extractWpPlayURL(html);
       if (fallback) {
-        sendPlayerURL(fallback, detailURL);
+        sendPlayerURL(fallback, detailURL, "referer");
         return;
       }
 
