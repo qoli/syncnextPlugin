@@ -1,6 +1,6 @@
 `user script`;
 
-const FALLBACK_HOST = "https://www.czzymovie.com";
+const FALLBACK_HOST = "https://www.4kcz.com";
 const HOST =
   typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost
     ? __syncnextPrimaryHost
