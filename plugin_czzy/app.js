@@ -472,8 +472,26 @@ function dedupeMedias(list) {
   return result;
 }
 
+function normalizeParserAttributes(html) {
+  if (!html) {
+    return "";
+  }
+
+  // SafeLine dynamic encryption rewrites ordinary HTML attributes without
+  // quotes (for example: class=bt_img and href=/movie/123.html). The bundled
+  // tXml parser only retains quoted attribute values, so normalize the small
+  // attribute surface consumed by this plugin before parsing.
+  return String(html).replace(/<[^>]+>/g, function (tag) {
+    return tag.replace(
+      /(\s(?:class|href|src|alt|title|data-original|data-src))=([^\s"'<>`]+)/gi,
+      '$1="$2"'
+    );
+  });
+}
+
 function parseMediaCardsFromHTML(html) {
-  var containers = tXml.getElementsByClassName(html, "bt_img");
+  var normalizedHTML = normalizeParserAttributes(html);
+  var containers = tXml.getElementsByClassName(normalizedHTML, "bt_img");
   var medias = [];
 
   for (var i = 0; i < containers.length; i++) {
@@ -602,7 +620,8 @@ function detectPanProvider(url) {
 }
 
 function parseEpisodeNodes(html, className) {
-  var sections = tXml.getElementsByClassName(html, className);
+  var normalizedHTML = normalizeParserAttributes(html);
+  var sections = tXml.getElementsByClassName(normalizedHTML, className);
   var anchors = [];
 
   for (var i = 0; i < sections.length; i++) {
@@ -713,7 +732,8 @@ function extractIframeURL(html) {
     return "";
   }
 
-  var match = html.match(/<iframe[^>]+src=['"]([^'"]+)['"]/i);
+  var normalizedHTML = normalizeParserAttributes(html);
+  var match = normalizedHTML.match(/<iframe[^>]+src=['"]([^'"]+)['"]/i);
   if (match && match[1]) {
     return match[1];
   }
