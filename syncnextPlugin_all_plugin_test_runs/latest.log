@@ -10,51 +10,52 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "50289",
-  "coverURLString": "https://static.olelive.com/upload/vod/20230923-1/dada8c401011a4f0f46797e3f2a99aca.jpg",
-  "title": "逆天邪神",
-  "descriptionText": "更新至第48集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/50289/true"
+  "id": "83191",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260731-1/43dbf0154768c0c5c08d0ea34ab79312.jpg",
+  "title": "消失的人",
+  "descriptionText": "已完结",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83191/true"
 }
-[plugin 1] search keyword=逆天邪神 url=https://api.olelive.com/v1/pub/index/search/%E9%80%86%E5%A4%A9%E9%82%AA%E7%A5%9E/vod/0/1/4
+[plugin 1] search keyword=消失的人 url=https://api.olelive.com/v1/pub/index/search/%E6%B6%88%E5%A4%B1%E7%9A%84%E4%BA%BA/vod/0/1/4
 [plugin 1] search results=1
 [plugin 1] search sample(index=0)
 {
-  "id": "50289",
-  "coverURLString": "https://static.olelive.com/upload/vod/20230923-1/dada8c401011a4f0f46797e3f2a99aca.jpg",
-  "title": "逆天邪神",
-  "descriptionText": "更新至第48集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/50289/true"
+  "id": "83191",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260731-1/43dbf0154768c0c5c08d0ea34ab79312.jpg",
+  "title": "消失的人",
+  "descriptionText": "已完结",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83191/true"
 }
-[OK] 新歐樂影院 | search(逆天邪神) -> 1
-[OK] 新歐樂影院 | 逆天邪神 | 第01集 -> https://europe.olemovienews.com/ts2/20230923/Jwvgtgyy/mp4/Jwvgtgyy.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 种地吧 第四季 | 先导片 -> https://europe.olemovienews.com/ts4/20260513/zd1mc7f7/mp4/zd1mc7f7.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 歌手2026 | 特别企划0515 -> https://europe.olemovienews.com/ts4/20260516/gikfrax5/mp4/gikfrax5.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(消失的人) -> 1
+[plugin-unhandledRejection] null is not an object (evaluating 'content.length')
+[FAIL] 新歐樂影院 | 消失的人 | episodes -> plugin unhandledRejection: null is not an object (evaluating 'content.length') | reason=unknown
+[OK] 新歐樂影院 | 老公要求我去出轨 | 第01集 -> https://europe.olemovienews.com/ts5/20260710/58bdas48/mp4/58bdas48.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 从现在开始，不做朋友了吧 | 第01集 -> https://europe.olemovienews.com/ts4/20260626/vxh5l3mv/mp4/vxh5l3mv.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260180",
-  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260180.jpg",
-  "title": "花样少男少女 第2季",
-  "descriptionText": "第06集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260180"
+  "id": "20260167",
+  "coverURLString": "https://gimg2.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260167.jpg",
+  "title": "梅比乌斯之尘",
+  "descriptionText": "第04集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260167"
 }
-[plugin 2] search keyword=花样少男少女 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%8A%B1%E6%A0%B7%E5%B0%91%E7%94%B7%E5%B0%91%E5%A5%B3
+[plugin 2] search keyword=梅比乌斯之尘 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%A2%85%E6%AF%94%E4%B9%8C%E6%96%AF%E4%B9%8B%E5%B0%98
 [plugin 2] search results=1
 [plugin 2] search sample(index=0)
 {
-  "id": "20260180",
-  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260180.jpg",
-  "title": "花样少男少女 第2季",
-  "descriptionText": "第06集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260180"
+  "id": "20260167",
+  "coverURLString": "https://gimg2.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260167.jpg",
+  "title": "梅比乌斯之尘",
+  "descriptionText": "第04集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260167"
 }
-[OK] 新 AGE 動漫 | search(花样少男少女) -> 1
-[OK] 新 AGE 動漫 | 花样少男少女 第2季 | 第01集 -> https://vip.ffzy-plays.com/20260702/55319_9ab2583b/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | LV999的村民 | 第01集 -> https://vip.ffzy-plays.com/20260702/55331_362bb9e8/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 乡下大叔成为剑圣 第二季 | 第01集 -> https://vip.ffzy-plays.com/20260709/55538_de2a10af/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | search(梅比乌斯之尘) -> 1
+[OK] 新 AGE 動漫 | 梅比乌斯之尘 | 第01集 -> https://vip.ffzy-plays.com/20260717/55855_80debf53/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 被追放的转生重骑士用游戏知识开无双 | 第01集 -> https://vip.ffzy-plays.com/20260703/55346_6384bb05/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 尼古喵喵 | 第01集 -> https://vip.ffzy-plays.com/20260703/55347_e5b9f5bf/index.m3u8 | candidates=4
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://www.czzymovie.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -72,26 +73,26 @@
 [plugin 5] medias total=48, testing=3
 [plugin 5] buildMedias sample(index=0)
 {
-  "id": "https://www.libvios.com/detail/714893541.html",
-  "coverURLString": "https://img.meituan.net/content/1b38daef7a1fd1f05ec40604cfb734b0278966.png",
-  "title": "X战警97 第二季",
-  "descriptionText": "第07集/周三更",
-  "detailURLString": "https://www.libvios.com/detail/714893541.html"
+  "id": "https://www.libvios.com/detail/714893611.html",
+  "coverURLString": "https://img.meituan.net/content/636573a6694e5cf8c74f25e18f626da6252852.png",
+  "title": "斯图尔特未能拯救宇宙",
+  "descriptionText": "第02集/周五更",
+  "detailURLString": "https://www.libvios.com/detail/714893611.html"
 }
-[plugin 5] search keyword=X战警97 url=https://www.libvios.com/search/-------------.html?wd=X%E6%88%98%E8%AD%A697
-[plugin 5] search results=2
+[plugin 5] search keyword=斯图尔特未能拯救宇宙 url=https://www.libvios.com/search/-------------.html?wd=%E6%96%AF%E5%9B%BE%E5%B0%94%E7%89%B9%E6%9C%AA%E8%83%BD%E6%8B%AF%E6%95%91%E5%AE%87%E5%AE%99
+[plugin 5] search results=1
 [plugin 5] search sample(index=0)
 {
-  "id": "https://www.libvios.com/detail/714893541.html",
-  "coverURLString": "https://img.meituan.net/content/1b38daef7a1fd1f05ec40604cfb734b0278966.png",
-  "title": "X战警97 第二季",
-  "descriptionText": "第07集/周三更",
-  "detailURLString": "https://www.libvios.com/detail/714893541.html"
+  "id": "https://www.libvios.com/detail/714893611.html",
+  "coverURLString": "https://img.meituan.net/content/636573a6694e5cf8c74f25e18f626da6252852.png",
+  "title": "斯图尔特未能拯救宇宙",
+  "descriptionText": "第02集/周五更",
+  "detailURLString": "https://www.libvios.com/detail/714893611.html"
 }
-[OK] libvio | search(X战警97) -> 2
-[OK] libvio | X战警97 第二季 | 第01集 -> https://v3.vbing.me/2026/mj/6/X-Men.97.S02/X-Men.97.S02E01.mp4 | candidates=1
-[OK] libvio | 幽旅巫咒 Hokum | 1080P -> https://v.vbing.me/2026/dy/7/Hokum.2026.2160p.mp4 | candidates=1
-[OK] libvio | 杀人者的购物中心2 | 第01集 -> https://v3.vbing.me/2026/rh/7/A.Shop.for.Killers.S02/A.Shop.for.Killers.S02E01.mp4 | candidates=1
+[OK] libvio | search(斯图尔特未能拯救宇宙) -> 1
+[OK] libvio | 斯图尔特未能拯救宇宙 | 第01集 -> https://v3.vbing.me/2026/mj/7/Stuart.Fails.to.Save.the.Universe.S01/Stuart.Fails.to.Save.the.Universe.S01E01.mp4 | candidates=1
+[OK] libvio | 星际迷航：奇异新世界 第四季 | 第01集 -> https://cloudcube.wuxi.cn/cloudcube-jswx-person/PERSONCLOUD/bf7e6d46-98ca-4cd2-9387-18418cec75ef.mp4?x-obs-traffic-limit=819200&X-Amz-Date=20260731T062146Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&x-amz-CLIENTTYPEIN=UNKNOWN&X-Amz-Credential=SZshenghuo/20260731/us-east-1/s3/aws4_request&x-amz-UID=849056113093579&response-content-disposition=attachment%3Bfilename%3DStar.Trek.Strange.New.Worlds.S04E01.mp4&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=CORP&X-Amz-SignedHeaders=host&X-Amz-Expires=10800&x-amz-FSIZE=997511655&x-amz-UFID=51529317145778291&X-Amz-Signature=e5aa14829acd32643fb10d3c0462f59d7e1458e1737a01746131503b079c1e80 | candidates=1
+[FAIL] libvio | 消失的人 | episodes -> emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。 | reason=plugin_empty_view
 [plugin 6] 韩剧网 | mode=subscriptions | index=https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html
 [OK] 韩剧网 | connectivity -> 3 target(s), pass=https://www.thanju.com
 [plugin 6] medias total=30, testing=3
@@ -100,7 +101,7 @@
   "id": "https://www.thanju.com/detail/2506.html",
   "coverURLString": "https://pp.thanju.com/U/vod/69cb95e2bfb88.jpg",
   "title": "我们愉快的好日子",
-  "descriptionText": "第86集 · 严贤京 尹仲勋 申正允 尹多英",
+  "descriptionText": "第87集 · 严贤京 尹仲勋 申正允 尹多英",
   "detailURLString": "https://www.thanju.com/detail/2506.html"
 }
 [plugin 6] search keyword=我们愉快的好日子 url=https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
@@ -122,58 +123,58 @@
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/148404.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/rbvX7hF3th0XlEXvdkuhJMEIMvs.jpg",
-  "title": "汴京上元局",
-  "descriptionText": "全20集",
-  "detailURLString": "https://www.dbku.tv/voddetail/148404.html"
+  "id": "https://www.dbku.tv/voddetail/148336.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/mpn6tD3GamCIFxW5K2oVBSORQeO.jpg",
+  "title": "忘川花未央",
+  "descriptionText": "更新至14集",
+  "detailURLString": "https://www.dbku.tv/voddetail/148336.html"
 }
-[plugin 7] search keyword=汴京上元局 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%B1%B4%E4%BA%AC%E4%B8%8A%E5%85%83%E5%B1%80&submit=
+[plugin 7] search keyword=忘川花未央 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%BF%98%E5%B7%9D%E8%8A%B1%E6%9C%AA%E5%A4%AE&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/148404.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/rbvX7hF3th0XlEXvdkuhJMEIMvs.jpg",
-  "title": "汴京上元局",
-  "descriptionText": "全20集",
-  "detailURLString": "https://www.dbku.tv/voddetail/148404.html"
+  "id": "https://www.dbku.tv/voddetail/148336.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/mpn6tD3GamCIFxW5K2oVBSORQeO.jpg",
+  "title": "忘川花未央",
+  "descriptionText": "更新至14集",
+  "detailURLString": "https://www.dbku.tv/voddetail/148336.html"
 }
-[OK] 独播库 | search(汴京上元局) -> 1
-[OK] 独播库 | 汴京上元局 | 第1集 -> https://vid.dbokutv.com/20260728/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xGvE9QnDJcyMejC34jC38nD3X5EJWsBcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 九门 | 第1集 -> https://vid.dbokutv.com/20260730/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlR7XgBMfjBJ0nBJ0nH34pGZ0tEIvjS34/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 凤池生春 | 第1集 -> https://vid.dbokutv.com/20260724/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBMPZSsCjC34jC3CoHaCvDpWqBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(忘川花未央) -> 1
+[OK] 独播库 | 忘川花未央 | 第1集 -> https://vid.dbokutv.com/20260728/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlQ79nBNTZQ7TvBJ0nBJ0mGZ91DK8qEIvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 我当卧底这件事 | 第1集 -> https://vid.dbokutv.com/20260728/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xOy6ejTsHtP7fgSoqmCIqmCpKuHZ95CZ8kRN0q/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 昭阳公主 | 第1集 -> https://vid.dbokutv.com/20260723/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlR7XgBNfvPtejC34jC356DaCtD4KtBcrmD0/chunklist.m3u8 | candidates=1
 [plugin 8] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
 [OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
 [plugin 8] medias total=48, testing=3
 [plugin 8] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27106/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260630-1/435ed821481f7bb47a53053610615d5a.webp",
-  "title": "盜墓王",
-  "detailURLString": "https://ani.girigirilove.com/GV27106/"
+  "id": "https://ani.girigirilove.com/GV27114/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260702-1/e3806b4c934e3054f099ecdb1f08963d.webp",
+  "title": "少女怪兽焦糖味",
+  "detailURLString": "https://ani.girigirilove.com/GV27114/"
 }
-[plugin 8] search keyword=盜墓王 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E7%9B%9C%E5%A2%93%E7%8E%8B
+[plugin 8] search keyword=少女怪兽焦糖味 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E5%B0%91%E5%A5%B3%E6%80%AA%E5%85%BD%E7%84%A6%E7%B3%96%E5%91%B3
 [plugin 8] search results=1
 [plugin 8] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27106/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260630-1/435ed821481f7bb47a53053610615d5a.webp",
-  "title": "盜墓王",
-  "descriptionText": "更新至04集 / 1點15分",
-  "detailURLString": "https://ani.girigirilove.com/GV27106/"
+  "id": "https://ani.girigirilove.com/GV27114/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260702-1/e3806b4c934e3054f099ecdb1f08963d.webp",
+  "title": "少女怪兽焦糖味",
+  "descriptionText": "更新至05集 / 1點28分",
+  "detailURLString": "https://ani.girigirilove.com/GV27114/"
 }
-[OK] grigrilove | search(盜墓王) -> 1
-[OK] grigrilove | 盜墓王 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/DogulwangCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 花样少男少女 第2季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/HanazakarinoKimitachieS2CHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 乙女游戏世界对路人角色很不友好 第二季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/MobsekaS2CHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | search(少女怪兽焦糖味) -> 1
+[OK] grigrilove | 少女怪兽焦糖味 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/KAIJUGIRLCARAMELISECHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 被追放的转生重骑士用游戏知识开无双 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/TheExiledHeavyKnightKnowsHowtoGametheSystemCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 尼古喵喵 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/ChainsmokerCatCHT/01/playlist.m3u8 | candidates=1
 [plugin 9] Gimy TV | mode=subscriptions | index=https://gimy.tv/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 9] medias total=0, testing=0
 [plugin 9] search keyword=test url=https://gimy.tv/search/test----------1---.html
 [plugin 9] search results=0
 [FAIL] Gimy TV | search(test) -> 0
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_65f47d31-1a86-4e8c-a9a3-43f81cf7ad36
-[summary] plugins=9, fatal=3, cases=36, ok=29, fail=7, invalidSources=3
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_bf2dfb48-66c1-428c-a5bd-dbb890d0223c
+[summary] plugins=9, fatal=3, cases=36, ok=27, fail=9, invalidSources=5
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
