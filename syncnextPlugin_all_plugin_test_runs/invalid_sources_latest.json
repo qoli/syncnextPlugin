@@ -1,40 +1,7 @@
 {
-  "generatedAt": "2026-07-31T06:22:19.553Z",
-  "invalidPluginsCount": 5,
+  "generatedAt": "2026-08-01T06:07:31.351Z",
+  "invalidPluginsCount": 4,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_olevod",
-      "pluginName": "新歐樂影院",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
-      "reasonCounts": {
-        "unknown": 1
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "消失的人",
-          "episodeTitle": "",
-          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/83191/true",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "plugin unhandledRejection: null is not an object (evaluating 'content.length')",
-          "reasonCode": "unknown",
-          "reasonText": "plugin unhandledRejection: null is not an object (evaluating 'content.length')",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://api.olelive.com/v1/pub/vod/detail/83191/true?_vv=0ae08c7b10f172da50d11253e22352c0",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
     {
       "pluginFolder": "plugin_czzy",
       "pluginName": "廠長資源",
@@ -64,33 +31,12 @@
       "pluginName": "libvio",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
       "reasonCounts": {
-        "plugin_empty_view": 1
+        "fatal_error": 1
       },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "消失的人",
-          "episodeTitle": "",
-          "detailURL": "https://www.libvios.com/detail/714893622.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 此資源目前僅網盤或無站內可播源，請返回選擇其他資源。",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.libvios.com/detail/714893622.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
+      "fatalErrors": [
+        "no medias returned; no medias returned"
+      ],
+      "failedCases": []
     },
     {
       "pluginFolder": "plugin_gimy",
