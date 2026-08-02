@@ -3,20 +3,22 @@
 ## 域名來源
 
 - 維護域名時先查看導航頁：`https://cz01.vip`
-- 2026-05-19 讀取導航頁時，頁面標題為「厂长资源官网」。
+- 2026-08-02 讀取導航頁時，頁面標題為「厂长资源官网」。
 - 導航頁說明 `cz01.vip` 是導航頁地址，`cz01.tv` 是易記域名。
 - 導航頁推薦訪問入口為：
-  - `https://czzyv.com`
+  - `https://www.4kcz.com`
+  - `https://czzy.top`
   - `https://www.cz4k.com`
 - 導航頁同時提示舊域名已失效；不要再把已確認失效的舊域名放回 `hosts`。
 
 ## 當前策略
 
-- `config.json.host` 保持為目前已驗證可啟動的入口。
+- `config.json.host` 使用 `https://czzy.top`；`www.4kcz.com` 在 2026-08-02 的 App 與 Arc 檢查中分別出現無首位元組逾時與 502，故不再作為 primary。
+- `czzy.top` 與 `www.cz4k.com` 可快速到達 SafeLine；SafeLine 是 App 已支援的正常前置層，不應把 Node／Arc 未解題的 468／challenge 頁誤判為 Host 無效。
 - `config.json.hosts` 保留站方推薦且可作為影片站入口的候選域名：
-  - `https://www.czzymovie.com`
-  - `https://czzyv.com`
+  - `https://czzy.top`
   - `https://www.cz4k.com`
+  - `https://www.4kcz.com`
 - `cz01.vip` 和 `cz01.tv` 用作查詢發布資訊的導航入口，不作為影片列表入口。
 
 ## 維護檢查
