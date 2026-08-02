@@ -121,8 +121,7 @@ alpha_v2/*.js text eol=lf
 7. 比對 staged diff，確認 JavaScript、config 與 `.gitattributes` 的範圍符合本次任務。
 8. 將 JavaScript 變更與更新後的 manifest 放在同一個 commit。
 9. 取得發佈／push 權限後推送。
-10. 驗證公開 config 與公開 JavaScript，而不是只驗證本地 checkout。
-11. 在 App 進行一次冷載入和一次暖載入，核對 disposition。
+10. 驗證公開 config 與公開 JavaScript，而不是只驗證本地 checkout。第三方 Agent 完成此 gate 即完成 PluginBundle Hash 發佈責任。
 
 官方插件的最低本機驗證為：
 
@@ -156,11 +155,13 @@ shasum -a 256 /tmp/plugin-app.js
 
 把結果與公開 config 比對。臨時檔只用於驗證，不要加入倉庫。
 
-若 App 啟用了 GitHub 鏡像，還要驗證 App 實際請求的鏡像 URL。`@main` CDN 可能仍提供舊 config；這時測試只會得到 `network-bypass`，不能證明 cache 失效。可用不可變 commit URL 區分「發布內容正確」與「branch CDN 尚未更新」，但正式入口最終仍必須提供同步的 config 與資源。
+第三方 Agent 不需要取得 Syncnext 的 HTTP 日誌、確認 App 使用哪個 GitHub 鏡像，或操作 Simulator／實機完成 cache 驗收。若 App 端的 `@main` CDN 仍提供舊 config，Syncnext 維護方可用不可變 commit URL 區分「發佈內容正確」與「branch CDN 尚未更新」；這不應阻塞已通過上述公開 URL gate 的第三方插件發佈。
 
-## 6. App 驗收與日誌判讀
+## 6. Syncnext 維護方的可選 App 驗收
 
-使用正常 App UI 對同一個插件連續載入兩次。當前 Plugin automation request 會刻意停用 PluginBundle cache，因此自動化載入出現 network path 不能作為 cache 驗收結果。需要真正冷載入時，使用沒有該 Hash 本地物件的測試環境或全新的資源 Hash；清理 Simulator／App 資料前仍要遵守目標專案的操作授權。
+本節只供 Syncnext App／官方維護方診斷或驗收，不是第三方 Agent 的發佈 gate。第三方 Agent 不需要提供下列日誌或 disposition 證據。
+
+需要 App-side 驗收時，維護方可使用正常 App UI 對同一個插件連續載入兩次。當前 Plugin automation request 會刻意停用 PluginBundle cache，因此自動化載入出現 network path 不能作為 cache 驗收結果。需要真正冷載入時，使用沒有該 Hash 本地物件的測試環境或全新的資源 Hash；清理 Simulator／App 資料前仍要遵守目標專案的操作授權。
 
 | disposition | 意義 | Agent 處置 |
 | --- | --- | --- |
@@ -170,7 +171,7 @@ shasum -a 256 /tmp/plugin-app.js
 | `network-hash-mismatch` | 公開 JavaScript bytes 與宣告不同 | 比對遠端 byte 數、SHA-256、branch／CDN 與換行 |
 | `network-write-failed` | 內容正確，但本地檔案寫入失敗 | 檢查 App container／Caches 寫入環境 |
 
-完整遷移的最低 runtime 證據是：冷載入時每個 `files` 項目均為 `network-stored`，第二次載入時均為 `disk-hit`。config 本身仍可有網絡請求；PluginBundle cache 的目標是消除暖載入的 JavaScript 請求。
+若 Syncnext 維護方執行完整 App-side 驗收，預期冷載入時每個 `files` 項目均為 `network-stored`，第二次載入時均為 `disk-hit`。config 本身仍可有網絡請求；PluginBundle cache 的目標是消除暖載入的 JavaScript 請求。
 
 ## 7. 更新插件時的持續規則
 
@@ -192,7 +193,8 @@ shasum -a 256 /tmp/plugin-app.js
 - Hash 工具 update／check 結果，以及 warning 是否為零。
 - JavaScript、JSON、fixture／smoke 的驗證面。
 - 公開 URL Hash 驗證結果。
-- App 冷載入與暖載入 disposition；未執行時明確寫「未驗證」。
 - commit、push 狀態及任何 CDN 傳播限制。
+
+第三方 Agent 不需要報告 App 冷／暖載入 disposition，也不需要把 App 日誌標為待驗證。只有 Syncnext 維護方實際執行第 6 節時，才把 App-side 結果加入交接。
 
 不要把「本地工具通過」、「已 push」或「App 可打開頁面」互相當作替代證據。
