@@ -474,61 +474,80 @@ function safeFetch(url, method, body, contentType, callback) {
   });
 }
 
-// ── WordPress REST API content parser ───────────────────────
+// ── WordPress HTML content parser ───────────────────────────
 
-function parseWPPosts(jsonText, keyword) {
-  var keywordLower = String(keyword || '').trim().toLowerCase();
+function decodeHTMLEntities(value) {
+  return String(value || '')
+    .replace(/&#(\d+);/g, function (_match, decimal) {
+      return String.fromCharCode(Number(decimal));
+    })
+    .replace(/&#x([0-9a-f]+);/gi, function (_match, hexadecimal) {
+      return String.fromCharCode(parseInt(hexadecimal, 16));
+    })
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>');
+}
+
+function stripHTML(value) {
+  return decodeHTMLEntities(
+    String(value || '')
+      .replace(/<br\s*\/?\s*>/gi, ' ')
+      .replace(/<[^>]*>/g, ' ')
+  ).replace(/\s+/g, ' ').trim();
+}
+
+function extractHTMLAttribute(fragment, name) {
+  var pattern = new RegExp('\\b' + name + '\\s*=\\s*(["\\\'])([\\s\\S]*?)\\1', 'i');
+  var match = String(fragment || '').match(pattern);
+  return match ? decodeHTMLEntities(match[2]).trim() : '';
+}
+
+function parseMediaCardsFromHTML(html) {
   var datas = [];
   var seen = {};
-  var posts;
+  var articlePattern = /<article\b([^>]*)>([\s\S]*?)<\/article>/gi;
+  var articleMatch;
 
-  try {
-    posts = JSON.parse(jsonText);
-  } catch (e) {
-    return datas;
+  while ((articleMatch = articlePattern.exec(String(html || ''))) !== null) {
+    var attributes = articleMatch[1];
+    var articleBody = articleMatch[2];
+    var className = extractHTMLAttribute(attributes, 'class');
+    if (!/(^|\s)(post-box|post)(\s|$)/.test(className)) {
+      continue;
+    }
+
+    var titleMatch = articleBody.match(/<h2\b[^>]*class=(["'])[^"']*\bpost-(?:box-)?title\b[^"']*\1[^>]*>[\s\S]*?<a\b([^>]*)>([\s\S]*?)<\/a>/i);
+    if (!titleMatch) {
+      continue;
+    }
+
+    var title = stripHTML(titleMatch[3]);
+    var detailURLString = normalizeURL(
+      extractHTMLAttribute(attributes, 'data-href') || extractHTMLAttribute(titleMatch[2], 'href')
+    );
+    if (!title || !detailURLString || seen[detailURLString]) {
+      continue;
+    }
+
+    var idMatch = extractHTMLAttribute(attributes, 'id').match(/^post-(\d+)$/);
+    var styleMatch = articleBody.match(/background-image\s*:\s*url\(\s*(["']?)([^"')]+)\1\s*\)/i);
+    var descriptionMatch = articleBody.match(/<div\b[^>]*class=(["'])[^"']*\bpost-box-text\b[^"']*\1[^>]*>[\s\S]*?<p\b[^>]*>([\s\S]*?)<\/p>/i);
+    var coverURLString = styleMatch ? normalizeURL(decodeHTMLEntities(styleMatch[2])) : '';
+    var descriptionText = descriptionMatch ? stripHTML(descriptionMatch[2]) : '';
+
+    seen[detailURLString] = true;
+    datas.push(buildMediaData(
+      idMatch ? idMatch[1] : detailURLString,
+      coverURLString,
+      title,
+      descriptionText,
+      detailURLString
+    ));
   }
-
-  if (!Array.isArray(posts)) {
-    return datas;
-  }
-
-  posts.forEach(function (post) {
-    var id = String(post.id || '');
-    if (!id || seen[id]) {
-      return;
-    }
-
-    var title = '';
-    if (post.title && post.title.rendered) {
-      title = String(post.title.rendered || '').trim();
-    }
-
-    var descriptionText = '';
-    if (post.excerpt && post.excerpt.rendered) {
-      descriptionText = String(post.excerpt.rendered || '').replace(/<[^>]*>/g, ' ').trim();
-    }
-
-    var detailURLString = normalizeURL(post.link || '');
-
-    var coverURLString = '';
-    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
-      var media = post._embedded['wp:featuredmedia'][0];
-      if (media.source_url) {
-        coverURLString = String(media.source_url).trim();
-      }
-    }
-
-    if (!title) {
-      return;
-    }
-
-    if (keywordLower && title.toLowerCase().indexOf(keywordLower) === -1) {
-      return;
-    }
-
-    seen[id] = true;
-    datas.push(buildMediaData(id, coverURLString, title, descriptionText, detailURLString));
-  });
 
   return datas;
 }
@@ -549,7 +568,7 @@ function buildMedias(inputURL) {
       return;
     }
 
-    var datas = parseWPPosts(body, '');
+    var datas = parseMediaCardsFromHTML(body);
     if (datas.length === 0) {
       $next.emptyView('DDYS: 沒有內容');
       return;
@@ -560,15 +579,6 @@ function buildMedias(inputURL) {
 
 function Search(inputURL, key) {
   var url = normalizeURL(inputURL);
-  var keyword = '';
-  try {
-    var match = inputURL.match(/search=([^&]+)/);
-    if (match && match[1]) {
-      keyword = decodeURIComponent(match[1]);
-    }
-  } catch (e) {
-    keyword = '';
-  }
 
   safeFetch(url, 'GET', null, null, function (res, err) {
     if (err) {
@@ -582,7 +592,7 @@ function Search(inputURL, key) {
       return;
     }
 
-    var datas = parseWPPosts(body, keyword);
+    var datas = parseMediaCardsFromHTML(body);
     $next.toSearchMedias(JSON.stringify(datas), key);
   });
 }

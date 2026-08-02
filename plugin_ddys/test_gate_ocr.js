@@ -176,6 +176,53 @@ function testCookiePoolRejectsMalformedAndEmptyPools() {
   }, /malformed entry/);
 }
 
+function testHTMLMediaCardsParser() {
+  const context = loadPlugin();
+  const html = [
+    '<article id="post-27305" class="post-box post-27305 post" data-href="https://ddys.app/colony/">',
+    '<div class="post-box-image" style="background-image: url(https://img.example/cover.jpg);"></div>',
+    '<div class="post-box-text"><h2 class="post-box-title">',
+    '<a href="https://ddys.app/colony/" rel="bookmark">群体 &amp; 同伴</a>',
+    '</h2><p>每周二&nbsp;更新</p></div></article>',
+    '<article id="post-27306" class="post-27306 post type-post">',
+    '<h2 class="post-title"><a href="https://ddys.app/search-result/">搜尋結果</a></h2>',
+    '</article>',
+    '<article id="post-ignored" class="related-post"><h2>ignore</h2></article>',
+  ].join('');
+
+  assert.deepStrictEqual(
+    JSON.parse(JSON.stringify(context.parseMediaCardsFromHTML(html))),
+    [
+      {
+        id: '27305',
+        coverURLString: 'https://img.example/cover.jpg',
+        title: '群体 & 同伴',
+        descriptionText: '每周二 更新',
+        detailURLString: 'https://ddys.app/colony/',
+      },
+      {
+        id: '27306',
+        coverURLString: '',
+        title: '搜尋結果',
+        descriptionText: '',
+        detailURLString: 'https://ddys.app/search-result/',
+      },
+    ]
+  );
+}
+
+function testManifestUsesHTMLRoutes() {
+  const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
+  const urls = config.pages.map(function (page) {
+    return page.url;
+  }).concat(config.search.url);
+  assert.strictEqual(urls.some(function (url) {
+    return url.indexOf('/wp-json/') >= 0;
+  }), false);
+  assert.strictEqual(config.pages[0].url, 'https://ddys.app/page/${pageNumber}/');
+  assert.strictEqual(config.search.url, 'https://ddys.app/?s=${keyword}&post_type=post');
+}
+
 async function testSafeFetchInjectsCookie() {
   const context = loadPlugin();
   let requestCount = 0;
@@ -195,7 +242,7 @@ async function testSafeFetchInjectsCookie() {
 
   const result = await new Promise(function (resolve, reject) {
     context.safeFetch(
-      'https://ddys.app/wp-json/wp/v2/posts',
+      'https://ddys.app/page/1/',
       'GET',
       null,
       null,
@@ -234,7 +281,7 @@ async function testRejectedCookieFailsWithoutGateBypass() {
 
   const error = await new Promise(function (resolve) {
     context.safeFetch(
-      'https://ddys.app/wp-json/wp/v2/posts',
+      'https://ddys.app/',
       'GET',
       null,
       null,
@@ -254,6 +301,8 @@ async function main() {
   testOCRErrorFailsOnceWithoutSubmittingPoints();
   testCookieSelectionUsesOnlyValidEntries();
   testCookiePoolRejectsMalformedAndEmptyPools();
+  testHTMLMediaCardsParser();
+  testManifestUsesHTMLRoutes();
   await testSafeFetchInjectsCookie();
   await testRejectedCookieFailsWithoutGateBypass();
   console.log('plugin_ddys gate/OCR/cookie-pool tests passed');

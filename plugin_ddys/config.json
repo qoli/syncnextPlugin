@@ -1,6 +1,6 @@
 {
   "name": "低调影视",
-  "description": "DDYS WordPress 來源，需通過 ddys-protect 驗證閘道",
+  "description": "DDYS HTML 來源，需通過 ddys-protect 驗證閘道",
   "host": "https://ddys.app",
   "files": [
     "txml.js",
@@ -12,31 +12,31 @@
     {
       "key": "index",
       "title": "最近更新",
-      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}",
+      "url": "https://ddys.app/page/${pageNumber}/",
       "javascript": "buildMedias"
     },
     {
       "key": "movie",
       "title": "电影",
-      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}&categories=2",
+      "url": "https://ddys.app/category/movie/page/${pageNumber}/",
       "javascript": "buildMedias"
     },
     {
       "key": "tv",
       "title": "电视剧",
-      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}&categories=3",
+      "url": "https://ddys.app/category/drama/page/${pageNumber}/",
       "javascript": "buildMedias"
     },
     {
       "key": "anime",
       "title": "动漫",
-      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}&categories=4",
+      "url": "https://ddys.app/category/anime/page/${pageNumber}/",
       "javascript": "buildMedias"
     },
     {
       "key": "variety",
       "title": "综艺",
-      "url": "https://ddys.app/wp-json/wp/v2/posts?per_page=20&page=${pageNumber}&categories=5",
+      "url": "https://ddys.app/category/variety/page/${pageNumber}/",
       "javascript": "buildMedias"
     }
   ],
@@ -47,7 +47,7 @@
     "javascript": "Player"
   },
   "search": {
-    "url": "https://ddys.app/wp-json/wp/v2/posts?search=${keyword}&per_page=20",
+    "url": "https://ddys.app/?s=${keyword}&post_type=post",
     "javascript": "Search"
   },
   "cache": {
@@ -66,8 +66,8 @@
         "bytes": 1775
       },
       "app.js": {
-        "sha256": "63fee22f69b459a16043da976c52ef658f40f6bdea64f6575e7cdc196121b89e",
-        "bytes": 20434
+        "sha256": "df0e054bbedff6c4009ff7440a1addb77746861ce3affa5037e9c478909c3db6",
+        "bytes": 21494
       }
     }
   }
