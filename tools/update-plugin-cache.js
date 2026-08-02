@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const crypto = require("crypto");
+const childProcess = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
@@ -21,6 +22,42 @@ function discoverPlugins() {
 function fail(message) {
   console.error(`Plugin cache manifest error: ${message}`);
   process.exitCode = 1;
+}
+
+function warn(message) {
+  console.warn(`Plugin cache manifest warning: ${message}`);
+}
+
+function gitObjectID(resourcePath, repositoryRelativePath, noFilters) {
+  const gitArguments = ["hash-object"];
+  gitArguments.push(noFilters ? "--no-filters" : `--path=${repositoryRelativePath}`);
+  gitArguments.push(resourcePath);
+  return childProcess.execFileSync("git", gitArguments, {
+    cwd: repositoryRoot,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "ignore"],
+  }).trim();
+}
+
+function warnIfGitChangesPublishedBytes(resourcePath, repositoryRelativePath) {
+  let workingTreeObjectID;
+  let publishedObjectID;
+  try {
+    workingTreeObjectID = gitObjectID(resourcePath, repositoryRelativePath, true);
+    publishedObjectID = gitObjectID(resourcePath, repositoryRelativePath, false);
+  } catch {
+    warn(`${repositoryRelativePath} could not be checked against Git clean filters`);
+    return;
+  }
+
+  if (workingTreeObjectID === publishedObjectID) {
+    return;
+  }
+
+  warn(
+    `${repositoryRelativePath} is changed by Git clean filters before publication; `
+      + "the generated Hash may not match GitHub Raw. Normalize the file or add an explicit .gitattributes rule.",
+  );
 }
 
 function expectedCache(pluginName, config) {
@@ -44,6 +81,8 @@ function expectedCache(pluginName, config) {
     if (!fs.statSync(resourcePath).isFile()) {
       throw new Error(`${pluginName}/${file} is not a regular file`);
     }
+    const repositoryRelativePath = path.relative(repositoryRoot, resourcePath);
+    warnIfGitChangesPublishedBytes(resourcePath, repositoryRelativePath);
     const data = fs.readFileSync(resourcePath);
     resources[file] = {
       sha256: crypto.createHash("sha256").update(data).digest("hex"),
