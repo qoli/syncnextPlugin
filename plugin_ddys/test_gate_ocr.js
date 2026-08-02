@@ -134,22 +134,63 @@ function testOCRErrorFailsOnceWithoutSubmittingPoints() {
   assert.strictEqual(completions[0].error, 'Hint OCR failed: recognition_failed');
 }
 
-async function testRESTBlockEntersGateBeforeRetry() {
+function cookiePool(entries) {
+  return JSON.stringify({ schemaVersion: 1, cookies: entries });
+}
+
+function cookieEntry(cookie, addedAt, validUntil) {
+  return { cookie, addedAt, validUntil };
+}
+
+function testCookieSelectionUsesOnlyValidEntries() {
+  const context = loadPlugin();
+  const json = cookiePool([
+    cookieEntry('ddys_protect_expired=old', '2026-01-01T00:00:00Z', '2026-01-02T00:00:00Z'),
+    cookieEntry('ddys_protect_first=one', '2026-01-01T00:00:00Z', '2027-01-01T00:00:00Z'),
+    cookieEntry('ddys_protect_second=two', '2026-01-01T00:00:00Z', '2027-01-01T00:00:00Z'),
+  ]);
+  const selected = context.selectRandomValidCookie(
+    json,
+    Date.parse('2026-08-03T00:00:00Z'),
+    0.75
+  );
+  assert.strictEqual(selected.cookie, 'ddys_protect_second=two');
+}
+
+function testCookiePoolRejectsMalformedAndEmptyPools() {
+  const context = loadPlugin();
+  assert.throws(function () {
+    context.selectRandomValidCookie(
+      cookiePool([]),
+      Date.parse('2026-08-03T00:00:00Z'),
+      0
+    );
+  }, /no valid cookie/);
+  assert.throws(function () {
+    context.parseCookiePool(
+      cookiePool([
+        cookieEntry('not-a-pass-cookie=value', '2026-01-01T00:00:00Z', '2027-01-01T00:00:00Z'),
+      ]),
+      Date.parse('2026-08-03T00:00:00Z')
+    );
+  }, /malformed entry/);
+}
+
+async function testSafeFetchInjectsCookie() {
   const context = loadPlugin();
   let requestCount = 0;
-  let bypassCount = 0;
-  context.$http.fetch = function () {
+  const selectedCookie = 'ddys_protect_fixture=secret; burst_uid=fixture';
+  context.$http.fetch = function (request) {
     requestCount++;
     if (requestCount === 1) {
       return Promise.resolve({
-        body: '{"code":"ddys_protect_rest_blocked"}',
+        body: cookiePool([
+          cookieEntry(selectedCookie, '2026-01-01T00:00:00Z', '2999-01-01T00:00:00Z'),
+        ]),
       });
     }
+    assert.strictEqual(request.headers.Cookie, selectedCookie);
     return Promise.resolve({ body: '[{"id":1}]' });
-  };
-  context.bypassGate = function (_url, callback) {
-    bypassCount++;
-    callback(true, null);
   };
 
   const result = await new Promise(function (resolve, reject) {
@@ -168,17 +209,54 @@ async function testRESTBlockEntersGateBeforeRetry() {
     );
   });
 
-  assert.strictEqual(bypassCount, 1);
   assert.strictEqual(requestCount, 2);
   assert.strictEqual(result.body, '[{"id":1}]');
+}
+
+async function testRejectedCookieFailsWithoutGateBypass() {
+  const context = loadPlugin();
+  let requestCount = 0;
+  let bypassCount = 0;
+  context.$http.fetch = function () {
+    requestCount++;
+    if (requestCount === 1) {
+      return Promise.resolve({
+        body: cookiePool([
+          cookieEntry('ddys_protect_fixture=secret', '2026-01-01T00:00:00Z', '2999-01-01T00:00:00Z'),
+        ]),
+      });
+    }
+    return Promise.resolve({ body: '{"code":"ddys_protect_rest_blocked"}' });
+  };
+  context.bypassGate = function () {
+    bypassCount++;
+  };
+
+  const error = await new Promise(function (resolve) {
+    context.safeFetch(
+      'https://ddys.app/wp-json/wp/v2/posts',
+      'GET',
+      null,
+      null,
+      function (_response, fetchError) {
+        resolve(fetchError);
+      }
+    );
+  });
+  assert.match(String(error), /selected cookie was rejected/);
+  assert.strictEqual(requestCount, 2);
+  assert.strictEqual(bypassCount, 0);
 }
 
 async function main() {
   testAltchaRequiresTheExactChallengeSolution();
   testOCRCompletesOnceWhenChallengeFinishesFirst();
   testOCRErrorFailsOnceWithoutSubmittingPoints();
-  await testRESTBlockEntersGateBeforeRetry();
-  console.log('plugin_ddys gate/OCR tests passed');
+  testCookieSelectionUsesOnlyValidEntries();
+  testCookiePoolRejectsMalformedAndEmptyPools();
+  await testSafeFetchInjectsCookie();
+  await testRejectedCookieFailsWithoutGateBypass();
+  console.log('plugin_ddys gate/OCR/cookie-pool tests passed');
 }
 
 main().catch(function (error) {

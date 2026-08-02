@@ -4,6 +4,9 @@ var DDYS_HOST = 'https://ddys.app';
 var DDYS_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 var CHALLENGE_API = DDYS_HOST + '/wp-json/ddys-protect/v1/gatecha/challenge';
 var GATE_PAGE_URL = DDYS_HOST + '/';
+var COOKIE_POOL_URL = 'https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_ddys/cookie.json';
+var COOKIE_POOL_SCHEMA_VERSION = 1;
+var COOKIE_POOL_MAX_ENTRIES = 10;
 
 var bypassingGate = false;
 var bypassQueue = [];
@@ -45,6 +48,80 @@ function isWPBlocked(html) {
     return false;
   }
   return html.indexOf('ddys_protect_rest_blocked') >= 0;
+}
+
+// ── externally verified cookie pool ─────────────────────────
+
+function parseCookiePool(jsonText, nowMilliseconds) {
+  var pool;
+  try {
+    pool = JSON.parse(jsonText);
+  } catch (error) {
+    throw new Error('DDYS cookie pool is not valid JSON');
+  }
+  if (!pool || pool.schemaVersion !== COOKIE_POOL_SCHEMA_VERSION || !Array.isArray(pool.cookies)) {
+    throw new Error('DDYS cookie pool schema is invalid');
+  }
+  if (pool.cookies.length > COOKIE_POOL_MAX_ENTRIES) {
+    throw new Error('DDYS cookie pool exceeds ' + COOKIE_POOL_MAX_ENTRIES + ' entries');
+  }
+
+  var active = [];
+  pool.cookies.forEach(function (entry) {
+    var addedAt = entry && Date.parse(entry.addedAt);
+    var validUntil = entry && Date.parse(entry.validUntil);
+    var cookie = entry && entry.cookie;
+    if (
+      typeof cookie !== 'string' ||
+      cookie.trim() === '' ||
+      cookie.indexOf('ddys_protect_') < 0 ||
+      /[\r\n]/.test(cookie) ||
+      !Number.isFinite(addedAt) ||
+      !Number.isFinite(validUntil) ||
+      addedAt >= validUntil
+    ) {
+      throw new Error('DDYS cookie pool contains a malformed entry');
+    }
+    if (validUntil > nowMilliseconds) {
+      active.push(entry);
+    }
+  });
+  return active;
+}
+
+function selectRandomValidCookie(jsonText, nowMilliseconds, randomValue) {
+  var active = parseCookiePool(jsonText, nowMilliseconds);
+  if (active.length === 0) {
+    throw new Error('DDYS cookie pool contains no valid cookie');
+  }
+  var random = Number(randomValue);
+  if (!Number.isFinite(random) || random < 0 || random >= 1) {
+    throw new Error('DDYS cookie selection random value is invalid');
+  }
+  return active[Math.floor(random * active.length)];
+}
+
+function loadRandomValidCookie(callback) {
+  $http.fetch({
+    url: COOKIE_POOL_URL + '?_=' + String(Date.now()),
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Cache-Control': 'no-cache',
+      'User-Agent': DDYS_UA,
+    },
+  }).then(function (response) {
+    try {
+      callback(
+        selectRandomValidCookie(response.body, Date.now(), Math.random()),
+        null
+      );
+    } catch (error) {
+      callback(null, error.message || String(error));
+    }
+  }).catch(function (error) {
+    callback(null, 'DDYS cookie pool request failed: ' + String(error));
+  });
 }
 
 // ── ALTCHA PoW solver ───────────────────────────────────────
@@ -372,31 +449,28 @@ function safeFetch(url, method, body, contentType, callback) {
     headers['Content-Type'] = contentType;
   }
 
-  var req = {
-    url: url,
-    method: method,
-    headers: headers,
-    body: body || null,
-  };
-
-  $http.fetch(req).then(function (res) {
-    if (isGatePage(res.body) || isWPBlocked(res.body)) {
-      bypassGate(url, function (success, errMsg) {
-        if (success) {
-          $http.fetch(req).then(function (retryRes) {
-            callback(retryRes, null);
-          }).catch(function (retryErr) {
-            callback(null, retryErr);
-          });
-        } else {
-          callback(null, errMsg || 'Gate bypass failed');
-        }
-      });
+  loadRandomValidCookie(function (entry, cookieError) {
+    if (cookieError) {
+      callback(null, cookieError);
       return;
     }
-    callback(res, null);
-  }).catch(function (err) {
-    callback(null, err);
+    headers.Cookie = entry.cookie;
+    var req = {
+      url: url,
+      method: method,
+      headers: headers,
+      body: body || null,
+    };
+
+    $http.fetch(req).then(function (res) {
+      if (isGatePage(res.body) || isWPBlocked(res.body)) {
+        callback(null, 'DDYS selected cookie was rejected by upstream');
+        return;
+      }
+      callback(res, null);
+    }).catch(function (err) {
+      callback(null, err);
+    });
   });
 }
 
