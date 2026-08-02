@@ -37,5 +37,5 @@ Syncnext channel plugins live here; keep contributions reproducible and aligned 
 
 ## Security & Configuration Tips
 
-- Do not commit private API keys or cookies; use placeholders in `config.json` and document how operators should inject secrets at runtime.
+- Do not commit private API keys; use placeholders in `config.json` and document how operators should inject secrets at runtime.
 - Probe remote URLs with `$http.head` (or a lightweight `$http.fetch`) before surfacing them in `Play` responses to avoid dead or geo-blocked links.
