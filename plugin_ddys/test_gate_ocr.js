@@ -223,6 +223,75 @@ function testManifestUsesHTMLRoutes() {
   assert.strictEqual(config.search.url, 'https://ddys.app/?s=${keyword}&post_type=post');
 }
 
+function playlistFixture() {
+  return [
+    '<div class="ddys-playlist-player">',
+    '<script class="ddys-playlist-data" type="application/json">',
+    '{"playlistType":"drama","seasons":[',
+    '{"title":"第1季","season":1,"tracks":[',
+    '{"src":"\\/v2\\/movie\\/Colony.2026.re.mp4","server":"v3","episode":1,"title":"群体"}',
+    ']},',
+    '{"title":"第2季","season":2,"tracks":[',
+    '{"src":"https:\/\/media.example\/episode-2.m3u8","server":"","episode":2,"title":"下一集"}',
+    ']}',
+    ']}</script></div>',
+  ].join('');
+}
+
+function testPlaylistProducesResolvedEpisodeURLs() {
+  const context = loadPlugin();
+  const playlist = context.parsePlaylistData(playlistFixture());
+  assert.deepStrictEqual(
+    JSON.parse(JSON.stringify(context.buildPlaylistEpisodes(playlist))),
+    [
+      {
+        id: 'ddys-s1-e1-https://v3.ddys.app/v2/movie/Colony.2026.re.mp4',
+        title: 'S1E1 群体',
+        episodeDetailURL: 'https://v3.ddys.app/v2/movie/Colony.2026.re.mp4',
+      },
+      {
+        id: 'ddys-s2-e1-https://media.example/episode-2.m3u8',
+        title: 'S2E2 下一集',
+        episodeDetailURL: 'https://media.example/episode-2.m3u8',
+      },
+    ]
+  );
+}
+
+function testPlaylistMissingDataFailsExplicitly() {
+  const context = loadPlugin();
+  assert.throws(function () {
+    context.parsePlaylistData('<html></html>');
+  }, /playlist data is missing/);
+  assert.throws(function () {
+    context.buildPlaylistEpisodes({
+      seasons: [{ season: 1, tracks: [{ src: '/movie.mp4', episode: 1, title: 'Missing server' }] }],
+    });
+  }, /track server is missing or invalid/);
+}
+
+function testPlayerRejectsUnresolvedDetailPage() {
+  const context = loadPlugin();
+  let playerJSON = null;
+  let errorText = null;
+  context.$next.toPlayerByJSON = function (json) {
+    playerJSON = JSON.parse(json);
+  };
+  context.$next.emptyView = function (text) {
+    errorText = text;
+  };
+
+  context.Player('https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
+  assert.strictEqual(playerJSON.url, 'https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
+  assert.strictEqual(playerJSON.headers.Referer, 'https://ddys.app/');
+  assert.strictEqual(errorText, null);
+
+  playerJSON = null;
+  context.Player('https://ddys.app/colony/');
+  assert.strictEqual(playerJSON, null);
+  assert.match(errorText, /not a resolved media URL/);
+}
+
 async function testSafeFetchInjectsCookie() {
   const context = loadPlugin();
   let requestCount = 0;
@@ -303,6 +372,9 @@ async function main() {
   testCookiePoolRejectsMalformedAndEmptyPools();
   testHTMLMediaCardsParser();
   testManifestUsesHTMLRoutes();
+  testPlaylistProducesResolvedEpisodeURLs();
+  testPlaylistMissingDataFailsExplicitly();
+  testPlayerRejectsUnresolvedDetailPage();
   await testSafeFetchInjectsCookie();
   await testRejectedCookieFailsWithoutGateBypass();
   console.log('plugin_ddys gate/OCR/cookie-pool tests passed');

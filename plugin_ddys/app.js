@@ -30,6 +30,100 @@ function normalizeURL(href) {
   return buildURL(href, DDYS_HOST);
 }
 
+function parsePlaylistData(html) {
+  var match = String(html || '').match(
+    /<script[^>]*class=["'][^"']*\bddys-playlist-data\b[^"']*["'][^>]*>([\s\S]*?)<\/script>/i
+  );
+  if (!match || !match[1]) {
+    throw new Error('DDYS playlist data is missing');
+  }
+
+  var playlist;
+  try {
+    playlist = JSON.parse(match[1].trim());
+  } catch (error) {
+    throw new Error('DDYS playlist data is malformed: ' + String(error));
+  }
+  if (!playlist || !Array.isArray(playlist.seasons) || playlist.seasons.length === 0) {
+    throw new Error('DDYS playlist seasons are missing');
+  }
+
+  playlist.seasons.forEach(function (season, seasonIndex) {
+    if (!season || !Array.isArray(season.tracks) || season.tracks.length === 0) {
+      throw new Error('DDYS playlist season ' + String(seasonIndex + 1) + ' has no tracks');
+    }
+  });
+  return playlist;
+}
+
+function resolveTrackURL(track) {
+  var src = track && typeof track.src === 'string' ? track.src.replace(/\\/g, '/').trim() : '';
+  var server = track && typeof track.server === 'string' ? track.server.trim().toLowerCase() : '';
+  if (!src) {
+    throw new Error('DDYS playlist track src is missing');
+  }
+  if (/^https?:\/\//i.test(src)) {
+    return src;
+  }
+  if (!server || !/^[a-z0-9-]+$/.test(server)) {
+    throw new Error('DDYS playlist track server is missing or invalid');
+  }
+  if (src.charAt(0) !== '/') {
+    src = '/' + src;
+  }
+  return 'https://' + server + '.ddys.app' + src;
+}
+
+function buildPlaylistEpisodes(playlist) {
+  var episodes = [];
+  var multipleSeasons = playlist.seasons.length > 1;
+
+  playlist.seasons.forEach(function (season, seasonIndex) {
+    var seasonNumber = Number(season.season);
+    if (!Number.isInteger(seasonNumber) || seasonNumber < 1) {
+      throw new Error('DDYS playlist season number is invalid');
+    }
+    season.tracks.forEach(function (track, trackIndex) {
+      var episodeNumber = Number(track && track.episode);
+      if (!Number.isInteger(episodeNumber) || episodeNumber < 1) {
+        throw new Error('DDYS playlist episode number is invalid');
+      }
+      var mediaURL = resolveTrackURL(track);
+      var title = track && typeof track.title === 'string' ? track.title.trim() : '';
+      if (!title) {
+        throw new Error('DDYS playlist episode title is missing');
+      }
+      if (multipleSeasons) {
+        title = 'S' + String(seasonNumber) + 'E' + String(episodeNumber) + ' ' + title;
+      }
+      episodes.push(buildEpisodeData(
+        'ddys-s' + String(seasonIndex + 1) + '-e' + String(trackIndex + 1) + '-' + mediaURL,
+        title,
+        mediaURL
+      ));
+    });
+  });
+
+  if (episodes.length === 0) {
+    throw new Error('DDYS playlist has no episodes');
+  }
+  return episodes;
+}
+
+function isResolvedMediaURL(url) {
+  return /^https?:\/\//i.test(url) && /\.(?:m3u8|mp4|mkv|webm)(?:[?#]|$)/i.test(url);
+}
+
+function sendResolvedPlayer(url) {
+  $next.toPlayerByJSON(JSON.stringify({
+    url: url,
+    headers: {
+      'User-Agent': DDYS_UA,
+      Referer: DDYS_HOST + '/',
+    },
+  }));
+}
+
 // ── gate detection ──────────────────────────────────────────
 
 function isGatePage(html) {
@@ -611,94 +705,22 @@ function Episodes(inputURL) {
       return;
     }
 
-    var html = body;
-    var datas = [];
-    var seen = {};
-
-    tXml.getElementsByClassName(html, 'episode-link').forEach(function (el) {
-      var href = (el.attributes && el.attributes.href) || '';
-      var title = (tXml.toContentString(el) || '').trim();
-      href = normalizeURL(href);
-      if (href && !seen[href]) {
-        seen[href] = true;
-        datas.push(buildEpisodeData(href, title || 'Play', href));
-      }
-    });
-
-    if (datas.length === 0) {
-      var wpLinks = html.match(/href="([^"]+)"/g) || [];
-      wpLinks.forEach(function (match) {
-        var href = match.replace(/href="/, '').replace(/"$/, '');
-        if (href.indexOf('/play/') >= 0 || href.indexOf('/episode/') >= 0 || href.indexOf('/video/') >= 0) {
-          href = normalizeURL(href);
-          if (href && !seen[href]) {
-            seen[href] = true;
-            datas.push(buildEpisodeData(href, 'Play', href));
-          }
-        }
-      });
+    var datas;
+    try {
+      datas = buildPlaylistEpisodes(parsePlaylistData(body));
+    } catch (error) {
+      $next.emptyView('DDYS Episodes: ' + String(error.message || error));
+      return;
     }
-
-    if (datas.length === 0) {
-      datas.push(buildEpisodeData(url, 'Watch', url));
-    }
-
     $next.toEpisodes(JSON.stringify(datas));
   });
 }
 
 function Player(inputURL) {
   var url = normalizeURL(inputURL);
-  safeFetch(url, 'GET', null, null, function (res, err) {
-    if (err) {
-      $next.emptyView('DDYS Player: ' + String(err));
-      return;
-    }
-
-    var body = String(res.body || '');
-
-    var videoMatch = body.match(/<video[^>]*src="([^"]+)"/);
-    if (videoMatch && videoMatch[1]) {
-      var videoURL = normalizeURL(videoMatch[1]);
-      var data = {
-        url: videoURL,
-        headers: {
-          'User-Agent': DDYS_UA,
-          Referer: DDYS_HOST + '/',
-        },
-      };
-      $next.toPlayerByJSON(JSON.stringify(data));
-      return;
-    }
-
-    var iframeMatch = body.match(/<iframe[^>]*src="([^"]+)"/);
-    if (iframeMatch && iframeMatch[1]) {
-      var iframeURL = normalizeURL(iframeMatch[1]);
-      var iframeData = {
-        url: iframeURL,
-        headers: {
-          'User-Agent': DDYS_UA,
-          Referer: DDYS_HOST + '/',
-        },
-      };
-      $next.toPlayerByJSON(JSON.stringify(iframeData));
-      return;
-    }
-
-    var sourceMatch = body.match(/<source[^>]*src="([^"]+)"/);
-    if (sourceMatch && sourceMatch[1]) {
-      var srcURL = normalizeURL(sourceMatch[1]);
-      var srcData = {
-        url: srcURL,
-        headers: {
-          'User-Agent': DDYS_UA,
-          Referer: DDYS_HOST + '/',
-        },
-      };
-      $next.toPlayerByJSON(JSON.stringify(srcData));
-      return;
-    }
-
-    $next.toPlayer(url);
-  });
+  if (!isResolvedMediaURL(url)) {
+    $next.emptyView('DDYS Player: episode URL is not a resolved media URL; reload episodes');
+    return;
+  }
+  sendResolvedPlayer(url);
 }
