@@ -2,7 +2,7 @@
 
 `MAINTENANCE.md` 是 `SyncnextPlugin_official` 唯一的操作型 runbook：新增插件、修復既有插件、登錄 v3 來源、發布用戶公告，都必須依本文件執行。`README.md`、`doc.md`、藍圖與 App 文件只描述介面或背景；若流程敘述與本文件不同，以本文件為準。
 
-文件責任分界：技術 payload 與 runtime 契約見 [doc.md](./doc.md)；測試層次、結果判讀與 smoke 產物見 [TESTING.md](./TESTING.md)；本文件只負責把已驗證的變更依正確順序推送、登錄、匯出與發布。
+文件責任分界：技術 payload 與 runtime 契約見 [doc.md](./doc.md)；測試層次、結果判讀與 smoke 產物見 [TESTING.md](./TESTING.md)；第三方倉庫或執行 Agent 的 PluginBundle Hash 遷移見 [PLUGIN_BUNDLE_AGENT_GUIDE.md](./PLUGIN_BUNDLE_AGENT_GUIDE.md)；本文件只負責把已驗證的變更依正確順序推送、登錄、匯出與發布。
 
 ## 0. 目的、邊界與不可跳過的規則
 

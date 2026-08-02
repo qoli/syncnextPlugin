@@ -5,7 +5,7 @@ Syncnext channel plugins live here; keep contributions reproducible and aligned 
 ## Project Structure & Module Organization
 
 - Root-level `plugin_*` directories map one-to-one with providers. Each includes `config.json`, executable logic (`app.js`/`main.js`), and helper libraries such as `txml.js`.
-- Shared references sit at the repo root: `doc.md` owns `$http`/`$next` protocol, `TESTING.md` owns test requirements and smoke artifacts, `MAINTENANCE.md` owns release operations, `node_Test.js` is the parsing harness, and `localServer.sh` + `test/` host captured HTML or `.m3u8` payloads.
+- Shared references sit at the repo root: `doc.md` owns `$http`/`$next` protocol, `TESTING.md` owns test requirements and smoke artifacts, `MAINTENANCE.md` owns release operations, and `PLUGIN_BUNDLE_AGENT_GUIDE.md` owns Agent-facing PluginBundle Hash migration. `node_Test.js` is the parsing harness, and `localServer.sh` + `test/` host captured HTML or `.m3u8` payloads.
 
 ## Build, Test, and Development Commands
 
