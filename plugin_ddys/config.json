@@ -2,7 +2,12 @@
   "name": "低调影视",
   "description": "DDYS WordPress 來源，需通過 ddys-protect 驗證閘道",
   "host": "https://ddys.app",
-  "files": ["txml.js", "crypto-js.min.js", "util.js", "app.js"],
+  "files": [
+    "txml.js",
+    "crypto-js.min.js",
+    "util.js",
+    "app.js"
+  ],
   "pages": [
     {
       "key": "index",
@@ -44,5 +49,26 @@
   "search": {
     "url": "https://ddys.app/wp-json/wp/v2/posts?search=${keyword}&per_page=20",
     "javascript": "Search"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "txml.js": {
+        "sha256": "a29f1209ef3836ffc8ee8a3c3c1500189447cb0a618605885bfd4fd19ee1c695",
+        "bytes": 5166
+      },
+      "crypto-js.min.js": {
+        "sha256": "1d8effdb040f0bbc7153a74752766060dd56e98e69c39d3757fac549abbc0be7",
+        "bytes": 47945
+      },
+      "util.js": {
+        "sha256": "1bd61f84c4f01a1c56aeea29f24edac4394f8682693703f1ee7496cd8e3ee381",
+        "bytes": 1775
+      },
+      "app.js": {
+        "sha256": "89392e8ac84c69c5d0396e368a906f9708c55cee8d0c5d9dfb99e9f80d8ac623",
+        "bytes": 18000
+      }
+    }
   }
 }

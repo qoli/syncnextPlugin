@@ -170,5 +170,30 @@
   "search": {
     "url": "https://www.xlys02.com/search/${keyword}",
     "javascript": "Search"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "util.js": {
+        "sha256": "a5c41298a55bc289de753f9433ab1a723a913e0167c96f8be75ba70e66cac54e",
+        "bytes": 1485
+      },
+      "txml.js": {
+        "sha256": "a29f1209ef3836ffc8ee8a3c3c1500189447cb0a618605885bfd4fd19ee1c695",
+        "bytes": 5166
+      },
+      "crypto-js.min.js": {
+        "sha256": "1d8effdb040f0bbc7153a74752766060dd56e98e69c39d3757fac549abbc0be7",
+        "bytes": 47945
+      },
+      "bdys-sign.js": {
+        "sha256": "7ca3e13605e3f0a9cdca47eb07a3fd927ed19cce11d079d73060860def8549d2",
+        "bytes": 61720
+      },
+      "app.js": {
+        "sha256": "cd96169c12335a4cda0e489bf0a9ad754ca723bf87d3e16ce43d5364ef27a342",
+        "bytes": 7078
+      }
+    }
   }
 }

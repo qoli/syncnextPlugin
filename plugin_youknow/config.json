@@ -2,7 +2,10 @@
   "name": "YouKnowTV",
   "description": "YouKnowTV - 领略更广阔的视界，尽享海量高清视频",
   "host": "https://www.youknow.tv",
-  "files": ["txml.js", "app.js"],
+  "files": [
+    "txml.js",
+    "app.js"
+  ],
   "pages": [
     {
       "key": "index",
@@ -65,5 +68,18 @@
     "url": "https://www.youknow.tv/search/-------------.html?wd=${keyword}",
     "timeout": 20,
     "javascript": "buildSearchMedias"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "txml.js": {
+        "sha256": "06e627cdec4ad8ce46e1ef63f87a916bd4e9f1a0f139c043e33873a2b0798254",
+        "bytes": 4862
+      },
+      "app.js": {
+        "sha256": "3e91d75130b59dad6832e2604912d2124a0ef2508f9133033f677927829198ed",
+        "bytes": 25011
+      }
+    }
   }
 }

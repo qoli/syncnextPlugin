@@ -2,7 +2,10 @@
   "name": "韩剧网",
   "description": "thanju.com 韓劇/電影/綜藝",
   "host": "https://www.thanju.com",
-  "files": ["txml.js", "app.js"],
+  "files": [
+    "txml.js",
+    "app.js"
+  ],
   "pages": [
     {
       "key": "index",
@@ -36,5 +39,18 @@
   "search": {
     "url": "https://www.thanju.com/search/${keyword}.html",
     "javascript": "buildSearchMedias"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "txml.js": {
+        "sha256": "66e54065749382935151412978c14935244f54676601dc734bce896167363b38",
+        "bytes": 4861
+      },
+      "app.js": {
+        "sha256": "b7f1cefe4449367fb2f0d77479d546e465ee6d26afefd85e164f0efb31bed56f",
+        "bytes": 11537
+      }
+    }
   }
 }

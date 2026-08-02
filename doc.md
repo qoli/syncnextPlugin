@@ -70,6 +70,13 @@ Syncnext 插件是以 JavaScript 撰寫的模組，Syncnext 會在沙盒環境�
   "notification": "",
   "host": "https://wogg.xxooo.cf/",
   "files": ["txml.js", "app.js"],
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "txml.js": { "sha256": "<64 位小寫十六進制 SHA-256>", "bytes": 12345 },
+      "app.js": { "sha256": "<64 位小寫十六進制 SHA-256>", "bytes": 67890 }
+    }
+  },
   "permission": "AliDrive",
   "pages": [
     {
@@ -94,6 +101,8 @@ Syncnext 插件是以 JavaScript 撰寫的模組，Syncnext 會在沙盒環境�
 * `host`：主域名，也是插件 JavaScript 唯一應依賴的域名欄位。
 * `hosts`：可選的候選域名列表。runtime 可在正式載入插件前做一次性 bootstrap probe，但插件 JavaScript 仍只應依賴單一 `host`。
 * `files`：腳本載入與打包順序，由於 Syncnext 會依序注入，在 `browserify` 打包時也請保持一致（先工具、後主程式）。
+* `cache`：可選的內容快取提示。`schema` 目前固定為 `1`；`resources` 必須為每個 `files` 項目記錄原始 UTF-8 檔案的 SHA-256 與 byte 數。官方插件使用 `node tools/update-plugin-cache.js` 生成，不應手工填寫。
+* `cache` 不是 App 的強制完整性 gate。缺失、格式錯誤、資源不完整或遠端內容與宣告不一致時，runtime 會使用本次網絡回應但不寫入該 Hash 的持久快取；網絡失敗仍是載入失敗，不會退回舊腳本。插件若修改腳本卻不更新 Hash，已違反發佈約定，App 可繼續使用本地符合舊 Hash 的內容而不做額外 freshness 請求。
 * `pages`：定義首頁/分類等入口，`url` 可使用 `${pageNumber}` 占位符；`key` 僅用於原生 UI 標識分類，不會自動傳入 JS 函式。**至少保留一個 `key: "index"` 的項目**，Syncnext 會以此作為預設入口，缺少該項會導致插件載入後首頁為空。
 * 為兼容舊版 runtime，`pages[*].url` 與 `search.url` 仍建議保持完整絕對 URL；不要為了多域名而改成新模板語法。
 * `search`：唯一必填欄位為 `url` 與 `javascript`，`url` 支援 `${keyword}`；執行搜尋時 Syncnext 會以第二參數提供 `pluginKey`（實際為插件訂閱 URL），務必原樣傳回 `$next.toSearchMedias(json, pluginKey)` 以對應結果。

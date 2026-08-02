@@ -9,7 +9,11 @@
     "https://libviobd.com",
     "https://libvio.host"
   ],
-  "files": ["txml.js", "crypto-js.min.js", "app.js"],
+  "files": [
+    "txml.js",
+    "crypto-js.min.js",
+    "app.js"
+  ],
   "pages": [
     {
       "key": "index",
@@ -59,5 +63,22 @@
   "search": {
     "url": "https://www.libvios.com/search/-------------.html?wd=${keyword}",
     "javascript": "Search"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "txml.js": {
+        "sha256": "66e54065749382935151412978c14935244f54676601dc734bce896167363b38",
+        "bytes": 4861
+      },
+      "crypto-js.min.js": {
+        "sha256": "bba05a999896e6d09e9a37b69ebb5e282d8aa0b20a5fd94a3d2a6f0a43a16a6c",
+        "bytes": 47943
+      },
+      "app.js": {
+        "sha256": "266ff289b6aeff2d36b86516fbc693f4195b08ba3a633898e193b354c0c5bea9",
+        "bytes": 38503
+      }
+    }
   }
 }

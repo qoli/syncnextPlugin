@@ -112,6 +112,7 @@ git branch --show-current
 3. 讓 `config.json` 的 page `javascript` 名稱與實際函式一致；入口函式不是固定的 `Home`／`Play` 等名稱，而由設定宣告。
 4. 驗證列表、搜尋、分集與播放。多候選播放必須傳 `JSON.stringify([{ url, headers }, ...])` 給 `$next.toPlayerCandidates`，不可包成 `{ candidates: [...] }`。
 5. 對多 host 站點，把目前穩定主站放在 `host`，候選放在 `hosts`，並提供 `HostsProbeRequest()`；所有相對、跳轉與播放 URL 要以選中的 host 正規化。
+6. 完成所有腳本修改後執行 `node tools/update-plugin-cache.js plugin_<provider>`，讓 `config.cache` 與 `files` 的實際內容一致。Hash 更新必須與腳本放在同一個 commit。
 
 ### 4.2 本機驗證
 
@@ -122,6 +123,7 @@ git branch --show-current
 ```bash
 node --check plugin_<provider>/app.js
 python -m json.tool plugin_<provider>/config.json >/dev/null
+node tools/update-plugin-cache.js --check plugin_<provider>
 node plugin_<provider>/node_test_*.js
 git diff --check
 ```
@@ -200,7 +202,7 @@ node node_test_all_plugins.js \
 
 ## 5. 維護既有插件流程
 
-1. 執行第 3 節定位，完成最小修正與第 4.2 節驗證。
+1. 執行第 3 節定位，完成最小修正；若改動 `config.json.files` 指向的任何腳本，先執行 `node tools/update-plugin-cache.js plugin_<provider>`，再完成第 4.2 節驗證。
 2. 只提交／推送插件 repo 的預期檔案；推送後仍要驗證遠端 raw config。
 3. 僅當來源表欄位（名稱、入口 URL、搜尋、置頂、提示）需要變動時，才走第 4.4 節的來源表、匯出與遠端 JSON 驗證。
 4. 若只改插件程式且 `api` 不變，不必重跑 `Download JSON`；但用戶可感知的修復仍要依第 7 節公告。
@@ -299,6 +301,7 @@ git diff --stat
 - [ ] Notion 來源表、日誌、API workflow、插件 repo、Telegram 均通過 preflight。
 - [ ] 插件程式、設定與可重複 fixture 測試完成。
 - [ ] JS／JSON／專屬測試／限定 smoke 通過。
+- [ ] `config.cache` 已重新生成，`node tools/update-plugin-cache.js --check plugin_<provider>` 通過。
 - [ ] 插件已推送，遠端 raw config 可讀且 JSON 合法。
 - [ ] Notion v3 來源列已讀回且無重複。
 - [ ] **Download JSON** 成功，遠端 `sourcesv3.json` 中有且僅有一筆正確入口。
@@ -310,6 +313,7 @@ git diff --stat
 
 - [ ] 從具體證據定位故障階段並完成最小修正。
 - [ ] JS／JSON／專屬測試與必要 smoke 通過。
+- [ ] `config.cache` 已重新生成並通過檢查。
 - [ ] 插件推送後，遠端 raw config 已驗證。
 - [ ] 僅在來源欄位改變時更新 Notion 表並重跑匯出。
 - [ ] 用戶可感知的變更已依序完成 Notion 讀回、Telegram dry-run 與發布。

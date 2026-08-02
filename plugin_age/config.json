@@ -2,7 +2,9 @@
   "name": "新 AGE 動漫",
   "description": "基於 AGE JSON API 的動漫頻道插件",
   "host": "https://ageapi.omwjhz.com:18888",
-  "files": ["app.js"],
+  "files": [
+    "app.js"
+  ],
   "pages": [
     {
       "key": "index",
@@ -52,5 +54,14 @@
     "url": "https://ageapi.omwjhz.com:18888/v2/search?page=1&query=${keyword}",
     "timeout": 20,
     "javascript": "buildSearchMedias"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "app.js": {
+        "sha256": "24b048f1f475b5caeb6da756a86af9845e54d7fabd391e797295211ef3bde291",
+        "bytes": 15804
+      }
+    }
   }
 }

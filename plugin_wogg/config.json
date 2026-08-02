@@ -3,7 +3,10 @@
   "description": "阿里雲盤資源庫",
   "notification": "",
   "host": "https://wogg.xxooo.cf/",
-  "files": ["txml.js", "app.js"],
+  "files": [
+    "txml.js",
+    "app.js"
+  ],
   "permission": "AliDrive",
   "pages": [
     {
@@ -68,5 +71,18 @@
     "timeout": 20,
     "url": "https://wogg.xxooo.cf/index.php/vodsearch/-------------.html?wd=${keyword}",
     "javascript": "Search"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "txml.js": {
+        "sha256": "66e54065749382935151412978c14935244f54676601dc734bce896167363b38",
+        "bytes": 4861
+      },
+      "app.js": {
+        "sha256": "1545184ea187de9bec7670aad7241044b5719ad1cf1f86f9070ece91ba417275",
+        "bytes": 3991
+      }
+    }
   }
 }

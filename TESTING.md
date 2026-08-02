@@ -27,6 +27,7 @@
 ```bash
 node --check plugin_<provider>/app.js
 python -m json.tool plugin_<provider>/config.json >/dev/null
+node tools/update-plugin-cache.js --check plugin_<provider>
 node plugin_<provider>/node_test_*.js
 git diff --check
 ```

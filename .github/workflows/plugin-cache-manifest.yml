@@ -1,0 +1,30 @@
+name: Plugin Cache Manifest
+
+on:
+  pull_request:
+    paths:
+      - "plugin_*/**"
+      - "tools/update-plugin-cache.js"
+      - "package.json"
+      - ".github/workflows/plugin-cache-manifest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "plugin_*/**"
+      - "tools/update-plugin-cache.js"
+      - "package.json"
+      - ".github/workflows/plugin-cache-manifest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Verify Plugin Cache Manifests
+        run: node tools/update-plugin-cache.js --check

@@ -30,5 +30,22 @@
   "search": {
     "url": "https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=${keyword}",
     "javascript": "Search"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "app.js": {
+        "sha256": "84003d8e09b56fc3266413fa01b1e9fb42b926e2c44633adc1d267ddccfae65e",
+        "bytes": 6692
+      },
+      "txml.js": {
+        "sha256": "a29f1209ef3836ffc8ee8a3c3c1500189447cb0a618605885bfd4fd19ee1c695",
+        "bytes": 5166
+      },
+      "base64.js": {
+        "sha256": "26589cbb1867ddb1b78e2fc6711a7be939b622e4a403388bd3dfe8ce63a30993",
+        "bytes": 1472
+      }
+    }
   }
 }

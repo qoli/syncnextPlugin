@@ -2,7 +2,10 @@
   "name": "独播库",
   "description": "dbku.tv 线上看",
   "host": "https://www.dbku.tv",
-  "files": ["txml.js", "app.js"],
+  "files": [
+    "txml.js",
+    "app.js"
+  ],
   "pages": [
     {
       "key": "index",
@@ -50,5 +53,18 @@
   "search": {
     "url": "https://www.dbku.tv/vodsearch/-------------.html?wd=${keyword}&submit=",
     "javascript": "Search"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "txml.js": {
+        "sha256": "66e54065749382935151412978c14935244f54676601dc734bce896167363b38",
+        "bytes": 4861
+      },
+      "app.js": {
+        "sha256": "d9117fb1a8872b8533eef122c443086a8a0b97137f3ad61b1079288ee1417107",
+        "bytes": 8911
+      }
+    }
   }
 }

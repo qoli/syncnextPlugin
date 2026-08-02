@@ -3,7 +3,10 @@
   "description": "海外 IP 無廣告",
   "notification": "阻擋中國地區訪問",
   "host": "https://api.olelive.com/",
-  "files": ["crypto-js.min.js", "main.js"],
+  "files": [
+    "crypto-js.min.js",
+    "main.js"
+  ],
   "pages": [
     {
       "key": "index",
@@ -60,5 +63,18 @@
     "timeout": 20,
     "url": "https://api.olelive.com/v1/pub/index/search/${keyword}/vod/0/1/4",
     "javascript": "Search"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "crypto-js.min.js": {
+        "sha256": "1d8effdb040f0bbc7153a74752766060dd56e98e69c39d3757fac549abbc0be7",
+        "bytes": 47945
+      },
+      "main.js": {
+        "sha256": "32e33e9e75950bfee93e0a3b93d4d794cf02111c6bc70f4832f6644ae89fbaec",
+        "bytes": 4569
+      }
+    }
   }
 }
