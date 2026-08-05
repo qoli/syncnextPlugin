@@ -10,51 +10,51 @@
 [plugin 1] medias total=12, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
-  "id": "83089",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260728-1/616073aab4c79f2a8d8e78473b739f6b.jpg",
-  "title": "一斩苍穹",
-  "descriptionText": "更新至第03集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83089/true"
+  "id": "82831",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260708-1/f8d1dee3f2e4b193604a0ee100515a4d.jpg",
+  "title": "密室大逃脱 第八季",
+  "descriptionText": "更新至第20260805期",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82831/true"
 }
-[plugin 1] search keyword=一斩苍穹 url=https://api.olelive.com/v1/pub/index/search/%E4%B8%80%E6%96%A9%E8%8B%8D%E7%A9%B9/vod/0/1/4
-[plugin 1] search results=1
+[plugin 1] search keyword=密室大逃脱 url=https://api.olelive.com/v1/pub/index/search/%E5%AF%86%E5%AE%A4%E5%A4%A7%E9%80%83%E8%84%B1/vod/0/1/4
+[plugin 1] search results=4
 [plugin 1] search sample(index=0)
 {
-  "id": "83089",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260728-1/616073aab4c79f2a8d8e78473b739f6b.jpg",
-  "title": "一斩苍穹",
-  "descriptionText": "更新至第03集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83089/true"
+  "id": "82831",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260708-1/f8d1dee3f2e4b193604a0ee100515a4d.jpg",
+  "title": "密室大逃脱 第八季",
+  "descriptionText": "更新至第20260805期",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82831/true"
 }
-[OK] 新歐樂影院 | search(一斩苍穹) -> 1
-[OK] 新歐樂影院 | 一斩苍穹 | 第01集 -> https://europe.olemovienews.com/ts5/20260728/uiqy67o5/mp4/uiqy67o5.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 欺诈游戏 | 第01集 -> https://europe.olemovienews.com/ts4/20260407/165al4q6/mp4/165al4q6.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 御廷谣 | 第01集 -> https://europe.olemovienews.com/ts5/20260728/czah2wjf/mp4/czah2wjf.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(密室大逃脱) -> 4
+[OK] 新歐樂影院 | 密室大逃脱 第八季 | 超前聚会上 -> https://europe.olemovienews.com/ts5/20260708/krkynhy1/mp4/krkynhy1.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 密室大逃脱大神版 第八季 | 超前聚会上 -> https://europe.olemovienews.com/ts5/20260708/1xdt2twh/mp4/1xdt2twh.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 喜欢你我也是 第六季 | 先导片 -> https://europe.olemovienews.com/ts4/20260602/3dzjp9j2/mp4/3dzjp9j2.mp4/master.m3u8 | candidates=1
 [plugin 2] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 2] medias total=32, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "20260175",
-  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260175.jpg",
-  "title": "碧蓝之海 第三季",
-  "descriptionText": "第05集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260175"
+  "id": "20260251",
+  "coverURLString": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260251.jpg",
+  "title": "我心里危险的东西 剧场版",
+  "descriptionText": "全集 · 剧场版",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260251"
 }
-[plugin 2] search keyword=碧蓝之海 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E7%A2%A7%E8%93%9D%E4%B9%8B%E6%B5%B7
+[plugin 2] search keyword=我心里危险的东西 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E6%88%91%E5%BF%83%E9%87%8C%E5%8D%B1%E9%99%A9%E7%9A%84%E4%B8%9C%E8%A5%BF
 [plugin 2] search results=3
 [plugin 2] search sample(index=0)
 {
-  "id": "20260175",
-  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260175.jpg",
-  "title": "碧蓝之海 第三季",
-  "descriptionText": "第05集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260175"
+  "id": "20260251",
+  "coverURLString": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2F20260251.jpg",
+  "title": "我心里危险的东西 剧场版",
+  "descriptionText": "全集 · 剧场版",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260251"
 }
-[OK] 新 AGE 動漫 | search(碧蓝之海) -> 3
-[OK] 新 AGE 動漫 | 碧蓝之海 第三季 | 第01集 -> https://vip.ffzy-plays.com/20260707/55479_4a086d3c/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 转学后班上的清纯可爱美少女 竟是小时候玩在一起的哥们 | 第01集 -> https://vip.ffzy-plays.com/20260709/55539_d977901b/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 被遗弃圣女的异世界美食之旅 用隐藏技能召唤了露营车 | 第01集 -> https://vip.ffzy-plays.com/20260706/55477_1439d2bf/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | search(我心里危险的东西) -> 3
+[OK] 新 AGE 動漫 | 我心里危险的东西 剧场版 | HD中字 -> https://hn.bfvvs.com/play/ejR0L5ye/index.m3u8 | candidates=3
+[OK] 新 AGE 動漫 | 攻壳机动队 THE GHOST IN THE SHELL | 第01集 -> https://vip.ffzy-plays.com/20260707/55505_29e28ef3/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 无自觉圣女今天也无意识地释放力量 | 第01集 -> https://vip.ffzy-plays.com/20260630/55297_88dcc5a4/index.m3u8 | candidates=4
 [plugin 3] 廠長資源 | mode=subscriptions | index=https://czzy.top/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 3] medias total=0, testing=0
@@ -81,7 +81,7 @@
   "id": "https://www.thanju.com/detail/2488.html",
   "coverURLString": "https://pp.thanju.com/U/vod/699d0f2e65bb5.jpg",
   "title": "红色珍珠",
-  "descriptionText": "第98集 · 朴真熙 李甫姫 李元宗 韩振熙",
+  "descriptionText": "第99集 · 朴真熙 李甫姫 李元宗 韩振熙",
   "detailURLString": "https://www.thanju.com/detail/2488.html"
 }
 [plugin 6] search keyword=红色珍珠 url=https://www.thanju.com/search/%E7%BA%A2%E8%89%B2%E7%8F%8D%E7%8F%A0.html
@@ -97,63 +97,63 @@
 [OK] 韩剧网 | search(红色珍珠) -> 2
 [OK] 韩剧网 | 红色珍珠 | 01 -> https://cdn.vvvip-plays33.cc/20260224/8726_d6f84c02/index.m3u8 | candidates=1
 [OK] 韩剧网 | 我们愉快的好日子 | 01 -> https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 | candidates=1
-[OK] 韩剧网 | 我的偶像总裁 | 01 -> https://cdn.vvvip-plays33.cc/20260803/16038_96fb9b48/index.m3u8 | candidates=1
+[OK] 韩剧网 | 家庭关系证明书 | 01 -> https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 | candidates=1
 [plugin 7] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/148648.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/wplidCWWPQCm92bFG0ggTwRH6Bb.jpg",
-  "title": "云归槿时安",
-  "descriptionText": "更新至14集",
-  "detailURLString": "https://www.dbku.tv/voddetail/148648.html"
+  "id": "https://www.dbku.tv/voddetail/147737.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/9jDFBr6fMhfJjCjrc8zagtiKDOn.jpg",
+  "title": "你的喜欢无与伦比",
+  "descriptionText": "更新至4集",
+  "detailURLString": "https://www.dbku.tv/voddetail/147737.html"
 }
-[plugin 7] search keyword=云归槿时安 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%BA%91%E5%BD%92%E6%A7%BF%E6%97%B6%E5%AE%89&submit=
+[plugin 7] search keyword=你的喜欢无与伦比 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%BD%A0%E7%9A%84%E5%96%9C%E6%AC%A2%E6%97%A0%E4%B8%8E%E4%BC%A6%E6%AF%94&submit=
 [plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/148648.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/wplidCWWPQCm92bFG0ggTwRH6Bb.jpg",
-  "title": "云归槿时安",
-  "descriptionText": "更新至14集",
-  "detailURLString": "https://www.dbku.tv/voddetail/148648.html"
+  "id": "https://www.dbku.tv/voddetail/147737.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/9jDFBr6fMhfJjCjrc8zagtiKDOn.jpg",
+  "title": "你的喜欢无与伦比",
+  "descriptionText": "更新至4集",
+  "detailURLString": "https://www.dbku.tv/voddetail/147737.html"
 }
-[OK] 独播库 | search(云归槿时安) -> 1
+[OK] 独播库 | search(你的喜欢无与伦比) -> 1
+[OK] 独播库 | 你的喜欢无与伦比 | 第1集 -> https://vid.dbokutv.com/20260716/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMvaU6XtUMnYBJ0nBJ0oC4L5GpH2CovjS34/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 云归槿时安 | 第1集 -> https://vid.dbokutv.com/20260801/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlQ79nBNbdQdDXBJ0nBJ0oGZOmHJ52GYvjS34/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 红色珍珠 | 第1集 -> https://vid.dbokutv.com/20260226/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMXpUdejC34jC312HZ4mCZ4pBcrmD0/chunklist.m3u8 | candidates=1
 [plugin 8] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
 [OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
 [plugin 8] medias total=48, testing=3
 [plugin 8] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27099/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260630-1/554a12de671ef13a48ee51718ccf37da.webp",
-  "title": "转学后班上的清纯可爱美少女，竟是小时候玩在一起的哥儿们",
-  "detailURLString": "https://ani.girigirilove.com/GV27099/"
+  "id": "https://ani.girigirilove.com/GV27103/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260630-1/6bbfc51b141870dbffe59b0d50fd5c3a.webp",
+  "title": "攻壳机动队 THE GHOST IN THE SHELL",
+  "detailURLString": "https://ani.girigirilove.com/GV27103/"
 }
-[plugin 8] search keyword=转学后班上的清纯可爱美少 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E8%BD%AC%E5%AD%A6%E5%90%8E%E7%8F%AD%E4%B8%8A%E7%9A%84%E6%B8%85%E7%BA%AF%E5%8F%AF%E7%88%B1%E7%BE%8E%E5%B0%91
-[plugin 8] search results=1
+[plugin 8] search keyword=攻壳机动队 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E6%94%BB%E5%A3%B3%E6%9C%BA%E5%8A%A8%E9%98%9F
+[plugin 8] search results=8
 [plugin 8] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27099/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260630-1/554a12de671ef13a48ee51718ccf37da.webp",
-  "title": "转学后班上的清纯可爱美少女，竟是小时候玩在一起的哥儿们",
-  "descriptionText": "更新至05集 / 23點30分",
-  "detailURLString": "https://ani.girigirilove.com/GV27099/"
+  "id": "https://ani.girigirilove.com/GV27103/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260630-1/6bbfc51b141870dbffe59b0d50fd5c3a.webp",
+  "title": "攻壳机动队 THE GHOST IN THE SHELL",
+  "descriptionText": "更新至04集 / 23點0分",
+  "detailURLString": "https://ani.girigirilove.com/GV27103/"
 }
-[OK] grigrilove | search(转学后班上的清纯可爱美少) -> 1
-[OK] grigrilove | 转学后班上的清纯可爱美少女，竟是小时候玩在一起的哥儿们 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/TenbinCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 碧蓝之海 第三季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/GRANDBLUES3CHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | search(攻壳机动队) -> 8
+[OK] grigrilove | 攻壳机动队 THE GHOST IN THE SHELL | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/THEGHOSTINTHESHELLCHT/01/playlist.m3u8 | candidates=1
 [OK] grigrilove | 天是红河岸 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/SorawaAkaiKawanoHotori/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 从0位居民开始的边境领主大人 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/Ryoumin0ninStartnoHenkyouRyoushusamaCHT/01/playlist.m3u8 | candidates=1
 [plugin 9] Gimy TV | mode=subscriptions | index=https://gimy.tv/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 9] medias total=0, testing=0
 [plugin 9] search keyword=test url=https://gimy.tv/search/test----------1---.html
 [plugin 9] search results=0
 [FAIL] Gimy TV | search(test) -> 0
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_63daf0b7-6a16-4cfd-95b7-bc0840ec9dfd
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_a85ed733-ad78-4bf5-8ea4-c062d14e5962
 [summary] plugins=9, fatal=4, cases=33, ok=24, fail=9, invalidSources=4
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
