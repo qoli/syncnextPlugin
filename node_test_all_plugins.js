@@ -44,6 +44,7 @@ function printUsage() {
   process.stdout.write(`  --history-mode=keep|latest-only  Keep timestamped runs (default) or only latest files.\n`);
   process.stdout.write(`  --update-readme=PATH             Replace the managed smoke-status block in a README.\n\n`);
   process.stdout.write(`Checks:\n`);
+  process.stdout.write(`  --search-keyword=TEXT        Override the search keyword for every tested plugin.\n`);
   process.stdout.write(`  --skip-connectivity-check  --skip-search-test  --no-probe\n`);
   process.stdout.write(`  --strict-connectivity-check  --strict-probe  --all-episodes\n`);
   process.stdout.write(`  --help                          Print this help without creating test output.\n`);
@@ -524,9 +525,12 @@ function normalizeSearchURL(urlTemplate, keyword) {
     .replace(/\$\{pageNumber\}/g, "1");
 }
 
-function pickSearchKeyword(options, medias) {
+function pickSearchKeyword(options, medias, searchConfig) {
   const forced = String(options.searchKeyword || "").trim();
   if (forced) return forced;
+
+  const configured = String(searchConfig && searchConfig.smokeKeyword || "").trim();
+  if (configured) return configured;
 
   const list = Array.isArray(medias) ? medias : [];
   for (let i = 0; i < list.length; i++) {
@@ -1608,7 +1612,7 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
       const searchURLTemplate = String(searchConfig.url || "").trim();
 
       if (searchFunc && searchURLTemplate) {
-        const searchKeyword = pickSearchKeyword(options, medias);
+        const searchKeyword = pickSearchKeyword(options, medias, searchConfig);
         const searchURL = normalizeSearchURL(searchURLTemplate, searchKeyword);
         const searchTimeout = stageTimeoutMs(searchConfig, options.invokeTimeoutMs);
         logger.log(

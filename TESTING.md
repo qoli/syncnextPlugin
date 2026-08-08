@@ -52,6 +52,10 @@ node node_test_all_plugins.js \
   --history-mode=latest-only
 ```
 
+若上游搜尋 API 對關鍵字長度或格式有明確限制，可在插件的 `search` 設定加入
+`smokeKeyword`，提供一個可重現且確實存在的搜尋詞。命令列 `--search-keyword`
+仍具有最高優先權；沒有設定時，runner 才會繼續從首頁媒體標題自動取樣。
+
 若正式來源表已匯出並通過發布 runbook 的遠端 JSON gate，才可進行 subscription smoke：
 
 ```bash
