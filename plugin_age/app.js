@@ -93,15 +93,26 @@ function isHTTPURL(inputURL) {
 }
 
 function isResolverURL(inputURL) {
-  try {
-    var resolverURL = new URL(String(inputURL || ''));
-    var pathMatches = /^\/(m3u8|vip)\/?$/i.test(resolverURL.pathname || '');
-    var providerReference = resolverURL.searchParams.get('url') || '';
+  var text = trimText(inputURL);
+  var match = text.match(/^https?:\/\/[^\/?#]+\/(?:m3u8|vip)\/?\?([^#]+)(?:#.*)?$/i);
+  var queryParts = match && match[1] ? match[1].split('&') : [];
 
-    return /^https?:$/i.test(resolverURL.protocol) && pathMatches && /^age_/i.test(providerReference);
-  } catch (error) {
-    return false;
+  for (var i = 0; i < queryParts.length; i++) {
+    var separatorIndex = queryParts[i].indexOf('=');
+    var rawName = separatorIndex >= 0 ? queryParts[i].substring(0, separatorIndex) : queryParts[i];
+    var rawValue = separatorIndex >= 0 ? queryParts[i].substring(separatorIndex + 1) : '';
+
+    try {
+      if (decodeURIComponent(rawName.replace(/\+/g, ' ')) === 'url'
+          && /^age_/i.test(decodeURIComponent(rawValue.replace(/\+/g, ' ')))) {
+        return true;
+      }
+    } catch (error) {
+      return false;
+    }
   }
+
+  return false;
 }
 
 function normalizePlayURL(playURL, baseURL) {
@@ -111,13 +122,27 @@ function normalizePlayURL(playURL, baseURL) {
     return '';
   }
 
-  if (!isHTTPURL(finalURL)) {
-    try {
-      finalURL = new URL(finalURL, baseURL).toString();
-    } catch (error) {}
+  if (isHTTPURL(finalURL)) {
+    return finalURL;
   }
 
-  return finalURL;
+  var baseMatch = trimText(baseURL).match(/^(https?:\/\/[^\/?#]+)(\/[^?#]*)?/i);
+  if (!baseMatch) {
+    return '';
+  }
+
+  if (finalURL.indexOf('//') === 0) {
+    var schemeMatch = trimText(baseURL).match(/^(https?):/i);
+    return schemeMatch ? schemeMatch[1] + ':' + finalURL : '';
+  }
+
+  if (finalURL.charAt(0) === '/') {
+    return baseMatch[1] + finalURL;
+  }
+
+  var basePath = baseMatch[2] || '/';
+  var directory = basePath.substring(0, basePath.lastIndexOf('/') + 1);
+  return baseMatch[1] + directory + finalURL;
 }
 
 function resolveResolverURL(inputURL, onSuccess, onFailure) {

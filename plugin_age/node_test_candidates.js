@@ -5,6 +5,7 @@ const path = require('path');
 const vm = require('vm');
 
 const DEFAULT_TIMEOUT_MS = 90000;
+const RESOLVER_ONLY = process.argv.includes('--resolver-only');
 const ROOT = path.resolve(__dirname, '..');
 const FILES = [
   path.join(__dirname, 'app.js'),
@@ -89,8 +90,6 @@ function createRuntime() {
   const context = {
     console,
     Buffer,
-    URL,
-    URLSearchParams,
     Promise,
     setTimeout,
     clearTimeout,
@@ -226,9 +225,11 @@ async function runEpisodesCase(runtime, testCase) {
     `${testCase.detailURL} episode ${testCase.episodeIndex} expected ${testCase.expectedSources} play candidates, got ${candidates.length}`
   );
 
+  const resolverURLs = new Set(payload.candidates.map((item) => String(item && item.resolverURL || '').trim()));
   const seen = new Set();
   for (const candidate of candidates) {
     assert(/^https?:\/\//i.test(candidate.url), `invalid candidate url: ${candidate.url}`);
+    assert(!resolverURLs.has(candidate.url), `resolver page escaped as a media candidate: ${candidate.url}`);
     assert(!seen.has(candidate.url), `duplicate candidate url: ${candidate.url}`);
     seen.add(candidate.url);
   }
@@ -265,12 +266,59 @@ async function runLegacyPayloadCase(runtime) {
   console.log(`[OK] legacy payload candidates=${candidates.length}`);
 }
 
+async function runJavaScriptCoreResolverCase(runtime) {
+  const resolverURL = 'https://resolver.example:8443/m3u8/?url=age_fixture';
+  const mediaURL = 'https://media.example/video/index.m3u8';
+  const originalFetch = runtime.context.$http.fetch;
+
+  runtime.context.$http.fetch = async (request) => {
+    assert(request && request.url === resolverURL, 'resolver fixture received an unexpected request');
+    return {
+      status: 200,
+      statusCode: 200,
+      headers: { 'content-type': 'text/html' },
+      body: `<script>var Vurl = '${mediaURL}';</script>`,
+      url: resolverURL,
+    };
+  };
+
+  try {
+    const episodeURL = runtime.context.buildEpisodePayload({
+      candidates: [{ source: 'fixture', resolverURL }],
+    });
+    const playerResult = await runtime.invoke(
+      'Player',
+      [episodeURL],
+      ['toPlayerCandidates', 'toPlayerByJSON', 'toPlayer'],
+      5000
+    );
+    const candidates = normalizeCandidates(playerResult.payload);
+
+    assert(playerResult.callbackType === 'toPlayerCandidates', 'resolver fixture used the wrong callback');
+    assert(candidates.length === 1, `resolver fixture expected 1 candidate, got ${candidates.length}`);
+    assert(candidates[0].url === mediaURL, 'resolver HTML escaped instead of its media URL');
+    assert(candidates[0].headers.Referer === resolverURL, 'resolved media lost its resolver Referer');
+  } finally {
+    runtime.context.$http.fetch = originalFetch;
+  }
+
+  console.log('[OK] JavaScriptCore-compatible resolver extraction');
+}
+
 async function main() {
   const runtime = createRuntime();
 
   assert(
+    typeof runtime.context.URL === 'undefined',
+    'fixture must match the App JavaScriptCore environment without WHATWG URL globals'
+  );
+  assert(
     runtime.context.isResolverURL('https://resolver.example:8443/m3u8/?url=age_fixture'),
     'AGE resolver recognition must follow the provider reference contract rather than one host'
+  );
+  assert(
+    runtime.context.isResolverURL('https://resolver.example:8443/vip/?line=1&url=age_fixture'),
+    'AGE resolver recognition must accept the provider reference outside the first query position'
   );
   assert(
     !runtime.context.isResolverURL('https://resolver.example:8443/m3u8/?url=unrelated_fixture'),
@@ -280,6 +328,12 @@ async function main() {
     !runtime.context.isResolverURL('https://media.example/video/index.m3u8'),
     'direct media playlists must not be treated as resolver pages'
   );
+
+  await runJavaScriptCoreResolverCase(runtime);
+  if (RESOLVER_ONLY) {
+    console.log('[DONE] plugin_age resolver regression passed');
+    return;
+  }
 
   for (const testCase of CASES) {
     await runEpisodesCase(runtime, testCase);
