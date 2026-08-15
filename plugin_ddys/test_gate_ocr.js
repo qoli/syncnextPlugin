@@ -270,7 +270,7 @@ function testPlaylistMissingDataFailsExplicitly() {
   }, /track server is missing or invalid/);
 }
 
-function testPlayerRejectsUnresolvedDetailPage() {
+function testPlayerResolvesPlaybackInputs() {
   const context = loadPlugin();
   let playerJSON = null;
   let errorText = null;
@@ -287,7 +287,16 @@ function testPlayerRejectsUnresolvedDetailPage() {
   assert.strictEqual(errorText, null);
 
   playerJSON = null;
+  context.Player('ddys-s1-e1-https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
+  assert.strictEqual(playerJSON.url, 'https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
+
+  playerJSON = null;
   context.Player('https://ddys.app/colony/');
+  assert.strictEqual(playerJSON, null);
+  assert.match(errorText, /not a resolved media URL/);
+
+  errorText = null;
+  context.Player('ddys-s1-e1-https://ddys.app/colony/');
   assert.strictEqual(playerJSON, null);
   assert.match(errorText, /not a resolved media URL/);
 }
@@ -374,7 +383,7 @@ async function main() {
   testManifestUsesHTMLRoutes();
   testPlaylistProducesResolvedEpisodeURLs();
   testPlaylistMissingDataFailsExplicitly();
-  testPlayerRejectsUnresolvedDetailPage();
+  testPlayerResolvesPlaybackInputs();
   await testSafeFetchInjectsCookie();
   await testRejectedCookieFailsWithoutGateBypass();
   console.log('plugin_ddys gate/OCR/cookie-pool tests passed');

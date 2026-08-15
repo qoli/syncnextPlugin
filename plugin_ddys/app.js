@@ -114,6 +114,20 @@ function isResolvedMediaURL(url) {
   return /^https?:\/\//i.test(url) && /\.(?:m3u8|mp4|mkv|webm)(?:[?#]|$)/i.test(url);
 }
 
+function resolvePlayerInputURL(inputURL) {
+  var value = String(inputURL || '').trim();
+  if (isResolvedMediaURL(value)) {
+    return value;
+  }
+
+  var legacyResumeMatch = value.match(/^ddys-s\d+-e\d+-(https?:\/\/.+)$/i);
+  if (legacyResumeMatch && isResolvedMediaURL(legacyResumeMatch[1])) {
+    return legacyResumeMatch[1];
+  }
+
+  return '';
+}
+
 function sendResolvedPlayer(url) {
   $next.toPlayerByJSON(JSON.stringify({
     url: url,
@@ -717,8 +731,8 @@ function Episodes(inputURL) {
 }
 
 function Player(inputURL) {
-  var url = normalizeURL(inputURL);
-  if (!isResolvedMediaURL(url)) {
+  var url = resolvePlayerInputURL(inputURL);
+  if (!url) {
     $next.emptyView('DDYS Player: episode URL is not a resolved media URL; reload episodes');
     return;
   }
