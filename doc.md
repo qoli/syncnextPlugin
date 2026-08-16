@@ -109,7 +109,7 @@ Syncnext 插件是以 JavaScript 撰寫的模組，Syncnext 會在沙盒環境�
 * `episodes` 與 `player`：分別用於點擊媒體後取得劇集清單與實際播放網址，欄位僅需指定函式名稱與（可選）`timeout`。
 * `permission`：對阿里雲盤授權等敏感功能（`$next.aliLink` / `$next.aliPlay`）必須顯式標記 `AliDrive`。
 * `notification`：可選字串，顯示於 Syncnext 內的頻道通知區域（如僅支援海外 IP），請勿寫入敏感資訊或密鑰。
-* `timeout`：可在 pages/search/episodes/player 上個別覆蓋，單位為秒；若未設置則使用 Syncnext 預設值。
+* `timeout`：可在 pages/search/episodes/player 上個別覆蓋，單位為秒；若未設置則使用 Syncnext 預設值。此值同時是該操作的 JS 結果等待與 `$http`／SafeLine 網絡階段 inactivity timeout；HTTP 2xx 不會把 JS 等待時間縮短為 5 秒。
 
 ### `HostsProbeRequest()`
 

@@ -13,12 +13,12 @@
 
 ## 當前策略
 
-- `config.json.host` 使用 `https://czzy.top`；`www.4kcz.com` 在 2026-08-02 的 App 與 Arc 檢查中分別出現無首位元組逾時與 502，故不再作為 primary。
-- `czzy.top` 與 `www.cz4k.com` 可快速到達 SafeLine；SafeLine 是 App 已支援的正常前置層，不應把 Node／Arc 未解題的 468／challenge 頁誤判為 Host 無效。
+- `config.json.host` 使用 `https://www.4kcz.com`。2026-08-16 重新驗證時，無既有 Cookie 的獨立 Chrome context 與 macOS `URLSession` 均可直接取得真實 `/movie_bt` 列表，因此恢復為 primary。
+- `czzy.top` 與 `www.cz4k.com` 保留為站方公布的候選入口；SafeLine 是 App 已支援的正常前置層，不應把未解題的 challenge 頁誤判為 Host 有效內容。
 - `config.json.hosts` 保留站方推薦且可作為影片站入口的候選域名：
+  - `https://www.4kcz.com`
   - `https://czzy.top`
   - `https://www.cz4k.com`
-  - `https://www.4kcz.com`
 - `cz01.vip` 和 `cz01.tv` 用作查詢發布資訊的導航入口，不作為影片列表入口。
 
 ## 維護檢查

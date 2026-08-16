@@ -1,6 +1,6 @@
 `user script`;
 
-const FALLBACK_HOST = "https://czzy.top";
+const FALLBACK_HOST = "https://www.4kcz.com";
 const HOST =
   typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost
     ? __syncnextPrimaryHost
@@ -252,8 +252,7 @@ function fetchHTML(url, options, onSuccess, onError) {
     url: targetURL,
     method: "GET",
     headers: headers,
-  }).then(
-    function (res) {
+  }).then(function (res) {
       if (shouldSaveCookies) {
         storeCookiesFromHeaders(res.headers, targetURL);
       }
@@ -261,15 +260,13 @@ function fetchHTML(url, options, onSuccess, onError) {
       if (typeof onSuccess === "function") {
         onSuccess(res);
       }
-    },
-    function (error) {
+    }).catch(function (error) {
       if (typeof onError === "function") {
         try {
           onError(error);
         } catch (err) { }
       }
-    }
-  );
+    });
 }
 
 function HostsProbeRequest() {
