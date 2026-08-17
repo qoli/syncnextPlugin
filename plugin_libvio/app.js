@@ -213,8 +213,6 @@ function HostsProbeRequest() {
         "域名停用",
         "停用通知",
         "站点导航",
-        "發布頁",
-        "发布页",
         "Region Restricted",
         "Not Available",
         "cf-browser-verification",
