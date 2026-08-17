@@ -4,7 +4,7 @@ var DDYS_HOST = 'https://ddys.app';
 var DDYS_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 var CHALLENGE_API = DDYS_HOST + '/wp-json/ddys-protect/v1/gatecha/challenge';
 var GATE_PAGE_URL = DDYS_HOST + '/';
-var COOKIE_POOL_URL = 'https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_ddys/cookie.json';
+var COOKIE_POOL_URL = 'https://ddys-cookie-pool.ronnie.workers.dev/cookie.json';
 var COOKIE_POOL_SCHEMA_VERSION = 1;
 var COOKIE_POOL_MAX_ENTRIES = 10;
 
