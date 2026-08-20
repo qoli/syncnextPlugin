@@ -29,42 +29,42 @@
 [OK] 低调影视 | search(群体) -> 1
 [OK] 低调影视 | 群体 | 群体 -> https://v3.ddys.app/v2/movie/Colony.2026.re.mp4 | candidates=1
 [OK] 低调影视 | 揭秘日 | 揭秘日 -> https://v3.ddys.app/v2/movie/Disclosure.Day.2026.mp4 | candidates=1
-[OK] 低调影视 | 新攻壳机动队 (更新至07) | 1 -> https://v3.ddys.app/v2/Anime/The_Ghost_in_the_Shell/The_Ghost_in_the_Shell_S01E01.mp4 | candidates=1
+[OK] 低调影视 | 与你相恋到生命尽头 (更新至07) | 1 -> https://v3.ddys.app/v2/Anime/I_Want_to_Love_You_Till_Your_Dying_Day/I_Want_to_Love_You_Till_Your_Dying_Day_S01E01.mp4 | candidates=1
 [plugin 2] 新歐樂影院 | mode=subscriptions | index=https://api.olelive.com/v1/pub/vod/newest/1/12
 [FAIL] 新歐樂影院 | connectivity -> 3 target(s)
 [plugin 2] medias total=12, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "83709",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260819-1/86c01e27bb06ea19c663bfdbf08aeb0b.jpg",
-  "title": "抓特务【抢先版】",
-  "descriptionText": "抢先",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83709/true"
+  "id": "82843",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260709-1/28f0786963da32b22f23593c3708170b.jpg",
+  "title": "我独自盗墓",
+  "descriptionText": "更新至第07集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82843/true"
 }
-[plugin 2] search keyword=抓特务【抢先版】 url=https://api.olelive.com/v1/pub/index/search/%E6%8A%93%E7%89%B9%E5%8A%A1%E3%80%90%E6%8A%A2%E5%85%88%E7%89%88%E3%80%91/vod/0/1/4
+[plugin 2] search keyword=我独自盗墓 url=https://api.olelive.com/v1/pub/index/search/%E6%88%91%E7%8B%AC%E8%87%AA%E7%9B%97%E5%A2%93/vod/0/1/4
 [plugin 2] search results=1
 [plugin 2] search sample(index=0)
 {
-  "id": "83709",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260819-1/86c01e27bb06ea19c663bfdbf08aeb0b.jpg",
-  "title": "抓特务【抢先版】",
-  "descriptionText": "抢先",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83709/true"
+  "id": "82843",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260709-1/28f0786963da32b22f23593c3708170b.jpg",
+  "title": "我独自盗墓",
+  "descriptionText": "更新至第07集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/82843/true"
 }
-[OK] 新歐樂影院 | search(抓特务【抢先版】) -> 1
-[OK] 新歐樂影院 | 抓特务【抢先版】 | 在线播放 -> https://europe.olemovienews.com/ts5/20260818/h6kqlur4/mp4/h6kqlur4.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 一斩苍穹 | 第01集 -> https://europe.olemovienews.com/ts5/20260728/uiqy67o5/mp4/uiqy67o5.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 成也萧河 | 第01集 -> https://europe.olemovienews.com/ts5/20260803/eabloqfp/mp4/eabloqfp.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(我独自盗墓) -> 1
+[OK] 新歐樂影院 | 我独自盗墓 | 第01集 -> https://europe.olemovienews.com/ts5/20260708/ym2n55zx/mp4/ym2n55zx.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 花样少年少女 第2季 | 第01集 -> https://europe.olemovienews.com/ts4/20260701/yrkf6d4h/mp4/yrkf6d4h.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 心动的信号 第九季 | 先导片上 -> https://europe.olemovienews.com/ts5/20260731/v4ldxy48/mp4/v4ldxy48.mp4/master.m3u8 | candidates=1
 [plugin 3] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 3] medias total=32, testing=3
 [plugin 3] buildMedias sample(index=0)
 {
-  "id": "20260221",
-  "coverURLString": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260221.jpg",
-  "title": "无自觉圣女今天也无意识地释放力量",
-  "descriptionText": "第08集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260221"
+  "id": "20260219",
+  "coverURLString": "https://gimg4.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260219.jpg",
+  "title": "女主角？圣女？不，我是杂役女仆（自豪）！",
+  "descriptionText": "第09集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260219"
 }
 [plugin 3] search keyword=转生重骑士 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AC%E7%94%9F%E9%87%8D%E9%AA%91%E5%A3%AB
 [plugin 3] search results=1
@@ -77,9 +77,9 @@
   "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260212"
 }
 [OK] 新 AGE 動漫 | search(转生重骑士) -> 1
-[OK] 新 AGE 動漫 | 无自觉圣女今天也无意识地释放力量 | 第01集 -> https://vip.ffzy-plays.com/20260630/55297_88dcc5a4/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 与你相恋到生命尽头 | 第01集 -> https://v.baofeng11.com/video/yunixiangliandaoshengmingjintou/97905732fb22/index.m3u8 | candidates=3
-[OK] 新 AGE 動漫 | 底牌很多的维多利亚 | 第01集 -> https://vip.ffzy-plays.com/20260707/55506_ec2d1fe4/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 女主角？圣女？不，我是杂役女仆（自豪）！ | 第01集 -> https://vip.ffzy-plays.com/20260703/55356_9c652755/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | Candy Caries 蛀在糖糖里 | 第01集 -> https://hn.bfvvs.com/play/dPNZPR4a/index.m3u8 | candidates=6
+[OK] 新 AGE 動漫 | 乙女游戏世界对路人角色很不友好 第二季 | 第01集 -> https://vip.ffzy-plays.com/20260708/55533_77c68297/index.m3u8 | candidates=4
 [plugin 4] 廠長資源 | mode=subscriptions | index=https://www.4kcz.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 4] medias total=0, testing=0
@@ -103,82 +103,82 @@
 [plugin 7] medias total=30, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2506.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/69cb95e2bfb88.jpg",
-  "title": "我们愉快的好日子",
-  "descriptionText": "第100集 · 严贤京 尹仲勋 申正允 尹多英",
-  "detailURLString": "https://www.thanju.com/detail/2506.html"
-}
-[plugin 7] search keyword=我们愉快的好日子 url=https://www.thanju.com/search/%E6%88%91%E4%BB%AC%E6%84%89%E5%BF%AB%E7%9A%84%E5%A5%BD%E6%97%A5%E5%AD%90.html
-[plugin 7] search results=2
-[plugin 7] search sample(index=0)
-{
   "id": "https://www.thanju.com/detail/2562.html",
   "coverURLString": "https://pp.thanju.com/U/vod/6a7a799cd453a.jpg",
   "title": "欲望的陷阱",
-  "descriptionText": "欲望的陷阱",
+  "descriptionText": "第8集 · 张瑞希 田惠媛 薛正焕 周清晨",
   "detailURLString": "https://www.thanju.com/detail/2562.html"
 }
-[OK] 韩剧网 | search(我们愉快的好日子) -> 2
+[plugin 7] search keyword=欲望的陷阱 url=https://www.thanju.com/search/%E6%AC%B2%E6%9C%9B%E7%9A%84%E9%99%B7%E9%98%B1.html
+[plugin 7] search results=2
+[plugin 7] search sample(index=0)
+{
+  "id": "https://www.thanju.com/detail/2564.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/6a85d7cce52ce.jpg",
+  "title": "好，我们离婚吧",
+  "descriptionText": "好，我们离婚吧",
+  "detailURLString": "https://www.thanju.com/detail/2564.html"
+}
+[OK] 韩剧网 | search(欲望的陷阱) -> 2
+[OK] 韩剧网 | 欲望的陷阱 | 01 -> https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8 | candidates=1
 [OK] 韩剧网 | 我们愉快的好日子 | 01 -> https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 | candidates=1
-[OK] 韩剧网 | 给你梦想 | 01 -> https://cdn.yzzy28-play.com/20260713/32446_8aa7db6b/index.m3u8 | candidates=1
-[OK] 韩剧网 | 我的偶像总裁 | 01 -> https://cdn.vvvip-plays33.cc/20260803/16038_96fb9b48/index.m3u8 | candidates=1
+[OK] 韩剧网 | 好，我们离婚吧 | 01 -> https://cdn.vvvip-plays33.cc/20260819/17694_86cfe916/index.m3u8 | candidates=1
 [plugin 8] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 8] medias total=48, testing=3
 [plugin 8] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/147737.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/9jDFBr6fMhfJjCjrc8zagtiKDOn.jpg",
-  "title": "你的喜欢无与伦比",
-  "descriptionText": "更新至6集",
-  "detailURLString": "https://www.dbku.tv/voddetail/147737.html"
+  "id": "https://www.dbku.tv/voddetail/146290.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/he0yILQnhKDO8Tr94s9R0eFgDzb.jpg",
+  "title": "你在夏日之中",
+  "descriptionText": "更新至9集",
+  "detailURLString": "https://www.dbku.tv/voddetail/146290.html"
 }
-[plugin 8] search keyword=你的喜欢无与伦比 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%BD%A0%E7%9A%84%E5%96%9C%E6%AC%A2%E6%97%A0%E4%B8%8E%E4%BC%A6%E6%AF%94&submit=
+[plugin 8] search keyword=你在夏日之中 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%BD%A0%E5%9C%A8%E5%A4%8F%E6%97%A5%E4%B9%8B%E4%B8%AD&submit=
 [plugin 8] search results=1
 [plugin 8] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/147737.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/9jDFBr6fMhfJjCjrc8zagtiKDOn.jpg",
-  "title": "你的喜欢无与伦比",
-  "descriptionText": "更新至6集",
-  "detailURLString": "https://www.dbku.tv/voddetail/147737.html"
+  "id": "https://www.dbku.tv/voddetail/146290.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/he0yILQnhKDO8Tr94s9R0eFgDzb.jpg",
+  "title": "你在夏日之中",
+  "descriptionText": "更新至9集",
+  "detailURLString": "https://www.dbku.tv/voddetail/146290.html"
 }
-[OK] 独播库 | search(你的喜欢无与伦比) -> 1
-[OK] 独播库 | 你的喜欢无与伦比 | 第1集 -> https://vid.dbokutv.com/20260716/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMvaU6XtUMnYBJ0nBJ0oC4L5GpH2CovjS34/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 我从黑暗中走来 | 第1集 -> https://vid.dbokutv.com/20260811/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xGvE9QxiRGmlJqs5fWObfWP6A6X6wCPc1Ssk1K/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(你在夏日之中) -> 1
+[OK] 独播库 | 你在夏日之中 | 第1集 -> https://vid.dbokutv.com/20260625/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlR7XgBMvwU79wUYqmCIqmCaOuD44sCqOkRN0q/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 旋转亮片 | 第1集 -> https://vid.dbokutv.com/20260703/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNXwR70jC34jC30vEKP3CJWnBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 花开锦绣 | 第1集 -> https://vid.dbokutv.com/20260809/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8NjZmr5hGrjJmMc1YMc1WYd9aY6HcR5pQu64/chunklist.m3u8 | candidates=1
 [plugin 9] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
 [OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
 [plugin 9] medias total=48, testing=3
 [plugin 9] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27103/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260630-1/6bbfc51b141870dbffe59b0d50fd5c3a.webp",
-  "title": "攻壳机动队 THE GHOST IN THE SHELL",
-  "detailURLString": "https://ani.girigirilove.com/GV27103/"
+  "id": "https://ani.girigirilove.com/GV27111/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260701-1/dbb84d7768cf0f41ad57e9db229413cc.webp",
+  "title": "花样少男少女 第2季",
+  "detailURLString": "https://ani.girigirilove.com/GV27111/"
 }
-[plugin 9] search keyword=攻壳机动队 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E6%94%BB%E5%A3%B3%E6%9C%BA%E5%8A%A8%E9%98%9F
-[plugin 9] search results=8
+[plugin 9] search keyword=花样少男少女 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E8%8A%B1%E6%A0%B7%E5%B0%91%E7%94%B7%E5%B0%91%E5%A5%B3
+[plugin 9] search results=1
 [plugin 9] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27103/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260630-1/6bbfc51b141870dbffe59b0d50fd5c3a.webp",
-  "title": "攻壳机动队 THE GHOST IN THE SHELL",
-  "descriptionText": "更新至07集 / 23點0分",
-  "detailURLString": "https://ani.girigirilove.com/GV27103/"
+  "id": "https://ani.girigirilove.com/GV27111/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260701-1/dbb84d7768cf0f41ad57e9db229413cc.webp",
+  "title": "花样少男少女 第2季",
+  "descriptionText": "更新至09集 / 01點30分",
+  "detailURLString": "https://ani.girigirilove.com/GV27111/"
 }
-[OK] grigrilove | search(攻壳机动队) -> 8
-[OK] grigrilove | 攻壳机动队 THE GHOST IN THE SHELL | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/THEGHOSTINTHESHELLCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 奇招百出的维多利亚 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/VictoriaofManyFacesCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 拯救替身千金的是冷酷无情冰之王子的爱 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/MigawariCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | search(花样少男少女) -> 1
+[OK] grigrilove | 花样少男少女 第2季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/HanazakarinoKimitachieS2CHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 盜墓王 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/DogulwangCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | LV999的村民 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/TheVillagerofLevel999CHT/01/playlist.m3u8 | candidates=1
 [plugin 10] Gimy TV | mode=subscriptions | index=https://gimy.tv/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 10] medias total=0, testing=0
 [plugin 10] search keyword=test url=https://gimy.tv/search/test----------1---.html
 [plugin 10] search results=0
 [FAIL] Gimy TV | search(test) -> 0
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_5099b0bd-d2e0-4722-8b2a-a7dede80b785
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_13c73e2f-7fdd-4f02-ac32-d0134ca24959
 [summary] plugins=10, fatal=4, cases=38, ok=29, fail=9, invalidSources=4
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
