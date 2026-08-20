@@ -273,22 +273,51 @@ function testPlaylistMissingDataFailsExplicitly() {
 function testPlayerResolvesPlaybackInputs() {
   const context = loadPlugin();
   let playerJSON = null;
+  let playerCandidates = null;
   let errorText = null;
   context.$next.toPlayerByJSON = function (json) {
     playerJSON = JSON.parse(json);
+  };
+  context.$next.toPlayerCandidates = function (json) {
+    playerCandidates = JSON.parse(json);
   };
   context.$next.emptyView = function (text) {
     errorText = text;
   };
 
   context.Player('https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
-  assert.strictEqual(playerJSON.url, 'https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
-  assert.strictEqual(playerJSON.headers.Referer, 'https://ddys.app/');
+  assert.deepStrictEqual(
+    JSON.parse(JSON.stringify(playerCandidates)),
+    [
+      {
+        url: 'https://v2.ddys.app/v2/movie/Colony.2026.re.mp4',
+        headers: {
+          'User-Agent': context.DDYS_UA,
+          Referer: 'https://ddys.app/',
+        },
+      },
+      {
+        url: 'https://v3.ddys.app/v2/movie/Colony.2026.re.mp4',
+        headers: {
+          'User-Agent': context.DDYS_UA,
+          Referer: 'https://ddys.app/',
+        },
+      },
+    ]
+  );
+  assert.strictEqual(playerJSON, null);
   assert.strictEqual(errorText, null);
 
-  playerJSON = null;
+  playerCandidates = null;
   context.Player('ddys-s1-e1-https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
-  assert.strictEqual(playerJSON.url, 'https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
+  assert.strictEqual(playerCandidates[0].url, 'https://v2.ddys.app/v2/movie/Colony.2026.re.mp4');
+  assert.strictEqual(playerCandidates[1].url, 'https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
+
+  playerCandidates = null;
+  context.Player('https://media.example/episode.m3u8');
+  assert.strictEqual(playerJSON.url, 'https://media.example/episode.m3u8');
+  assert.strictEqual(playerJSON.headers.Referer, 'https://ddys.app/');
+  assert.strictEqual(playerCandidates, null);
 
   playerJSON = null;
   context.Player('https://ddys.app/colony/');
@@ -299,6 +328,20 @@ function testPlayerResolvesPlaybackInputs() {
   context.Player('ddys-s1-e1-https://ddys.app/colony/');
   assert.strictEqual(playerJSON, null);
   assert.match(errorText, /not a resolved media URL/);
+}
+
+function testPlayerRequiresCandidateSupportForV3URLs() {
+  const context = loadPlugin();
+  let errorText = null;
+  context.$next.toPlayerByJSON = function () {
+    throw new Error('single-address fallback must not be used');
+  };
+  context.$next.emptyView = function (text) {
+    errorText = text;
+  };
+
+  context.Player('https://v3.ddys.app/v2/movie/Colony.2026.re.mp4');
+  assert.match(errorText, /does not support multiple playback candidates/);
 }
 
 async function testSafeFetchInjectsCookie() {
@@ -384,6 +427,7 @@ async function main() {
   testPlaylistProducesResolvedEpisodeURLs();
   testPlaylistMissingDataFailsExplicitly();
   testPlayerResolvesPlaybackInputs();
+  testPlayerRequiresCandidateSupportForV3URLs();
   await testSafeFetchInjectsCookie();
   await testRejectedCookieFailsWithoutGateBypass();
   console.log('plugin_ddys gate/OCR/cookie-pool tests passed');

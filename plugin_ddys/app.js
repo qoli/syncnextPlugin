@@ -128,14 +128,38 @@ function resolvePlayerInputURL(inputURL) {
   return '';
 }
 
-function sendResolvedPlayer(url) {
-  $next.toPlayerByJSON(JSON.stringify({
+function buildPlayerCandidates(url) {
+  var headers = {
+    'User-Agent': DDYS_UA,
+    Referer: DDYS_HOST + '/',
+  };
+  var candidates = [];
+  var v3Match = String(url || '').match(/^(https:\/\/)v3\.ddys\.app(\/.*)$/i);
+
+  if (v3Match) {
+    candidates.push({
+      url: v3Match[1] + 'v2.ddys.app' + v3Match[2],
+      headers: headers,
+    });
+  }
+  candidates.push({
     url: url,
-    headers: {
-      'User-Agent': DDYS_UA,
-      Referer: DDYS_HOST + '/',
-    },
-  }));
+    headers: headers,
+  });
+  return candidates;
+}
+
+function sendResolvedPlayer(url) {
+  var candidates = buildPlayerCandidates(url);
+  if (candidates.length > 1) {
+    if (typeof $next.toPlayerCandidates !== 'function') {
+      $next.emptyView('DDYS Player: Syncnext does not support multiple playback candidates');
+      return;
+    }
+    $next.toPlayerCandidates(JSON.stringify(candidates));
+    return;
+  }
+  $next.toPlayerByJSON(JSON.stringify(candidates[0]));
 }
 
 // ── gate detection ──────────────────────────────────────────
