@@ -27,44 +27,44 @@
   "detailURLString": "https://ddys.app/colony/"
 }
 [OK] 低调影视 | search(群体) -> 1
-[OK] 低调影视 | 群体 | 群体 -> https://v2.ddys.app/v2/movie/Colony.2026.re.mp4 | candidates=2
-[OK] 低调影视 | 揭秘日 | 揭秘日 -> https://v2.ddys.app/v2/movie/Disclosure.Day.2026.mp4 | candidates=2
-[OK] 低调影视 | 财阀 X 刑警 (更新至 第2季05) | S1E1 1 -> https://v2.ddys.app/v2/kr_drama/Flex_X_Cop/Flex_X_Cop_S01E01.mp4 | candidates=2
+[OK] 低调影视 | 群体 | 群体 -> https://v3.ddys.app/v2/movie/Colony.2026.re.mp4 | candidates=2
+[OK] 低调影视 | 揭秘日 | 揭秘日 -> https://v3.ddys.app/v2/movie/Disclosure.Day.2026.mp4 | candidates=2
+[OK] 低调影视 | 穹庐下的魔女 (更新至09) | 1 -> https://v3.ddys.app/v2/Anime/Tenmaku_no_Jaadugar/Tenmaku_no_Jaadugar_S01E01.mp4 | candidates=2
 [plugin 2] 新歐樂影院 | mode=subscriptions | index=https://api.olelive.com/v1/pub/vod/newest/1/12
 [FAIL] 新歐樂影院 | connectivity -> 3 target(s)
 [plugin 2] medias total=12, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "83743",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260822-1/e8930db60f4788527d021ba18a7f5ec1.jpg",
-  "title": "父皇，别再逼我做皇帝了",
+  "id": "83763",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260823-1/56d74ce5a97232cafc30d507a829cc1d.jpg",
+  "title": "搬空国库医妃带着空间流放千里2",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83743/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83763/true"
 }
-[plugin 2] search keyword=父皇，别再逼我做皇帝了 url=https://api.olelive.com/v1/pub/index/search/%E7%88%B6%E7%9A%87%EF%BC%8C%E5%88%AB%E5%86%8D%E9%80%BC%E6%88%91%E5%81%9A%E7%9A%87%E5%B8%9D%E4%BA%86/vod/0/1/4
+[plugin 2] search keyword=搬空国库医妃带着空间流放 url=https://api.olelive.com/v1/pub/index/search/%E6%90%AC%E7%A9%BA%E5%9B%BD%E5%BA%93%E5%8C%BB%E5%A6%83%E5%B8%A6%E7%9D%80%E7%A9%BA%E9%97%B4%E6%B5%81%E6%94%BE/vod/0/1/4
 [plugin 2] search results=1
 [plugin 2] search sample(index=0)
 {
-  "id": "83743",
-  "coverURLString": "https://static.olelive.com/upload/vod/20260822-1/e8930db60f4788527d021ba18a7f5ec1.jpg",
-  "title": "父皇，别再逼我做皇帝了",
+  "id": "83763",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260823-1/56d74ce5a97232cafc30d507a829cc1d.jpg",
+  "title": "搬空国库医妃带着空间流放千里2",
   "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83743/true"
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83763/true"
 }
-[OK] 新歐樂影院 | search(父皇，别再逼我做皇帝了) -> 1
-[OK] 新歐樂影院 | 父皇，别再逼我做皇帝了 | 第1集 -> https://europe.olemovienews.com/ts5/20260822/euihadHi/mp4/euihadHi.mp4/clipTo/315366/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 林主今天掉马了吗 | 第1集 -> https://europe.olemovienews.com/ts5/20260822/hAFJJedG/mp4/hAFJJedG.mp4/clipTo/75233/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 病太子召唤诸天，暴压天下 | 第1集 -> https://europe.olemovienews.com/ts5/20260822/ExAFqGgl/mp4/ExAFqGgl.mp4/clipTo/156433/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(搬空国库医妃带着空间流放) -> 1
+[OK] 新歐樂影院 | 搬空国库医妃带着空间流放千里2 | 1 -> https://europe.olemovienews.com/ts5/20260823/jniynlta/mp4/jniynlta.mp4/clipTo/146500/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 萧医生，你搞错老婆啦 | 01 -> https://europe.olemovienews.com/ts5/20260823/ynvmjnsE/mp4/ynvmjnsE.mp4/clipTo/154166/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 云鬓乱：误惹奸臣逃不掉 | 第1集 -> https://europe.olemovienews.com/ts5/20260823/iiaGiHnj/mp4/iiaGiHnj.mp4/clipTo/136133/master.m3u8 | candidates=1
 [plugin 3] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 3] medias total=32, testing=3
 [plugin 3] buildMedias sample(index=0)
 {
-  "id": "20260209",
-  "coverURLString": "https://gimg4.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260209.jpg",
-  "title": "地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～ 第2季",
+  "id": "20260222",
+  "coverURLString": "https://gimg2.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260222.jpg",
+  "title": "鬼之花嫁",
   "descriptionText": "第08集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260209"
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260222"
 }
 [plugin 3] search keyword=转生重骑士 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AC%E7%94%9F%E9%87%8D%E9%AA%91%E5%A3%AB
 [plugin 3] search results=1
@@ -77,9 +77,9 @@
   "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260212"
 }
 [OK] 新 AGE 動漫 | search(转生重骑士) -> 1
-[OK] 新 AGE 動漫 | 地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～ 第2季 | 第01集 -> https://vip.ffzy-plays.com/20260704/55381_bfc15822/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 我家的弟弟们真是让您费心了 | 第01集 -> https://vip.ffzy-plays.com/20260704/55382_70afa835/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 正后方的神威 | 第01集 -> https://vip.ffzy-plays.com/20260704/55393_fa09a054/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 鬼之花嫁 | 第01集 -> https://vip.ffzy-plays.com/20260705/55408_c95e2f00/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 魔法少女奈叶 EXCEEDS Gun Blaze Vengeance | 第01集 -> https://vip.ffzy-plays.com/20260705/55409_3f0ddf06/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 穹庐下的魔女 | 第01集 -> https://vip.ffzy-plays.com/20260705/55406_34fc9932/index.m3u8 | candidates=4
 [plugin 4] 廠長資源 | mode=subscriptions | index=https://www.4kcz.com/movie_bt/page/1
 [FAIL] 廠長資源 | connectivity -> 3 target(s)
 [plugin 4] medias total=0, testing=0
@@ -103,13 +103,13 @@
 [plugin 7] medias total=30, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2555.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/6a6d45d66d2c8.jpg",
-  "title": "杀手妈咪",
-  "descriptionText": "第7集 · 孔晓振 郑浚远 李相二 成东日",
-  "detailURLString": "https://www.thanju.com/detail/2555.html"
+  "id": "https://www.thanju.com/detail/2552.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/6a657639cc091.jpg",
+  "title": "爱情来了",
+  "descriptionText": "第9集 · 安喜延",
+  "detailURLString": "https://www.thanju.com/detail/2552.html"
 }
-[plugin 7] search keyword=杀手妈咪 url=https://www.thanju.com/search/%E6%9D%80%E6%89%8B%E5%A6%88%E5%92%AA.html
+[plugin 7] search keyword=爱情来了 url=https://www.thanju.com/search/%E7%88%B1%E6%83%85%E6%9D%A5%E4%BA%86.html
 [plugin 7] search results=2
 [plugin 7] search sample(index=0)
 {
@@ -119,66 +119,66 @@
   "descriptionText": "好，我们离婚吧",
   "detailURLString": "https://www.thanju.com/detail/2564.html"
 }
-[OK] 韩剧网 | search(杀手妈咪) -> 2
-[OK] 韩剧网 | 杀手妈咪 | 01 -> https://cdn.yzzyvip-29.com/20260801/26480_90d048af/index.m3u8 | candidates=1
-[OK] 韩剧网 | 欲望的陷阱 | 01 -> https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8 | candidates=1
-[OK] 韩剧网 | 我们愉快的好日子 | 01 -> https://player.yzzyvip-35.com/20260331/3348_333cb763/index.m3u8 | candidates=1
+[OK] 韩剧网 | search(爱情来了) -> 2
+[OK] 韩剧网 | 爱情来了 | 01 -> https://cdn.yzzyvip-29.com/20260726/26230_0a2f0579/index.m3u8 | candidates=1
+[OK] 韩剧网 | 财阀X刑警第二季 | 01 -> https://cdn.vvvip-plays33.cc/20260807/16363_fde0516f/index.m3u8 | candidates=1
+[OK] 韩剧网 | 毛骨悚然的恋爱 | 01 -> https://cdn.yzzyvip-29.com/20260718/25782_e9ef4cc2/index.m3u8 | candidates=1
 [plugin 8] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
 [plugin 8] medias total=48, testing=3
 [plugin 8] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/147528.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/vdulPvBCv3RzH4smvp4hu2n78i8.jpg",
-  "title": "直到T恤干透",
-  "descriptionText": "更新至7集",
-  "detailURLString": "https://www.dbku.tv/voddetail/147528.html"
+  "id": "https://www.dbku.tv/voddetail/148695.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/jdaHI1jIbJgPXdlDi2quuWw6fKB.jpg",
+  "title": "杀手妈咪",
+  "descriptionText": "更新至8集",
+  "detailURLString": "https://www.dbku.tv/voddetail/148695.html"
 }
-[plugin 8] search keyword=直到T恤干透 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%9B%B4%E5%88%B0T%E6%81%A4%E5%B9%B2%E9%80%8F&submit=
+[plugin 8] search keyword=杀手妈咪 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9D%80%E6%89%8B%E5%A6%88%E5%92%AA&submit=
 [plugin 8] search results=1
 [plugin 8] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/147528.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/vdulPvBCv3RzH4smvp4hu2n78i8.jpg",
-  "title": "直到T恤干透",
-  "descriptionText": "更新至7集",
-  "detailURLString": "https://www.dbku.tv/voddetail/147528.html"
+  "id": "https://www.dbku.tv/voddetail/148695.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/jdaHI1jIbJgPXdlDi2quuWw6fKB.jpg",
+  "title": "杀手妈咪",
+  "descriptionText": "更新至8集",
+  "detailURLString": "https://www.dbku.tv/voddetail/148695.html"
 }
-[OK] 独播库 | search(直到T恤干透) -> 1
-[OK] 独播库 | 直到T恤干透 | 第1集 -> https://vid.dbokutv.com/20260712/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBNfaT7XdT2qmCIqmC4P2Ca92GJ0kRN0q/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(杀手妈咪) -> 1
 [OK] 独播库 | 杀手妈咪 | 第1集 -> https://vid.dbokutv.com/20260801/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBNDpRMqjC34jC352DKGvDp0sBcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 我们愉快的好日子 | 第1集 -> https://vid.dbokutv.com/20260402/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlR7XgBNTjUMjaQ79wBJ0nBJ0mGaGoCpKpHYvjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 爱情来了 | 第1集 -> https://vid.dbokutv.com/20260726/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBM5nR6mjC34jC396HJWoEJSmBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 能有多大事 | 第1集 -> https://vid.dbokutv.com/20260815/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlR7XgBMvvP6HpBJ0nBJ0oDZH1DJb4E2vjS34/chunklist.m3u8 | candidates=1
 [plugin 9] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
 [OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
 [plugin 9] medias total=48, testing=3
 [plugin 9] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27118/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260702-1/a5169fbef260a843c24624d77a6be62a.webp",
-  "title": "地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～ 第2季",
-  "detailURLString": "https://ani.girigirilove.com/GV27118/"
+  "id": "https://ani.girigirilove.com/GV27122/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260702-1/a583c4360f5febc0eefbe4225c11194e.webp",
+  "title": "死神 千年血战篇 -祸进谭-",
+  "detailURLString": "https://ani.girigirilove.com/GV27122/"
 }
-[plugin 9] search keyword=地狱模式 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E5%9C%B0%E7%8B%B1%E6%A8%A1%E5%BC%8F
-[plugin 9] search results=2
+[plugin 9] search keyword=死神 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E6%AD%BB%E7%A5%9E
+[plugin 9] search results=10
 [plugin 9] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27118/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260702-1/a5169fbef260a843c24624d77a6be62a.webp",
-  "title": "地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～ 第2季",
-  "descriptionText": "更新至08集 / 1點0分",
-  "detailURLString": "https://ani.girigirilove.com/GV27118/"
+  "id": "https://ani.girigirilove.com/GV27122/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260702-1/a583c4360f5febc0eefbe4225c11194e.webp",
+  "title": "死神 千年血战篇 -祸进谭-",
+  "descriptionText": "更新至05集 / 23點30分",
+  "detailURLString": "https://ani.girigirilove.com/GV27122/"
 }
-[OK] grigrilove | search(地狱模式) -> 2
-[OK] grigrilove | 地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～ 第2季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/HellMode2ndCHT/13/playlist.m3u8 | candidates=1
-[OK] grigrilove | 从后面来的神威先生 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/UshironoShoumenKamuisanCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 我家的弟弟们真是让您费心了 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/UchinoOtoutodomogaSumimasenCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | search(死神) -> 10
+[OK] grigrilove | 死神 千年血战篇 -祸进谭- | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/07/cht/BleachSennenKessenhenKashintanCHT/41/playlist.m3u8 | candidates=1
+[OK] grigrilove | 小书痴的下克上 领主的养女 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/04/cht/HonzukinoGekokujouS4CHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 入间同学入魔了！ 第四季 | 01 -> https://giri.girigirilove.top/zijian/oldanime/2026/04/cht/MairimashitaIrumakunS4CHT/01/playlist.m3u8 | candidates=1
 [plugin 10] Gimy TV | mode=subscriptions | index=https://gimy.tv/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 10] medias total=0, testing=0
 [plugin 10] search keyword=test url=https://gimy.tv/search/test----------1---.html
 [plugin 10] search results=0
 [FAIL] Gimy TV | search(test) -> 0
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_6b12ae5d-5511-435e-9338-d7fb3f7145e2
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_c6686ea0-15e2-4a54-a243-12bb62d0c847
 [summary] plugins=10, fatal=4, cases=38, ok=29, fail=9, invalidSources=4
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
