@@ -25,4 +25,5 @@
 
 - 更新 hosts 前，先重新讀取 `https://cz01.vip`，確認推薦入口是否改變。
 - 若導航頁不可直接讀取，可以使用 ARC CDP 端點檢查實際渲染內容。
+- 2026-08-30 實際頁面搜索表單已改為 `GET /nimasile?q=...`；舊的 `/boss1O1` 會被 SafeLine 當作攻擊請求直接阻擋，不能再用作搜索入口。
 - 更新後至少驗證 `config.json` JSON 格式、`app.js` 語法，以及廠長定向 list/search/player smoke。

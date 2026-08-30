@@ -2,6 +2,15 @@ const assert = require("assert");
 const fs = require("fs");
 const vm = require("vm");
 
+const config = JSON.parse(
+  fs.readFileSync(__dirname + "/config.json", "utf8")
+);
+
+assert.strictEqual(
+  config.search.url,
+  "https://www.4kcz.com/nimasile?q=${keyword}"
+);
+
 const context = {
   console,
   $http: {},
