@@ -60,4 +60,14 @@ assert.equal(
   "an access-verification page must still fail explicitly"
 );
 
+assert.equal(
+  probeAccepts(
+    200,
+    "<title>libvio — 域名暂时停止使用通知 / Domain Suspended</title>" +
+      "<div class='stui-vodlist__box'></div>"
+  ),
+  false,
+  "a suspended domain page must fail even when it contains a content marker"
+);
+
 console.log("plugin_libvio hosts probe contract test passed");

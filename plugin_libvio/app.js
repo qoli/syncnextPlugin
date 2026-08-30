@@ -1,6 +1,6 @@
 `user script`;
 
-var FALLBACK_HOST = "https://www.libvios.com";
+var FALLBACK_HOST = "https://libviobd.com";
 var BASE_URL = normalizeHost(
   typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost
     ? __syncnextPrimaryHost
@@ -198,7 +198,7 @@ function HostsProbeRequest() {
     },
     accept: {
       statusCodes: [200],
-      bodyIncludesAny: ["stui-vodlist__box", "stui-content", "LIBVIO"],
+      bodyIncludesAny: ["stui-vodlist__box", "stui-content"],
       bodyExcludesAny: [
         "访问验证",
         "訪問驗證",
@@ -212,6 +212,8 @@ function HostsProbeRequest() {
         "ERR_SERVICE_UNAVAILABLE",
         "域名停用",
         "停用通知",
+        "域名暂时停止使用通知",
+        "Domain Suspended",
         "站点导航",
         "Region Restricted",
         "Not Available",
@@ -230,6 +232,8 @@ function HostsProbeRequest() {
         "503",
         "域名停用",
         "停用通知",
+        "域名暂时停止使用通知",
+        "Domain Suspended",
         "站点导航",
         "發布頁",
         "发布页",

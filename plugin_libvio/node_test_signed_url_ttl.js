@@ -6,9 +6,17 @@ const vm = require("vm");
 
 let emittedCandidates = null;
 let unavailableMessage = "";
+const now = Date.UTC(2026, 6, 30, 10, 12, 19);
+
+class FixedDate extends Date {
+  static now() {
+    return now;
+  }
+}
+
 const sandbox = {
   console: { log: function () {} },
-  Date,
+  Date: FixedDate,
   JSON,
   Number,
   String,
@@ -31,8 +39,6 @@ const sandbox = {
 
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(__dirname + "/app.js", "utf8"), sandbox);
-
-const now = Date.UTC(2026, 6, 30, 10, 12, 19);
 
 function candidate(name, signedAt, expires) {
   return {

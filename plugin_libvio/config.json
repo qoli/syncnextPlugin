@@ -2,12 +2,12 @@
   "name": "libvio",
   "description": "libvio",
   "notification": "本頻道有很多網盤資源，從而播放列表會報告錯誤",
-  "host": "https://www.libvios.com/",
+  "host": "https://libviobd.com/",
   "hosts": [
-    "https://www.libvios.com",
-    "https://www.libhd.com",
     "https://libviobd.com",
-    "https://libvio.host"
+    "https://libvio.host",
+    "https://www.libvios.com",
+    "https://www.libhd.com"
   ],
   "files": [
     "txml.js",
@@ -18,38 +18,38 @@
     {
       "key": "index",
       "title": "最近更新",
-      "url": "https://www.libvios.com/",
+      "url": "https://libviobd.com/",
       "timeout": 50,
       "javascript": "buildMedias"
     },
     {
       "key": "movie",
       "title": "电影",
-      "url": "https://www.libvios.com/type/1-${pageNumber}.html",
+      "url": "https://libviobd.com/type/1-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "series",
       "title": "电视剧",
-      "url": "https://www.libvios.com/type/2-${pageNumber}.html",
+      "url": "https://libviobd.com/type/2-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "anime",
       "title": "动漫",
-      "url": "https://www.libvios.com/type/4-${pageNumber}.html",
+      "url": "https://libviobd.com/type/4-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "jpandkr",
       "title": "日韩剧",
-      "url": "https://www.libvios.com/type/15-${pageNumber}.html",
+      "url": "https://libviobd.com/type/15-${pageNumber}.html",
       "javascript": "buildMedias"
     },
     {
       "key": "euandus",
       "title": "欧美剧",
-      "url": "https://www.libvios.com/type/16-${pageNumber}.html",
+      "url": "https://libviobd.com/type/16-${pageNumber}.html",
       "javascript": "buildMedias"
     }
   ],
@@ -61,7 +61,7 @@
     "javascript": "Player"
   },
   "search": {
-    "url": "https://www.libvios.com/search/-------------.html?wd=${keyword}",
+    "url": "https://libviobd.com/search/-------------.html?wd=${keyword}",
     "javascript": "Search"
   },
   "cache": {
@@ -76,8 +76,8 @@
         "bytes": 47943
       },
       "app.js": {
-        "sha256": "7bd4f4d64dfed3baf025a32cea01e54ccb539ed49efa8e091bd9ea21f4d841bb",
-        "bytes": 38461
+        "sha256": "d7ecaa7d9bc94950e17b9bd74a3b5b2239005fbfec94646d4a2a312ebdc16f16",
+        "bytes": 38588
       }
     }
   }
