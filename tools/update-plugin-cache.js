@@ -60,6 +60,42 @@ function warnIfGitChangesPublishedBytes(resourcePath, repositoryRelativePath) {
   );
 }
 
+function validateChallenge(pluginName, config) {
+  if (config.challenge === undefined) {
+    return;
+  }
+
+  const challenge = config.challenge;
+  const expectedKeys = ["mode", "schema", "scope"];
+  if (!challenge || typeof challenge !== "object" || Array.isArray(challenge)
+      || JSON.stringify(Object.keys(challenge).sort()) !== JSON.stringify(expectedKeys)) {
+    throw new Error(
+      `${pluginName}/config.json challenge must contain exactly schema, mode, and scope`,
+    );
+  }
+  if (challenge.schema !== 1 || challenge.mode !== "managed" || challenge.scope !== "hosts") {
+    throw new Error(`${pluginName}/config.json contains an unsupported challenge configuration`);
+  }
+
+  const declaredOrigins = [config.host, ...(config.hosts || [])];
+  if (declaredOrigins.length === 0 || !declaredOrigins.every((value) => typeof value === "string")) {
+    throw new Error(`${pluginName}/config.json challenge requires string host/hosts origins`);
+  }
+  for (const value of declaredOrigins) {
+    let url;
+    try {
+      url = new URL(value);
+    } catch {
+      throw new Error(`${pluginName}/config.json contains an invalid challenge origin: ${value}`);
+    }
+    if (!["http:", "https:"].includes(url.protocol)
+        || url.username || url.password || url.search || url.hash
+        || (url.pathname !== "/" && url.pathname !== "")) {
+      throw new Error(`${pluginName}/config.json challenge origin must be an exact HTTP(S) origin: ${value}`);
+    }
+  }
+}
+
 function expectedCache(pluginName, config) {
   if (!Array.isArray(config.files) || config.files.length === 0) {
     throw new Error(`${pluginName}/config.json must declare a non-empty files array`);
@@ -104,6 +140,7 @@ for (const pluginName of plugins) {
     }
     const configPath = path.join(repositoryRoot, pluginName, "config.json");
     const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+    validateChallenge(pluginName, config);
     const expected = expectedCache(pluginName, config);
 
     if (checkOnly) {

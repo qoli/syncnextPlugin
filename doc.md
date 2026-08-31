@@ -69,6 +69,7 @@ Syncnext 插件是以 JavaScript 撰寫的模組，Syncnext 會在沙盒環境�
   "description": "阿里雲盤資源庫",
   "notification": "",
   "host": "https://wogg.xxooo.cf/",
+  "challenge": { "schema": 1, "mode": "managed", "scope": "hosts" },
   "files": ["txml.js", "app.js"],
   "cache": {
     "schema": 1,
@@ -100,6 +101,7 @@ Syncnext 插件是以 JavaScript 撰寫的模組，Syncnext 會在沙盒環境�
 
 * `host`：主域名，也是插件 JavaScript 唯一應依賴的域名欄位。
 * `hosts`：可選的候選域名列表。runtime 可在正式載入插件前做一次性 bootstrap probe，但插件 JavaScript 仍只應依賴單一 `host`。
+* `challenge`：可選的 managed challenge capability。只接受 `schema: 1`、`mode: "managed"`、`scope: "hosts"` 的完整組合，並精確涵蓋 `host + hosts` 的 HTTP(S) origins。
 * `files`：腳本載入與打包順序，由於 Syncnext 會依序注入，在 `browserify` 打包時也請保持一致（先工具、後主程式）。
 * `cache`：可選的內容快取提示。`schema` 目前固定為 `1`；`resources` 必須為每個 `files` 項目記錄原始 UTF-8 檔案的 SHA-256 與 byte 數。官方插件使用 `node tools/update-plugin-cache.js` 生成，不應手工填寫；第三方倉庫與執行 Agent 的完整遷移流程見 [PLUGIN_BUNDLE_AGENT_GUIDE.md](./PLUGIN_BUNDLE_AGENT_GUIDE.md)。
 * `cache` 不是 App 的強制完整性 gate。缺失、格式錯誤、資源不完整或遠端內容與宣告不一致時，runtime 會使用本次網絡回應但不寫入該 Hash 的持久快取；網絡失敗仍是載入失敗，不會退回舊腳本。插件若修改腳本卻不更新 Hash，已違反發佈約定，App 可繼續使用本地符合舊 Hash 的內容而不做額外 freshness 請求。
@@ -110,6 +112,22 @@ Syncnext 插件是以 JavaScript 撰寫的模組，Syncnext 會在沙盒環境�
 * `permission`：對阿里雲盤授權等敏感功能（`$next.aliLink` / `$next.aliPlay`）必須顯式標記 `AliDrive`。
 * `notification`：可選字串，顯示於 Syncnext 內的頻道通知區域（如僅支援海外 IP），請勿寫入敏感資訊或密鑰。
 * `timeout`：可在 pages/search/episodes/player 上個別覆蓋，單位為秒；若未設置則使用 Syncnext 預設值。此值同時是該操作的 JS 結果等待與 `$http`／SafeLine 網絡階段 inactivity timeout；HTTP 2xx 不會把 JS 等待時間縮短為 5 秒。
+
+### `challenge` capability
+
+需要 App 代管網站驗證的插件，必須在自己的 `config.json` 明確聲明：
+
+```json
+"challenge": {
+  "schema": 1,
+  "mode": "managed",
+  "scope": "hosts"
+}
+```
+
+`scope: "hosts"` 只授權 `host` 與 `hosts` 已聲明的 exact origins；scheme、host 與非預設 port 都參與比對。它不支持 wildcard、父域匹配、redirect 自動擴權，也不能配置 Cookie 名稱、solver 腳本或資源限制。這些機制仍由 App runtime 擁有。
+
+未聲明 capability 的插件仍可取得普通 HTTP 回應；若 runtime 偵測到 challenge、block 或無法安全分類的驗證頁，會明確失敗，不會再查詢全局 host 白名單，也不會把驗證 HTML 當成正常內容交給插件。
 
 ### `HostsProbeRequest()`
 

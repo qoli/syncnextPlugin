@@ -32,6 +32,8 @@ node plugin_<provider>/node_test_*.js
 git diff --check
 ```
 
+`update-plugin-cache.js --check` 同時驗證可選 `challenge` capability：只接受固定的 `schema: 1`、`mode: "managed"`、`scope: "hosts"`，並拒絕非 exact HTTP(S) origin、credentials、query、fragment 與 wildcard。
+
 若測試修改了播放器候選或分集候選，fixture 必須驗證 payload 可 `JSON.parse`，且符合 [doc.md](./doc.md) 中的 App 契約。尤其 `$next.toPlayerCandidates` 的 payload 必須是候選物件的 JSON 陣列，不是 `{ candidates: [...] }` 包裝。
 
 ## 3. 限縮 smoke

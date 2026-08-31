@@ -128,6 +128,8 @@ node plugin_<provider>/node_test_*.js
 git diff --check
 ```
 
+這個 gate 也會驗證 `challenge` capability 與 `host + hosts` exact-origin 契約；不要以全局白名單補充或繞過插件聲明。
+
 如果工具顯示 `Plugin cache manifest warning`，代表 Git clean filter（例如換行正規化）會在提交時改變資源 bytes，令工作樹生成的 Hash 可能與 GitHub Raw 不一致。提交前應先統一檔案換行，或在 `.gitattributes` 為該資源聲明明確規則，再重新生成並檢查 manifest；不要忽略警告或手工覆寫 Hash。
 
 需要整合 smoke 時，限縮插件並使用暫存輸出，避免污染 repo：
