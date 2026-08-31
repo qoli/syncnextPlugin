@@ -175,7 +175,7 @@ function rebaseLibvioURL(url) {
   }
 
   return value.replace(
-    /^https?:\/\/(?:www\.)?(?:(?:libviohd|libvios|libviobd|libhd)\.com|libvio\.host|libvio\.(?:app|art|cam|cc|cloud|com|fun|in|la|life|link|me|mov|pro|pw|run|site|vip))(?=\/|$)/i,
+    /^https?:\/\/(?:www\.)?(?:(?:libviohd|libvios|libviobd|libhd)\.com|libvio\.host|libvio\.(?:app|art|cam|cc|cloud|com|fun|in|la|life|link|me|mov|pro|pw|run|site|to|vip))(?=\/|$)/i,
     BASE_URL
   );
 }

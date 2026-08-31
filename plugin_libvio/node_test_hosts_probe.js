@@ -13,6 +13,12 @@ const sandbox = {
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(__dirname + "/app.js", "utf8"), sandbox);
 
+assert.equal(
+  sandbox.buildURL("https://www.libvio.to/detail/714893650.html"),
+  "https://libviobd.com/detail/714893650.html",
+  "the current published host must rebase to the selected primary host"
+);
+
 function probeAccepts(status, body) {
   const accept = sandbox.HostsProbeRequest().accept;
   const titleMatch = String(body).match(/<title[^>]*>([\s\S]*?)<\/title>/i);

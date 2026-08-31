@@ -7,7 +7,9 @@ const vm = require("vm");
 const CryptoJS = require("crypto-js");
 
 const DEFAULT_HOSTS = [
-  "https://www.libvio.cam",
+  "https://libviobd.com",
+  "https://www.libvio.to",
+  "https://libvio.host",
 ];
 const SMARTPLAY_API_URL =
   "https://hd.ticktockwow.com/smartplay-cache/api/webvideo_ty.php";
