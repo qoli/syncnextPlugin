@@ -6,6 +6,7 @@ const vm = require("vm");
 
 let emittedCandidates = null;
 let unavailableMessage = "";
+let directPlayerPayload = null;
 const now = Date.UTC(2026, 6, 30, 10, 12, 19);
 
 class FixedDate extends Date {
@@ -30,6 +31,9 @@ const sandbox = {
   $next: {
     toPlayerCandidates: function (payload) {
       emittedCandidates = JSON.parse(payload);
+    },
+    toPlayerByJSON: function (payload) {
+      directPlayerPayload = JSON.parse(payload);
     },
     emptyView: function (message) {
       unavailableMessage = message;
@@ -60,6 +64,11 @@ const expired = candidate("expired", "20260730T090000Z", 900);
 const unsigned = {
   name: "unsigned",
   url: "https://media.example/video.mp4",
+  headers: {},
+};
+const upstreamNotice = {
+  name: "upstream-notice",
+  url: "https://notice.libvio.mov/notice.mp4",
   headers: {},
 };
 
@@ -135,6 +144,51 @@ assert.deepEqual(
     }),
   ["unsigned"],
   "unknown TTL must remain unknown and must not be treated as short-lived"
+);
+assert.equal(
+  sandbox.isUpstreamPlaybackNoticeURL(upstreamNotice.url),
+  true,
+  "the upstream notice video must be classified as an error sentinel"
+);
+assert.equal(
+  sandbox.isUpstreamPlaybackNoticeURL("https://media.example/notice.mp4"),
+  false,
+  "a filename alone must not classify an unrelated media host as a notice"
+);
+assert.equal(
+  sandbox.buildPlayerCandidate(upstreamNotice.url),
+  null,
+  "the upstream notice video must not become a player candidate"
+);
+
+emittedCandidates = null;
+sandbox.gotoPlayCandidates([upstreamNotice, unsigned]);
+assert.deepEqual(
+  emittedCandidates.map(function (item) {
+    return item.name;
+  }),
+  ["unsigned"],
+  "the upstream notice video must be removed before App candidate scoring"
+);
+
+emittedCandidates = null;
+unavailableMessage = "";
+sandbox.gotoPlayCandidates([upstreamNotice]);
+assert.equal(emittedCandidates, null, "a notice-only set must not reach the player");
+assert.equal(
+  unavailableMessage,
+  "libvio: 找不到可用的播放地址",
+  "a notice-only set must fail explicitly"
+);
+
+directPlayerPayload = null;
+unavailableMessage = "";
+sandbox.gotoPlay(upstreamNotice.url);
+assert.equal(directPlayerPayload, null, "a direct notice URL must not reach the player");
+assert.equal(
+  unavailableMessage,
+  "libvio: 找不到可用的播放地址",
+  "a direct notice URL must fail explicitly"
 );
 
 sandbox.gotoPlayCandidates([expired]);

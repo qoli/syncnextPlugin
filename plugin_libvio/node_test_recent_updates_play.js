@@ -322,6 +322,12 @@ function normalizePlayableURL(rawURL) {
   return url;
 }
 
+function isUpstreamPlaybackNoticeURL(url) {
+  return /^https?:\/\/notice\.libvio\.mov(?:[\/:?#]|$)/i.test(
+    String(url || "").trim()
+  );
+}
+
 function extractQuotedConst(body, name) {
   const hit = String(body || "").match(
     new RegExp(`const\\s+${name}\\s*=\\s*([\"'])([\\s\\S]*?)\\1`)
@@ -643,6 +649,9 @@ async function extractRealPlayCandidates(episode, host) {
   for (const source of episode.sources || []) {
     try {
       const realURL = await extractRealPlayURL(source.playPageURL, host);
+      if (realURL && isUpstreamPlaybackNoticeURL(realURL)) {
+        throw new Error("upstream returned playback notice instead of media");
+      }
       if (realURL && !seen.has(realURL)) {
         seen.add(realURL);
         candidates.push({

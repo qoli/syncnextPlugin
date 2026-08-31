@@ -51,6 +51,10 @@ function buildEpisodeData(id, title, episodeDetailURL) {
 }
 
 function buildPlayerCandidate(url) {
+  if (isUpstreamPlaybackNoticeURL(url)) {
+    return null;
+  }
+
   return {
     url: url,
     headers: {
@@ -58,6 +62,12 @@ function buildPlayerCandidate(url) {
       Referer: REFERER_URL,
     },
   };
+}
+
+function isUpstreamPlaybackNoticeURL(url) {
+  return /^https?:\/\/notice\.libvio\.mov(?:[\/:?#]|$)/i.test(
+    String(url || "").trim()
+  );
 }
 
 function queryParameterValue(url, name) {
@@ -1458,10 +1468,13 @@ function resolvePlayerCandidatesFromSources(sources, index, candidates, seen, ca
 }
 
 function gotoPlayCandidates(candidates) {
-  var eligibleCandidates = preferCandidatesWithSufficientSignedURLTTL(candidates || []);
+  var playableCandidates = (candidates || []).filter(function (candidate) {
+    return candidate && candidate.url && !isUpstreamPlaybackNoticeURL(candidate.url);
+  });
+  var eligibleCandidates = preferCandidatesWithSufficientSignedURLTTL(playableCandidates);
   if (!eligibleCandidates.length) {
     reportPlayerUnavailable(
-      candidates && candidates.length
+      playableCandidates.length
         ? "libvio: 播放地址已過期"
         : "libvio: 找不到可用的播放地址"
     );
@@ -1563,6 +1576,11 @@ function reportPlayerUnavailable(message) {
 }
 
 function gotoPlay(url) {
+  if (isUpstreamPlaybackNoticeURL(url)) {
+    reportPlayerUnavailable("libvio: 找不到可用的播放地址");
+    return;
+  }
+
   try {
     let json = {
       url: url,
