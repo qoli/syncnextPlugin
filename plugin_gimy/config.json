@@ -1,9 +1,9 @@
 {
   "name": "Gimy TV",
   "description": "Gimy TV 剧迷影视资源",
-  "host": "https://gimy.tv",
+  "host": "https://gimyai.tw",
   "hosts": [
-    "https://gimy.tv"
+    "https://gimyai.tw"
   ],
   "files": [
     "app.js"
@@ -12,35 +12,35 @@
     {
       "key": "index",
       "title": "首页精选",
-      "url": "https://gimy.tv/",
+      "url": "https://gimyai.tw/",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "tv",
       "title": "电视剧",
-      "url": "https://gimy.tv/genre/2---${pageNumber}.html",
+      "url": "https://gimyai.tw/genre/2.html",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "movie",
       "title": "电影",
-      "url": "https://gimy.tv/genre/1---${pageNumber}.html",
+      "url": "https://gimyai.tw/genre/1.html",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "variety",
       "title": "综艺",
-      "url": "https://gimy.tv/genre/3---${pageNumber}.html",
+      "url": "https://gimyai.tw/genre/3.html",
       "timeout": 20,
       "javascript": "buildMedias"
     },
     {
       "key": "anime",
       "title": "动漫",
-      "url": "https://gimy.tv/genre/4---${pageNumber}.html",
+      "url": "https://gimyai.tw/genre/4.html",
       "timeout": 20,
       "javascript": "buildMedias"
     }
@@ -54,16 +54,17 @@
     "javascript": "Player"
   },
   "search": {
-    "url": "https://gimy.tv/search/${keyword}----------1---.html",
+    "url": "https://gimyai.tw/find/-------------.html?wd=${keyword}",
     "timeout": 20,
-    "javascript": "Search"
+    "javascript": "Search",
+    "smokeKeyword": "榮耀"
   },
   "cache": {
     "schema": 1,
     "resources": {
       "app.js": {
-        "sha256": "c1843f4158afeff64e661dd81195646f95c572f90e02376d7aefe6776be5696d",
-        "bytes": 8116
+        "sha256": "169a0439d08e466ec54ea41c272ad5ec9a4b6be8c1c62fcccfe250f01b8aaaac",
+        "bytes": 9391
       }
     }
   }

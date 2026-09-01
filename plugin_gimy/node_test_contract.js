@@ -3,24 +3,34 @@ const fs = require('fs');
 const vm = require('vm');
 
 const listHTML = `
-  <a class="myui-vodlist__thumb lazyload" href="/vod/100.html" title="测试影片" style="background: url(https://img.example/cover.jpg);">
-    <span class="pic-text">更新至第2集</span>
+  <a class="poster" href="/detail/426347.html">
+    <span class="poster__thumb">
+      <img src="https://img.example/cover.jpg" alt="榮耀">
+      <span class="poster__status">更新至第12集</span>
+    </span>
+    <h3 class="poster__title">榮耀</h3>
+    <p class="poster__meta">主演甲,主演乙</p>
   </a>`;
 const detailHTML = `
-  <div class="myui-panel myui-panel-bg">
-    <h3 class="title">线路 A</h3>
-    <ul class="myui-content__list"><li><a href="/ep-100-1-1.html">第01集</a></li></ul>
+  <div class="route-title">藍光線路 ᴴᴰ <span class="hd">HD</span></div>
+  <div class="eps episodes-route is-open" data-route-sid="12">
+    <a class="ep" href="/play/426347-12-1.html">HD中字</a>
   </div>
-  <div class="myui-panel myui-panel-bg">
-    <h3 class="title">线路 B</h3>
-    <ul class="myui-content__list"><li><a href="/ep-100-2-1.html">第01集</a></li></ul>
+  <div class="route-title">高清線路 ᴴᴰ <span class="hd">HD</span></div>
+  <div class="eps episodes-route" data-route-sid="1">
+    <a class="ep" href="/play/426347-1-1.html">第01集</a>
+    <a class="ep" href="/play/426347-1-2.html">第02集</a>
   </div>`;
-const playerHTML = `<script>var player_data={"encrypt":0,"url":"https:\/\/media.example\/video.m3u8"}</script>`;
+const playerHTML = `<script>window.player_data={"encrypt":0,"url":"https:\/\/media.example\/video.m3u8","vod_data":{"vod_name":"榮耀"}};</script>`;
+const opaquePlayerHTML = `<script>window.player_data={"encrypt":0,"url":"opaque-player-key","vod_data":{"vod_name":"榮耀"}};</script>`;
+const legacyDetailHTML = `<div class="myui-panel"><h3 class="title">舊線路</h3><ul class="myui-content__list"><li><a href="/ep-100-1-1.html">第01集</a></li></ul></div>`;
 const responses = {
-  'https://gimy.tv/': listHTML,
-  'https://gimy.tv/search/test----------1---.html': listHTML,
-  'https://gimy.tv/vod/100.html': detailHTML,
-  'https://gimy.tv/ep-100-1-1.html': playerHTML,
+  'https://gimyai.tw/': listHTML,
+  'https://gimyai.tw/find/-------------.html?wd=榮耀': listHTML,
+  'https://gimyai.tw/detail/426347.html': detailHTML,
+  'https://gimyai.tw/play/426347-12-1.html': playerHTML,
+  'https://gimyai.tw/play/426347-1-1.html': opaquePlayerHTML,
+  'https://gimyai.tw/detail/legacy.html': legacyDetailHTML,
 };
 const calls = [];
 const sandbox = {
@@ -56,27 +66,38 @@ function settle() {
 }
 
 (async function () {
-  sandbox.buildMedias('https://gimy.tv/', 'index');
+  sandbox.buildMedias('https://gimyai.tw/', 'index');
   await settle();
   assert.equal(calls[0][0], 'medias');
-  assert.equal(calls[0][1][0].title, '测试影片');
+  assert.equal(calls[0][1][0].id, 'https://gimyai.tw/detail/426347.html');
+  assert.equal(calls[0][1][0].title, '榮耀');
   assert.equal(calls[0][1][0].coverURLString, 'https://img.example/cover.jpg');
+  assert.equal(calls[0][1][0].descriptionText, '更新至第12集');
 
-  sandbox.Search('https://gimy.tv/search/test----------1---.html', 'plugin-key');
+  sandbox.Search('https://gimyai.tw/find/-------------.html?wd=榮耀', 'plugin-key');
   await settle();
   assert.equal(calls[1][0], 'search');
   assert.equal(calls[1][2], 'plugin-key');
 
-  sandbox.Episodes('https://gimy.tv/vod/100.html');
+  sandbox.Episodes('https://gimyai.tw/detail/426347.html');
   await settle();
   assert.equal(calls[2][0], 'candidates');
-  assert.deepEqual(calls[2][1].map(function (item) { return item.source; }), ['线路 A', '线路 B']);
+  assert.deepEqual(calls[2][1].map(function (item) { return item.source; }), ['藍光線路 ᴴᴰ HD', '高清線路 ᴴᴰ HD']);
+  assert.equal(calls[2][1][0].episodes[0].id, 'https://gimyai.tw/play/426347-12-1.html');
 
-  sandbox.Player('https://gimy.tv/ep-100-1-1.html');
+  sandbox.Player('https://gimyai.tw/play/426347-12-1.html');
   await settle();
   assert.equal(calls[3][0], 'player');
   assert.equal(calls[3][1].url, 'https://media.example/video.m3u8');
-  assert.equal(calls[3][1].headers.Referer, 'https://gimy.tv/ep-100-1-1.html');
+  assert.equal(calls[3][1].headers.Referer, 'https://gimyai.tw/play/426347-12-1.html');
+
+  sandbox.Player('https://gimyai.tw/play/426347-1-1.html');
+  await settle();
+  assert.deepEqual(calls[4], ['empty', '未解析到播放地址']);
+
+  sandbox.Episodes('https://gimyai.tw/detail/legacy.html');
+  await settle();
+  assert.deepEqual(calls[5], ['empty', '未找到符合目前 Gimy 結構的播放線路']);
 
   console.log('plugin_gimy contract tests passed');
 })().catch(function (error) {

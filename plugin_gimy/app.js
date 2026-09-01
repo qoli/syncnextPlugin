@@ -3,7 +3,7 @@
 const BASE_URL =
   typeof __syncnextPrimaryHost === 'string' && __syncnextPrimaryHost
     ? __syncnextPrimaryHost.replace(/\/$/, '')
-    : 'https://gimy.tv';
+    : 'https://gimyai.tw';
 
 const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15';
@@ -87,7 +87,7 @@ function HostsProbeRequest() {
     headers: requestHeaders(BASE_URL + '/'),
     accept: {
       statusCodes: [200],
-      bodyIncludesAny: ['myui-vodlist__box'],
+      bodyIncludesAny: ['poster__thumb', '/detail/'],
       bodyExcludesAny: ['访问验证', '訪問驗證', '安全验证', '安全驗證', 'Just a moment', 'captcha'],
       titleExcludesAny: ['访问验证', '訪問驗證', '安全验证', '安全驗證', 'Just a moment', '403 Forbidden'],
     },
@@ -95,36 +95,52 @@ function HostsProbeRequest() {
 }
 
 function parseCover(attributes) {
-  let cover =
-    getAttribute(attributes, 'data-original') ||
-    getAttribute(attributes, 'data-src') ||
-    getAttribute(attributes, 'src');
-  if (!cover) {
-    const style = getAttribute(attributes, 'style');
-    const matched = style.match(/background\s*:\s*url\(([^)]+)\)/i);
-    if (matched && matched[1]) {
-      cover = matched[1].replace(/^['"]|['"]$/g, '').trim();
-    }
-  }
-  return buildURL(cover);
+  return buildURL(getAttribute(attributes, 'src'));
+}
+
+function classText(fragment, className) {
+  const matched = String(fragment || '').match(
+    new RegExp(
+      '<([a-z0-9]+)\\b[^>]*class\\s*=\\s*(["\\\'])[^"\\\']*\\b' +
+        className +
+        '\\b[^"\\\']*\\2[^>]*>([\\s\\S]*?)<\\/\\1>',
+      'i'
+    )
+  );
+  return matched && matched[3] ? stripTags(matched[3]) : '';
+}
+
+function firstTagAttributes(fragment, tagName) {
+  const matched = String(fragment || '').match(
+    new RegExp('<' + tagName + '\\b([^>]*)>', 'i')
+  );
+  return matched && matched[1] ? matched[1] : '';
 }
 
 function parseMedias(html) {
   const datas = [];
   const seen = {};
-  const card = /<a\b([^>]*\bclass\s*=\s*(?:"[^"]*\bmyui-vodlist__thumb\b[^"]*"|'[^']*\bmyui-vodlist__thumb\b[^']*')[^>]*)>([\s\S]*?)<\/a>/gi;
+  const card = /<a\b([^>]*\bclass\s*=\s*(?:"[^"]*\bposter\b[^"]*"|'[^']*\bposter\b[^']*')[^>]*)>([\s\S]*?)<\/a>/gi;
   let matched;
 
   while ((matched = card.exec(html)) !== null) {
     const attributes = matched[1];
+    const body = matched[2];
     const href = buildURL(getAttribute(attributes, 'href'));
-    if (!/\/vod\/\d+\.html(?:$|[?#])/i.test(href) || seen[href]) continue;
+    if (!/\/detail\/\d+\.html(?:$|[?#])/i.test(href) || seen[href]) continue;
 
-    const title = getAttribute(attributes, 'title') || stripTags(matched[2]);
+    const imageAttributes = firstTagAttributes(body, 'img');
+    const title = classText(body, 'poster__title');
     if (!title) continue;
 
     seen[href] = true;
-    datas.push(buildMediaData(href, parseCover(attributes), title, stripTags(matched[2]), href));
+    datas.push(buildMediaData(
+      href,
+      parseCover(imageAttributes),
+      title,
+      classText(body, 'poster__status'),
+      href
+    ));
   }
 
   return datas;
@@ -133,7 +149,7 @@ function parseMedias(html) {
 function parseEpisodes(fragment) {
   const datas = [];
   const seen = {};
-  const episode = /<a\b([^>]*\bhref\s*=\s*(?:"[^"]*\/ep-\d+-\d+-\d+\.html[^"]*"|'[^']*\/ep-\d+-\d+-\d+\.html[^']*')[^>]*)>([\s\S]*?)<\/a>/gi;
+  const episode = /<a\b([^>]*\bhref\s*=\s*(?:"[^"]*\/play\/\d+-\d+-\d+\.html[^"]*"|'[^']*\/play\/\d+-\d+-\d+\.html[^']*')[^>]*)>([\s\S]*?)<\/a>/gi;
   let matched;
 
   while ((matched = episode.exec(fragment)) !== null) {
@@ -150,14 +166,14 @@ function parseEpisodes(fragment) {
 
 function parseEpisodeCandidates(html) {
   const candidates = [];
-  const sourcePanel = /<div\s+class=["'][^"']*\bmyui-panel\b[^"']*["'][\s\S]*?<h3[^>]*class=["'][^"']*\btitle\b[^"']*["'][^>]*>([\s\S]*?)<\/h3>[\s\S]*?<ul[^>]*class=["'][^"']*\bmyui-content__list\b[^"']*["'][^>]*>([\s\S]*?)<\/ul>/gi;
+  const sourcePanel = /<div[^>]*class=["'][^"']*\broute-title\b[^"']*["'][^>]*>([\s\S]*?)<\/div>[\s\S]*?<div[^>]*class=["'][^"']*\bepisodes-route\b[^"']*["'][^>]*>([\s\S]*?)<\/div>/gi;
   let matched;
 
   while ((matched = sourcePanel.exec(html)) !== null) {
     const episodes = parseEpisodes(matched[2]);
     if (episodes.length === 0) continue;
     candidates.push({
-      source: stripTags(matched[1]) || '播放线路',
+      source: stripTags(matched[1]),
       episodes: episodes,
     });
   }
@@ -199,21 +215,60 @@ function decodePlayerURL(value, encrypt) {
     if (Number(encrypt) === 1) return unescape(raw);
     if (Number(encrypt) === 2) return decodeURIComponent(base64Decode(raw));
   } catch (_) {
-    return raw;
+    return '';
   }
   return raw;
 }
 
 function parsePlayerData(html) {
-  const matched = String(html || '').match(
-    /<script[^>]*>\s*var\s+player_data\s*=\s*(\{[\s\S]*?\})\s*;?\s*<\/script>/i
-  );
-  if (!matched || !matched[1]) return null;
+  const source = String(html || '');
+  const assignment = /(?:var\s+|window\.)player_data\s*=\s*/i.exec(source);
+  if (!assignment) return null;
+  const start = source.indexOf('{', assignment.index + assignment[0].length);
+  if (start < 0) return null;
+
+  let depth = 0;
+  let quote = '';
+  let escaped = false;
+  let payload = '';
+  for (let index = start; index < source.length; index++) {
+    const character = source[index];
+    payload += character;
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (character === '\\') {
+      escaped = true;
+      continue;
+    }
+    if (quote) {
+      if (character === quote) quote = '';
+      continue;
+    }
+    if (character === '"' || character === "'") {
+      quote = character;
+      continue;
+    }
+    if (character === '{') depth += 1;
+    if (character === '}') {
+      depth -= 1;
+      if (depth === 0) break;
+    }
+  }
+  if (depth !== 0 || !payload) return null;
   try {
-    return JSON.parse(matched[1]);
+    return JSON.parse(payload);
   } catch (_) {
     return null;
   }
+}
+
+function normalizePlayerURL(value) {
+  const raw = String(value || '').replace(/\\\//g, '/').trim();
+  if (/^https?:\/\//i.test(raw)) return raw;
+  if (raw.indexOf('//') === 0) return 'https:' + raw;
+  return '';
 }
 
 function buildMedias(inputURL, key) {
@@ -237,13 +292,16 @@ function Search(inputURL, key) {
 function Episodes(detailURL) {
   fetchHTML(detailURL).then(function (html) {
     const candidates = parseEpisodeCandidates(html);
+    if (candidates.length === 0) {
+      $next.emptyView('未找到符合目前 Gimy 結構的播放線路');
+      return;
+    }
     if (candidates.length > 1 && typeof $next.toEpisodesCandidates === 'function') {
       $next.toEpisodesCandidates(JSON.stringify(candidates));
       return;
     }
 
-    const episodes = candidates.length > 0 ? candidates[0].episodes : parseEpisodes(html);
-    $next.toEpisodes(JSON.stringify(episodes));
+    $next.toEpisodes(JSON.stringify(candidates[0].episodes));
   }).catch(function (error) {
     print({ stage: 'episodes', error: String(error || '') });
     $next.toEpisodes(JSON.stringify([]));
@@ -257,7 +315,9 @@ function Player(episodeURL) {
     headers: requestHeaders(episodeURL),
   }).then(function (res) {
     const playerData = parsePlayerData(res && res.body);
-    const playURL = playerData ? buildURL(decodePlayerURL(playerData.url, playerData.encrypt)) : '';
+    const playURL = playerData
+      ? normalizePlayerURL(decodePlayerURL(playerData.url, playerData.encrypt))
+      : '';
     if (!playURL) {
       $next.emptyView('未解析到播放地址');
       return;
