@@ -1,54 +1,76 @@
 {
-  "generatedAt": "2026-08-31T09:40:31.970Z",
-  "invalidPluginsCount": 4,
+  "generatedAt": "2026-09-01T08:36:15.821Z",
+  "invalidPluginsCount": 2,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_czzy",
-      "pluginName": "廠長資源",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_czzy/config.json",
-      "reasonCounts": {
-        "fatal_error": 1
-      },
-      "fatalErrors": [
-        "no medias returned; 偵測到 SafeLine 挑戰頁，導致播放器頁未返回原始 HTML"
-      ],
-      "failedCases": []
-    },
     {
       "pluginFolder": "plugin_youknow",
       "pluginName": "YouKnowTV",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_youknow/config.json",
       "reasonCounts": {
-        "fatal_error": 1
+        "list_empty": 1
       },
       "fatalErrors": [
         "no medias returned; no medias returned"
       ],
-      "failedCases": []
-    },
-    {
-      "pluginFolder": "plugin_libvio",
-      "pluginName": "libvio",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_libvio/config.json",
-      "reasonCounts": {
-        "fatal_error": 1
-      },
-      "fatalErrors": [
-        "no medias returned; no medias returned"
-      ],
-      "failedCases": []
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "list",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://www.youknow.tv/label/new/",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "list returned empty medias",
+          "reasonCode": "list_empty",
+          "reasonText": "首頁列表沒有返回媒體",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.youknow.tv/label/new/",
+              "status": 403,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        }
+      ]
     },
     {
       "pluginFolder": "plugin_gimy",
       "pluginName": "Gimy TV",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_gimy/config.json",
       "reasonCounts": {
-        "fatal_error": 1
+        "list_empty": 1
       },
       "fatalErrors": [
         "no medias returned; no medias returned"
       ],
-      "failedCases": []
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "list",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://gimyai.tw/",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "list returned empty medias",
+          "reasonCode": "list_empty",
+          "reasonText": "首頁列表沒有返回媒體",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://gimyai.tw/",
+              "status": 403,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
