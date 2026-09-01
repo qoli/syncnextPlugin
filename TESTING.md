@@ -57,6 +57,8 @@ node node_test_all_plugins.js \
 若上游搜尋 API 對關鍵字長度或格式有明確限制，可在插件的 `search` 設定加入
 `smokeKeyword`，提供一個可重現且確實存在的搜尋詞。命令列 `--search-keyword`
 仍具有最高優先權；沒有設定時，runner 才會繼續從首頁媒體標題自動取樣。
+若站方明確要求搜尋間隔，可另外設定 `search.smokeDelayMs`（最多 30000 ms）；
+runner 會在 connectivity probe 與正式搜尋之間等待一次，不會重試或把節流錯誤當成成功。
 
 若正式來源表已匯出並通過發布 runbook 的遠端 JSON gate，才可進行 subscription smoke：
 
@@ -69,6 +71,40 @@ node node_test_all_plugins.js \
   --output-dir="$tmp_dir" \
   --history-mode=latest-only
 ```
+
+### 3.1 Managed challenge Smoke
+
+`challenge = { "schema": 1, "mode": "managed", "scope": "hosts" }` 的插件不能只用一般
+Node transport 驗收。Private Syncnext CI 會把 tvOS 共用 Swift challenge core 編譯成 WASI，並在
+同一個 `$http.fetch` session 內完成 challenge、cookie 與原本的 list、search、episodes、player
+流程。Runner 需要明確傳入 adapter、兩個 WASM artifact 與 target registry；缺任何一項都會
+fail-closed：
+
+```bash
+node node_test_all_plugins.js \
+  --only=plugin_<provider> \
+  --output-dir="$tmp_dir" \
+  --history-mode=latest-only \
+  --smoke-fail-exit=availability \
+  --challenge-adapter-module=/path/to/adapter.mjs \
+  --challenge-core-wasm=/path/to/plugin-challenge-core-cli.wasm \
+  --challenge-calculator-wasm=/path/to/safeline-calculator.wasm \
+  --challenge-targets-file=/path/to/targets.json \
+  --require-managed-challenge
+```
+
+報告分開記錄兩個答案：
+
+- `availability`：實際插件流程是否至少完成 list 與一條 episodes/player journey。
+- `challenge.status`：`exercised`、`not-observed` 或 `failed`。沒有觀察到 challenge 不等於插件
+  不可用；solver、cookie、verify 或 challenge retry 失敗則保持獨立紅燈。
+
+CI gate 另外要求已設定的 search 至少成功一次。任何播放樣本自身為網盤限定或空來源會留在
+case 明細，但只要另有實際播放 journey 成功，不會把整個插件誤判為不可用。
+
+Public `Plugin Smoke Status (Non-Managed)` 排程不具備 private WASM core，因此排除
+`plugin_czzy` 與 `plugin_libvio`；這兩個 managed 插件由 Syncnext repository 的
+`Managed Plugin Smoke` 排程專責，避免同時發布一份未解 challenge 的矛盾結果。
 
 ## 4. 結果判讀
 

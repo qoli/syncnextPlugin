@@ -4,6 +4,7 @@ const fs = require("fs");
 const fsp = fs.promises;
 const path = require("path");
 const vm = require("vm");
+const { pathToFileURL } = require("url");
 
 const DEFAULT_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15";
@@ -47,6 +48,11 @@ function printUsage() {
   process.stdout.write(`  --search-keyword=TEXT        Override the search keyword for every tested plugin.\n`);
   process.stdout.write(`  --skip-connectivity-check  --skip-search-test  --no-probe\n`);
   process.stdout.write(`  --strict-connectivity-check  --strict-probe  --all-episodes\n`);
+  process.stdout.write(`  --challenge-adapter-module=PATH  External managed-challenge transport adapter.\n`);
+  process.stdout.write(`  --challenge-core-wasm=PATH       Shared Swift WASI challenge executable.\n`);
+  process.stdout.write(`  --challenge-calculator-wasm=PATH Embedded SafeLine calculator WASM.\n`);
+  process.stdout.write(`  --challenge-targets-file=PATH    Plugin-to-expected-family mapping.\n`);
+  process.stdout.write(`  --require-managed-challenge      Fail managed plugins when adapter inputs are absent.\n`);
   process.stdout.write(`  --help                          Print this help without creating test output.\n`);
 }
 
@@ -117,6 +123,45 @@ function createFetchImpl() {
 }
 
 const fetchImpl = createFetchImpl();
+
+function exactManagedChallenge(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const keys = Object.keys(value).sort();
+  return JSON.stringify(keys) === JSON.stringify(["mode", "schema", "scope"])
+    && value.schema === 1
+    && value.mode === "managed"
+    && value.scope === "hosts";
+}
+
+async function loadChallengeAdapterFactory(modulePath) {
+  const value = String(modulePath || "").trim();
+  if (!value) return null;
+  const absolutePath = path.resolve(value);
+  const module = await import(pathToFileURL(absolutePath).href);
+  if (typeof module.createChallengeAdapter !== "function") {
+    throw new Error("challenge adapter module must export createChallengeAdapter");
+  }
+  return module.createChallengeAdapter;
+}
+
+async function loadChallengeTargets(filePath) {
+  const value = String(filePath || "").trim();
+  if (!value) return new Map();
+  const document = JSON.parse(await fsp.readFile(path.resolve(value), "utf8"));
+  if (document.schema !== 1 || !Array.isArray(document.targets)) {
+    throw new Error("challenge targets file must use schema 1");
+  }
+  const targets = new Map();
+  for (const target of document.targets) {
+    const plugin = String(target && target.plugin || "").trim();
+    const family = String(target && target.expectedFamily || "").trim();
+    if (!plugin || !family || targets.has(plugin)) {
+      throw new Error("challenge targets file contains an invalid or duplicate target");
+    }
+    targets.set(plugin, Object.assign({}, target, { plugin, expectedFamily: family }));
+  }
+  return targets;
+}
 
 async function fetchWithTimeout(url, options, timeoutMs) {
   const ms = toInt(timeoutMs, 20000);
@@ -997,7 +1042,7 @@ function buildInvocationAdapter(options) {
   };
 }
 
-function createPluginRuntime(pluginSource, options, logger) {
+function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
   const adapter = buildInvocationAdapter(options);
   const httpEvents = [];
   const cookieJar = [];
@@ -1050,6 +1095,29 @@ function createPluginRuntime(pluginSource, options, logger) {
     };
 
     try {
+      if (challengeAdapter && challengeAdapter.handles(url)) {
+        const response = await challengeAdapter.request({
+          url,
+          method,
+          headers,
+          body: fetchOptions.body == null ? null : fetchOptions.body,
+          timeoutMs: options.requestTimeoutMs,
+        });
+        const responseHeaders = response.headers || {};
+        const body = method === "HEAD" ? "" : String(response.body || "");
+        event.status = Number(response.status || response.statusCode || 0);
+        event.safeLine = method === "GET" && isSafeLineChallenge(event.status, body, responseHeaders);
+        event.challenge = challengeAdapter.snapshot();
+        pushHTTPEvent(event);
+        return {
+          status: event.status,
+          statusCode: event.status,
+          headers: responseHeaders,
+          body,
+          url: response.url || url,
+        };
+      }
+
       const response = await fetchWithTimeout(url, fetchOptions, options.requestTimeoutMs);
       const responseHeaders = headersToObject(response.headers);
       let body = method === "HEAD" ? "" : await response.text();
@@ -1082,6 +1150,9 @@ function createPluginRuntime(pluginSource, options, logger) {
         logger.error(`[http-error] ${method} ${url} -> ${error.message || error}`);
       }
       pushHTTPEvent(event);
+      if (challengeAdapter && challengeAdapter.handles(url)) {
+        throw error;
+      }
       return {
         status: 0,
         statusCode: 0,
@@ -1200,6 +1271,9 @@ function createPluginRuntime(pluginSource, options, logger) {
       adapter.invoke(context, fnName, args, expected, timeoutMs),
     getHTTPEvents: () => httpEvents.slice(),
     getHTTPEventsSince: (index) => httpEvents.slice(index || 0),
+    getChallengeStatus: () => challengeAdapter
+      ? challengeAdapter.snapshot()
+      : { managed: false, status: "not-managed", observed: 0, exercised: 0, failed: 0, families: [], lastFailure: "" },
     dispose: () => {
       process.off("unhandledRejection", onUnhandledRejection);
       process.off("uncaughtException", onUncaughtException);
@@ -1227,7 +1301,7 @@ function uniqueList(list) {
   return out;
 }
 
-async function checkConnectivityURL(url, options) {
+async function checkConnectivityURL(url, options, requestHTTP) {
   const result = {
     url: String(url || ""),
     ok: false,
@@ -1248,13 +1322,11 @@ async function checkConnectivityURL(url, options) {
   };
 
   try {
-    const headRes = await fetchWithTimeout(
-      target,
-      { method: "HEAD", headers, redirect: "follow" },
-      options.connectivityTimeoutMs
-    );
-    result.status = headRes.status;
-    if (headRes.status >= 200 && headRes.status < 400) {
+    const headRes = requestHTTP
+      ? await requestHTTP({ url: target, method: "HEAD", headers, timeoutMs: options.connectivityTimeoutMs })
+      : await fetchWithTimeout(target, { method: "HEAD", headers, redirect: "follow" }, options.connectivityTimeoutMs);
+    result.status = Number(headRes.status || headRes.statusCode || 0);
+    if (result.status >= 200 && result.status < 400) {
       result.ok = true;
       return result;
     }
@@ -1264,23 +1336,18 @@ async function checkConnectivityURL(url, options) {
 
   result.method = "GET";
   try {
-    const getRes = await fetchWithTimeout(
-      target,
-      {
-        method: "GET",
-        headers: Object.assign({}, headers, { Range: "bytes=0-1023" }),
-        redirect: "follow",
-      },
-      options.connectivityTimeoutMs
-    );
-    result.status = getRes.status;
-    if (getRes.status >= 200 && getRes.status < 400) {
+    const getHeaders = Object.assign({}, headers, { Range: "bytes=0-1023" });
+    const getRes = requestHTTP
+      ? await requestHTTP({ url: target, method: "GET", headers: getHeaders, timeoutMs: options.connectivityTimeoutMs })
+      : await fetchWithTimeout(target, { method: "GET", headers: getHeaders, redirect: "follow" }, options.connectivityTimeoutMs);
+    result.status = Number(getRes.status || getRes.statusCode || 0);
+    if (result.status >= 200 && result.status < 400) {
       result.ok = true;
       result.error = "";
       return result;
     }
     if (!result.error) {
-      result.error = `status ${getRes.status}`;
+      result.error = `status ${result.status}`;
     }
   } catch (error) {
     result.error = error.message || String(error);
@@ -1289,7 +1356,7 @@ async function checkConnectivityURL(url, options) {
   return result;
 }
 
-async function runConnectivityCheck(source, indexURL, options) {
+async function runConnectivityCheck(source, indexURL, options, requestHTTP) {
   const searchTemplate = String(
     source && source.config && source.config.search && source.config.search.url || ""
   ).trim();
@@ -1303,7 +1370,7 @@ async function runConnectivityCheck(source, indexURL, options) {
 
   const checks = [];
   for (const target of targets) {
-    checks.push(await checkConnectivityURL(target, options));
+    checks.push(await checkConnectivityURL(target, options, requestHTTP));
   }
 
   return {
@@ -1502,12 +1569,23 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     sourceNote: "",
     searchEnabled: false,
     indexPage: null,
+    list: { ok: false, count: 0 },
     connectivity: null,
+    challenge: {
+      managed: false,
+      status: "not-managed",
+      observed: 0,
+      exercised: 0,
+      failed: 0,
+      families: [],
+      lastFailure: "",
+    },
     summary: {
       casesTotal: 0,
       ok: 0,
       fail: 0,
     },
+    availability: "not-proven",
     cases: [],
     errors: [],
   };
@@ -1522,7 +1600,48 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     pluginReport.sourceTitle = source.sourceTitle || "";
     pluginReport.sourceNote = source.sourceNote || "";
     pluginReport.searchEnabled = !!(source.sourceSearch || source.config.search);
-    runtime = createPluginRuntime(source, options, logger);
+    const isManaged = exactManagedChallenge(source.config.challenge);
+    let challengeAdapter = null;
+    if (isManaged) {
+      if (!options.challengeAdapterFactory) {
+        if (options.requireManagedChallenge) {
+          throw new Error("managed challenge adapter is required");
+        }
+      } else {
+        const challengeTarget = options.challengeTargets.get(pluginReport.pluginFolder);
+        if (!challengeTarget) {
+          throw new Error(`managed challenge target is missing: ${pluginReport.pluginFolder}`);
+        }
+        challengeAdapter = await options.challengeAdapterFactory({
+          pluginFolder: pluginReport.pluginFolder,
+          config: source.config,
+          corePath: options.challengeCoreWasm,
+          calculatorPath: options.challengeCalculatorWasm,
+          expectedFamily: challengeTarget.expectedFamily,
+          timeoutMs: options.requestTimeoutMs,
+        });
+      }
+    }
+    runtime = createPluginRuntime(source, options, logger, challengeAdapter);
+    pluginReport.challenge = runtime.getChallengeStatus();
+
+    if (challengeAdapter) {
+      const challengeTarget = options.challengeTargets.get(pluginReport.pluginFolder);
+      try {
+        await challengeAdapter.request({
+          url: challengeTarget.url,
+          method: "GET",
+          headers: {},
+          body: null,
+          timeoutMs: options.requestTimeoutMs,
+        });
+      } catch (error) {
+        logger.log(
+          `[challenge] ${pluginReport.pluginName} | ${challengeTarget.expectedFamily} -> ${error.code || "HARNESS_ERROR"}`
+        );
+      }
+      pluginReport.challenge = runtime.getChallengeStatus();
+    }
 
     function buildFailureMeta(errorText, stageEvents) {
       const explained = explainFailure(errorText, stageEvents);
@@ -1554,7 +1673,12 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     );
 
     if (options.enableConnectivityCheck) {
-      const connectivity = await runConnectivityCheck(source, indexURL, options);
+      const connectivity = await runConnectivityCheck(
+        source,
+        indexURL,
+        options,
+        challengeAdapter ? (request) => challengeAdapter.request(request) : null
+      );
       pluginReport.connectivity = connectivity;
       const firstOK = (connectivity.targets || []).find((item) => item.ok);
       logger.log(
@@ -1594,6 +1718,21 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     const medias = parseArrayPayload(mediasResult.payload);
     const selectedMedias =
       options.limitMedias > 0 ? medias.slice(0, options.limitMedias) : medias.slice();
+    pluginReport.list = { ok: medias.length > 0, count: medias.length };
+    pluginReport.cases.push({
+      ok: medias.length > 0,
+      stage: "list",
+      mediaTitle: "",
+      episodeTitle: "",
+      detailURL: indexURL,
+      episodeURL: "",
+      playURL: "",
+      probe: null,
+      error: medias.length > 0 ? "" : "list returned empty medias",
+      reasonCode: medias.length > 0 ? "" : "list_empty",
+      reasonText: medias.length > 0 ? "" : "首頁列表沒有返回媒體",
+      httpDiagnostics: medias.length > 0 ? [] : compactHTTPEvents(runtime.getHTTPEvents()),
+    });
 
     logger.log(
       `[plugin ${index + 1}] medias total=${medias.length}, testing=${selectedMedias.length}`
@@ -1615,9 +1754,14 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
         const searchKeyword = pickSearchKeyword(options, medias, searchConfig);
         const searchURL = normalizeSearchURL(searchURLTemplate, searchKeyword);
         const searchTimeout = stageTimeoutMs(searchConfig, options.invokeTimeoutMs);
+        const searchDelayMs = Math.max(0, Math.min(30_000, Number(searchConfig.smokeDelayMs) || 0));
         logger.log(
           `[plugin ${index + 1}] search keyword=${searchKeyword} url=${searchURL}`
         );
+        if (searchDelayMs > 0) {
+          logger.log(`[plugin ${index + 1}] search throttle wait=${searchDelayMs}ms`);
+          await new Promise((resolve) => setTimeout(resolve, searchDelayMs));
+        }
 
         const searchHTTPIndex = runtime.getHTTPEvents().length;
         try {
@@ -1918,6 +2062,9 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
   } catch (error) {
     pluginReport.errors.push(error.message || String(error));
   } finally {
+    if (runtime && typeof runtime.getChallengeStatus === "function") {
+      pluginReport.challenge = runtime.getChallengeStatus();
+    }
     if (runtime && typeof runtime.dispose === "function") {
       runtime.dispose();
     }
@@ -1926,6 +2073,7 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
   pluginReport.summary.casesTotal = pluginReport.cases.length;
   pluginReport.summary.ok = pluginReport.cases.filter((item) => item.ok).length;
   pluginReport.summary.fail = pluginReport.cases.filter((item) => !item.ok).length;
+  pluginReport.availability = determinePluginAvailability(pluginReport);
   pluginReport.endedAt = isoNow();
 
   return pluginReport;
@@ -1966,6 +2114,24 @@ function determinePluginSmokeStatus(pluginReport) {
   if (fail <= 0) return "Bun Smoke OK";
   if (ok > 0) return "Bun Smoke Partial";
   return "Bun Smoke Fail";
+}
+
+function determinePluginAvailability(pluginReport) {
+  if (Array.isArray(pluginReport && pluginReport.errors) && pluginReport.errors.length > 0) {
+    return "unavailable";
+  }
+  const playerCases = getPlayerCases(pluginReport);
+  if (playerCases.some((item) => item && item.ok)) return "usable";
+  if (playerCases.length > 0) return "unavailable";
+  return "not-proven";
+}
+
+function formatAvailabilityStatus(pluginReport) {
+  switch (pluginReport && pluginReport.availability) {
+  case "usable": return "Usable";
+  case "unavailable": return "Unavailable";
+  default: return "Not Proven";
+  }
 }
 
 function compactSmokeStatus(pluginReport) {
@@ -2013,6 +2179,12 @@ function formatSearchStatus(pluginReport) {
   return "Fail";
 }
 
+function formatListStatus(pluginReport) {
+  const list = pluginReport && pluginReport.list;
+  if (!list) return "Not Run";
+  return list.ok ? `OK ${Number(list.count || 0)}` : "Empty";
+}
+
 function formatPlaybackStatus(pluginReport) {
   const cases = getPlayerCases(pluginReport);
   if (cases.length === 0) return "Not Reached";
@@ -2026,6 +2198,20 @@ function formatPlaybackStatus(pluginReport) {
 function formatCaseCounts(pluginReport) {
   const summary = pluginReport && pluginReport.summary || {};
   return `${Number(summary.ok || 0)}/${Number(summary.casesTotal || 0)}`;
+}
+
+function formatChallengeStatus(pluginReport) {
+  const challenge = pluginReport && pluginReport.challenge;
+  if (!challenge || !challenge.managed) return "Not Managed";
+  const families = Array.isArray(challenge.families) && challenge.families.length
+    ? ` ${challenge.families.join(",")}`
+    : "";
+  switch (challenge.status) {
+  case "exercised": return `Exercised${families}`;
+  case "failed": return `Failed${challenge.lastFailure ? ` (${challenge.lastFailure})` : ""}`;
+  case "not-observed": return "Not Observed";
+  default: return String(challenge.status || "Unknown");
+  }
 }
 
 function formatCaseLabel(caseItem) {
@@ -2073,7 +2259,7 @@ function buildSummaryLog(report, invalidSources, meta) {
   for (const plugin of report.plugins || []) {
     const reasonText = formatReasonCounts(buildReasonCountsForPlugin(plugin));
     lines.push(
-      `- ${plugin.pluginFolder || "-"} | ${plugin.pluginName || plugin.subscriptionName || "-"} | overall=${compactSmokeStatus(plugin)} | conn=${formatConnectivityStatus(plugin)} | search=${formatSearchStatus(plugin)} | playback=${formatPlaybackStatus(plugin)} | cases=${formatCaseCounts(plugin)} | reasons=${reasonText}`
+      `- ${plugin.pluginFolder || "-"} | ${plugin.pluginName || plugin.subscriptionName || "-"} | availability=${formatAvailabilityStatus(plugin)} | challenge=${formatChallengeStatus(plugin)} | conn=${formatConnectivityStatus(plugin)} | list=${formatListStatus(plugin)} | search=${formatSearchStatus(plugin)} | playback=${formatPlaybackStatus(plugin)} | cases=${formatCaseCounts(plugin)} | reasons=${reasonText}`
     );
   }
 
@@ -2099,8 +2285,8 @@ function buildPluginDetailsMarkdown(plugin) {
   const playerCases = getPlayerCases(plugin);
   const failedCases = (plugin.cases || []).filter((item) => item && !item.ok);
   const summaryLine =
-    `${plugin.pluginName || plugin.subscriptionName || "-"} · ${compactSmokeStatus(plugin)} · ` +
-    `conn=${formatConnectivityStatus(plugin)} · search=${formatSearchStatus(plugin)} · ` +
+    `${plugin.pluginName || plugin.subscriptionName || "-"} · ${formatAvailabilityStatus(plugin)} · ` +
+    `conn=${formatConnectivityStatus(plugin)} · list=${formatListStatus(plugin)} · search=${formatSearchStatus(plugin)} · ` +
     `playback=${formatPlaybackStatus(plugin)} · reasons=${reasonText}`;
 
   lines.push(`<details>`);
@@ -2108,7 +2294,9 @@ function buildPluginDetailsMarkdown(plugin) {
   lines.push("");
   lines.push(`- Folder: \`${plugin.pluginFolder || "-"}\``);
   lines.push(`- Entry: \`${plugin.subscriptionName || "-"}\``);
-  lines.push(`- Overall: \`${compactSmokeStatus(plugin)}\``);
+  lines.push(`- Availability: \`${formatAvailabilityStatus(plugin)}\``);
+  lines.push(`- Legacy Case Aggregate: \`${compactSmokeStatus(plugin)}\``);
+  lines.push(`- Challenge: \`${formatChallengeStatus(plugin)}\``);
   lines.push(`- Cases: \`${formatCaseCounts(plugin)}\``);
   lines.push(`- Reasons: \`${reasonText}\``);
   if (plugin.sourceNote) {
@@ -2223,7 +2411,9 @@ function buildReadmeStatusSection(report, invalidSources, meta) {
 }
 
 function buildJobSummary(report) {
-  const degraded = (report.plugins || []).filter((plugin) => compactSmokeStatus(plugin) !== "OK");
+  const degraded = (report.plugins || []).filter(
+    (plugin) => plugin.availability !== "usable" || (plugin.challenge && plugin.challenge.status === "failed")
+  );
   const lines = [];
   lines.push(`## Bun Smoke Status`);
   lines.push("");
@@ -2232,6 +2422,7 @@ function buildJobSummary(report) {
   lines.push(`- Plugins: \`${report.summary.pluginsTotal}\``);
   lines.push(`- Cases: \`${report.summary.ok}/${report.summary.casesTotal}\` ok`);
   lines.push(`- Fatal Plugins: \`${report.summary.pluginsWithFatalErrors}\``);
+  lines.push(`- Usable Plugins: \`${report.summary.pluginsUsable}\``);
   lines.push(`- Invalid Sources: \`${report.summary.invalidSourcesPlugins}\``);
   lines.push("");
 
@@ -2242,11 +2433,11 @@ function buildJobSummary(report) {
 
   lines.push(`### Degraded Plugins`);
   lines.push("");
-  lines.push(`| Plugin | Overall | Connectivity | Search | Playback | Reasons |`);
-  lines.push(`| --- | --- | --- | --- | --- | --- |`);
+  lines.push(`| Plugin | Availability | Challenge | Connectivity | List | Search | Playback | Reasons |`);
+  lines.push(`| --- | --- | --- | --- | --- | --- | --- | --- |`);
   for (const plugin of degraded) {
     lines.push(
-      `| ${escapeMarkdownTableCell(plugin.pluginName || "-")} | ${compactSmokeStatus(plugin)} | ${escapeMarkdownTableCell(formatConnectivityStatus(plugin))} | ${escapeMarkdownTableCell(formatSearchStatus(plugin))} | ${escapeMarkdownTableCell(formatPlaybackStatus(plugin))} | ${escapeMarkdownTableCell(formatReasonCounts(buildReasonCountsForPlugin(plugin)))} |`
+      `| ${escapeMarkdownTableCell(plugin.pluginName || "-")} | ${formatAvailabilityStatus(plugin)} | ${escapeMarkdownTableCell(formatChallengeStatus(plugin))} | ${escapeMarkdownTableCell(formatConnectivityStatus(plugin))} | ${escapeMarkdownTableCell(formatListStatus(plugin))} | ${escapeMarkdownTableCell(formatSearchStatus(plugin))} | ${escapeMarkdownTableCell(formatPlaybackStatus(plugin))} | ${escapeMarkdownTableCell(formatReasonCounts(buildReasonCountsForPlugin(plugin)))} |`
     );
   }
   lines.push("");
@@ -2299,12 +2490,21 @@ async function main() {
   const discovery = String(getArg("discovery", "local") || "local").trim().toLowerCase();
   const historyMode = String(getArg("history-mode", "keep") || "keep").trim().toLowerCase();
   const smokeFailExit = String(getArg("smoke-fail-exit", "hard") || "hard").trim().toLowerCase();
+  if (!["hard", "soft", "availability"].includes(smokeFailExit)) {
+    throw new Error("--smoke-fail-exit must be hard, soft, or availability");
+  }
   const updateReadmePath = String(getArg("update-readme", "") || "").trim();
   const jobSummaryFile = String(getArg("job-summary-file", "") || "").trim();
   const subscriptionsURL = String(
     getArg("subscriptions-url", DEFAULT_SUBSCRIPTIONS_URL) || DEFAULT_SUBSCRIPTIONS_URL
   ).trim();
   const subscriptionsFile = String(getArg("subscriptions-file", "") || "").trim();
+  const challengeAdapterModule = String(getArg("challenge-adapter-module", "") || "").trim();
+  const challengeCoreWasm = String(getArg("challenge-core-wasm", "") || "").trim();
+  const challengeCalculatorWasm = String(getArg("challenge-calculator-wasm", "") || "").trim();
+  const challengeTargetsFile = String(getArg("challenge-targets-file", "") || "").trim();
+  const challengeAdapterFactory = await loadChallengeAdapterFactory(challengeAdapterModule);
+  const challengeTargets = await loadChallengeTargets(challengeTargetsFile);
   const managedOutputRoot = path.join(outputDir, outputFolderName);
   const keepHistory = historyMode !== "latest-only";
   const runOutputDir = keepHistory ? path.join(managedOutputRoot, timestamp) : managedOutputRoot;
@@ -2353,6 +2553,11 @@ async function main() {
     printSearchSampleIndex,
     searchKeyword,
     defaultCookieHeader: cookieHeader,
+    challengeAdapterFactory,
+    challengeCoreWasm,
+    challengeCalculatorWasm,
+    challengeTargets,
+    requireManagedChallenge: hasFlag("require-managed-challenge"),
   };
 
   await fsp.mkdir(runOutputDir, { recursive: true });
@@ -2453,9 +2658,12 @@ async function main() {
         printSearchSampleIndex: options.printSearchSampleIndex,
         searchKeyword: options.searchKeyword,
         hasDefaultCookieHeader: !!options.defaultCookieHeader,
+        managedChallengeAdapterEnabled: !!options.challengeAdapterFactory,
+        requireManagedChallenge: options.requireManagedChallenge,
       },
       summary: {
         pluginsTotal: pluginReports.length,
+        pluginsUsable: pluginReports.filter((item) => item.availability === "usable").length,
         pluginsWithFatalErrors: pluginReports.filter((item) => item.errors.length > 0).length,
         casesTotal: allCases.length,
         ok: allCases.filter((item) => item.ok).length,
@@ -2545,8 +2753,12 @@ async function main() {
     logger.log(`[invalid-sources-latest] ${invalidSourcesLatestPath}`);
 
     if (
-      smokeFailExit !== "soft" &&
-      (report.summary.fail > 0 || report.summary.pluginsWithFatalErrors > 0)
+      (smokeFailExit === "hard" &&
+        (report.summary.fail > 0 || report.summary.pluginsWithFatalErrors > 0)) ||
+      (smokeFailExit === "availability" &&
+        pluginReports.some(
+          (plugin) => plugin.availability !== "usable" || (plugin.challenge && plugin.challenge.status === "failed")
+        ))
     ) {
       process.exitCode = 1;
     }

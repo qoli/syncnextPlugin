@@ -98,6 +98,7 @@ function validateReport(report) {
 
   const keys = [
     "pluginsTotal",
+    "pluginsUsable",
     "pluginsWithFatalErrors",
     "casesTotal",
     "ok",
