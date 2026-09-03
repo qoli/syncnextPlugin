@@ -46,8 +46,6 @@ const listURL = 'https://zip0.com/category/movie?page=1';
 const watchURL = 'https://zip0.com/watch?source=bfzy&id=160989&episode=1';
 const calls = [];
 let rejectedServerSource = '';
-let headStatus = 200;
-let headError = '';
 let listError = '';
 let invalidSearchResponse = false;
 
@@ -101,7 +99,7 @@ const sandbox = {
       return bridgePromise({ statusCode: 200, body: '' });
     },
     head: function () {
-      return bridgePromise({ statusCode: headStatus }, headError);
+      assert.fail('CDN reachability must not depend on HEAD support');
     },
   },
   $next: {
@@ -110,6 +108,7 @@ const sandbox = {
     toEpisodes: function (data) { calls.push(['episodes', JSON.parse(data)]); },
     toEpisodesCandidates: function (data) { calls.push(['candidates', JSON.parse(data)]); },
     toPlayerByJSON: function (data) { calls.push(['player', JSON.parse(data)]); },
+    toPlayerCandidates: function (data) { calls.push(['player-candidates', JSON.parse(data)]); },
     toPlayer: function (url) { calls.push(['player-url', url]); },
     emptyView: function (message) { calls.push(['empty', message]); },
   },
@@ -151,9 +150,12 @@ function settle() {
 
   sandbox.Player('https://media.example/a/index.m3u8');
   await settle();
-  assert.equal(calls[3][0], 'player');
-  assert.equal(calls[3][1].url, 'https://media.example/a/index.m3u8');
-  assert.equal(calls[3][1].headers.Referer, 'https://zip0.com/');
+  assert.equal(calls[3][0], 'player-candidates');
+  assert.ok(Array.isArray(calls[3][1]));
+  assert.equal(calls[3][1].length, 1);
+  assert.equal(calls[3][1][0].url, 'https://media.example/a/index.m3u8');
+  assert.equal(calls[3][1][0].headers.Referer, 'https://zip0.com/');
+  assert.ok(calls[3][1][0].headers['User-Agent'].indexOf('Safari/') !== -1);
 
   sandbox.Player(watchURL);
   await settle();
@@ -175,27 +177,15 @@ function settle() {
   await settle();
   assert.deepEqual(calls[7], ['empty', '搜索线路 1请求失败']);
 
-  headStatus = 403;
-  sandbox.Player('https://media.example/a/index.m3u8');
-  await settle();
-  assert.deepEqual(calls[8], ['empty', '播放地址不可用']);
-
-  headError = 'network failed';
-  sandbox.Player('https://media.example/a/index.m3u8');
-  await settle();
-  assert.deepEqual(calls[9], ['empty', '播放地址检查失败']);
-
   listError = 'network failed';
   sandbox.buildMedias(listURL, 'index');
   await settle();
-  assert.deepEqual(calls[10], ['empty', '影片列表请求失败']);
+  assert.deepEqual(calls[8], ['empty', '影片列表请求失败']);
 
-  headStatus = 200;
-  headError = '';
-  delete sandbox.$next.toPlayerByJSON;
+  delete sandbox.$next.toPlayerCandidates;
   sandbox.Player('https://media.example/a/index.m3u8');
   await settle();
-  assert.deepEqual(calls[11], ['empty', '当前版本不支持播放请求头']);
+  assert.deepEqual(calls[9], ['empty', '当前版本不支持候选播放']);
   assert.equal(calls.filter(function (call) { return call[0] === 'player-url'; }).length, 0);
 
   const probe = sandbox.HostsProbeRequest();

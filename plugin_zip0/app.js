@@ -415,40 +415,18 @@ function emitPlayer(playURL, referer) {
       'User-Agent': USER_AGENT,
     },
   };
-  if (typeof $next.toPlayerByJSON === 'function') {
-    $next.toPlayerByJSON(JSON.stringify(payload));
+  if (typeof $next.toPlayerCandidates === 'function') {
+    // 部分 CDN 对 HEAD 返回 502、GET 则正常，使用 App 的标准候选交接。
+    $next.toPlayerCandidates(JSON.stringify([payload]));
     return;
   }
-  $next.emptyView('当前版本不支持播放请求头');
-}
-
-function probeAndEmitPlayer(playURL, referer) {
-  if (typeof $http.head !== 'function') {
-    $next.emptyView('当前版本不支持播放地址检查');
-    return;
-  }
-  $http.head({
-    url: playURL,
-    headers: {
-      Referer: referer || BASE_URL + '/',
-      'User-Agent': USER_AGENT,
-    },
-  }).then(function (res) {
-    const status = Number((res && res.statusCode) || 0);
-    if (status < 200 || status >= 400) {
-      $next.emptyView('播放地址不可用');
-      return;
-    }
-    emitPlayer(playURL, referer);
-  }).catch(function () {
-    $next.emptyView('播放地址检查失败');
-  });
+  $next.emptyView('当前版本不支持候选播放');
 }
 
 function Player(episodeURL) {
   // Episodes 已输出直连 m3u8，正常情况直接回传。
   if (isDirectMediaURL(episodeURL)) {
-    probeAndEmitPlayer(episodeURL, BASE_URL + '/');
+    emitPlayer(episodeURL, BASE_URL + '/');
     return;
   }
 
