@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-09-04T07:57:13.665Z",
-  "invalidPluginsCount": 2,
+  "generatedAt": "2026-09-05T07:39:15.262Z",
+  "invalidPluginsCount": 3,
   "invalidPlugins": [
+    {
+      "pluginFolder": "plugin_ddys",
+      "pluginName": "低调影视",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_ddys/config.json",
+      "reasonCounts": {
+        "fatal_error": 1
+      },
+      "fatalErrors": [
+        "callback timeout (medias); emptyView=DDYS: DDYS selected cookie was rejected by upstream"
+      ],
+      "failedCases": []
+    },
     {
       "pluginFolder": "plugin_youknow",
       "pluginName": "YouKnowTV",
