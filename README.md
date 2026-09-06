@@ -24,14 +24,14 @@
 ## 最新 Smoke 摘要
 
 <!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-09-05T07:39:15.262Z`
+Generated: `2026-09-06T07:52:44.297Z`
 Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
 
 > Bun/Node smoke status only.
 > It does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.
 
 - Plugins: `9`
-- Cases: `36/43` passed
+- Cases: `36/45` passed
 - Fatal plugins: `3`
 - Invalid source entries: `3`
 

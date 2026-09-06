@@ -1,19 +1,7 @@
 {
-  "generatedAt": "2026-09-05T07:39:15.262Z",
+  "generatedAt": "2026-09-06T07:52:44.297Z",
   "invalidPluginsCount": 3,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_ddys",
-      "pluginName": "低调影视",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_ddys/config.json",
-      "reasonCounts": {
-        "fatal_error": 1
-      },
-      "fatalErrors": [
-        "callback timeout (medias); emptyView=DDYS: DDYS selected cookie was rejected by upstream"
-      ],
-      "failedCases": []
-    },
     {
       "pluginFolder": "plugin_youknow",
       "pluginName": "YouKnowTV",
@@ -42,6 +30,41 @@
               "method": "GET",
               "url": "https://www.youknow.tv/label/new/",
               "status": 403,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pluginFolder": "plugin_grigri",
+      "pluginName": "grigrilove",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_grigri/config.json",
+      "reasonCounts": {
+        "list_empty": 1
+      },
+      "fatalErrors": [
+        "no medias returned; no medias returned"
+      ],
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "list",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://ani.girigirilove.com/show/2--------1---/",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "list returned empty medias",
+          "reasonCode": "list_empty",
+          "reasonText": "首頁列表沒有返回媒體",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://ani.girigirilove.com/show/2--------1---/",
+              "status": 200,
               "safeLine": false,
               "error": ""
             }
