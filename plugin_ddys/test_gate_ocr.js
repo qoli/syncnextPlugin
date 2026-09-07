@@ -142,6 +142,17 @@ function cookieEntry(cookie, addedAt, validUntil) {
   return { cookie, addedAt, validUntil };
 }
 
+function testCanonicalCookiePoolSourceHasNoFallback() {
+  const context = loadPlugin();
+  assert.strictEqual(
+    context.COOKIE_POOL_URL,
+    'https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_ddys/cookie.json'
+  );
+  const source = fs.readFileSync(path.join(__dirname, 'app.js'), 'utf8');
+  assert.strictEqual(source.includes('workers.dev'), false);
+  assert.strictEqual(source.match(/COOKIE_POOL_URL\s*=/g).length, 1);
+}
+
 function testCookieSelectionUsesOnlyValidEntries() {
   const context = loadPlugin();
   const json = cookiePool([
@@ -420,6 +431,7 @@ async function main() {
   testAltchaRequiresTheExactChallengeSolution();
   testOCRCompletesOnceWhenChallengeFinishesFirst();
   testOCRErrorFailsOnceWithoutSubmittingPoints();
+  testCanonicalCookiePoolSourceHasNoFallback();
   testCookieSelectionUsesOnlyValidEntries();
   testCookiePoolRejectsMalformedAndEmptyPools();
   testHTMLMediaCardsParser();
