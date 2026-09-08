@@ -183,6 +183,13 @@ function Search(inputURL, key) {
   $http.fetch(req).then(function (res) {
     let jsonObj = JSON.parse(res.body);
     let content = jsonObj.data.data[0].list;
+    if (content === null) {
+      content = [];
+    } else if (!Array.isArray(content)) {
+      throw new Error(
+        "invalid search response: data.data[0].list must be an array or null"
+      );
+    }
 
     for (var index = 0; index < content.length; index++) {
       let item = content[index];
