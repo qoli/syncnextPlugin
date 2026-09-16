@@ -106,6 +106,11 @@ Public `Plugin Smoke Status (Non-Managed)` 排程不具備 private WASM core，�
 `plugin_czzy` 與 `plugin_libvio`；這兩個 managed 插件由 Syncnext repository 的
 `Managed Plugin Smoke` 排程專責，避免同時發布一份未解 challenge 的矛盾結果。
 
+Public 排程必須使用 `--strict-probe`：只要 player/media probe 未通過，該 player case
+就必須計入 fail，不能只因插件成功產生播放 URL 而計入 ok。排程仍使用
+`--smoke-fail-exit=soft`，讓完整故障報告可以發布；soft 只控制程序 exit code，不改寫
+case、插件 availability 或頂層統計的真實結果。
+
 ## 4. 結果判讀
 
 - JS 語法、設定 JSON、fixture 模型或已知 App 契約失敗：**必須修復**，不能發布。
