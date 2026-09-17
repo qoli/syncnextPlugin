@@ -1,8 +1,8 @@
-generated_at=2026-09-16T08:32:26.831Z
+generated_at=2026-09-17T08:37:29.487Z
 runner=bun
 discovery=subscriptions
 subscriptions_source=https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json
-summary plugins=9 fatal=3 cases=45 ok=34 fail=11 invalidSources=4
+summary plugins=9 fatal=2 cases=48 ok=39 fail=9 invalidSources=3
 disclaimer=Bun/Node smoke test only; it does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.
 
 [plugins]
@@ -10,14 +10,13 @@ disclaimer=Bun/Node smoke test only; it does not represent Syncnext tvOS/iOS Jav
 - plugin_olevod | 新歐樂影院 | availability=Usable | challenge=Not Managed | conn=Fail 0/3 | list=OK 12 | search=OK | playback=OK 3/3 | cases=5/6 | reasons=connectivity_failed:1
 - plugin_age | 新 AGE 動漫 | availability=Usable | challenge=Not Managed | conn=OK 2/3 | list=OK 32 | search=OK | playback=OK 3/3 | cases=6/6 | reasons=-
 - plugin_youknow | YouKnowTV | availability=Unavailable | challenge=Not Managed | conn=Fail 0/3 | list=Empty | search=Empty | playback=Not Reached | cases=0/3 | reasons=connectivity_failed:1, list_empty:1, search_empty:1
-- plugin_thanju | 韩剧网 | availability=Unavailable | challenge=Not Managed | conn=OK 3/3 | list=Empty | search=Empty | playback=Not Reached | cases=1/3 | reasons=list_empty:1, search_empty:1
+- plugin_thanju | 韩剧网 | availability=Usable | challenge=Not Managed | conn=OK 3/3 | list=OK 30 | search=OK | playback=OK 3/3 | cases=6/6 | reasons=-
 - plugin_dbku | 独播库 | availability=Usable | challenge=Not Managed | conn=OK 3/3 | list=OK 48 | search=OK | playback=OK 3/3 | cases=6/6 | reasons=-
 - plugin_grigri | grigrilove | availability=Usable | challenge=Not Managed | conn=OK 3/3 | list=OK 48 | search=OK | playback=OK 3/3 | cases=6/6 | reasons=-
 - plugin_gimy | Gimy TV | availability=Unavailable | challenge=Not Managed | conn=Fail 0/3 | list=Empty | search=Empty | playback=Not Reached | cases=0/3 | reasons=connectivity_failed:1, list_empty:1, search_empty:1
-- plugin_zip0 | ZIP0 影视 | availability=Usable | challenge=Not Managed | conn=OK 3/3 | list=OK 101 | search=OK | playback=OK 1/1 | cases=4/6 | reasons=plugin_empty_view:2
+- plugin_zip0 | ZIP0 影视 | availability=Usable | challenge=Not Managed | conn=OK 3/3 | list=OK 105 | search=OK | playback=OK 1/1 | cases=4/6 | reasons=plugin_empty_view:2
 
 [invalid_sources]
 - plugin_youknow | YouKnowTV | list_empty:1 | fatal=1
-- plugin_thanju | 韩剧网 | list_empty:1 | fatal=1
 - plugin_gimy | Gimy TV | list_empty:1 | fatal=1
 - plugin_zip0 | ZIP0 影视 | plugin_empty_view:2 | fatal=0

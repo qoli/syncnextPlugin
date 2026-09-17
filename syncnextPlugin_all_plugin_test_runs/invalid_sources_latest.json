@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-16T08:32:26.831Z",
-  "invalidPluginsCount": 4,
+  "generatedAt": "2026-09-17T08:37:29.487Z",
+  "invalidPluginsCount": 3,
   "invalidPlugins": [
     {
       "pluginFolder": "plugin_youknow",
@@ -30,41 +30,6 @@
               "method": "GET",
               "url": "https://www.youknow.tv/label/new/",
               "status": 403,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "pluginFolder": "plugin_thanju",
-      "pluginName": "韩剧网",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_thanju/config.json",
-      "reasonCounts": {
-        "list_empty": 1
-      },
-      "fatalErrors": [
-        "no medias returned; no medias returned"
-      ],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "list",
-          "mediaTitle": "",
-          "episodeTitle": "",
-          "detailURL": "https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "list returned empty medias",
-          "reasonCode": "list_empty",
-          "reasonText": "首頁列表沒有返回媒體",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.thanju.com/list-select-id-1-type--area--year--star--state--order-addtime-p-1.html",
-              "status": 200,
               "safeLine": false,
               "error": ""
             }
@@ -119,9 +84,9 @@
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "撞击之后",
+          "mediaTitle": "M.I.S.S.I.O.N. 歌剧般的潜入搜查官",
           "episodeTitle": "",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=163185&episode=1",
+          "detailURL": "https://zip0.com/watch?source=bfzy&id=163303&episode=1",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -131,7 +96,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://zip0.com/watch?source=bfzy&id=163185&episode=1",
+              "url": "https://zip0.com/watch?source=bfzy&id=163303&episode=1",
               "status": 500,
               "safeLine": false,
               "error": ""
@@ -141,9 +106,9 @@
         {
           "ok": false,
           "stage": "episodes",
-          "mediaTitle": "荣光与暗影",
+          "mediaTitle": "怒鲨狂潮",
           "episodeTitle": "",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=163184&episode=1",
+          "detailURL": "https://zip0.com/watch?source=bfzy&id=163317&episode=1",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -153,7 +118,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://zip0.com/watch?source=bfzy&id=163184&episode=1",
+              "url": "https://zip0.com/watch?source=bfzy&id=163317&episode=1",
               "status": 500,
               "safeLine": false,
               "error": ""
