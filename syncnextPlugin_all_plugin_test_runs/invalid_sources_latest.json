@@ -1,42 +1,7 @@
 {
-  "generatedAt": "2026-09-17T08:37:29.487Z",
-  "invalidPluginsCount": 3,
+  "generatedAt": "2026-09-18T08:13:58.439Z",
+  "invalidPluginsCount": 1,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_youknow",
-      "pluginName": "YouKnowTV",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_youknow/config.json",
-      "reasonCounts": {
-        "list_empty": 1
-      },
-      "fatalErrors": [
-        "no medias returned; no medias returned"
-      ],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "list",
-          "mediaTitle": "",
-          "episodeTitle": "",
-          "detailURL": "https://www.youknow.tv/label/new/",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "list returned empty medias",
-          "reasonCode": "list_empty",
-          "reasonText": "首頁列表沒有返回媒體",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.youknow.tv/label/new/",
-              "status": 403,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
     {
       "pluginFolder": "plugin_gimy",
       "pluginName": "Gimy TV",
@@ -65,61 +30,6 @@
               "method": "GET",
               "url": "https://gimyai.tw/",
               "status": 403,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "pluginFolder": "plugin_zip0",
-      "pluginName": "ZIP0 影视",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
-      "reasonCounts": {
-        "plugin_empty_view": 2
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "M.I.S.S.I.O.N. 歌剧般的潜入搜查官",
-          "episodeTitle": "",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=163303&episode=1",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 剧集页面请求失败",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://zip0.com/watch?source=bfzy&id=163303&episode=1",
-              "status": 500,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "怒鲨狂潮",
-          "episodeTitle": "",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=163317&episode=1",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "emptyView: 剧集页面请求失败",
-          "reasonCode": "plugin_empty_view",
-          "reasonText": "插件回傳 emptyView，未取得可播放地址",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://zip0.com/watch?source=bfzy&id=163317&episode=1",
-              "status": 500,
               "safeLine": false,
               "error": ""
             }
