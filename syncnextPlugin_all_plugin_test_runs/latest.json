@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T08:32:00.419Z",
+  "generatedAt": "2026-09-24T08:24:54.558Z",
   "pluginRoot": "/home/runner/work/syncnextPlugin/syncnextPlugin",
   "outputDir": "/home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs",
   "options": {
@@ -35,11 +35,11 @@
   },
   "summary": {
     "pluginsTotal": 9,
-    "pluginsUsable": 4,
+    "pluginsUsable": 5,
     "pluginsWithFatalErrors": 2,
     "casesTotal": 48,
-    "ok": 31,
-    "fail": 17,
+    "ok": 32,
+    "fail": 16,
     "invalidSourcesPlugins": 6
   },
   "testedPluginFolders": [
@@ -63,8 +63,8 @@
       "index": 1,
       "subscriptionName": "DDYS",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_ddys/config.json",
-      "startedAt": "2026-09-23T08:30:52.538Z",
-      "endedAt": "2026-09-23T08:30:59.398Z",
+      "startedAt": "2026-09-24T08:23:41.152Z",
+      "endedAt": "2026-09-24T08:23:47.932Z",
       "mode": "subscriptions",
       "pluginName": "低调影视",
       "pluginFolder": "plugin_ddys",
@@ -295,11 +295,11 @@
         {
           "ok": true,
           "stage": "player",
-          "mediaTitle": "足球教练 (更新至 第4季08)",
+          "mediaTitle": "幸福伽菜子的快乐杀手生活 (更新至 第2季03)",
           "episodeTitle": "S1E1 1",
-          "detailURL": "https://ddys.app/ted-lasso/",
-          "episodeURL": "https://v3.ddys.app/v2/west_drama/Ted_Lasso/Ted_Lasso_S01E01.mp4",
-          "playURL": "https://v3.ddys.app/v2/west_drama/Ted_Lasso/Ted_Lasso_S01E01.mp4",
+          "detailURL": "https://ddys.app/happy-kanakos-killer-life/",
+          "episodeURL": "https://v3.ddys.app/v2/jp_drama/Happy_Kanakos_Killer_Life/Happy_Kanakos_Killer_Life_S01E01.mp4",
+          "playURL": "https://v3.ddys.app/v2/jp_drama/Happy_Kanakos_Killer_Life/Happy_Kanakos_Killer_Life_S01E01.mp4",
           "probe": {
             "ok": true,
             "method": "HEAD",
@@ -312,7 +312,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://v2.ddys.app/v2/west_drama/Ted_Lasso/Ted_Lasso_S01E01.mp4",
+              "url": "https://v2.ddys.app/v2/jp_drama/Happy_Kanakos_Killer_Life/Happy_Kanakos_Killer_Life_S01E01.mp4",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
                 "Referer": "https://ddys.app/"
@@ -327,7 +327,7 @@
             },
             {
               "index": 1,
-              "url": "https://v3.ddys.app/v2/west_drama/Ted_Lasso/Ted_Lasso_S01E01.mp4",
+              "url": "https://v3.ddys.app/v2/jp_drama/Happy_Kanakos_Killer_Life/Happy_Kanakos_Killer_Life_S01E01.mp4",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
                 "Referer": "https://ddys.app/"
@@ -353,8 +353,8 @@
       "index": 2,
       "subscriptionName": "新歐樂影院",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
-      "startedAt": "2026-09-23T08:30:59.398Z",
-      "endedAt": "2026-09-23T08:31:03.326Z",
+      "startedAt": "2026-09-24T08:23:47.932Z",
+      "endedAt": "2026-09-24T08:23:51.864Z",
       "mode": "subscriptions",
       "pluginName": "新歐樂影院",
       "pluginFolder": "plugin_olevod",
@@ -463,9 +463,9 @@
         {
           "ok": true,
           "stage": "search",
-          "mediaTitle": "keyword:天降萌宝，清冷爸爸破防了",
+          "mediaTitle": "keyword:魔改",
           "episodeTitle": "",
-          "detailURL": "https://api.olelive.com/v1/pub/index/search/%E5%A4%A9%E9%99%8D%E8%90%8C%E5%AE%9D%EF%BC%8C%E6%B8%85%E5%86%B7%E7%88%B8%E7%88%B8%E7%A0%B4%E9%98%B2%E4%BA%86/vod/0/1/4",
+          "detailURL": "https://api.olelive.com/v1/pub/index/search/%E9%AD%94%E6%94%B9/vod/0/1/4",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -475,13 +475,35 @@
           "httpDiagnostics": []
         },
         {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "魔改 锦月如歌",
+          "episodeTitle": "",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/84846/true",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "no episodes",
+          "reasonCode": "unknown",
+          "reasonText": "no episodes",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://api.olelive.com/v1/pub/vod/detail/84846/true?_vv=77d088cef151004de97136ffa7b39263",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
           "ok": true,
           "stage": "player",
-          "mediaTitle": "天降萌宝，清冷爸爸破防了",
+          "mediaTitle": "我就是个老实女人",
           "episodeTitle": "第01集",
-          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/84786/true",
-          "episodeURL": "https://europe.olemovienews.com/ts6/20260923/WUXiVqpM/mp4/WUXiVqpM.mp4/clipTo/53633/master.m3u8",
-          "playURL": "https://europe.olemovienews.com/ts6/20260923/WUXiVqpM/mp4/WUXiVqpM.mp4/clipTo/53633/master.m3u8",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/84845/true",
+          "episodeURL": "https://europe.olemovienews.com/ts6/20260924/5PrOnewq/mp4/5PrOnewq.mp4/clipTo/125875/master.m3u8",
+          "playURL": "https://europe.olemovienews.com/ts6/20260924/5PrOnewq/mp4/5PrOnewq.mp4/clipTo/125875/master.m3u8",
           "probe": {
             "ok": true,
             "method": "HEAD",
@@ -494,7 +516,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://europe.olemovienews.com/ts6/20260923/WUXiVqpM/mp4/WUXiVqpM.mp4/clipTo/53633/master.m3u8",
+              "url": "https://europe.olemovienews.com/ts6/20260924/5PrOnewq/mp4/5PrOnewq.mp4/clipTo/125875/master.m3u8",
               "headers": {},
               "probe": {
                 "ok": true,
@@ -511,35 +533,13 @@
           "httpDiagnostics": []
         },
         {
-          "ok": false,
-          "stage": "episodes",
-          "mediaTitle": "AI换脸 纪文君 艺名球球 满足导演的要求 在家拍性爱视频",
-          "episodeTitle": "",
-          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/84785/true",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "no episodes",
-          "reasonCode": "unknown",
-          "reasonText": "no episodes",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://api.olelive.com/v1/pub/vod/detail/84785/true?_vv=ab408038dee11203c0310fe2f3c3b0f2",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
           "ok": true,
           "stage": "player",
-          "mediaTitle": "妖怪堆里的人小孩",
+          "mediaTitle": "她玩火2",
           "episodeTitle": "第01集",
-          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/84784/true",
-          "episodeURL": "https://europe.olemovienews.com/ts6/20260923/yJoD2axB/mp4/yJoD2axB.mp4/clipTo/164866/master.m3u8",
-          "playURL": "https://europe.olemovienews.com/ts6/20260923/yJoD2axB/mp4/yJoD2axB.mp4/clipTo/164866/master.m3u8",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/84844/true",
+          "episodeURL": "https://europe.olemovienews.com/ts6/20260924/W5LTFNIc/mp4/W5LTFNIc.mp4/clipTo/166920/master.m3u8",
+          "playURL": "https://europe.olemovienews.com/ts6/20260924/W5LTFNIc/mp4/W5LTFNIc.mp4/clipTo/166920/master.m3u8",
           "probe": {
             "ok": true,
             "method": "HEAD",
@@ -552,7 +552,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://europe.olemovienews.com/ts6/20260923/yJoD2axB/mp4/yJoD2axB.mp4/clipTo/164866/master.m3u8",
+              "url": "https://europe.olemovienews.com/ts6/20260924/W5LTFNIc/mp4/W5LTFNIc.mp4/clipTo/166920/master.m3u8",
               "headers": {},
               "probe": {
                 "ok": true,
@@ -575,8 +575,8 @@
       "index": 3,
       "subscriptionName": "新 AGE",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
-      "startedAt": "2026-09-23T08:31:03.326Z",
-      "endedAt": "2026-09-23T08:31:27.705Z",
+      "startedAt": "2026-09-24T08:23:51.865Z",
+      "endedAt": "2026-09-24T08:24:16.581Z",
       "mode": "subscriptions",
       "pluginName": "新 AGE 動漫",
       "pluginFolder": "plugin_age",
@@ -630,10 +630,10 @@
       },
       "summary": {
         "casesTotal": 6,
-        "ok": 3,
-        "fail": 3
+        "ok": 4,
+        "fail": 2
       },
-      "availability": "unavailable",
+      "availability": "usable",
       "cases": [
         {
           "ok": true,
@@ -697,13 +697,97 @@
           "httpDiagnostics": []
         },
         {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "Candy Caries 蛀在糖糖里",
+          "episodeTitle": "第01集",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260163",
+          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260163%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_0ea5oQllvGwXA%252BViGdQ6DCs8p63QmTk0Ve2NKr0Lb5Y9EFZSp0B%252BGj%252BKDc%252BwcbeSy8lrO8WMzdR0wcrt6lXqouNzXdX9rQQcbERz%252Bk%252BZirZcOHQshHKO5s5y%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%9A%B4%E9%A3%8E%22%2C%22lineKey%22%3A%22bfzym3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_f611R2alvJhBB3P8KbpmvLbtt4MqovNVS9xrXZ8WwpLN9bJ6Tnu2J5BZCst1aZdjrJJPHkPEYT9XzDO%252F%252F8NKYxSXTNBqzXY3AwW0L8BZVuwuMdUbEROgNUa39YJTXWM%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_a57dT0R5KutAr03gSsoG164aKoWwnVW0yKECZFc6QCUbZuqjS829n3cVo%252BCuXQdfrQ95JcjJc7nzwmJfoY42ghiigSxX%252FcbnPuugttriLgxVTwxv4MfGAmh%252FUeP%252FJHY%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E7%BA%A2%E7%89%9B%22%2C%22lineKey%22%3A%22hnm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_d21byKHcJj2lBU%252BQOPVNI2dLej1c%252Fp%252FcB1aTJ9fFagluksncXMY4A2r%252FtGLjp8WarzixfOD80fXmk%252BOzIWsBzt76gMg5wle7Etk%22%2C%22title%22%3A%22%E7%AC%AC1%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_b4a4zRW%252FhzmVvKHt8iFQHpDlw8nqFGaiv35LSowmG3bWPQLIvb3WAzZ106ttP1yGNmQf314gQ7wbvLCvHO%252F0WcL4DXLEa6efwnYM%252BjfniRw5nepo%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E5%87%A4%E9%9B%8F%E4%BA%91%22%2C%22lineKey%22%3A%22wolong%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_84c7sZAncmBHA7Uo1rKAGaXiCatzTQD9npz5cs6Uch%252FNCPZkyA3cE65UcbaTQHoah9yGnZL358YxfgDJ7U8RZT4GMMcnzWj%252BOp3FKQ%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
+          "playURL": "https://hn.bfvvs.com/play/dPNZPR4a/index.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "application/vnd.apple.mpegurl",
+            "error": ""
+          },
+          "candidateCount": 6,
+          "candidateWinnerIndex": 3,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vip.ffzy-plays.com/20260416/52446_37394ee0/index.m3u8",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_0ea5oQllvGwXA%2BViGdQ6DCs8p63QmTk0Ve2NKr0Lb5Y9EFZSp0B%2BGj%2BKDc%2BwcbeSy8lrO8WMzdR0wcrt6lXqouNzXdX9rQQcbERz%2Bk%2BZirZcOHQshHKO5s5y"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            },
+            {
+              "index": 1,
+              "url": "https://bfeng10.com/video/zhuzaitangtangli/16c167463b3e/index.m3u8",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_f611R2alvJhBB3P8KbpmvLbtt4MqovNVS9xrXZ8WwpLN9bJ6Tnu2J5BZCst1aZdjrJJPHkPEYT9XzDO%2F%2F8NKYxSXTNBqzXY3AwW0L8BZVuwuMdUbEROgNUa39YJTXWM"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 404,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 404"
+              }
+            },
+            {
+              "index": 2,
+              "url": "https://v9.ppqrrs.com/wjv9/202604/16/h3XE8NqHUx91/video/index.m3u8",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_a57dT0R5KutAr03gSsoG164aKoWwnVW0yKECZFc6QCUbZuqjS829n3cVo%2BCuXQdfrQ95JcjJc7nzwmJfoY42ghiigSxX%2FcbnPuugttriLgxVTwxv4MfGAmh%2FUeP%2FJHY"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html",
+                "error": "status 403"
+              }
+            },
+            {
+              "index": 3,
+              "url": "https://hn.bfvvs.com/play/dPNZPR4a/index.m3u8",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_d21byKHcJj2lBU%2BQOPVNI2dLej1c%2Fp%2FcB1aTJ9fFagluksncXMY4A2r%2FtGLjp8WarzixfOD80fXmk%2BOzIWsBzt76gMg5wle7Etk"
+              },
+              "probe": {
+                "ok": true,
+                "method": "HEAD",
+                "status": 200,
+                "contentType": "application/vnd.apple.mpegurl",
+                "error": ""
+              }
+            }
+          ],
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "铠真传 武士军团 第2部分",
+          "mediaTitle": "乡下大叔成为剑圣 第二季",
           "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260171",
-          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260171%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_c3d1IaqJt5yLmjEG95AWN%252Bcnpi8GYYlj2RlWkfu5YjZ6BeYAv76%252Bx2JltHopA9Rvw0vTtXoskGGhvfcORq9Pl8gJEG6v3IUSv0vDCqsQzBHRgw%252B9fEZg07Ga%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%9A%B4%E9%A3%8E%22%2C%22lineKey%22%3A%22bfzym3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_3193ssp8tJTouZOxW%252BuNrB5HFdAsJdEhcMeze67KfdJysKZQfuAbm8InyMzjK9RfM2hSfJPhLRyN6ctymHWrozWU75VO9tjMYfKi214THtic5fj5fM5BBGKyQ19qCZZaIbTJpRKhZA%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_fc379E64JjHMHc%252BRzw6CGB2K%252Bg8QTArFgpcp%252FI4R0cvBaio3NV6LuT%252BGZl2U7XT7bPX1vlLG4U01e4xkKO%252BRF1rT0%252FWMW1rBQ%252FdheJAkz2IkrPcvSmey3St0UZcOX0I%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_0ad3H9Sd1f50ABAwW%252FPSqMuIE7tCSM%252BAQ%252BStQSCPrxos4jMABVW8AsZKJHb5E79HrxafXSwTZbh1aRUotOL0qTgvX5p1UruMVJi5YWRztu8s6Qmr%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
-          "playURL": "https://vip.ffzy-plays.com/20260804/56631_9e4b5b9b/index.m3u8",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260207",
+          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260207%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_1159G87GYjvW%252FYMIe%252F%252FnwhZ%252BzP9f9dCoifW8rH6LxXcMD4lwxfK5SLCg4mkhmSb%252F3uv7qkzgDg5dKpWiqooGcP23C0hCTNU2CCpl%252FPS7Fj7UoWXAxKMavvo2%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%9A%B4%E9%A3%8E%22%2C%22lineKey%22%3A%22bfzym3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_a123YtxTWdBBhx1lbbI8sB5IcBeiAw2D4Ic0u9Vc3R1C2CiC2os1FVrV%252FIyMaprSJSGG0K6gl98lWIcnbmcq55v8UwTVfM8%252FZoPeUpfd%252F1YzhAkFd4Vb%252B0tLxSEcmoIFAFSVW1p5TgG6r3WzMS2LnO3ttngrV%252FPyPlc%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_7ba9KXXX3Frzq%252BjQu7l%252FeJW4MZAJfKHXw5VE0kffTiUf7%252B7nklgHPSRVcRO4kUlrsapnB5G5PxDTPjUa4laQndgmtlsTGV5otqjlBd7avK8dchIW6Puoua7zsz35jEmMlA%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_ff5bdxk4g1l7ydKx%252FBLBuO%252Fe2iboNFZQHSAKqnEZAEa41p5o89Q9KTabg1b9pTTTh64e8q3jiw5FTY62KhKbzvHxEDnm1w%252BLWKaHKouAuuMd5yMU%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
+          "playURL": "https://vip.ffzy-plays.com/20260709/55538_de2a10af/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -716,10 +800,10 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://vip.ffzy-plays.com/20260804/56631_9e4b5b9b/index.m3u8",
+              "url": "https://vip.ffzy-plays.com/20260709/55538_de2a10af/index.m3u8",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_c3d1IaqJt5yLmjEG95AWN%2Bcnpi8GYYlj2RlWkfu5YjZ6BeYAv76%2Bx2JltHopA9Rvw0vTtXoskGGhvfcORq9Pl8gJEG6v3IUSv0vDCqsQzBHRgw%2B9fEZg07Ga"
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_1159G87GYjvW%2FYMIe%2F%2FnwhZ%2BzP9f9dCoifW8rH6LxXcMD4lwxfK5SLCg4mkhmSb%2F3uv7qkzgDg5dKpWiqooGcP23C0hCTNU2CCpl%2FPS7Fj7UoWXAxKMavvo2"
               },
               "probe": {
                 "ok": false,
@@ -731,10 +815,10 @@
             },
             {
               "index": 1,
-              "url": "https://bfeng11.com/video/kaizhenzhuanwushiqibing2/29bc95f1ab3a/index.m3u8",
+              "url": "https://bfeng11.com/video/xiangxiadashuchengweijianshengdierji_4c8554/e263ab8bd26c/index.m3u8",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_3193ssp8tJTouZOxW%2BuNrB5HFdAsJdEhcMeze67KfdJysKZQfuAbm8InyMzjK9RfM2hSfJPhLRyN6ctymHWrozWU75VO9tjMYfKi214THtic5fj5fM5BBGKyQ19qCZZaIbTJpRKhZA"
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_a123YtxTWdBBhx1lbbI8sB5IcBeiAw2D4Ic0u9Vc3R1C2CiC2os1FVrV%2FIyMaprSJSGG0K6gl98lWIcnbmcq55v8UwTVfM8%2FZoPeUpfd%2F1YzhAkFd4Vb%2B0tLxSEcmoIFAFSVW1p5TgG6r3WzMS2LnO3ttngrV%2FPyPlc"
               },
               "probe": {
                 "ok": false,
@@ -746,10 +830,10 @@
             },
             {
               "index": 2,
-              "url": "https://v9.ppqrrs.com/wjv9/202607/07/RRakdHL5gU87/video/index.m3u8",
+              "url": "https://v11.ppqrrs.com/wjv11/202607/08/4bMjuTAA2S95/video/index.m3u8",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_fc379E64JjHMHc%2BRzw6CGB2K%2Bg8QTArFgpcp%2FI4R0cvBaio3NV6LuT%2BGZl2U7XT7bPX1vlLG4U01e4xkKO%2BRF1rT0%2FWMW1rBQ%2FdheJAkz2IkrPcvSmey3St0UZcOX0I"
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_7ba9KXXX3Frzq%2BjQu7l%2FeJW4MZAJfKHXw5VE0kffTiUf7%2B7nklgHPSRVcRO4kUlrsapnB5G5PxDTPjUa4laQndgmtlsTGV5otqjlBd7avK8dchIW6Puoua7zsz35jEmMlA"
               },
               "probe": {
                 "ok": false,
@@ -761,10 +845,10 @@
             },
             {
               "index": 3,
-              "url": "https://v.lzcdn31.com/20260707/8102_db983f87/index.m3u8",
+              "url": "https://v.lzcdn31.com/20260709/8131_7c91edc6/index.m3u8",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_0ad3H9Sd1f50ABAwW%2FPSqMuIE7tCSM%2BAQ%2BStQSCPrxos4jMABVW8AsZKJHb5E79HrxafXSwTZbh1aRUotOL0qTgvX5p1UruMVJi5YWRztu8s6Qmr"
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_ff5bdxk4g1l7ydKx%2FBLBuO%2Fe2iboNFZQHSAKqnEZAEa41p5o89Q9KTabg1b9pTTTh64e8q3jiw5FTY62KhKbzvHxEDnm1w%2BLWKaHKouAuuMd5yMU"
               },
               "probe": {
                 "ok": false,
@@ -781,28 +865,28 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_c3d1IaqJt5yLmjEG95AWN%2Bcnpi8GYYlj2RlWkfu5YjZ6BeYAv76%2Bx2JltHopA9Rvw0vTtXoskGGhvfcORq9Pl8gJEG6v3IUSv0vDCqsQzBHRgw%2B9fEZg07Ga",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_1159G87GYjvW%2FYMIe%2F%2FnwhZ%2BzP9f9dCoifW8rH6LxXcMD4lwxfK5SLCg4mkhmSb%2F3uv7qkzgDg5dKpWiqooGcP23C0hCTNU2CCpl%2FPS7Fj7UoWXAxKMavvo2",
               "status": 200,
               "safeLine": false,
               "error": ""
             },
             {
               "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_3193ssp8tJTouZOxW%2BuNrB5HFdAsJdEhcMeze67KfdJysKZQfuAbm8InyMzjK9RfM2hSfJPhLRyN6ctymHWrozWU75VO9tjMYfKi214THtic5fj5fM5BBGKyQ19qCZZaIbTJpRKhZA",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_a123YtxTWdBBhx1lbbI8sB5IcBeiAw2D4Ic0u9Vc3R1C2CiC2os1FVrV%2FIyMaprSJSGG0K6gl98lWIcnbmcq55v8UwTVfM8%2FZoPeUpfd%2F1YzhAkFd4Vb%2B0tLxSEcmoIFAFSVW1p5TgG6r3WzMS2LnO3ttngrV%2FPyPlc",
               "status": 200,
               "safeLine": false,
               "error": ""
             },
             {
               "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_fc379E64JjHMHc%2BRzw6CGB2K%2Bg8QTArFgpcp%2FI4R0cvBaio3NV6LuT%2BGZl2U7XT7bPX1vlLG4U01e4xkKO%2BRF1rT0%2FWMW1rBQ%2FdheJAkz2IkrPcvSmey3St0UZcOX0I",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_7ba9KXXX3Frzq%2BjQu7l%2FeJW4MZAJfKHXw5VE0kffTiUf7%2B7nklgHPSRVcRO4kUlrsapnB5G5PxDTPjUa4laQndgmtlsTGV5otqjlBd7avK8dchIW6Puoua7zsz35jEmMlA",
               "status": 200,
               "safeLine": false,
               "error": ""
             },
             {
               "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_0ad3H9Sd1f50ABAwW%2FPSqMuIE7tCSM%2BAQ%2BStQSCPrxos4jMABVW8AsZKJHb5E79HrxafXSwTZbh1aRUotOL0qTgvX5p1UruMVJi5YWRztu8s6Qmr",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_ff5bdxk4g1l7ydKx%2FBLBuO%2Fe2iboNFZQHSAKqnEZAEa41p5o89Q9KTabg1b9pTTTh64e8q3jiw5FTY62KhKbzvHxEDnm1w%2BLWKaHKouAuuMd5yMU",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -812,11 +896,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "拯救替身千金的是冷酷无情冰之王子的爱",
+          "mediaTitle": "乙女游戏世界对路人角色很不友好 第二季",
           "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260230",
-          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260230%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_d343IY%252B1Hz028mbc7VZJ19iDbN%252FqQU2IDqAdhQ0OBrOzKzLSnnwOPwP1pI%252BUZ7przgY7x3CIKn4tGMoUnxfi1PYTlwCJfW590hSHcAahWKjeHrqsaQ2y8yvt%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%9A%B4%E9%A3%8E%22%2C%22lineKey%22%3A%22bfzym3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_46c9fxNCcIJRto1wPDH%252BnnXIK6dh0SVeflRDAFlLWhnyzFCUm%252Biqns%252FLEMcBFVHm8pO2SH3Kod1qxTaO8thsqwuLt4YvAE67OEn5bb8%252Fe2VXDOVEeb4FGS9LhCHy93z7JoF8RqB1WmEvTVtpscL3mlOAjjt%252BffsE5QWj9F3W69KeTJxXoD4%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_0fd3uk%252FlNDvvCbShXVLEsnlgUpm3dmqwVbKQtryc1kDmT0pDeUH%252B0NJ%252FvjxCmArNoD9ZZJe%252B%252FwmHM3z9QJ4sZ9ydM2Wo5pVxMm4ur7i4TZZHLEfAPGpw%252B597bmrEGLzteQ%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_9074%252Bj0aCMHamwS%252F8vwM1xX03fQ3em7YeKlFcRTFLeUmx%252FXooFqa53wMov9a%252Fv%252BMu7wACwI4bgQ3zz%252F0%252FTnlOpcIY3AEpTnxw4xrM83qRw%252Bmv3Tp%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
-          "playURL": "https://vip.ffzy-plays.com/20260707/55504_5bc20fa3/index.m3u8",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260206",
+          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260206%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_6bf6vjTDCsZAbQ8ChJi1HRObG7HRizNg%252FRIxPxNX%252FPyhNYx4rBcJGs%252FYEiYESOLEBx40lN9KqnlBUcjb%252FDYMUJ2nx89Ws4pFJeheA%252B5sMcbwk3tIn2hYijPY%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%9A%B4%E9%A3%8E%22%2C%22lineKey%22%3A%22bfzym3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_644d269sIsYMwM4AHaMH7Qfpa%252BF9ZNliP%252BFND0pL3BXmpj58KCJGotyh5XI%252F%252FZlYi7Pq2tMtATHDXlk1RsJyACcAVUYrcdGhR0qqkr6WDCJaQlx9n%252FX%252FOSCydmnP5zuCeCIE0fjJcEVOjH5IQ0x7xTY1q4IdnVNZKLHmRw%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_9f5aKp%252FNqfb4nnqTGIL2F7WgqRPeVbw11dPxKDb7gdVyktBJENhUupGqmYLVYagAOC9nGi1Ak2OtmhndCOdLMm%252B5SGfTCafWbMvNLGBgCn%252F%252FXoI70Q8tE1wOjaEBVnM%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_428apA7FdPoUkuF6U886vp6nWvxSVF4Cvl%252Br9aII06MIf4Rx%252Bp72R%252BhWnd6XWjaHQLwHk3Z2l2Y7ajrd1PcG1%252FjTkhbBpmcV9p%252FN9dEtZAwCVu1p%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
+          "playURL": "https://vip.ffzy-plays.com/20260708/55533_77c68297/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -829,10 +913,10 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://vip.ffzy-plays.com/20260707/55504_5bc20fa3/index.m3u8",
+              "url": "https://vip.ffzy-plays.com/20260708/55533_77c68297/index.m3u8",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_d343IY%2B1Hz028mbc7VZJ19iDbN%2FqQU2IDqAdhQ0OBrOzKzLSnnwOPwP1pI%2BUZ7przgY7x3CIKn4tGMoUnxfi1PYTlwCJfW590hSHcAahWKjeHrqsaQ2y8yvt"
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_6bf6vjTDCsZAbQ8ChJi1HRObG7HRizNg%2FRIxPxNX%2FPyhNYx4rBcJGs%2FYEiYESOLEBx40lN9KqnlBUcjb%2FDYMUJ2nx89Ws4pFJeheA%2B5sMcbwk3tIn2hYijPY"
               },
               "probe": {
                 "ok": false,
@@ -844,10 +928,10 @@
             },
             {
               "index": 1,
-              "url": "https://bfeng11.com/video/zhengjiutishenqianjindeshilengkuwuqingbingzhiwangzideai/3f7e5542a5e8/index.m3u8",
+              "url": "https://bfeng11.com/video/yinvyouxishijieduilurenjuesehenbuyouhaodierji/127c507bbbef/index.m3u8",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_46c9fxNCcIJRto1wPDH%2BnnXIK6dh0SVeflRDAFlLWhnyzFCUm%2Biqns%2FLEMcBFVHm8pO2SH3Kod1qxTaO8thsqwuLt4YvAE67OEn5bb8%2Fe2VXDOVEeb4FGS9LhCHy93z7JoF8RqB1WmEvTVtpscL3mlOAjjt%2BffsE5QWj9F3W69KeTJxXoD4"
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_644d269sIsYMwM4AHaMH7Qfpa%2BF9ZNliP%2BFND0pL3BXmpj58KCJGotyh5XI%2F%2FZlYi7Pq2tMtATHDXlk1RsJyACcAVUYrcdGhR0qqkr6WDCJaQlx9n%2FX%2FOSCydmnP5zuCeCIE0fjJcEVOjH5IQ0x7xTY1q4IdnVNZKLHmRw"
               },
               "probe": {
                 "ok": false,
@@ -859,10 +943,10 @@
             },
             {
               "index": 2,
-              "url": "https://v11.ppqrrs.com/wjv11/202607/07/HhGgeRQwSu97/video/index.m3u8",
+              "url": "https://v5.ppqrrs.com/wjv5/202607/08/zeRsQujkYg86/video/index.m3u8",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_0fd3uk%2FlNDvvCbShXVLEsnlgUpm3dmqwVbKQtryc1kDmT0pDeUH%2B0NJ%2FvjxCmArNoD9ZZJe%2B%2FwmHM3z9QJ4sZ9ydM2Wo5pVxMm4ur7i4TZZHLEfAPGpw%2B597bmrEGLzteQ"
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_9f5aKp%2FNqfb4nnqTGIL2F7WgqRPeVbw11dPxKDb7gdVyktBJENhUupGqmYLVYagAOC9nGi1Ak2OtmhndCOdLMm%2B5SGfTCafWbMvNLGBgCn%2F%2FXoI70Q8tE1wOjaEBVnM"
               },
               "probe": {
                 "ok": false,
@@ -874,10 +958,10 @@
             },
             {
               "index": 3,
-              "url": "https://v.lzcdn31.com/20260707/8098_ac60fb8d/index.m3u8",
+              "url": "https://v.lzcdn31.com/20260708/8130_43c93a1a/index.m3u8",
               "headers": {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_9074%2Bj0aCMHamwS%2F8vwM1xX03fQ3em7YeKlFcRTFLeUmx%2FXooFqa53wMov9a%2Fv%2BMu7wACwI4bgQ3zz%2F0%2FTnlOpcIY3AEpTnxw4xrM83qRw%2Bmv3Tp"
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_428apA7FdPoUkuF6U886vp6nWvxSVF4Cvl%2Br9aII06MIf4Rx%2Bp72R%2BhWnd6XWjaHQLwHk3Z2l2Y7ajrd1PcG1%2FjTkhbBpmcV9p%2FN9dEtZAwCVu1p"
               },
               "probe": {
                 "ok": false,
@@ -894,141 +978,28 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_d343IY%2B1Hz028mbc7VZJ19iDbN%2FqQU2IDqAdhQ0OBrOzKzLSnnwOPwP1pI%2BUZ7przgY7x3CIKn4tGMoUnxfi1PYTlwCJfW590hSHcAahWKjeHrqsaQ2y8yvt",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_6bf6vjTDCsZAbQ8ChJi1HRObG7HRizNg%2FRIxPxNX%2FPyhNYx4rBcJGs%2FYEiYESOLEBx40lN9KqnlBUcjb%2FDYMUJ2nx89Ws4pFJeheA%2B5sMcbwk3tIn2hYijPY",
               "status": 200,
               "safeLine": false,
               "error": ""
             },
             {
               "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_46c9fxNCcIJRto1wPDH%2BnnXIK6dh0SVeflRDAFlLWhnyzFCUm%2Biqns%2FLEMcBFVHm8pO2SH3Kod1qxTaO8thsqwuLt4YvAE67OEn5bb8%2Fe2VXDOVEeb4FGS9LhCHy93z7JoF8RqB1WmEvTVtpscL3mlOAjjt%2BffsE5QWj9F3W69KeTJxXoD4",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_644d269sIsYMwM4AHaMH7Qfpa%2BF9ZNliP%2BFND0pL3BXmpj58KCJGotyh5XI%2F%2FZlYi7Pq2tMtATHDXlk1RsJyACcAVUYrcdGhR0qqkr6WDCJaQlx9n%2FX%2FOSCydmnP5zuCeCIE0fjJcEVOjH5IQ0x7xTY1q4IdnVNZKLHmRw",
               "status": 200,
               "safeLine": false,
               "error": ""
             },
             {
               "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_0fd3uk%2FlNDvvCbShXVLEsnlgUpm3dmqwVbKQtryc1kDmT0pDeUH%2B0NJ%2FvjxCmArNoD9ZZJe%2B%2FwmHM3z9QJ4sZ9ydM2Wo5pVxMm4ur7i4TZZHLEfAPGpw%2B597bmrEGLzteQ",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_9f5aKp%2FNqfb4nnqTGIL2F7WgqRPeVbw11dPxKDb7gdVyktBJENhUupGqmYLVYagAOC9nGi1Ak2OtmhndCOdLMm%2B5SGfTCafWbMvNLGBgCn%2F%2FXoI70Q8tE1wOjaEBVnM",
               "status": 200,
               "safeLine": false,
               "error": ""
             },
             {
               "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_9074%2Bj0aCMHamwS%2F8vwM1xX03fQ3em7YeKlFcRTFLeUmx%2FXooFqa53wMov9a%2Fv%2BMu7wACwI4bgQ3zz%2F0%2FTnlOpcIY3AEpTnxw4xrM83qRw%2Bmv3Tp",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "感谢对战 大小姐才不玩格斗游戏",
-          "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260201",
-          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260201%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_74f3LC0100TBIgLAnwQVLHrvBmVky%252BcfkD8N1Cm3yrqSuRpNcuukg%252F0u4UtqRLxNwV3wpv6Y8Cgq38Kic7zlKlMjCet%252BCPZyOOWC059XpJwR9BlcYSClvFTc%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%9A%B4%E9%A3%8E%22%2C%22lineKey%22%3A%22bfzym3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_53aaoMKMA8dD%252B9yvixZqWI61605LN%252FmDz5mPAUPumz5OuYUlvGs%252BNs2bfq00NKyaEEsmq1VDeV2pSbjubo1g%252FnnenQPWYdH2b4ZWvl%252BolqeHZuyN0LxGFOuvDV%252BOPy2Tp%252FUTgmgnDNkA4niX1dZblgN7ZDmLrnE%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_5972VpPK2NLXdAydfKLMdf5ZblwWKqL86idkwhtrL4g3HF%252BYbGhR4BucdJJW9Wmt59rKR8D4SGeTSXj67VXQA7YyGtTZQe6T%252FoMV66wXrihfN71mhAyA986%252Fhg4zO1s%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_454efNBQTYZld0d4W%252FIJHWmY1QUPYuhl5LGQ1qHaGSlJuvF473JeRe9zwCDuhhctwTwssXQyrTqnYFp%252BvMDQsD3bf18xs9E5vxjqQP%252FlzMW7PP7k%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
-          "playURL": "https://vip.ffzy-plays.com/20260707/55502_de661ab8/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 4,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://vip.ffzy-plays.com/20260707/55502_de661ab8/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_74f3LC0100TBIgLAnwQVLHrvBmVky%2BcfkD8N1Cm3yrqSuRpNcuukg%2F0u4UtqRLxNwV3wpv6Y8Cgq38Kic7zlKlMjCet%2BCPZyOOWC059XpJwR9BlcYSClvFTc"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            },
-            {
-              "index": 1,
-              "url": "https://bfeng11.com/video/ganxieduizhandaxiaojiecaibuwangedouyouxi/07333e4b373e/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_53aaoMKMA8dD%2B9yvixZqWI61605LN%2FmDz5mPAUPumz5OuYUlvGs%2BNs2bfq00NKyaEEsmq1VDeV2pSbjubo1g%2FnnenQPWYdH2b4ZWvl%2BolqeHZuyN0LxGFOuvDV%2BOPy2Tp%2FUTgmgnDNkA4niX1dZblgN7ZDmLrnE"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
-              }
-            },
-            {
-              "index": 2,
-              "url": "https://v7.ppqrrs.com/wjv7/202607/07/gPvM77qX3a87/video/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_5972VpPK2NLXdAydfKLMdf5ZblwWKqL86idkwhtrL4g3HF%2BYbGhR4BucdJJW9Wmt59rKR8D4SGeTSXj67VXQA7YyGtTZQe6T%2FoMV66wXrihfN71mhAyA986%2Fhg4zO1s"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html",
-                "error": "status 403"
-              }
-            },
-            {
-              "index": 3,
-              "url": "https://v.lzcdn31.com/20260707/8083_f9dafe38/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_454efNBQTYZld0d4W%2FIJHWmY1QUPYuhl5LGQ1qHaGSlJuvF473JeRe9zwCDuhhctwTwssXQyrTqnYFp%2BvMDQsD3bf18xs9E5vxjqQP%2FlzMW7PP7k"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_74f3LC0100TBIgLAnwQVLHrvBmVky%2BcfkD8N1Cm3yrqSuRpNcuukg%2F0u4UtqRLxNwV3wpv6Y8Cgq38Kic7zlKlMjCet%2BCPZyOOWC059XpJwR9BlcYSClvFTc",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_53aaoMKMA8dD%2B9yvixZqWI61605LN%2FmDz5mPAUPumz5OuYUlvGs%2BNs2bfq00NKyaEEsmq1VDeV2pSbjubo1g%2FnnenQPWYdH2b4ZWvl%2BolqeHZuyN0LxGFOuvDV%2BOPy2Tp%2FUTgmgnDNkA4niX1dZblgN7ZDmLrnE",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_5972VpPK2NLXdAydfKLMdf5ZblwWKqL86idkwhtrL4g3HF%2BYbGhR4BucdJJW9Wmt59rKR8D4SGeTSXj67VXQA7YyGtTZQe6T%2FoMV66wXrihfN71mhAyA986%2Fhg4zO1s",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_454efNBQTYZld0d4W%2FIJHWmY1QUPYuhl5LGQ1qHaGSlJuvF473JeRe9zwCDuhhctwTwssXQyrTqnYFp%2BvMDQsD3bf18xs9E5vxjqQP%2FlzMW7PP7k",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_428apA7FdPoUkuF6U886vp6nWvxSVF4Cvl%2Br9aII06MIf4Rx%2Bp72R%2BhWnd6XWjaHQLwHk3Z2l2Y7ajrd1PcG1%2FjTkhbBpmcV9p%2FN9dEtZAwCVu1p",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -1042,8 +1013,8 @@
       "index": 4,
       "subscriptionName": "YouKnowTV",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_youknow/config.json",
-      "startedAt": "2026-09-23T08:31:27.705Z",
-      "endedAt": "2026-09-23T08:31:28.159Z",
+      "startedAt": "2026-09-24T08:24:16.581Z",
+      "endedAt": "2026-09-24T08:24:17.276Z",
       "mode": "subscriptions",
       "pluginName": "YouKnowTV",
       "pluginFolder": "plugin_youknow",
@@ -1188,8 +1159,8 @@
       "index": 5,
       "subscriptionName": "韩剧网",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_thanju/config.json",
-      "startedAt": "2026-09-23T08:31:28.159Z",
-      "endedAt": "2026-09-23T08:31:41.618Z",
+      "startedAt": "2026-09-24T08:24:17.276Z",
+      "endedAt": "2026-09-24T08:24:30.269Z",
       "mode": "subscriptions",
       "pluginName": "韩剧网",
       "pluginFolder": "plugin_thanju",
@@ -1298,9 +1269,9 @@
         {
           "ok": true,
           "stage": "search",
-          "mediaTitle": "keyword:新兵第四季",
+          "mediaTitle": "keyword:好，我们离婚吧",
           "episodeTitle": "",
-          "detailURL": "https://www.thanju.com/search/%E6%96%B0%E5%85%B5%E7%AC%AC%E5%9B%9B%E5%AD%A3.html",
+          "detailURL": "https://www.thanju.com/search/%E5%A5%BD%EF%BC%8C%E6%88%91%E4%BB%AC%E7%A6%BB%E5%A9%9A%E5%90%A7.html",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -1308,6 +1279,100 @@
           "reasonCode": "",
           "reasonText": "",
           "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "好，我们离婚吧",
+          "episodeTitle": "01",
+          "detailURL": "https://www.thanju.com/detail/2564.html",
+          "episodeURL": "https://www.thanju.com/play/2564/1-1.html",
+          "playURL": "https://cdn.vvvip-plays33.cc/20260819/17694_86cfe916/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://cdn.vvvip-plays33.cc/20260819/17694_86cfe916/index.m3u8",
+              "headers": {
+                "Referer": "https://www.thanju.com/play/2564/1-1.html",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/play/2564/1-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "韩国制造第二季",
+          "episodeTitle": "01",
+          "detailURL": "https://www.thanju.com/detail/2568.html",
+          "episodeURL": "https://www.thanju.com/play/2568/1-1.html",
+          "playURL": "https://cdn.yzzy31-play.com/20260909/25474_4fa80ca6/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://cdn.yzzy31-play.com/20260909/25474_4fa80ca6/index.m3u8",
+              "headers": {
+                "Referer": "https://www.thanju.com/play/2568/1-1.html",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/play/2568/1-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
         },
         {
           "ok": false,
@@ -1355,100 +1420,6 @@
               "error": ""
             }
           ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "爱情来了",
-          "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2552.html",
-          "episodeURL": "https://www.thanju.com/play/2552/1-1.html",
-          "playURL": "https://cdn.yzzyvip-29.com/20260726/26230_0a2f0579/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://cdn.yzzyvip-29.com/20260726/26230_0a2f0579/index.m3u8",
-              "headers": {
-                "Referer": "https://www.thanju.com/play/2552/1-1.html",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.thanju.com/play/2552/1-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "四手联弹，两首奏鸣曲",
-          "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2566.html",
-          "episodeURL": "https://www.thanju.com/play/2566/1-1.html",
-          "playURL": "https://cdn.yzzy30-play.com/20260829/58591_7e0e96c4/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://cdn.yzzy30-play.com/20260829/58591_7e0e96c4/index.m3u8",
-              "headers": {
-                "Referer": "https://www.thanju.com/play/2566/1-1.html",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.thanju.com/play/2566/1-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
         }
       ],
       "errors": []
@@ -1457,8 +1428,8 @@
       "index": 6,
       "subscriptionName": "独播库",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_dbku/config.json",
-      "startedAt": "2026-09-23T08:31:41.618Z",
-      "endedAt": "2026-09-23T08:31:46.696Z",
+      "startedAt": "2026-09-24T08:24:30.269Z",
+      "endedAt": "2026-09-24T08:24:37.373Z",
       "mode": "subscriptions",
       "pluginName": "独播库",
       "pluginFolder": "plugin_dbku",
@@ -1567,48 +1538,12 @@
         {
           "ok": true,
           "stage": "search",
-          "mediaTitle": "keyword:未尽之言",
+          "mediaTitle": "keyword:云雀叫天录",
           "episodeTitle": "",
-          "detailURL": "https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9C%AA%E5%B0%BD%E4%B9%8B%E8%A8%80&submit=",
+          "detailURL": "https://www.dbku.tv/vodsearch/-------------.html?wd=%E4%BA%91%E9%9B%80%E5%8F%AB%E5%A4%A9%E5%BD%95&submit=",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
-          "error": "",
-          "reasonCode": "",
-          "reasonText": "",
-          "httpDiagnostics": []
-        },
-        {
-          "ok": true,
-          "stage": "player",
-          "mediaTitle": "未尽之言",
-          "episodeTitle": "第1集",
-          "detailURL": "https://www.dbku.tv/voddetail/150016.html",
-          "episodeURL": "https://www.dbku.tv/vodplay/150016-1-1.html",
-          "playURL": "https://vid.dbokutv.com/20260922/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNTgUdajC34jC393CZGoDqL6BcrmD0/chunklist.m3u8",
-          "probe": {
-            "ok": true,
-            "method": "HEAD",
-            "status": 200,
-            "contentType": "application/octet-stream",
-            "error": ""
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://vid.dbokutv.com/20260922/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNTgUdajC34jC393CZGoDqL6BcrmD0/chunklist.m3u8",
-              "headers": {},
-              "probe": {
-                "ok": true,
-                "method": "HEAD",
-                "status": 200,
-                "contentType": "application/octet-stream",
-                "error": ""
-              }
-            }
-          ],
           "error": "",
           "reasonCode": "",
           "reasonText": "",
@@ -1653,11 +1588,11 @@
         {
           "ok": true,
           "stage": "player",
-          "mediaTitle": "独剑九天",
+          "mediaTitle": "妾本草芥",
           "episodeTitle": "第1集",
-          "detailURL": "https://www.dbku.tv/voddetail/149930.html",
-          "episodeURL": "https://www.dbku.tv/vodplay/149930-1-1.html",
-          "playURL": "https://vid.dbokutv.com/20260909/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlQ79nBMHgQdGjC34jC3CrDJT5Cq56BcrmD0/chunklist.m3u8",
+          "detailURL": "https://www.dbku.tv/voddetail/149978.html",
+          "episodeURL": "https://www.dbku.tv/vodplay/149978-1-1.html",
+          "playURL": "https://vid.dbokutv.com/20260917/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlR7XgBN5YOsejC34jC30sDZT5GKGuBcrmD0/chunklist.m3u8",
           "probe": {
             "ok": true,
             "method": "HEAD",
@@ -1670,7 +1605,43 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://vid.dbokutv.com/20260909/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlQ79nBMHgQdGjC34jC3CrDJT5Cq56BcrmD0/chunklist.m3u8",
+              "url": "https://vid.dbokutv.com/20260917/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlR7XgBN5YOsejC34jC30sDZT5GKGuBcrmD0/chunklist.m3u8",
+              "headers": {},
+              "probe": {
+                "ok": true,
+                "method": "HEAD",
+                "status": 200,
+                "contentType": "application/octet-stream",
+                "error": ""
+              }
+            }
+          ],
+          "error": "",
+          "reasonCode": "",
+          "reasonText": "",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": true,
+          "stage": "player",
+          "mediaTitle": "为爱正名",
+          "episodeTitle": "第1集",
+          "detailURL": "https://www.dbku.tv/voddetail/149967.html",
+          "episodeURL": "https://www.dbku.tv/vodplay/149967-1-1.html",
+          "playURL": "https://vid.dbokutv.com/20260915/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNTXUcqjC34jC3CmGaGuGKP3BcrmD0/chunklist.m3u8",
+          "probe": {
+            "ok": true,
+            "method": "HEAD",
+            "status": 200,
+            "contentType": "application/octet-stream",
+            "error": ""
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vid.dbokutv.com/20260915/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNTXUcqjC34jC3CmGaGuGKP3BcrmD0/chunklist.m3u8",
               "headers": {},
               "probe": {
                 "ok": true,
@@ -1693,8 +1664,8 @@
       "index": 7,
       "subscriptionName": "grigri 動漫",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_grigri/config.json",
-      "startedAt": "2026-09-23T08:31:46.696Z",
-      "endedAt": "2026-09-23T08:31:50.238Z",
+      "startedAt": "2026-09-24T08:24:37.373Z",
+      "endedAt": "2026-09-24T08:24:41.273Z",
       "mode": "subscriptions",
       "pluginName": "grigrilove",
       "pluginFolder": "plugin_grigri",
@@ -1803,9 +1774,9 @@
         {
           "ok": true,
           "stage": "search",
-          "mediaTitle": "keyword:拯救替身千金的是冷酷无情",
+          "mediaTitle": "keyword:乙女游戏世界对路人角色很",
           "episodeTitle": "",
-          "detailURL": "https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E6%8B%AF%E6%95%91%E6%9B%BF%E8%BA%AB%E5%8D%83%E9%87%91%E7%9A%84%E6%98%AF%E5%86%B7%E9%85%B7%E6%97%A0%E6%83%85",
+          "detailURL": "https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E4%B9%99%E5%A5%B3%E6%B8%B8%E6%88%8F%E4%B8%96%E7%95%8C%E5%AF%B9%E8%B7%AF%E4%BA%BA%E8%A7%92%E8%89%B2%E5%BE%88",
           "episodeURL": "",
           "playURL": "",
           "probe": null,
@@ -1817,11 +1788,11 @@
         {
           "ok": true,
           "stage": "player",
-          "mediaTitle": "拯救替身千金的是冷酷无情冰之王子的爱",
+          "mediaTitle": "乙女游戏世界对路人角色很不友好 第二季",
           "episodeTitle": "01",
-          "detailURL": "https://ani.girigirilove.com/GV27102/",
-          "episodeURL": "https://ani.girigirilove.com/playGV27102-1-1/",
-          "playURL": "https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/MigawariCHT/01/playlist.m3u8",
+          "detailURL": "https://ani.girigirilove.com/GV27087/",
+          "episodeURL": "https://ani.girigirilove.com/playGV27087-1-1/",
+          "playURL": "https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/MobsekaS2CHT/01/playlist.m3u8",
           "probe": {
             "ok": true,
             "method": "HEAD",
@@ -1834,7 +1805,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/MigawariCHT/01/playlist.m3u8",
+              "url": "https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/MobsekaS2CHT/01/playlist.m3u8",
               "headers": {},
               "probe": {
                 "ok": true,
@@ -1853,11 +1824,11 @@
         {
           "ok": true,
           "stage": "player",
-          "mediaTitle": "感谢对战。 ～大小姐才不玩格斗游戏～",
+          "mediaTitle": "Re：从零开始的异世界生活 第四季 丧失篇&amp;夺还篇",
           "episodeTitle": "01",
-          "detailURL": "https://ani.girigirilove.com/GV27104/",
-          "episodeURL": "https://ani.girigirilove.com/playGV27104-1-1/",
-          "playURL": "https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/TaiariCHT/01/playlist.m3u8",
+          "detailURL": "https://ani.girigirilove.com/GV27030/",
+          "episodeURL": "https://ani.girigirilove.com/playGV27030-1-1/",
+          "playURL": "https://akua.girigirilove.com/zijian/oldanime/2026/04/cht/ReZeroS4CHT/01/playlist.m3u8",
           "probe": {
             "ok": true,
             "method": "HEAD",
@@ -1870,7 +1841,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/TaiariCHT/01/playlist.m3u8",
+              "url": "https://akua.girigirilove.com/zijian/oldanime/2026/04/cht/ReZeroS4CHT/01/playlist.m3u8",
               "headers": {},
               "probe": {
                 "ok": true,
@@ -1889,16 +1860,16 @@
         {
           "ok": true,
           "stage": "player",
-          "mediaTitle": "魔动王",
+          "mediaTitle": "幼女战记 第二季",
           "episodeTitle": "01",
-          "detailURL": "https://ani.girigirilove.com/GV3327/",
-          "episodeURL": "https://ani.girigirilove.com/playGV3327-1-1/",
-          "playURL": "https://ana.girigirilove.com/zijian/oldanime/2025/0917/MadouKingGrandzort/01.mp4",
+          "detailURL": "https://ani.girigirilove.com/GV27085/",
+          "episodeURL": "https://ani.girigirilove.com/playGV27085-1-1/",
+          "playURL": "https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/YoujoSenkiS2CHT/01/playlist.m3u8",
           "probe": {
             "ok": true,
             "method": "HEAD",
             "status": 200,
-            "contentType": "video/mp4",
+            "contentType": "application/vnd.apple.mpegurl",
             "error": ""
           },
           "candidateCount": 1,
@@ -1906,13 +1877,13 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://ana.girigirilove.com/zijian/oldanime/2025/0917/MadouKingGrandzort/01.mp4",
+              "url": "https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/YoujoSenkiS2CHT/01/playlist.m3u8",
               "headers": {},
               "probe": {
                 "ok": true,
                 "method": "HEAD",
                 "status": 200,
-                "contentType": "video/mp4",
+                "contentType": "application/vnd.apple.mpegurl",
                 "error": ""
               }
             }
@@ -1929,8 +1900,8 @@
       "index": 8,
       "subscriptionName": "Gimy TV",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_gimy/config.json",
-      "startedAt": "2026-09-23T08:31:50.238Z",
-      "endedAt": "2026-09-23T08:31:50.521Z",
+      "startedAt": "2026-09-24T08:24:41.273Z",
+      "endedAt": "2026-09-24T08:24:41.771Z",
       "mode": "subscriptions",
       "pluginName": "Gimy TV",
       "pluginFolder": "plugin_gimy",
@@ -2075,8 +2046,8 @@
       "index": 9,
       "subscriptionName": "ZIP0 影视",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
-      "startedAt": "2026-09-23T08:31:50.521Z",
-      "endedAt": "2026-09-23T08:32:00.418Z",
+      "startedAt": "2026-09-24T08:24:41.771Z",
+      "endedAt": "2026-09-24T08:24:54.558Z",
       "mode": "subscriptions",
       "pluginName": "ZIP0 影视",
       "pluginFolder": "plugin_zip0",
@@ -2091,7 +2062,7 @@
       },
       "list": {
         "ok": true,
-        "count": 88
+        "count": 76
       },
       "connectivity": {
         "ok": true,
@@ -2199,11 +2170,50 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "戴高乐之战 淬炼时代",
-          "episodeTitle": "正片",
-          "detailURL": "https://zip0.com/watch?source=jisu&id=110922&episode=1",
-          "episodeURL": "https://vv.jisuzyv.com/play/dwpkgzme/index.m3u8",
-          "playURL": "https://vv.jisuzyv.com/play/dwpkgzme/index.m3u8",
+          "mediaTitle": "蛛影禁动",
+          "episodeTitle": "TC中字",
+          "detailURL": "https://zip0.com/watch?source=dyttzy&id=84430&episode=1",
+          "episodeURL": "https://vip.dytt-see.com/20260924/44011_937304cf/index.m3u8",
+          "playURL": "https://vip.dytt-see.com/20260924/44011_937304cf/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vip.dytt-see.com/20260924/44011_937304cf/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "生死尽头",
+          "episodeTitle": "上集",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=152978&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/epYznR1a/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/epYznR1a/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -2216,7 +2226,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://vv.jisuzyv.com/play/dwpkgzme/index.m3u8",
+              "url": "https://vv.jisuzyv.com/play/epYznR1a/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
@@ -2238,24 +2248,24 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "爱情假说",
-          "episodeTitle": "HD",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=163480&episode=1",
-          "episodeURL": "https://fengbao12.com/video/aiqingjiashuo/2decd4d7487b/index.m3u8",
-          "playURL": "https://fengbao12.com/video/aiqingjiashuo/2decd4d7487b/index.m3u8",
+          "mediaTitle": "豪华轿车",
+          "episodeTitle": "正片",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=152979&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/aOYZGJgd/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/aOYZGJgd/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
-            "status": 404,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 404"
+            "status": 0,
+            "contentType": "",
+            "error": "Unable to connect. Is the computer able to access the url?"
           },
           "candidateCount": 1,
           "candidateWinnerIndex": 0,
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://fengbao12.com/video/aiqingjiashuo/2decd4d7487b/index.m3u8",
+              "url": "https://vv.jisuzyv.com/play/aOYZGJgd/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
@@ -2263,52 +2273,13 @@
               "probe": {
                 "ok": false,
                 "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
+                "status": 0,
+                "contentType": "",
+                "error": "Unable to connect. Is the computer able to access the url?"
               }
             }
           ],
-          "error": "status 404",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": []
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "死魂灵",
-          "episodeTitle": "HD",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=163472&episode=1",
-          "episodeURL": "https://fengbao12.com/video/sihunling/01fe87e93103/index.m3u8",
-          "playURL": "https://fengbao12.com/video/sihunling/01fe87e93103/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 404,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 404"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://fengbao12.com/video/sihunling/01fe87e93103/index.m3u8",
-              "headers": {
-                "Referer": "https://zip0.com/",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
-              }
-            }
-          ],
-          "error": "status 404",
+          "error": "Unable to connect. Is the computer able to access the url?",
           "reasonCode": "probe_failed",
           "reasonText": "播放鏈可取得，但 probe 檢測未通過",
           "httpDiagnostics": []
