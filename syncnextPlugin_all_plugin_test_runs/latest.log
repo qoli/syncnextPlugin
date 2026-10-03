@@ -29,42 +29,34 @@
 [OK] 低调影视 | search(瘴气营地的青春性事与死亡) -> 1
 [OK] 低调影视 | 瘴气营地的青春性事与死亡 | 瘴气营地的青春性事与死亡 -> https://v3.ddys.app/v2/movie/Teenage.Sex.And.Death.At.Camp.Miasma.2026.mp4 | candidates=2
 [OK] 低调影视 | 星际穿越 | 星际穿越 -> https://v3.ddys.app/v2/movie/Interstellar.2014.mp4 | candidates=2
-[OK] 低调影视 | 人生复本 (更新至 第2季06) | S1E1 1 -> https://v3.ddys.app/v2/west_drama/Dark_Matter_2024/Dark_Matter_2024_S01E01.mp4 | candidates=2
+[OK] 低调影视 | FX战士久留美 (更新至01) | 1 -> https://v3.ddys.app/v2/Anime/FX_Fighter_Kurumi_chan/FX_Fighter_Kurumi_chan_S01E01.mp4 | candidates=2
 [plugin 2] 新歐樂影院 | mode=subscriptions | index=https://api.olelive.com/v1/pub/vod/newest/1/12
 [FAIL] 新歐樂影院 | connectivity -> 3 target(s)
 [plugin 2] medias total=12, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "85232",
-  "coverURLString": "https://static.olelive.com/upload/vod/20261002-1/58596d8031dde0b0aacf5919aa5ab0aa.jpg",
-  "title": "魅影神捕",
-  "descriptionText": "更新至第06集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/85232/true"
+  "id": "7932",
+  "coverURLString": "https://static.olelive.com/upload/vod/2019-12-07/201912071575734777.jpg",
+  "title": "边境杀手2：边境战士",
+  "descriptionText": "超清",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/7932/true"
 }
-[plugin 2] search keyword=魅影神捕 url=https://api.olelive.com/v1/pub/index/search/%E9%AD%85%E5%BD%B1%E7%A5%9E%E6%8D%95/vod/0/1/4
-[plugin 2] search results=1
-[plugin 2] search sample(index=0)
-{
-  "id": "85232",
-  "coverURLString": "https://static.olelive.com/upload/vod/20261002-1/58596d8031dde0b0aacf5919aa5ab0aa.jpg",
-  "title": "魅影神捕",
-  "descriptionText": "更新至第06集",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/85232/true"
-}
-[OK] 新歐樂影院 | search(魅影神捕) -> 1
-[OK] 新歐樂影院 | 魅影神捕 | 第01集 -> https://cloud.yuntongclouds.com/ts6/20261002/Z3jQpMCT/mp4/Z3jQpMCT.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 小祖宗驾到，将军府宠翻啦＆笙笙来了，将军府宠翻天 | 1 -> https://cloud.yuntongclouds.com/ts6/20261002/BYWvPK16/mp4/BYWvPK16.mp4/clipTo/165300/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 雾色心动：高岭之花的久藏情愫2 | 1 -> https://cloud.yuntongclouds.com/ts6/20261002/guPktLRm/mp4/guPktLRm.mp4/clipTo/80800/master.m3u8 | candidates=1
+[plugin 2] search keyword=边境杀手2：边境战士 url=https://api.olelive.com/v1/pub/index/search/%E8%BE%B9%E5%A2%83%E6%9D%80%E6%89%8B2%EF%BC%9A%E8%BE%B9%E5%A2%83%E6%88%98%E5%A3%AB/vod/0/1/4
+[plugin 2] search results=0
+[FAIL] 新歐樂影院 | search(边境杀手2：边境战士) -> 0
+[FAIL] 新歐樂影院 | 边境杀手2：边境战士 | no episodes | reason=unknown
+[OK] 新歐樂影院 | 竹马的心动藏不住 | 第01集 -> https://cloud.yuntongclouds.com/ts6/20261003/5rVPz3ey/mp4/5rVPz3ey.mp4/clipTo/154666/master.m3u8 | candidates=1
+[FAIL] 新歐樂影院 | 边境杀手 | no episodes | reason=unknown
 [plugin 3] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 3] medias total=32, testing=3
 [plugin 3] buildMedias sample(index=0)
 {
-  "id": "20260309",
-  "coverURLString": "https://gimg4.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260309.jpg",
-  "title": "桃源暗鬼 ～日光・华严之泷篇～",
-  "descriptionText": "特別篇 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260309"
+  "id": "20260199",
+  "coverURLString": "https://gimg4.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260199.jpg",
+  "title": "我家的弟弟们真是让您费心了",
+  "descriptionText": "第13集(完结) · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260199"
 }
 [plugin 3] search keyword=转生重骑士 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AC%E7%94%9F%E9%87%8D%E9%AA%91%E5%A3%AB
 [plugin 3] search results=1
@@ -77,9 +69,9 @@
   "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260212"
 }
 [OK] 新 AGE 動漫 | search(转生重骑士) -> 1
-[FAIL] 新 AGE 動漫 | 桃源暗鬼 ～日光・华严之泷篇～ | 第01集 -> https://vip.ffzy-plays.com/20261001/58901_0108c357/index.m3u8 | candidates=2
-[FAIL] 新 AGE 動漫 | 被追放的转生重骑士用游戏知识开无双 | 第01集 -> https://vip.ffzy-plays.com/20260703/55346_6384bb05/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 黑化吧！圣女大人第二季 | 第01集 -> https://fengbao13.com/video/shanghenleileideshengnvdefuchoudierji/3536142214d4/index.m3u8 | candidates=4
+[FAIL] 新 AGE 動漫 | 我家的弟弟们真是让您费心了 | 第01集 -> https://vip.ffzy-plays.com/20260704/55382_70afa835/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 青蛙军曹☆ | 第01集 -> https://fengbao13.com/video/qingwajuncao2026/8cc3ad116084/index.m3u8 | candidates=4
+[FAIL] 新 AGE 動漫 | 擅长逃跑的殿下 第二季 | 第01集 -> https://vip.ffzy-plays.com/20260718/55885_23ce8832/index.m3u8 | candidates=4
 [plugin 4] YouKnowTV | mode=subscriptions | index=https://www.youknow.tv/label/new/
 [FAIL] YouKnowTV | connectivity -> 3 target(s)
 [plugin 4] medias total=0, testing=0
@@ -94,7 +86,7 @@
   "id": "https://www.thanju.com/detail/2579.html",
   "coverURLString": "https://pp.thanju.com/U/vod/6abb111646545.jpg",
   "title": "妈妈发疯了",
-  "descriptionText": "第4集 · 金姬贞 金亨奎 姜京宪 郑敏儿",
+  "descriptionText": "第5集 · 金姬贞 金亨奎 姜京宪 郑敏儿",
   "detailURLString": "https://www.thanju.com/detail/2579.html"
 }
 [plugin 5] search keyword=妈妈发疯了 url=https://www.thanju.com/search/%E5%A6%88%E5%A6%88%E5%8F%91%E7%96%AF%E4%BA%86.html
@@ -116,50 +108,53 @@
 [plugin 6] medias total=48, testing=3
 [plugin 6] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/150070.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/yWTWHbu9NFXmkHYkvNdXcDs86em.jpg",
-  "title": "染指流年",
-  "descriptionText": "更新至16集",
-  "detailURLString": "https://www.dbku.tv/voddetail/150070.html"
+  "id": "https://www.dbku.tv/voddetail/150174.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/paeVcTqhqXpNpownHvMQX9qScZu.jpg",
+  "title": "冷宫弃后忙种田",
+  "descriptionText": "更新至13集",
+  "detailURLString": "https://www.dbku.tv/voddetail/150174.html"
 }
-[plugin 6] search keyword=染指流年 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E6%9F%93%E6%8C%87%E6%B5%81%E5%B9%B4&submit=
+[plugin 6] search keyword=冷宫弃后忙种田 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E5%86%B7%E5%AE%AB%E5%BC%83%E5%90%8E%E5%BF%99%E7%A7%8D%E7%94%B0&submit=
 [plugin 6] search results=1
 [plugin 6] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/150070.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/yWTWHbu9NFXmkHYkvNdXcDs86em.jpg",
-  "title": "染指流年",
-  "descriptionText": "更新至16集",
-  "detailURLString": "https://www.dbku.tv/voddetail/150070.html"
+  "id": "https://www.dbku.tv/voddetail/150174.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/paeVcTqhqXpNpownHvMQX9qScZu.jpg",
+  "title": "冷宫弃后忙种田",
+  "descriptionText": "更新至13集",
+  "detailURLString": "https://www.dbku.tv/voddetail/150174.html"
 }
-[OK] 独播库 | search(染指流年) -> 1
-[OK] 独播库 | 染指流年 | 第1集 -> https://vid.dbokutv.com/20260927/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtPsRsGlQ79nBN9wR6ujC34jC353GpT1D4CsBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(冷宫弃后忙种田) -> 1
 [OK] 独播库 | 冷宫弃后忙种田 | 第1集 -> https://vid.dbokutv.com/20260929/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlQ79nBMndSMXjUdGjC34jC395HJT6CZWtBcrmD0/chunklist.m3u8 | candidates=1
 [OK] 独播库 | 假面良人 | 第1集 -> https://vid.dbokutv.com/20260926/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBMfjR78jC34jC38tDJb2C48uBcrmD0/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 魅影神捕 | 第1集 -> https://vid.dbokutv.com/20261002/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBMrvSs8jC34jC34oCparDqGqBcrmD0/chunklist.m3u8 | candidates=1
 [plugin 7] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
 [OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27187/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260929-1/041dfd3e08dd5bc568c735247bae0686.webp",
-  "title": "桃源暗鬼 ～日光・华严之泷篇～",
-  "detailURLString": "https://ani.girigirilove.com/GV27187/"
+  "id": "https://ani.girigirilove.com/GV27230/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20261003-1/021e9edc34d6d611081373861bc39466.webp",
+  "title": "弹珠汽水瓶里的千岁同学 Part 2",
+  "detailURLString": "https://ani.girigirilove.com/GV27230/"
 }
-[plugin 7] search keyword=桃源暗鬼 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E6%A1%83%E6%BA%90%E6%9A%97%E9%AC%BC
-[plugin 7] search results=2
+[plugin 7] search keyword=弹珠汽水瓶里的千岁同学 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E5%BC%B9%E7%8F%A0%E6%B1%BD%E6%B0%B4%E7%93%B6%E9%87%8C%E7%9A%84%E5%8D%83%E5%B2%81%E5%90%8C%E5%AD%A6
+[plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27187/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260929-1/041dfd3e08dd5bc568c735247bae0686.webp",
-  "title": "桃源暗鬼 ～日光・华严之泷篇～",
-  "descriptionText": "更新至SP02集 / 01點30分",
-  "detailURLString": "https://ani.girigirilove.com/GV27187/"
+  "id": "https://ani.girigirilove.com/GV26750/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20251002-1/19ae104a04bcd64cf1ca0055a07932ca.webp",
+  "title": "弹珠汽水瓶里的千岁同学",
+  "descriptionText": "已完结",
+  "detailURLString": "https://ani.girigirilove.com/GV26750/"
 }
-[OK] grigrilove | search(桃源暗鬼) -> 2
-[OK] grigrilove | 桃源暗鬼 ～日光・华严之泷篇～ | SP01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/TougenAnkS2CHT/SP01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 被追放的转生重骑士用游戏知识开无双 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/TheExiledHeavyKnightKnowsHowtoGametheSystemCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 黑化吧！圣女大人 第二季 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/KizudarakeSeijoyoriHoufukuwoKometeS2CHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | search(弹珠汽水瓶里的千岁同学) -> 1
+[plugin-unhandledRejection] undefined is not an object (evaluating 'content.children')
+[FAIL] grigrilove | 弹珠汽水瓶里的千岁同学 Part 2 | episodes -> plugin unhandledRejection: undefined is not an object (evaluating 'content.children') | reason=unknown
+[plugin-unhandledRejection] undefined is not an object (evaluating 'content.children')
+[FAIL] grigrilove | 超巡！超条前辈 | episodes -> plugin unhandledRejection: undefined is not an object (evaluating 'content.children') | reason=unknown
+[plugin-unhandledRejection] undefined is not an object (evaluating 'content.children')
+[FAIL] grigrilove | 冷淡的佐藤同学只对我撒娇 | episodes -> plugin unhandledRejection: undefined is not an object (evaluating 'content.children') | reason=unknown
 [plugin 8] Gimy TV | mode=subscriptions | index=https://gimyai.tw/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 8] medias total=0, testing=0
@@ -168,17 +163,17 @@
 [FAIL] Gimy TV | search(榮耀) -> 0
 [plugin 9] ZIP0 影视 | mode=subscriptions | index=https://zip0.com/category/movie?page=1
 [OK] ZIP0 影视 | connectivity -> 3 target(s), pass=https://zip0.com
-[plugin 9] medias total=77, testing=3
+[plugin 9] medias total=82, testing=3
 [plugin 9] buildMedias sample(index=0)
 {
-  "id": "https://zip0.com/watch?source=jisu&id=153656&episode=1",
-  "coverURLString": "https://img.jisuimage.com/cover/2b88c1c9536414bc2c9e43d902eadcd0.jpg",
-  "title": "病院尸录",
-  "descriptionText": "正片 · 2026 · 恐怖片",
-  "detailURLString": "https://zip0.com/watch?source=jisu&id=153656&episode=1"
+  "id": "https://zip0.com/watch?source=dyttzy&id=84600&episode=1",
+  "coverURLString": "https://img.dytt-tupian.com/upload/vod/20261003-1/dbf27d9d9b1070f4ff33ed95d8a0a470.webp",
+  "title": "神之乐团",
+  "descriptionText": "HD · 2025 · 剧情片",
+  "detailURLString": "https://zip0.com/watch?source=dyttzy&id=84600&episode=1"
 }
 [plugin 9] search keyword=琅琊榜 url=https://zip0.com/search?q=%E7%90%85%E7%90%8A%E6%A6%9C
-[plugin 9] search results=20
+[plugin 9] search results=22
 [plugin 9] search sample(index=0)
 {
   "id": "https://zip0.com/watch?source=dyttzy&id=45452&episode=1",
@@ -187,12 +182,12 @@
   "descriptionText": "线路 1 · 已完结 · 2017 · 国产剧",
   "detailURLString": "https://zip0.com/watch?source=dyttzy&id=45452&episode=1"
 }
-[OK] ZIP0 影视 | search(琅琊榜) -> 20
-[FAIL] ZIP0 影视 | 病院尸录 | 正片 -> https://vv.jisuzyv.com/play/ejRnmoye/index.m3u8 | candidates=1
-[FAIL] ZIP0 影视 | 穷煞鸳鸯 | 正片 -> https://vv.jisuzyv.com/play/epYzvJQa/index.m3u8 | candidates=1
-[FAIL] ZIP0 影视 | 疯狂穷富翁 | 正片 -> https://vv.jisuzyv.com/play/dwpkDWze/index.m3u8 | candidates=1
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_2e62514c-aa94-40b0-a6af-4d0a05b7b67b
-[summary] plugins=9, fatal=2, cases=48, ok=33, fail=15, invalidSources=5
+[OK] ZIP0 影视 | search(琅琊榜) -> 22
+[FAIL] ZIP0 影视 | 神之乐团 | HD中字 -> https://play.phimgood.com/20261003/32009_44c7d2e7/index.m3u8 | candidates=1
+[FAIL] ZIP0 影视 | 人生在世 | HD中字 -> https://play.phimgood.com/20261003/32003_619c1be4/index.m3u8 | candidates=1
+[FAIL] ZIP0 影视 | 庆州纪行 | HD中字 -> https://play.phimgood.com/20261003/32001_93c06a67/index.m3u8 | candidates=1
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_49f4fe62-b8bc-4d46-b8e2-765d692bcbea
+[summary] plugins=9, fatal=2, cases=48, ok=27, fail=21, invalidSources=7
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log
