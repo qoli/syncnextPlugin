@@ -199,17 +199,15 @@ function Search(inputURL, key) {
       let title = item.name;
       let descriptionText = item.remarks;
 
-      if (descriptionText != "超清") {
-        returnDatas.push(
-          buildMediaData(
-            item.id.toString(),
-            coverURLString,
-            title,
-            descriptionText,
-            href
-          )
-        );
-      }
+      returnDatas.push(
+        buildMediaData(
+          item.id.toString(),
+          coverURLString,
+          title,
+          descriptionText,
+          href
+        )
+      );
     }
 
     // 向 Syncnext 返回封面牆數據

@@ -46,6 +46,24 @@ responseBody = JSON.stringify({
             pic: "upload/vod/example.jpg",
             remarks: "高清",
           },
+          {
+            id: 84966,
+            name: "死亡赌局",
+            pic: "upload/vod/death-game.jpg",
+            remarks: "超清",
+          },
+          {
+            id: 82861,
+            name: "功夫女足",
+            pic: "upload/vod/kung-fu-soccer.jpg",
+            remarks: "超清",
+          },
+          {
+            id: 82724,
+            name: "森中有林",
+            pic: "upload/vod/forest.jpg",
+            remarks: "超清",
+          },
         ],
       },
     ],
@@ -54,10 +72,26 @@ responseBody = JSON.stringify({
 sandbox.Search("https://api.example/search", "plugin-key");
 assert.equal(thrownError, null);
 assert.equal(calls.length, 1);
-assert.equal(calls[0][0].length, 1);
+assert.equal(calls[0][0].length, 4);
 assert.equal(calls[0][0][0].id, "83916");
 assert.equal(calls[0][0][0].title, "当妈妈开始较真的时候");
 assert.equal(calls[0][1], "plugin-key");
+assert.deepEqual(
+  calls[0][0].slice(1),
+  [
+    ["84966", "死亡赌局", "death-game.jpg"],
+    ["82861", "功夫女足", "kung-fu-soccer.jpg"],
+    ["82724", "森中有林", "forest.jpg"],
+  ].map(function ([id, title, image]) {
+    return {
+      id: id,
+      coverURLString: "https://static.olelive.com/upload/vod/" + image,
+      title: title,
+      descriptionText: "超清",
+      detailURLString: "https://api.olelive.com/v1/pub/vod/detail/" + id + "/true",
+    };
+  })
+);
 
 responseBody = JSON.stringify({ data: { data: [{ list: null }] } });
 sandbox.Search("https://api.example/search", "plugin-key");
