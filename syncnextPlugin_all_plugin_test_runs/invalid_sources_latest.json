@@ -1,7 +1,65 @@
 {
-  "generatedAt": "2026-10-04T09:43:50.487Z",
-  "invalidPluginsCount": 4,
+  "generatedAt": "2026-10-05T10:21:19.705Z",
+  "invalidPluginsCount": 6,
   "invalidPlugins": [
+    {
+      "pluginFolder": "plugin_age",
+      "pluginName": "新 AGE 動漫",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
+      "reasonCounts": {
+        "probe_failed": 1
+      },
+      "fatalErrors": [],
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "杀手旅店 第2期",
+          "episodeTitle": "第01集",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260305",
+          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260305%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E8%A5%BF%E7%93%9C%22%2C%22lineKey%22%3A%22xigua%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fvip%2F%3Furl%3Dage_4bf5r97bM%252FvgTxVr4%252BwZ%252FiF%252FEVhGdDFC5%252B06woVTVGIRstTZ4toZdjcM2Mfrrh1SXxK250gTrTrOpsgqM4iXk07U%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
+          "playURL": "https://jx.wuzhoupai.com:8443/vip/916A2480F763E636C0899B400E846EBE7208F5D99AA736DA283632D48A33DD89A9A559431F3E21BF4FDFF771F2924F1C",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 404,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 404"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://jx.wuzhoupai.com:8443/vip/916A2480F763E636C0899B400E846EBE7208F5D99AA736DA283632D48A33DD89A9A559431F3E21BF4FDFF771F2924F1C",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/vip/?url=age_4bf5r97bM%2FvgTxVr4%2BwZ%2FiF%2FEVhGdDFC5%2B06woVTVGIRstTZ4toZdjcM2Mfrrh1SXxK250gTrTrOpsgqM4iXk07U"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 404,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 404"
+              }
+            }
+          ],
+          "error": "status 404",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://jx.wuzhoupai.com:8443/vip/?url=age_4bf5r97bM%2FvgTxVr4%2BwZ%2FiF%2FEVhGdDFC5%2B06woVTVGIRstTZ4toZdjcM2Mfrrh1SXxK250gTrTrOpsgqM4iXk07U",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        }
+      ]
+    },
     {
       "pluginFolder": "plugin_youknow",
       "pluginName": "YouKnowTV",
@@ -46,6 +104,53 @@
       },
       "fatalErrors": [],
       "failedCases": [
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "私人出租车",
+          "episodeTitle": "01",
+          "detailURL": "https://www.thanju.com/detail/2582.html",
+          "episodeURL": "https://www.thanju.com/play/2582/1-1.html",
+          "playURL": "https://v4.ppqrrs.com/wjv4/202610/03/U8RcLf9W1j95/video/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://v4.ppqrrs.com/wjv4/202610/03/U8RcLf9W1j95/video/index.m3u8",
+              "headers": {
+                "Referer": "https://www.thanju.com/play/2582/1-1.html",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/play/2582/1-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
         {
           "ok": false,
           "stage": "player",
@@ -139,48 +244,36 @@
               "error": ""
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "pluginFolder": "plugin_grigri",
+      "pluginName": "grigrilove",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_grigri/config.json",
+      "reasonCounts": {
+        "list_empty": 1
+      },
+      "fatalErrors": [
+        "no medias returned; no medias returned"
+      ],
+      "failedCases": [
         {
           "ok": false,
-          "stage": "player",
-          "mediaTitle": "四手联弹，两首奏鸣曲",
-          "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2566.html",
-          "episodeURL": "https://www.thanju.com/play/2566/1-1.html",
-          "playURL": "https://cdn.yzzy30-play.com/20260829/58591_7e0e96c4/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://cdn.yzzy30-play.com/20260829/58591_7e0e96c4/index.m3u8",
-              "headers": {
-                "Referer": "https://www.thanju.com/play/2566/1-1.html",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "stage": "list",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://ani.girigirilove.com/show/2--------1---/",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "list returned empty medias",
+          "reasonCode": "list_empty",
+          "reasonText": "首頁列表沒有返回媒體",
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.thanju.com/play/2566/1-1.html",
+              "url": "https://ani.girigirilove.com/show/2--------1---/",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -229,18 +322,18 @@
       "pluginName": "ZIP0 影视",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
       "reasonCounts": {
-        "probe_failed": 2
+        "probe_failed": 3
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "丑闻笔记",
+          "mediaTitle": "父子",
           "episodeTitle": "正片",
-          "detailURL": "https://zip0.com/watch?source=jisu&id=153923&episode=1",
-          "episodeURL": "https://vv.jisuzyv.com/play/6dBJXnkd/index.m3u8",
-          "playURL": "https://vv.jisuzyv.com/play/6dBJXnkd/index.m3u8",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=154046&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/erkYwLWa/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/erkYwLWa/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -253,7 +346,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://vv.jisuzyv.com/play/6dBJXnkd/index.m3u8",
+              "url": "https://vv.jisuzyv.com/play/erkYwLWa/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
@@ -275,11 +368,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "新抢钱夫妻",
+          "mediaTitle": "战无不胜2026",
           "episodeTitle": "正片",
-          "detailURL": "https://zip0.com/watch?source=jisu&id=153914&episode=1",
-          "episodeURL": "https://vv.jisuzyv.com/play/mbkj4wra/index.m3u8",
-          "playURL": "https://vv.jisuzyv.com/play/mbkj4wra/index.m3u8",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=154045&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/elYpnBVa/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/elYpnBVa/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -292,7 +385,46 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://vv.jisuzyv.com/play/mbkj4wra/index.m3u8",
+              "url": "https://vv.jisuzyv.com/play/elYpnBVa/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 0,
+                "contentType": "",
+                "error": "Unable to connect. Is the computer able to access the url?"
+              }
+            }
+          ],
+          "error": "Unable to connect. Is the computer able to access the url?",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "三少爷的剑",
+          "episodeTitle": "正片",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=154044&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/aADm5vpe/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/aADm5vpe/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "contentType": "",
+            "error": "Unable to connect. Is the computer able to access the url?"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vv.jisuzyv.com/play/aADm5vpe/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
