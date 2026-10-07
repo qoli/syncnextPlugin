@@ -1,7 +1,65 @@
 {
-  "generatedAt": "2026-10-06T10:13:17.943Z",
-  "invalidPluginsCount": 4,
+  "generatedAt": "2026-10-07T10:12:17.150Z",
+  "invalidPluginsCount": 5,
   "invalidPlugins": [
+    {
+      "pluginFolder": "plugin_age",
+      "pluginName": "新 AGE 動漫",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
+      "reasonCounts": {
+        "probe_failed": 1
+      },
+      "fatalErrors": [],
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "弹珠汽水瓶里的千岁同学 Part 2",
+          "episodeTitle": "第0.5集",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260298",
+          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260298%22%2C%22title%22%3A%22%E7%AC%AC0.5%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22slot%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E8%A5%BF%E7%93%9C%22%2C%22lineKey%22%3A%22xigua%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fvip%2F%3Furl%3Dage_b48enB%252BxIFa9Nrpq4zoSWHyMA7zGu7kxqN%252B20iYPPXuReZB3ZOn5wxXSp1pliQ%252Bhue9dJerJDgUzWk2hOypgCF%252Bq%22%2C%22title%22%3A%22%E7%AC%AC0.5%E9%9B%86%22%7D%5D%7D",
+          "playURL": "https://jx.wuzhoupai.com:8443/vip/4E2D2DE838B6C40CE312BB40E80AB31ED197FE70F6A20A9C7A0514E8DDB97E056B73AA28B9BE747F29692DF12D3A1860",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 404,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 404"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://jx.wuzhoupai.com:8443/vip/4E2D2DE838B6C40CE312BB40E80AB31ED197FE70F6A20A9C7A0514E8DDB97E056B73AA28B9BE747F29692DF12D3A1860",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/vip/?url=age_b48enB%2BxIFa9Nrpq4zoSWHyMA7zGu7kxqN%2B20iYPPXuReZB3ZOn5wxXSp1pliQ%2Bhue9dJerJDgUzWk2hOypgCF%2Bq"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 404,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 404"
+              }
+            }
+          ],
+          "error": "status 404",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://jx.wuzhoupai.com:8443/vip/?url=age_b48enB%2BxIFa9Nrpq4zoSWHyMA7zGu7kxqN%2B20iYPPXuReZB3ZOn5wxXSp1pliQ%2Bhue9dJerJDgUzWk2hOypgCF%2Bq",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        }
+      ]
+    },
     {
       "pluginFolder": "plugin_youknow",
       "pluginName": "YouKnowTV",
@@ -236,50 +294,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "潜伏6",
-          "episodeTitle": "HD中字",
-          "detailURL": "https://zip0.com/watch?source=dyttzy&id=83924&episode=1",
-          "episodeURL": "https://play.phimgood.com/20261006/32154_cd84d9ba/index.m3u8",
-          "playURL": "https://play.phimgood.com/20261006/32154_cd84d9ba/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://play.phimgood.com/20261006/32154_cd84d9ba/index.m3u8",
-              "headers": {
-                "Referer": "https://zip0.com/",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": []
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "坠落2：死点",
+          "mediaTitle": "一瞬之间",
           "episodeTitle": "正片",
-          "detailURL": "https://zip0.com/watch?source=jisu&id=151400&episode=1",
-          "episodeURL": "https://vv.jisuzyv.com/play/erkYzxBa/index.m3u8",
-          "playURL": "https://vv.jisuzyv.com/play/erkYzxBa/index.m3u8",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=154157&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/ejRnznze/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/ejRnznze/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -292,7 +311,46 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://vv.jisuzyv.com/play/erkYzxBa/index.m3u8",
+              "url": "https://vv.jisuzyv.com/play/ejRnznze/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 0,
+                "contentType": "",
+                "error": "Unable to connect. Is the computer able to access the url?"
+              }
+            }
+          ],
+          "error": "Unable to connect. Is the computer able to access the url?",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "法国贩毒网",
+          "episodeTitle": "正片",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=154156&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/eZ6W26Je/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/eZ6W26Je/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "contentType": "",
+            "error": "Unable to connect. Is the computer able to access the url?"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vv.jisuzyv.com/play/eZ6W26Je/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
