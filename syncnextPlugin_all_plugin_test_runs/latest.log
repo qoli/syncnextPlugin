@@ -29,42 +29,42 @@
 [OK] 低调影视 | search(蜘蛛侠) -> 2
 [OK] 低调影视 | 蜘蛛侠 (1-4) | 英雄归来 Homecoming -> https://v3.ddys.app/v2/movie/Spider.Man.Homecoming.2017.mp4 | candidates=2
 [OK] 低调影视 | 瘴气营地的青春性事与死亡 | 瘴气营地的青春性事与死亡 -> https://v3.ddys.app/v2/movie/Teenage.Sex.And.Death.At.Camp.Miasma.2026.mp4 | candidates=2
-[OK] 低调影视 | 政盗鲁邦 (更新至01) | 1 -> https://v3.ddys.app/v2/jp_drama/Political_Lupin/Political_Lupin_S01E01.mp4 | candidates=2
+[OK] 低调影视 | 美国恐怖故事 第十三季 (更新至08) | 1 -> https://v3.ddys.app/v2/west_drama/American_Horror_Story/American_Horror_Story_S13E01.mp4 | candidates=2
 [plugin 2] 新歐樂影院 | mode=subscriptions | index=https://api.olelive.com/v1/pub/vod/newest/1/12
 [FAIL] 新歐樂影院 | connectivity -> 3 target(s)
 [plugin 2] medias total=12, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "85493",
-  "coverURLString": "https://static.olelive.com/upload/vod/20261008-1/3b88e6c4f9947b7d6ae11b24b2ded8e7.jpg",
-  "title": "攀君",
-  "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/85493/true"
+  "id": "83198",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260731-1/10041507ced7bcf785449c706c10441c.jpg",
+  "title": "心动的信号 第九季",
+  "descriptionText": "更新至第9期陪看下",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83198/true"
 }
-[plugin 2] search keyword=攀君 url=https://api.olelive.com/v1/pub/index/search/%E6%94%80%E5%90%9B/vod/0/1/4
-[plugin 2] search results=1
+[plugin 2] search keyword=心动的信号 url=https://api.olelive.com/v1/pub/index/search/%E5%BF%83%E5%8A%A8%E7%9A%84%E4%BF%A1%E5%8F%B7/vod/0/1/4
+[plugin 2] search results=4
 [plugin 2] search sample(index=0)
 {
-  "id": "85493",
-  "coverURLString": "https://static.olelive.com/upload/vod/20261008-1/3b88e6c4f9947b7d6ae11b24b2ded8e7.jpg",
-  "title": "攀君",
-  "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/85493/true"
+  "id": "83198",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260731-1/10041507ced7bcf785449c706c10441c.jpg",
+  "title": "心动的信号 第九季",
+  "descriptionText": "更新至第9期陪看下",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/83198/true"
 }
-[OK] 新歐樂影院 | search(攀君) -> 1
-[OK] 新歐樂影院 | 攀君 | 1 -> https://cloud.yuntongclouds.com/ts6/20261008/7F1B9cul/mp4/7F1B9cul.mp4/clipTo/152800/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 狂王 第二季 | 第01集 -> https://cloud.yuntongclouds.com/ts6/20261008/AmxwdL2d/mp4/AmxwdL2d.mp4/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 大夏守墓人 | 第01集 -> https://cloud.yuntongclouds.com/ts6/20261008/oTML9Yjz/mp4/oTML9Yjz.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(心动的信号) -> 4
+[OK] 新歐樂影院 | 心动的信号 第九季 | 先导片上 -> https://cloud.yuntongclouds.com/ts5/20260731/v4ldxy48/mp4/v4ldxy48.mp4/master.m3u8 | candidates=1
+[FAIL] 新歐樂影院 | 无可替代 | 第01集 -> https://cloud.yuntongclouds.com/ts6/20260928/9EyvmZnG/mp4/9EyvmZnG.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 我背着恶鬼在生存游戏里大杀四方 | 第01集 -> https://cloud.yuntongclouds.com/ts6/20261009/OKhLlxZB/mp4/OKhLlxZB.mp4/clipTo/120633/master.m3u8 | candidates=1
 [plugin 3] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 3] medias total=32, testing=3
 [plugin 3] buildMedias sample(index=0)
 {
-  "id": "20260340",
-  "coverURLString": "https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260340.jpg",
-  "title": "新 网球王子 U-17世界杯决赛成员决定战",
-  "descriptionText": "第02集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260340"
+  "id": "20260286",
+  "coverURLString": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260286.jpg",
+  "title": "冰剑的魔术师将要统一世界 第二季",
+  "descriptionText": "第01 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260286"
 }
 [plugin 3] search keyword=转生重骑士 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AC%E7%94%9F%E9%87%8D%E9%AA%91%E5%A3%AB
 [plugin 3] search results=1
@@ -73,13 +73,13 @@
   "id": "20260212",
   "coverURLString": "https://gimg2.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260212.jpg",
   "title": "被追放的转生重骑士用游戏知识开无双",
-  "descriptionText": "第14集 · TV",
+  "descriptionText": "第15集 · TV",
   "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260212"
 }
 [OK] 新 AGE 動漫 | search(转生重骑士) -> 1
-[OK] 新 AGE 動漫 | 新 网球王子 U-17世界杯决赛成员决定战 | 第01集 -> https://fengbao13.com/video/xinwangqiuwangziu17shijiebeijuesaichengyuanjuedingzhan/72f89766db65/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 转生成为魔剑 第二季 | 第01集 -> https://fengbao13.com/video/zhuanshengjiushijianledierji/2879df190b8c/index.m3u8 | candidates=4
-[FAIL] 新 AGE 動漫 | 魔法骑士雷阿斯 | 第1集 -> https://jx.wuzhoupai.com:8443/vip/FF3B110B07493412E8323E54545E54D29310ECD62EE9985F9CEA1472F3F29F180CE68321C2E8A8C368A2A8DE5E46802F | candidates=1
+[OK] 新 AGE 動漫 | 冰剑的魔术师将要统一世界 第二季 | 第01集 -> https://fengbao13.com/video/bingjiandemoshushijiangyaotongyishijiedierji/d0905bdc4d07/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 冰之城墙 第2季 | 第01集 -> https://fengbao13.com/video/bingzhichengqiangdi2ji/3f47022e31ba/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 黑化吧！圣女大人第二季 | 第01集 -> https://fengbao13.com/video/shanghenleileideshengnvdefuchoudierji/3536142214d4/index.m3u8 | candidates=4
 [plugin 4] YouKnowTV | mode=subscriptions | index=https://www.youknow.tv/label/new/
 [FAIL] YouKnowTV | connectivity -> 3 target(s)
 [plugin 4] medias total=0, testing=0
@@ -91,13 +91,13 @@
 [plugin 5] medias total=30, testing=3
 [plugin 5] buildMedias sample(index=0)
 {
-  "id": "https://www.thanju.com/detail/2579.html",
-  "coverURLString": "https://pp.thanju.com/U/vod/6abb111646545.jpg",
-  "title": "妈妈发疯了",
-  "descriptionText": "第8集 · 金姬贞 金亨奎 姜京宪 郑敏儿",
-  "detailURLString": "https://www.thanju.com/detail/2579.html"
+  "id": "https://www.thanju.com/detail/2562.html",
+  "coverURLString": "https://pp.thanju.com/U/vod/6a7a799cd453a.jpg",
+  "title": "欲望的陷阱",
+  "descriptionText": "第33集 · 张瑞希 田惠媛 薛正焕 周清晨",
+  "detailURLString": "https://www.thanju.com/detail/2562.html"
 }
-[plugin 5] search keyword=妈妈发疯了 url=https://www.thanju.com/search/%E5%A6%88%E5%A6%88%E5%8F%91%E7%96%AF%E4%BA%86.html
+[plugin 5] search keyword=欲望的陷阱 url=https://www.thanju.com/search/%E6%AC%B2%E6%9C%9B%E7%9A%84%E9%99%B7%E9%98%B1.html
 [plugin 5] search results=2
 [plugin 5] search sample(index=0)
 {
@@ -107,9 +107,9 @@
   "descriptionText": "绑架游戏",
   "detailURLString": "https://www.thanju.com/detail/2584.html"
 }
-[OK] 韩剧网 | search(妈妈发疯了) -> 2
-[FAIL] 韩剧网 | 妈妈发疯了 | 01 -> https://cdn.yzzy30-play.com/20260929/59605_dcfc7b5b/index.m3u8 | candidates=1
+[OK] 韩剧网 | search(欲望的陷阱) -> 2
 [FAIL] 韩剧网 | 欲望的陷阱 | 01 -> https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8 | candidates=1
+[FAIL] 韩剧网 | 中头奖还是要上班 | 01 -> https://cdn.yzzy31-play.com/20260910/25583_6e18b12a/index.m3u8 | candidates=1
 [FAIL] 韩剧网 | 家庭关系证明书 | 01 -> https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8 | candidates=1
 [plugin 6] 独播库 | mode=subscriptions | index=https://www.dbku.tv/vodtype/2--------1---.html
 [OK] 独播库 | connectivity -> 3 target(s), pass=https://www.dbku.tv
@@ -119,7 +119,7 @@
   "id": "https://www.dbku.tv/voddetail/150175.html",
   "coverURLString": "https://image.tmdb.org/t/p/w300/bhpqpYerPLqpXyJyqGVE16xMIdo.jpg",
   "title": "雷霆令",
-  "descriptionText": "更新至24集",
+  "descriptionText": "更新至26集",
   "detailURLString": "https://www.dbku.tv/voddetail/150175.html"
 }
 [plugin 6] search keyword=雷霆令 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E9%9B%B7%E9%9C%86%E4%BB%A4&submit=
@@ -129,7 +129,7 @@
   "id": "https://www.dbku.tv/voddetail/150175.html",
   "coverURLString": "https://image.tmdb.org/t/p/w300/bhpqpYerPLqpXyJyqGVE16xMIdo.jpg",
   "title": "雷霆令",
-  "descriptionText": "更新至24集",
+  "descriptionText": "更新至26集",
   "detailURLString": "https://www.dbku.tv/voddetail/150175.html"
 }
 [OK] 独播库 | search(雷霆令) -> 1
@@ -141,26 +141,25 @@
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27233/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20261008-1/a02afa6eec2e60e98cbb8598b67a5981.webp",
-  "title": "黑暗召唤师在地下恋爱中",
-  "detailURLString": "https://ani.girigirilove.com/GV27233/"
+  "id": "https://ani.girigirilove.com/GV27180/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260929-1/886fca620d01e79b5ea56be1189de3d1.webp",
+  "title": "冰之城墙 第2季",
+  "detailURLString": "https://ani.girigirilove.com/GV27180/"
 }
-[plugin 7] search keyword=黑暗召唤师在地下恋爱中 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E9%BB%91%E6%9A%97%E5%8F%AC%E5%94%A4%E5%B8%88%E5%9C%A8%E5%9C%B0%E4%B8%8B%E6%81%8B%E7%88%B1%E4%B8%AD
-[plugin 7] search results=1
+[plugin 7] search keyword=冰之城墙 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E5%86%B0%E4%B9%8B%E5%9F%8E%E5%A2%99
+[plugin 7] search results=2
 [plugin 7] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27233/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20261008-1/a02afa6eec2e60e98cbb8598b67a5981.webp",
-  "title": "黑暗召唤师在地下恋爱中",
-  "descriptionText": "更新至01集 / 23點30分",
-  "detailURLString": "https://ani.girigirilove.com/GV27233/"
+  "id": "https://ani.girigirilove.com/GV27180/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260929-1/886fca620d01e79b5ea56be1189de3d1.webp",
+  "title": "冰之城墙 第2季",
+  "descriptionText": "更新至02集 / 23點30分",
+  "detailURLString": "https://ani.girigirilove.com/GV27180/"
 }
-[OK] grigrilove | search(黑暗召唤师在地下恋爱中) -> 1
-[OK] grigrilove | 黑暗召唤师在地下恋爱中 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/DarkSummonertoDekiteiruCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 兽王武神丹帝拜恩 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/JuuouMujinDandivineCHT/01/playlist.m3u8 | candidates=1
-[plugin-unhandledRejection] null is not an object (evaluating 'xml.match(/r player_.*?=(.*?)</)[1]')
-[FAIL] grigrilove | 归还者的魔法要特别 第二季 | 01 -> plugin unhandledRejection: null is not an object (evaluating 'xml.match(/r player_.*?=(.*?)</)[1]') | reason=unknown
+[OK] grigrilove | search(冰之城墙) -> 2
+[OK] grigrilove | 冰之城墙 第2季 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/TheRampartsofIceS2CHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 冰剑的魔术师将要统一世界 第二季 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/HyoukennoMajutsushigaSekaiwoSuberuS2CHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 黑化吧！圣女大人 第二季 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/KizudarakeSeijoyoriHoufukuwoKometeS2CHT/01/playlist.m3u8 | candidates=1
 [plugin 8] Gimy TV | mode=subscriptions | index=https://gimyai.tw/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 8] medias total=0, testing=0
@@ -169,31 +168,8 @@
 [FAIL] Gimy TV | search(榮耀) -> 0
 [plugin 9] ZIP0 影视 | mode=subscriptions | index=https://zip0.com/category/movie?page=1
 [OK] ZIP0 影视 | connectivity -> 3 target(s), pass=https://zip0.com
-[plugin 9] medias total=78, testing=3
-[plugin 9] buildMedias sample(index=0)
-{
-  "id": "https://zip0.com/watch?source=jisu&id=154359&episode=1",
-  "coverURLString": "https://img.jisuimage.com/cover/bcf191bbc2152cf547199120603b85d2.jpg",
-  "title": "查理・肖的复仇",
-  "descriptionText": "正片 · 2026 · 恐怖片",
-  "detailURLString": "https://zip0.com/watch?source=jisu&id=154359&episode=1"
-}
-[plugin 9] search keyword=琅琊榜 url=https://zip0.com/search?q=%E7%90%85%E7%90%8A%E6%A6%9C
-[plugin 9] search results=22
-[plugin 9] search sample(index=0)
-{
-  "id": "https://zip0.com/watch?source=dyttzy&id=45452&episode=1",
-  "coverURLString": "https://img.dytt-tupian.com/upload/vod/20250525-1/bb748713910bc2c9533696a3f8eba9b8.jpg",
-  "title": "琅琊榜之风起长林",
-  "descriptionText": "线路 1 · 已完结 · 2017 · 国产剧",
-  "detailURLString": "https://zip0.com/watch?source=dyttzy&id=45452&episode=1"
-}
-[OK] ZIP0 影视 | search(琅琊榜) -> 22
-[FAIL] ZIP0 影视 | 查理・肖的复仇 | 正片 -> https://vv.jisuzyv.com/play/aQWOQkZd/index.m3u8 | candidates=1
-[FAIL] ZIP0 影视 | 政盗鲁邦 | 第01集 -> https://super.ffzy-online6.com/20261008/42786_9d120ada/index.m3u8 | candidates=1
-[OK] ZIP0 影视 | 全城追缉 | HD -> https://fengbao13.com/video/quanchengzhuiji/54ca7215eb7b/index.m3u8 | candidates=1
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_408fd1a4-698d-4c29-929f-0939dd0e7d6f
-[summary] plugins=9, fatal=2, cases=48, ok=34, fail=14, invalidSources=6
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_3ecaf948-7fe8-4bb5-8e99-556f781364da
+[summary] plugins=9, fatal=3, cases=43, ok=32, fail=11, invalidSources=5
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log

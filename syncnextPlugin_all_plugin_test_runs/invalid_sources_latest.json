@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-08T10:30:34.409Z",
-  "invalidPluginsCount": 6,
+  "generatedAt": "2026-10-09T10:30:51.398Z",
+  "invalidPluginsCount": 5,
   "invalidPlugins": [
     {
-      "pluginFolder": "plugin_age",
-      "pluginName": "新 AGE 動漫",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
+      "pluginFolder": "plugin_olevod",
+      "pluginName": "新歐樂影院",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
       "reasonCounts": {
         "probe_failed": 1
       },
@@ -14,49 +14,38 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "魔法骑士雷阿斯",
-          "episodeTitle": "第1集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260333",
-          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260333%22%2C%22title%22%3A%22%E7%AC%AC1%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E8%A5%BF%E7%93%9C%22%2C%22lineKey%22%3A%22xigua%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fvip%2F%3Furl%3Dage_a234DW%252F0oPXq3u%252Fo3AcBgxnH%252BfGetcNeo7Z5uFyh2wXbsTVyYu2ROyzPbV5I9NE843fbEvOAkfLlsfrBYaMkoFEz%22%2C%22title%22%3A%22%E7%AC%AC1%E9%9B%86%22%7D%5D%7D",
-          "playURL": "https://jx.wuzhoupai.com:8443/vip/FF3B110B07493412E8323E54545E54D29310ECD62EE9985F9CEA1472F3F29F180CE68321C2E8A8C368A2A8DE5E46802F",
+          "mediaTitle": "无可替代",
+          "episodeTitle": "第01集",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/85101/true",
+          "episodeURL": "https://cloud.yuntongclouds.com/ts6/20260928/9EyvmZnG/mp4/9EyvmZnG.mp4/master.m3u8",
+          "playURL": "https://cloud.yuntongclouds.com/ts6/20260928/9EyvmZnG/mp4/9EyvmZnG.mp4/master.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
-            "status": 404,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 404"
+            "status": 0,
+            "contentType": "",
+            "error": "The operation was aborted."
           },
           "candidateCount": 1,
           "candidateWinnerIndex": 0,
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://jx.wuzhoupai.com:8443/vip/FF3B110B07493412E8323E54545E54D29310ECD62EE9985F9CEA1472F3F29F180CE68321C2E8A8C368A2A8DE5E46802F",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/vip/?url=age_a234DW%2F0oPXq3u%2Fo3AcBgxnH%2BfGetcNeo7Z5uFyh2wXbsTVyYu2ROyzPbV5I9NE843fbEvOAkfLlsfrBYaMkoFEz"
-              },
+              "url": "https://cloud.yuntongclouds.com/ts6/20260928/9EyvmZnG/mp4/9EyvmZnG.mp4/master.m3u8",
+              "headers": {},
               "probe": {
                 "ok": false,
                 "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
+                "status": 0,
+                "contentType": "",
+                "error": "The operation was aborted."
               }
             }
           ],
-          "error": "status 404",
+          "error": "The operation was aborted.",
           "reasonCode": "probe_failed",
           "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/vip/?url=age_a234DW%2F0oPXq3u%2Fo3AcBgxnH%2BfGetcNeo7Z5uFyh2wXbsTVyYu2ROyzPbV5I9NE843fbEvOAkfLlsfrBYaMkoFEz",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
+          "httpDiagnostics": []
         }
       ]
     },
@@ -107,53 +96,6 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "妈妈发疯了",
-          "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2579.html",
-          "episodeURL": "https://www.thanju.com/play/2579/1-1.html",
-          "playURL": "https://cdn.yzzy30-play.com/20260929/59605_dcfc7b5b/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://cdn.yzzy30-play.com/20260929/59605_dcfc7b5b/index.m3u8",
-              "headers": {
-                "Referer": "https://www.thanju.com/play/2579/1-1.html",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.thanju.com/play/2579/1-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
           "mediaTitle": "欲望的陷阱",
           "episodeTitle": "01",
           "detailURL": "https://www.thanju.com/detail/2562.html",
@@ -192,6 +134,53 @@
             {
               "method": "GET",
               "url": "https://www.thanju.com/play/2562/1-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "中头奖还是要上班",
+          "episodeTitle": "01",
+          "detailURL": "https://www.thanju.com/detail/2569.html",
+          "episodeURL": "https://www.thanju.com/play/2569/1-1.html",
+          "playURL": "https://cdn.yzzy31-play.com/20260910/25583_6e18b12a/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://cdn.yzzy31-play.com/20260910/25583_6e18b12a/index.m3u8",
+              "headers": {
+                "Referer": "https://www.thanju.com/play/2569/1-1.html",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/play/2569/1-1.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -248,39 +237,6 @@
       ]
     },
     {
-      "pluginFolder": "plugin_grigri",
-      "pluginName": "grigrilove",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_grigri/config.json",
-      "reasonCounts": {
-        "unknown": 1
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "归还者的魔法要特别 第二季",
-          "episodeTitle": "01",
-          "detailURL": "https://ani.girigirilove.com/GV27177/",
-          "episodeURL": "https://ani.girigirilove.com/playGV27177-1-1/",
-          "playURL": "",
-          "probe": null,
-          "error": "plugin unhandledRejection: null is not an object (evaluating 'xml.match(/r player_.*?=(.*?)</)[1]')",
-          "reasonCode": "unknown",
-          "reasonText": "plugin unhandledRejection: null is not an object (evaluating 'xml.match(/r player_.*?=(.*?)</)[1]')",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://ani.girigirilove.com/playGV27177-1-1/",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
       "pluginFolder": "plugin_gimy",
       "pluginName": "Gimy TV",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_gimy/config.json",
@@ -320,89 +276,12 @@
       "pluginName": "ZIP0 影视",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
       "reasonCounts": {
-        "probe_failed": 2
+        "fatal_error": 1
       },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "查理・肖的复仇",
-          "episodeTitle": "正片",
-          "detailURL": "https://zip0.com/watch?source=jisu&id=154359&episode=1",
-          "episodeURL": "https://vv.jisuzyv.com/play/aQWOQkZd/index.m3u8",
-          "playURL": "https://vv.jisuzyv.com/play/aQWOQkZd/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 0,
-            "contentType": "",
-            "error": "Unable to connect. Is the computer able to access the url?"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://vv.jisuzyv.com/play/aQWOQkZd/index.m3u8",
-              "headers": {
-                "Referer": "https://zip0.com/",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 0,
-                "contentType": "",
-                "error": "Unable to connect. Is the computer able to access the url?"
-              }
-            }
-          ],
-          "error": "Unable to connect. Is the computer able to access the url?",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": []
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "政盗鲁邦",
-          "episodeTitle": "第01集",
-          "detailURL": "https://zip0.com/watch?source=ffzy&id=99719&episode=1",
-          "episodeURL": "https://super.ffzy-online6.com/20261008/42786_9d120ada/index.m3u8",
-          "playURL": "https://super.ffzy-online6.com/20261008/42786_9d120ada/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://super.ffzy-online6.com/20261008/42786_9d120ada/index.m3u8",
-              "headers": {
-                "Referer": "https://zip0.com/",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": []
-        }
-      ]
+      "fatalErrors": [
+        "callback timeout (medias); emptyView=影片列表请求失败"
+      ],
+      "failedCases": []
     }
   ]
 }
