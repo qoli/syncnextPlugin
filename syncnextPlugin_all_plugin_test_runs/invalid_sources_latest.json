@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T10:30:51.398Z",
+  "generatedAt": "2026-10-10T09:47:38.083Z",
   "invalidPluginsCount": 5,
   "invalidPlugins": [
     {
@@ -7,45 +7,75 @@
       "pluginName": "新歐樂影院",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_olevod/config.json",
       "reasonCounts": {
-        "probe_failed": 1
+        "unknown": 3
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
-          "stage": "player",
-          "mediaTitle": "无可替代",
-          "episodeTitle": "第01集",
-          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/85101/true",
-          "episodeURL": "https://cloud.yuntongclouds.com/ts6/20260928/9EyvmZnG/mp4/9EyvmZnG.mp4/master.m3u8",
-          "playURL": "https://cloud.yuntongclouds.com/ts6/20260928/9EyvmZnG/mp4/9EyvmZnG.mp4/master.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 0,
-            "contentType": "",
-            "error": "The operation was aborted."
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
+          "stage": "episodes",
+          "mediaTitle": "现在就出发 第四季",
+          "episodeTitle": "",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/85183/true",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "plugin unhandledRejection: JSON Parse error: Unexpected EOF",
+          "reasonCode": "unknown",
+          "reasonText": "plugin unhandledRejection: JSON Parse error: Unexpected EOF",
+          "httpDiagnostics": [
             {
-              "index": 0,
-              "url": "https://cloud.yuntongclouds.com/ts6/20260928/9EyvmZnG/mp4/9EyvmZnG.mp4/master.m3u8",
-              "headers": {},
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 0,
-                "contentType": "",
-                "error": "The operation was aborted."
-              }
+              "method": "GET",
+              "url": "https://api.olelive.com/v1/pub/vod/detail/85183/true?_vv=2d90814b8e912ea7802130fa1b73cd83",
+              "status": 0,
+              "safeLine": false,
+              "error": "The operation was aborted."
             }
-          ],
-          "error": "The operation was aborted.",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": []
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "雷霆令",
+          "episodeTitle": "",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/85132/true",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "plugin unhandledRejection: JSON Parse error: Unexpected EOF",
+          "reasonCode": "unknown",
+          "reasonText": "plugin unhandledRejection: JSON Parse error: Unexpected EOF",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://api.olelive.com/v1/pub/vod/detail/85132/true?_vv=4fd0803ef1f12f8371e1323564f3ce93",
+              "status": 0,
+              "safeLine": false,
+              "error": "The operation was aborted."
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "凡人修仙传",
+          "episodeTitle": "",
+          "detailURL": "https://api.olelive.com/v1/pub/vod/detail/20130/true",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "plugin unhandledRejection: undefined is not an object (evaluating 'content.length')",
+          "reasonCode": "unknown",
+          "reasonText": "plugin unhandledRejection: undefined is not an object (evaluating 'content.length')",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://api.olelive.com/v1/pub/vod/detail/20130/true?_vv=4a2083b227412cdf3f9130e86703cf39",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
         }
       ]
     },
@@ -96,6 +126,53 @@
         {
           "ok": false,
           "stage": "player",
+          "mediaTitle": "妈妈发疯了",
+          "episodeTitle": "01",
+          "detailURL": "https://www.thanju.com/detail/2579.html",
+          "episodeURL": "https://www.thanju.com/play/2579/1-1.html",
+          "playURL": "https://cdn.yzzy30-play.com/20260929/59605_dcfc7b5b/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://cdn.yzzy30-play.com/20260929/59605_dcfc7b5b/index.m3u8",
+              "headers": {
+                "Referer": "https://www.thanju.com/play/2579/1-1.html",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/play/2579/1-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "player",
           "mediaTitle": "欲望的陷阱",
           "episodeTitle": "01",
           "detailURL": "https://www.thanju.com/detail/2562.html",
@@ -143,11 +220,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "中头奖还是要上班",
+          "mediaTitle": "DoctorX：白色黑手党时代",
           "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2569.html",
-          "episodeURL": "https://www.thanju.com/play/2569/1-1.html",
-          "playURL": "https://cdn.yzzy31-play.com/20260910/25583_6e18b12a/index.m3u8",
+          "detailURL": "https://www.thanju.com/detail/2586.html",
+          "episodeURL": "https://www.thanju.com/play/2586/1-1.html",
+          "playURL": "https://cdn.yzzy31-play.com/20261009/27337_0dd4332b/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -160,9 +237,9 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://cdn.yzzy31-play.com/20260910/25583_6e18b12a/index.m3u8",
+              "url": "https://cdn.yzzy31-play.com/20261009/27337_0dd4332b/index.m3u8",
               "headers": {
-                "Referer": "https://www.thanju.com/play/2569/1-1.html",
+                "Referer": "https://www.thanju.com/play/2586/1-1.html",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
               },
               "probe": {
@@ -180,54 +257,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.thanju.com/play/2569/1-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "家庭关系证明书",
-          "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2544.html",
-          "episodeURL": "https://www.thanju.com/play/2544/1-1.html",
-          "playURL": "https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8",
-              "headers": {
-                "Referer": "https://www.thanju.com/play/2544/1-1.html",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.thanju.com/play/2544/1-1.html",
+              "url": "https://www.thanju.com/play/2586/1-1.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -276,12 +306,73 @@
       "pluginName": "ZIP0 影视",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
       "reasonCounts": {
-        "fatal_error": 1
+        "plugin_empty_view": 1,
+        "probe_failed": 1
       },
-      "fatalErrors": [
-        "callback timeout (medias); emptyView=影片列表请求失败"
-      ],
-      "failedCases": []
+      "fatalErrors": [],
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "天台求生",
+          "episodeTitle": "",
+          "detailURL": "https://zip0.com/watch?source=bfzy&id=166976&episode=1",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 剧集页面请求失败",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://zip0.com/watch?source=bfzy&id=166976&episode=1",
+              "status": 500,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "我们的呼吸",
+          "episodeTitle": "正片",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=154553&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/eZ6WqOge/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/eZ6WqOge/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "contentType": "",
+            "error": "Unable to connect. Is the computer able to access the url?"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vv.jisuzyv.com/play/eZ6WqOge/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 0,
+                "contentType": "",
+                "error": "Unable to connect. Is the computer able to access the url?"
+              }
+            }
+          ],
+          "error": "Unable to connect. Is the computer able to access the url?",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        }
+      ]
     }
   ]
 }
