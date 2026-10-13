@@ -1,109 +1,7 @@
 {
-  "generatedAt": "2026-10-12T10:43:05.480Z",
-  "invalidPluginsCount": 4,
+  "generatedAt": "2026-10-13T10:30:41.632Z",
+  "invalidPluginsCount": 3,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_age",
-      "pluginName": "新 AGE 動漫",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
-      "reasonCounts": {
-        "probe_failed": 1
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "东京复仇者 第4期 三天战争篇",
-          "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260276",
-          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260276%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_9a7afOIt%252BRficMSvq15wyP%252FXmlglgLx%252FO6g%252B6OJRFN0zIOMMhrxgyJ0eUGh6J54W3BygaO7Imhr2aG%252Bo6IXRNItfM6YAnKoPsNf8U8ukD4ZRD0jJzjodQDpQ%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_321fuBccc%252BxevQiCNTRz8CZJRct1ESOA404wR7UEWT9O5WJxz6hOQzdSfHqR1XouiXzcjauTdfssRheNIxPyUOA2akSRDWhPYocfD7O%252F4H18luwW2I%252BzOmRWDsJF2kY%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_1593h3WqvLlkXKspTMhPOivINRMUAIYHQTWUCDH3ce3YmHeMiha0ndMO2LOYu6CSi0h0%252BfhDIvMqHDc%252BZbZBTj0wTowVud4P3rqm%252Bp%252FJce%252FaFtAc6g%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
-          "playURL": "https://vip.ffzy-plays.com/20261004/59074_3a6fb062/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 3,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://vip.ffzy-plays.com/20261004/59074_3a6fb062/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_9a7afOIt%2BRficMSvq15wyP%2FXmlglgLx%2FO6g%2B6OJRFN0zIOMMhrxgyJ0eUGh6J54W3BygaO7Imhr2aG%2Bo6IXRNItfM6YAnKoPsNf8U8ukD4ZRD0jJzjodQDpQ"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            },
-            {
-              "index": 1,
-              "url": "https://v6.ppqrrs.com/wjv6/202610/04/jDx4B1B3t792/video/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_321fuBccc%2BxevQiCNTRz8CZJRct1ESOA404wR7UEWT9O5WJxz6hOQzdSfHqR1XouiXzcjauTdfssRheNIxPyUOA2akSRDWhPYocfD7O%2F4H18luwW2I%2BzOmRWDsJF2kY"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html",
-                "error": "status 403"
-              }
-            },
-            {
-              "index": 2,
-              "url": "https://v.lzcdn31.com/20261003/12271_dab1e654/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_1593h3WqvLlkXKspTMhPOivINRMUAIYHQTWUCDH3ce3YmHeMiha0ndMO2LOYu6CSi0h0%2BfhDIvMqHDc%2BZbZBTj0wTowVud4P3rqm%2Bp%2FJce%2FaFtAc6g"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_9a7afOIt%2BRficMSvq15wyP%2FXmlglgLx%2FO6g%2B6OJRFN0zIOMMhrxgyJ0eUGh6J54W3BygaO7Imhr2aG%2Bo6IXRNItfM6YAnKoPsNf8U8ukD4ZRD0jJzjodQDpQ",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_321fuBccc%2BxevQiCNTRz8CZJRct1ESOA404wR7UEWT9O5WJxz6hOQzdSfHqR1XouiXzcjauTdfssRheNIxPyUOA2akSRDWhPYocfD7O%2F4H18luwW2I%2BzOmRWDsJF2kY",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_1593h3WqvLlkXKspTMhPOivINRMUAIYHQTWUCDH3ce3YmHeMiha0ndMO2LOYu6CSi0h0%2BfhDIvMqHDc%2BZbZBTj0wTowVud4P3rqm%2Bp%2FJce%2FaFtAc6g",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
     {
       "pluginFolder": "plugin_youknow",
       "pluginName": "YouKnowTV",
@@ -151,11 +49,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "爱情来了",
+          "mediaTitle": "欲望的陷阱",
           "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2552.html",
-          "episodeURL": "https://www.thanju.com/play/2552/1-1.html",
-          "playURL": "https://cdn.yzzyvip-29.com/20260726/26230_0a2f0579/index.m3u8",
+          "detailURL": "https://www.thanju.com/detail/2562.html",
+          "episodeURL": "https://www.thanju.com/play/2562/1-1.html",
+          "playURL": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -168,9 +66,9 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://cdn.yzzyvip-29.com/20260726/26230_0a2f0579/index.m3u8",
+              "url": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
               "headers": {
-                "Referer": "https://www.thanju.com/play/2552/1-1.html",
+                "Referer": "https://www.thanju.com/play/2562/1-1.html",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
               },
               "probe": {
@@ -188,7 +86,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.thanju.com/play/2552/1-1.html",
+              "url": "https://www.thanju.com/play/2562/1-1.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -198,11 +96,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "潜入你心",
+          "mediaTitle": "妈妈发疯了",
           "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2578.html",
-          "episodeURL": "https://www.thanju.com/play/2578/1-1.html",
-          "playURL": "https://player.yzzyvip-35.com/20260926/17683_08474286/index.m3u8",
+          "detailURL": "https://www.thanju.com/detail/2579.html",
+          "episodeURL": "https://www.thanju.com/play/2579/1-1.html",
+          "playURL": "https://cdn.yzzy30-play.com/20260929/59605_dcfc7b5b/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -215,9 +113,9 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://player.yzzyvip-35.com/20260926/17683_08474286/index.m3u8",
+              "url": "https://cdn.yzzy30-play.com/20260929/59605_dcfc7b5b/index.m3u8",
               "headers": {
-                "Referer": "https://www.thanju.com/play/2578/1-1.html",
+                "Referer": "https://www.thanju.com/play/2579/1-1.html",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
               },
               "probe": {
@@ -235,7 +133,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.thanju.com/play/2578/1-1.html",
+              "url": "https://www.thanju.com/play/2579/1-1.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -245,11 +143,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "不是你的恋爱",
+          "mediaTitle": "恋爱博士",
           "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2571.html",
-          "episodeURL": "https://www.thanju.com/play/2571/1-1.html",
-          "playURL": "https://player.yzzyvip-35.com/20260912/16494_27253445/index.m3u8",
+          "detailURL": "https://www.thanju.com/detail/2583.html",
+          "episodeURL": "https://www.thanju.com/play/2583/1-1.html",
+          "playURL": "https://cdn.yzzy31-play.com/20261005/27119_ececd3cf/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -262,9 +160,9 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://player.yzzyvip-35.com/20260912/16494_27253445/index.m3u8",
+              "url": "https://cdn.yzzy31-play.com/20261005/27119_ececd3cf/index.m3u8",
               "headers": {
-                "Referer": "https://www.thanju.com/play/2571/1-1.html",
+                "Referer": "https://www.thanju.com/play/2583/1-1.html",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
               },
               "probe": {
@@ -282,7 +180,7 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.thanju.com/play/2571/1-1.html",
+              "url": "https://www.thanju.com/play/2583/1-1.html",
               "status": 200,
               "safeLine": false,
               "error": ""
