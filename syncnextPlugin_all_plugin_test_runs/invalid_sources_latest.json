@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-13T10:30:41.632Z",
-  "invalidPluginsCount": 3,
+  "generatedAt": "2026-10-14T08:39:00.067Z",
+  "invalidPluginsCount": 4,
   "invalidPlugins": [
     {
       "pluginFolder": "plugin_youknow",
@@ -46,6 +46,53 @@
       },
       "fatalErrors": [],
       "failedCases": [
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "家庭关系证明书",
+          "episodeTitle": "01",
+          "detailURL": "https://www.thanju.com/detail/2544.html",
+          "episodeURL": "https://www.thanju.com/play/2544/1-1.html",
+          "playURL": "https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://cdn.yzzyvip-29.com/20260707/25534_f5011865/index.m3u8",
+              "headers": {
+                "Referer": "https://www.thanju.com/play/2544/1-1.html",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/play/2544/1-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
         {
           "ok": false,
           "stage": "player",
@@ -139,53 +186,6 @@
               "error": ""
             }
           ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "恋爱博士",
-          "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2583.html",
-          "episodeURL": "https://www.thanju.com/play/2583/1-1.html",
-          "playURL": "https://cdn.yzzy31-play.com/20261005/27119_ececd3cf/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://cdn.yzzy31-play.com/20261005/27119_ececd3cf/index.m3u8",
-              "headers": {
-                "Referer": "https://www.thanju.com/play/2583/1-1.html",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.thanju.com/play/2583/1-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
         }
       ]
     },
@@ -221,6 +221,95 @@
               "error": ""
             }
           ]
+        }
+      ]
+    },
+    {
+      "pluginFolder": "plugin_zip0",
+      "pluginName": "ZIP0 影视",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
+      "reasonCounts": {
+        "probe_failed": 2
+      },
+      "fatalErrors": [],
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "一生所爱",
+          "episodeTitle": "高清",
+          "detailURL": "https://zip0.com/watch?source=bfzy&id=168142&episode=1",
+          "episodeURL": "https://v.fengbao14.com/video/yishengsuoai/23f41ba7da10/index.m3u8",
+          "playURL": "https://v.fengbao14.com/video/yishengsuoai/23f41ba7da10/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 404,
+            "contentType": "text/html",
+            "error": "status 404"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://v.fengbao14.com/video/yishengsuoai/23f41ba7da10/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 404,
+                "contentType": "text/html",
+                "error": "status 404"
+              }
+            }
+          ],
+          "error": "status 404",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "疾患",
+          "episodeTitle": "HD中字",
+          "detailURL": "https://zip0.com/watch?source=ffzy&id=97668&episode=1",
+          "episodeURL": "https://vip.ffzy-plays.com/20261014/59484_eb08ce55/index.m3u8",
+          "playURL": "https://vip.ffzy-plays.com/20261014/59484_eb08ce55/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vip.ffzy-plays.com/20261014/59484_eb08ce55/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
         }
       ]
     }
