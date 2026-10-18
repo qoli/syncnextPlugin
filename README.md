@@ -9,9 +9,7 @@
 | `$http`／`$next`、`config.json`、資料模型與 App 交接契約 | [技術協議：doc.md](./doc.md) |
 | 靜態檢查、fixture、smoke、App 驗證、結果判讀與產物管理 | [測試契約：TESTING.md](./TESTING.md) |
 | 新增或維護插件、Notion preflight、來源表匯出、遠端驗證、公告與發布 | [發布 runbook：MAINTENANCE.md](./MAINTENANCE.md) |
-| 讓 Codex／其他執行 Agent 把既有插件遷移到 PluginBundle Hash | [PluginBundle Agent 指南](./PLUGIN_BUNDLE_AGENT_GUIDE.md) |
-| 新插件的可複製骨架 | [plugin_blueprint/README.md](./plugin_blueprint/README.md) |
-| 多來源候選播放的實作案例 | [youknow_multisource_case.md](./youknow_multisource_case.md) |
+| 新插件的可複製骨架 | [plugin_blueprint](./plugin_blueprint/) |
 
 文件責任不重疊：技術協議定義「可傳什麼」，測試契約定義「如何證明它可用」，發布 runbook 定義「何時及如何對外生效」。
 

@@ -2,7 +2,7 @@
 
 `MAINTENANCE.md` 是 `SyncnextPlugin_official` 唯一的操作型 runbook：新增插件、修復既有插件、登錄 v3 來源、發布用戶公告，都必須依本文件執行。`README.md`、`doc.md`、藍圖與 App 文件只描述介面或背景；若流程敘述與本文件不同，以本文件為準。
 
-文件責任分界：技術 payload 與 runtime 契約見 [doc.md](./doc.md)；測試層次、結果判讀與 smoke 產物見 [TESTING.md](./TESTING.md)；第三方倉庫或執行 Agent 的 PluginBundle Hash 遷移見 [PLUGIN_BUNDLE_AGENT_GUIDE.md](./PLUGIN_BUNDLE_AGENT_GUIDE.md)；本文件只負責把已驗證的變更依正確順序推送、登錄、匯出與發布。
+文件責任分界：技術 payload 與 runtime 契約見 [doc.md](./doc.md)；測試層次、結果判讀與 smoke 產物見 [TESTING.md](./TESTING.md)；PluginBundle Hash 由本文件第 4.1–4.3 節的生成、檢查與公開 bytes 驗證管理；本文件只負責把已驗證的變更依正確順序推送、登錄、匯出與發布。
 
 ## 0. 目的、邊界與不可跳過的規則
 
@@ -113,6 +113,12 @@ git branch --show-current
 4. 驗證列表、搜尋、分集與播放。多候選播放必須傳 `JSON.stringify([{ url, headers }, ...])` 給 `$next.toPlayerCandidates`，不可包成 `{ candidates: [...] }`。
 5. 對多 host 站點，把目前穩定主站放在 `host`，候選放在 `hosts`，並提供 `HostsProbeRequest()`；所有相對、跳轉與播放 URL 要以選中的 host 正規化。
 6. 完成所有腳本修改後執行 `node tools/update-plugin-cache.js plugin_<provider>`，讓 `config.cache` 與 `files` 的實際內容一致。Hash 更新必須與腳本放在同一個 commit。
+
+第三方倉庫的 JSON 檔名與發布目錄可能不同；先核對其真正的 `files` 與公開 URL，
+不可直接套用本工具的 `plugin_*` 目錄發現規則。逐一以原始 bytes 計算 SHA-256
+與 byte 數，保持完整 `cache.resources`，並在提交後驗證公開 URL 與同一 commit
+的 Git blob。Git clean filter、換行轉換或 CDN 傳播造成的不一致都必須如實回報，
+不能以工作樹 Hash 代替公開 bytes。
 
 ### 4.2 本機驗證
 
