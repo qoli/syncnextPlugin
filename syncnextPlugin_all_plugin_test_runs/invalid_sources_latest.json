@@ -1,65 +1,7 @@
 {
-  "generatedAt": "2026-10-18T07:59:08.217Z",
-  "invalidPluginsCount": 6,
+  "generatedAt": "2026-10-19T08:47:34.516Z",
+  "invalidPluginsCount": 4,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_age",
-      "pluginName": "新 AGE 動漫",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
-      "reasonCounts": {
-        "probe_failed": 1
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "既然能用鼠标操纵现实 那就使劲点击女孩子吧",
-          "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260343",
-          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260343%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E8%A5%BF%E7%93%9C%22%2C%22lineKey%22%3A%22xigua%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fvip%2F%3Furl%3Dage_5b96nK2t5HtZkvdF7CDcYZLPMC%252FaYJUzYEr0IhlZHXM4Q3WBIKHbwZa7BDE7TiWh0RmQtp73X7fl4xpP%252FuMIFDv0%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
-          "playURL": "https://jx.wuzhoupai.com:8443/vip/7FF0E42F3439EDE0D8D9C89D3641A158AD3D06BE98E9E818683AFA018A8767518155180467DF6BDA6938D4FB033ED41B",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 404,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 404"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://jx.wuzhoupai.com:8443/vip/7FF0E42F3439EDE0D8D9C89D3641A158AD3D06BE98E9E818683AFA018A8767518155180467DF6BDA6938D4FB033ED41B",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/vip/?url=age_5b96nK2t5HtZkvdF7CDcYZLPMC%2FaYJUzYEr0IhlZHXM4Q3WBIKHbwZa7BDE7TiWh0RmQtp73X7fl4xpP%2FuMIFDv0"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
-              }
-            }
-          ],
-          "error": "status 404",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/vip/?url=age_5b96nK2t5HtZkvdF7CDcYZLPMC%2FaYJUzYEr0IhlZHXM4Q3WBIKHbwZa7BDE7TiWh0RmQtp73X7fl4xpP%2FuMIFDv0",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
     {
       "pluginFolder": "plugin_youknow",
       "pluginName": "YouKnowTV",
@@ -248,41 +190,6 @@
       ]
     },
     {
-      "pluginFolder": "plugin_grigri",
-      "pluginName": "grigrilove",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_grigri/config.json",
-      "reasonCounts": {
-        "list_empty": 1
-      },
-      "fatalErrors": [
-        "no medias returned; no medias returned"
-      ],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "list",
-          "mediaTitle": "",
-          "episodeTitle": "",
-          "detailURL": "https://ani.girigirilove.com/show/2--------1---/",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "list returned empty medias",
-          "reasonCode": "list_empty",
-          "reasonText": "首頁列表沒有返回媒體",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://ani.girigirilove.com/show/2--------1---/",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
       "pluginFolder": "plugin_gimy",
       "pluginName": "Gimy TV",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_gimy/config.json",
@@ -322,31 +229,54 @@
       "pluginName": "ZIP0 影视",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
       "reasonCounts": {
+        "plugin_empty_view": 1,
         "probe_failed": 1
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
+          "stage": "episodes",
+          "mediaTitle": "害群之马",
+          "episodeTitle": "",
+          "detailURL": "https://zip0.com/watch?source=bfzy&id=168639&episode=1",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "emptyView: 剧集页面请求失败",
+          "reasonCode": "plugin_empty_view",
+          "reasonText": "插件回傳 emptyView，未取得可播放地址",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://zip0.com/watch?source=bfzy&id=168639&episode=1",
+              "status": 500,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
           "stage": "player",
-          "mediaTitle": "指挥家",
-          "episodeTitle": "正片",
-          "detailURL": "https://zip0.com/watch?source=jisu&id=20788&episode=1",
-          "episodeURL": "https://vv.jisuzyv.com/play/7e5w8R8b/index.m3u8",
-          "playURL": "https://vv.jisuzyv.com/play/7e5w8R8b/index.m3u8",
+          "mediaTitle": "林家宅37号",
+          "episodeTitle": "HD国语",
+          "detailURL": "https://zip0.com/watch?source=ffzy&id=99910&episode=1",
+          "episodeURL": "https://super.ffzy-online6.com/20261019/43604_a18da6c5/index.m3u8",
+          "playURL": "https://super.ffzy-online6.com/20261019/43604_a18da6c5/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
-            "status": 0,
-            "contentType": "",
-            "error": "Unable to connect. Is the computer able to access the url?"
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
           },
           "candidateCount": 1,
           "candidateWinnerIndex": 0,
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://vv.jisuzyv.com/play/7e5w8R8b/index.m3u8",
+              "url": "https://super.ffzy-online6.com/20261019/43604_a18da6c5/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
@@ -354,13 +284,13 @@
               "probe": {
                 "ok": false,
                 "method": "GET",
-                "status": 0,
-                "contentType": "",
-                "error": "Unable to connect. Is the computer able to access the url?"
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
               }
             }
           ],
-          "error": "Unable to connect. Is the computer able to access the url?",
+          "error": "status 403",
           "reasonCode": "probe_failed",
           "reasonText": "播放鏈可取得，但 probe 檢測未通過",
           "httpDiagnostics": []
