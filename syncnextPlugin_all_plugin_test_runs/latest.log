@@ -7,7 +7,7 @@
 [plugins] discovered=11, testing=9, reservedSkipped=0
 [plugin 1] 低调影视 | mode=subscriptions | index=https://ddys.app/page/1/
 [OK] 低调影视 | connectivity -> 3 target(s), pass=https://ddys.app
-[plugin 1] medias total=24, testing=3
+[plugin 1] medias total=25, testing=3
 [plugin 1] buildMedias sample(index=0)
 {
   "id": "27880",
@@ -29,42 +29,42 @@
 [OK] 低调影视 | search(人性本兽) -> 1
 [OK] 低调影视 | 人性本兽 | 人性本兽 -> https://v3.ddys.app/v2/movie/Animals.2026.mp4 | candidates=2
 [OK] 低调影视 | 蜘蛛侠 (1-4) | 英雄归来 Homecoming -> https://v3.ddys.app/v2/movie/Spider.Man.Homecoming.2017.mp4 | candidates=2
-[OK] 低调影视 | 死神 千年血战篇 (更新至 祸进谭09) | S1E1 1 -> https://v3.ddys.app/v2/Anime/Bleach_Thousand_Year_Blood_War/Bleach_Thousand_Year_Blood_War_S01E01.mp4 | candidates=2
+[OK] 低调影视 | 恋爱博士 (更新至06) | 1 -> https://v3.ddys.app/v2/kr_drama/Between_Steps/Between_Steps_S01E01.mp4 | candidates=2
 [plugin 2] 新歐樂影院 | mode=subscriptions | index=https://api.olelive.com/v1/pub/vod/newest/1/12
 [FAIL] 新歐樂影院 | connectivity -> 3 target(s)
 [plugin 2] medias total=12, testing=3
 [plugin 2] buildMedias sample(index=0)
 {
-  "id": "86088",
-  "coverURLString": "https://static.olelive.com/upload/vod/20261020-1/26babd09b9df226042f2223800d86a28.jpg",
-  "title": "离婚后我在八零赚钱养家第二季",
-  "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/86088/true"
+  "id": "85159",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260930-1/b99927d1512b69126b68fa22129259fd.jpg",
+  "title": "邮票与舒芙蕾",
+  "descriptionText": "更新至第09集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/85159/true"
 }
-[plugin 2] search keyword=离婚后我在八零赚钱养家第 url=https://api.olelive.com/v1/pub/index/search/%E7%A6%BB%E5%A9%9A%E5%90%8E%E6%88%91%E5%9C%A8%E5%85%AB%E9%9B%B6%E8%B5%9A%E9%92%B1%E5%85%BB%E5%AE%B6%E7%AC%AC/vod/0/1/4
+[plugin 2] search keyword=邮票与舒芙蕾 url=https://api.olelive.com/v1/pub/index/search/%E9%82%AE%E7%A5%A8%E4%B8%8E%E8%88%92%E8%8A%99%E8%95%BE/vod/0/1/4
 [plugin 2] search results=1
 [plugin 2] search sample(index=0)
 {
-  "id": "86088",
-  "coverURLString": "https://static.olelive.com/upload/vod/20261020-1/26babd09b9df226042f2223800d86a28.jpg",
-  "title": "离婚后我在八零赚钱养家第二季",
-  "descriptionText": "高清",
-  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/86088/true"
+  "id": "85159",
+  "coverURLString": "https://static.olelive.com/upload/vod/20260930-1/b99927d1512b69126b68fa22129259fd.jpg",
+  "title": "邮票与舒芙蕾",
+  "descriptionText": "更新至第09集",
+  "detailURLString": "https://api.olelive.com/v1/pub/vod/detail/85159/true"
 }
-[OK] 新歐樂影院 | search(离婚后我在八零赚钱养家第) -> 1
-[OK] 新歐樂影院 | 离婚后我在八零赚钱养家第二季 | 第1集 -> https://cloud.yuntongclouds.com/ts6/20261020/eH0LwN6R/mp4/eH0LwN6R.mp4/clipTo/86066/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 小叶你好，我是你闺女第三季 | 第1集 -> https://cloud.yuntongclouds.com/ts6/20261020/HJAubz4s/mp4/HJAubz4s.mp4/clipTo/44300/master.m3u8 | candidates=1
-[OK] 新歐樂影院 | 不择手段 | 立即播放 -> https://cloud.yuntongclouds.com/ts6/20261020/j87AMZ0n/mp4/j87AMZ0n.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | search(邮票与舒芙蕾) -> 1
+[OK] 新歐樂影院 | 邮票与舒芙蕾 | 第01集 -> https://dubo.oulehdtv.tv/ts6/20260930/JWNMnRW1/mp4/JWNMnRW1.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 莫语者 | 第01集 -> https://cloud.yuntongclouds.com/ts6/20261021/ESNbVWi4/mp4/ESNbVWi4.mp4/master.m3u8 | candidates=1
+[OK] 新歐樂影院 | 爱的修学旅行 第二季 | 第20261021期 -> https://cloud.yuntongclouds.com/ts6/20261021/5L1y7UQd/mp4/5L1y7UQd.mp4/master.m3u8 | candidates=1
 [plugin 3] 新 AGE 動漫 | mode=subscriptions | index=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [OK] 新 AGE 動漫 | connectivity -> 3 target(s), pass=https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32
 [plugin 3] medias total=32, testing=3
 [plugin 3] buildMedias sample(index=0)
 {
-  "id": "20260174",
-  "coverURLString": "https://gimg4.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260174.jpg",
-  "title": "死神 千年血战篇-祸进谭-",
-  "descriptionText": "第09集 · TV",
-  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260174"
+  "id": "20260298",
+  "coverURLString": "https://gimg3.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=https%3A%2F%2Fcdn.aqdstatic.com%3A966%2Fage%2Fcovers%2F20260298.jpg",
+  "title": "弹珠汽水瓶里的千岁同学 Part 2",
+  "descriptionText": "第03集 · TV",
+  "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260298"
 }
 [plugin 3] search keyword=转生重骑士 url=https://ageapi.omwjhz.com:18888/v2/search?page=1&query=%E8%BD%AC%E7%94%9F%E9%87%8D%E9%AA%91%E5%A3%AB
 [plugin 3] search results=1
@@ -77,9 +77,9 @@
   "detailURLString": "https://ageapi.omwjhz.com:18888/v2/detail/20260212"
 }
 [OK] 新 AGE 動漫 | search(转生重骑士) -> 1
-[FAIL] 新 AGE 動漫 | 死神 千年血战篇-祸进谭- | 第01集 -> https://vip.ffzy-plays.com/20260725/56237_f7fab432/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 青之箱 第二季 | 第01集 -> https://fengbao13.com/video/qingzhixiangdierji/374f43427e40/index.m3u8 | candidates=4
-[OK] 新 AGE 動漫 | 女友的朋友 | 第01集 -> https://fengbao13.com/video/nvyoudepengyou/ca32f03a400d/index.m3u8 | candidates=3
+[OK] 新 AGE 動漫 | 弹珠汽水瓶里的千岁同学 Part 2 | 第01集 -> https://fengbao13.com/video/danzhuqishuipinglideqiansuitongxuedierji/60a79f202c95/index.m3u8 | candidates=4
+[OK] 新 AGE 動漫 | 不擅交际的未亡人雪女与诅咒戒指 | 第01集 -> https://v.lzcdn31.com/20260929/12106_5f3dc01f/index.m3u8 | candidates=1
+[OK] 新 AGE 動漫 | 被流放的超能附魔师 讴歌随心所欲的第二人生 | 第01集 -> https://fengbao13.com/video/beiliufangdekaiguamoshushiougesuixinsuoyudierrenshengzhuifangfuyumoshushiqiouge/7b967f5e43b5/index.m3u8 | candidates=4
 [plugin 4] YouKnowTV | mode=subscriptions | index=https://www.youknow.tv/label/new/
 [FAIL] YouKnowTV | connectivity -> 3 target(s)
 [plugin 4] medias total=0, testing=0
@@ -94,7 +94,7 @@
   "id": "https://www.thanju.com/detail/2562.html",
   "coverURLString": "https://pp.thanju.com/U/vod/6a7a799cd453a.jpg",
   "title": "欲望的陷阱",
-  "descriptionText": "第40集 · 张瑞希 田惠媛 薛正焕 周清晨",
+  "descriptionText": "第41集 · 张瑞希 田惠媛 薛正焕 周清晨",
   "detailURLString": "https://www.thanju.com/detail/2562.html"
 }
 [plugin 5] search keyword=欲望的陷阱 url=https://www.thanju.com/search/%E6%AC%B2%E6%9C%9B%E7%9A%84%E9%99%B7%E9%98%B1.html
@@ -116,50 +116,50 @@
 [plugin 6] medias total=48, testing=3
 [plugin 6] buildMedias sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/150215.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/xzOcWV3L2cOr83a8NcQ2SQ5uOe2.jpg",
-  "title": "花朵盛开",
-  "descriptionText": "更新至17集",
-  "detailURLString": "https://www.dbku.tv/voddetail/150215.html"
+  "id": "https://www.dbku.tv/voddetail/150448.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/fI1Z0lnf2K0fZFaXJqVIVqRmvnn.jpg",
+  "title": "第二次初恋",
+  "descriptionText": "更新至20集",
+  "detailURLString": "https://www.dbku.tv/voddetail/150448.html"
 }
-[plugin 6] search keyword=花朵盛开 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E8%8A%B1%E6%9C%B5%E7%9B%9B%E5%BC%80&submit=
+[plugin 6] search keyword=第二次初恋 url=https://www.dbku.tv/vodsearch/-------------.html?wd=%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%88%9D%E6%81%8B&submit=
 [plugin 6] search results=1
 [plugin 6] search sample(index=0)
 {
-  "id": "https://www.dbku.tv/voddetail/150215.html",
-  "coverURLString": "https://image.tmdb.org/t/p/w300/xzOcWV3L2cOr83a8NcQ2SQ5uOe2.jpg",
-  "title": "花朵盛开",
-  "descriptionText": "更新至17集",
-  "detailURLString": "https://www.dbku.tv/voddetail/150215.html"
+  "id": "https://www.dbku.tv/voddetail/150448.html",
+  "coverURLString": "https://image.tmdb.org/t/p/w300/fI1Z0lnf2K0fZFaXJqVIVqRmvnn.jpg",
+  "title": "第二次初恋",
+  "descriptionText": "更新至20集",
+  "detailURLString": "https://www.dbku.tv/voddetail/150448.html"
 }
-[OK] 独播库 | search(花朵盛开) -> 1
-[OK] 独播库 | 花朵盛开 | 第1集 -> https://vid.dbokutv.com/20261002/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBMXaSsijC34jC3CrDJ54GaP2BcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 死刑将至 | 第1集 -> https://vid.dbokutv.com/20261005/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlR7XgBNDuQdejC34jC312DJWpHZ54BcrmD0/chunklist.m3u8 | candidates=1
-[OK] 独播库 | 富闺可期 | 第1集 -> https://vid.dbokutv.com/20261019/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHbTcyo5xGvE9QpCxMubfWObfWPcfeOcXYP8HSsk1K/chunklist.m3u8 | candidates=1
+[OK] 独播库 | search(第二次初恋) -> 1
+[OK] 独播库 | 第二次初恋 | 第1集 -> https://vid.dbokutv.com/20261015/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBMHbOsDiBJ0nBJ0nGqGuEJ8tGovjS34/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 玉簟秋 | 第1集 -> https://vid.dbokutv.com/20261012/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlR7XgBNbaSIqmCIqmCJWsD313CZKkRN0q/chunklist.m3u8 | candidates=1
+[OK] 独播库 | 她的局 | 第1集 -> https://vid.dbokutv.com/20261019/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBNHaQYqmCIqmCZCsE496H3OkRN0q/chunklist.m3u8 | candidates=1
 [plugin 7] grigrilove | mode=subscriptions | index=https://ani.girigirilove.com/show/2--------1---/
 [OK] grigrilove | connectivity -> 3 target(s), pass=https://ani.girigirilove.com
 [plugin 7] medias total=48, testing=3
 [plugin 7] buildMedias sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27122/",
-  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260702-1/a583c4360f5febc0eefbe4225c11194e.webp",
-  "title": "死神 千年血战篇 -祸进谭-",
-  "detailURLString": "https://ani.girigirilove.com/GV27122/"
+  "id": "https://ani.girigirilove.com/GV27170/",
+  "coverURLString": "https://ani.girigirilove.com/upload/vod/20260928-1/a71d4f88f85ef35eeb8a764f6771c244.webp",
+  "title": "黑暗机器",
+  "detailURLString": "https://ani.girigirilove.com/GV27170/"
 }
-[plugin 7] search keyword=死神 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E6%AD%BB%E7%A5%9E
-[plugin 7] search results=10
+[plugin 7] search keyword=黑暗机器 url=https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=%E9%BB%91%E6%9A%97%E6%9C%BA%E5%99%A8
+[plugin 7] search results=1
 [plugin 7] search sample(index=0)
 {
-  "id": "https://ani.girigirilove.com/GV27122/",
-  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260702-1/a583c4360f5febc0eefbe4225c11194e.webp",
-  "title": "死神 千年血战篇 -祸进谭-",
-  "descriptionText": "更新至09集 / 23點30分",
-  "detailURLString": "https://ani.girigirilove.com/GV27122/"
+  "id": "https://ani.girigirilove.com/GV27170/",
+  "coverURLString": "https://m3u8.girigirilove.com/upload/vod/20260928-1/a71d4f88f85ef35eeb8a764f6771c244.webp",
+  "title": "黑暗机器",
+  "descriptionText": "更新至02集 / 23點30分",
+  "detailURLString": "https://ani.girigirilove.com/GV27170/"
 }
-[OK] grigrilove | search(死神) -> 10
-[OK] grigrilove | 死神 千年血战篇 -祸进谭- | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/07/cht/BleachSennenKessenhenKashintanCHT/41/playlist.m3u8 | candidates=1
-[OK] grigrilove | 魔法少女育成计划restart | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/MahouShoujoIkuseiKeikakuRestartCHT/01/playlist.m3u8 | candidates=1
-[OK] grigrilove | 东京复仇者 三天战争篇 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/TokyoRevengersSantenSensouHenCHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | search(黑暗机器) -> 1
+[OK] grigrilove | 黑暗机器 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/DARKMACHINECHT/01/playlist.m3u8 | candidates=1
+[OK] grigrilove | 弹珠汽水瓶里的千岁同学 Part 2 | 13.5 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/ChitosekunwaRamuneBinnoNakaS2CHT/13.5/playlist.m3u8 | candidates=1
+[OK] grigrilove | 被流放的开挂魔术师讴歌随心所欲第二人生 | 01 -> https://akua.girigirilove.com/zijian/oldanime/2026/10/cht/ChiifuyoCHT/01/playlist.m3u8 | candidates=1
 [plugin 8] Gimy TV | mode=subscriptions | index=https://gimyai.tw/
 [FAIL] Gimy TV | connectivity -> 3 target(s)
 [plugin 8] medias total=0, testing=0
@@ -168,14 +168,14 @@
 [FAIL] Gimy TV | search(榮耀) -> 0
 [plugin 9] ZIP0 影视 | mode=subscriptions | index=https://zip0.com/category/movie?page=1
 [OK] ZIP0 影视 | connectivity -> 3 target(s), pass=https://zip0.com
-[plugin 9] medias total=77, testing=3
+[plugin 9] medias total=78, testing=3
 [plugin 9] buildMedias sample(index=0)
 {
-  "id": "https://zip0.com/watch?source=bfzy&id=168648&episode=1",
-  "coverURLString": "https://p.bfvp26.com/upload/vod/20261020-1/11ba4539623c99e6b3e180f88534411c.webp",
-  "title": "假日达阵：熊队爱情故事",
-  "descriptionText": "更新至HD · 2026 · 剧情片",
-  "detailURLString": "https://zip0.com/watch?source=bfzy&id=168648&episode=1"
+  "id": "https://zip0.com/watch?source=jisu&id=155620&episode=1",
+  "coverURLString": "https://img.jisuimage.com/cover/4d193f05fe46775c4362e7cc0aead2e4.jpg",
+  "title": "老江湖",
+  "descriptionText": "正片 · 2026 · 悬疑片",
+  "detailURLString": "https://zip0.com/watch?source=jisu&id=155620&episode=1"
 }
 [plugin 9] search keyword=琅琊榜 url=https://zip0.com/search?q=%E7%90%85%E7%90%8A%E6%A6%9C
 [plugin 9] search results=22
@@ -188,11 +188,11 @@
   "detailURLString": "https://zip0.com/watch?source=dyttzy&id=45452&episode=1"
 }
 [OK] ZIP0 影视 | search(琅琊榜) -> 22
-[OK] ZIP0 影视 | 假日达阵：熊队爱情故事 | HD -> https://v.fengbao14.com/video/jiaridazhenxiongduiaiqinggushi/3bbff9a2fab9/index.m3u8 | candidates=1
-[OK] ZIP0 影视 | 好莱坞艺术学院 | 第01集 -> https://vod1.maowushi.com/20261020/gvdOJT4S/index.m3u8 | candidates=1
-[FAIL] ZIP0 影视 | 双重曝光 | 全集 -> https://s3.bfllvip.com/video/shuangzhongpuguang/80f0e63d7eb0/index.m3u8 | candidates=1
-[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_1160cdd5-32a7-41cb-88cd-5a272b662fc8
-[summary] plugins=9, fatal=2, cases=48, ok=36, fail=12, invalidSources=5
+[FAIL] ZIP0 影视 | 老江湖 | 正片 -> https://vv.jisuzyv.com/play/b4xkvjJb/index.m3u8 | candidates=1
+[FAIL] ZIP0 影视 | 北狮南虎闯江湖 | HD -> https://v.fengbao14.com/video/beishinanhuchuangjianghu/6818800d6b5f/index.m3u8 | candidates=1
+[FAIL] ZIP0 影视 | 野蛮人2012 | HD -> https://v13.zuidazym3u8.com/yyv13/202610/21/gcLHRxDh1w27/video/index.m3u8 | candidates=1
+[job-summary] /home/runner/work/_temp/_runner_file_commands/step_summary_dbd135f4-0c87-4b6e-9cdc-067266010df4
+[summary] plugins=9, fatal=2, cases=48, ok=35, fail=13, invalidSources=4
 [report] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.json
 [latest-log] /home/runner/work/syncnextPlugin/syncnextPlugin/syncnextPlugin_all_plugin_test_runs/latest.log

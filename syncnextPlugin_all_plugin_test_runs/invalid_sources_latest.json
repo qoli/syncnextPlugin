@@ -1,131 +1,7 @@
 {
-  "generatedAt": "2026-10-20T08:27:54.835Z",
-  "invalidPluginsCount": 5,
+  "generatedAt": "2026-10-21T08:30:40.624Z",
+  "invalidPluginsCount": 4,
   "invalidPlugins": [
-    {
-      "pluginFolder": "plugin_age",
-      "pluginName": "新 AGE 動漫",
-      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
-      "reasonCounts": {
-        "probe_failed": 1
-      },
-      "fatalErrors": [],
-      "failedCases": [
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "死神 千年血战篇-祸进谭-",
-          "episodeTitle": "第01集",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260174",
-          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260174%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_ab598QqSCezJE0slnWNqN13kRYxa9NQdHvI7T5fRIExrzkOc%252Be7yub%252FijrJSCRN9GFrHoYLH%252F68oLlw8gB%252F2wFL%252BB07lD%252BNLxLbpd1SYrGFV5tfe1UU3Lh2M%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%9A%B4%E9%A3%8E%22%2C%22lineKey%22%3A%22bfzym3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_1933SVInbJFRck7RN0dsy%252Fi9IKUZ337aze9xngo2Hqu%252BrYNsMZXEnPv171OU603QrGiTx1MH0uzobSkxpypifhAT82g%252BSfIoThblN8v1oSwZCr0BIjuVhfxER4DcLt2KZyqr3o2LKAyoubUXmK5EnnvTxg%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_f6ffpZKkXqH8%252F5klmI2ofNFuoW%252FtMe8SAT4h9wx3alD3iMtDoDVbLDc6GYOrJ4xVNu6emwiSWUYxNfDBmj7LLDk5Qh%252BofWC4M5vOKu59Yyw6wLFILKi4ua3KuTMKWdo%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_c0ec3baU11rJCf2jeeqNtNV6dKXJFLOVuZlCjHUSZiXbHkSpQAT35etKexOCH1%252B3jHJjVPVXUTM5VMPHoe4ytE9Xi%252BmDFcq6XnnQnXlckTmbZGoY%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
-          "playURL": "https://vip.ffzy-plays.com/20260725/56237_f7fab432/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 4,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://vip.ffzy-plays.com/20260725/56237_f7fab432/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_ab598QqSCezJE0slnWNqN13kRYxa9NQdHvI7T5fRIExrzkOc%2Be7yub%2FijrJSCRN9GFrHoYLH%2F68oLlw8gB%2F2wFL%2BB07lD%2BNLxLbpd1SYrGFV5tfe1UU3Lh2M"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            },
-            {
-              "index": 1,
-              "url": "https://fengbao12.com/video/sishenqiannianxuezhanpianhuojintan/b99c1b60e24e/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_1933SVInbJFRck7RN0dsy%2Fi9IKUZ337aze9xngo2Hqu%2BrYNsMZXEnPv171OU603QrGiTx1MH0uzobSkxpypifhAT82g%2BSfIoThblN8v1oSwZCr0BIjuVhfxER4DcLt2KZyqr3o2LKAyoubUXmK5EnnvTxg"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
-              }
-            },
-            {
-              "index": 2,
-              "url": "https://v3.ppqrrs.com/wjv3/202607/25/Y77aXpM57s91/video/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_f6ffpZKkXqH8%2F5klmI2ofNFuoW%2FtMe8SAT4h9wx3alD3iMtDoDVbLDc6GYOrJ4xVNu6emwiSWUYxNfDBmj7LLDk5Qh%2BofWC4M5vOKu59Yyw6wLFILKi4ua3KuTMKWdo"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html",
-                "error": "status 403"
-              }
-            },
-            {
-              "index": 3,
-              "url": "https://v.lzcdn31.com/20260726/8924_ac9ed3f8/index.m3u8",
-              "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
-                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_c0ec3baU11rJCf2jeeqNtNV6dKXJFLOVuZlCjHUSZiXbHkSpQAT35etKexOCH1%2B3jHJjVPVXUTM5VMPHoe4ytE9Xi%2BmDFcq6XnnQnXlckTmbZGoY"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 404,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 404"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_ab598QqSCezJE0slnWNqN13kRYxa9NQdHvI7T5fRIExrzkOc%2Be7yub%2FijrJSCRN9GFrHoYLH%2F68oLlw8gB%2F2wFL%2BB07lD%2BNLxLbpd1SYrGFV5tfe1UU3Lh2M",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_1933SVInbJFRck7RN0dsy%2Fi9IKUZ337aze9xngo2Hqu%2BrYNsMZXEnPv171OU603QrGiTx1MH0uzobSkxpypifhAT82g%2BSfIoThblN8v1oSwZCr0BIjuVhfxER4DcLt2KZyqr3o2LKAyoubUXmK5EnnvTxg",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_f6ffpZKkXqH8%2F5klmI2ofNFuoW%2FtMe8SAT4h9wx3alD3iMtDoDVbLDc6GYOrJ4xVNu6emwiSWUYxNfDBmj7LLDk5Qh%2BofWC4M5vOKu59Yyw6wLFILKi4ua3KuTMKWdo",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            },
-            {
-              "method": "GET",
-              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_c0ec3baU11rJCf2jeeqNtNV6dKXJFLOVuZlCjHUSZiXbHkSpQAT35etKexOCH1%2B3jHJjVPVXUTM5VMPHoe4ytE9Xi%2BmDFcq6XnnQnXlckTmbZGoY",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        }
-      ]
-    },
     {
       "pluginFolder": "plugin_youknow",
       "pluginName": "YouKnowTV",
@@ -353,23 +229,62 @@
       "pluginName": "ZIP0 影视",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
       "reasonCounts": {
-        "probe_failed": 1
+        "probe_failed": 3
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "双重曝光",
-          "episodeTitle": "全集",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=109902&episode=1",
-          "episodeURL": "https://s3.bfllvip.com/video/shuangzhongpuguang/80f0e63d7eb0/index.m3u8",
-          "playURL": "https://s3.bfllvip.com/video/shuangzhongpuguang/80f0e63d7eb0/index.m3u8",
+          "mediaTitle": "老江湖",
+          "episodeTitle": "正片",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=155620&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/b4xkvjJb/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/b4xkvjJb/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 0,
+            "contentType": "",
+            "error": "Unable to connect. Is the computer able to access the url?"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vv.jisuzyv.com/play/b4xkvjJb/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 0,
+                "contentType": "",
+                "error": "Unable to connect. Is the computer able to access the url?"
+              }
+            }
+          ],
+          "error": "Unable to connect. Is the computer able to access the url?",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "北狮南虎闯江湖",
+          "episodeTitle": "HD",
+          "detailURL": "https://zip0.com/watch?source=bfzy&id=169021&episode=1",
+          "episodeURL": "https://v.fengbao14.com/video/beishinanhuchuangjianghu/6818800d6b5f/index.m3u8",
+          "playURL": "https://v.fengbao14.com/video/beishinanhuchuangjianghu/6818800d6b5f/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
             "status": 404,
-            "contentType": "text/html; charset=utf-8",
+            "contentType": "text/html",
             "error": "status 404"
           },
           "candidateCount": 1,
@@ -377,7 +292,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://s3.bfllvip.com/video/shuangzhongpuguang/80f0e63d7eb0/index.m3u8",
+              "url": "https://v.fengbao14.com/video/beishinanhuchuangjianghu/6818800d6b5f/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
@@ -386,12 +301,51 @@
                 "ok": false,
                 "method": "GET",
                 "status": 404,
-                "contentType": "text/html; charset=utf-8",
+                "contentType": "text/html",
                 "error": "status 404"
               }
             }
           ],
           "error": "status 404",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "野蛮人2012",
+          "episodeTitle": "HD",
+          "detailURL": "https://zip0.com/watch?source=zuid&id=132085&episode=1",
+          "episodeURL": "https://v13.zuidazym3u8.com/yyv13/202610/21/gcLHRxDh1w27/video/index.m3u8",
+          "playURL": "https://v13.zuidazym3u8.com/yyv13/202610/21/gcLHRxDh1w27/video/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://v13.zuidazym3u8.com/yyv13/202610/21/gcLHRxDh1w27/video/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
           "reasonCode": "probe_failed",
           "reasonText": "播放鏈可取得，但 probe 檢測未通過",
           "httpDiagnostics": []
