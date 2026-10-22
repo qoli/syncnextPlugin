@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T08:30:40.624Z",
-  "invalidPluginsCount": 4,
+  "generatedAt": "2026-10-22T08:33:21.703Z",
+  "invalidPluginsCount": 5,
   "invalidPlugins": [
     {
       "pluginFolder": "plugin_youknow",
@@ -49,53 +49,6 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "欲望的陷阱",
-          "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2562.html",
-          "episodeURL": "https://www.thanju.com/play/2562/1-1.html",
-          "playURL": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
-              "headers": {
-                "Referer": "https://www.thanju.com/play/2562/1-1.html",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.thanju.com/play/2562/1-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
           "mediaTitle": "妈妈发疯了",
           "episodeTitle": "01",
           "detailURL": "https://www.thanju.com/detail/2579.html",
@@ -134,6 +87,53 @@
             {
               "method": "GET",
               "url": "https://www.thanju.com/play/2579/1-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "欲望的陷阱",
+          "episodeTitle": "01",
+          "detailURL": "https://www.thanju.com/detail/2562.html",
+          "episodeURL": "https://www.thanju.com/play/2562/1-1.html",
+          "playURL": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
+              "headers": {
+                "Referer": "https://www.thanju.com/play/2562/1-1.html",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/play/2562/1-1.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -190,6 +190,41 @@
       ]
     },
     {
+      "pluginFolder": "plugin_grigri",
+      "pluginName": "grigrilove",
+      "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_grigri/config.json",
+      "reasonCounts": {
+        "list_empty": 1
+      },
+      "fatalErrors": [
+        "no medias returned; no medias returned"
+      ],
+      "failedCases": [
+        {
+          "ok": false,
+          "stage": "list",
+          "mediaTitle": "",
+          "episodeTitle": "",
+          "detailURL": "https://ani.girigirilove.com/show/2--------1---/",
+          "episodeURL": "",
+          "playURL": "",
+          "probe": null,
+          "error": "list returned empty medias",
+          "reasonCode": "list_empty",
+          "reasonText": "首頁列表沒有返回媒體",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://ani.girigirilove.com/show/2--------1---/",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
       "pluginFolder": "plugin_gimy",
       "pluginName": "Gimy TV",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_gimy/config.json",
@@ -236,50 +271,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "老江湖",
-          "episodeTitle": "正片",
-          "detailURL": "https://zip0.com/watch?source=jisu&id=155620&episode=1",
-          "episodeURL": "https://vv.jisuzyv.com/play/b4xkvjJb/index.m3u8",
-          "playURL": "https://vv.jisuzyv.com/play/b4xkvjJb/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 0,
-            "contentType": "",
-            "error": "Unable to connect. Is the computer able to access the url?"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://vv.jisuzyv.com/play/b4xkvjJb/index.m3u8",
-              "headers": {
-                "Referer": "https://zip0.com/",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 0,
-                "contentType": "",
-                "error": "Unable to connect. Is the computer able to access the url?"
-              }
-            }
-          ],
-          "error": "Unable to connect. Is the computer able to access the url?",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": []
-        },
-        {
-          "ok": false,
-          "stage": "player",
-          "mediaTitle": "北狮南虎闯江湖",
-          "episodeTitle": "HD",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=169021&episode=1",
-          "episodeURL": "https://v.fengbao14.com/video/beishinanhuchuangjianghu/6818800d6b5f/index.m3u8",
-          "playURL": "https://v.fengbao14.com/video/beishinanhuchuangjianghu/6818800d6b5f/index.m3u8",
+          "mediaTitle": "格林回溯",
+          "episodeTitle": "高清",
+          "detailURL": "https://zip0.com/watch?source=bfzy&id=169182&episode=1",
+          "episodeURL": "https://v.fengbao14.com/video/gelinhuisu/60a0fb9ef99f/index.m3u8",
+          "playURL": "https://v.fengbao14.com/video/gelinhuisu/60a0fb9ef99f/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -292,7 +288,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://v.fengbao14.com/video/beishinanhuchuangjianghu/6818800d6b5f/index.m3u8",
+              "url": "https://v.fengbao14.com/video/gelinhuisu/60a0fb9ef99f/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
@@ -314,16 +310,16 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "野蛮人2012",
-          "episodeTitle": "HD",
-          "detailURL": "https://zip0.com/watch?source=zuid&id=132085&episode=1",
-          "episodeURL": "https://v13.zuidazym3u8.com/yyv13/202610/21/gcLHRxDh1w27/video/index.m3u8",
-          "playURL": "https://v13.zuidazym3u8.com/yyv13/202610/21/gcLHRxDh1w27/video/index.m3u8",
+          "mediaTitle": "特技车手",
+          "episodeTitle": "TC中字",
+          "detailURL": "https://zip0.com/watch?source=dyttzy&id=84477&episode=1",
+          "episodeURL": "https://vip.dytt-see.com/20261022/46328_0e7fb0a3/index.m3u8",
+          "playURL": "https://vip.dytt-see.com/20261022/46328_0e7fb0a3/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
             "status": 403,
-            "contentType": "text/html",
+            "contentType": "text/html; charset=utf-8",
             "error": "status 403"
           },
           "candidateCount": 1,
@@ -331,7 +327,7 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://v13.zuidazym3u8.com/yyv13/202610/21/gcLHRxDh1w27/video/index.m3u8",
+              "url": "https://vip.dytt-see.com/20261022/46328_0e7fb0a3/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
@@ -340,7 +336,46 @@
                 "ok": false,
                 "method": "GET",
                 "status": 403,
-                "contentType": "text/html",
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "乐高好朋友：心湖城音乐剧",
+          "episodeTitle": "HD中字",
+          "detailURL": "https://zip0.com/watch?source=dyttzy&id=84910&episode=1",
+          "episodeURL": "https://play.phimgood.com/20261017/32717_7b5ad0c5/index.m3u8",
+          "playURL": "https://play.phimgood.com/20261017/32717_7b5ad0c5/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://play.phimgood.com/20261017/32717_7b5ad0c5/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
                 "error": "status 403"
               }
             }
