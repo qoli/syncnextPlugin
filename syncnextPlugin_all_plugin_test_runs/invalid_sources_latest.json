@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T08:31:00.188Z",
+  "generatedAt": "2026-10-24T08:04:35.781Z",
   "invalidPluginsCount": 6,
   "invalidPlugins": [
     {
@@ -7,31 +7,120 @@
       "pluginName": "新 AGE 動漫",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_age/config.json",
       "reasonCounts": {
-        "list_empty": 1
+        "probe_failed": 1
       },
-      "fatalErrors": [
-        "no medias returned; no medias returned"
-      ],
+      "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
-          "stage": "list",
-          "mediaTitle": "",
-          "episodeTitle": "",
-          "detailURL": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32",
-          "episodeURL": "",
-          "playURL": "",
-          "probe": null,
-          "error": "list returned empty medias",
-          "reasonCode": "list_empty",
-          "reasonText": "首頁列表沒有返回媒體",
+          "stage": "player",
+          "mediaTitle": "我家的弟弟们真是让您费心了",
+          "episodeTitle": "第01集",
+          "detailURL": "https://ageapi.omwjhz.com:18888/v2/detail/20260199",
+          "episodeURL": "age-payload:%7B%22videoId%22%3A%2220260199%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%2C%22episodeOrder%22%3A1%2C%22alignKey%22%3A%22num%3A1%22%2C%22candidates%22%3A%5B%7B%22source%22%3A%22%E9%9D%9E%E5%87%A1%22%2C%22lineKey%22%3A%22ffm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_3593kNvWV2Vt3xup%252BWAacyfGEYuR%252FN6SLNDQVETcCmF6m6f1lyuk2Ee3oNGawf4FyKfRqZhhTcn6WONo9N7ku%252FpH%252F7d1O5TyIvNZS0PYDYCHNSwVvRcV4IT0%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%9A%B4%E9%A3%8E%22%2C%22lineKey%22%3A%22bfzym3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_8cffbwJDpr9NNpjfbmxyCFDk6Q8mQUbiJZinuoj%252BWnTq5m%252FikSai1kPJdt4rFEWiHZqzUj1X0R4YxG58%252B2REyHCy71RmgBbbM7305LV0pq7SxImiM07pNddSv30dvjfm7TNeslz%252B4YQ782I8g8PKldQdMA%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E6%97%A0%E5%B0%BD%22%2C%22lineKey%22%3A%22wjm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_d3e6zuYq2jpXbBqzoRKbEbX49ysjHt8AhryS3zMJPXBadFAToJTXt0%252FdAUg4wFP2i1iZxbmznglwqBwxUNwRsP7iNZynQAIx%252BHjoWSCBOgJmjF2ysu2lD0LugrVaBNc%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%2C%7B%22source%22%3A%22%E8%AE%A1%E7%AE%97%E4%BA%91%22%2C%22lineKey%22%3A%22lzm3u8%22%2C%22resolverURL%22%3A%22https%3A%2F%2Fjx.wuzhoupai.com%3A8443%2Fm3u8%2F%3Furl%3Dage_15f6mrdMVHSnXf3Lh4xpeps2u3OidrufVrY%252BanXYmMx6z4Q%252BG5n0A8ZtSAtvyXLf084WtDnvQ3TmQlmzFIdNGo4tA1rpehY2LpOJ%252F6QRQSWTWu%252Fl%22%2C%22title%22%3A%22%E7%AC%AC01%E9%9B%86%22%7D%5D%7D",
+          "playURL": "https://vip.ffzy-plays.com/20260704/55382_70afa835/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 4,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vip.ffzy-plays.com/20260704/55382_70afa835/index.m3u8",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_3593kNvWV2Vt3xup%2BWAacyfGEYuR%2FN6SLNDQVETcCmF6m6f1lyuk2Ee3oNGawf4FyKfRqZhhTcn6WONo9N7ku%2FpH%2F7d1O5TyIvNZS0PYDYCHNSwVvRcV4IT0"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            },
+            {
+              "index": 1,
+              "url": "https://bfeng11.com/video/wojiadedidimenzhenshirangninfeixinle/13a438fa4959/index.m3u8",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_8cffbwJDpr9NNpjfbmxyCFDk6Q8mQUbiJZinuoj%2BWnTq5m%2FikSai1kPJdt4rFEWiHZqzUj1X0R4YxG58%2B2REyHCy71RmgBbbM7305LV0pq7SxImiM07pNddSv30dvjfm7TNeslz%2B4YQ782I8g8PKldQdMA"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 404,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 404"
+              }
+            },
+            {
+              "index": 2,
+              "url": "https://v5.ppqrrs.com/wjv5/202607/04/csBhSguTYm88/video/index.m3u8",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_d3e6zuYq2jpXbBqzoRKbEbX49ysjHt8AhryS3zMJPXBadFAToJTXt0%2FdAUg4wFP2i1iZxbmznglwqBwxUNwRsP7iNZynQAIx%2BHjoWSCBOgJmjF2ysu2lD0LugrVaBNc"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html",
+                "error": "status 403"
+              }
+            },
+            {
+              "index": 3,
+              "url": "https://v.lzcdn31.com/20260704/7958_16796fb8/index.m3u8",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+                "Referer": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_15f6mrdMVHSnXf3Lh4xpeps2u3OidrufVrY%2BanXYmMx6z4Q%2BG5n0A8ZtSAtvyXLf084WtDnvQ3TmQlmzFIdNGo4tA1rpehY2LpOJ%2F6QRQSWTWu%2Fl"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 404,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 404"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://ageapi.omwjhz.com:18888/v2/catalog?genre=all&label=all&letter=all&order=time&region=all&resource=all&season=all&status=all&year=all&page=1&size=32",
-              "status": 0,
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_3593kNvWV2Vt3xup%2BWAacyfGEYuR%2FN6SLNDQVETcCmF6m6f1lyuk2Ee3oNGawf4FyKfRqZhhTcn6WONo9N7ku%2FpH%2F7d1O5TyIvNZS0PYDYCHNSwVvRcV4IT0",
+              "status": 200,
               "safeLine": false,
-              "error": "The operation was aborted."
+              "error": ""
+            },
+            {
+              "method": "GET",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_8cffbwJDpr9NNpjfbmxyCFDk6Q8mQUbiJZinuoj%2BWnTq5m%2FikSai1kPJdt4rFEWiHZqzUj1X0R4YxG58%2B2REyHCy71RmgBbbM7305LV0pq7SxImiM07pNddSv30dvjfm7TNeslz%2B4YQ782I8g8PKldQdMA",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            },
+            {
+              "method": "GET",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_d3e6zuYq2jpXbBqzoRKbEbX49ysjHt8AhryS3zMJPXBadFAToJTXt0%2FdAUg4wFP2i1iZxbmznglwqBwxUNwRsP7iNZynQAIx%2BHjoWSCBOgJmjF2ysu2lD0LugrVaBNc",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            },
+            {
+              "method": "GET",
+              "url": "https://jx.wuzhoupai.com:8443/m3u8/?url=age_15f6mrdMVHSnXf3Lh4xpeps2u3OidrufVrY%2BanXYmMx6z4Q%2BG5n0A8ZtSAtvyXLf084WtDnvQ3TmQlmzFIdNGo4tA1rpehY2LpOJ%2F6QRQSWTWu%2Fl",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
             }
           ]
         }
@@ -84,53 +173,6 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "欲望的陷阱",
-          "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2562.html",
-          "episodeURL": "https://www.thanju.com/play/2562/1-1.html",
-          "playURL": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
-          "probe": {
-            "ok": false,
-            "method": "GET",
-            "status": 403,
-            "contentType": "text/html; charset=utf-8",
-            "error": "status 403"
-          },
-          "candidateCount": 1,
-          "candidateWinnerIndex": 0,
-          "candidateProbes": [
-            {
-              "index": 0,
-              "url": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
-              "headers": {
-                "Referer": "https://www.thanju.com/play/2562/1-1.html",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
-              },
-              "probe": {
-                "ok": false,
-                "method": "GET",
-                "status": 403,
-                "contentType": "text/html; charset=utf-8",
-                "error": "status 403"
-              }
-            }
-          ],
-          "error": "status 403",
-          "reasonCode": "probe_failed",
-          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
-          "httpDiagnostics": [
-            {
-              "method": "GET",
-              "url": "https://www.thanju.com/play/2562/1-1.html",
-              "status": 200,
-              "safeLine": false,
-              "error": ""
-            }
-          ]
-        },
-        {
-          "ok": false,
-          "stage": "player",
           "mediaTitle": "妈妈发疯了",
           "episodeTitle": "01",
           "detailURL": "https://www.thanju.com/detail/2579.html",
@@ -178,11 +220,11 @@
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "心动制造所",
+          "mediaTitle": "欲望的陷阱",
           "episodeTitle": "01",
-          "detailURL": "https://www.thanju.com/detail/2589.html",
-          "episodeURL": "https://www.thanju.com/play/2589/1-1.html",
-          "playURL": "https://cdn.vvvip-plays33.cc/20261015/21262_965b31e5/index.m3u8",
+          "detailURL": "https://www.thanju.com/detail/2562.html",
+          "episodeURL": "https://www.thanju.com/play/2562/1-1.html",
+          "playURL": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
@@ -195,9 +237,9 @@
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://cdn.vvvip-plays33.cc/20261015/21262_965b31e5/index.m3u8",
+              "url": "https://cdn.vvvip-plays33.cc/20260811/16997_a49ffb16/index.m3u8",
               "headers": {
-                "Referer": "https://www.thanju.com/play/2589/1-1.html",
+                "Referer": "https://www.thanju.com/play/2562/1-1.html",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
               },
               "probe": {
@@ -215,7 +257,54 @@
           "httpDiagnostics": [
             {
               "method": "GET",
-              "url": "https://www.thanju.com/play/2589/1-1.html",
+              "url": "https://www.thanju.com/play/2562/1-1.html",
+              "status": 200,
+              "safeLine": false,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "DoctorX：白色黑手党时代",
+          "episodeTitle": "01",
+          "detailURL": "https://www.thanju.com/detail/2586.html",
+          "episodeURL": "https://www.thanju.com/play/2586/1-1.html",
+          "playURL": "https://cdn.yzzy31-play.com/20261009/27337_0dd4332b/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://cdn.yzzy31-play.com/20261009/27337_0dd4332b/index.m3u8",
+              "headers": {
+                "Referer": "https://www.thanju.com/play/2586/1-1.html",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": [
+            {
+              "method": "GET",
+              "url": "https://www.thanju.com/play/2586/1-1.html",
               "status": 200,
               "safeLine": false,
               "error": ""
@@ -299,31 +388,31 @@
       "pluginName": "ZIP0 影视",
       "api": "syncnextPlugin://https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_zip0/config.json",
       "reasonCounts": {
-        "probe_failed": 1
+        "probe_failed": 2
       },
       "fatalErrors": [],
       "failedCases": [
         {
           "ok": false,
           "stage": "player",
-          "mediaTitle": "实习生",
-          "episodeTitle": "HD",
-          "detailURL": "https://zip0.com/watch?source=bfzy&id=169269&episode=1",
-          "episodeURL": "https://v.fengbao14.com/video/shixisheng/c03822154208/index.m3u8",
-          "playURL": "https://v.fengbao14.com/video/shixisheng/c03822154208/index.m3u8",
+          "mediaTitle": "失控长夜",
+          "episodeTitle": "正片",
+          "detailURL": "https://zip0.com/watch?source=jisu&id=155872&episode=1",
+          "episodeURL": "https://vv.jisuzyv.com/play/b82oxyre/index.m3u8",
+          "playURL": "https://vv.jisuzyv.com/play/b82oxyre/index.m3u8",
           "probe": {
             "ok": false,
             "method": "GET",
-            "status": 404,
-            "contentType": "text/html",
-            "error": "status 404"
+            "status": 0,
+            "contentType": "",
+            "error": "Unable to connect. Is the computer able to access the url?"
           },
           "candidateCount": 1,
           "candidateWinnerIndex": 0,
           "candidateProbes": [
             {
               "index": 0,
-              "url": "https://v.fengbao14.com/video/shixisheng/c03822154208/index.m3u8",
+              "url": "https://vv.jisuzyv.com/play/b82oxyre/index.m3u8",
               "headers": {
                 "Referer": "https://zip0.com/",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
@@ -331,13 +420,52 @@
               "probe": {
                 "ok": false,
                 "method": "GET",
-                "status": 404,
-                "contentType": "text/html",
-                "error": "status 404"
+                "status": 0,
+                "contentType": "",
+                "error": "Unable to connect. Is the computer able to access the url?"
               }
             }
           ],
-          "error": "status 404",
+          "error": "Unable to connect. Is the computer able to access the url?",
+          "reasonCode": "probe_failed",
+          "reasonText": "播放鏈可取得，但 probe 檢測未通過",
+          "httpDiagnostics": []
+        },
+        {
+          "ok": false,
+          "stage": "player",
+          "mediaTitle": "往日情怀1973",
+          "episodeTitle": "HD中字",
+          "detailURL": "https://zip0.com/watch?source=dyttzy&id=85078&episode=1",
+          "episodeURL": "https://vip.dytt-network.com/20261024/41127_3154b34c/index.m3u8",
+          "playURL": "https://vip.dytt-network.com/20261024/41127_3154b34c/index.m3u8",
+          "probe": {
+            "ok": false,
+            "method": "GET",
+            "status": 403,
+            "contentType": "text/html; charset=utf-8",
+            "error": "status 403"
+          },
+          "candidateCount": 1,
+          "candidateWinnerIndex": 0,
+          "candidateProbes": [
+            {
+              "index": 0,
+              "url": "https://vip.dytt-network.com/20261024/41127_3154b34c/index.m3u8",
+              "headers": {
+                "Referer": "https://zip0.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15"
+              },
+              "probe": {
+                "ok": false,
+                "method": "GET",
+                "status": 403,
+                "contentType": "text/html; charset=utf-8",
+                "error": "status 403"
+              }
+            }
+          ],
+          "error": "status 403",
           "reasonCode": "probe_failed",
           "reasonText": "播放鏈可取得，但 probe 檢測未通過",
           "httpDiagnostics": []
