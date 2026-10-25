@@ -189,7 +189,7 @@ function findAllByKey(obj, keyToFind) {
   );
 }
 
-function fetchAndParse(url, refererOverride) {
+function fetchAndParse(url, onSuccess, onFailure, refererOverride) {
   const req = {
     url: url,
     method: 'GET',
@@ -199,15 +199,12 @@ function fetchAndParse(url, refererOverride) {
       'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
     },
   };
-  return $http.fetch(req).then(
-    function (res) {
-      return res.body;
-    },
-    function (err) {
-      print({ url: url, error: err });
-      return '';
-    }
-  );
+  // App's Promise is a Swift bridge, not the native JavaScript constructor.
+  $http.fetch(req).then(function (res) {
+    onSuccess(res.body || '');
+  }).catch(function (err) {
+    onFailure(err);
+  });
 }
 
 function isChallengePage(html) {
@@ -270,7 +267,7 @@ function extractMediasFromHTML(html) {
 }
 
 function buildMedias(listURL, key) {
-  fetchAndParse(listURL).then(function (html) {
+  fetchAndParse(listURL, function (html) {
     if (isChallengePage(html)) {
       $next.toMedias(JSON.stringify([]), key);
       return;
@@ -300,11 +297,56 @@ function buildMedias(listURL, key) {
       }
     }
     $next.toMedias(JSON.stringify(datas), key);
+  }, function () {
+    if (typeof $next.emptyView === 'function') $next.emptyView('YouKnowTV 列表請求失敗');
+    $next.toMedias('[]', key);
   });
 }
 
 function buildSearchMedias(searchURL, key) {
-  buildMedias(searchURL, key);
+  function failSearch() {
+    if (typeof $next.emptyView === 'function') {
+      $next.emptyView('YouKnowTV 搜尋請求失敗');
+    }
+    $next.toSearchMedias('[]', key);
+  }
+
+  // Use the same JSON endpoint as the site's search-box autocomplete.
+  // The HTML results route is independently protected by Cloudflare.
+  $http.fetch({
+    url: searchURL,
+    method: 'GET',
+    headers: {
+      'User-Agent': PLAYER_USER_AGENT,
+      Referer: BASE_URL + '/',
+      Accept: 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+    },
+  }).then(function (response) {
+    const status = Number(response.statusCode || response.status || 0);
+    let payload;
+    try {
+      payload = JSON.parse(response.body);
+    } catch (error) {
+      failSearch();
+      return;
+    }
+    if (status !== 200 || payload.code !== 1 || !Array.isArray(payload.list)) {
+      failSearch();
+      return;
+    }
+
+    const medias = [];
+    for (let i = 0; i < payload.list.length; i++) {
+      const item = payload.list[i];
+      const id = sanitizeText(item.id);
+      const title = sanitizeText(item.name);
+      if (!id || !title) continue;
+      const detailURL = BASE_URL + '/d/' + encodeURIComponent(id) + '/';
+      medias.push(buildMediaData(detailURL, buildURL(item.pic), title, '', detailURL));
+    }
+    $next.toSearchMedias(JSON.stringify(medias), key);
+  }).catch(failSearch);
 }
 
 function buildEpisodePayload(payload) {
@@ -574,7 +616,7 @@ function pushEpisodeByRegex(html, datas, seen) {
 }
 
 function Episodes(detailURL) {
-  fetchAndParse(detailURL).then(function (html) {
+  fetchAndParse(detailURL, function (html) {
     const sourceGroups = parseEpisodeSourceGroups(html);
     if (sourceGroups.length > 0) {
       const alignedEpisodes = alignEpisodeSourceGroups(sourceGroups);
@@ -635,6 +677,9 @@ function Episodes(detailURL) {
     }
 
     $next.toEpisodes(JSON.stringify(datas));
+  }, function () {
+    if (typeof $next.emptyView === 'function') $next.emptyView('YouKnowTV 劇集請求失敗');
+    $next.toEpisodes('[]');
   });
 }
 
@@ -885,27 +930,32 @@ function collectPlayableURLsFromHTML(html) {
   };
 }
 
-function resolvePlayableURLsFromEpisodePage(episodeURL) {
+function resolvePlayableURLsFromEpisodePage(episodeURL, onSuccess, onFailure) {
   const pageURL = String(episodeURL || '').trim();
   if (!pageURL) {
-    return Promise.resolve([]);
+    onSuccess([]);
+    return;
   }
 
   if (isDirectPlayableURL(pageURL) && !extractEpisodeMeta(pageURL)) {
-    return Promise.resolve([normalizePlayURL(pageURL)]);
+    onSuccess([normalizePlayURL(pageURL)]);
+    return;
   }
 
-  return fetchAndParse(pageURL, BASE_URL + '/').then(function (html) {
+  fetchAndParse(pageURL, function (html) {
     const state = collectPlayableURLsFromHTML(html);
     if (!state.iframeSrc) {
-      return state.urls;
+      onSuccess(state.urls);
+      return;
     }
 
-    return fetchAndParse(state.iframeSrc, pageURL).then(function (iframeHTML) {
+    fetchAndParse(state.iframeSrc, function (iframeHTML) {
       const iframeState = collectPlayableURLsFromHTML(iframeHTML);
-      return uniqueStrings(state.urls.concat(iframeState.urls));
-    });
-  });
+      onSuccess(uniqueStrings(state.urls.concat(iframeState.urls)));
+    }, function () {
+      onSuccess(state.urls);
+    }, pageURL);
+  }, onFailure, BASE_URL + '/');
 }
 
 function buildPlayerSourceEntries(inputURL) {
@@ -988,32 +1038,29 @@ function Player(inputURL) {
     emitPlayerCandidates(candidates);
   }
 
-  function next(index) {
-    if (index >= sourceEntries.length) {
-      finish();
-      return;
-    }
-
-    const entry = sourceEntries[index];
-    resolvePlayableURLsFromEpisodePage(entry.episodeURL).then(
-      function (urls) {
-        results.push({
-          source: entry.source,
-          episodeURL: entry.episodeURL,
-          urls: urls || [],
-        });
-        next(index + 1);
-      },
-      function () {
-        results.push({
-          source: entry.source,
-          episodeURL: entry.episodeURL,
-          urls: [],
-        });
-        next(index + 1);
-      }
-    );
+  if (!sourceEntries.length) {
+    finish();
+    return;
   }
 
-  next(0);
+  // Resolve the declared lines concurrently; retain their original output order.
+  // Serial resolution of 30+ lines exceeds the App's player operation deadline.
+  let pending = sourceEntries.length;
+  function complete(index, entry, urls) {
+    results[index] = { source: entry.source, episodeURL: entry.episodeURL, urls: urls || [] };
+    pending -= 1;
+    if (pending === 0) finish();
+  }
+
+  sourceEntries.forEach(function (entry, index) {
+    resolvePlayableURLsFromEpisodePage(
+      entry.episodeURL,
+      function (urls) {
+        complete(index, entry, urls);
+      },
+      function () {
+        complete(index, entry, []);
+      }
+    );
+  });
 }

@@ -65,7 +65,7 @@
     "javascript": "Player"
   },
   "search": {
-    "url": "https://www.youknow.tv/search/-------------/?wd=${keyword}",
+    "url": "https://www.youknow.tv/index.php/ajax/suggest?mid=1&limit=150&wd=${keyword}",
     "timeout": 20,
     "javascript": "buildSearchMedias"
   },
@@ -77,8 +77,8 @@
         "bytes": 4862
       },
       "app.js": {
-        "sha256": "3e91d75130b59dad6832e2604912d2124a0ef2508f9133033f677927829198ed",
-        "bytes": 25011
+        "sha256": "3eacf1f920f604253b9af16824a56e348373e242d58248b6969bc073dd9e540e",
+        "bytes": 26886
       }
     }
   }

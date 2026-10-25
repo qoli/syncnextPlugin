@@ -47,7 +47,7 @@ async function play({ html = HTML, reply = responseFor(), checkRequest } = {}) {
             if (checkRequest) checkRequest(request);
             return { statusCode: 200, body: JSON.stringify(reply) };
           });
-          // Match App JSPromise: then returns a catch-only continuation.
+          // Keep resolver callbacks compatible with a catch-only continuation.
           return { then(callback) { return { catch(handler) { promise.then(callback).catch(handler); } }; } };
         },
       },
