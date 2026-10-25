@@ -227,6 +227,8 @@ node node_test_all_plugins.js \
 Telegram 公告。這是整套插件維護 SOP，不能只執行 smoke、分類錯誤或列出狀態碼後結束。
 已驗證的本次插件／規則修復不再逐次詢問是否修復、commit 或 push；保留各 repo 的測試、
 權限及公開資源驗證 gate，並維持分 repo 提交。
+本機 smoke 腳本、工具鏈及依賴版本可依既有授權調整；不得因此繞過共用 challenge core
+或降低 gate，Gimy 的新增依賴限制仍依本節末段。
 
 1. 先執行 smoke，確認本輪程序結果與報告時間；不能把 `--smoke-fail-exit=soft` 的 exit 0
    當成全部通過，也不能讀取舊報告冒充本輪成功。案例失敗、fatal error、插件不可用／未證明、
