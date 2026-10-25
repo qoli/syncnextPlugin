@@ -28,12 +28,13 @@ const searchJSON = JSON.stringify({
   ],
 });
 const responses = {
-  'https://ani.girigirilove.com/show/2--------1---/': listHTML,
-  'https://ani.girigirilove.com/GV100/': detailHTML,
-  'https://ani.girigirilove.com/playGV100-1-1/': playerHTML,
+  'https://bg.girigirilove.com/show/2--------1---/': listHTML,
+  'https://bg.girigirilove.com/GV100/': detailHTML,
+  'https://bg.girigirilove.com/playGV100-1-1/': playerHTML,
   'https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=test': searchJSON,
 };
 const calls = [];
+const requests = [];
 const sandbox = {
   console: { log: function () {}, error: function () {} },
   JSON: JSON,
@@ -44,9 +45,11 @@ const sandbox = {
   Array: Array,
   TypeError: TypeError,
   decodeURIComponent: decodeURIComponent,
-  __syncnextPrimaryHost: 'https://ani.girigirilove.com',
+  __syncnextPrimaryHost: 'https://bg.girigirilove.com',
   $http: {
     fetch: function (request) {
+      requests.push(request);
+      assert.ok(responses[request.url], 'Unexpected request: ' + request.url);
       return Promise.resolve({ body: responses[request.url] || '' });
     },
   },
@@ -68,23 +71,37 @@ function settle() {
 }
 
 (async function () {
+  const config = JSON.parse(fs.readFileSync(__dirname + '/config.json', 'utf8'));
+  assert.equal(config.host, 'https://bg.girigirilove.com');
+  assert.ok(config.pages.every(function (page) {
+    return page.url.startsWith(config.host + '/show/');
+  }));
   assert.equal(
     sandbox.HostsProbeRequest().url,
-    'https://ani.girigirilove.com/show/2--------1---/'
+    'https://bg.girigirilove.com/show/2--------1---/'
   );
   assert.equal(
     sandbox.rebaseSiteURL('https://bgm.girigirilove.com/GV100/'),
-    'https://ani.girigirilove.com/GV100/'
+    'https://bg.girigirilove.com/GV100/'
+  );
+  assert.equal(
+    sandbox.rebaseSiteURL('https://ani.girigirilove.com/GV100/'),
+    'https://bg.girigirilove.com/GV100/'
+  );
+  assert.equal(
+    sandbox.buildURL('//jpg.girigirilove.com/cover.webp'),
+    'https://jpg.girigirilove.com/cover.webp'
   );
 
+  // Existing page, favourite and playback inputs can still carry the SPA host.
   sandbox.buildMedias('https://ani.girigirilove.com/show/2--------1---/');
   await settle();
   assert.equal(calls[0][0], 'medias');
   assert.equal(calls[0][1][0].title, '測試動畫');
-  assert.equal(calls[0][1][0].detailURLString, 'https://ani.girigirilove.com/GV100/');
+  assert.equal(calls[0][1][0].detailURLString, 'https://bg.girigirilove.com/GV100/');
   assert.equal(
     calls[0][1][0].coverURLString,
-    'https://ani.girigirilove.com/upload/cover.webp'
+    'https://bg.girigirilove.com/upload/cover.webp'
   );
 
   sandbox.Search(
@@ -94,7 +111,7 @@ function settle() {
   await settle();
   assert.equal(calls[1][0], 'search');
   assert.equal(calls[1][1][0].title, '搜尋動畫');
-  assert.equal(calls[1][1][0].detailURLString, 'https://ani.girigirilove.com/GV100/');
+  assert.equal(calls[1][1][0].detailURLString, 'https://bg.girigirilove.com/GV100/');
   assert.equal(calls[1][2], 'plugin-key');
 
   sandbox.Episodes('https://ani.girigirilove.com/GV100/');
@@ -103,13 +120,19 @@ function settle() {
   assert.equal(calls[2][1].length, 2);
   assert.equal(
     calls[2][1][0].episodeDetailURL,
-    'https://ani.girigirilove.com/playGV100-1-1/'
+    'https://bg.girigirilove.com/playGV100-1-1/'
   );
 
   sandbox.Player('https://ani.girigirilove.com/playGV100-1-1/');
   await settle();
   assert.equal(calls[3][0], 'player');
   assert.equal(calls[3][1], mediaURL);
+  assert.ok(requests.filter(function (request) {
+    return !request.url.startsWith('https://m3u8.girigirilove.com/');
+  }).every(function (request) {
+    return request.url.startsWith(config.host + '/') &&
+      request.headers.Referer === config.host + '/';
+  }));
 
   console.log('plugin_grigri contract tests passed');
 })().catch(function (error) {

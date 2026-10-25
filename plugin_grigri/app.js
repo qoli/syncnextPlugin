@@ -3,7 +3,7 @@
 var HOST =
   typeof __syncnextPrimaryHost === "string" && __syncnextPrimaryHost.trim()
     ? __syncnextPrimaryHost.trim().replace(/\/+$/, "")
-    : "https://ani.girigirilove.com";
+    : "https://bg.girigirilove.com";
 
 var DEFAULT_HEADERS = {
   "User-Agent":
@@ -70,7 +70,7 @@ function HostsProbeRequest() {
 
 function buildMedias(inputURL) {
   var req = {
-    url: inputURL,
+    url: buildURL(inputURL),
     method: "GET",
     headers: DEFAULT_HEADERS,
   };
@@ -130,14 +130,14 @@ function buildURL(href) {
 
 function rebaseSiteURL(url) {
   return url.replace(
-    /^https?:\/\/(ani|anime|bgm)\.girigirilove\.com(?=\/|$)/i,
+    /^https?:\/\/(ani|anime|bgm|bg)\.girigirilove\.com(?=\/|$)/i,
     HOST
   );
 }
 
 function Episodes(inputURL) {
   var req = {
-    url: inputURL,
+    url: buildURL(inputURL),
     method: "GET",
     headers: DEFAULT_HEADERS,
   };
@@ -173,7 +173,7 @@ function Episodes(inputURL) {
 }
 function Player(inputURL) {
   var req = {
-    url: inputURL,
+    url: buildURL(inputURL),
     method: "GET",
     headers: DEFAULT_HEADERS,
   };
