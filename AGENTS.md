@@ -14,6 +14,8 @@ Syncnext channel plugins live here; keep contributions reproducible and aligned 
 - `node --check plugin_<provider>/app.js` — checks a plugin's JavaScript syntax without making network requests.
 - `python -m json.tool plugin_<provider>/config.json >/dev/null` — validates a plugin's manifest JSON.
 - `node node_test_all_plugins.js --only=plugin_<provider> --output-dir /tmp/syncnext-plugin-smoke --history-mode=latest-only` — runs one plugin's integration smoke test without adding result files to the repository.
+- `npm run smoke:daily` — runs all published subscription plugins on macOS with the adjacent private Syncnext challenge adapter; writes reports under `~/Library/Logs/SyncnextPluginSmoke/`.
+- Codex runs the daily smoke at 08:00 Asia/Shanghai. A clean report ends the task silently; problems trigger the authorized maintenance and publication workflow in `MAINTENANCE.md` §5.1. `smoke:daily` itself is a single-run entrypoint; see `TESTING.md` for its matching Swift WASM toolchain requirements.
 - `npx browserify plugin_wogg/app.js -o plugin_wogg/dist.js` — bundle a plugin into a single file when Syncnext needs packaged output (replace the paths per plugin).
 - `bash localServer.sh` — serves `test/` on `http://localhost:8000` for quick manual playback tests against stored fixtures.
 

@@ -4,7 +4,7 @@
 
 - API、JSON 欄位、`$http`／`$next` 與 App 交接格式：見 [doc.md](./doc.md)。
 - 新增、來源表匯出、遠端驗證、公告與發布順序：見 [MAINTENANCE.md](./MAINTENANCE.md)。
-- Repo 入口與最近 smoke 摘要：見 [README.md](./README.md)。
+- Repo 入口與本機 smoke 命令：見 [README.md](./README.md)。
 
 測試不授權發布、修改 Notion 或修改 `SyncnextClash`；需要這些動作時，回到發布 runbook。
 
@@ -74,8 +74,8 @@ node node_test_all_plugins.js \
 
 ### 3.1 Managed challenge Smoke
 
-`challenge = { "schema": 1, "mode": "managed", "scope": "hosts" }` 的插件不能只用一般
-Node transport 驗收。Private Syncnext CI 會把 tvOS 共用 Swift challenge core 編譯成 WASI，並在
+`challenge = { "schema": 1, "mode": "managed", "scope": "hosts" }` 的插件使用
+外部 adapter，把 tvOS 共用 Swift challenge core 編譯成 WASI，並在
 同一個 `$http.fetch` session 內完成 challenge、cookie 與原本的 list、search、episodes、player
 流程。Runner 需要明確傳入 adapter、兩個 WASM artifact 與 target registry；缺任何一項都會
 fail-closed：
@@ -102,20 +102,49 @@ node node_test_all_plugins.js \
 CI gate 另外要求已設定的 search 至少成功一次。任何播放樣本自身為網盤限定或空來源會留在
 case 明細，但只要另有實際播放 journey 成功，不會把整個插件誤判為不可用。
 
-Public `Plugin Smoke Status (Non-Managed)` 排程不具備 private WASM core，因此排除
-`plugin_czzy` 與 `plugin_libvio`；這兩個 managed 插件由 Syncnext repository 的
-`Managed Plugin Smoke` 排程專責，避免同時發布一份未解 challenge 的矛盾結果。
+### 3.2 macOS 每日 Smoke
 
-Public 排程必須使用 `--strict-probe`：只要 player/media probe 未通過，該 player case
-就必須計入 fail，不能只因插件成功產生播放 URL 而計入 ok。排程仍使用
-`--smoke-fail-exit=soft`，讓完整故障報告可以發布；soft 只控制程序 exit code，不改寫
-case、插件 availability 或頂層統計的真實結果。
+一般 smoke 已從 public GitHub Actions 遷移至 Codex 定時任務，每日於 **08:00（Asia/Shanghai）**
+在建立任務的本聊天使用 macOS 本機執行。本機網路是此 smoke 的
+預期執行環境；從正式 `sourcesv3.json` 載入所有插件，沒有排除名單，包含 `plugin_czzy`
+與 `plugin_libvio`。Managed 插件透過第 3.1 節的 adapter 與 WASI core 執行。
+
+本機入口是 `tools/run-subscription-smoke.mjs`，使用目前 Node 執行檔（已驗證 Node 26）。
+需要相鄰的 private `../Syncnext` checkout，以及 swift.org Swift 6.4.1 toolchain 和
+matching `swift-6.4.1-RELEASE_wasm` SDK。Xcode 內附 Apple Swift 不能替代 WASM toolchain；
+安裝方式見 [Swift 官方說明](https://www.swift.org/documentation/articles/wasm-getting-started.html)。
+預設 compiler 位於 `~/Library/Developer/Toolchains/swift-6.4.1-RELEASE.xctoolchain/usr/bin/swift`。
+更換依賴版本或 checkout 時，明確設定 `SYNCNEXT_CHALLENGE_SWIFT`、
+`SYNCNEXT_CHALLENGE_SWIFT_SDK`、`SYNCNEXT_CHALLENGE_HARNESS`，並在 Codex 任務的執行環境提供這些設定。
+
+每次執行會先以增量建置更新共用 core，通過 native／WASI 測試及 target discovery，
+再跑訂閱 smoke。工具鏈及 target 缺失會直接失敗，不會改走不含 adapter 的流程。
+建置與 WASM 產物位於 `~/Library/Caches/SyncnextPluginSmoke/`，不修改 App 的建置產物。
+
+```bash
+# 立即執行；完整結果保存在本機
+npm run smoke:daily
+```
+
+腳本只執行單次 smoke。每日排程使用 Codex 的本聊天定時任務，由 Codex 管理時間、啟用及停用。
+每次任務確認報告是本輪產物，核對案例、插件可用性和 challenge 結果。
+沒有問題時立即安靜結束，不啟動其他維護、修復或發布工作；有問題時依
+[MAINTENANCE.md §5.1](./MAINTENANCE.md#51-codex-每日自動維護) 執行完整的確認、修復、驗證與發布；
+疑似上游／地域限制時，包含本機多出口比較、實際分流查核及有證據的 Clash 規則補漏與發布驗證。
+最新完整報告保存在 `~/Library/Logs/SyncnextPluginSmoke/syncnextPlugin_all_plugin_test_runs/`。
+
+本機排程使用 `--strict-probe`：player/media probe 未通過，該 player case 就計入 fail。
+同時保留 `--smoke-fail-exit=soft`，讓所有插件都能產出完整報告；exit 0 只代表執行完成，
+實際可用性仍以 `latest.json` 的 `summary`、`availability` 與 `challenge.status` 判讀。
+建置、discovery 或訂閱表下載失敗仍回傳非零。smoke 腳本只產生本機報告；
+修復後的 commit、push 與公告由 Codex 按維護 SOP 執行。
+private Syncnext 的 `Managed Plugin Smoke` workflow 不屬於本次一般 smoke 排程遷移。
 
 ## 4. 結果判讀
 
 - JS 語法、設定 JSON、fixture 模型或已知 App 契約失敗：**必須修復**，不能發布。
 - 列表／搜尋／分集／播放流程回傳空值：先用 fixture、Arc DOM 或上游 API 確定 selector／資料是否漂移。
-- 403、Cloudflare、SafeLine、地區限制或短暫上游失效：記為**遠端限制**，不可偽稱測試通過，也不可直接當作程式錯誤。
+- 403、Cloudflare、SafeLine、疑似地區限制或上游失效：先記錄為**待定位的遠端失敗**，不可直接當作插件程式錯誤或只憑狀態碼結案。每日任務依發布 runbook §5.1 核對實際協議、出口差異與 Clash 覆蓋；確認外部限制且沒有可修復項後，才以證據回報遠端阻塞。
 - Node/Bun 轉綠：只代表 Node 路徑可用。涉及 `JSHttp`、headers、hosts、resolver、候選選線或播放時，仍需 App 實測。
 - App 實測失敗：以 App log、實際請求與協議契約定位；不要以 Node 結果覆蓋 App 證據。
 
@@ -133,6 +162,7 @@ syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.*
 
 規則：
 
+- 第 3.2 節每日排程使用 `~/Library/Logs/SyncnextPluginSmoke/`，只更新本機 latest 檔；repo 內既有報告為遷移前留存。
 - 個人調試使用 `/tmp` 輸出；不要把生成結果留在 repo。
 - 只有明確要更新受版本控制的 smoke 摘要時，才使用 `--update-readme=README.md`；其更新範圍僅限 README 的 `AUTO-SMOKE-STATUS` 區塊。
 - README 只保留摘要；逐插件 HTTP、搜尋與播放診斷以 `latest.*` 和時間戳報告為準。

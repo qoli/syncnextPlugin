@@ -21,7 +21,7 @@
 | `SyncnextAPI` | 將 Notion 表匯出成公開 JSON | 只由 workflow 生成的 JSON | 手動編輯 `sourcesv3.json` |
 | Notion 頻道更新日誌 | 用戶可見的變更敘述 | 最新日期區塊 | 維護命令、提交雜湊、內部細節 |
 | Telegram | 公開頻道公告 | 由已核對的日誌產生的文案 | 未讀回 Notion 的草稿 |
-| `SyncnextClash` | 可選的網路規則 | 僅人類明確指定的規則 | 因域名變更而推測的規則 |
+| `SyncnextClash` | 網路分流規則 | 明確授權、具實測證據的 canonical 規則；每日任務授權見第 5.1 節 | 僅憑域名變動猜測的規則、無關路由策略 |
 
 不可違反的規則：
 
@@ -29,7 +29,7 @@
 - 新插件必須先推送到公開插件 repo，讓 `config.json` 的 raw URL 可讀，再把該 URL 登錄到 Notion 來源表。
 - Notion 的「v3 來源表」與「頻道更新日誌」是兩個獨立資源；其中一個可讀寫，不代表另一個也可讀寫。
 - 未通過下列 Notion 權限 preflight，不得以手動修改 JSON、另一張表或臨時公開 URL 繞過。
-- 不因插件域名變動而查詢或修改 `SyncnextClash`；要先取得人類明確同意。任何修改還需要第二次、含具體規則內容的明確指令。
+- 一般工作不得僅因插件域名變動就查詢或修改 `SyncnextClash`；查詢及具體修改仍須人類明確授權。第 5.1 節的每日任務已獲持續授權，可依實測證據完成規則查核、補漏與發布，不逐次重問。
 - 不把不同 repo 的變更放進同一個 commit。
 - 不向用戶公告命令、測試、headers、repo 路徑、提交雜湊或其他維護細節。
 
@@ -216,7 +216,63 @@ node node_test_all_plugins.js \
 2. 只提交／推送插件 repo 的預期檔案；推送後仍要驗證遠端 raw config。
 3. 僅當來源表欄位（名稱、入口 URL、搜尋、置頂、提示）需要變動時，才走第 4.4 節的來源表、匯出與遠端 JSON 驗證。
 4. 若只改插件程式且 `api` 不變，不必重跑 `Download JSON`；但用戶可感知的修復仍要依第 7 節公告。
-5. 發現域名改動時，先提出是否要**查詢** `SyncnextClash` 的問題。未得到同意前，完全不讀取或修改該 repo；獲得查詢同意後只列出匹配，等待第二次具體修改指令。
+5. 網路與分流問題依第 5.1 節的證據流程查核；每日任務已有該節的持續授權。其他工作若尚未獲授權，先取得查詢同意，修改前再取得具體規則指令；不能只憑域名改動推測規則。
+
+### 5.1 Codex 每日自動維護
+
+使用者已授權 Codex 定時任務每日於 **08:00（Asia/Shanghai）** 在本聊天使用 macOS 本機
+執行 `npm run smoke:daily`，並在 smoke 報告有問題時，自動完成**確認問題、修復、驗證及發布**。
+授權包括提交／推送本次插件修復，依本地出口比較與實際分流證據查核、補充及提交／推送
+`SyncnextClash` 規則，追蹤對應 CI 至完成、驗證公開產物，以及更新 Notion 頻道日誌並發布
+Telegram 公告。這是整套插件維護 SOP，不能只執行 smoke、分類錯誤或列出狀態碼後結束。
+已驗證的本次插件／規則修復不再逐次詢問是否修復、commit 或 push；保留各 repo 的測試、
+權限及公開資源驗證 gate，並維持分 repo 提交。
+
+1. 先執行 smoke，確認本輪程序結果與報告時間；不能把 `--smoke-fail-exit=soft` 的 exit 0
+   當成全部通過，也不能讀取舊報告冒充本輪成功。案例失敗、fatal error、插件不可用／未證明、
+   challenge 失敗，或 runner／報告不完整，都進入問題定位。
+2. **沒有問題時立即安靜結束**，不啟動維護、修復、GitHub／Notion 更新或 Telegram 公告。
+3. 依第 3、5 節定位完整請求鏈，核對官網、公開 API、解析器、headers／Referer、App 橋接
+   與實際播放地址。分類只是定位起點；不能因 403、Cloudflare、404 或逾時就直接結案。
+   插件缺陷依第 4.1–4.3 節完成必要修復、cache hash、fixture、focused smoke 與必要的 App 驗收。
+   單片失效不能冒充全站故障，也不能以換片、隱藏 fallback、跳過案例或降低 gate 消除失敗。
+4. 疑似上游、IP／地域或網路限制時，先用新鮮 API／官網資料確認 URL，再在本機原路徑與
+   多個可用的不同地區出口比較同一批 URL。使用實際 HTTPS GET、相同必要 headers，保持
+   TLS 驗證；記錄 HTTP 狀態、回應 body／HLS、時間及實際出口 IP／地區。不能以節點名稱、
+   delay、HEAD 或其他 domain 的 IP 回顯，代替 CDN GET 及其真實分流證據。
+5. 海外出口成功而原路徑失敗時，查核 `SyncnextClash` canonical 規則、公開生成檔及本機
+   已載入 provider 的版本、覆蓋範圍、順序、target，並以失敗請求對應的實際連線／規則／
+   proxy chain 判斷是否漏規則、載入舊版或分流錯誤。使用適用的 localClash 操作 Skill。
+   多地失敗也只能支持已測範圍內的上游問題；同 ASN、DNS／CDN edge、路由器重新解析等
+   未拆開的差異須保留，不把路徑相關拒絕武斷說成全球上游故障或已證實地域封鎖。
+6. 確認規則缺漏時，已授權在 `SyncnextClash` 的目前 checkout／branch 修改
+   `rulesets/proxy.yaml` 或 `rulesets/unbreak.yaml`，只涵蓋已確認的域名與分流需求，保留其他
+   規則及順序。依該 repo `AGENTS.md` 安裝 lock 指定依賴、validate、unittest 與指定版本
+   sing-box 生成／SRS 往返驗證。以獨立 commit 推送本次修復，由既有 main 發布 workflow
+   更新相容檔及 `generated` 分支；不得手改生成檔或夾帶插件 repo 的變更。
+7. 插件與規則修復推送後，追蹤**本次 commit** 對應 CI 至完成，確認測試、生成、發布及
+   讀回步驟實際成功；只推送成功或看到舊綠燈不能算發布完成。核對消費端使用的公開 URL、
+   config／資源 bytes；規則另核對 manifest 的來源 commit、來源檔及產物 SHA-256。
+   CI 失敗則依日誌修復本次問題並重驗；不能宣稱尚未公開的修復已生效。
+8. 規則發布後，可針對本次變更刷新本機**既有對應 rule-provider**，讀回其內容／版本、
+   target 與順序，再以原本本機網路及失敗案例做 focused smoke，取得新的實際命中規則／
+   proxy chain。此授權不涵蓋更改共享／預設群組選擇或成員、全域 reload、程序重啟、DNS、
+   防火牆或接管路由器。若 provider 無法更新或必要驗收受阻，明確區分「公開發布完成」與
+   「本機已生效」。master playlist 200 也不能當成 segments／AVPlayer 完整播放證明。
+9. 僅在來源表欄位有變更時執行第 4.4 節；只改插件且 `api` 不變或只改規則時不重跑匯出。
+   確認實際修復及對應發布 gate 通過後，依第 7 節更新並讀回 Notion 最新日誌，產生當日
+   文案、Telegram dry-run，再以 `--skip-copilot` 正式發布。規則修復應描述適用範圍與更新
+   規則需求，不能偽稱插件程式已改或所有裝置都已恢復。沒有修復或 gate 未通過時不公告。
+
+開始維護時記錄既有工作樹與未推送提交，只提交／推送本次修復，保留其他工作；
+不能為此建立／切換分支或 worktree，也不能夾帶既有無關提交。App 與來源資料的
+操作邊界仍依 workspace 指令及本文件；Clash 僅限上述具證據的規則維護與對應 provider 更新。
+權限不足、無法完成必要驗收或只有已查證的遠端限制時，
+保留可定位證據並回報阻塞；不重複發布相同公告或反覆回報未變的已知阻塞。
+
+Gimy 的 Cloudflare Managed Challenge 維持 2026-10-25 已確認的未支援狀態；每日仍測試，
+但未另獲授權前不新增 Mac 瀏覽器執行層、解題服務或其他依賴。已知狀態未變時不重複詢問
+或公告；網站恢復、故障類型改變或另有授權時，才依新證據更新判定。
 
 ## 6. Smoke 輸出管理與清理
 
@@ -232,6 +288,7 @@ syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.*
 
 規則：
 
+- 每日一般 smoke 由 Codex 定時任務於 08:00（Asia/Shanghai）在 macOS 本機執行；排程、工具鏈和本機報告位置依 [TESTING.md §3.2](./TESTING.md#32-macos-每日-smoke)。原始 smoke 報告保存在本機；問題修復與發布依第 5.1 節。
 - 日常與單插件調試一律使用第 4.2 節的 `/tmp` 輸出；完成後由系統暫存區管理，不把結果留在 repo。
 - 只有明確要更新受版本控制的 smoke 狀態或 README 區塊時，才使用 repo 輸出／`--update-readme`，並在 commit 中包含這些生成檔。
 - 若誤在 repo 根目錄執行，先以 `git status --short` 與 `git diff` 精確列出本次生成的檔案；只移除本次新建的時間戳資料夾，並只還原本次改動的 generated latest 檔。不要清理整個歷史資料夾，也不要碰使用者既有輸出。
@@ -292,7 +349,7 @@ git diff --stat
 
 - 插件、測試與此 runbook：在 `SyncnextPlugin_official` 建立獨立 commit。
 - `sourcesv3.json`：由 `SyncnextAPI` workflow 自動提交；不建立人工資料 commit。
-- Clash 規則：只有明確授權時，在 `SyncnextClash` 建立獨立 commit。
+- Clash 規則：只有明確授權時（含第 5.1 節每日任務的持續授權），在 `SyncnextClash` 建立獨立 commit。
 - App 程式：除非任務明確要求，保持完全不動。
 
 完成回報至少包含：
@@ -302,7 +359,7 @@ git diff --stat
 - 來源表是否更新；若有，workflow 成功狀態與遠端 `sourcesv3.json`／config 驗證結果。
 - 測試命令、結果，以及遠端限制與已知限制。
 - Notion 日誌讀回、Telegram dry-run 與發布結果。
-- 是否完全未查詢／修改 `SyncnextClash`。
+- `SyncnextClash` 是否查詢／修改；若有，列明證據、具體規則、commit、發布 CI、公開產物及本機載入／復測結果。
 
 ## 9. 快速 Checklist
 
@@ -327,4 +384,4 @@ git diff --stat
 - [ ] 插件推送後，遠端 raw config 已驗證。
 - [ ] 僅在來源欄位改變時更新 Notion 表並重跑匯出。
 - [ ] 用戶可感知的變更已依序完成 Notion 讀回、Telegram dry-run 與發布。
-- [ ] 未經首次明確人類授權，未查詢 `SyncnextClash`；未經第二次含具體規則的指令，未修改它。
+- [ ] `SyncnextClash` 查核／修改具有明確授權或第 5.1 節持續授權；如有修復，已完成獨立提交、CI、公開產物與本機復測驗證。

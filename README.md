@@ -17,22 +17,18 @@
 
 - 正式插件入口由 [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json) 發布。
 - `sourcesv3.json` 是 Notion 來源表的自動匯出成品；新增或改動正式來源只能依 [MAINTENANCE.md](./MAINTENANCE.md) 的流程處理。
-- 下方狀態區塊僅摘要最近一次 Bun／Node smoke；完整診斷位於產物檔，且不能取代 tvOS／iOS App 驗證。
+- 一般插件 smoke 由 Codex 定時任務在 macOS 本機每日執行，涵蓋正式訂閱表中的全部插件，並接入 tvOS 共用的 challenge core；完整診斷保存在本機，且不能取代 tvOS／iOS App 驗證。
 
-## 最新 Smoke 摘要
+## 本機 Smoke
 
-<!-- AUTO-SMOKE-STATUS:START -->
-Generated: `2026-10-25T08:21:22.235Z`
-Enabled plugin source: [sourcesv3.json](https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json)
+```sh
+npm run smoke:daily
+```
 
-> Bun/Node smoke status only.
-> It does not represent Syncnext tvOS/iOS JavaScriptCore + JSHttp real playback availability.
-
-- Plugins: `9`
-- Cases: `31/45` passed
-- Fatal plugins: `3`
-- Invalid source entries: `6`
-
-Detailed diagnostics: [latest.log](./syncnextPlugin_all_plugin_test_runs/latest.log), [latest.summary.log](./syncnextPlugin_all_plugin_test_runs/latest.summary.log), [latest.json](./syncnextPlugin_all_plugin_test_runs/latest.json), and [invalid sources](./syncnextPlugin_all_plugin_test_runs/invalid_sources_latest.json).
-Interpretation and rerun rules: [TESTING.md](./TESTING.md).
-<!-- AUTO-SMOKE-STATUS:END -->
+Codex 定時任務每日於 **08:00（Asia/Shanghai）** 在本聊天執行，排程由 Codex 管理；
+上述命令只執行一次 smoke。結果位於
+`~/Library/Logs/SyncnextPluginSmoke/syncnextPlugin_all_plugin_test_runs/`。
+執行條件、challenge 工具鏈與排程說明見 [TESTING.md §3.2](./TESTING.md#32-macos-每日-smoke)。
+報告沒有問題時立即安靜結束；有問題時，依 [MAINTENANCE.md §5.1](./MAINTENANCE.md#51-codex-每日自動維護)
+修復、驗證並發布已生效的更新至 GitHub 與 Telegram。
+一般 smoke 不再由 GitHub Actions 執行；原始報告保存在本機，repo 內既有報告是遷移前留存。

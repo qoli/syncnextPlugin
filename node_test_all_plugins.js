@@ -12,6 +12,7 @@ const DEFAULT_SUBSCRIPTIONS_URL =
   "https://raw.githubusercontent.com/qoli/syncnext-api/refs/heads/main/sourcesv3.json";
 const README_STATUS_START = "<!-- AUTO-SMOKE-STATUS:START -->";
 const README_STATUS_END = "<!-- AUTO-SMOKE-STATUS:END -->";
+const RUNTIME_NAME = process.versions.bun ? "Bun" : "Node";
 
 function getArg(name, fallback) {
   const prefix = `--${name}=`;
@@ -2104,16 +2105,16 @@ function formatReasonCounts(reasonCounts) {
 
 function determinePluginSmokeStatus(pluginReport) {
   if (Array.isArray(pluginReport && pluginReport.errors) && pluginReport.errors.length > 0) {
-    return "Bun Smoke Fatal";
+    return `${RUNTIME_NAME} Smoke Fatal`;
   }
 
   const summary = pluginReport && pluginReport.summary || {};
   const ok = Number(summary.ok || 0);
   const fail = Number(summary.fail || 0);
 
-  if (fail <= 0) return "Bun Smoke OK";
-  if (ok > 0) return "Bun Smoke Partial";
-  return "Bun Smoke Fail";
+  if (fail <= 0) return `${RUNTIME_NAME} Smoke OK`;
+  if (ok > 0) return `${RUNTIME_NAME} Smoke Partial`;
+  return `${RUNTIME_NAME} Smoke Fail`;
 }
 
 function determinePluginAvailability(pluginReport) {
@@ -2415,7 +2416,7 @@ function buildJobSummary(report) {
     (plugin) => plugin.availability !== "usable" || (plugin.challenge && plugin.challenge.status === "failed")
   );
   const lines = [];
-  lines.push(`## Bun Smoke Status`);
+  lines.push(`## ${RUNTIME_NAME} Smoke Status`);
   lines.push("");
   lines.push(`Generated: \`${report.generatedAt}\``);
   lines.push("");
@@ -2427,7 +2428,7 @@ function buildJobSummary(report) {
   lines.push("");
 
   if (degraded.length === 0) {
-    lines.push(`All plugins are currently \`OK\` in Bun smoke status.`);
+    lines.push(`All plugins are currently \`OK\` in ${RUNTIME_NAME} smoke status.`);
     return lines.join("\n") + "\n";
   }
 
@@ -2582,7 +2583,7 @@ async function main() {
   logger.log(`[log] ${logPath}`);
   logger.log(`[plugin-root] ${pluginRoot}`);
   logger.log(`[output] ${reportPath}`);
-  logger.log(`[runner] bun`);
+  logger.log(`[runner] ${RUNTIME_NAME} ${process.versions.bun || process.version}`);
   logger.log(`[discovery] ${discovery}`);
   if (discovery === "subscriptions") {
     logger.log(`[subscriptions] ${subscriptionsFile || subscriptionsURL}`);
