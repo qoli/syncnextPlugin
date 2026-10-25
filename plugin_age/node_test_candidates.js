@@ -7,11 +7,16 @@ const vm = require('vm');
 const DEFAULT_TIMEOUT_MS = 90000;
 const RESOLVER_ONLY = process.argv.includes('--resolver-only');
 const ROOT = path.resolve(__dirname, '..');
-const FILES = [
-  path.join(__dirname, 'app.js'),
-];
+const FILES = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json'), 'utf8'))
+  .files.map((file) => path.join(__dirname, file));
 
 const CASES = [
+  {
+    detailURL: 'https://ageapi.omwjhz.com:18888/v2/detail/20260264',
+    expectedEpisodes: 4,
+    episodeIndex: 1,
+    expectedSources: 1,
+  },
   {
     detailURL: 'https://ageapi.omwjhz.com:18888/v2/detail/20240215',
     expectedEpisodes: 21,

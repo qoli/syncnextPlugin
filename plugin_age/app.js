@@ -155,7 +155,15 @@ function resolveResolverURL(inputURL, onSuccess, onFailure) {
     inputURL,
     function (body) {
       var match = body.match(RESOLVER_REGEX);
-      var playURL = normalizePlayURL(match && match[1] ? match[1] : '', inputURL);
+      var rawURL = match && match[1] ? match[1] : '';
+
+      // The VIP V3 player exposes an encrypted Vurl and resolves it through Api.php.
+      if (/^[0-9a-f]+$/i.test(rawURL)) {
+        resolveEncryptedPlayer(body, inputURL, rawURL, onSuccess, onFailure);
+        return;
+      }
+
+      var playURL = normalizePlayURL(rawURL, inputURL);
 
       if (!playURL || isResolverURL(playURL)) {
         if (onFailure) {
@@ -173,6 +181,124 @@ function resolveResolverURL(inputURL, onSuccess, onFailure) {
     },
     RESOLVER_REQUEST_HEADERS
   );
+}
+
+function resolverVariable(body, name) {
+  var match = body.match(new RegExp('var\\s+' + name + '\\s*=\\s*[\'\"]([^\'\"]*)[\'\"]'));
+  return match ? match[1] : '';
+}
+
+function resolverMetaID(body, selector) {
+  var tags = body.match(/<meta\b[^>]*>/gi) || [];
+
+  for (var i = 0; i < tags.length; i++) {
+    if (selector.test(tags[i])) {
+      var match = tags[i].match(/\bid=['"]([^'"]*)['"]/i);
+      return match ? match[1] : '';
+    }
+  }
+
+  return '';
+}
+
+function encryptResolverText(text) {
+  // Public AES key and IV used by the resolver's V3 WASM client.
+  var key = CryptoJS.enc.Utf8.parse('ni po jie ni ** ');
+  return CryptoJS.AES.encrypt(text, key, { iv: key }).ciphertext.toString().toUpperCase();
+}
+
+function decryptResolverText(ciphertext, key, iv) {
+  return CryptoJS.AES.decrypt(
+    { ciphertext: CryptoJS.enc.Hex.parse(ciphertext) },
+    key,
+    { iv: iv }
+  ).toString(CryptoJS.enc.Utf8);
+}
+
+function resolveEncryptedPlayer(body, inputURL, encryptedURL, onSuccess, onFailure) {
+  var api = resolverVariable(body, 'Api');
+  var time = resolverVariable(body, 'Time');
+  var version = resolverVariable(body, 'Version');
+  var hostMatch = inputURL.match(/^https?:\/\/([^\/:?#]+)/i);
+
+  if (!isHTTPURL(api) || !time || !version || !hostMatch) {
+    onFailure('resolver-metadata-missing');
+    return;
+  }
+
+  var host = hostMatch[1];
+  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (character) {
+    var value = Math.floor(Math.random() * 16);
+    return (character === 'x' ? value : ((value & 3) | 8)).toString(16);
+  }).toUpperCase();
+  var params = encryptResolverText(JSON.stringify({
+    url: encryptedURL,
+    wap: '0',
+    ios: '0',
+    host: host,
+    referer: resolverVariable(body, 'Ref'),
+    time: time,
+  }));
+  var origin = api.match(/^(https?:\/\/[^\/?#]+)/i)[1];
+
+  $http.fetch({
+    url: api.replace(/\/$/, '') + '/Api.php',
+    method: 'POST',
+    headers: {
+      'User-Agent': PLAYER_USER_AGENT,
+      Origin: origin,
+      Referer: '',
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Video-Parse-Uuid': uuid,
+      'Video-Parse-Time': time,
+      'Video-Parse-Version': version,
+      'Video-Parse-Sign': encryptResolverText([host, uuid, time, version, params].join(' | ')),
+    },
+    body: 'Params=' + params,
+  })
+    .then(function (response) {
+      var reply = safeJSONParse(response.body);
+      if (!reply || reply.Status !== 1 || !reply.Data) {
+        throw new Error('resolver-api-failed');
+      }
+
+      var metaKey = '';
+      if (reply.Code === 10) {
+        var contentID = resolverMetaID(body, /http-equiv=['"]Content-Type['"]/i);
+        var viewportID = resolverMetaID(body, /name=['"]viewport['"]/i);
+        if (!contentID || !viewportID) {
+          throw new Error('resolver-meta-id-missing');
+        }
+        metaKey = (contentID + viewportID).replace('viewport', '');
+      }
+
+      var digest = CryptoJS.MD5(String(reply.Code) + metaKey + reply.Appkey + reply.Version).toString();
+      var info = safeJSONParse(decryptResolverText(
+        reply.Data,
+        CryptoJS.enc.Latin1.parse(digest.substring(0, 16)),
+        CryptoJS.enc.Latin1.parse(digest.substring(16, 32))
+      ));
+      if (!info || !info.url || info.type === 'url') {
+        throw new Error('resolver-media-unmatched');
+      }
+
+      var mediaURL = info.url;
+      if (reply.Code === 10) {
+        var key = CryptoJS.enc.Utf8.parse('ni po jie ni ** ');
+        mediaURL = decryptResolverText(mediaURL, key, key);
+      }
+      mediaURL = decodeURIComponent(mediaURL);
+      if (!isHTTPURL(mediaURL) || isResolverURL(mediaURL)) {
+        throw new Error('resolver-media-unmatched');
+      }
+
+      // The upstream player explicitly uses no-referrer for its resolved media.
+      onSuccess(mediaURL, RESOLVER_REQUEST_HEADERS);
+    })
+    .catch(function (error) {
+      onFailure(error);
+    });
 }
 
 function buildResolverHeaders(resolverURL) {
@@ -680,12 +806,12 @@ function Player(episodeURL) {
     var entry = sourceEntries[index];
     resolveResolverURL(
       entry.resolverURL,
-      function (playURL) {
+      function (playURL, headers) {
         var finalURL = normalizePlayURL(playURL, entry.resolverURL);
 
         if (finalURL && !seen[finalURL]) {
           seen[finalURL] = true;
-          candidates.push(buildPlayerCandidate(finalURL, buildResolverHeaders(entry.resolverURL)));
+          candidates.push(buildPlayerCandidate(finalURL, headers || buildResolverHeaders(entry.resolverURL)));
         }
 
         next(index + 1);

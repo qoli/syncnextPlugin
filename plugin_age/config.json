@@ -3,6 +3,7 @@
   "description": "基於 AGE JSON API 的動漫頻道插件",
   "host": "https://ageapi.omwjhz.com:18888",
   "files": [
+    "crypto-js.min.js",
     "app.js"
   ],
   "pages": [
@@ -59,9 +60,13 @@
   "cache": {
     "schema": 1,
     "resources": {
+      "crypto-js.min.js": {
+        "sha256": "bba05a999896e6d09e9a37b69ebb5e282d8aa0b20a5fd94a3d2a6f0a43a16a6c",
+        "bytes": 47943
+      },
       "app.js": {
-        "sha256": "2e739b4230c134a7d65699db3ec43095abd59265c3bf8fc8fab79d77b22d61c3",
-        "bytes": 16615
+        "sha256": "db3edb744ce433130f3cb4211e7cca4b3f7b2e9e422c49262cf8b9fe3033f6c1",
+        "bytes": 20831
       }
     }
   }
