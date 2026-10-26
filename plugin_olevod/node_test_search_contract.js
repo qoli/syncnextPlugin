@@ -108,4 +108,20 @@ assert.equal(
 );
 assert.equal(calls.length, 2);
 
+// Connectivity must use the same signed endpoint as the real list request.
+sandbox.signature = function () { return "fixture-signature"; };
+const probe = sandbox.HostsProbeRequest();
+assert.equal(probe.method, "GET");
+assert.deepEqual(Array.from(probe.accept.statusCodes), [200]);
+assert.deepEqual(Array.from(probe.accept.bodyIncludesAny), ['"list"']);
+let listRequest;
+sandbox.$http.fetch = function (request) {
+  listRequest = request;
+  return { then: function (resolve) { resolve({ body: '{"data":{"list":[]}}' }); } };
+};
+sandbox.$next.toMedias = function () {};
+sandbox.buildMedias("https://api.olelive.com/v1/pub/vod/newest/1/12");
+assert.equal(probe.url, listRequest.url);
+assert.equal(new URL(probe.url).searchParams.get("_vv"), "fixture-signature");
+
 console.log("plugin_olevod search contract tests passed");

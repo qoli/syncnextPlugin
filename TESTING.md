@@ -60,6 +60,13 @@ node node_test_all_plugins.js \
 若站方明確要求搜尋間隔，可另外設定 `search.smokeDelayMs`（最多 30000 ms）；
 runner 會在 connectivity probe 與正式搜尋之間等待一次，不會重試或把節流錯誤當成成功。
 
+若插件定義 `HostsProbeRequest()`，連通性檢查使用該 request 與 `accept` 條件，經相同的
+HTTP session／managed adapter 執行，不再猜測未簽名的首頁或搜尋 URL。宣告的 probe
+無效、拋錯或不符合接受條件時明確失敗，不改試其他 URL；沒有此函式的插件維持原有檢查。
+例如歐樂 API 的 `_vv` 由插件產生，不能以未簽名請求的 401 推定插件不可用。
+修改這段流程時執行 `node --test tools/smoke-host-probe.test.mjs tools/smoke-managed-challenge.test.mjs`，
+確認簽名 request、headers、session、接受條件及 managed challenge 的失敗語意。
+
 若正式來源表已匯出並通過發布 runbook 的遠端 JSON gate，才可進行 subscription smoke：
 
 ```bash

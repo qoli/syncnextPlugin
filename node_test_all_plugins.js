@@ -1268,6 +1268,7 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
 
   return {
     context,
+    requestHTTP: (request) => doHTTP(request, null),
     invoke: (fnName, args, expected, timeoutMs) =>
       adapter.invoke(context, fnName, args, expected, timeoutMs),
     getHTTPEvents: () => httpEvents.slice(),
@@ -1357,7 +1358,60 @@ async function checkConnectivityURL(url, options, requestHTTP) {
   return result;
 }
 
-async function runConnectivityCheck(source, indexURL, options, requestHTTP) {
+function acceptsHostsProbe(accept, status, body) {
+  if (accept == null) return status >= 200 && status < 300 && body.trim().length > 0;
+  if (typeof accept !== "object" || Array.isArray(accept)) {
+    throw new Error("HostsProbeRequest.accept must be an object");
+  }
+  if (accept.statusCodes != null) {
+    if (!Array.isArray(accept.statusCodes) || !accept.statusCodes.every(Number.isInteger)) {
+      throw new Error("HostsProbeRequest.accept.statusCodes must be an integer array");
+    }
+    if (!accept.statusCodes.includes(status)) return false;
+  }
+  const titleMatch = body.match(/<title\b[^>]*>([\s\S]*?)<\/title\s*>/i);
+  const title = titleMatch ? titleMatch[1].replace(/<[^>]*>/g, "").trim() : "";
+  for (const [field, text, mustInclude] of [
+    ["bodyIncludesAny", body, true],
+    ["bodyExcludesAny", body, false],
+    ["titleIncludesAny", title, true],
+    ["titleExcludesAny", title, false],
+  ]) {
+    const tokens = accept[field];
+    if (tokens == null) continue;
+    if (!Array.isArray(tokens) || !tokens.every((token) => typeof token === "string")) {
+      throw new Error(`HostsProbeRequest.accept.${field} must be a string array`);
+    }
+    if (tokens.length === 0) continue;
+    const found = tokens.some((token) => token.trim() && text.toLowerCase().includes(token.trim().toLowerCase()));
+    if (mustInclude ? !found : found) return false;
+  }
+  return true;
+}
+
+async function runConnectivityCheck(source, indexURL, options, requestHTTP, runtime) {
+  if (vm.runInContext("typeof HostsProbeRequest === 'function'", runtime.context)) {
+    const result = { url: "", ok: false, method: "GET", status: 0, error: "" };
+    try {
+      const probe = JSON.parse(vm.runInContext("JSON.stringify(HostsProbeRequest())", runtime.context, {
+        timeout: options.invokeTimeoutMs,
+      }));
+      if (!probe || !looksLikeURL(probe.url)) {
+        throw new Error("HostsProbeRequest must return an HTTP(S) request URL");
+      }
+      result.url = probe.url;
+      result.method = String(probe.method || "GET").toUpperCase();
+      const response = await runtime.requestHTTP(probe);
+      result.status = Number(response.status || response.statusCode || 0);
+      if (!result.status) throw new Error(response.error || "HostsProbeRequest received no HTTP response");
+      result.ok = acceptsHostsProbe(probe.accept, result.status, String(response.body || ""));
+      result.error = result.ok ? "" : (response.error || `HostsProbeRequest rejected response (status ${result.status})`);
+    } catch (error) {
+      result.error = error.message || String(error);
+    }
+    return { ok: result.ok, source: "HostsProbeRequest", targets: [result] };
+  }
+
   const searchTemplate = String(
     source && source.config && source.config.search && source.config.search.url || ""
   ).trim();
@@ -1678,7 +1732,8 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
         source,
         indexURL,
         options,
-        challengeAdapter ? (request) => challengeAdapter.request(request) : null
+        challengeAdapter ? (request) => challengeAdapter.request(request) : null,
+        runtime
       );
       pluginReport.connectivity = connectivity;
       const firstOK = (connectivity.targets || []).find((item) => item.ok);

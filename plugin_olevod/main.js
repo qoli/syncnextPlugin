@@ -54,6 +54,17 @@ function signature() {
 
 // signature // End ...
 
+function HostsProbeRequest() {
+  return {
+    url: "https://api.olelive.com/v1/pub/vod/newest/1/12?_vv=" + signature(),
+    method: "GET",
+    accept: {
+      statusCodes: [200],
+      bodyIncludesAny: ['"list"'],
+    },
+  };
+}
+
 function print(params) {
   console.log(JSON.stringify(params));
 }
