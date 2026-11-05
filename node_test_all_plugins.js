@@ -1151,17 +1151,7 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
         logger.error(`[http-error] ${method} ${url} -> ${error.message || error}`);
       }
       pushHTTPEvent(event);
-      if (challengeAdapter && challengeAdapter.handles(url)) {
-        throw error;
-      }
-      return {
-        status: 0,
-        statusCode: 0,
-        headers: {},
-        body: "",
-        url,
-        error: error.message || String(error),
-      };
+      throw error;
     }
   }
 

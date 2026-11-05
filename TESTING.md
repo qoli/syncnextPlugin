@@ -67,6 +67,11 @@ HTTP session／managed adapter 執行，不再猜測未簽名的首頁或搜尋 
 修改這段流程時執行 `node --test tools/smoke-host-probe.test.mjs tools/smoke-managed-challenge.test.mjs`，
 確認簽名 request、headers、session、接受條件及 managed challenge 的失敗語意。
 
+一般插件的 `$http.fetch`／`$http.head` 遇到連線中斷或其他 transport error 時，與 App
+`JSHttp` 一樣拒絕 Promise；不回傳 `status: 0`、空 body 的成功 Promise，以免把網路問題
+誤報為 JSON 解析錯誤。報告仍保留失敗案例及 HTTP diagnostics 的 status 0／原始錯誤。
+修改此契約時執行 `node --test tools/smoke-http-transport.test.mjs`。
+
 若正式來源表已匯出並通過發布 runbook 的遠端 JSON gate，才可進行 subscription smoke：
 
 ```bash

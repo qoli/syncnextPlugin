@@ -5,6 +5,8 @@ on:
     paths:
       - "plugin_*/**"
       - "tools/update-plugin-cache.js"
+      - "tools/smoke-*.test.mjs"
+      - "node_test_all_plugins.js"
       - "package.json"
       - ".github/workflows/plugin-cache-manifest.yml"
   push:
@@ -12,6 +14,8 @@ on:
     paths:
       - "plugin_*/**"
       - "tools/update-plugin-cache.js"
+      - "tools/smoke-*.test.mjs"
+      - "node_test_all_plugins.js"
       - "package.json"
       - ".github/workflows/plugin-cache-manifest.yml"
 
@@ -26,5 +30,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Set up tested Node version
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "26.0.0"
+
       - name: Verify Plugin Cache Manifests
         run: node tools/update-plugin-cache.js --check
+
+      - name: Verify smoke transport and challenge contracts
+        run: node --test tools/smoke-http-transport.test.mjs tools/smoke-host-probe.test.mjs tools/smoke-managed-challenge.test.mjs
