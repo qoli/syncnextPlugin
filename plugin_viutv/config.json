@@ -1,0 +1,24 @@
+{
+  "name": "ViuTV",
+  "description": "播放 ViuTV 99 台與 ViuTVsix 96 台直播。",
+  "host": "https://api.viu.now.com",
+  "files": [
+    "app.js"
+  ],
+  "type": "live",
+  "live": {
+    "javascript": "Channels"
+  },
+  "player": {
+    "javascript": "Player"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "app.js": {
+        "sha256": "f5b6103a1bea432beecda04a72954f695c2e8c72dc0d3ecf44c2de679360db10",
+        "bytes": 3204
+      }
+    }
+  }
+}

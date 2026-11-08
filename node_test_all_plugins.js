@@ -975,6 +975,7 @@ function buildInvocationAdapter(options) {
         callbackType === "toPlayerCandidates"
       );
     }
+    if (expected === "livePlayer") return callbackType === "toPlayerByJSON";
     return false;
   }
 
@@ -997,9 +998,9 @@ function buildInvocationAdapter(options) {
     state.emptyViews.push(text);
 
     if (
-      options.failOnEmptyView &&
       state.pending &&
-      (state.pending.expected === "player" || state.pending.expected === "episodes")
+      (state.pending.expected === "livePlayer" ||
+        (options.failOnEmptyView && (state.pending.expected === "player" || state.pending.expected === "episodes")))
     ) {
       const pending = state.pending;
       clearPending();
@@ -1047,6 +1048,7 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
   const adapter = buildInvocationAdapter(options);
   const httpEvents = [];
   const cookieJar = [];
+  const livePlugin = pluginSource.config.type === "live";
 
   function pushHTTPEvent(event) {
     httpEvents.push(event);
@@ -1089,7 +1091,7 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
     const event = {
       at: isoNow(),
       method,
-      url,
+      url: livePlugin ? (safeParseURL(url)?.origin || "invalid URL") : url,
       status: 0,
       safeLine: false,
       error: "",
@@ -1146,19 +1148,19 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
         url: finalURL,
       };
     } catch (error) {
-      event.error = error.message || String(error);
-      if (options.verboseConsole) {
+      event.error = livePlugin ? "live HTTP transport failed" : (error.message || String(error));
+      if (options.verboseConsole && !livePlugin) {
         logger.error(`[http-error] ${method} ${url} -> ${error.message || error}`);
       }
       pushHTTPEvent(event);
-      throw error;
+      throw livePlugin ? new Error(event.error) : error;
     }
   }
 
   const context = {
     console: {
       log: (...args) => {
-        if (!options.verboseConsole) return;
+        if (!options.verboseConsole || livePlugin) return;
         logger.log(
           `[plugin-log] ${args
             .map((item) => (typeof item === "string" ? item : JSON.stringify(item)))
@@ -1166,6 +1168,7 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
         );
       },
       error: (...args) => {
+        if (livePlugin) return;
         logger.error(
           `[plugin-error] ${args
             .map((item) => (typeof item === "string" ? item : JSON.stringify(item)))
@@ -1184,7 +1187,7 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
     atob: (input) => Buffer.from(String(input || ""), "base64").toString("binary"),
     btoa: (input) => Buffer.from(String(input || ""), "binary").toString("base64"),
     print: (...args) => {
-      if (!options.verboseConsole) return;
+      if (!options.verboseConsole || livePlugin) return;
       logger.log(
         `[plugin-print] ${args
           .map((item) => (typeof item === "string" ? item : JSON.stringify(item)))
@@ -1208,6 +1211,7 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
       aliPlay: () => {},
     },
   };
+  if (livePlugin) context.__syncnextPrimaryHost = pluginSource.config.host;
 
   context.window = context;
   context.global = context;
@@ -1242,13 +1246,13 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
   }
 
   const onUnhandledRejection = (reason) => {
-    const text = stringifyError(reason);
+    const text = livePlugin ? "live plugin promise failed" : stringifyError(reason);
     adapter.failPending(new Error(`plugin unhandledRejection: ${text}`));
     logger.error(`[plugin-unhandledRejection] ${text}`);
   };
 
   const onUncaughtException = (error) => {
-    const text = stringifyError(error);
+    const text = livePlugin ? "live plugin JavaScript failed" : stringifyError(error);
     adapter.failPending(new Error(`plugin uncaughtException: ${text}`));
     logger.error(`[plugin-uncaughtException] ${text}`);
   };
@@ -1539,6 +1543,117 @@ function isReservedPluginFolder(folderName) {
   return String(folderName || "").trim().toLowerCase() === "plugin_blueprint";
 }
 
+function livePlaybackPayload(payload) {
+  const playback = typeof payload === "string" ? safeJSONParse(payload, null) : null;
+  const mediaURL = safeParseURL(playback?.url);
+  const stringFields = value => value && typeof value === "object" && !Array.isArray(value)
+    && Object.values(value).every(field => typeof field === "string");
+  if (!mediaURL || !looksLikeURL(mediaURL.href) || !stringFields(playback.headers)) {
+    throw new Error("invalid live playback payload");
+  }
+  const drm = playback.drm;
+  if (drm != null && (
+    drm.type !== "fairplay" || drm.contentID !== "skdSuffix" ||
+    safeParseURL(drm.certificate?.url)?.protocol !== "https:" || !stringFields(drm.certificate.headers) ||
+    safeParseURL(drm.license?.url)?.protocol !== "https:" || !stringFields(drm.license.headers) ||
+    !stringFields(drm.license.jsonBody) || !Object.values(drm.license.jsonBody).includes("${spcBase64}") ||
+    drm.license.responseEncoding !== "base64"
+  )) {
+    throw new Error("invalid FairPlay configuration");
+  }
+  return playback;
+}
+
+async function probeLiveMedia(playback, options) {
+  async function get(url, headers, stage) {
+    let response;
+    try {
+      response = await fetchWithTimeout(url, { headers }, options.probeTimeoutMs);
+    } catch (error) {
+      throw new Error(`${stage} transport failed${error.cause?.code ? ` (${error.cause.code})` : ""}`);
+    }
+    if (!response.ok) {
+      response.body?.cancel?.().catch(() => {});
+      throw new Error(`${stage} HTTP ${response.status}`);
+    }
+    return response;
+  }
+
+  async function manifest(url) {
+    const response = await get(url, playback.headers, "HLS playlist");
+    const lines = (await response.text()).trim().split(/\r?\n/).map(line => line.trim());
+    if (lines[0] !== "#EXTM3U") throw new Error("HLS response is not a playlist");
+    return { url: response.url, lines };
+  }
+
+  const root = await manifest(playback.url);
+  const variantIndex = root.lines.findIndex(line => line.startsWith("#EXT-X-STREAM-INF:"));
+  const media = variantIndex < 0 ? root : await manifest(new URL(root.lines[variantIndex + 1], root.url));
+  const segment = media.lines.filter(line => line && !line.startsWith("#")).at(-1);
+  if (!segment || !media.lines.some(line => line.startsWith("#EXTINF:"))) {
+    throw new Error("HLS media playlist contains no complete segment");
+  }
+  const segmentResponse = await get(new URL(segment, media.url), { ...playback.headers, Range: "bytes=0-0" }, "HLS segment");
+  if (segmentResponse.body?.getReader) {
+    const reader = segmentResponse.body.getReader();
+    const { value } = await reader.read();
+    await reader.cancel();
+    if (!value?.length) throw new Error("HLS segment response is empty");
+  } else if (!(await segmentResponse.arrayBuffer()).byteLength) {
+    throw new Error("HLS segment response is empty");
+  }
+
+  let certificate = false;
+  if (playback.drm) {
+    const request = playback.drm.certificate;
+    const response = await get(request.url, request.headers, "FairPlay certificate");
+    certificate = (await response.arrayBuffer()).byteLength > 0;
+    if (!certificate) throw new Error("FairPlay certificate response is empty");
+  }
+  return { ok: true, method: "GET", status: segmentResponse.status, certificate };
+}
+
+async function runLivePlugin(source, runtime, options, report, logger) {
+  const channelsFunction = runtime.context[source.config.live?.javascript];
+  if (typeof channelsFunction !== "function" || !source.config.player?.javascript) {
+    throw new Error("live plugin requires configured Channels and Player functions");
+  }
+  const lineup = channelsFunction();
+  const channels = lineup?.channels;
+  if (!Array.isArray(channels) ||
+      channels.some(channel => typeof channel?.id !== "string" || !channel.id || typeof channel.title !== "string" || !channel.title) ||
+      new Set(channels.map(channel => channel.id)).size !== channels.length ||
+      !channels.some(channel => channel.id === lineup.defaultChannelId)) {
+    throw new Error("invalid live channel list");
+  }
+  report.searchEnabled = false;
+  report.list = { ok: true, count: channels.length };
+  report.cases.push({ ok: true, stage: "list", mediaTitle: "Live channels" });
+  for (const channel of channels) {
+    const start = runtime.getHTTPEvents().length;
+    const item = { stage: "player", mediaTitle: channel.title, channelID: channel.id };
+    let resolved = false;
+    try {
+      const result = await runtime.invoke(source.config.player.javascript, [channel.id], "livePlayer",
+        stageTimeoutMs(source.config.player, options.invokeTimeoutMs));
+      const playback = livePlaybackPayload(result.payload);
+      resolved = true;
+      item.probe = await probeLiveMedia(playback, options);
+      item.ok = true;
+      logger.log(`[OK] ${report.pluginName} | ${channel.title} | HLS reachable${playback.drm ? ", FairPlay certificate reachable" : ""}`);
+    } catch (error) {
+      // Playback URLs, provider tokens and license data are never report fields.
+      item.ok = false;
+      item.error = error instanceof TypeError ? "live media request or response invalid" : error.message;
+      item.reasonCode = resolved ? "probe_failed" : "live_resolver_failed";
+      item.reasonText = item.error;
+      item.httpDiagnostics = compactHTTPEvents(runtime.getHTTPEventsSince(start));
+      logger.log(`[FAIL] ${report.pluginName} | ${channel.title} | ${item.error}`);
+    }
+    report.cases.push(item);
+  }
+}
+
 function isIgnoredInvalidFailure(pluginReport, caseItem) {
   const reasonCode = String(caseItem && caseItem.reasonCode || "");
   const stage = String(caseItem && caseItem.stage || "");
@@ -1669,6 +1784,11 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     }
     runtime = createPluginRuntime(source, options, logger, challengeAdapter);
     pluginReport.challenge = runtime.getChallengeStatus();
+
+    if (source.config.type === "live") {
+      await runLivePlugin(source, runtime, options, pluginReport, logger);
+      return finishPluginReport(pluginReport);
+    }
 
     if (challengeAdapter) {
       const challengeTarget = options.challengeTargets.get(pluginReport.pluginFolder);
@@ -2116,6 +2236,10 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     }
   }
 
+  return finishPluginReport(pluginReport);
+}
+
+function finishPluginReport(pluginReport) {
   pluginReport.summary.casesTotal = pluginReport.cases.length;
   pluginReport.summary.ok = pluginReport.cases.filter((item) => item.ok).length;
   pluginReport.summary.fail = pluginReport.cases.filter((item) => !item.ok).length;

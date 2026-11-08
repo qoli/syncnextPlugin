@@ -84,7 +84,19 @@ node node_test_all_plugins.js \
   --history-mode=latest-only
 ```
 
-### 3.1 Managed challenge Smoke
+### 3.1 直播插件
+
+對 `type: "live"`，runner 使用宣告的 `host`，執行 `live.javascript` 取得頻道清單，
+再用每個頻道 ID 分別執行 `player.javascript`。每個頻道都驗證播放 JSON、HLS 主／媒體
+清單與一段媒體資料。FairPlay 另外驗證憑證可達和授權欄位格式，真正的 SPC／CKC 交換
+與首幀則由 Syncnext tvOS 驗收。報告只記錄操作結果和去除路徑／參數的 HTTP 診斷。
+
+ViuTV 的 fixture 是 `node plugin_viutv/node_test_viutv.js`。Live smoke 使用
+`--only=plugin_viutv --strict-probe`，核對 99、96 台皆成功。Apple TV 與 Mac 的取流、
+CDN 和授權可達性分別受各自的網路出口影響。實機驗收流程見 Syncnext 的
+[ViuTV live Debug case](../Syncnext/Docs/Reference/app_logging.md#直播插件驗收debug)。
+
+### 3.2 Managed challenge Smoke
 
 `challenge = { "schema": 1, "mode": "managed", "scope": "hosts" }` 的插件使用
 外部 adapter，把 tvOS 共用 Swift challenge core 編譯成 WASI，並在
@@ -114,7 +126,7 @@ node node_test_all_plugins.js \
 CI gate 另外要求已設定的 search 至少成功一次。任何播放樣本自身為網盤限定或空來源會留在
 case 明細，但只要另有實際播放 journey 成功，不會把整個插件誤判為不可用。
 
-### 3.2 macOS 每日 Smoke
+### 3.3 macOS 每日 Smoke
 
 一般 smoke 已從 public GitHub Actions 遷移至 Codex 定時任務，每日於 **08:00（Asia/Shanghai）**
 在建立任務的本聊天使用 macOS 本機執行。本機網路是此 smoke 的

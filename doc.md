@@ -21,6 +21,7 @@
 | `search` | `url` 與 `javascript`；URL 支援 `${keyword}` |
 | `episodes`、`player` | 入口函式 `javascript` 與可選 `timeout` |
 | `timeout` | 操作的 JS 結果等待及 HTTP／SafeLine inactivity timeout，單位為秒 |
+| `type` | 預設 `vod`。`live` 開啟原生直播播放器 |
 
 分類 URL 支援 `${pageNumber}`。入口名稱由設定宣告，不預設為 `Home`／`Play`。
 分類、劇集與播放器函式接收 `inputURL`；搜尋另接收 `pluginKey`，需原樣交回
@@ -28,6 +29,63 @@
 
 `AliDrive` permission、`$next.aliLink` 與 `$next.aliPlay` 已移除。宣告該 permission
 會初始化失敗；OpenList 不提供替代的插件網盤 API。
+
+### 直播型插件
+
+`type: "live"` 的 manifest 使用 `live.javascript` 和 `player.javascript`。它可省略
+`pages`、`episodes` 和 `search`。完整範例見 [ViuTV](plugin_viutv/config.json)。
+安裝後，來源列表顯示一個插件入口。這類設定需要支援直播插件的 Syncnext 版本。
+
+`live.javascript` 指定同步函式，直接回傳可序列化的頻道資料：
+
+```js
+function Channels() {
+  return {
+    defaultChannelId: "99",
+    channels: [
+      { id: "99", title: "ViuTV 99" },
+      { id: "96", title: "ViuTVsix 96" }
+    ]
+  };
+}
+```
+
+`id` 必須穩定且唯一，預設 ID 必須存在於清單。App 依插件設定地址記住最後選台，
+初次進入或上次選台已移出清單時播放宣告的預設台。原生播放控制列的「頻道」選單
+顯示清單及當前選取項目。每次選台或重新載入，App 都用選中的 `id` 呼叫
+`player.javascript`。切台或離開播放器會取消本次取流、串流和授權工作。
+
+直播的 `Player(channelID)` 以 `$next.toPlayerByJSON(JSON.stringify(result))` 交回
+單一 `{ url, headers, drm? }`，以 `$next.emptyView(message)` 交回可顯示的來源失敗。
+`url` 是 HTTP(S) HLS 播放地址，`headers` 是串流請求的字串字典。一般 HLS 可省略
+`drm`。取流使用獨立的 JS 操作及記憶體 HTTP session。短期網址、token 及授權資料
+只用於本次播放，錯誤訊息應只含可公開的原因。
+
+FairPlay 描述格式如下：
+
+```json
+{
+  "type": "fairplay",
+  "contentID": "skdSuffix",
+  "certificate": { "url": "https://example.com/fairplay.cer", "headers": {} },
+  "license": {
+    "url": "https://example.com/license",
+    "headers": {},
+    "jsonBody": {
+      "rawLicenseRequestBase64": "${spcBase64}",
+      "contentKID": "${contentID}",
+      "drmToken": "<本次取流取得的 token>"
+    },
+    "responseEncoding": "base64"
+  }
+}
+```
+
+憑證和授權使用各自的 HTTPS URL 與 headers。App 取得憑證位元組後，以
+`AVContentKeySession` 產生 SPC，並用 `skd://` 後的完整字串（含 path）作 content ID。
+授權請求是 JSON POST，`jsonBody` 為字串字典。整個欄位值為 `${spcBase64}` 或
+`${contentID}` 時，App 分別填入 SPC Base64 或 content ID。其餘值按字面傳送。
+App 解碼 Base64 CKC 並交回系統，也以相同格式處理系統提出的續期授權。
 
 ### Host bootstrap 與 managed challenge
 
