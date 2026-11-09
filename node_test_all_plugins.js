@@ -482,7 +482,7 @@ function explainFailure(errorText, httpEvents) {
   if (/emptyView:/i.test(text)) {
     return {
       reasonCode: "plugin_empty_view",
-      reasonText: "插件回傳 emptyView，未取得可播放地址",
+      reasonText: text,
     };
   }
 
@@ -997,14 +997,8 @@ function buildInvocationAdapter(options) {
     const text = String(message == null ? "" : message);
     state.emptyViews.push(text);
 
-    if (
-      state.pending &&
-      (state.pending.expected === "livePlayer" ||
-        (options.failOnEmptyView && (state.pending.expected === "player" || state.pending.expected === "episodes")))
-    ) {
-      const pending = state.pending;
-      clearPending();
-      pending.reject(new Error(`emptyView: ${text || "unknown"}`));
+    if (state.pending && (options.failOnEmptyView || state.pending.expected === "livePlayer")) {
+      failPending(new Error(`emptyView: ${text || "unknown"}`));
     }
   }
 
@@ -1875,18 +1869,8 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
       }
     }
 
-    const mediasResult = await runtime.invoke(
-      indexPage.javascript,
-      [indexURL, source.apiURL],
-      "medias",
-      indexTimeout
-    );
-    const medias = parseArrayPayload(mediasResult.payload);
-    const selectedMedias =
-      options.limitMedias > 0 ? medias.slice(0, options.limitMedias) : medias.slice();
-    pluginReport.list = { ok: medias.length > 0, count: medias.length };
-    pluginReport.cases.push({
-      ok: medias.length > 0,
+    const listHTTPIndex = runtime.getHTTPEvents().length;
+    const listCase = {
       stage: "list",
       mediaTitle: "",
       episodeTitle: "",
@@ -1894,10 +1878,37 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
       episodeURL: "",
       playURL: "",
       probe: null,
+    };
+    let mediasResult;
+    try {
+      mediasResult = await runtime.invoke(
+        indexPage.javascript,
+        [indexURL, source.apiURL],
+        "medias",
+        indexTimeout
+      );
+    } catch (error) {
+      const message = error.message || String(error);
+      pluginReport.cases.push({
+        ...listCase,
+        ok: false,
+        error: message,
+        ...buildFailureMeta(message, runtime.getHTTPEventsSince(listHTTPIndex)),
+      });
+      logger.log(`[FAIL] ${pluginReport.pluginName} | list -> ${message}`);
+      throw error;
+    }
+    const medias = parseArrayPayload(mediasResult.payload);
+    const selectedMedias =
+      options.limitMedias > 0 ? medias.slice(0, options.limitMedias) : medias.slice();
+    pluginReport.list = { ok: medias.length > 0, count: medias.length };
+    pluginReport.cases.push({
+      ...listCase,
+      ok: medias.length > 0,
       error: medias.length > 0 ? "" : "list returned empty medias",
       reasonCode: medias.length > 0 ? "" : "list_empty",
       reasonText: medias.length > 0 ? "" : "首頁列表沒有返回媒體",
-      httpDiagnostics: medias.length > 0 ? [] : compactHTTPEvents(runtime.getHTTPEvents()),
+      httpDiagnostics: medias.length > 0 ? [] : compactHTTPEvents(runtime.getHTTPEventsSince(listHTTPIndex)),
     });
 
     logger.log(

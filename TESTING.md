@@ -72,6 +72,10 @@ HTTP session／managed adapter 執行，不再猜測未簽名的首頁或搜尋 
 誤報為 JSON 解析錯誤。報告仍保留失敗案例及 HTTP diagnostics 的 status 0／原始錯誤。
 修改此契約時執行 `node --test tools/smoke-http-transport.test.mjs`。
 
+插件回傳 `$next.emptyView` 時，smoke 會如 App 自動化一樣立即記錄明確失敗。
+列表與搜尋保留插件訊息及該階段的 HTTP 診斷，便於區分上游請求失敗與未收到插件回調。
+列表失敗仍會中止該插件的後續流程。
+
 若正式來源表已匯出並通過發布 runbook 的遠端 JSON gate，才可進行 subscription smoke：
 
 ```bash
