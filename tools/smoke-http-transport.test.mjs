@@ -148,3 +148,55 @@ function Player(url) { $next.toPlayer(url); }
     }]);
   }
 });
+
+test("failed subscription config and script downloads retain the plugin and load stage", async (t) => {
+  const server = createServer((request, response) => {
+    if (request.url === "/plugin_script/config.json") {
+      response.setHeader("Content-Type", "application/json");
+      response.end(JSON.stringify({ files: ["app.js?auth=fixture-only"] }));
+      return;
+    }
+    request.socket.destroy();
+  });
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => new Promise((resolve) => { server.closeAllConnections(); server.close(resolve); }));
+  const origin = `http://127.0.0.1:${server.address().port}`;
+  const root = await mkdtemp(path.join(tmpdir(), "syncnext-source-load-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const subscriptions = ["config", "script"].map((asset) => ({
+    name: asset + "-fixture",
+    api: `syncnextPlugin://${origin}/plugin_${asset}/config.json`,
+  }));
+  const subscriptionFile = path.join(root, "subscriptions.json");
+  await writeFile(subscriptionFile, JSON.stringify(subscriptions));
+  const outputDir = path.join(root, "output");
+  const result = await new Promise((resolve) => {
+    const child = spawn(process.execPath, [runner, "--discovery=subscriptions",
+      `--subscriptions-file=${subscriptionFile}`, `--output-dir=${outputDir}`,
+      "--history-mode=latest-only", "--strict-probe", "--require-managed-challenge", "--smoke-fail-exit=soft"]);
+    let log = "";
+    child.stdout.on("data", (data) => { log += data; });
+    child.stderr.on("data", (data) => { log += data; });
+    child.on("close", (code) => resolve({ code, log }));
+  });
+  const report = JSON.parse(await readFile(path.join(outputDir, "syncnextPlugin_all_plugin_test_runs/latest.json"), "utf8"));
+  assert.equal(result.code, 0, result.log);
+  assert.deepEqual(report.testedPluginFolders, ["plugin_config", "plugin_script"]);
+  assert.equal(report.summary.pluginsWithFatalErrors, 2);
+  for (const [index, asset] of ["config", "script"].entries()) {
+    const plugin = report.plugins[index];
+    assert.equal(plugin.pluginFolder, `plugin_${asset}`);
+    assert.equal(plugin.mode, "subscriptions");
+    assert.equal(plugin.pluginName, subscriptions[index].name);
+    assert.equal(plugin.api, subscriptions[index].api);
+    assert.equal(plugin.availability, "unavailable");
+    assert.equal(plugin.summary.fail, 1);
+    const [failure] = plugin.cases;
+    assert.equal(failure.stage, "bootstrap");
+    assert.equal(failure.ok, false);
+    assert.equal(failure.reasonCode, "plugin_bootstrap_failed");
+    assert.equal(failure.error, plugin.errors[0]);
+    assert.ok(failure.error.startsWith(`GET plugin ${asset} (${origin}) transport failed`));
+    assert.doesNotMatch(failure.error, /fixture-only/);
+  }
+});

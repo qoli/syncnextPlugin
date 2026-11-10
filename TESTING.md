@@ -76,6 +76,9 @@ HTTP session／managed adapter 執行，不再猜測未簽名的首頁或搜尋 
 列表與搜尋保留插件訊息及該階段的 HTTP 診斷，便於區分上游請求失敗與未收到插件回調。
 列表失敗仍會中止該插件的後續流程。
 
+設定或腳本下載失敗時，報告保留訂閱名稱、插件目錄和 `bootstrap` 失敗案例。
+下載錯誤會區分設定與腳本，記錄來源網域和 HTTP 狀態或傳輸錯誤類型。
+
 若正式來源表已匯出並通過發布 runbook 的遠端 JSON gate，才可進行 subscription smoke：
 
 ```bash

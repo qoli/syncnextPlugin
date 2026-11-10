@@ -612,24 +612,29 @@ async function readLocalText(filePath) {
   return await fsp.readFile(filePath, "utf8");
 }
 
-async function readRemoteText(url, timeoutMs) {
-  const res = await fetchWithTimeout(
-    url,
-    {
-      method: "GET",
-      headers: {
-        "User-Agent": DEFAULT_UA,
-        Accept: "*/*",
+async function readRemoteText(url, timeoutMs, asset) {
+  const target = asset ? `${asset} (${safeParseURL(url)?.origin || "invalid URL"})` : url;
+  let response;
+  try {
+    response = await fetchWithTimeout(
+      url,
+      {
+        method: "GET",
+        headers: {
+          "User-Agent": DEFAULT_UA,
+          Accept: "*/*",
+        },
+        redirect: "follow",
       },
-      redirect: "follow",
-    },
-    timeoutMs
-  );
-
-  if (!res.ok) {
-    throw new Error(`GET ${url} failed: ${res.status}`);
+      timeoutMs
+    );
+    if (response.ok) return await response.text();
+  } catch (error) {
+    if (!asset) throw error;
+    const cause = error.cause?.code || error.name;
+    throw new Error(`GET ${target} transport failed (${cause})`, { cause: error });
   }
-  return await res.text();
+  throw new Error(`GET ${target} failed: ${response.status}`);
 }
 
 async function listLocalPlugins(pluginRoot) {
@@ -741,7 +746,7 @@ async function resolvePluginSource(pluginEntry, options) {
   const configPath = pluginEntry.configPath;
   const configURL = pluginEntry.configURL;
   const configText = isRemote
-    ? await readRemoteText(configURL, options.requestTimeoutMs)
+    ? await readRemoteText(configURL, options.requestTimeoutMs, "plugin config")
     : await readLocalText(configPath);
 
   const config = safeJSONParse(configText, null);
@@ -761,14 +766,14 @@ async function resolvePluginSource(pluginEntry, options) {
     if (!name) continue;
 
     if (looksLikeURL(name)) {
-      const content = await readRemoteText(name, options.requestTimeoutMs);
+      const content = await readRemoteText(name, options.requestTimeoutMs, "plugin script");
       loadedFiles.push({ name, source: name, content });
       continue;
     }
 
     if (isSyncnextPluginURL(name)) {
       const remoteURL = removeSyncnextPluginScheme(name);
-      const content = await readRemoteText(remoteURL, options.requestTimeoutMs);
+      const content = await readRemoteText(remoteURL, options.requestTimeoutMs, "plugin script");
       loadedFiles.push({ name, source: remoteURL, content });
       continue;
     }
@@ -778,7 +783,7 @@ async function resolvePluginSource(pluginEntry, options) {
       if (!remoteURL) {
         throw new Error(`invalid relative remote file in config.files: ${name}`);
       }
-      const content = await readRemoteText(remoteURL, options.requestTimeoutMs);
+      const content = await readRemoteText(remoteURL, options.requestTimeoutMs, "plugin script");
       loadedFiles.push({ name, source: remoteURL, content });
       continue;
     }
@@ -1710,18 +1715,19 @@ function buildInvalidSourcesReport(pluginReports) {
 
 async function runSinglePlugin(pluginEntry, index, options, logger) {
   const startedAt = isoNow();
+  const subscriptionName = buildSubscriptionLabel(pluginEntry, index);
   const pluginReport = {
     index: index + 1,
-    subscriptionName: buildSubscriptionLabel(pluginEntry, index),
+    subscriptionName,
     api: pluginEntry.api || `syncnextplugin://local/${pluginEntry.folder}/config.json`,
     startedAt,
     endedAt: "",
-    mode: "",
-    pluginName: "",
-    pluginFolder: "",
-    sourceTitle: "",
-    sourceNote: "",
-    searchEnabled: false,
+    mode: pluginEntry.mode === "subscriptions" ? "subscriptions" : "local",
+    pluginName: subscriptionName,
+    pluginFolder: pluginEntry.pluginFolder || pluginEntry.folder,
+    sourceTitle: pluginEntry.title || "",
+    sourceNote: pluginEntry.sourceNote || "",
+    searchEnabled: !!pluginEntry.sourceSearch,
     indexPage: null,
     list: { ok: false, count: 0 },
     connectivity: null,
@@ -1744,12 +1750,10 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
     errors: [],
   };
 
+  let source;
   let runtime = null;
   try {
-    const source = await resolvePluginSource(pluginEntry, options);
-    pluginReport.api = source.apiURL;
-    pluginReport.mode = source.mode;
-    pluginReport.pluginFolder = source.pluginFolder;
+    source = await resolvePluginSource(pluginEntry, options);
     pluginReport.pluginName = String(source.config.name || pluginReport.subscriptionName);
     pluginReport.sourceTitle = source.sourceTitle || "";
     pluginReport.sourceNote = source.sourceNote || "";
@@ -2237,7 +2241,19 @@ async function runSinglePlugin(pluginEntry, index, options, logger) {
       }
     }
   } catch (error) {
-    pluginReport.errors.push(error.message || String(error));
+    const message = error.message || String(error);
+    if (!source) {
+      pluginReport.cases.push({
+        ok: false,
+        stage: "bootstrap",
+        detailURL: pluginEntry.configURL || pluginEntry.configPath,
+        error: message,
+        reasonCode: "plugin_bootstrap_failed",
+        reasonText: message,
+      });
+      logger.log(`[FAIL] ${pluginReport.pluginName} | bootstrap -> ${message}`);
+    }
+    pluginReport.errors.push(message);
   } finally {
     if (runtime && typeof runtime.getChallengeStatus === "function") {
       pluginReport.challenge = runtime.getChallengeStatus();
