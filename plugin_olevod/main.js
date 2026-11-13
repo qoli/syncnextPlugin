@@ -161,8 +161,23 @@ function getEpisodes(inputURL) {
   let returnDatas = [];
 
   $http.fetch(req).then(function (res) {
-    let jsonObj = JSON.parse(res.body);
-    let content = jsonObj.data.urls;
+    const status = res.statusCode;
+    if (status < 200 || status >= 300) {
+      $next.emptyView("歐樂分集請求失敗（HTTP " + status + "）。");
+      return;
+    }
+
+    let content;
+    try {
+      content = JSON.parse(res.body)?.data?.urls;
+    } catch (error) {
+      $next.emptyView("歐樂分集資料格式有誤。");
+      return;
+    }
+    if (!Array.isArray(content)) {
+      $next.emptyView("歐樂分集資料格式有誤。");
+      return;
+    }
 
     for (var index = 0; index < content.length; index++) {
       let item = content[index];
@@ -178,6 +193,8 @@ function getEpisodes(inputURL) {
     }
 
     $next.toEpisodes(JSON.stringify(returnDatas));
+  }).catch(function () {
+    $next.emptyView("歐樂分集請求失敗，請稍後再試。");
   });
 }
 
