@@ -141,6 +141,7 @@ case 明細，但只要另有實際播放 journey 成功，不會把整個插件
 與 `plugin_libvio`。Managed 插件透過第 3.1 節的 adapter 與 WASI core 執行。
 
 本機入口是 `tools/run-subscription-smoke.mjs`，使用目前 Node 執行檔（已驗證 Node 26）。
+在新的 checkout 先跑 `npm ci --include=dev`，安裝 lock 指定的 smoke 工具依賴。
 需要相鄰的 private `../Syncnext` checkout，以及 swift.org Swift 6.4.1 toolchain 和
 matching `swift-6.4.1-RELEASE_wasm` SDK。Xcode 內附 Apple Swift 不能替代 WASM toolchain；
 安裝方式見 [Swift 官方說明](https://www.swift.org/documentation/articles/wasm-getting-started.html)。
@@ -165,6 +166,11 @@ npm run smoke:daily
 最新完整報告保存在 `~/Library/Logs/SyncnextPluginSmoke/syncnextPlugin_all_plugin_test_runs/`。
 
 本機排程使用 `--strict-probe`：player/media probe 未通過，該 player case 就計入 fail。
+每日入口用 `--media-probe-x25519-origins` 指定韓劇網的 `cdn.yzzy31-play.com` 和
+grigrilove 的 `akua.girigirilove.com`。這兩個 CDN 在本機用 Node 26.13 的預設
+TLS 握手重現連線重設，僅提議 X25519 時可讀到原始樣本的 HLS 首段。設定只套用於
+VOD 播放探測，按每次 HTTPS 請求的 origin 選擇，並保留憑證及主機名驗證。
+限縮重測這兩個來源時可傳入同一選項，報告的 `options.mediaProbeX25519Origins` 會記錄設定。
 同時保留 `--smoke-fail-exit=soft`，讓所有插件都能產出完整報告；exit 0 只代表執行完成，
 實際可用性仍以 `latest.json` 的 `summary`、`availability` 與 `challenge.status` 判讀。
 建置、discovery 或訂閱表下載失敗仍回傳非零。smoke 腳本只產生本機報告；

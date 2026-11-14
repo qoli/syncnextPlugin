@@ -6,8 +6,10 @@ on:
       - "plugin_*/**"
       - "tools/update-plugin-cache.js"
       - "tools/smoke-*.test.mjs"
+      - "tools/run-subscription-smoke.mjs"
       - "node_test_all_plugins.js"
       - "package.json"
+      - "package-lock.json"
       - ".github/workflows/plugin-cache-manifest.yml"
   push:
     branches: [main]
@@ -15,8 +17,10 @@ on:
       - "plugin_*/**"
       - "tools/update-plugin-cache.js"
       - "tools/smoke-*.test.mjs"
+      - "tools/run-subscription-smoke.mjs"
       - "node_test_all_plugins.js"
       - "package.json"
+      - "package-lock.json"
       - ".github/workflows/plugin-cache-manifest.yml"
 
 permissions:
@@ -38,5 +42,8 @@ jobs:
       - name: Verify Plugin Cache Manifests
         run: node tools/update-plugin-cache.js --check
 
+      - name: Install locked smoke dependencies
+        run: npm ci --include=dev --ignore-scripts
+
       - name: Verify smoke transport and challenge contracts
-        run: node --test tools/smoke-http-transport.test.mjs tools/smoke-host-probe.test.mjs tools/smoke-managed-challenge.test.mjs
+        run: node --test tools/smoke-*.test.mjs

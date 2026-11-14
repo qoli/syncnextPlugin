@@ -49,6 +49,7 @@ function printUsage() {
   process.stdout.write(`  --search-keyword=TEXT        Override the search keyword for every tested plugin.\n`);
   process.stdout.write(`  --skip-connectivity-check  --skip-search-test  --no-probe\n`);
   process.stdout.write(`  --strict-connectivity-check  --strict-probe  --all-episodes\n`);
+  process.stdout.write(`  --media-probe-x25519-origins=URL[,URL]  Exact HTTPS origins that need X25519 for VOD probes.\n`);
   process.stdout.write(`  --challenge-adapter-module=PATH  External managed-challenge transport adapter.\n`);
   process.stdout.write(`  --challenge-core-wasm=PATH       Shared Swift WASI challenge executable.\n`);
   process.stdout.write(`  --challenge-calculator-wasm=PATH Embedded SafeLine calculator WASM.\n`);
@@ -124,6 +125,34 @@ function createFetchImpl() {
 }
 
 const fetchImpl = createFetchImpl();
+
+function createMediaProbeDispatcher(origins) {
+  if (origins.size === 0) return null;
+  if (RUNTIME_NAME !== "Node" || typeof globalThis.fetch !== "function") {
+    throw new Error("--media-probe-x25519-origins requires Node's built-in fetch");
+  }
+
+  const { Agent, EnvHttpProxyAgent, getGlobalDispatcher } = require("undici");
+  const defaultDispatcher = getGlobalDispatcher();
+  const tls = { ecdhCurve: "X25519", rejectUnauthorized: true };
+  // Node's built-in fetch can use the environment proxy configured at startup.
+  const x25519 = defaultDispatcher.constructor.name === "EnvHttpProxyAgent"
+    ? new EnvHttpProxyAgent({ connect: tls, requestTls: tls })
+    : new Agent({ connect: tls });
+
+  return {
+    dispatch(request, handler) {
+      // Fetch also dispatches redirects through this object. Select by the current origin.
+      const dispatcher = origins.has(safeParseURL(request.origin)?.origin)
+        ? x25519
+        : defaultDispatcher;
+      return dispatcher.dispatch(request, handler);
+    },
+    destroy() {
+      return x25519.destroy();
+    },
+  };
+}
 
 function exactManagedChallenge(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
@@ -1446,14 +1475,18 @@ async function probePlayableURL(url, headers, options) {
   if (!reqHeaders["User-Agent"] && !reqHeaders["user-agent"]) {
     reqHeaders["User-Agent"] = DEFAULT_UA;
   }
+  const fetchOptions = { redirect: "follow" };
+  if (options.mediaProbeDispatcher) {
+    fetchOptions.dispatcher = options.mediaProbeDispatcher;
+  }
 
   try {
     const headRes = await fetchWithTimeout(
       target,
       {
+        ...fetchOptions,
         method: "HEAD",
         headers: reqHeaders,
-        redirect: "follow",
       },
       options.probeTimeoutMs
     );
@@ -1475,9 +1508,9 @@ async function probePlayableURL(url, headers, options) {
     const getRes = await fetchWithTimeout(
       target,
       {
+        ...fetchOptions,
         method: "GET",
         headers: getHeaders,
-        redirect: "follow",
       },
       options.probeTimeoutMs
     );
@@ -2440,7 +2473,7 @@ function escapeMarkdownTableCell(input) {
 function buildSummaryLog(report, invalidSources, meta) {
   const lines = [];
   lines.push(`generated_at=${report.generatedAt}`);
-  lines.push(`runner=bun`);
+  lines.push(`runner=${RUNTIME_NAME.toLowerCase()}`);
   lines.push(`discovery=${meta.discovery}`);
   if (meta.subscriptionsSource) {
     lines.push(`subscriptions_source=${meta.subscriptionsSource}`);
@@ -2724,6 +2757,15 @@ async function main() {
     .split(",")
     .map((item) => item.trim().toLowerCase())
     .filter(Boolean);
+  const mediaProbeOrigins = new Set(getArg("media-probe-x25519-origins", "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean));
+  for (const origin of mediaProbeOrigins) {
+    if (!origin.startsWith("https://") || safeParseURL(origin)?.origin !== origin) {
+      throw new Error("--media-probe-x25519-origins requires exact HTTPS origins");
+    }
+  }
 
   const options = {
     discovery,
@@ -2786,6 +2828,7 @@ async function main() {
   }
 
   try {
+    options.mediaProbeDispatcher = createMediaProbeDispatcher(mediaProbeOrigins);
     let discoveredAll = [];
     let subscriptionsSource = "";
     if (discovery === "subscriptions") {
@@ -2834,6 +2877,7 @@ async function main() {
         limitMedias: options.limitMedias,
         allEpisodes: options.allEpisodes,
         strictProbe: options.strictProbe,
+        mediaProbeX25519Origins: [...mediaProbeOrigins],
         enableProbe: options.enableProbe,
         invokeTimeoutMs: options.invokeTimeoutMs,
         requestTimeoutMs: options.requestTimeoutMs,
@@ -2961,6 +3005,7 @@ async function main() {
     }
   } finally {
     logger.close();
+    await options.mediaProbeDispatcher?.destroy();
   }
 }
 
