@@ -8,7 +8,7 @@ import test from "node:test";
 
 const runner = path.resolve(import.meta.dirname, "../node_test_all_plugins.js");
 
-test("X25519 affects only configured HTTPS media requests, including redirect destinations", async (t) => {
+test("X25519 scopes plugin HTTP and VOD probes independently, including redirect destinations", async (t) => {
   const root = await mkdtemp(path.join(tmpdir(), "syncnext-media-tls-"));
   t.after(() => rm(root, { recursive: true, force: true }));
   const key = path.join(root, "fixture.key");
@@ -20,12 +20,15 @@ test("X25519 affects only configured HTTPS media requests, including redirect de
   const requests = [];
   let defaultOrigin;
   let selectedOrigin;
+  let pluginOrigin;
 
   async function listen(identify) {
     const server = createServer(tls, (request, response) => {
       const { method, url, headers } = request;
       requests.push({ server: identify, method, path: url, referer: headers.referer, range: headers.range });
       if (url === "/redirect") {
+        response.writeHead(302, { Location: pluginOrigin + "/redirect-to-media" }).end();
+      } else if (url === "/redirect-to-media") {
         response.writeHead(302, { Location: selectedOrigin + "/playlist.m3u8" }).end();
       } else if (url === "/playlist.m3u8" && method === "HEAD") {
         response.writeHead(405).end();
@@ -40,7 +43,8 @@ test("X25519 affects only configured HTTPS media requests, including redirect de
     return `https://127.0.0.1:${server.address().port}`;
   }
   defaultOrigin = await listen("default");
-  selectedOrigin = await listen("x25519");
+  selectedOrigin = await listen("media");
+  pluginOrigin = await listen("plugin");
   const pluginRoot = path.join(root, "plugins");
   const pluginDir = path.join(pluginRoot, "plugin_fixture");
   await mkdir(pluginDir, { recursive: true });
@@ -53,8 +57,11 @@ test("X25519 affects only configured HTTPS media requests, including redirect de
     player: { javascript: "Player" },
   }));
   await writeFile(path.join(pluginDir, "app.js"), `
+function HostsProbeRequest() {
+  return { url: ${JSON.stringify(pluginOrigin + "/connectivity")}, method: "GET" };
+}
 function List() {
-  return $http.fetch({ url: ${JSON.stringify(defaultOrigin + "/list")} })
+  return $http.fetch({ url: ${JSON.stringify(pluginOrigin + "/list")} })
     .then(() => $next.toMedias(JSON.stringify([{ id: "fixture", title: "Fixture",
       detailURLString: ${JSON.stringify(defaultOrigin + "/detail")} }])));
 }
@@ -86,7 +93,8 @@ tls.connect = function (options) {
   const output = path.join(root, "output");
   const args = ["--require", trace, runner, `--plugin-root=${pluginRoot}`,
     `--output-dir=${output}`, "--history-mode=latest-only", "--strict-probe",
-    "--skip-connectivity-check", "--require-managed-challenge", `--media-probe-x25519-origins=${selectedOrigin}`];
+    "--require-managed-challenge", `--media-probe-x25519-origins=${selectedOrigin}`,
+    `--plugin-http-x25519-origins=${pluginOrigin}`];
   const result = await new Promise((resolve) => {
     const child = spawn(process.execPath, args,
       { env: { ...process.env, NODE_EXTRA_CA_CERTS: cert, NODE_TLS_REJECT_UNAUTHORIZED: "1" } });
@@ -101,19 +109,25 @@ tls.connect = function (options) {
   assert.match(summary, /^runner=node$/m);
   const report = JSON.parse(await readFile(path.join(reportDir, "latest.json"), "utf8"));
   assert.deepEqual(report.options.mediaProbeX25519Origins, [selectedOrigin]);
+  assert.deepEqual(report.options.pluginHTTPX25519Origins, [pluginOrigin]);
+  assert.equal(report.plugins[0].connectivity.ok, true);
   const probe = report.plugins[0].cases.find((item) => item.stage === "player").probe;
   assert.equal(probe.method, "GET");
   assert.equal(probe.status, 206);
   assert.equal(probe.ok, true);
+  assert.deepEqual(requests.filter((row) => row.server === "plugin").map(({ path }) => path),
+    ["/connectivity", "/list", "/redirect-to-media", "/redirect-to-media"]);
   assert.deepEqual(requests.filter((row) => row.path === "/playlist.m3u8"), [
-    { server: "x25519", method: "HEAD", path: "/playlist.m3u8", referer: defaultOrigin + "/episode", range: undefined },
-    { server: "x25519", method: "GET", path: "/playlist.m3u8", referer: defaultOrigin + "/episode", range: "bytes=0-1023" },
+    { server: "media", method: "HEAD", path: "/playlist.m3u8", referer: defaultOrigin + "/episode", range: undefined },
+    { server: "media", method: "GET", path: "/playlist.m3u8", referer: defaultOrigin + "/episode", range: "bytes=0-1023" },
   ]);
 
   const entries = (await readFile(connections, "utf8")).trim().split("\n").map(JSON.parse);
   const selectedPort = Number(new URL(selectedOrigin).port);
+  const pluginPort = Number(new URL(pluginOrigin).port);
   assert.ok(entries.some((entry) => Number(entry.port) === selectedPort && entry.curve === null));
+  assert.ok(entries.some((entry) => Number(entry.port) === pluginPort && entry.curve === null));
   const scopedConnections = entries.filter((entry) => entry.curve === "X25519");
-  assert.ok(scopedConnections.length > 0);
-  assert.ok(scopedConnections.every((entry) => Number(entry.port) === selectedPort && entry.verifiesCertificate));
+  assert.deepEqual(new Set(scopedConnections.map((entry) => Number(entry.port))), new Set([selectedPort, pluginPort]));
+  assert.ok(scopedConnections.every((entry) => entry.verifiesCertificate));
 });

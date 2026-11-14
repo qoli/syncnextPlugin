@@ -50,6 +50,7 @@ function printUsage() {
   process.stdout.write(`  --skip-connectivity-check  --skip-search-test  --no-probe\n`);
   process.stdout.write(`  --strict-connectivity-check  --strict-probe  --all-episodes\n`);
   process.stdout.write(`  --media-probe-x25519-origins=URL[,URL]  Exact HTTPS origins that need X25519 for VOD probes.\n`);
+  process.stdout.write(`  --plugin-http-x25519-origins=URL[,URL]  Exact HTTPS origins that need X25519 for plugin HTTP.\n`);
   process.stdout.write(`  --challenge-adapter-module=PATH  External managed-challenge transport adapter.\n`);
   process.stdout.write(`  --challenge-core-wasm=PATH       Shared Swift WASI challenge executable.\n`);
   process.stdout.write(`  --challenge-calculator-wasm=PATH Embedded SafeLine calculator WASM.\n`);
@@ -126,10 +127,23 @@ function createFetchImpl() {
 
 const fetchImpl = createFetchImpl();
 
-function createMediaProbeDispatcher(origins) {
+function readX25519Origins(flag) {
+  const origins = new Set(getArg(flag, "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean));
+  for (const origin of origins) {
+    if (!origin.startsWith("https://") || safeParseURL(origin)?.origin !== origin) {
+      throw new Error(`--${flag} requires exact HTTPS origins`);
+    }
+  }
+  return origins;
+}
+
+function createX25519Dispatcher(origins, flag) {
   if (origins.size === 0) return null;
   if (RUNTIME_NAME !== "Node" || typeof globalThis.fetch !== "function") {
-    throw new Error("--media-probe-x25519-origins requires Node's built-in fetch");
+    throw new Error(`--${flag} requires Node's built-in fetch`);
   }
 
   const { Agent, EnvHttpProxyAgent, getGlobalDispatcher } = require("undici");
@@ -1149,6 +1163,9 @@ function createPluginRuntime(pluginSource, options, logger, challengeAdapter) {
         };
       }
 
+      if (options.pluginHTTPDispatcher) {
+        fetchOptions.dispatcher = options.pluginHTTPDispatcher;
+      }
       const response = await fetchWithTimeout(url, fetchOptions, options.requestTimeoutMs);
       const responseHeaders = headersToObject(response.headers);
       let body = method === "HEAD" ? "" : await response.text();
@@ -2757,15 +2774,10 @@ async function main() {
     .split(",")
     .map((item) => item.trim().toLowerCase())
     .filter(Boolean);
-  const mediaProbeOrigins = new Set(getArg("media-probe-x25519-origins", "")
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean));
-  for (const origin of mediaProbeOrigins) {
-    if (!origin.startsWith("https://") || safeParseURL(origin)?.origin !== origin) {
-      throw new Error("--media-probe-x25519-origins requires exact HTTPS origins");
-    }
-  }
+  const mediaProbeFlag = "media-probe-x25519-origins";
+  const pluginHTTPFlag = "plugin-http-x25519-origins";
+  const mediaProbeOrigins = readX25519Origins(mediaProbeFlag);
+  const pluginHTTPOrigins = readX25519Origins(pluginHTTPFlag);
 
   const options = {
     discovery,
@@ -2828,7 +2840,8 @@ async function main() {
   }
 
   try {
-    options.mediaProbeDispatcher = createMediaProbeDispatcher(mediaProbeOrigins);
+    options.mediaProbeDispatcher = createX25519Dispatcher(mediaProbeOrigins, mediaProbeFlag);
+    options.pluginHTTPDispatcher = createX25519Dispatcher(pluginHTTPOrigins, pluginHTTPFlag);
     let discoveredAll = [];
     let subscriptionsSource = "";
     if (discovery === "subscriptions") {
@@ -2878,6 +2891,7 @@ async function main() {
         allEpisodes: options.allEpisodes,
         strictProbe: options.strictProbe,
         mediaProbeX25519Origins: [...mediaProbeOrigins],
+        pluginHTTPX25519Origins: [...pluginHTTPOrigins],
         enableProbe: options.enableProbe,
         invokeTimeoutMs: options.invokeTimeoutMs,
         requestTimeoutMs: options.requestTimeoutMs,
@@ -3005,7 +3019,10 @@ async function main() {
     }
   } finally {
     logger.close();
-    await options.mediaProbeDispatcher?.destroy();
+    await Promise.all([
+      options.mediaProbeDispatcher?.destroy(),
+      options.pluginHTTPDispatcher?.destroy(),
+    ]);
   }
 }
 

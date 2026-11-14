@@ -170,7 +170,11 @@ npm run smoke:daily
 grigrilove 的 `akua.girigirilove.com`。這兩個 CDN 在本機用 Node 26.13 的預設
 TLS 握手重現連線重設，僅提議 X25519 時可讀到原始樣本的 HLS 首段。設定只套用於
 VOD 播放探測，按每次 HTTPS 請求的 origin 選擇，並保留憑證及主機名驗證。
-限縮重測這兩個來源時可傳入同一選項，報告的 `options.mediaProbeX25519Origins` 會記錄設定。
+每日入口另以 `--plugin-http-x25519-origins` 將同樣的 TLS 設定用於 grigrilove 的
+`bg.girigirilove.com` 和 `m3u8.girigirilove.com`，涵蓋本站連通性、列表和搜尋請求。
+一般插件 HTTP 與 VOD 播放探測各有獨立清單，managed challenge 仍走原有 adapter。
+限縮重測可以傳入對應選項，報告分別記在 `options.mediaProbeX25519Origins` 和
+`options.pluginHTTPX25519Origins`。
 同時保留 `--smoke-fail-exit=soft`，讓所有插件都能產出完整報告；exit 0 只代表執行完成，
 實際可用性仍以 `latest.json` 的 `summary`、`availability` 與 `challenge.status` 判讀。
 建置、discovery 或訂閱表下載失敗仍回傳非零。smoke 腳本只產生本機報告；
