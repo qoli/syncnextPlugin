@@ -427,6 +427,68 @@ async function testRejectedCookieFailsWithoutGateBypass() {
   assert.strictEqual(bypassCount, 0);
 }
 
+async function testSearchDistinguishesRequestFailureFromNoMatches() {
+  const context = loadPlugin();
+  const results = [];
+  const failures = [];
+  context.$next.toSearchMedias = function (data, key) {
+    results.push({ medias: JSON.parse(data), key: key });
+  };
+  context.$next.emptyView = function (message) {
+    failures.push(message);
+  };
+  const searchURL = 'https://ddys.app/?s=fixture&post_type=post';
+  const pool = cookiePool([
+    cookieEntry('ddys_protect_fixture=fixture', '2026-01-01T00:00:00Z', '2999-01-01T00:00:00Z'),
+  ]);
+  let respond;
+  let requests = [];
+  context.$http.fetch = function (request) {
+    requests.push(request.url);
+    return requests.length === 1 ? Promise.resolve({ statusCode: 200, body: pool }) : respond();
+  };
+
+  async function search(response) {
+    respond = response;
+    requests = [];
+    context.Search(searchURL, 'search-fixture');
+    await new Promise(setImmediate);
+    assert.strictEqual(requests.length, 2);
+    assert.strictEqual(requests[1], searchURL);
+  }
+
+  await search(function () {
+    return Promise.resolve({ statusCode: 200, body: '<div class="ddys-protect-gate"></div>' });
+  });
+  await search(function () {
+    return Promise.reject(new Error('connection reset'));
+  });
+  await search(function () {
+    return Promise.resolve({ statusCode: 503, body: '<main>service unavailable</main>' });
+  });
+  assert.deepStrictEqual(failures, [
+    'DDYS 搜尋失敗：站方驗證未通過。',
+    'DDYS 搜尋請求失敗，請稍後再試。',
+    'DDYS 搜尋請求失敗，請稍後再試。',
+  ]);
+  assert.deepStrictEqual(results, []);
+
+  await search(function () {
+    return Promise.resolve({ statusCode: 200, body: '<main>找不到符合條件的作品</main>' });
+  });
+  assert.deepStrictEqual(results, [{ medias: [], key: 'search-fixture' }]);
+
+  await search(function () {
+    return Promise.resolve({
+      statusCode: 200,
+      body: '<article id="post-123" class="post-box"><h2 class="post-title"><a href="/example/">Example</a></h2></article>',
+    });
+  });
+  assert.strictEqual(results.length, 2);
+  assert.strictEqual(results[1].key, 'search-fixture');
+  assert.strictEqual(results[1].medias[0].id, '123');
+}
+
 async function main() {
   testAltchaRequiresTheExactChallengeSolution();
   testOCRCompletesOnceWhenChallengeFinishesFirst();
@@ -442,6 +504,7 @@ async function main() {
   testPlayerRequiresCandidateSupportForV3URLs();
   await testSafeFetchInjectsCookie();
   await testRejectedCookieFailsWithoutGateBypass();
+  await testSearchDistinguishesRequestFailureFromNoMatches();
   console.log('plugin_ddys gate/OCR/cookie-pool tests passed');
 }
 

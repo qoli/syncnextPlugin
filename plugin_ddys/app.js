@@ -7,6 +7,7 @@ var GATE_PAGE_URL = DDYS_HOST + '/';
 var COOKIE_POOL_URL = 'https://raw.githubusercontent.com/qoli/syncnextPlugin/main/plugin_ddys/cookie.json';
 var COOKIE_POOL_SCHEMA_VERSION = 1;
 var COOKIE_POOL_MAX_ENTRIES = 10;
+var DDYS_VERIFICATION_REJECTED = 'DDYS selected cookie was rejected by upstream';
 
 var bypassingGate = false;
 var bypassQueue = [];
@@ -596,7 +597,7 @@ function safeFetch(url, method, body, contentType, callback) {
 
     $http.fetch(req).then(function (res) {
       if (isGatePage(res.body) || isWPBlocked(res.body)) {
-        callback(null, 'DDYS selected cookie was rejected by upstream');
+        callback(null, DDYS_VERIFICATION_REJECTED);
         return;
       }
       callback(res, null);
@@ -714,17 +715,19 @@ function Search(inputURL, key) {
 
   safeFetch(url, 'GET', null, null, function (res, err) {
     if (err) {
-      $next.toSearchMedias(JSON.stringify([]), key);
+      $next.emptyView(err === DDYS_VERIFICATION_REJECTED
+        ? 'DDYS 搜尋失敗：站方驗證未通過。'
+        : 'DDYS 搜尋請求失敗，請稍後再試。');
       return;
     }
 
-    var body = String(res.body || '');
-    if (isGatePage(body) || isWPBlocked(body)) {
-      $next.toSearchMedias(JSON.stringify([]), key);
+    var status = Number(res.statusCode || res.status);
+    if (!(status >= 200 && status < 300)) {
+      $next.emptyView('DDYS 搜尋請求失敗，請稍後再試。');
       return;
     }
 
-    var datas = parseMediaCardsFromHTML(body);
+    var datas = parseMediaCardsFromHTML(res.body);
     $next.toSearchMedias(JSON.stringify(datas), key);
   });
 }

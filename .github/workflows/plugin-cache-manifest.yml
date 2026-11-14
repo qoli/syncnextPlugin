@@ -50,3 +50,6 @@ jobs:
 
       - name: Verify Hanju plugin bridge contract
         run: node plugin_thanju/node_test_player_candidates.js
+
+      - name: Verify DDYS plugin search and request contracts
+        run: node plugin_ddys/test_gate_ocr.js
