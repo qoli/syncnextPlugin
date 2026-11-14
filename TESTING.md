@@ -166,10 +166,11 @@ npm run smoke:daily
 最新完整報告保存在 `~/Library/Logs/SyncnextPluginSmoke/syncnextPlugin_all_plugin_test_runs/`。
 
 本機排程使用 `--strict-probe`：player/media probe 未通過，該 player case 就計入 fail。
-每日入口用 `--media-probe-x25519-origins` 指定韓劇網的 `cdn.yzzy31-play.com` 和
-grigrilove 的 `akua.girigirilove.com`。這兩個 CDN 在本機用 Node 26.13 的預設
-TLS 握手重現連線重設，僅提議 X25519 時可讀到原始樣本的 HLS 首段。設定只套用於
-VOD 播放探測，按每次 HTTPS 請求的 origin 選擇，並保留憑證及主機名驗證。
+每日入口用 `--media-probe-x25519-origins` 指定韓劇網的 `cdn.yzzy31-play.com`、
+`cdn.yzzy30-play.com`、`cdn.vvvip-plays33.cc` 和 grigrilove 的 `akua.girigirilove.com`。
+這些 CDN 在本機用 Node 26.13 的預設 TLS 握手重現連線重設，僅提議 X25519 時
+可讀到原始樣本的 HLS 首段。設定只套用於 VOD 播放探測，按每次 HTTPS 請求的
+origin 選擇，並保留憑證及主機名驗證。
 每日入口另以 `--plugin-http-x25519-origins` 將同樣的 TLS 設定用於 grigrilove 的
 `bg.girigirilove.com` 和 `m3u8.girigirilove.com`，涵蓋本站連通性、列表和搜尋請求。
 一般插件 HTTP 與 VOD 播放探測各有獨立清單，managed challenge 仍走原有 adapter。

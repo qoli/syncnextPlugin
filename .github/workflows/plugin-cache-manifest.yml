@@ -47,3 +47,6 @@ jobs:
 
       - name: Verify smoke transport and challenge contracts
         run: node --test tools/smoke-*.test.mjs
+
+      - name: Verify Hanju plugin bridge contract
+        run: node plugin_thanju/node_test_player_candidates.js

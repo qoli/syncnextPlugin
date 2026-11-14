@@ -48,7 +48,7 @@ run(process.execPath, [
   `--output-dir=${outputRoot}`,
   "--history-mode=latest-only",
   "--strict-probe",
-  "--media-probe-x25519-origins=https://cdn.yzzy31-play.com,https://akua.girigirilove.com",
+  "--media-probe-x25519-origins=https://cdn.yzzy31-play.com,https://cdn.yzzy30-play.com,https://cdn.vvvip-plays33.cc,https://akua.girigirilove.com",
   "--plugin-http-x25519-origins=https://bg.girigirilove.com,https://m3u8.girigirilove.com",
   "--smoke-fail-exit=soft",
   `--challenge-adapter-module=${path.join(harnessRoot, "Tools/challenge-smoke/adapter.mjs")}`,

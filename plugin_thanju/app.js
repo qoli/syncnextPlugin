@@ -118,7 +118,7 @@ function nodeText(node) {
   return normalizeText(decodeHtmlEntities(text));
 }
 
-function fetchAndParse(url) {
+function fetchPage(url, requestError, onBody) {
   const req = {
     url: url,
     method: 'GET',
@@ -128,15 +128,16 @@ function fetchAndParse(url) {
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15',
     },
   };
-  return $http.fetch(req).then(
-    function (res) {
-      return res.body || '';
-    },
-    function (err) {
-      print({ url: url, error: err });
-      return '';
+  $http.fetch(req).then(function (res) {
+    const status = Number(res.statusCode || res.status);
+    if (!(status >= 200 && status < 300)) {
+      $next.emptyView(requestError);
+      return;
     }
-  );
+    onBody(res.body || '');
+  }).catch(function () {
+    $next.emptyView(requestError);
+  });
 }
 
 function parseCardList(html, preferClassName) {
@@ -204,7 +205,7 @@ function extractMediaFromCard(card) {
 }
 
 function buildMedias(listURL, key) {
-  fetchAndParse(listURL).then(function (html) {
+  fetchPage(listURL, '韓劇網列表載入失敗，請稍後再試。', function (html) {
     const datas = [];
     const cards = parseCardList(html, 'myui-vodlist__box');
 
@@ -219,7 +220,7 @@ function buildMedias(listURL, key) {
 }
 
 function buildSearchMedias(searchURL, key) {
-  fetchAndParse(searchURL).then(function (html) {
+  fetchPage(searchURL, '韓劇網搜尋請求失敗，請稍後再試。', function (html) {
     const datas = [];
     let cards = parseCardList(html, 'myui-vodlist__media');
     if (!cards || cards.length === 0) {
@@ -296,7 +297,7 @@ function parseEpisodeCandidates(html) {
 }
 
 function Episodes(detailURL) {
-  fetchAndParse(detailURL).then(function (html) {
+  fetchPage(detailURL, '韓劇網分集頁載入失敗，請稍後再試。', function (html) {
     const candidates = parseEpisodeCandidates(html);
     if (candidates.length > 0) {
       if (typeof $next.toEpisodesCandidates === 'function') {
@@ -329,7 +330,7 @@ function Episodes(detailURL) {
 }
 
 function Player(episodeURL) {
-  fetchAndParse(episodeURL).then(function (html) {
+  fetchPage(episodeURL, '韓劇網播放頁載入失敗，請稍後再試。', function (html) {
     const headers = {
       Referer: episodeURL,
       'User-Agent':

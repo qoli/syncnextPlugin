@@ -4,6 +4,8 @@ const vm = require('vm');
 
 const escapedURLs = String.raw`https:\/\/one.example/video.m3u8 https:\/\/two.example/video.m3u8`;
 const calls = [];
+let response = { statusCode: 200, body: escapedURLs };
+let transportError = '';
 const sandbox = {
   console: { log: function () {} },
   JSON: JSON,
@@ -15,14 +17,26 @@ const sandbox = {
   unescape: unescape,
   $http: {
     fetch: function () {
-      return Promise.resolve({ body: escapedURLs });
+      const error = transportError;
+      const result = response;
+      return {
+        then: function (resolve) {
+          assert.equal(arguments.length, 1, 'JSPromise.then accepts only the resolve callback');
+          if (!error) queueMicrotask(function () { resolve(result); });
+          return {
+            catch: function (reject) {
+              if (error) queueMicrotask(function () { reject(error); });
+            },
+          };
+        },
+      };
     },
   },
   $next: {
     toPlayerCandidates: function (data) { calls.push(JSON.parse(data)); },
     toPlayerByJSON: function () { throw new Error('expected multiple candidates'); },
     toPlayer: function () { throw new Error('expected multiple candidates'); },
-    emptyView: function (message) { throw new Error(message); },
+    emptyView: function (message) { calls.push(message); },
   },
 };
 
@@ -34,7 +48,8 @@ function settle() {
 }
 
 (async function () {
-  sandbox.Player('https://www.thanju.com/play/1-1-1.html');
+  const playerURL = 'https://www.thanju.com/play/1-1-1.html';
+  sandbox.Player(playerURL);
   await settle();
 
   assert.equal(calls.length, 1);
@@ -43,9 +58,36 @@ function settle() {
     'https://one.example/video.m3u8',
     'https://two.example/video.m3u8',
   ]);
-  assert.equal(calls[0][0].headers.Referer, 'https://www.thanju.com/play/1-1-1.html');
+  assert.equal(calls[0][0].headers.Referer, playerURL);
 
-  console.log('plugin_thanju player-candidate contract test passed');
+  const operations = [
+    ['buildMedias', 'https://www.thanju.com/', '韓劇網列表載入失敗，請稍後再試。'],
+    ['buildSearchMedias', 'https://www.thanju.com/search/test.html', '韓劇網搜尋請求失敗，請稍後再試。'],
+    ['Episodes', 'https://www.thanju.com/detail/1.html', '韓劇網分集頁載入失敗，請稍後再試。'],
+    ['Player', playerURL, '韓劇網播放頁載入失敗，請稍後再試。'],
+  ];
+  for (const [operation, url, message] of operations) {
+    transportError = 'connection reset';
+    calls.length = 0;
+    sandbox[operation](url);
+    await settle();
+    assert.deepEqual(calls, [message], operation + ' rejected transport');
+
+    transportError = '';
+    response = { statusCode: 503, body: escapedURLs };
+    calls.length = 0;
+    sandbox[operation](url);
+    await settle();
+    assert.deepEqual(calls, [message], operation + ' rejected HTTP status');
+  }
+
+  response = { statusCode: 200, body: '<html>no player here</html>' };
+  calls.length = 0;
+  sandbox.Player(playerURL);
+  await settle();
+  assert.deepEqual(calls, ['未解析到播放地址']);
+
+  console.log('plugin_thanju player-candidate and HTTP error contracts passed');
 })().catch(function (error) {
   console.error(error);
   process.exitCode = 1;
