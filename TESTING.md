@@ -169,7 +169,8 @@ npm run smoke:daily
 
 本機排程使用 `--strict-probe`：player/media probe 未通過，該 player case 就計入 fail。
 每日入口用 `--media-probe-x25519-origins` 指定韓劇網的 `cdn.yzzy31-play.com`、
-`cdn.yzzy30-play.com`、`cdn.vvvip-plays33.cc` 和 grigrilove 的 `akua.girigirilove.com`。
+`cdn.yzzy30-play.com`、`cdn.vvvip-plays33.cc`，grigrilove 的 `akua.girigirilove.com`，
+以及 ZIP0 的 `vip.dytt-network.com`。
 這些 CDN 在本機用 Node 26.13 的預設 TLS 握手重現連線重設，僅提議 X25519 時
 可讀到原始樣本的 HLS 首段。設定只套用於 VOD 播放探測，按每次 HTTPS 請求的
 origin 選擇，並保留憑證及主機名驗證。
