@@ -78,6 +78,8 @@ HTTP session／managed adapter 執行，不再猜測未簽名的首頁或搜尋 
 
 設定或腳本下載失敗時，報告保留訂閱名稱、插件目錄和 `bootstrap` 失敗案例。
 下載錯誤會區分設定與腳本，記錄來源網域和 HTTP 狀態或傳輸錯誤類型。
+訂閱表本身下載失敗時，runner 回傳非零並在執行日誌記錄 HTTP 狀態或傳輸錯誤碼。
+讀取前一輪的 `latest.json` 時，仍須核對產生時間。
 
 若正式來源表已匯出並通過發布 runbook 的遠端 JSON gate，才可進行 subscription smoke：
 

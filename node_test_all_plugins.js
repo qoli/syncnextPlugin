@@ -656,7 +656,7 @@ async function readLocalText(filePath) {
 }
 
 async function readRemoteText(url, timeoutMs, asset) {
-  const target = asset ? `${asset} (${safeParseURL(url)?.origin || "invalid URL"})` : url;
+  const target = `${asset} (${safeParseURL(url)?.origin || "invalid URL"})`;
   let response;
   try {
     response = await fetchWithTimeout(
@@ -673,7 +673,6 @@ async function readRemoteText(url, timeoutMs, asset) {
     );
     if (response.ok) return await response.text();
   } catch (error) {
-    if (!asset) throw error;
     const cause = error.cause?.code || error.name;
     throw new Error(`GET ${target} transport failed (${cause})`, { cause: error });
   }
@@ -732,7 +731,7 @@ async function listSubscriptionPlugins(options) {
     text = await readLocalText(abs);
     source = abs;
   } else {
-    text = await readRemoteText(subscriptionsURL, options.requestTimeoutMs);
+    text = await readRemoteText(subscriptionsURL, options.requestTimeoutMs, "subscription manifest");
     source = subscriptionsURL;
   }
 
@@ -3017,6 +3016,9 @@ async function main() {
     ) {
       process.exitCode = 1;
     }
+  } catch (error) {
+    logger.error(`[fatal] ${error.message || error}`);
+    process.exitCode = 1;
   } finally {
     logger.close();
     await Promise.all([
@@ -3028,5 +3030,5 @@ async function main() {
 
 main().catch((error) => {
   process.stderr.write(`[fatal] ${error.message || error}\n`);
-  process.exit(1);
+  process.exitCode = 1;
 });

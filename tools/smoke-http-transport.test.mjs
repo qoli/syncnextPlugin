@@ -149,6 +149,35 @@ function Player(url) { $next.toPlayer(url); }
   }
 });
 
+test("a subscription manifest transport failure is recorded in the run log", async (t) => {
+  const server = createServer((request) => request.socket.destroy());
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => new Promise((resolve) => { server.closeAllConnections(); server.close(resolve); }));
+  const origin = `http://127.0.0.1:${server.address().port}`;
+  const root = await mkdtemp(path.join(tmpdir(), "syncnext-subscription-manifest-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const output = path.join(root, "syncnextPlugin_all_plugin_test_runs");
+  await mkdir(output);
+  const previousReport = '{"generatedAt":"2026-01-01T00:00:00Z"}\n';
+  const latest = path.join(output, "latest.json");
+  await writeFile(latest, previousReport);
+  const result = await new Promise((resolve) => {
+    const child = spawn(process.execPath, [runner, "--discovery=subscriptions",
+      `--subscriptions-url=${origin}/sourcesv3.json`, `--output-dir=${root}`,
+      "--history-mode=latest-only", "--strict-probe", "--require-managed-challenge", "--smoke-fail-exit=soft"]);
+    let stderr = "";
+    child.stderr.on("data", (data) => { stderr += data; });
+    child.on("close", (code) => resolve({ code, stderr }));
+  });
+
+  const expected = `[fatal] GET subscription manifest (${origin}) transport failed (UND_ERR_SOCKET)`;
+  assert.equal(result.code, 1, result.stderr);
+  assert.ok(result.stderr.includes(expected), result.stderr);
+  const log = await readFile(path.join(output, "latest.log"), "utf8");
+  assert.ok(log.includes(expected), log);
+  assert.equal(await readFile(latest, "utf8"), previousReport);
+});
+
 test("failed subscription config and script downloads retain the plugin and load stage", async (t) => {
   const server = createServer((request, response) => {
     if (request.url === "/plugin_script/config.json") {
