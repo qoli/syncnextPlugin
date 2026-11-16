@@ -220,20 +220,12 @@ function decodePlayerURL(value, encrypt) {
   return raw;
 }
 
-function parsePlayerData(html) {
-  const source = String(html || '');
-  const assignment = /(?:var\s+|window\.)player_data\s*=\s*/i.exec(source);
-  if (!assignment) return null;
-  const start = source.indexOf('{', assignment.index + assignment[0].length);
-  if (start < 0) return null;
-
+function parsePlayerObject(source, start) {
   let depth = 0;
   let quote = '';
   let escaped = false;
-  let payload = '';
   for (let index = start; index < source.length; index++) {
     const character = source[index];
-    payload += character;
     if (escaped) {
       escaped = false;
       continue;
@@ -253,15 +245,34 @@ function parsePlayerData(html) {
     if (character === '{') depth += 1;
     if (character === '}') {
       depth -= 1;
-      if (depth === 0) break;
+      if (depth === 0) {
+        try {
+          return JSON.parse(source.slice(start, index + 1));
+        } catch (_) {
+          return null;
+        }
+      }
     }
   }
-  if (depth !== 0 || !payload) return null;
-  try {
-    return JSON.parse(payload);
-  } catch (_) {
-    return null;
+  return null;
+}
+
+function parsePlayerData(html) {
+  const source = String(html || '');
+  const scripts = /<script\b[^>]*>([\s\S]*?)<\/script\s*>/gi;
+  let tag;
+  while ((tag = scripts.exec(source)) !== null) {
+    const script = tag[1];
+    let assignment = /(?:\bvar\s+|\bwindow\.)player_data\s*=\s*(?=\{)/i.exec(script);
+    // 站方也會在同一段 script 宣告 player_aaaa，再指派給 player_data。
+    if (!assignment && /(?:\bvar\s+|\bwindow\.)player_data\s*=\s*player_aaaa\s*(?:;|$)/i.test(script)) {
+      assignment = /\bvar\s+player_aaaa\s*=\s*(?=\{)/i.exec(script);
+    }
+    if (assignment) {
+      return parsePlayerObject(script, assignment.index + assignment[0].length);
+    }
   }
+  return null;
 }
 
 function normalizePlayerURL(value) {

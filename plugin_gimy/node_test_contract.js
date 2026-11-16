@@ -23,6 +23,9 @@ const detailHTML = `
   </div>`;
 const playerHTML = `<script>window.player_data={"encrypt":0,"url":"https:\/\/media.example\/video.m3u8","vod_data":{"vod_name":"榮耀"}};</script>`;
 const opaquePlayerHTML = `<script>window.player_data={"encrypt":0,"url":"opaque-player-key","vod_data":{"vod_name":"榮耀"}};</script>`;
+const aliasedPlayerHTML = `<script>var player_aaaa={"flag":"play","encrypt":0,"url":"https://media.example/episode-2.m3u8","url_next":"https://media.example/episode-3.m3u8","vod_data":{"vod_name":"榮耀 {特輯}"}};var player_data=player_aaaa;</script>
+  <script>if (typeof player_aaaa !== 'undefined') { window.player_data = player_aaaa; }</script>`;
+const unboundPlayerHTML = `<script>var player_aaaa={"encrypt":0,"url":"https://media.example/unbound.m3u8"};</script>`;
 const legacyDetailHTML = `<div class="myui-panel"><h3 class="title">舊線路</h3><ul class="myui-content__list"><li><a href="/ep-100-1-1.html">第01集</a></li></ul></div>`;
 const responses = {
   'https://gimyai.tw/': listHTML,
@@ -30,6 +33,8 @@ const responses = {
   'https://gimyai.tw/detail/426347.html': detailHTML,
   'https://gimyai.tw/play/426347-12-1.html': playerHTML,
   'https://gimyai.tw/play/426347-1-1.html': opaquePlayerHTML,
+  'https://gimyai.tw/play/426347-1-2.html': aliasedPlayerHTML,
+  'https://gimyai.tw/play/426347-1-3.html': unboundPlayerHTML,
   'https://gimyai.tw/detail/legacy.html': legacyDetailHTML,
 };
 const calls = [];
@@ -95,9 +100,19 @@ function settle() {
   await settle();
   assert.deepEqual(calls[4], ['empty', '未解析到播放地址']);
 
+  sandbox.Player('https://gimyai.tw/play/426347-1-2.html');
+  await settle();
+  assert.equal(calls[5][0], 'player');
+  assert.equal(calls[5][1].url, 'https://media.example/episode-2.m3u8');
+  assert.equal(calls[5][1].headers.Referer, 'https://gimyai.tw/play/426347-1-2.html');
+
+  sandbox.Player('https://gimyai.tw/play/426347-1-3.html');
+  await settle();
+  assert.deepEqual(calls[6], ['empty', '未解析到播放地址']);
+
   sandbox.Episodes('https://gimyai.tw/detail/legacy.html');
   await settle();
-  assert.deepEqual(calls[5], ['empty', '未找到符合目前 Gimy 結構的播放線路']);
+  assert.deepEqual(calls[7], ['empty', '未找到符合目前 Gimy 結構的播放線路']);
 
   console.log('plugin_gimy contract tests passed');
 })().catch(function (error) {
