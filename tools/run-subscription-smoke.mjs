@@ -53,6 +53,7 @@ run(process.execPath, [
     "https://cdn.yzzy30-play.com",
     "https://cdn.vvvip-plays33.cc",
     "https://svip.yzzy33-play.vip",
+    "https://player.yzzy37-play.vip",
     "https://akua.girigirilove.com",
     "https://vip.dytt-network.com",
   ].join(",")}`,
