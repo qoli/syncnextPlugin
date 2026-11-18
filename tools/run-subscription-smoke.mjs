@@ -58,6 +58,7 @@ run(process.execPath, [
     "https://akua.girigirilove.com",
     "https://vip.dytt-network.com",
     "https://vip.dytt-tvs.com",
+    "https://v.lzcdn31.com",
   ].join(",")}`,
   "--plugin-http-x25519-origins=https://bg.girigirilove.com,https://m3u8.girigirilove.com",
   "--smoke-fail-exit=soft",
