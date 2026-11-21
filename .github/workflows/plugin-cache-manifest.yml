@@ -53,3 +53,6 @@ jobs:
 
       - name: Verify DDYS plugin search and request contracts
         run: node plugin_ddys/test_gate_ocr.js
+
+      - name: Verify grigri plugin playback and failure contracts
+        run: node plugin_grigri/node_test_contract.js

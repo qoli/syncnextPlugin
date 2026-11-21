@@ -171,6 +171,24 @@ function Episodes(inputURL) {
     }
   );
 }
+function parsePlayerURL(body) {
+  var matched = String(body || "").match(/r player_.*?=(.*?)</);
+  if (!matched) {
+    return "";
+  }
+
+  try {
+    var player = JSON.parse(matched[1]);
+    if (!player || typeof player.url !== "string") {
+      return "";
+    }
+    var url = decodeURIComponent(base64Decode(player.url));
+    return /^https?:\/\//i.test(url) ? url : "";
+  } catch (error) {
+    return "";
+  }
+}
+
 function Player(inputURL) {
   var req = {
     url: buildURL(inputURL),
@@ -180,16 +198,15 @@ function Player(inputURL) {
 
   $http.fetch(req).then(
     function (res) {
-      var xml = res.body;
-      var html = xml.match(/r player_.*?=(.*?)</)[1];
-
-      var js = JSON.parse(html);
-      var urlEncode = base64Decode(js.url);
-      var url = decodeURIComponent(urlEncode);
+      var url = parsePlayerURL(res.body);
+      if (!url) {
+        $next.emptyView("播放頁面未提供有效影片資料，請稍後再試。");
+        return;
+      }
       $next.toPlayer(url);
     },
     function () {
-      $next.toPlayer("");
+      $next.emptyView("播放頁面請求失敗，請稍後再試。");
     }
   );
 }

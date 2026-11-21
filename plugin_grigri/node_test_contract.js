@@ -17,6 +17,7 @@ const detailHTML = `
 const mediaURL = 'https://media.example/video/playlist.m3u8';
 const encodedMediaURL = Buffer.from(encodeURIComponent(mediaURL)).toString('base64');
 const playerHTML = `<script>var player_aaaa={"url":"${encodedMediaURL}"}</script>`;
+const transportFailureURL = 'https://bg.girigirilove.com/playGV100-1-6/';
 const searchJSON = JSON.stringify({
   list: [
     {
@@ -31,6 +32,12 @@ const responses = {
   'https://bg.girigirilove.com/show/2--------1---/': listHTML,
   'https://bg.girigirilove.com/GV100/': detailHTML,
   'https://bg.girigirilove.com/playGV100-1-1/': playerHTML,
+  'https://bg.girigirilove.com/playGV100-1-2/': '<html><h1>暫時無法提供影片</h1></html>',
+  'https://bg.girigirilove.com/playGV100-1-3/': '<script>var player_aaaa={"url":</script>',
+  'https://bg.girigirilove.com/playGV100-1-4/': '<script>var player_aaaa={"url":"' +
+    Buffer.from('%E0%A4%A').toString('base64') + '"}</script>',
+  'https://bg.girigirilove.com/playGV100-1-5/': '<script>var player_aaaa={"url":"' +
+    Buffer.from('not-a-media-url').toString('base64') + '"}</script>',
   'https://m3u8.girigirilove.com/api.php/provide/vod/?ac=detail&wd=test': searchJSON,
 };
 const calls = [];
@@ -49,6 +56,9 @@ const sandbox = {
   $http: {
     fetch: function (request) {
       requests.push(request);
+      if (request.url === transportFailureURL) {
+        return Promise.reject(new Error('fixture transport failure with private request details'));
+      }
       assert.ok(responses[request.url], 'Unexpected request: ' + request.url);
       return Promise.resolve({ body: responses[request.url] || '' });
     },
@@ -58,6 +68,7 @@ const sandbox = {
     toSearchMedias: function (data, key) { calls.push(['search', JSON.parse(data), key]); },
     toEpisodes: function (data) { calls.push(['episodes', JSON.parse(data)]); },
     toPlayer: function (url) { calls.push(['player', url]); },
+    emptyView: function (message) { calls.push(['empty', message]); },
   },
 };
 
@@ -127,6 +138,21 @@ function settle() {
   await settle();
   assert.equal(calls[3][0], 'player');
   assert.equal(calls[3][1], mediaURL);
+
+  for (const episode of [2, 3, 4, 5]) {
+    const first = calls.length;
+    sandbox.Player('https://bg.girigirilove.com/playGV100-1-' + episode + '/');
+    await settle();
+    assert.deepEqual(calls.slice(first), [
+      ['empty', '播放頁面未提供有效影片資料，請稍後再試。'],
+    ]);
+  }
+  const first = calls.length;
+  sandbox.Player(transportFailureURL);
+  await settle();
+  assert.deepEqual(calls.slice(first), [
+    ['empty', '播放頁面請求失敗，請稍後再試。'],
+  ]);
   assert.ok(requests.filter(function (request) {
     return !request.url.startsWith('https://m3u8.girigirilove.com/');
   }).every(function (request) {
