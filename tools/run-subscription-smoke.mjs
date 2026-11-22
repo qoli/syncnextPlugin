@@ -60,6 +60,7 @@ run(process.execPath, [
     "https://vip.dytt-tvs.com",
     "https://vip.dytt-kan.com",
     "https://svip.ryiplay18.com",
+    "https://play.dyttzyv.com",
     "https://v.lzcdn31.com",
   ].join(",")}`,
   "--plugin-http-x25519-origins=https://bg.girigirilove.com,https://m3u8.girigirilove.com",

@@ -171,7 +171,7 @@ npm run smoke:daily
 每日入口用 `--media-probe-x25519-origins` 指定韓劇網的 `cdn.yzzy31-play.com`、
 `cdn.yzzy30-play.com`、`cdn.vvvip-plays33.cc`、`svip.yzzy33-play.vip`、`player.yzzy37-play.vip`
 與 `cdn.yzzyvip-29.com`，grigrilove 的 `akua.girigirilove.com`，ZIP0 的 `vip.dytt-network.com`，
-Gimy 的 `vip.dytt-tvs.com`、`vip.dytt-kan.com`，ZIP0 的 `svip.ryiplay18.com`，
+Gimy 的 `vip.dytt-tvs.com`、`vip.dytt-kan.com`，ZIP0 的 `svip.ryiplay18.com`、`play.dyttzyv.com`，
 以及 AGE 的 `v.lzcdn31.com`。
 這些 CDN 在本機用 Node 26.13 的預設 TLS 握手重現連線重設，僅提議 X25519 時
 可讀到原始樣本的 HLS 首段。設定只套用於 VOD 播放探測，按每次 HTTPS 請求的
