@@ -67,6 +67,16 @@ function Channels() {
 顯示清單及當前選取項目。每次選台或重新載入，App 都用選中的 `id` 呼叫
 `player.javascript`。切台或離開播放器會取消本次取流、串流和授權工作。
 
+可在同一份回傳資料加入 `groups`，以 `{ id, title, channelIds }` 描述「頻道」下的
+父分組。`id` 和 `title` 為非空字串，分組 ID 唯一，每組的 `channelIds` 為非空的
+頻道 ID 陣列。所有 `channels` 的 ID 須各自在 `groups` 出現一次。新版 App 按
+分組與頻道 ID 陣列的順序顯示兩層選單。省略 `groups` 或傳入空陣列時顯示平面選單。
+已支援直播的舊版 App 會讀取原有的 `defaultChannelId` 和 `channels`，以平面選單顯示。
+
+[HD.Rip 綜合](plugin_hdrip/config.json) 示範分組。HD.Rip 依內容拆成六個獨立插件，
+各自從 `lineup.js` 的分組目錄產生平面清單和 `groups`。目錄依公開頻道清單人工分類，
+更新目錄時保留上游頻道 ID。修改共用取流程式時同步六份 `app.js`，並重算各自的資源 Hash。
+
 直播的 `Player(channelID)` 以 `$next.toPlayerByJSON(JSON.stringify(result))` 交回
 單一 `{ url, headers, drm? }`，以 `$next.emptyView(message)` 交回可顯示的來源失敗。
 `url` 是 HTTP(S) HLS 播放地址，`headers` 是串流請求的字串字典。一般 HLS 可省略

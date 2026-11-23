@@ -1,0 +1,29 @@
+{
+  "name": "HD.Rip 電影與戲劇",
+  "description": "從 HD.Rip 收看電影與戲劇類直播，依主題或地區選台。",
+  "host": "https://hd.rip",
+  "files": [
+    "lineup.js",
+    "app.js"
+  ],
+  "type": "live",
+  "live": {
+    "javascript": "Channels"
+  },
+  "player": {
+    "javascript": "Player"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "lineup.js": {
+        "sha256": "fd9255b0e0dc33782e6c58d2baf688de4ad0e1a54ce961323f111231ecfda220",
+        "bytes": 1997
+      },
+      "app.js": {
+        "sha256": "cbd6bb1d864c47e90e4cbdb9ffa1dc759c7de895a2e7fae55f677eb72585e0d5",
+        "bytes": 2404
+      }
+    }
+  }
+}

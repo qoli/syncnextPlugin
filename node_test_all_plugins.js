@@ -49,6 +49,7 @@ function printUsage() {
   process.stdout.write(`  --search-keyword=TEXT        Override the search keyword for every tested plugin.\n`);
   process.stdout.write(`  --skip-connectivity-check  --skip-search-test  --no-probe\n`);
   process.stdout.write(`  --strict-connectivity-check  --strict-probe  --all-episodes\n`);
+  process.stdout.write(`  --live-channel-ids=ID[,ID]   Probe selected live channels after validating the full lineup.\n`);
   process.stdout.write(`  --media-probe-x25519-origins=URL[,URL]  Exact HTTPS origins that need X25519 for VOD probes.\n`);
   process.stdout.write(`  --plugin-http-x25519-origins=URL[,URL]  Exact HTTPS origins that need X25519 for plugin HTTP.\n`);
   process.stdout.write(`  --challenge-adapter-module=PATH  External managed-challenge transport adapter.\n`);
@@ -1677,7 +1678,13 @@ async function runLivePlugin(source, runtime, options, report, logger) {
   report.searchEnabled = false;
   report.list = { ok: true, count: channels.length };
   report.cases.push({ ok: true, stage: "list", mediaTitle: "Live channels" });
-  for (const channel of channels) {
+  const selectedChannels = options.liveChannelIDs.length
+    ? channels.filter(channel => options.liveChannelIDs.includes(channel.id))
+    : channels;
+  if (selectedChannels.length === 0) {
+    throw new Error("--live-channel-ids did not match any channels in this plugin");
+  }
+  for (const channel of selectedChannels) {
     const start = runtime.getHTTPEvents().length;
     const item = { stage: "player", mediaTitle: channel.title, channelID: channel.id };
     let resolved = false;
@@ -2764,6 +2771,7 @@ async function main() {
   const printMediasSampleIndex = toInt(getArg("print-medias-sample-index", "0"), 0);
   const printSearchSampleIndex = toInt(getArg("print-search-sample-index", "0"), 0);
   const searchKeyword = String(getArg("search-keyword", "") || "").trim();
+  const liveChannelIDs = getArg("live-channel-ids", "").split(",").map(id => id.trim()).filter(Boolean);
   const cookieHeader = String(getArg("cookie", "") || "").trim();
   const onlyFilter = String(getArg("only", "") || "")
     .split(",")
@@ -2784,6 +2792,7 @@ async function main() {
     subscriptionsURL,
     subscriptionsFile,
     limitMedias,
+    liveChannelIDs,
     allEpisodes: hasFlag("all-episodes"),
     strictProbe: hasFlag("strict-probe"),
     enableProbe: !hasFlag("no-probe"),
@@ -2887,6 +2896,7 @@ async function main() {
       outputDir: runOutputDir,
       options: {
         limitMedias: options.limitMedias,
+        liveChannelIDs: options.liveChannelIDs,
         allEpisodes: options.allEpisodes,
         strictProbe: options.strictProbe,
         mediaProbeX25519Origins: [...mediaProbeOrigins],

@@ -1,0 +1,29 @@
+{
+  "name": "HD.Rip 新聞資訊",
+  "description": "從 HD.Rip 收看新聞資訊類直播，依主題或地區選台。",
+  "host": "https://hd.rip",
+  "files": [
+    "lineup.js",
+    "app.js"
+  ],
+  "type": "live",
+  "live": {
+    "javascript": "Channels"
+  },
+  "player": {
+    "javascript": "Player"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "lineup.js": {
+        "sha256": "d278f5e9e5a8bcde95d50ba92b85c05f1b6eee92f8602e2f754ce8676d3322e0",
+        "bytes": 2044
+      },
+      "app.js": {
+        "sha256": "cbd6bb1d864c47e90e4cbdb9ffa1dc759c7de895a2e7fae55f677eb72585e0d5",
+        "bytes": 2404
+      }
+    }
+  }
+}

@@ -107,6 +107,11 @@ ViuTV 的 fixture 是 `node plugin_viutv/node_test_viutv.js`。Live smoke 使用
 CDN 和授權可達性分別受各自的網路出口影響。實機驗收流程見 Syncnext 的
 [ViuTV live Debug case](../Syncnext/Docs/Reference/app_logging.md#直播插件驗收debug)。
 
+HD.Rip 的六個入口共用 `node plugin_hdrip/node_test_hdrip.js`。fixture 檢查每台恰好
+出現在一個入口和一個父分組，平面清單與分組一致，並驗證取流行為。可用
+`--live-channel-ids=114,52,181,136,84,48,54` 限定實際取流的台，分組清單仍完整載入。
+選中的每個直播插件須至少包含一個指定 ID。省略此參數時會逐台探測。
+
 ### 3.2 Managed challenge Smoke
 
 `challenge = { "schema": 1, "mode": "managed", "scope": "hosts" }` 的插件使用

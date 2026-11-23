@@ -1,0 +1,29 @@
+{
+  "name": "HD.Rip 綜合",
+  "description": "從 HD.Rip 收看綜合類直播，依主題或地區選台。",
+  "host": "https://hd.rip",
+  "files": [
+    "lineup.js",
+    "app.js"
+  ],
+  "type": "live",
+  "live": {
+    "javascript": "Channels"
+  },
+  "player": {
+    "javascript": "Player"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "lineup.js": {
+        "sha256": "aea7089740a6dce2007071a9d8ad9c056add72bb917fd7a201cf323c1de19b94",
+        "bytes": 3863
+      },
+      "app.js": {
+        "sha256": "cbd6bb1d864c47e90e4cbdb9ffa1dc759c7de895a2e7fae55f677eb72585e0d5",
+        "bytes": 2404
+      }
+    }
+  }
+}

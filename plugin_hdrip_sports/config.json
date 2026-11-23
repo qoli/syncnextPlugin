@@ -1,0 +1,29 @@
+{
+  "name": "HD.Rip 體育",
+  "description": "從 HD.Rip 收看體育類直播，依主題或地區選台。",
+  "host": "https://hd.rip",
+  "files": [
+    "lineup.js",
+    "app.js"
+  ],
+  "type": "live",
+  "live": {
+    "javascript": "Channels"
+  },
+  "player": {
+    "javascript": "Player"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "lineup.js": {
+        "sha256": "1625d118c8f908340c74189c002b71d583bf6511924b75a67b4678910508ea81",
+        "bytes": 1186
+      },
+      "app.js": {
+        "sha256": "cbd6bb1d864c47e90e4cbdb9ffa1dc759c7de895a2e7fae55f677eb72585e0d5",
+        "bytes": 2404
+      }
+    }
+  }
+}

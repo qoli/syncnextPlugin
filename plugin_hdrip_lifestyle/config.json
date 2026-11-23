@@ -1,0 +1,29 @@
+{
+  "name": "HD.Rip 綜藝與生活",
+  "description": "從 HD.Rip 收看綜藝與生活類直播，依主題或地區選台。",
+  "host": "https://hd.rip",
+  "files": [
+    "lineup.js",
+    "app.js"
+  ],
+  "type": "live",
+  "live": {
+    "javascript": "Channels"
+  },
+  "player": {
+    "javascript": "Player"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "lineup.js": {
+        "sha256": "7bd8a439fea74c35527e1d13beaf350adc7f1c709fccb283cb9cf96c39a2a41e",
+        "bytes": 1382
+      },
+      "app.js": {
+        "sha256": "cbd6bb1d864c47e90e4cbdb9ffa1dc759c7de895a2e7fae55f677eb72585e0d5",
+        "bytes": 2404
+      }
+    }
+  }
+}
