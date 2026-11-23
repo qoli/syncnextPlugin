@@ -276,6 +276,19 @@ Gimy 的 Cloudflare Managed Challenge 維持 2026-10-25 已確認的未支援狀
 但未另獲授權前不新增 Mac 瀏覽器執行層、解題服務或其他依賴。已知狀態未變時不重複詢問
 或公告；網站恢復、故障類型改變或另有授權時，才依新證據更新判定。
 
+### 5.2 內置貓源補丁
+
+在根目錄的 [`cat-source-patches.json`](cat-source-patches.json) 維護規則。
+格式見 [插件協議](doc.md#內置貓源補丁)。修改後用
+`python3 -m json.tool cat-source-patches.json` 檢查 JSON，並在相鄰
+`SyncnextCatSource` 執行 `swift test --filter UpdateTests`。針對本次規則，
+以原始舊版來源驗證命中內容，並核對已修復的上游版本能跳過該規則。
+
+獲授權發布後，核對
+`https://raw.githubusercontent.com/qoli/syncnextPlugin/main/cat-source-patches.json`
+與已驗證清單一致。此清單直接由 App 下載，獨立於 Notion 頻道登錄和
+`sourcesv3.json` 匯出。
+
 ## 6. Smoke 輸出管理與清理
 
 `node_test_all_plugins.js` 的預設輸出位置是 repo 下的 `syncnextPlugin_all_plugin_test_runs/`。預設 `history-mode=keep` 會建立時間戳資料夾，並更新：

@@ -6,6 +6,18 @@
 [PluginModel](../Syncnext/Syncnext%20tvOS/Services/Plugin/PluginModel.swift)。
 測試見 [TESTING.md](TESTING.md)，對外生效流程見 [MAINTENANCE.md](MAINTENANCE.md)。
 
+## 內置貓源補丁
+
+[`cat-source-patches.json`](cat-source-patches.json) 是 App 下載的官方清單。
+`schemaVersion` 目前為 `1`，`patches` 可為空。每筆使用唯一的 `id`，
+`match.subscriptionURL` 經由 App 的 `CatSourceAddress` 正規化，再與完整
+來源身份比對。規則與操作都以陣列順序執行。
+
+目前支援對 `index.js` 執行 `replaceLiteral`。來源四檔先照常驗證，宿主再比對
+`from` 的完整字面值。有一處命中時以 `to` 替換，零處命中時跳過，多處命中時
+回報失敗。修改只存在於本次編譯的程式內容。下載後在訂閱重新載入或 App
+重啟時生效，移除規則也沿用這個流程。
+
 ## 設定與入口
 
 可複製的最小實作是 [plugin_blueprint](plugin_blueprint/) 的 `config.json` 與

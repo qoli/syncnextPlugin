@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "patches": [
+    {
+      "id": "niuer-pan123ziyuan-host",
+      "match": {
+        "subscriptionURL": "https://9280.kstore.vip/cat/index.js.md5"
+      },
+      "operations": [
+        {
+          "type": "replaceLiteral",
+          "file": "index.js",
+          "from": "\"https://pan1.me\"",
+          "to": "\"https://123panfx.com\""
+        }
+      ]
+    }
+  ]
+}
