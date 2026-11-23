@@ -20,6 +20,8 @@
 
 每個 `plugin_<provider>` 至少應有 `config.json`、`app.js` 與一個可重複執行的 `node_test_*.js` 或等效 fixture。測試輸入不得依賴私有 token、Cookie 或未記錄的人工狀態。
 
+在 Mac 上播放已保存的 fixture 時，執行 `bash localServer.sh`，從 `http://127.0.0.1:8000/` 讀取 `test/` 裡的檔案。若本次驗收需要讓區網內的實機讀取 fixture，從 repo 根目錄執行 `python3 -m http.server 8000 --bind <Mac 的區網 IP> --directory test`，並在驗收結束後停止伺服器。
+
 ## 2. 每次修改的最低驗證
 
 從 repo 根目錄執行，將 `<provider>` 替換為實際資料夾名稱：

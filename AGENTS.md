@@ -17,7 +17,7 @@ Syncnext channel plugins live here; keep contributions reproducible and aligned 
 - `npm run smoke:daily` — runs all published subscription plugins on macOS with the adjacent private Syncnext challenge adapter; writes reports under `~/Library/Logs/SyncnextPluginSmoke/`.
 - Codex runs the daily smoke at 08:00 Asia/Shanghai. A clean report ends the task silently; problems trigger the authorized maintenance and publication workflow in `MAINTENANCE.md` §5.1. `smoke:daily` itself is a single-run entrypoint; see `TESTING.md` for its matching Swift WASM toolchain requirements.
 - `npx browserify plugin_wogg/app.js -o plugin_wogg/dist.js` — bundle a plugin into a single file when Syncnext needs packaged output (replace the paths per plugin).
-- `bash localServer.sh` — serves `test/` on `http://localhost:8000` for quick manual playback tests against stored fixtures.
+- `bash localServer.sh` — serves the repository's `test/` fixtures at `http://127.0.0.1:8000/` for playback checks on this Mac.
 
 ## Coding Style & Naming Conventions
 
