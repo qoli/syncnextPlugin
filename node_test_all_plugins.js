@@ -1545,6 +1545,7 @@ async function probePlayableURL(url, headers, options) {
 
     if (getRes.status >= 200 && getRes.status < 400 && (looksLikeMediaType || looksLikeM3U8 || looksLikeMediaURL)) {
       result.ok = true;
+      result.error = "";
       return result;
     }
 

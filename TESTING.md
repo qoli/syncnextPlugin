@@ -74,6 +74,11 @@ HTTP session／managed adapter 執行，不再猜測未簽名的首頁或搜尋 
 誤報為 JSON 解析錯誤。報告仍保留失敗案例及 HTTP diagnostics 的 status 0／原始錯誤。
 修改此契約時執行 `node --test tools/smoke-http-transport.test.mjs`。
 
+播放器 probe 的 HEAD 傳輸失敗、但後續 GET 探測通過時，`probe.error` 必須為空字串，
+`method`／`status` 記錄實際通過的 GET，避免成功結果仍帶著舊 HEAD 錯誤。
+修改此結果契約時執行 `node --test tools/smoke-media-tls.test.mjs`；既有 HEAD／GET 順序、
+headers、TLS 範圍與 strict-probe 門檻維持相同。
+
 插件回傳 `$next.emptyView` 時，smoke 會如 App 自動化一樣立即記錄明確失敗。
 列表與搜尋保留插件訊息及該階段的 HTTP 診斷，便於區分上游請求失敗與未收到插件回調。
 列表失敗仍會中止該插件的後續流程。

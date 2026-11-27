@@ -8,7 +8,7 @@ import test from "node:test";
 
 const runner = path.resolve(import.meta.dirname, "../node_test_all_plugins.js");
 
-test("X25519 scopes plugin HTTP and VOD probes independently, including redirect destinations", async (t) => {
+async function verifyScopedMediaTLS(t, disconnectHEAD = false) {
   const root = await mkdtemp(path.join(tmpdir(), "syncnext-media-tls-"));
   t.after(() => rm(root, { recursive: true, force: true }));
   const key = path.join(root, "fixture.key");
@@ -31,7 +31,8 @@ test("X25519 scopes plugin HTTP and VOD probes independently, including redirect
       } else if (url === "/redirect-to-media") {
         response.writeHead(302, { Location: selectedOrigin + "/playlist.m3u8" }).end();
       } else if (url === "/playlist.m3u8" && method === "HEAD") {
-        response.writeHead(405).end();
+        if (disconnectHEAD) request.socket.destroy();
+        else response.writeHead(405).end();
       } else if (url === "/playlist.m3u8") {
         response.writeHead(206, { "Content-Type": "application/vnd.apple.mpegurl" }).end("#EXTM3U\n");
       } else {
@@ -115,6 +116,7 @@ tls.connect = function (options) {
   assert.equal(probe.method, "GET");
   assert.equal(probe.status, 206);
   assert.equal(probe.ok, true);
+  assert.equal(probe.error, "");
   assert.deepEqual(requests.filter((row) => row.server === "plugin").map(({ path }) => path),
     ["/connectivity", "/list", "/redirect-to-media", "/redirect-to-media"]);
   assert.deepEqual(requests.filter((row) => row.path === "/playlist.m3u8"), [
@@ -130,4 +132,12 @@ tls.connect = function (options) {
   const scopedConnections = entries.filter((entry) => entry.curve === "X25519");
   assert.deepEqual(new Set(scopedConnections.map((entry) => Number(entry.port))), new Set([selectedPort, pluginPort]));
   assert.ok(scopedConnections.every((entry) => entry.verifiesCertificate));
+}
+
+test("X25519 scopes plugin HTTP and VOD probes independently, including redirect destinations", async (t) => {
+  await verifyScopedMediaTLS(t);
+});
+
+test("successful GET probe clears an earlier HEAD transport error", async (t) => {
+  await verifyScopedMediaTLS(t, true);
 });
