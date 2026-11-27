@@ -10,6 +10,7 @@
 | 靜態檢查、fixture、smoke、App 驗證、結果判讀與產物管理 | [測試契約：TESTING.md](./TESTING.md) |
 | 新增或維護插件、Notion preflight、來源表匯出、遠端驗證、公告與發布 | [發布 runbook：MAINTENANCE.md](./MAINTENANCE.md) |
 | 新插件的可複製骨架 | [plugin_blueprint](./plugin_blueprint/) |
+| 私人 YouTube 插件、Mac 代理與正式版「插件開發」載入方式（不發布） | [YouTube 代理](./tools/youtube-proxy/README.md) |
 
 文件責任不重疊：技術協議定義「可傳什麼」，測試契約定義「如何證明它可用」，發布 runbook 定義「何時及如何對外生效」。
 

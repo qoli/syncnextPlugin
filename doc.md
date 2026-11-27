@@ -207,7 +207,7 @@ App 提供自訂 `JSPromise`，不能把 Node／瀏覽器的 `fetch(url, options
 | `$next.toEpisodes(json)` | 單一劇集列表；`episodeDetailURL` 交給插件 player resolver |
 | `$next.toEpisodesCandidates(json)` | `{ source, episodes }` 陣列；候選需提供 App 可直接探測的真實 HTTP(S) 播放地址 |
 | `$next.toPlayer(url)` | 一個已解析的播放地址 |
-| `$next.toPlayerByJSON(json)` | `{ url, headers }` |
+| `$next.toPlayerByJSON(json)` | `{ url, headers, subtitle? }` |
 | `$next.toPlayerCandidates(json)` | `[{ url, headers }, ...]`，不包成 `{ candidates: [...] }` |
 | `$next.emptyView(text)` | 記錄操作的空結果／錯誤訊息；實際呈現由當前 App 操作決定 |
 
@@ -226,8 +226,31 @@ App 提供自訂 `JSPromise`，不能把 Node／瀏覽器的 `fetch(url, options
 ```
 
 其他 metadata 直接查模型，不為它們建立另一份欄位表。播放 JSON 必須包含
-`headers`，沒有額外 headers 時傳 `{}`。字幕／quality 等未出現在 decoder 的自訂
-欄位不能當成有效的 App 交接契約。
+`headers`，沒有額外 headers 時傳 `{}`。需要外掛字幕時，可在支援此欄位的 App
+版本交付一個 `subtitle` 物件；省略此欄位保留既有播放行為：
+
+```json
+{
+  "url": "http://mac.local:18771/sessions/example/manifest.mpd",
+  "headers": {},
+  "subtitle": {
+    "url": "http://mac.local:18771/api/subtitles/video-id/zh-TW.vtt",
+    "name": "繁體中文（台灣）",
+    "language": "zh-TW"
+  }
+}
+```
+
+`subtitle.url` 必須是可直接下載字幕的絕對 HTTP(S) URL；`name` 與 `language`
+可省略。字幕透過正式播放器的外掛字幕流程載入並出現在字幕選單；此例由 Mac
+直接投遞 YouTube WebVTT，亦可提供 SRT，無須轉錄影音。字幕請求沿用播放 headers，Cookie 或簽章
+只留在代理端的來源應傳 `{}`。字幕 URL 應在播放及續播時保持可用。
+重新開啟播放時採用當次 resolver 交付的字幕 URL；播放中只更新媒體地址的續期流程
+不替換字幕描述。沒有實作的自訂欄位不能當成有效的 App 交接契約。
+
+上述 `subtitle` 擴充目前用於開發分支驗收，不能假設既有 App Store 版本已支援。
+需要從正式版「插件開發」測試的 [YouTube 插件](./tools/youtube-proxy/README.md)
+AVC 回傳 `{ url, headers }`，字幕由 HLS master 宣告獨立 WebVTT rendition；Premium AV1 使用 MPD 並帶此可選 `subtitle` 欄位，需使用支援該欄位的 App 驗收。
 
 `toEpisodesCandidates` 可以只有一組，但不能交付尚待 resolver 解碼的私有 payload、
 中間 key 或包裝頁。這類輸入使用 `toEpisodes`，由插件 `Player()` 解出真實地址後

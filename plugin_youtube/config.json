@@ -1,0 +1,60 @@
+{
+  "name": "YouTube · GundamInfo",
+  "description": "Mac 區網代理：GundamInfo 播放列表與分集、AVC 原畫質／Premium AV1、AAC 與繁中 WebVTT 字幕。",
+  "host": "http://127.0.0.1:18771",
+  "files": [
+    "app.js"
+  ],
+  "pages": [
+    {
+      "key": "index",
+      "title": "繁中 · AVC 原畫質",
+      "url": "http://127.0.0.1:18771/api/catalog?profile=avc&language=zh-TW",
+      "javascript": "Medias",
+      "timeout": 60
+    },
+    {
+      "key": "all",
+      "title": "全部播放列表 · AVC",
+      "url": "http://127.0.0.1:18771/api/catalog?profile=avc",
+      "javascript": "Medias",
+      "timeout": 60
+    },
+    {
+      "key": "premium",
+      "title": "Premium 1080p AV1",
+      "url": "http://127.0.0.1:18771/api/catalog?profile=premium",
+      "javascript": "Medias",
+      "timeout": 60
+    },
+    {
+      "key": "samples",
+      "title": "SEED 驗證樣本",
+      "url": "http://127.0.0.1:18771/api/samples",
+      "javascript": "Medias",
+      "timeout": 60
+    }
+  ],
+  "episodes": {
+    "javascript": "Episodes",
+    "timeout": 60
+  },
+  "player": {
+    "javascript": "Player",
+    "timeout": 90
+  },
+  "search": {
+    "url": "http://127.0.0.1:18771/api/search?keyword=${keyword}",
+    "javascript": "Search",
+    "smokeKeyword": "SEED"
+  },
+  "cache": {
+    "schema": 1,
+    "resources": {
+      "app.js": {
+        "sha256": "295e60d70f1b2d509188b6875e118eaf429f5d974fe86e3e1e88199dbe768a55",
+        "bytes": 1196
+      }
+    }
+  }
+}

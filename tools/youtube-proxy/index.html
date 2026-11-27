@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syncnext YouTube 代理</title>
+<style>
+  :root { color-scheme: light dark; font: 16px/1.7 system-ui; }
+  body { max-width: 850px; margin: 3rem auto; padding: 0 1.5rem; }
+  h1 { font-size: 1.7rem; } h2 { font-size: 1.1rem; margin-top: 2rem; }
+  code { overflow-wrap: anywhere; } li { margin-block: .6rem; }
+  .status { opacity: .7; } .session { border-top: 1px solid #8886; padding-block: 1rem; }
+</style>
+<h1>Syncnext YouTube 代理</h1>
+<p class="status" id="status">讀取代理狀態…</p>
+<h2>在正式版 Syncnext 開始測試</h2>
+<ol>
+  <li>設定 → 插件開發者 → 開啟「顯示插件開發入口」。</li>
+  <li>回主畫面進入「插件開發」，貼上此網址：<br><a id="plugin"><code id="url"></code></a></li>
+  <li>選「重新載入」，再開啟「正常模式」預覽。</li>
+  <li>預設「繁中 · AVC 原畫質」顯示繁中分組，選播放列表後選分集。其他語言可在「全部播放列表 · AVC」選取。Premium 畫質請進入「Premium 1080p AV1」頁；沒有提供該畫質的影片會明確失敗。</li>
+</ol>
+<p>Mac 需持續執行並與 Apple TV 互通。Cookie 保留在 Mac。AVC 使用 HLS WebVTT；Premium 使用原始 AV1 MPD 與外掛 VTT，需要 App 支援插件 subtitle 欄位。未提供繁中字幕時，狀態會顯示「無繁中字幕」。</p>
+<p>目錄於代理啟動時取得，分集首次開啟時取得；重新啟動代理可更新目錄。Cookie 失效會自動從 Arc CDP 更新。每次選播都重新解析串流。搜尋範圍是本站播放列表名稱與 SEED 驗證樣本；語言分組不保證所在地可播放。</p>
+<h2>本輪解析的影片</h2>
+<div id="sessions"></div>
+<script>
+  const url = location.origin + "/plugin_youtube/config.json";
+  document.querySelector("#url").textContent = url;
+  document.querySelector("#plugin").href = url;
+  fetch("/status").then(r => r.json()).then(data => {
+    document.querySelector("#status").textContent = "代理運行中 · " + data.playlists + " 個播放列表（繁中 " + data.traditionalChinesePlaylists + " 個） · " +
+      (data.cookiesLoaded ? "已載入 YouTube Cookie（Premium 於選播時驗證）" : "需要更新登入 Cookie") +
+      " · CDP 自動更新 " + (data.cookieRecovery ? data.cookieRecovery.refreshes : 0) + " 次" +
+      (data.cookieRecovery && data.cookieRecovery.lastError ? " · " + data.cookieRecovery.lastError : "");
+    for (const s of data.sessions.reverse()) {
+      const el = document.createElement("div");
+      el.className = "session";
+      const title = document.createElement("strong");
+      title.textContent = s.title;
+      const detail = document.createElement("div");
+      detail.textContent = s.tracks.video.height + "p · 影片 " + s.tracks.video.format_id + " · " + (s.enhancedBitrate ? "Premium 增強碼率" : "一般畫質") +
+        " · " + (s.subtitle.cueCount ? s.subtitle.cueCount + " 條繁中字幕" : "無繁中字幕");
+      el.append(title, detail);
+      document.querySelector("#sessions").append(el);
+    }
+    if (!data.sessions.length) document.querySelector("#sessions").textContent = "尚未選播影片。";
+  }).catch(() => { document.querySelector("#status").textContent = "無法讀取代理狀態。"; });
+</script>
+</html>

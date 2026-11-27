@@ -147,6 +147,23 @@ node node_test_all_plugins.js \
 CI gate 另外要求已設定的 search 至少成功一次。任何播放樣本自身為網盤限定或空來源會留在
 case 明細，但只要另有實際播放 journey 成功，不會把整個插件誤判為不可用。
 
+### YouTube 區網代理測試
+
+`plugin_youtube` 是私人區網插件，不加入官方來源表。先依 [Mac 代理說明](tools/youtube-proxy/README.md)
+啟動代理，取得動態 `config.json` 網址；不能直接使用 repo 裡的 loopback 設定測試 Apple TV。
+最低驗證另包含 `"$HOME/Library/Application Support/SyncnextYouTubeProxy/venv/bin/python" -m unittest discover -s tools/youtube-proxy -p 'test_*.py' -v`（先完成 Setup.command，使用鎖定 yt-dlp）
+與 `node --test tools/youtube-proxy/cookies_from_arc.test.mjs`。
+
+以暫存的單筆訂閱表指向 `syncnextplugin://http://<MacIP>:<port>/plugin_youtube/config.json`，
+再跑本節的 subscription runner（使用 `--subscriptions-file`、`--only=plugin_youtube`）。
+清單與分集測試需使用頻道的真實播放列表；Premium 與字幕驗證可使用明確標示的 SEED 樣本頁。
+目錄需保留連到 VL 播放列表的 SHOW 卡片，並與繁中頻道頁對照；預設繁中頁與全部頁分別驗證，不能只確認清單非空。
+不能以 Cookie 已匯入推定 Premium 已偵測，也不能以 advertised formats 推定選中增強碼率。
+AVC 交接 `url`、`headers` 與 HLS WebVTT rendition；Premium AV1 交接 MPD，透過可選 `subtitle` 描述原始 VTT。需分別證明實際 dav1d 解碼、原始 cue 時間與字幕呈現；舊 App Store 版本不能推定已支援該擴充。
+
+App 端 `YouTubeProxyPoC` case 的 `--youtube-proxy-packaged=1` 走完整插件，驗證清單、
+搜尋、分集、HLS WebVTT 字幕、快轉及續播；開發版通過不代表已驗收 App Store 安裝版本。
+
 ### 3.3 macOS 每日 Smoke
 
 一般 smoke 已從 public GitHub Actions 遷移至 Codex 定時任務，每日於 **08:00（Asia/Shanghai）**
