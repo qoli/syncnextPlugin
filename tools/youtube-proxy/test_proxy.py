@@ -115,6 +115,18 @@ class ProxyTests(unittest.TestCase):
             self.assertEqual(r.read(),b'')
         self.assertEqual(len(self.upstream_calls),before)
 
+    def test_media_ranges_reuse_one_upstream_connection(self):
+        before = len(self.upstream_calls)
+        for start, end in [(300, 399), (700, 899)]:
+            request = Request(self.origin + '/sessions/abc/video.mp4',
+                              headers={'Range': f'bytes={start}-{end}'})
+            with urlopen(request) as response:
+                self.assertEqual(response.status, 206)
+                self.assertEqual(response.read(), self.body[start:end + 1])
+        connections = self.upstream_calls[before:]
+        self.assertEqual(len(connections), 2)
+        self.assertEqual(len(set(connections)), 1)
+
     def test_invalid_range(self):
         with self.assertRaises(HTTPError) as caught:
             urlopen(Request(self.origin+'/sessions/abc/video.mp4',headers={'Range':'bytes=0-1,4-5'}))

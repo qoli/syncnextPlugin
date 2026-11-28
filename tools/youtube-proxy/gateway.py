@@ -18,7 +18,8 @@ import uuid
 from xml.sax.saxutils import escape
 
 from manifests import make_mpd, master_playlist, media_playlist, subtitle_playlist, hls_vtt
-from youtube import RangeReader, byte_range, load_subtitle, premium_state, private_youtube_cookies, segment_base, upstream, youtube_cookie_identity
+from range_cache import CachedRangeReader
+from youtube import RangeReader, byte_range, load_subtitle, premium_state, private_youtube_cookies, segment_base, youtube_cookie_identity
 
 
 CHANNEL = "https://www.youtube.com/@GundamInfo/playlists"
@@ -83,6 +84,8 @@ def playlist_episodes(metadata, origin, profile):
 class Session:
     def __init__(self, identifier, source, directory):
         self.id, self.source, self.directory = identifier, source, directory
+        self.media_readers = {source[kind]["format_id"]: CachedRangeReader(
+            source[kind], directory / "media-cache" / (kind + ".mp4")) for kind in ("video", "audio")}
         self.manifest = make_mpd(source)
         self.master = master_playlist(source)
         self.playlists = {kind: media_playlist(source[kind], kind + ".mp4") for kind in ("video", "audio")}
@@ -409,10 +412,14 @@ class Handler(BaseHTTPRequestHandler):
         event = {"event": "range", "sessionID": session.id, "resource": track["format_id"],
                  "method": self.command, "start": start, "end": end, "status": 206 if span else 200, "bytesSent": 0}
         sent_headers, started = False, time.monotonic()
+        event["startedAt"] = time.time()
+        chunks = None
         try:
-            chunks = self.raw_chunks(track, start, end)
+            chunks = self.raw_chunks(start, end, event, started, session.media_readers[track["format_id"]])
             # Surface a failed initial upstream read as 502, before the 206 header.
             first = next(chunks) if self.command != "HEAD" else b""
+            if self.command != "HEAD":
+                event["firstChunkSeconds"] = round(time.monotonic() - started, 6)
             self.send_response(event["status"])
             self.send_header("Content-Type", "video/mp4")
             self.send_header("Content-Length", str(end - start + 1))
@@ -424,6 +431,7 @@ class Handler(BaseHTTPRequestHandler):
             sent_headers = True
             if self.command != "HEAD":
                 self.wfile.write(first)
+                event["firstWriteSeconds"] = round(time.monotonic() - started, 6)
                 event["bytesSent"] += len(first)
                 for chunk in chunks:
                     self.wfile.write(chunk)
@@ -437,19 +445,22 @@ class Handler(BaseHTTPRequestHandler):
                 self.json({"error": {"code": event["error"], "message": "YouTube 取流失敗，請回分集重新解析或檢查 Mac 日誌。"}}, 502)
             self.close_connection = True
         finally:
+            if chunks is not None:
+                chunks.close()
             event["elapsedSeconds"] = round(time.monotonic() - started, 3)
             self.server.gateway.record(event)
 
     @staticmethod
-    def raw_chunks(track, start, end):
-        with upstream(track, (start, end)) as response:
-            remaining = end - start + 1
-            while remaining:
-                data = response.read(min(64 * 1024, remaining))
-                if not data:
-                    raise ValueError("truncated_upstream_range")
-                remaining -= len(data)
-                yield data
+    def raw_chunks(start, end, event, started, reader):
+        def received_headers():
+            event.setdefault("upstreamHeadersSeconds", round(time.monotonic() - started, 6))
+            event["upstreamRequestCount"] = event.get("upstreamRequestCount", 0) + 1
+
+        def read_bytes(source, count):
+            key = "cacheReadBytes" if source == "cache" else "upstreamReadBytes"
+            event[key] = event.get(key, 0) + count
+
+        yield from reader.chunks(start, end, on_headers=received_headers, on_read=read_bytes)
 
 
 def main():

@@ -146,7 +146,13 @@ class RangeReader:
         self.lock = threading.Lock()
 
     def __call__(self, start, end):
+        return b"".join(self.chunks(start, end))
+
+    def chunks(self, start, end, on_headers=None):
+        """Stream a precise Range and reuse its connection only after the body is consumed."""
         with self.lock:
+            response = None
+            consumed = False
             try:
                 if self.connection is None:
                     connection_type = HTTPSConnection if self.url.scheme == "https" else HTTPConnection
@@ -161,16 +167,24 @@ class RangeReader:
                     raise ValueError("upstream_http_" + str(response.status))
                 if response.getheader("Content-Range") != expected:
                     raise ValueError("upstream_range_mismatch")
-                body = response.read()
-                response.close()
-                if len(body) != end - start + 1:
-                    raise ValueError("truncated_upstream_range")
-                return body
-            except Exception:
-                if self.connection is not None:
+                if on_headers is not None:
+                    on_headers()
+                remaining = end - start + 1
+                while remaining:
+                    body = response.read(min(64 * 1024, remaining))
+                    if not body:
+                        raise ValueError("truncated_upstream_range")
+                    remaining -= len(body)
+                    yield body
+                consumed = True
+            finally:
+                if response is not None:
+                    response.close()
+                # Includes generator cancellation after a client disconnect. An unread
+                # response cannot be reused for the next distinct Range; never retry it.
+                if not consumed and self.connection is not None:
                     self.connection.close()
                     self.connection = None
-                raise
 
 
 def segment_base(track, read=None):

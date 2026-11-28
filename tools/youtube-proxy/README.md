@@ -43,6 +43,10 @@ AVC HLS 的字幕由 AVPlayer 選擇。App 的插幀畫面原本會遮住該字�
 
 字幕只取人工 `zh-TW` VTT，不用自動翻譯替代。沒有該語言時，狀態為 `available: false`，master 不宣告字幕；已列出卻下載失敗則明確失敗。包裝方式依 [RFC 8216](https://www.rfc-editor.org/rfc/rfc8216) 的 fMP4 byte range 與 WebVTT rendition。
 
+影音轉送各自重用上游 HTTPS 連線；完整讀完回應才保留連線，取消或失敗時關閉未讀完的回應，不重試同一次請求。同一播放工作階段已收到、且通過 `206`／`Content-Range` 檢查的原始位元組，按需寫入該輪 `sessions/<UUID>/media-cache/`，重疊 Range 只向同一上游讀缺口。快取不跨播放工作階段共用、不預下載，也不改 MPD、影音位元組或字幕。
+
+`events.jsonl` 的 Range 紀錄包含 `startedAt`、`upstreamHeadersSeconds`、`firstChunkSeconds`、`firstWriteSeconds` 與 `elapsedSeconds`，可對齊 tvOS seek 日誌。`cacheReadBytes`／`upstreamReadBytes` 區分實際讀取來源；全命中時不會有上游請求。每輪磁碟快取留在上述私人 run 目錄，不會打入插件包。
+
 Cookie、上游簽名網址與私人 extractor 日誌保留在 Mac，不出現在插件交接或測試包。區網 HTTP 沒有配對與 TLS，可連到代理的裝置能使用已解析的串流。解析及媒體連線使用 IPv4；不修改 Clash 或系統路由。遇到 `youtube_cookies_invalid`，或 yt-dlp 清掉登入 Cookie 時，自動透過 CDP 更新並重跑原請求；畫質、client 與 URL 不變。Cookie 更新與解析共用鎖，避免其他請求使用失效副本。每組已被拒絕的 Cookie 不重用；CDP 不可用、沒有登入、或回傳同一組失效 Cookie 時明確失敗，不匿名繼續。CDN 403、地區或格式限制不觸發 Cookie 重試，也不換 client 或改畫質。
 
 ## 驗證與打包
