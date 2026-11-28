@@ -43,11 +43,21 @@ AVC HLS 的字幕由 AVPlayer 選擇。App 的插幀畫面原本會遮住該字�
 
 字幕只取人工 `zh-TW` VTT，不用自動翻譯替代。沒有該語言時，狀態為 `available: false`，master 不宣告字幕；已列出卻下載失敗則明確失敗。包裝方式依 [RFC 8216](https://www.rfc-editor.org/rfc/rfc8216) 的 fMP4 byte range 與 WebVTT rendition。
 
-影音轉送各自重用上游 HTTPS 連線；完整讀完回應才保留連線，取消或失敗時關閉未讀完的回應，不重試同一次請求。同一播放工作階段已收到、且通過 `206`／`Content-Range` 檢查的原始位元組，按需寫入該輪 `sessions/<UUID>/media-cache/`，重疊 Range 只向同一上游讀缺口。快取不跨播放工作階段共用、不預下載，也不改 MPD、影音位元組或字幕。
+影音轉送各自重用上游 HTTPS 主連線；完整讀完回應才保留連線，取消或失敗時關閉未讀完的回應。同一軌有同時進行、位置不同的缺口請求時，各自使用獨立連線，完成或取消便關閉額外連線；不讓一筆慢請求阻塞其他位置。沒有額外預下載或背景補流。
 
-`events.jsonl` 的 Range 紀錄包含 `startedAt`、`upstreamHeadersSeconds`、`firstChunkSeconds`、`firstWriteSeconds` 與 `elapsedSeconds`，可對齊 tvOS seek 日誌。`cacheReadBytes`／`upstreamReadBytes` 區分實際讀取來源；全命中時不會有上游請求。每輪磁碟快取留在上述私人 run 目錄，不會打入插件包。
+同一播放工作階段已收到、且通過 `206`／`Content-Range` 檢查的原始位元組，按需寫入該輪 `sessions/<UUID>/media-cache/`。快取鎖只協調索引與正在下載的缺口，不在網路讀取或向客戶端送資料時持有；同一缺口由一筆請求下載，寫入後即可供其他請求讀取。取消時保留已寫入的原始位元組，釋放尚未完成的缺口。快取不跨播放工作階段共用，也不改 MPD、影音位元組或字幕。
+
+媒體回傳 `301`／`302`／`303`／`307`／`308` 時，同一 GET／Range 允許一次 urllib 導向恢復，沿用標準庫的導向與循環上限。只有精確 `206`／`Content-Range` 驗證通過後，才記住終點供後續連線重用；跨 origin 移除 Cookie 與授權標頭，HTTPS 不降至 HTTP。若選播階段的索引仍因導向恢復失敗，最多重新解析同影片、同畫質一次，且影音格式、codec、尺寸與檔案大小必須一致；不將重新解析的來源混入既有播放快取。耗盡後明確回報最初 HTTP 狀態及終止原因。其他媒體錯誤不觸發此重試，CDN 直接回傳的 `403` 亦不會被當成 Cookie 過期。
+
+`events.jsonl` 的 Range 紀錄包含 `startedAt`、`upstreamHeadersSeconds`、`firstChunkSeconds`、`firstWriteSeconds` 與 `elapsedSeconds`，可對齊 tvOS seek 日誌。`clientHost` 區分區網客戶端；`cacheReadBytes`／`upstreamReadBytes` 區分實際讀取來源，全命中時不會有上游請求。`cacheFillWaitSeconds`／`cacheFillWaitCount` 記錄等待其他請求填補同一缺口的時間與次數；額外連線另記 `media_parallel_range`。每輪磁碟快取留在上述私人 run 目錄，不會打入插件包。
+
+導向恢復記錄 `media_range_fallback_started`／`succeeded`／`failed`、每一跳的 HTTP 狀態與主機名稱；選播重取另記 `media_resolve_retry` 與 `media_resolve_recovery_succeeded`／`failed`。日誌不包含簽名查詢參數或授權標頭。
 
 Cookie、上游簽名網址與私人 extractor 日誌保留在 Mac，不出現在插件交接或測試包。區網 HTTP 沒有配對與 TLS，可連到代理的裝置能使用已解析的串流。解析及媒體連線使用 IPv4；不修改 Clash 或系統路由。遇到 `youtube_cookies_invalid`，或 yt-dlp 清掉登入 Cookie 時，自動透過 CDP 更新並重跑原請求；畫質、client 與 URL 不變。Cookie 更新與解析共用鎖，避免其他請求使用失效副本。每組已被拒絕的 Cookie 不重用；CDP 不可用、沒有登入、或回傳同一組失效 Cookie 時明確失敗，不匿名繼續。CDN 403、地區或格式限制不觸發 Cookie 重試，也不換 client 或改畫質。
+
+## 已知問題
+
+Premium seek 仍可能等待播放器既有的 Range 讀取完成；HTTP smoke、快取命中或功能 case 通過，均不代表端到端延遲已改善。重現條件、Simulator 量測、撤回的試驗與修改邊界見 [已知問題 YT-PROXY-001](KNOWN_ISSUES.md)。
 
 ## 驗證與打包
 
@@ -64,6 +74,10 @@ python3 tools/youtube-proxy/build_bundle.py --output /tmp/Syncnext-YouTube.zip
 ```
 
 Cookie 測試覆蓋真實失效路徑的狀態：CDP 更新後重跑同一命令、CDP 中斷／未登入／同一失效 Cookie、登入標記被清除、併發請求及非 Cookie 錯誤不重試。
+
+媒體恢復測試以實際 HTTP fixture 驗證多跳導向、終點重用、跨 origin 標頭、循環與缺少 Location、錯誤 Range、HTTPS 降級，以及直接 403 不重試；另驗證同影片／畫質只重取一次、格式變更拒絕與耗盡時保留原因。
+
+併發 Range 測試會暫停一筆真實 HTTP 上游回應，驗證已快取資料與另一位置的缺口能在該回應解除前完成；其他快取測試涵蓋重疊去重、取消後釋放缺口與原始位元組一致性。
 
 目錄回歸測試使用 5 個真實 SHOW 卡片與 VL 導向，檢查繁中分組、一般列表不受影響；需使用 Setup.command 安裝的鎖定 yt-dlp 環境。真站驗證另確認 CLI 實際載入 `syncnext_shows` plugin，不能只直接呼叫測試內的解析方法。
 

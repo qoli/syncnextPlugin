@@ -19,7 +19,7 @@ from xml.sax.saxutils import escape
 
 from manifests import make_mpd, master_playlist, media_playlist, subtitle_playlist, hls_vtt
 from range_cache import CachedRangeReader
-from youtube import RangeReader, byte_range, load_subtitle, premium_state, private_youtube_cookies, segment_base, youtube_cookie_identity
+from youtube import MediaRedirectFailure, RangeReader, byte_range, load_subtitle, premium_state, private_youtube_cookies, segment_base, youtube_cookie_identity
 
 
 CHANNEL = "https://www.youtube.com/@GundamInfo/playlists"
@@ -82,10 +82,12 @@ def playlist_episodes(metadata, origin, profile):
 
 
 class Session:
-    def __init__(self, identifier, source, directory):
+    def __init__(self, identifier, source, directory, record=None):
         self.id, self.source, self.directory = identifier, source, directory
+        context = {'sessionID': identifier, 'videoId': source['id'], 'profile': source['profile'], 'stage': 'media'}
+        recovery = (lambda event: record({**event, **context})) if record is not None else None
         self.media_readers = {source[kind]["format_id"]: CachedRangeReader(
-            source[kind], directory / "media-cache" / (kind + ".mp4")) for kind in ("video", "audio")}
+            source[kind], directory / "media-cache" / (kind + ".mp4"), on_recovery=recovery) for kind in ("video", "audio")}
         self.manifest = make_mpd(source)
         self.master = master_playlist(source)
         self.playlists = {kind: media_playlist(source[kind], kind + ".mp4") for kind in ("video", "audio")}
@@ -253,20 +255,47 @@ class Gateway:
             allowed = video_id in self.allowed_videos
         if not allowed:
             raise ProxyError("unknown_video", "請先從 GundamInfo 播放列表選擇分集。", 404)
-        identifier = str(uuid.uuid4())
-        directory = self.artifacts / "sessions" / identifier
-        metadata = self.extract("https://www.youtube.com/watch?v=" + video_id, directory, profile=profile)
-        formats = metadata.get("requested_formats") or []
-        video = next((f for f in formats if f.get("vcodec") not in (None, "none")), None)
-        audio = next((f for f in formats if f.get("acodec") not in (None, "none")), None)
-        if (metadata.get("id") != video_id or video is None or audio is None
-                or video.get("ext") != "mp4" or audio.get("acodec") != "mp4a.40.2"
-                or (profile == "premium" and (video.get("height") != 1080 or "Premium" not in (video.get("format_note") or "")))):
-            raise ProxyError("unexpected_selected_tracks", "YouTube 回傳的影音格式不符合所選畫質。")
-        def prepare(track):
-            track["segmentBase"] = segment_base(track, read=RangeReader(track))
-        with ThreadPoolExecutor(max_workers=2) as pool:
-            list(pool.map(prepare, (video, audio)))
+        expected_tracks, original_failure = None, None
+        for attempt in range(2):  # One explicitly authorized same-video/profile re-extraction.
+            identifier = str(uuid.uuid4())
+            directory = self.artifacts / "sessions" / identifier
+            try:
+                metadata = self.extract("https://www.youtube.com/watch?v=" + video_id, directory, profile=profile)
+                formats = metadata.get("requested_formats") or []
+                video = next((f for f in formats if f.get("vcodec") not in (None, "none")), None)
+                audio = next((f for f in formats if f.get("acodec") not in (None, "none")), None)
+                if (metadata.get("id") != video_id or video is None or audio is None
+                        or video.get("ext") != "mp4" or audio.get("acodec") != "mp4a.40.2"
+                        or (profile == "premium" and (video.get("height") != 1080 or "Premium" not in (video.get("format_note") or "")))):
+                    raise ProxyError("unexpected_selected_tracks", "YouTube 回傳的影音格式不符合所選畫質。")
+                signature = tuple(tuple(track.get(key) for key in
+                    ('format_id', 'filesize', 'vcodec', 'acodec', 'width', 'height')) for track in (video, audio))
+                if expected_tracks is None:
+                    expected_tracks = signature
+                elif signature != expected_tracks:
+                    raise ProxyError('media_retry_tracks_changed', '重試回傳的影音格式或檔案大小已改變。')
+
+                def prepare(track):
+                    reader = RangeReader(track, on_recovery=lambda event: self.record({**event,
+                        'videoId': video_id, 'profile': profile, 'stage': 'index', 'resolveAttempt': attempt + 1}))
+                    track['segmentBase'] = segment_base(track, read=reader)
+
+                with ThreadPoolExecutor(max_workers=2) as pool:
+                    list(pool.map(prepare, (video, audio)))
+                break
+            except Exception as error:
+                if attempt == 0:
+                    if not isinstance(error, MediaRedirectFailure):
+                        raise
+                    original_failure = error
+                    self.record({'event': 'media_resolve_retry', 'videoId': video_id, 'profile': profile,
+                                 'retry': 1, 'originalStatus': error.status, 'cause': error.cause_code})
+                    continue
+                cause = error.cause_code if isinstance(error, MediaRedirectFailure) else error_code(error)
+                self.record({'event': 'media_resolve_recovery_failed', 'videoId': video_id, 'profile': profile,
+                             'attempts': 2, 'originalStatus': original_failure.status, 'cause': cause})
+                raise ProxyError('media_redirect_recovery_exhausted',
+                    f'YouTube 媒體導向恢復失敗：最初 HTTP {original_failure.status}，同影片／畫質重取一次後仍失敗（{cause}）。') from error
         duration = max(t["segmentBase"]["indexedDurationSeconds"] for t in (video, audio))
         source = {"id": video_id, "title": metadata["title"], "profile": profile, "duration": duration,
                   "video": video, "audio": audio, "account": metadata["proxyAccount"]}
@@ -279,7 +308,7 @@ class Gateway:
                 self.subtitles[(video_id, self.args.subtitle_language)] = source["subtitle"]
         else:
             source["subtitle"] = {"language": self.args.subtitle_language, "available": False, "cueCount": 0}
-        session = Session(identifier, source, directory)
+        session = Session(identifier, source, directory, record=self.record)
         (directory / "summary.json").write_text(json.dumps(session.summary(), ensure_ascii=False, indent=2))
         (directory / "manifest.mpd").write_bytes(session.manifest)
         (directory / "master.m3u8").write_bytes(session.master)
@@ -287,6 +316,10 @@ class Gateway:
             self.sessions[identifier] = session
         self.record({"event": "resolved", "sessionID": identifier, "videoId": video_id, "profile": profile,
                      "subtitleCues": source["subtitle"].get("cueCount", 0)})
+        if original_failure is not None:
+            self.record({'event': 'media_resolve_recovery_succeeded', 'sessionID': identifier,
+                         'videoId': video_id, 'profile': profile, 'attempts': 2,
+                         'originalStatus': original_failure.status})
         return session.player_payload(self.origin)
 
 
@@ -410,7 +443,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(416, b"", "text/plain", {"Content-Range": f"bytes */{length}"})
         start, end = span or (0, length - 1)
         event = {"event": "range", "sessionID": session.id, "resource": track["format_id"],
-                 "method": self.command, "start": start, "end": end, "status": 206 if span else 200, "bytesSent": 0}
+                 "method": self.command, "start": start, "end": end, "status": 206 if span else 200, "bytesSent": 0,
+                 "cacheFillWaitSeconds": 0.0, "cacheFillWaitCount": 0, "clientHost": self.client_address[0]}
         sent_headers, started = False, time.monotonic()
         event["startedAt"] = time.time()
         chunks = None
@@ -460,7 +494,11 @@ class Handler(BaseHTTPRequestHandler):
             key = "cacheReadBytes" if source == "cache" else "upstreamReadBytes"
             event[key] = event.get(key, 0) + count
 
-        yield from reader.chunks(start, end, on_headers=received_headers, on_read=read_bytes)
+        def waited(seconds):
+            event['cacheFillWaitSeconds'] = round(event['cacheFillWaitSeconds'] + seconds, 6)
+            event['cacheFillWaitCount'] += 1
+
+        yield from reader.chunks(start, end, on_headers=received_headers, on_read=read_bytes, on_wait=waited)
 
 
 def main():

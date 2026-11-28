@@ -5,11 +5,12 @@ import hashlib
 import json
 from http.cookiejar import MozillaCookieJar
 from http.client import HTTPConnection, HTTPSConnection
+from urllib.error import HTTPError, URLError
 import re
 import struct
 import threading
 from urllib.parse import urlsplit
-from urllib.request import HTTPSHandler, Request, build_opener
+from urllib.request import HTTPRedirectHandler, HTTPSHandler, Request, build_opener
 
 
 class IPv4HTTPSConnection(HTTPSConnection):
@@ -24,6 +25,50 @@ class IPv4HTTPSHandler(HTTPSHandler):
 
 
 MEDIA_OPENER = build_opener(IPv4HTTPSHandler())
+
+
+class MediaRedirectFailure(ValueError):
+    def __init__(self, status, cause):
+        super().__init__('media_redirect_failed')
+        self.status = status
+        if isinstance(cause, HTTPError):
+            self.cause_code = 'upstream_http_' + str(cause.code)
+        elif isinstance(cause, URLError):
+            self.cause_code = 'upstream_' + type(cause.reason).__name__
+        elif isinstance(cause, ValueError) and re.fullmatch(r'[a-z_0-9]+', str(cause)):
+            self.cause_code = str(cause)
+        else:
+            self.cause_code = type(cause).__name__
+
+
+def media_origin(value):
+    url = urlsplit(value)
+    return url.scheme, url.hostname, url.port or (443 if url.scheme == 'https' else 80)
+
+
+class MediaRedirectHandler(HTTPRedirectHandler):
+    """Use urllib's existing redirect/cycle budget, retaining Range and credential scope."""
+    def __init__(self, record):
+        self.record = record
+        self.hops = 0
+        self.last_headers = None
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        target = urlsplit(newurl)
+        if target.scheme not in ('http', 'https'):
+            raise ValueError('media_redirect_unsupported_scheme')
+        if req.type == 'https' and target.scheme != 'https':
+            raise ValueError('media_redirect_downgrade')
+        request = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if media_origin(req.full_url) != media_origin(newurl):
+            for name in list(request.headers) + list(request.unredirected_hdrs):
+                if name.lower() in ('authorization', 'proxy-authorization', 'cookie', 'cookie2', 'host'):
+                    request.remove_header(name)
+        self.hops += 1
+        self.last_headers = dict(request.headers)
+        self.record('media_redirect', status=code, hop=self.hops,
+                    fromHost=urlsplit(req.full_url).hostname, toHost=target.hostname)
+        return request
 
 
 def private_youtube_cookies(original, destination):
@@ -133,58 +178,125 @@ def read_span(track, start, end):
 
 
 class RangeReader:
-    """Reuse one media connection across adjacent indexed subsegments.
+    """Reuse a primary media connection across adjacent indexed subsegments.
 
-    A failed request is reported to the caller without a retry. The next
-    distinct read opens a new connection after that failure.
+    A redirect gets one urllib fallback, using its normal bounded redirect
+    policy. A validated destination is retained for subsequent keep-alive reads.
+    Concurrent ranges use separate connections, closed after their own reads,
+    so an unrelated slow response does not serialize playback and seeking.
+    Other primary-path failures are reported without a same-request retry.
     """
 
-    def __init__(self, track):
+    def __init__(self, track, on_recovery=None):
         self.track = track
         self.url = urlsplit(track["url"])
+        self.request_headers = dict(track['http_headers'])
+        self.endpoint = (track['url'], self.request_headers)
         self.connection = None
         self.lock = threading.Lock()
+        self.on_recovery = on_recovery
+
+    def _record(self, event, **fields):
+        if self.on_recovery is not None:
+            self.on_recovery({'event': event, 'formatID': self.track.get('format_id'), **fields})
+
+    def _redirect_failure(self, status, cause):
+        error = MediaRedirectFailure(status, cause)
+        self._record('media_range_fallback_failed', originalStatus=status, cause=error.cause_code)
+        return error
+
+    def _response(self, start, end):
+        if self.connection is None:
+            connection_type = HTTPSConnection if self.url.scheme == 'https' else HTTPConnection
+            self.connection = connection_type(self.url.hostname, self.url.port, source_address=('0.0.0.0', 0))
+        headers = {**self.request_headers, 'Accept-Encoding': 'identity', 'Connection': 'keep-alive',
+                   'Range': f'bytes={start}-{end}'}
+        target = self.url.path + ('?' + self.url.query if self.url.query else '')
+        self.connection.request('GET', target, headers=headers)
+        response = self.connection.getresponse()
+        if response.status not in (301, 302, 303, 307, 308):
+            return response, None
+        status = response.status
+        response.close()
+        self.connection.close()
+        self.connection = None
+        self._record('media_range_fallback_started', originalStatus=status, attempt=1, start=start, end=end)
+        redirects = MediaRedirectHandler(self._record)
+        try:
+            # Replay exactly this GET/Range once. urllib follows its own bounded
+            # chain; it never changes the video, profile, format or byte interval.
+            response = build_opener(IPv4HTTPSHandler(), redirects).open(Request(self.url.geturl(), headers=headers))
+            return response, {'status': status, 'url': response.geturl(),
+                              'headers': redirects.last_headers or headers, 'hops': redirects.hops}
+        except Exception as error:
+            if isinstance(error, HTTPError):
+                error.close()
+            raise self._redirect_failure(status, error) from error
 
     def __call__(self, start, end):
         return b"".join(self.chunks(start, end))
 
     def chunks(self, start, end, on_headers=None):
         """Stream a precise Range and reuse its connection only after the body is consumed."""
-        with self.lock:
-            response = None
-            consumed = False
+        if not self.lock.acquire(blocking=False):
+            url, headers = self.endpoint
+            parallel = RangeReader({**self.track, 'url': url, 'http_headers': headers}, on_recovery=self.on_recovery)
             try:
-                if self.connection is None:
-                    connection_type = HTTPSConnection if self.url.scheme == "https" else HTTPConnection
-                    self.connection = connection_type(self.url.hostname, self.url.port, source_address=("0.0.0.0", 0))
-                headers = {**self.track["http_headers"], "Accept-Encoding": "identity", "Connection": "keep-alive",
-                           "Range": f"bytes={start}-{end}"}
-                target = self.url.path + ("?" + self.url.query if self.url.query else "")
-                self.connection.request("GET", target, headers=headers)
-                response = self.connection.getresponse()
-                expected = f"bytes {start}-{end}/{self.track['filesize']}"
-                if response.status != 206:
-                    raise ValueError("upstream_http_" + str(response.status))
-                if response.getheader("Content-Range") != expected:
-                    raise ValueError("upstream_range_mismatch")
-                if on_headers is not None:
-                    on_headers()
-                remaining = end - start + 1
-                while remaining:
-                    body = response.read(min(64 * 1024, remaining))
-                    if not body:
-                        raise ValueError("truncated_upstream_range")
-                    remaining -= len(body)
-                    yield body
-                consumed = True
+                self._record('media_parallel_range', start=start, end=end)
+                yield from parallel.chunks(start, end, on_headers=on_headers)
             finally:
-                if response is not None:
-                    response.close()
-                # Includes generator cancellation after a client disconnect. An unread
-                # response cannot be reused for the next distinct Range; never retry it.
-                if not consumed and self.connection is not None:
-                    self.connection.close()
-                    self.connection = None
+                if parallel.connection is not None:
+                    parallel.connection.close()
+            return
+        try:
+            yield from self._chunks(start, end, on_headers)
+        finally:
+            self.lock.release()
+
+    def _chunks(self, start, end, on_headers):
+        response = None
+        recovery = None
+        consumed = False
+        try:
+            response, recovery = self._response(start, end)
+            expected = f"bytes {start}-{end}/{self.track['filesize']}"
+            if response.status != 206:
+                raise ValueError("upstream_http_" + str(response.status))
+            if response.getheader("Content-Range") != expected:
+                raise ValueError("upstream_range_mismatch")
+            if recovery is not None:
+                self.url = urlsplit(recovery['url'])
+                self.request_headers = {k: v for k, v in recovery['headers'].items()
+                                        if k.lower() not in ('range', 'connection', 'accept-encoding')}
+                self.track['url'] = recovery['url']
+                self.track['http_headers'] = dict(self.request_headers)
+                # Publish URL and credential scope together for concurrent reads.
+                self.endpoint = (recovery['url'], self.request_headers)
+            if on_headers is not None:
+                on_headers()
+            remaining = end - start + 1
+            while remaining:
+                body = response.read(min(64 * 1024, remaining))
+                if not body:
+                    raise ValueError("truncated_upstream_range")
+                remaining -= len(body)
+                yield body
+            consumed = True
+            if recovery is not None:
+                self._record('media_range_fallback_succeeded', originalStatus=recovery['status'],
+                             status=206, redirects=recovery['hops'], finalHost=self.url.hostname)
+        except Exception as error:
+            if recovery is not None:
+                raise self._redirect_failure(recovery['status'], error) from error
+            raise
+        finally:
+            if response is not None:
+                response.close()
+            # Includes generator cancellation after a client disconnect. An unread
+            # response cannot be reused for the next distinct Range; never retry it.
+            if not consumed and self.connection is not None:
+                self.connection.close()
+                self.connection = None
 
 
 def segment_base(track, read=None):
